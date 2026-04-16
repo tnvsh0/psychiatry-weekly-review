@@ -92,21 +92,21 @@
 
 ---
 
-### Prenatal exposure to buprenorphine or methadone and adverse neurodevelopmental outcomes: population based cohort study
-**כתב עת:** BMJ | **מחברים:** Friedrich S et al. | **תאריך:** 2026 Apr 15
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41985931/)
-
----
-
 ### How are adults with intellectual and/or developmental disabilities represented, included and engaged in cancer research: A scoping review protocol
 **כתב עת:** PLoS One | **מחברים:** Hansford RLW et al. | **תאריך:** 2026
 
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41984851/)
+
+---
+
+### Prenatal exposure to buprenorphine or methadone and adverse neurodevelopmental outcomes: population based cohort study
+**כתב עת:** BMJ | **מחברים:** Friedrich S et al. | **תאריך:** 2026 Apr 15
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41985931/)
 
 ---
 
@@ -137,21 +137,21 @@
 
 ---
 
+### Immunological Explanations for Autism Initiation From Inflammation and Neurotoxins
+**כתב עת:** APMIS | **מחברים:** Roe K | **תאריך:** 2026 Apr
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41986249/)
+
+---
+
 ### Measuring Potential: Psychometric Evaluation of the Performance Skills Questionnaire for Turkish Children with Neurodevelopmental Disabilities
 **כתב עת:** Child Care Health Dev | **מחברים:** Tatli İY et al. | **תאריך:** 2026 May
 
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41974500/)
-
----
-
-### Transdiagnostic Profiles of BOLD Signal Variability in Autism and Schizophrenia Spectrum Disorders: Associations With Cognition and Functioning
-**כתב עת:** Hum Brain Mapp | **מחברים:** Secara MT et al. | **תאריך:** 2026 Apr 1
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41987679/)
 
 ---
 
@@ -233,21 +233,21 @@
 
 ---
 
-### Effectiveness of preventive parental education delivered from pregnancy to 1 month postpartum for improving infant sleep and parental sleep and depression: a systematic review
-**כתב עת:** JBI Evid Synth | **מחברים:** Matsunaka E et al. | **תאריך:** 2026 Apr 1
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41981811/)
-
----
-
 ### [Boosting oxytocin in postpartum depression]
 **כתב עת:** Ned Tijdschr Geneeskd | **מחברים:** Riem MME et al. | **תאריך:** 2026 Apr 16
 
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41989096/)
+
+---
+
+### Effectiveness of preventive parental education delivered from pregnancy to 1 month postpartum for improving infant sleep and parental sleep and depression: a systematic review
+**כתב עת:** JBI Evid Synth | **מחברים:** Matsunaka E et al. | **תאריך:** 2026 Apr 1
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41981811/)
 
 ---
 
@@ -351,4 +351,4 @@
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד — יש לקרוא את המאמר המלא לפני שימוש קליני
 
-*נוצר אוטומטית ב-16/04/2026 20:07 UTC*
+*נוצר אוטומטית ב-16/04/2026 20:14 UTC*
