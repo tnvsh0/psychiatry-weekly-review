@@ -221,8 +221,19 @@ def create_notebook_and_briefing(articles, env):
             ["notebooklm", "create", f"סקירת ספרות שבועית — {DATE_STR}", "--json"],
             capture_output=True, text=True, env=env, timeout=60,
         )
-        nb_data = json.loads(out.stdout.strip())
-        nb_id   = nb_data["notebook"]["id"]
+        raw = out.stdout.strip()
+        if not raw:
+            print(f"❌ No output from notebooklm create. stderr: {out.stderr[:300]}")
+            return None, None
+        nb_data = json.loads(raw)
+        if nb_data.get("error"):
+            print(f"❌ NotebookLM error: {nb_data.get('message', nb_data)}")
+            return None, None
+        # Support both response shapes (older: {"id":...}, newer: {"notebook":{"id":...}})
+        nb_id = (nb_data.get("notebook") or {}).get("id") or nb_data.get("id")
+        if not nb_id:
+            print(f"❌ Unexpected create response: {raw[:300]}")
+            return None, None
         nb_url  = f"https://notebooklm.google.com/notebook/{nb_id}"
         print(f"✅ Notebook: {nb_id}")
     except Exception as e:
@@ -414,29 +425,30 @@ def send_notification(article_count, nb_url, podcast_url, summary_path, env):
     # Clickable action buttons in the notification
     actions = []
     if podcast_url:
-        actions.append(f"view, 🎙️ האזן לפודקאסט, {podcast_url}")
+        actions.append({"action": "view", "label": "האזן לפודקאסט", "url": podcast_url})
     if nb_url:
-        actions.append(f"view, 📓 פתח מחברת NotebookLM, {nb_url}")
+        actions.append({"action": "view", "label": "פתח מחברת NotebookLM", "url": nb_url})
 
     github_repo   = env.get("GITHUB_REPOSITORY", "")
     github_server = env.get("GITHUB_SERVER_URL", "https://github.com")
     if github_repo and summary_path:
         summary_url = f"{github_server}/{github_repo}/blob/main/{summary_path}"
-        actions.append(f"view, 📄 קרא סיכום מלא, {summary_url}")
+        actions.append({"action": "view", "label": "קרא סיכום מלא", "url": summary_url})
 
-    headers = {
-        "Title":    f"📚 סקירת ספרות שבועית — {DATE_STR}",
-        "Tags":     "books,white_check_mark",
-        "Priority": "default",
+    # Use ntfy JSON API — avoids HTTP header encoding issues with Hebrew/emoji
+    payload = {
+        "topic":    topic,
+        "title":    f"סקירת ספרות שבועית — {DATE_STR}",
+        "message":  "\n".join(body_lines),
+        "tags":     ["books", "white_check_mark"],
+        "priority": 3,
+        "actions":  actions,
     }
-    if actions:
-        headers["Actions"] = "; ".join(actions)
 
     try:
         r = requests.post(
-            f"https://ntfy.sh/{topic}",
-            data="\n".join(body_lines).encode("utf-8"),
-            headers=headers,
+            "https://ntfy.sh",
+            json=payload,
             timeout=15,
         )
         print(f"✅ Notification sent (status {r.status_code})")
