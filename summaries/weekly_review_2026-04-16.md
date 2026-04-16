@@ -128,15 +128,6 @@
 
 ---
 
-### Clinical response and risk factors of fecal microbiota transplantation in children: a systematic review and meta-analysis
-**כתב עת:** Eur J Pediatr | **מחברים:** Liu J et al. | **תאריך:** 2026 Apr 14
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41975112/)
-
----
-
 ### Regulation of autism-related self-injurious behavior by electrical stimulation of corticostriatal circuits in mice and humans
 **כתב עת:** Sci Adv | **מחברים:** Zhang K et al. | **תאריך:** 2026 Apr 10
 
@@ -146,12 +137,21 @@
 
 ---
 
-### Immunological Explanations for Autism Initiation From Inflammation and Neurotoxins
-**כתב עת:** APMIS | **מחברים:** Roe K | **תאריך:** 2026 Apr
+### Measuring Potential: Psychometric Evaluation of the Performance Skills Questionnaire for Turkish Children with Neurodevelopmental Disabilities
+**כתב עת:** Child Care Health Dev | **מחברים:** Tatli İY et al. | **תאריך:** 2026 May
 
 (Abstract not available)
 
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41986249/)
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41974500/)
+
+---
+
+### Transdiagnostic Profiles of BOLD Signal Variability in Autism and Schizophrenia Spectrum Disorders: Associations With Cognition and Functioning
+**כתב עת:** Hum Brain Mapp | **מחברים:** Secara MT et al. | **תאריך:** 2026 Apr 1
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41987679/)
 
 ---
 
@@ -351,4 +351,4 @@
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד — יש לקרוא את המאמר המלא לפני שימוש קליני
 
-*נוצר אוטומטית ב-16/04/2026 19:55 UTC*
+*נוצר אוטומטית ב-16/04/2026 20:07 UTC*
