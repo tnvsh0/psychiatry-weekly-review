@@ -1,0 +1,48 @@
+name: 📚 Weekly Psychiatry Literature Review
+
+on:
+  schedule:
+    # Sunday at 6:00 UTC = ~8:00 Israel summer time / ~9:00 winter
+    - cron: '0 6 * * 0'
+  workflow_dispatch:   # allows manual "Run now" from GitHub UI for testing
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120   # 2 hours — podcast generation takes 10–45 min
+
+    permissions:
+      contents: write   # needed to commit summaries and create releases
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run weekly review
+        env:
+          NOTEBOOKLM_AUTH_JSON: ${{ secrets.NOTEBOOKLM_AUTH_JSON }}
+          NTFY_TOPIC:           ${{ secrets.NTFY_TOPIC }}
+          GH_TOKEN:             ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY:    ${{ github.repository }}
+          GITHUB_SERVER_URL:    ${{ github.server_url }}
+        run: python scripts/weekly_review.py
+
+      # Commit the new summary markdown so it's readable from GitHub
+      - name: Commit summary to repository
+        if: always()
+        run: |
+          git config user.name  "Weekly Review Bot"
+          git config user.email "bot@weekly-review"
+          git add summaries/ || true
+          git diff --staged --quiet || git commit -m "📚 Weekly review $(date +%Y-%m-%d)"
+          git push || true
