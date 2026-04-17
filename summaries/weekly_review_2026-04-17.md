@@ -8,6 +8,15 @@
 ## פסיכיאטריה של הילד והמתבגר
 *Child & Adolescent Psychiatry*
 
+### MAGEB16 as an epigenetic timing regulator linking X-chromosome biology to neurodevelopmental vulnerability in Autism Spectrum Disorder
+**כתב עת:** EXCLI J | **מחברים:** Gaspar JA et al. | **תאריך:** 2026
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41988164/)
+
+---
+
 ### Effects of Probiotic Supplementation on Core Symptoms of Autism Spectrum Disorder in Children
 **כתב עת:** Nutrients | **מחברים:** Chan MX et al. | **תאריך:** 2026 Mar 31
 
@@ -23,15 +32,6 @@
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41966708/)
-
----
-
-### MAGEB16 as an epigenetic timing regulator linking X-chromosome biology to neurodevelopmental vulnerability in Autism Spectrum Disorder
-**כתב עת:** EXCLI J | **מחברים:** Gaspar JA et al. | **תאריך:** 2026
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41988164/)
 
 ---
 
@@ -53,15 +53,6 @@
 
 ---
 
-### Accelerated intermittent theta burst stimulation targeting personalized fronto-parietal control network improves core symptoms of autism spectrum disorder: a double-blind, randomized controlled trial
-**כתב עת:** Mol Psychiatry | **מחברים:** Liu Q et al. | **תאריך:** 2026 Apr 15
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41986743/)
-
----
-
 ### Prenatal Ultrasound-Detected Structural Anomalies Associated with Autism Spectrum Disorder: A Narrative Review
 **כתב עת:** Consort Psychiatr | **מחברים:** Khamenehei N, Tokarskaya L | **תאריך:** 2026
 
@@ -80,6 +71,15 @@
 
 ---
 
+### Cultural Adaptation and Validation of the Chinese Behavioral Inflexibility Scale: Clinical Interview Version for Children Aged 3-8 Years With Autism Spectrum Disorder in Mainland China
+**כתב עת:** J Autism Dev Disord | **מחברים:** Luo J et al. | **תאריך:** 2026 Apr 16
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41986818/)
+
+---
+
 ## נוירולוגיה ונוירו-התפתחות
 *Child Neurology & Neurodevelopment*
 
@@ -92,21 +92,21 @@
 
 ---
 
-### Prenatal exposure to buprenorphine or methadone and adverse neurodevelopmental outcomes: population based cohort study
-**כתב עת:** BMJ | **מחברים:** Friedrich S et al. | **תאריך:** 2026 Apr 15
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41985931/)
-
----
-
 ### Pediatric Area Postrema Cavernoma: Clinical Presentation With Hiccups and Vomiting
 **כתב עת:** Cureus | **מחברים:** Kaake A | **תאריך:** 2026 Mar
 
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41970100/)
+
+---
+
+### Prenatal exposure to buprenorphine or methadone and adverse neurodevelopmental outcomes: population based cohort study
+**כתב עת:** BMJ | **מחברים:** Friedrich S et al. | **תאריך:** 2026 Apr 15
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41985931/)
 
 ---
 
@@ -146,12 +146,12 @@
 
 ---
 
-### Maternal and child nutrition insecurity, microbiome, and early neurodevelopment: an intricate interplay. Results from a systematic review
-**כתב עת:** Eur J Public Health | **מחברים:** Specchia ML et al. | **תאריך:** 2026 Mar 14
+### The Genetic Origin of Uneven Cognitive Profiles in Heritable Neurodevelopmental Conditions and Individual Differences: Computational Investigations
+**כתב עת:** Dev Sci | **מחברים:** Kohli M et al. | **תאריך:** 2026 May
 
 (Abstract not available)
 
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41954918/)
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41987674/)
 
 ---
 
@@ -215,6 +215,15 @@
 ## פסיכיאטריה של המבוגר
 *Adult Psychiatry — High Impact*
 
+### Breastfeeding in Women with Postpartum Depression: A Systematic Review and Meta-Analysis
+**כתב עת:** Ethiop J Health Sci | **מחברים:** Zamani M et al. | **תאריך:** 2025 Jul
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41987861/)
+
+---
+
 ### Clozapine prescribing in treatment-resistant schizophrenia - an updated systematic literature review of barriers and facilitators among clinicians
 **כתב עת:** Eur J Clin Pharmacol | **מחברים:** Nolan S et al. | **תאריך:** 2026 Apr 11
 
@@ -230,15 +239,6 @@
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41983730/)
-
----
-
-### Breastfeeding in Women with Postpartum Depression: A Systematic Review and Meta-Analysis
-**כתב עת:** Ethiop J Health Sci | **מחברים:** Zamani M et al. | **תאריך:** 2025 Jul
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41987861/)
 
 ---
 
@@ -330,4 +330,4 @@
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד — יש לקרוא את המאמר המלא לפני שימוש קליני
 
-*נוצר אוטומטית ב-17/04/2026 07:08 UTC*
+*נוצר אוטומטית ב-17/04/2026 08:19 UTC*
