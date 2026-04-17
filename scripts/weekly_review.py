@@ -147,7 +147,7 @@ def fetch_abstracts(articles):
                 if in_abstract:
                     abstract_lines.append(line)
             article["abstract"] = " ".join(abstract_lines[:8]) or "(Abstract not available)"
-            time.sleep(0.3)
+            time.sleep(1.5)   # Stay well under NCBI's 3 req/sec limit
         except Exception:
             article["abstract"] = "(Could not fetch abstract)"
 
@@ -211,7 +211,7 @@ def create_summary(articles):
 
 
 # ── Step 4: NotebookLM — Notebook + Sources + Briefing ────────────────────────
-def create_notebook_and_briefing(articles, env):
+def create_notebook_and_briefing(articles, summary_path, env):
     """Create notebook, add sources, wait for processing, generate briefing doc.
     Returns (notebook_url, nb_id) or (None, None) on failure."""
 
@@ -242,17 +242,19 @@ def create_notebook_and_briefing(articles, env):
 
     subprocess.run(["notebooklm", "use", nb_id], env=env, timeout=30)
 
-    # Add article URLs as sources (max 20)
-    print(f"📎 Adding {min(len(articles), 20)} sources...")
-    for a in articles[:20]:
-        subprocess.run(
-            ["notebooklm", "source", "add", a["url"], "--json"],
-            capture_output=True, text=True, env=env, timeout=60,
-        )
-        time.sleep(2)
+    # Add the weekly summary markdown as a single text source.
+    # This is far more reliable than adding 20 individual PubMed URLs
+    # (which PubMed often blocks with CAPTCHA when fetched by external servers).
+    # The summary already contains all articles with abstracts and PubMed links.
+    print("📎 Adding weekly summary as source...")
+    result = subprocess.run(
+        ["notebooklm", "source", "add", summary_path, "--json"],
+        capture_output=True, text=True, env=env, timeout=120,
+    )
+    print(f"  Source added (rc={result.returncode})")
 
-    # Wait for sources to be indexed
-    print("⏳ Waiting for sources to be indexed...")
+    # Wait for the source to be indexed (up to 5 minutes)
+    print("⏳ Waiting for source to be indexed...")
     for _ in range(10):
         time.sleep(30)
         try:
@@ -260,11 +262,10 @@ def create_notebook_and_briefing(articles, env):
                 ["notebooklm", "source", "list", "--json"],
                 capture_output=True, text=True, env=env, timeout=30,
             )
-            processing = sum(
-                1 for s in json.loads(out.stdout).get("sources", [])
-                if s.get("status") == "processing"
-            )
-            print(f"  {processing} sources still processing...")
+            sources = json.loads(out.stdout).get("sources", [])
+            processing = sum(1 for s in sources if s.get("status") in ("processing", "preparing"))
+            ready = sum(1 for s in sources if s.get("status") == "ready")
+            print(f"  {ready} ready, {processing} still processing...")
             if processing == 0:
                 break
         except Exception:
@@ -483,7 +484,7 @@ def main():
 
     if has_notebooklm:
         # 4. Create notebook, add sources, generate briefing doc
-        nb_url, nb_id = create_notebook_and_briefing(articles, env)
+        nb_url, nb_id = create_notebook_and_briefing(articles, summary_path, env)
 
         if nb_id:
             # 5. Generate podcast and WAIT until it is fully ready
