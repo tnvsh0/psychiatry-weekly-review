@@ -295,11 +295,10 @@ def generate_and_wait_for_podcast(env, max_wait_seconds=2700):
     try:
         out = subprocess.run([
             "notebooklm", "generate", "audio",
-            "Create an engaging, expert-level discussion about this week's most impactful "
-            "findings in child and adolescent psychiatry and related fields. "
-            "The audience is a psychiatry resident who values both scientific depth "
-            "and direct clinical relevance.",
-            "--format", "deep-dive", "--json",
+            "צור דיון מעמיק ומרתק על הממצאים המשמעותיים ביותר של השבוע בפסיכיאטריה של הילד "
+            "והמתבגר ותחומים קרובים. הקהל הוא רופא מתמחה בפסיכיאטריה שמעריך עומק מדעי "
+            "ורלוונטיות קלינית ישירה.",
+            "--format", "deep-dive", "--language", "he", "--json",
         ], capture_output=True, text=True, env=env, timeout=120)
         data = json.loads(out.stdout.strip())
         artifact_id = data.get("task_id", "")
