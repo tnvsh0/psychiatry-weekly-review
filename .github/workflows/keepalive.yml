@@ -1,0 +1,45 @@
+name: 🔄 NotebookLM Session Keepalive
+
+# Runs every day at 14:00 UTC to keep the Google session alive.
+# Google invalidates sessions from cloud IPs after ~2 days of inactivity.
+# A daily lightweight ping resets the inactivity clock.
+#
+# If the session has already expired (returns auth error), the step
+# exits gracefully — no damage done. You'll then need to run the
+# manual refresh (see SETUP.md).
+
+on:
+  schedule:
+    # Daily at 14:00 UTC (every day except Sunday which has its own review run)
+    - cron: '0 14 * * 1-6'
+  workflow_dispatch:   # can also trigger manually to test
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install notebooklm-py
+        run: pip install notebooklm-py playwright && playwright install chromium --with-deps
+
+      - name: Ping NotebookLM (keep session alive)
+        env:
+          NOTEBOOKLM_AUTH_JSON: ${{ secrets.NOTEBOOKLM_AUTH_JSON }}
+        # Exit 0 even on auth failure — we just want to know, not fail CI
+        run: |
+          echo "🔄 Pinging NotebookLM to keep session alive..."
+          output=$(notebooklm list --json 2>&1) || true
+          if echo "$output" | grep -qi "auth\|signin\|login\|expired"; then
+            echo "⚠️  Session appears expired — manual refresh needed."
+            echo "    Run on your PC:  notebooklm login"
+            echo "    Then:  gh secret set NOTEBOOKLM_AUTH_JSON --body (Get-Content \$env:USERPROFILE\.notebooklm\storage_state.json -Raw)"
+            exit 0
+          fi
+          echo "✅ Session is still active."
+          echo "$output" | head -5
