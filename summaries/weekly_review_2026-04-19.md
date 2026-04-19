@@ -1,7 +1,7 @@
 # 📚 סקירת ספרות שבועית — פסיכיאטריה של הילד והמתבגר
 
 **תאריך:** 19/04/2026 | **תקופה מכוסה:** 12/04/2026 – 19/04/2026
-**מספר מאמרים:** 36 (⭐ IF≥15: 4 | 🔷 IF 5-14: 2 | 📄 אחר: 30)
+**מספר מאמרים:** 36 (⭐ IF≥15: 5 | 🔷 IF 5-14: 2 | 📄 אחר: 29)
 
 > **מפתח:** ⭐ כתב עת מדרגה ראשונה (IF ≥ 15) · 🔷 כתב עת מוביל (IF 5–14) · 📄 כתב עת מוכר
 
@@ -46,21 +46,21 @@
 
 ---
 
-### Exploring the Experiences of Caring for a Family Member With Intellectual Disabilities Displaying Behaviours That Challenge and/or Mental Health Difficulties Within the United Kingdom: A Meta-Ethnographic Review
-**כתב עת:** 📄 J Appl Res Intellect Disabil | **מחברים:** Yates L et al. | **תאריך:** 2026 Mar
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41995276/)
-
----
-
 ### The history of (not) understanding autism: From Hugh Blair and "The wild boy of Aveyron" to ICD-11 and the DSM-5-TR
 **כתב עת:** 📄 Hist Psychol | **מחברים:** Pierucka M et al. | **תאריך:** 2026 Feb
 
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41989411/)
+
+---
+
+### Exploring the Experiences of Caring for a Family Member With Intellectual Disabilities Displaying Behaviours That Challenge and/or Mental Health Difficulties Within the United Kingdom: A Meta-Ethnographic Review
+**כתב עת:** 📄 J Appl Res Intellect Disabil | **מחברים:** Yates L et al. | **תאריך:** 2026 Mar
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41995276/)
 
 ---
 
@@ -91,6 +91,15 @@
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41966707/)
+
+---
+
+### Maternal immune activation: A critical prenatal risk factor for autism spectrum disorder
+**כתב עת:** ⭐ Med *(IF: 96.2)* | **מחברים:** Yuan B et al. | **תאריך:** 2026 Apr 10
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41966708/)
 
 ---
 
@@ -145,15 +154,6 @@
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41987610/)
-
----
-
-### Accelerated intermittent theta burst stimulation targeting personalized fronto-parietal control network improves core symptoms of autism spectrum disorder: a double-blind, randomized controlled trial
-**כתב עת:** 📄 Mol Psychiatry | **מחברים:** Liu Q et al. | **תאריך:** 2026 Apr 15
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41986743/)
 
 ---
 
@@ -350,4 +350,4 @@
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד — יש לקרוא את המאמר המלא לפני שימוש קליני
 
-*נוצר אוטומטית ב-19/04/2026 18:35 UTC*
+*נוצר אוטומטית ב-19/04/2026 19:51 UTC*
