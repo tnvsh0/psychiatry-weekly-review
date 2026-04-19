@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
 """
-Weekly Psychiatry Literature Review
-────────────────────────────────────
-1. Search PubMed for real articles from the past 7 days
-2. Create a NotebookLM notebook with the articles as sources
-3. Generate a clinical briefing document inside the notebook
-4. Generate a podcast and WAIT until it is fully ready
-5. Download the podcast and upload it to a GitHub Release
-6. Send a push notification (ntfy) with direct links to everything
+Weekly Psychiatry Literature Review — Multi-Topic Edition
+──────────────────────────────────────────────────────────
+For each topic:
+  1. Search PubMed — journal-specific queries first (guarantees top journals),
+     then broad MeSH queries as supplement
+  2. Fetch abstracts
+  3. Create a markdown summary (sorted by Impact Factor)
+  4. Create a dedicated NotebookLM notebook
+  5. Upload the summary as source
+  6. Generate a Hebrew podcast (all topics start in parallel on Google's side)
+  7. Download + upload each podcast to a GitHub Release
+  8. Send one ntfy notification with links to everything
 
 IMPORTANT: Never fabricates articles — only real PubMed data is used.
 """
@@ -19,7 +23,6 @@ import time
 import subprocess
 import requests
 from datetime import datetime, timedelta
-from collections import defaultdict
 from pathlib import Path
 
 # ── Constants ──────────────────────────────────────────────────────────────────
@@ -28,43 +31,10 @@ TODAY       = datetime.utcnow()
 DATE_STR    = TODAY.strftime("%Y-%m-%d")
 WEEK_START  = TODAY - timedelta(days=7)
 
-SEARCHES = [
-    ("Child & Adolescent Psychiatry",
-     '"child psychiatry"[MeSH] OR "adolescent psychiatry"[MeSH] OR '
-     '"autism spectrum disorder"[Title] OR "attention deficit disorder"[MeSH]'),
-    ("Child Neurology & Neurodevelopment",
-     '"child neurology"[MeSH] OR "neurodevelopmental disorders"[MeSH] OR '
-     '"pediatric neurology"[Title/Abstract]'),
-    ("Child Development & Mental Health",
-     '"child development"[MeSH] AND ("mental health"[Title/Abstract] OR "behavior"[MeSH])'),
-    ("Adult Psychiatry — High Impact",
-     '("schizophrenia"[MeSH] OR "depressive disorder"[MeSH] OR "bipolar disorder"[MeSH]) AND '
-     '("randomized controlled trial"[pt] OR "meta-analysis"[pt] OR "systematic review"[pt])'),
-    ("Neuroscience & Cognition",
-     '"brain development"[MeSH] OR ("cognitive development"[MeSH] AND "child"[MeSH])'),
-    ("Psychotherapy & Interventions",
-     '"psychotherapy"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH]) AND '
-     '("randomized controlled trial"[pt] OR "clinical trial"[pt])'),
-    ("Psychopharmacology — Pediatric",
-     '("antidepressive agents"[MeSH] OR "antipsychotic agents"[MeSH] OR "stimulants"[MeSH]) AND '
-     '("child"[MeSH] OR "adolescent"[MeSH])'),
-]
-
-CATEGORY_HEBREW = {
-    "Child & Adolescent Psychiatry":     "פסיכיאטריה של הילד והמתבגר",
-    "Child Neurology & Neurodevelopment": "נוירולוגיה ונוירו-התפתחות",
-    "Child Development & Mental Health":  "התפתחות הילד ובריאות הנפש",
-    "Adult Psychiatry — High Impact":     "פסיכיאטריה של המבוגר",
-    "Neuroscience & Cognition":           "מדעי המוח וקוגניציה",
-    "Psychotherapy & Interventions":      "פסיכותרפיה והתערבויות",
-    "Psychopharmacology — Pediatric":     "פסיכופרמקולוגיה ילדית",
-}
-
-# ── Journal Impact Factors (2023–2024 approximate values) ─────────────────────
-# Used to prioritise high-quality journals; articles are sorted IF-descending.
-# Tier 1 ≥ 15  |  Tier 2 ≥ 5  |  Tier 3 < 5 (or unknown → 0)
+# ── Journal Impact Factors (2023-2024 approximate) ─────────────────────────────
+# Tier 1 >= 15  |  Tier 2 >= 5  |  Tier 3 < 5 (or unknown -> 0)
 JOURNAL_IF: dict[str, float] = {
-    # ── Tier 1 (IF ≥ 15) ──────────────────────────────────────────────────────
+    # Tier 1
     "jama psychiatry":                                          25.8,
     "jama":                                                    120.7,
     "new england journal of medicine":                          96.2,
@@ -82,7 +52,7 @@ JOURNAL_IF: dict[str, float] = {
     "am j psychiatry":                                          18.1,
     "annals of internal medicine":                              39.2,
     "brain":                                                    14.5,
-    # ── Tier 2 (IF 5–14.9) ────────────────────────────────────────────────────
+    # Tier 2
     "molecular psychiatry":                                     13.4,
     "biological psychiatry":                                    12.8,
     "jaacap":                                                   10.2,
@@ -100,12 +70,17 @@ JOURNAL_IF: dict[str, float] = {
     "eur child adolesc psychiatry":                              6.0,
     "depression and anxiety":                                    6.0,
     "european neuropsychopharmacology":                          5.5,
-    # ── Tier 3 (IF < 5) ───────────────────────────────────────────────────────
+    "j consult clin psychol":                                    5.2,
+    "journal of consulting and clinical psychology":             5.2,
+    "behav res ther":                                            5.0,
+    "behaviour research and therapy":                            5.0,
+    # Tier 3
     "journal of autism and developmental disorders":             4.0,
     "j autism dev disord":                                       4.0,
     "psychopharmacology":                                        4.0,
     "frontiers in neuroscience":                                 4.0,
     "journal of abnormal child psychology":                      4.2,
+    "j abnorm child psychol":                                    4.2,
     "psychiatry research":                                       3.8,
     "journal of attention disorders":                            3.5,
     "child psychiatry and human development":                    3.5,
@@ -113,16 +88,22 @@ JOURNAL_IF: dict[str, float] = {
     "frontiers in psychiatry":                                   3.2,
     "child and adolescent psychiatry and mental health":          3.0,
     "journal of developmental and behavioral pediatrics":         3.0,
+    "j child adolesc psychopharmacol":                           3.5,
+    "journal of child and adolescent psychopharmacology":        3.5,
+    "dev med child neurol":                                      4.5,
+    "developmental medicine and child neurology":                4.5,
+    "dev psychopathol":                                          4.8,
+    "development and psychopathology":                           4.8,
+    "child dev":                                                 4.7,
+    "child development":                                         4.7,
 }
 
 
 def get_journal_if(journal_name: str) -> float:
-    """Return impact factor for *journal_name* (case-insensitive, substring match).
-    Falls back to 0.0 if the journal is not in JOURNAL_IF."""
+    """Return impact factor (case-insensitive substring match). 0.0 if unknown."""
     name = journal_name.lower().strip()
     if name in JOURNAL_IF:
         return JOURNAL_IF[name]
-    # Partial match — prefer the longest matching key
     best_val, best_len = 0.0, 0
     for key, val in JOURNAL_IF.items():
         if key in name or name in key:
@@ -132,499 +113,660 @@ def get_journal_if(journal_name: str) -> float:
 
 
 def if_badge(impact_factor: float) -> str:
-    """Return a short emoji badge indicating journal tier."""
     if impact_factor >= 15:
-        return "⭐"   # Tier 1
+        return "\u2b50"   # star
     if impact_factor >= 5:
-        return "🔷"   # Tier 2
-    if impact_factor > 0:
-        return "📄"   # Tier 3
-    return "📄"        # Unknown
+        return "\U0001f537"  # blue diamond
+    return "\U0001f4c4"   # page
+
+
+# ── Topic Definitions ──────────────────────────────────────────────────────────
+# Each topic has:
+#   journals  -- searched first, directly; guarantees top journals are included
+#   broad     -- broad MeSH/keyword queries as supplement
+#   max_articles -- cap per topic
+#   podcast_prompt -- Hebrew instruction to NotebookLM
+TOPICS = [
+    {
+        "id":       "child_adolescent",
+        "label_en": "Child & Adolescent Psychiatry",
+        "label_he": "\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d4\u05de\u05ea\u05d1\u05d2\u05e8",
+        "journals": [
+            "J Am Acad Child Adolesc Psychiatry",
+            "JAMA Psychiatry",
+            "Lancet Psychiatry",
+            "J Child Psychol Psychiatry",
+            "Eur Child Adolesc Psychiatry",
+            "Child Adolesc Psychiatry Ment Health",
+        ],
+        "broad": [
+            '"child psychiatry"[MeSH] OR "adolescent psychiatry"[MeSH]',
+            '"autism spectrum disorder"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"attention deficit disorder with hyperactivity"[MeSH]',
+            '"conduct disorder"[MeSH] OR "oppositional defiant disorder"[Title/Abstract]',
+            '"anxiety disorders"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"depressive disorder"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"eating disorders"[MeSH] AND "adolescent"[MeSH]',
+            '"self-injurious behavior"[MeSH] AND "adolescent"[MeSH]',
+        ],
+        "max_articles": 20,
+        "podcast_prompt": (
+            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05d5\u05de\u05e8\u05ea\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05ea\u05d9\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05e9\u05dc \u05d4\u05e9\u05d1\u05d5\u05e2 "
+            "\u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d4\u05de\u05ea\u05d1\u05d2\u05e8. \u05d3\u05d2\u05e9 \u05e2\u05dc \u05e8\u05dc\u05d5\u05d5\u05e0\u05d8\u05d9\u05d5\u05ea \u05e7\u05dc\u05d9\u05e0\u05d9\u05ea, \u05d2\u05d9\u05e9\u05d5\u05ea \u05d8\u05d9\u05e4\u05d5\u05dc\u05d9\u05d5\u05ea "
+            "\u05d7\u05d3\u05e9\u05d5\u05ea, \u05d5\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05dc\u05de\u05ea\u05de\u05d7\u05d4 \u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4."
+        ),
+    },
+    {
+        "id":       "child_development",
+        "label_en": "Child Development & Mental Health",
+        "label_he": "\u05d4\u05ea\u05e4\u05ea\u05d7\u05d5\u05ea \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d1\u05e8\u05d9\u05d0\u05d5\u05ea \u05d4\u05e0\u05e4\u05e9",
+        "journals": [
+            "Child Dev",
+            "Dev Psychopathol",
+            "J Abnorm Child Psychol",
+            "J Child Psychol Psychiatry",
+            "Infant Ment Health J",
+        ],
+        "broad": [
+            '"child development"[MeSH] AND ("mental health"[Title/Abstract] OR "behavior disorders"[MeSH])',
+            '"adverse childhood experiences"[Title/Abstract]',
+            '"parenting"[MeSH] AND ("child behavior"[MeSH] OR "mental health"[Title/Abstract])',
+            '"attachment behavior"[MeSH]',
+            '"early intervention"[MeSH] AND ("child"[MeSH] OR "infant"[MeSH])',
+            '"social-emotional development"[Title/Abstract]',
+        ],
+        "max_articles": 15,
+        "podcast_prompt": (
+            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 \u05d1\u05ea\u05d7\u05d5\u05dd "
+            "\u05d4\u05ea\u05e4\u05ea\u05d7\u05d5\u05ea \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d1\u05e8\u05d9\u05d0\u05d5\u05ea \u05d4\u05e0\u05e4\u05e9 \u05d1\u05d2\u05d9\u05dc \u05d4\u05e8\u05da \u05d5\u05d1\u05d2\u05d9\u05dc \u05d4\u05d9\u05dc\u05d3\u05d5\u05ea."
+        ),
+    },
+    {
+        "id":       "psychotherapy",
+        "label_en": "Psychotherapy & Interventions",
+        "label_he": "\u05e4\u05e1\u05d9\u05db\u05d5\u05ea\u05e8\u05e4\u05d9\u05d4 \u05d5\u05d4\u05ea\u05e2\u05e8\u05d1\u05d5\u05d9\u05d5\u05ea",
+        "journals": [
+            "J Consult Clin Psychol",
+            "Behav Res Ther",
+            "Psychother Psychosom",
+            "Clin Child Fam Psychol Rev",
+        ],
+        "broad": [
+            '"psychotherapy"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH]) AND ("randomized controlled trial"[pt] OR "clinical trial"[pt])',
+            '"cognitive behavioral therapy"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"dialectical behavior therapy"[Title/Abstract]',
+            '"parent training"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"family therapy"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"exposure therapy"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+        ],
+        "max_articles": 12,
+        "podcast_prompt": (
+            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 "
+            "\u05d1\u05e4\u05e1\u05d9\u05db\u05d5\u05ea\u05e8\u05e4\u05d9\u05d4 \u05d5\u05d4\u05ea\u05e2\u05e8\u05d1\u05d5\u05d9\u05d5\u05ea \u05e4\u05e1\u05d9\u05db\u05d5\u05dc\u05d5\u05d2\u05d9\u05d5\u05ea \u05d1\u05d9\u05dc\u05d3\u05d9\u05dd \u05d5\u05de\u05ea\u05d1\u05d2\u05e8\u05d9\u05dd."
+        ),
+    },
+    {
+        "id":       "general_psychiatry",
+        "label_en": "General Psychiatry - High Impact",
+        "label_he": "\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05db\u05dc\u05dc\u05d9\u05ea",
+        "journals": [
+            "JAMA Psychiatry",
+            "Lancet Psychiatry",
+            "Am J Psychiatry",
+            "World Psychiatry",
+            "Biol Psychiatry",
+            "Mol Psychiatry",
+        ],
+        "broad": [
+            '("schizophrenia"[MeSH] OR "depressive disorder"[MeSH] OR "bipolar disorder"[MeSH]) AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
+            '"anxiety disorders"[MeSH] AND ("meta-analysis"[pt] OR "systematic review"[pt])',
+            '"suicide"[MeSH] AND ("prevention"[Title/Abstract] OR "risk"[Title/Abstract])',
+            '"psychosis"[Title/Abstract] AND ("early intervention"[Title/Abstract] OR "first episode"[Title/Abstract])',
+        ],
+        "max_articles": 15,
+        "podcast_prompt": (
+            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05ea\u05d9\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 "
+            "\u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05d4\u05db\u05dc\u05dc\u05d9\u05ea \u05de\u05de\u05d7\u05e7\u05e8\u05d9\u05dd \u05d1\u05db\u05ea\u05d1\u05d9 \u05e2\u05ea \u05de\u05d5\u05d1\u05d9\u05dc\u05d9\u05dd."
+        ),
+    },
+    {
+        "id":       "psychopharmacology",
+        "label_en": "Pediatric Psychopharmacology",
+        "label_he": "\u05e4\u05e1\u05d9\u05db\u05d5\u05e4\u05e8\u05de\u05e7\u05d5\u05dc\u05d5\u05d2\u05d9\u05d4 \u05d9\u05dc\u05d3\u05d9\u05ea",
+        "journals": [
+            "J Child Adolesc Psychopharmacol",
+            "Neuropsychopharmacology",
+            "J Clin Psychiatry",
+            "J Clin Psychopharmacol",
+        ],
+        "broad": [
+            '("antidepressive agents"[MeSH] OR "antipsychotic agents"[MeSH] OR "central nervous system stimulants"[MeSH]) AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"methylphenidate"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"aripiprazole"[MeSH] OR "risperidone"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"fluoxetine"[MeSH] OR "sertraline"[MeSH] AND "adolescent"[MeSH]',
+            '"medication"[Title/Abstract] AND "autism"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+        ],
+        "max_articles": 12,
+        "podcast_prompt": (
+            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 "
+            "\u05d1\u05e4\u05e1\u05d9\u05db\u05d5\u05e4\u05e8\u05de\u05e7\u05d5\u05dc\u05d5\u05d2\u05d9\u05d4 \u05d9\u05dc\u05d3\u05d9\u05ea. \u05db\u05dc\u05d5\u05dc \u05e2\u05d3\u05db\u05d5\u05e0\u05d9\u05dd \u05e2\u05dc \u05ea\u05e8\u05d5\u05e4\u05d5\u05ea, "
+            "\u05de\u05d9\u05e0\u05d5\u05e0\u05d9\u05dd, \u05d9\u05e2\u05d9\u05dc\u05d5\u05ea \u05d5\u05ea\u05d5\u05e4\u05e2\u05d5\u05ea \u05dc\u05d5\u05d5\u05d0\u05d9."
+        ),
+    },
+]
 
 
 # ── Step 1: PubMed Search ──────────────────────────────────────────────────────
-def search_pubmed():
-    print("🔍 Searching PubMed...")
-    all_pmids, pmid_to_cat = [], {}
-
-    for label, query in SEARCHES:
-        try:
-            r = requests.get(PUBMED_BASE + "esearch.fcgi", params={
-                "db": "pubmed", "term": query,
-                "reldate": 8, "datetype": "edat",
-                "retmax": 8, "retmode": "json", "sort": "relevance",
-            }, timeout=30)
-            r.raise_for_status()
-            ids = r.json().get("esearchresult", {}).get("idlist", [])
-            for pid in ids:
-                if pid not in pmid_to_cat:
-                    pmid_to_cat[pid] = label
-                    all_pmids.append(pid)
-            print(f"  [{label}]: {len(ids)} articles")
-            time.sleep(0.5)
-        except Exception as e:
-            print(f"  ⚠️  Search failed for {label}: {e}")
-
-    if not all_pmids:
-        print("❌ No articles found!")
+def _esearch(query: str, retmax: int = 8) -> list[str]:
+    """Run one esearch query. Returns list of PMIDs. Sleeps 0.4s after."""
+    try:
+        r = requests.get(PUBMED_BASE + "esearch.fcgi", params={
+            "db": "pubmed", "term": query,
+            "reldate": 8, "datetype": "edat",
+            "retmax": retmax, "retmode": "json", "sort": "relevance",
+        }, timeout=30)
+        r.raise_for_status()
+        return r.json().get("esearchresult", {}).get("idlist", [])
+    except Exception as e:
+        print(f"    Warning: esearch error: {e}")
         return []
+    finally:
+        time.sleep(0.4)
 
-    articles = []
+
+def _esummary(pmids: list[str], topic_label: str) -> list[dict]:
+    """Fetch esummary for PMIDs. Returns list of article dicts."""
+    if not pmids:
+        return []
     try:
         r = requests.get(PUBMED_BASE + "esummary.fcgi", params={
-            "db": "pubmed", "id": ",".join(all_pmids[:40]), "retmode": "json",
+            "db": "pubmed", "id": ",".join(pmids), "retmode": "json",
         }, timeout=30)
         r.raise_for_status()
         result = r.json().get("result", {})
-
-        for pmid in all_pmids[:40]:
-            if pmid == "uids":
-                continue
-            doc = result.get(pmid, {})
-            if not doc or doc.get("error"):
-                continue
-            authors = doc.get("authors", [])
-            author_str = authors[0]["name"] if authors else "Unknown"
-            if len(authors) > 2:
-                author_str += " et al."
-            elif len(authors) == 2:
-                author_str += f", {authors[-1]['name']}"
-
-            articles.append({
-                "pmid":     pmid,
-                "title":    doc.get("title", "").rstrip("."),
-                "journal":  doc.get("source", ""),
-                "authors":  author_str,
-                "pub_date": doc.get("pubdate", ""),
-                "url":      f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
-                "category": pmid_to_cat.get(pmid, "Other"),
-                "abstract": "",
-            })
     except Exception as e:
-        print(f"❌ Error fetching summaries: {e}")
+        print(f"  ERROR esummary: {e}")
         return []
 
-    # ── Enrich with Impact Factor and sort: highest IF first ──────────────────
+    articles = []
+    for pmid in pmids:
+        if pmid == "uids":
+            continue
+        doc = result.get(pmid, {})
+        if not doc or doc.get("error"):
+            continue
+        authors = doc.get("authors", [])
+        author_str = authors[0]["name"] if authors else "Unknown"
+        if len(authors) > 2:
+            author_str += " et al."
+        elif len(authors) == 2:
+            author_str += f", {authors[-1]['name']}"
+        articles.append({
+            "pmid":          pmid,
+            "title":         doc.get("title", "").rstrip("."),
+            "journal":       doc.get("source", ""),
+            "authors":       author_str,
+            "pub_date":      doc.get("pubdate", ""),
+            "url":           f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
+            "topic":         topic_label,
+            "abstract":      "",
+            "impact_factor": 0.0,
+        })
+    return articles
+
+
+def search_topic(topic: dict) -> list[dict]:
+    """Search PubMed for one topic.
+    Journal-specific queries run first -> top journals are always represented."""
+    label = topic["label_en"]
+    print(f"\n[{label}]")
+
+    seen: dict[str, bool] = {}   # pmid -> True, insertion-ordered
+
+    # 1. Journal-targeted searches (high priority)
+    for journal in topic.get("journals", []):
+        ids = _esearch(f'"{journal}"[Journal]', retmax=6)
+        new = [p for p in ids if p not in seen]
+        for p in new:
+            seen[p] = True
+        if new:
+            print(f"  {journal}: {len(new)} article(s)")
+
+    # 2. Broad MeSH/keyword searches (supplement)
+    for query in topic.get("broad", []):
+        ids = _esearch(query, retmax=8)
+        for p in ids:
+            if p not in seen:
+                seen[p] = True
+
+    all_pmids = list(seen.keys())[: topic.get("max_articles", 15)]
+    articles  = _esummary(all_pmids, label)
+
     for a in articles:
         a["impact_factor"] = get_journal_if(a["journal"])
-
-    # Primary sort: IF descending (high-impact journals first).
-    # Secondary sort: preserve original category/relevance order (stable sort).
     articles.sort(key=lambda a: -a["impact_factor"])
 
-    # Log tier distribution
     t1 = sum(1 for a in articles if a["impact_factor"] >= 15)
     t2 = sum(1 for a in articles if 5 <= a["impact_factor"] < 15)
-    t3 = sum(1 for a in articles if a["impact_factor"] < 5)
-    print(f"  ⭐ Tier 1 (IF≥15): {t1}  |  🔷 Tier 2 (IF 5-14): {t2}  |  📄 Tier 3/Unknown: {t3}")
-
-    print(f"✅ Found {len(articles)} articles")
+    t3 = len(articles) - t1 - t2
+    print(f"  Found {len(articles)} articles  (IF>=15: {t1} | IF 5-14: {t2} | other: {t3})")
     return articles
 
 
 # ── Step 2: Fetch Abstracts ────────────────────────────────────────────────────
-def fetch_abstracts(articles):
-    print("📖 Fetching abstracts...")
+def fetch_abstracts(articles: list[dict]) -> list[dict]:
+    """Fetch abstracts for a flat list of articles (modifies in-place)."""
+    print(f"\nFetching {len(articles)} abstracts (1.5s delay each)...")
     for i, article in enumerate(articles):
         try:
             r = requests.get(PUBMED_BASE + "efetch.fcgi", params={
                 "db": "pubmed", "id": article["pmid"],
                 "rettype": "abstract", "retmode": "text",
             }, timeout=20)
-            lines = [l.strip() for l in r.text.strip().split("\n") if l.strip()]
+            lines = [ln.strip() for ln in r.text.strip().split("\n") if ln.strip()]
             abstract_lines, in_abstract = [], False
             for line in lines:
                 if "Abstract" in line[:30] or line.upper().startswith("ABSTRACT"):
                     in_abstract = True
                     continue
-                if in_abstract and any(line.startswith(x) for x in ["PMID:", "DOI:", "Copyright", "©"]):
+                if in_abstract and any(line.startswith(x) for x in ["PMID:", "DOI:", "Copyright", "\u00a9"]):
                     break
                 if in_abstract:
                     abstract_lines.append(line)
             article["abstract"] = " ".join(abstract_lines[:8]) or "(Abstract not available)"
-            time.sleep(1.5)   # Stay well under NCBI's 3 req/sec limit
+            time.sleep(1.5)
         except Exception:
             article["abstract"] = "(Could not fetch abstract)"
-
-        if (i + 1) % 5 == 0:
+        if (i + 1) % 10 == 0:
             print(f"  {i+1}/{len(articles)} done...")
-
     return articles
 
 
-# ── Step 3: Create Markdown Summary ───────────────────────────────────────────
-def create_summary(articles):
-    print("📝 Creating summary document...")
-    by_cat = defaultdict(list)
-    for a in articles:
-        by_cat[a["category"]].append(a)
-
-    date_range = f"{WEEK_START.strftime('%d/%m/%Y')} – {TODAY.strftime('%d/%m/%Y')}"
+# ── Step 3: Create per-topic Markdown summary ──────────────────────────────────
+def create_topic_summary(topic: dict, articles: list[dict]) -> str:
+    """Write summaries/{DATE}/{topic_id}.md and return the path string."""
+    date_range = f"{WEEK_START.strftime('%d/%m/%Y')} \u2013 {TODAY.strftime('%d/%m/%Y')}"
 
     t1 = sum(1 for a in articles if a.get("impact_factor", 0) >= 15)
     t2 = sum(1 for a in articles if 5 <= a.get("impact_factor", 0) < 15)
     t3 = len(articles) - t1 - t2
 
     lines = [
-        "# 📚 סקירת ספרות שבועית — פסיכיאטריה של הילד והמתבגר",
+        f"# \U0001f4da {topic['label_he']}",
+        f"### \u05e1\u05e7\u05d9\u05e8\u05ea \u05e1\u05e4\u05e8\u05d5\u05ea \u05e9\u05d1\u05d5\u05e2\u05d9\u05ea \u2014 {DATE_STR}",
         "",
-        f"**תאריך:** {TODAY.strftime('%d/%m/%Y')} | **תקופה מכוסה:** {date_range}",
-        f"**מספר מאמרים:** {len(articles)} "
-        f"(⭐ IF≥15: {t1} | 🔷 IF 5-14: {t2} | 📄 אחר: {t3})",
+        f"**\u05ea\u05e7\u05d5\u05e4\u05d4:** {date_range} | **\u05de\u05d0\u05de\u05e8\u05d9\u05dd:** {len(articles)} "
+        f"(\u2b50 IF\u226515: {t1} | \U0001f537 IF 5-14: {t2} | \U0001f4c4 \u05d0\u05d7\u05e8: {t3})",
         "",
-        "> **מפתח:** ⭐ כתב עת מדרגה ראשונה (IF ≥ 15) · 🔷 כתב עת מוביל (IF 5–14) · 📄 כתב עת מוכר",
+        "> **\u05de\u05e4\u05ea\u05d7:** \u2b50 \u05db\u05ea\u05d1 \u05e2\u05ea \u05de\u05d3\u05e8\u05d2\u05d4 \u05e8\u05d0\u05e9\u05d5\u05e0\u05d4 (IF \u2265 15) \u00b7 "
+        "\U0001f537 \u05db\u05ea\u05d1 \u05e2\u05ea \u05de\u05d5\u05d1\u05d9\u05dc (IF 5\u201314) \u00b7 \U0001f4c4 \u05db\u05ea\u05d1 \u05e2\u05ea \u05de\u05d5\u05db\u05e8",
         "",
         "---",
         "",
     ]
 
-    # Sort categories so Tier-1 articles bubble to the top across sections
-    sorted_cats = sorted(
-        by_cat.items(),
-        key=lambda kv: -max((a.get("impact_factor", 0) for a in kv[1]), default=0),
-    )
-
-    for cat, cat_articles in sorted_cats:
-        heb = CATEGORY_HEBREW.get(cat, cat)
-        # Sort within each category by IF descending
-        cat_articles_sorted = sorted(cat_articles, key=lambda a: -a.get("impact_factor", 0))
-        lines += [f"## {heb}", f"*{cat}*", ""]
-        for a in cat_articles_sorted:
-            abstract = a.get("abstract", "")
-            if len(abstract) > 500:
-                abstract = abstract[:500] + "…"
-            if_val = a.get("impact_factor", 0)
-            if if_val > 0:
-                journal_str = f"{if_badge(if_val)} {a['journal']} *(IF: {if_val:.1f})*"
-            else:
-                journal_str = f"📄 {a['journal']}"
-            lines += [
-                f"### {a['title']}",
-                f"**כתב עת:** {journal_str} | **מחברים:** {a['authors']} | **תאריך:** {a['pub_date']}",
-                "",
-                abstract,
-                "",
-                f"🔗 [קישור למאמר ב-PubMed]({a['url']})",
-                "",
-                "---",
-                "",
-            ]
+    for a in articles:
+        abstract = a.get("abstract", "")
+        if len(abstract) > 500:
+            abstract = abstract[:500] + "\u2026"
+        if_val = a.get("impact_factor", 0)
+        if if_val > 0:
+            journal_str = f"{if_badge(if_val)} {a['journal']} *(IF: {if_val:.1f})*"
+        else:
+            journal_str = f"\U0001f4c4 {a['journal']}"
+        lines += [
+            f"### {a['title']}",
+            f"**\u05db\u05ea\u05d1 \u05e2\u05ea:** {journal_str} | **\u05de\u05d7\u05d1\u05e8\u05d9\u05dd:** {a['authors']} | **\u05ea\u05d0\u05e8\u05d9\u05da:** {a['pub_date']}",
+            "",
+            abstract,
+            "",
+            f"\U0001f517 [\u05e7\u05d9\u05e9\u05d5\u05e8 \u05dc\u05de\u05d0\u05de\u05e8 \u05d1-PubMed]({a['url']})",
+            "",
+            "---",
+            "",
+        ]
 
     lines += [
-        "## 📝 הערות",
-        "- מאמרים נמצאו אוטומטית דרך PubMed E-utilities API",
-        "- הסיכומים מבוססים על תקצירים (Abstracts) בלבד — יש לקרוא את המאמר המלא לפני שימוש קליני",
+        "## \U0001f4dd \u05d4\u05e2\u05e8\u05d5\u05ea",
+        "- \u05de\u05d0\u05de\u05e8\u05d9\u05dd \u05e0\u05de\u05e6\u05d0\u05d5 \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea \u05d3\u05e8\u05da PubMed E-utilities API",
+        "- \u05d4\u05e1\u05d9\u05db\u05d5\u05de\u05d9\u05dd \u05de\u05d1\u05d5\u05e1\u05e1\u05d9\u05dd \u05e2\u05dc \u05ea\u05e7\u05e6\u05d9\u05e8\u05d9\u05dd (Abstracts) \u05d1\u05dc\u05d1\u05d3",
         "",
-        f"*נוצר אוטומטית ב-{TODAY.strftime('%d/%m/%Y %H:%M')} UTC*",
+        f"*\u05e0\u05d5\u05e6\u05e8 \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea \u05d1-{TODAY.strftime('%d/%m/%Y %H:%M')} UTC*",
     ]
 
-    out_dir = Path("summaries")
-    out_dir.mkdir(exist_ok=True)
-    out_path = out_dir / f"weekly_review_{DATE_STR}.md"
+    out_dir = Path("summaries") / DATE_STR
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / f"{topic['id']}.md"
     out_path.write_text("\n".join(lines), encoding="utf-8")
-    print(f"✅ Summary saved: {out_path}")
+    print(f"  Saved: {out_path}")
     return str(out_path)
 
 
-# ── Step 4: NotebookLM — Notebook + Sources + Briefing ────────────────────────
-def create_notebook_and_briefing(articles, summary_path, env):
-    """Create notebook, add sources, wait for processing, generate briefing doc.
-    Returns (notebook_url, nb_id) or (None, None) on failure."""
-
-    print("🗒️  Creating NotebookLM notebook...")
+# ── NotebookLM helpers ─────────────────────────────────────────────────────────
+def create_notebook(title: str, env: dict) -> tuple[str | None, str | None]:
+    """Create a NotebookLM notebook. Returns (nb_id, nb_url) or (None, None)."""
     try:
         out = subprocess.run(
-            ["notebooklm", "create", f"סקירת ספרות שבועית — {DATE_STR}", "--json"],
+            ["notebooklm", "create", title, "--json"],
             capture_output=True, text=True, env=env, timeout=60,
         )
         raw = out.stdout.strip()
         if not raw:
-            print(f"❌ No output from notebooklm create. stderr: {out.stderr[:300]}")
+            print(f"  ERROR: No output from create. stderr: {out.stderr[:200]}")
             return None, None
         nb_data = json.loads(raw)
         if nb_data.get("error"):
-            print(f"❌ NotebookLM error: {nb_data.get('message', nb_data)}")
+            print(f"  ERROR: {nb_data.get('message', nb_data)}")
             return None, None
-        # Support both response shapes (older: {"id":...}, newer: {"notebook":{"id":...}})
         nb_id = (nb_data.get("notebook") or {}).get("id") or nb_data.get("id")
         if not nb_id:
-            print(f"❌ Unexpected create response: {raw[:300]}")
+            print(f"  ERROR: Unexpected create response: {raw[:200]}")
             return None, None
-        nb_url  = f"https://notebooklm.google.com/notebook/{nb_id}"
-        print(f"✅ Notebook: {nb_id}")
+        return nb_id, f"https://notebooklm.google.com/notebook/{nb_id}"
     except Exception as e:
-        print(f"❌ Could not create notebook: {e}")
+        print(f"  ERROR create_notebook: {e}")
         return None, None
 
-    subprocess.run(["notebooklm", "use", nb_id], env=env, timeout=30)
 
-    # Add the weekly summary markdown as a single text source.
-    # This is far more reliable than adding 20 individual PubMed URLs
-    # (which PubMed often blocks with CAPTCHA when fetched by external servers).
-    # The summary already contains all articles with abstracts and PubMed links.
-    print("📎 Adding weekly summary as source...")
+def add_source(nb_id: str, summary_path: str, env: dict) -> bool:
+    """Switch to notebook and upload the markdown summary as a source."""
+    subprocess.run(
+        ["notebooklm", "use", nb_id],
+        capture_output=True, env=env, timeout=30,
+    )
     result = subprocess.run(
         ["notebooklm", "source", "add", summary_path, "--json"],
         capture_output=True, text=True, env=env, timeout=120,
     )
-    print(f"  Source added (rc={result.returncode})")
-
-    # Wait for the source to be indexed (up to 5 minutes)
-    print("⏳ Waiting for source to be indexed...")
-    for _ in range(10):
-        time.sleep(30)
-        try:
-            out = subprocess.run(
-                ["notebooklm", "source", "list", "--json"],
-                capture_output=True, text=True, env=env, timeout=30,
-            )
-            sources = json.loads(out.stdout).get("sources", [])
-            processing = sum(1 for s in sources if s.get("status") in ("processing", "preparing"))
-            ready = sum(1 for s in sources if s.get("status") == "ready")
-            print(f"  {ready} ready, {processing} still processing...")
-            if processing == 0:
-                break
-        except Exception:
-            pass
-
-    # Generate briefing document
-    print("📄 Generating briefing document...")
-    subprocess.run([
-        "notebooklm", "generate", "report", "--format", "briefing-doc",
-        "--append",
-        "This is a weekly literature review for a child and adolescent psychiatry resident. "
-        "Focus on clinical relevance, therapeutic implications, and practice-changing findings.",
-        "--json",
-    ], env=env, timeout=120)
-
-    return nb_url, nb_id
+    return result.returncode == 0
 
 
-# ── Step 5: Generate Podcast + Wait Until Ready ────────────────────────────────
-def generate_and_wait_for_podcast(env, max_wait_seconds=2700):
-    """Start podcast generation and block until it is completed.
-    max_wait_seconds: 45 minutes default (podcasts usually take 10–30 min).
-    Returns artifact_id or None."""
-
-    print("🎙️  Starting podcast generation...")
-    artifact_id = None
+def start_podcast(nb_id: str, prompt: str, env: dict) -> str | None:
+    """Switch to notebook and fire off podcast generation.
+    Returns artifact_id or None. Does NOT wait for completion."""
+    subprocess.run(
+        ["notebooklm", "use", nb_id],
+        capture_output=True, env=env, timeout=30,
+    )
     try:
         out = subprocess.run([
-            "notebooklm", "generate", "audio",
-            "צור דיון מעמיק ומרתק על הממצאים המשמעותיים ביותר של השבוע בפסיכיאטריה של הילד "
-            "והמתבגר ותחומים קרובים. הקהל הוא רופא מתמחה בפסיכיאטריה שמעריך עומק מדעי "
-            "ורלוונטיות קלינית ישירה.",
+            "notebooklm", "generate", "audio", prompt,
             "--format", "deep-dive", "--language", "he", "--json",
         ], capture_output=True, text=True, env=env, timeout=120)
         data = json.loads(out.stdout.strip())
-        artifact_id = data.get("task_id", "")
-        print(f"  Podcast started — artifact ID: {artifact_id}")
+        return data.get("task_id") or None
     except Exception as e:
-        print(f"❌ Could not start podcast: {e}")
+        print(f"  ERROR start_podcast: {e}")
         return None
 
-    if not artifact_id:
-        return None
 
-    # Poll until completed
-    print(f"⏳ Waiting for podcast (up to {max_wait_seconds // 60} min)...")
+# ── Wait for all podcasts (parallel on Google's side) ─────────────────────────
+def wait_for_all_podcasts(nb_infos: list[dict], env: dict, max_wait: int = 2700):
+    """Poll every notebook until all started podcasts complete or time out."""
+    pending = {
+        nb["nb_id"]: nb
+        for nb in nb_infos
+        if nb.get("nb_id") and nb.get("artifact_id")
+    }
+    if not pending:
+        print("  No podcasts to wait for.")
+        return
+
+    print(f"\nWaiting for {len(pending)} podcast(s) (parallel on Google's servers, up to {max_wait // 60} min)...")
     start = time.time()
-    poll_interval = 60  # check every 60 seconds
 
-    while time.time() - start < max_wait_seconds:
-        time.sleep(poll_interval)
-        try:
-            out = subprocess.run(
-                ["notebooklm", "artifact", "list", "--json"],
-                capture_output=True, text=True, env=env, timeout=30,
+    while pending and time.time() - start < max_wait:
+        time.sleep(60)
+        elapsed = int(time.time() - start)
+        for nb_id in list(pending.keys()):
+            nb = pending[nb_id]
+            subprocess.run(
+                ["notebooklm", "use", nb_id],
+                capture_output=True, env=env, timeout=30,
             )
-            artifacts = json.loads(out.stdout).get("artifacts", [])
-            for a in artifacts:
-                if a.get("id") == artifact_id:
-                    status = a.get("status", "unknown")
-                    elapsed = int(time.time() - start)
-                    print(f"  [{elapsed//60}m] Podcast status: {status}")
-                    if status == "completed":
-                        print("✅ Podcast ready!")
-                        return artifact_id
-                    elif status in ("failed", "unknown"):
-                        print(f"❌ Podcast failed with status: {status}")
-                        return None
-        except Exception as e:
-            print(f"  Warning while polling: {e}")
+            try:
+                out = subprocess.run(
+                    ["notebooklm", "artifact", "list", "--json"],
+                    capture_output=True, text=True, env=env, timeout=30,
+                )
+                artifacts = json.loads(out.stdout).get("artifacts", [])
+                for a in artifacts:
+                    if a.get("id") == nb["artifact_id"]:
+                        status = a.get("status", "unknown")
+                        label  = nb["topic"]["label_en"]
+                        print(f"  [{elapsed // 60}m] {label}: {status}")
+                        if status == "completed":
+                            nb["podcast_ready"] = True
+                            del pending[nb_id]
+                        elif status in ("failed", "unknown"):
+                            print(f"  ERROR: {label} podcast failed.")
+                            del pending[nb_id]
+            except Exception as e:
+                print(f"  Warning: polling error for {nb_id}: {e}")
 
-    print("⚠️  Podcast timed out after waiting.")
+    if pending:
+        remaining = [pending[k]["topic"]["label_en"] for k in pending]
+        print(f"WARNING: Timed out waiting for: {', '.join(remaining)}")
+
+
+# ── Download podcast ───────────────────────────────────────────────────────────
+def download_podcast(nb_id: str, artifact_id: str, topic_id: str, env: dict) -> str | None:
+    podcast_dir = Path("podcasts") / DATE_STR
+    podcast_dir.mkdir(parents=True, exist_ok=True)
+    path = podcast_dir / f"{topic_id}.mp3"
+
+    subprocess.run(
+        ["notebooklm", "use", nb_id],
+        capture_output=True, env=env, timeout=30,
+    )
+    result = subprocess.run(
+        ["notebooklm", "download", "audio", str(path), "-a", artifact_id],
+        capture_output=True, text=True, env=env, timeout=300,
+    )
+    if result.returncode == 0 and path.exists() and path.stat().st_size > 0:
+        size_mb = path.stat().st_size / (1024 * 1024)
+        print(f"  Downloaded {topic_id}: {size_mb:.1f} MB")
+        return str(path)
+    print(f"  ERROR: Download failed: {result.stderr[:200]}")
     return None
 
 
-# ── Step 6: Download Podcast ───────────────────────────────────────────────────
-def download_podcast(artifact_id, env):
-    """Download the completed podcast MP3. Returns local file path or None."""
-    podcast_dir = Path("podcasts")
-    podcast_dir.mkdir(exist_ok=True)
-    podcast_path = podcast_dir / f"podcast_{DATE_STR}.mp3"
-
-    print(f"⬇️  Downloading podcast...")
-    cmd = ["notebooklm", "download", "audio", str(podcast_path)]
-    if artifact_id:
-        cmd += ["-a", artifact_id]
-
-    result = subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=180)
-    if result.returncode == 0 and podcast_path.exists() and podcast_path.stat().st_size > 0:
-        size_mb = podcast_path.stat().st_size / (1024 * 1024)
-        print(f"✅ Downloaded: {podcast_path} ({size_mb:.1f} MB)")
-        return str(podcast_path)
-    else:
-        print(f"❌ Download failed:\n{result.stderr}")
-        return None
-
-
-# ── Step 7: Upload Podcast to GitHub Release ───────────────────────────────────
-def upload_to_github_release(podcast_path, env):
-    """Upload podcast MP3 as a GitHub Release asset.
-    Returns direct download URL or None."""
-    tag    = f"weekly-{DATE_STR}"
+# ── Upload to GitHub Release ───────────────────────────────────────────────────
+def upload_to_github_release(podcast_path: str, topic: dict, env: dict) -> str | None:
+    tag    = f"weekly-{DATE_STR}-{topic['id']}"
     repo   = env.get("GITHUB_REPOSITORY", "")
     server = env.get("GITHUB_SERVER_URL", "https://github.com")
 
     if not repo:
-        print("⚠️  GITHUB_REPOSITORY not set — cannot create release")
+        print("  WARNING: GITHUB_REPOSITORY not set")
         return None
 
-    print(f"📤 Uploading podcast to GitHub Release '{tag}'...")
-    result = subprocess.run([
+    subprocess.run([
         "gh", "release", "create", tag, podcast_path,
-        "--title", f"📚 פודקאסט שבועי — {DATE_STR}",
-        "--notes",
-        f"סקירת ספרות שבועית בפסיכיאטריה של הילד והמתבגר — {DATE_STR}\n\n"
-        f"*נוצר אוטומטית על ידי GitHub Actions*",
+        "--title", f"\U0001f4da {topic['label_he']} \u2014 {DATE_STR}",
+        "--notes", f"{topic['label_en']} weekly literature review {DATE_STR}\n\n*Generated automatically*",
         "--repo", repo,
     ], capture_output=True, text=True, env=env, timeout=180)
 
-    if result.returncode != 0:
-        print(f"❌ Release creation failed:\n{result.stderr}")
-        return None
-
-    # Retrieve the direct download URL
     view = subprocess.run([
         "gh", "release", "view", tag,
-        "--json", "assets",
-        "--jq", ".assets[0].browserDownloadUrl",
+        "--json", "assets", "--jq", ".assets[0].browserDownloadUrl",
         "--repo", repo,
     ], capture_output=True, text=True, env=env, timeout=30)
 
     url = view.stdout.strip()
     if url:
-        print(f"✅ Podcast URL: {url}")
         return url
-
-    # Fallback: construct expected URL
     filename = Path(podcast_path).name
     return f"{server}/{repo}/releases/download/{tag}/{filename}"
 
 
-# ── Step 8: Push Notification via ntfy.sh ─────────────────────────────────────
-def send_notification(article_count, nb_url, podcast_url, summary_path, env):
-    topic = env.get("NTFY_TOPIC")
-    if not topic:
-        print("⚠️  NTFY_TOPIC not set — skipping notification")
+# ── Push notification ──────────────────────────────────────────────────────────
+def send_notification(nb_infos: list[dict], env: dict):
+    ntfy_topic = env.get("NTFY_TOPIC")
+    if not ntfy_topic:
+        print("WARNING: NTFY_TOPIC not set -- skipping notification")
         return
 
-    print("📱 Sending push notification...")
+    print("\nSending push notification...")
 
-    body_lines = [f"נמצאו {article_count} מאמרים חדשים השבוע."]
-    if nb_url:
-        body_lines.append("המחברת מוכנה לעיון ולצ'אט עם AI.")
-    if podcast_url:
-        body_lines.append("הפודקאסט מוכן להאזנה.")
+    total_articles = sum(len(nb["articles"]) for nb in nb_infos)
+    ready_podcasts = sum(1 for nb in nb_infos if nb.get("podcast_url"))
 
-    # Clickable action buttons in the notification
+    body_lines = [
+        f"\u05e0\u05de\u05e6\u05d0\u05d5 {total_articles} \u05de\u05d0\u05de\u05e8\u05d9\u05dd \u05d7\u05d3\u05e9\u05d9\u05dd \u05d1-{len(nb_infos)} \u05ea\u05d7\u05d5\u05de\u05d9\u05dd:"
+    ]
+    for nb in nb_infos:
+        icon = "\U0001f399\ufe0f" if nb.get("podcast_url") else ("\U0001f4d3" if nb.get("nb_url") else "\U0001f4cb")
+        body_lines.append(f"  {icon} {nb['topic']['label_he']}: {len(nb['articles'])} \u05de\u05d0\u05de\u05e8\u05d9\u05dd")
+    if ready_podcasts:
+        body_lines.append(f"\n\u2705 {ready_podcasts}/{len(nb_infos)} \u05e4\u05d5\u05d3\u05e7\u05d0\u05e1\u05d8\u05d9\u05dd \u05de\u05d5\u05db\u05e0\u05d9\u05dd.")
+
+    # ntfy supports max 3 action buttons
     actions = []
-    if podcast_url:
-        actions.append({"action": "view", "label": "האזן לפודקאסט", "url": podcast_url})
-    if nb_url:
-        actions.append({"action": "view", "label": "פתח מחברת NotebookLM", "url": nb_url})
+    for nb in nb_infos:
+        if nb.get("podcast_url") and len(actions) < 3:
+            actions.append({
+                "action": "view",
+                "label":  f"\U0001f399\ufe0f {nb['topic']['label_he']}",
+                "url":    nb["podcast_url"],
+            })
 
-    github_repo   = env.get("GITHUB_REPOSITORY", "")
-    github_server = env.get("GITHUB_SERVER_URL", "https://github.com")
-    if github_repo and summary_path:
-        summary_url = f"{github_server}/{github_repo}/blob/main/{summary_path}"
-        actions.append({"action": "view", "label": "קרא סיכום מלא", "url": summary_url})
+    repo   = env.get("GITHUB_REPOSITORY", "")
+    server = env.get("GITHUB_SERVER_URL", "https://github.com")
+    if repo and len(actions) < 3:
+        actions.append({
+            "action": "view",
+            "label":  "\U0001f4cb \u05db\u05dc \u05d4\u05e1\u05d9\u05db\u05d5\u05de\u05d9\u05dd",
+            "url":    f"{server}/{repo}/tree/main/summaries/{DATE_STR}",
+        })
 
-    # Use ntfy JSON API — avoids HTTP header encoding issues with Hebrew/emoji
     payload = {
-        "topic":    topic,
-        "title":    f"סקירת ספרות שבועית — {DATE_STR}",
+        "topic":    ntfy_topic,
+        "title":    f"\U0001f4da \u05e1\u05e7\u05d9\u05e8\u05ea \u05e1\u05e4\u05e8\u05d5\u05ea \u05e9\u05d1\u05d5\u05e2\u05d9\u05ea \u2014 {DATE_STR}",
         "message":  "\n".join(body_lines),
         "tags":     ["books", "white_check_mark"],
         "priority": 3,
-        "actions":  actions,
+        "actions":  actions[:3],
     }
 
     try:
-        r = requests.post(
-            "https://ntfy.sh",
-            json=payload,
-            timeout=15,
-        )
-        print(f"✅ Notification sent (status {r.status_code})")
+        r = requests.post("https://ntfy.sh", json=payload, timeout=15)
+        print(f"  Notification sent (status {r.status_code})")
     except Exception as e:
-        print(f"❌ Notification failed: {e}")
+        print(f"  ERROR: Notification failed: {e}")
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
 def main():
-    sep = "=" * 60
+    sep = "=" * 65
     print(f"\n{sep}")
-    print(f"📚 Weekly Psychiatry Literature Review — {DATE_STR}")
+    print(f"\U0001f4da Weekly Psychiatry Literature Review -- {DATE_STR}")
+    print(f"   {len(TOPICS)} topics, journal-targeted searches + broad MeSH")
     print(f"{sep}\n")
 
     env = os.environ.copy()
     has_notebooklm = bool(env.get("NOTEBOOKLM_AUTH_JSON"))
 
-    # 1. Search PubMed
-    articles = search_pubmed()
-    if not articles:
-        send_notification(0, None, None, None, env)
+    # ── Phase 1: Search + Summaries ───────────────────────────────────────────
+    nb_infos: list[dict] = []
+    all_articles: list[dict] = []
+
+    print("\U0001f50d Searching PubMed for all topics...")
+    for topic in TOPICS:
+        articles = search_topic(topic)
+        if not articles:
+            print(f"  WARNING: No articles for {topic['label_en']}, skipping.")
+            continue
+        all_articles.extend(articles)
+        nb_infos.append({
+            "topic":         topic,
+            "articles":      articles,
+            "summary_path":  None,
+            "nb_id":         None,
+            "nb_url":        None,
+            "artifact_id":   None,
+            "podcast_ready": False,
+            "podcast_path":  None,
+            "podcast_url":   None,
+        })
+
+    if not nb_infos:
+        print("ERROR: No articles found in any topic!")
+        send_notification([], env)
         sys.exit(1)
 
-    # 2. Fetch abstracts
-    articles = fetch_abstracts(articles)
+    # Fetch abstracts for ALL articles in one pass
+    fetch_abstracts(all_articles)
 
-    # 3. Create markdown summary
-    summary_path = create_summary(articles)
+    # Create per-topic summaries
+    print("\n\U0001f4dd Creating topic summaries...")
+    for nb in nb_infos:
+        nb["summary_path"] = create_topic_summary(nb["topic"], nb["articles"])
 
-    nb_url      = None
-    podcast_url = None
+    if not has_notebooklm:
+        print("\nWARNING: NOTEBOOKLM_AUTH_JSON not set -- skipping notebooks & podcasts")
+        send_notification(nb_infos, env)
+        return
 
-    if has_notebooklm:
-        # 4. Create notebook, add sources, generate briefing doc
-        nb_url, nb_id = create_notebook_and_briefing(articles, summary_path, env)
+    # ── Phase 2: Create notebooks ─────────────────────────────────────────────
+    print(f"\n\U0001f5d2\ufe0f  Creating {len(nb_infos)} notebooks...")
+    for nb in nb_infos:
+        title = f"{nb['topic']['label_he']} \u2014 {DATE_STR}"
+        print(f"  Creating: {title}")
+        nb_id, nb_url = create_notebook(title, env)
+        nb["nb_id"]  = nb_id
+        nb["nb_url"] = nb_url
+        print(f"  {'OK' if nb_id else 'FAILED'}: {nb_id or 'n/a'}")
 
-        if nb_id:
-            # 5. Generate podcast and WAIT until it is fully ready
-            artifact_id = generate_and_wait_for_podcast(env)
+    # ── Phase 3: Add sources ──────────────────────────────────────────────────
+    print("\n\U0001f4ce Adding sources to all notebooks...")
+    for nb in nb_infos:
+        if nb["nb_id"]:
+            ok = add_source(nb["nb_id"], nb["summary_path"], env)
+            print(f"  {'OK' if ok else 'FAILED'}: {nb['topic']['label_en']}")
 
-            if artifact_id:
-                # 6. Download the finished podcast
-                podcast_path = download_podcast(artifact_id, env)
+    # Wait for indexing (markdown files index in < 1 min; 2 min is safe)
+    print("\nWaiting 2 min for sources to be indexed...")
+    time.sleep(120)
 
-                if podcast_path:
-                    # 7. Upload to GitHub Release → get direct MP3 link
-                    podcast_url = upload_to_github_release(podcast_path, env)
-    else:
-        print("⚠️  NOTEBOOKLM_AUTH_JSON not set — skipping NotebookLM & podcast")
+    # ── Phase 4: Start all podcast generations ────────────────────────────────
+    print(f"\n\U0001f3d9\ufe0f  Starting {len(nb_infos)} podcast generation(s)...")
+    for nb in nb_infos:
+        if nb["nb_id"]:
+            artifact_id = start_podcast(nb["nb_id"], nb["topic"]["podcast_prompt"], env)
+            nb["artifact_id"] = artifact_id
+            status = f"artifact {artifact_id}" if artifact_id else "FAILED to start"
+            print(f"  {'OK' if artifact_id else 'FAIL'}: {nb['topic']['label_en']} -> {status}")
+            time.sleep(10)   # short pause to avoid rate-limiting
 
-    # 8. Send notification (only now, when everything is ready)
-    send_notification(len(articles), nb_url, podcast_url, summary_path, env)
+    # ── Phase 5: Wait for all podcasts (parallel on Google's side) ────────────
+    wait_for_all_podcasts(nb_infos, env, max_wait=2700)
 
+    # ── Phase 6: Download + Upload ────────────────────────────────────────────
+    print("\n\u2b07\ufe0f  Downloading & uploading completed podcasts...")
+    for nb in nb_infos:
+        if nb.get("podcast_ready") and nb.get("nb_id") and nb.get("artifact_id"):
+            path = download_podcast(nb["nb_id"], nb["artifact_id"], nb["topic"]["id"], env)
+            nb["podcast_path"] = path
+            if path:
+                print(f"  Uploading {nb['topic']['label_en']}...")
+                url = upload_to_github_release(path, nb["topic"], env)
+                nb["podcast_url"] = url
+                print(f"  -> {url}")
+
+    # ── Phase 7: Notify ───────────────────────────────────────────────────────
+    send_notification(nb_infos, env)
+
+    # ── Final summary ─────────────────────────────────────────────────────────
     print(f"\n{sep}")
-    print("✅ All done!")
-    print(f"  Articles  : {len(articles)}")
-    print(f"  Summary   : {summary_path}")
-    print(f"  Notebook  : {nb_url or '—'}")
-    print(f"  Podcast   : {podcast_url or '—'}")
-    print(f"{sep}\n")
+    print("All done!")
+    for nb in nb_infos:
+        print(f"\n  {nb['topic']['label_he']}")
+        print(f"    Articles : {len(nb['articles'])}")
+        print(f"    Notebook : {nb.get('nb_url') or '--'}")
+        print(f"    Podcast  : {nb.get('podcast_url') or '--'}")
+    print(f"\n{sep}\n")
 
 
 if __name__ == "__main__":
