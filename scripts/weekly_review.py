@@ -60,6 +60,87 @@ CATEGORY_HEBREW = {
     "Psychopharmacology — Pediatric":     "פסיכופרמקולוגיה ילדית",
 }
 
+# ── Journal Impact Factors (2023–2024 approximate values) ─────────────────────
+# Used to prioritise high-quality journals; articles are sorted IF-descending.
+# Tier 1 ≥ 15  |  Tier 2 ≥ 5  |  Tier 3 < 5 (or unknown → 0)
+JOURNAL_IF: dict[str, float] = {
+    # ── Tier 1 (IF ≥ 15) ──────────────────────────────────────────────────────
+    "jama psychiatry":                                          25.8,
+    "jama":                                                    120.7,
+    "new england journal of medicine":                          96.2,
+    "n engl j med":                                             96.2,
+    "lancet":                                                   99.5,
+    "lancet psychiatry":                                        64.3,
+    "nature medicine":                                          87.2,
+    "nature":                                                   69.5,
+    "science":                                                  67.2,
+    "world psychiatry":                                         73.3,
+    "bmj":                                                     105.7,
+    "nature neuroscience":                                      25.0,
+    "jama pediatrics":                                          27.6,
+    "american journal of psychiatry":                           18.1,
+    "am j psychiatry":                                          18.1,
+    "annals of internal medicine":                              39.2,
+    "brain":                                                    14.5,
+    # ── Tier 2 (IF 5–14.9) ────────────────────────────────────────────────────
+    "molecular psychiatry":                                     13.4,
+    "biological psychiatry":                                    12.8,
+    "jaacap":                                                   10.2,
+    "journal of the american academy of child and adolescent psychiatry": 10.2,
+    "j am acad child adolesc psychiatry":                       10.2,
+    "neuropsychopharmacology":                                   8.0,
+    "pediatrics":                                                8.0,
+    "journal of neuroscience":                                   6.7,
+    "schizophrenia bulletin":                                    7.4,
+    "journal of child psychology and psychiatry":                7.2,
+    "j child psychol psychiatry":                                7.2,
+    "acta psychiatrica scandinavica":                            6.7,
+    "psychological medicine":                                    6.0,
+    "european child and adolescent psychiatry":                  6.0,
+    "eur child adolesc psychiatry":                              6.0,
+    "depression and anxiety":                                    6.0,
+    "european neuropsychopharmacology":                          5.5,
+    # ── Tier 3 (IF < 5) ───────────────────────────────────────────────────────
+    "journal of autism and developmental disorders":             4.0,
+    "j autism dev disord":                                       4.0,
+    "psychopharmacology":                                        4.0,
+    "frontiers in neuroscience":                                 4.0,
+    "journal of abnormal child psychology":                      4.2,
+    "psychiatry research":                                       3.8,
+    "journal of attention disorders":                            3.5,
+    "child psychiatry and human development":                    3.5,
+    "comprehensive psychiatry":                                  3.5,
+    "frontiers in psychiatry":                                   3.2,
+    "child and adolescent psychiatry and mental health":          3.0,
+    "journal of developmental and behavioral pediatrics":         3.0,
+}
+
+
+def get_journal_if(journal_name: str) -> float:
+    """Return impact factor for *journal_name* (case-insensitive, substring match).
+    Falls back to 0.0 if the journal is not in JOURNAL_IF."""
+    name = journal_name.lower().strip()
+    if name in JOURNAL_IF:
+        return JOURNAL_IF[name]
+    # Partial match — prefer the longest matching key
+    best_val, best_len = 0.0, 0
+    for key, val in JOURNAL_IF.items():
+        if key in name or name in key:
+            if len(key) > best_len:
+                best_val, best_len = val, len(key)
+    return best_val
+
+
+def if_badge(impact_factor: float) -> str:
+    """Return a short emoji badge indicating journal tier."""
+    if impact_factor >= 15:
+        return "⭐"   # Tier 1
+    if impact_factor >= 5:
+        return "🔷"   # Tier 2
+    if impact_factor > 0:
+        return "📄"   # Tier 3
+    return "📄"        # Unknown
+
 
 # ── Step 1: PubMed Search ──────────────────────────────────────────────────────
 def search_pubmed():
@@ -123,6 +204,20 @@ def search_pubmed():
         print(f"❌ Error fetching summaries: {e}")
         return []
 
+    # ── Enrich with Impact Factor and sort: highest IF first ──────────────────
+    for a in articles:
+        a["impact_factor"] = get_journal_if(a["journal"])
+
+    # Primary sort: IF descending (high-impact journals first).
+    # Secondary sort: preserve original category/relevance order (stable sort).
+    articles.sort(key=lambda a: -a["impact_factor"])
+
+    # Log tier distribution
+    t1 = sum(1 for a in articles if a["impact_factor"] >= 15)
+    t2 = sum(1 for a in articles if 5 <= a["impact_factor"] < 15)
+    t3 = sum(1 for a in articles if a["impact_factor"] < 5)
+    print(f"  ⭐ Tier 1 (IF≥15): {t1}  |  🔷 Tier 2 (IF 5-14): {t2}  |  📄 Tier 3/Unknown: {t3}")
+
     print(f"✅ Found {len(articles)} articles")
     return articles
 
@@ -165,26 +260,47 @@ def create_summary(articles):
         by_cat[a["category"]].append(a)
 
     date_range = f"{WEEK_START.strftime('%d/%m/%Y')} – {TODAY.strftime('%d/%m/%Y')}"
+
+    t1 = sum(1 for a in articles if a.get("impact_factor", 0) >= 15)
+    t2 = sum(1 for a in articles if 5 <= a.get("impact_factor", 0) < 15)
+    t3 = len(articles) - t1 - t2
+
     lines = [
         "# 📚 סקירת ספרות שבועית — פסיכיאטריה של הילד והמתבגר",
         "",
         f"**תאריך:** {TODAY.strftime('%d/%m/%Y')} | **תקופה מכוסה:** {date_range}",
-        f"**מספר מאמרים:** {len(articles)}",
+        f"**מספר מאמרים:** {len(articles)} "
+        f"(⭐ IF≥15: {t1} | 🔷 IF 5-14: {t2} | 📄 אחר: {t3})",
+        "",
+        "> **מפתח:** ⭐ כתב עת מדרגה ראשונה (IF ≥ 15) · 🔷 כתב עת מוביל (IF 5–14) · 📄 כתב עת מוכר",
         "",
         "---",
         "",
     ]
 
-    for cat, cat_articles in by_cat.items():
+    # Sort categories so Tier-1 articles bubble to the top across sections
+    sorted_cats = sorted(
+        by_cat.items(),
+        key=lambda kv: -max((a.get("impact_factor", 0) for a in kv[1]), default=0),
+    )
+
+    for cat, cat_articles in sorted_cats:
         heb = CATEGORY_HEBREW.get(cat, cat)
+        # Sort within each category by IF descending
+        cat_articles_sorted = sorted(cat_articles, key=lambda a: -a.get("impact_factor", 0))
         lines += [f"## {heb}", f"*{cat}*", ""]
-        for a in cat_articles:
+        for a in cat_articles_sorted:
             abstract = a.get("abstract", "")
             if len(abstract) > 500:
                 abstract = abstract[:500] + "…"
+            if_val = a.get("impact_factor", 0)
+            if if_val > 0:
+                journal_str = f"{if_badge(if_val)} {a['journal']} *(IF: {if_val:.1f})*"
+            else:
+                journal_str = f"📄 {a['journal']}"
             lines += [
                 f"### {a['title']}",
-                f"**כתב עת:** {a['journal']} | **מחברים:** {a['authors']} | **תאריך:** {a['pub_date']}",
+                f"**כתב עת:** {journal_str} | **מחברים:** {a['authors']} | **תאריך:** {a['pub_date']}",
                 "",
                 abstract,
                 "",
