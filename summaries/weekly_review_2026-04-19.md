@@ -1,7 +1,7 @@
 # 📚 סקירת ספרות שבועית — פסיכיאטריה של הילד והמתבגר
 
 **תאריך:** 19/04/2026 | **תקופה מכוסה:** 12/04/2026 – 19/04/2026
-**מספר מאמרים:** 36 (⭐ IF≥15: 5 | 🔷 IF 5-14: 2 | 📄 אחר: 29)
+**מספר מאמרים:** 36 (⭐ IF≥15: 4 | 🔷 IF 5-14: 3 | 📄 אחר: 29)
 
 > **מפתח:** ⭐ כתב עת מדרגה ראשונה (IF ≥ 15) · 🔷 כתב עת מוביל (IF 5–14) · 📄 כתב עת מוכר
 
@@ -16,6 +16,15 @@
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41985931/)
+
+---
+
+### Transdiagnostic Profiles of BOLD Signal Variability in Autism and Schizophrenia Spectrum Disorders: Associations With Cognition and Functioning
+**כתב עת:** 🔷 Hum Brain Mapp *(IF: 14.5)* | **מחברים:** Secara MT et al. | **תאריך:** 2026 Apr 1
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41987679/)
 
 ---
 
@@ -46,21 +55,21 @@
 
 ---
 
-### The history of (not) understanding autism: From Hugh Blair and "The wild boy of Aveyron" to ICD-11 and the DSM-5-TR
-**כתב עת:** 📄 Hist Psychol | **מחברים:** Pierucka M et al. | **תאריך:** 2026 Feb
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41989411/)
-
----
-
 ### Exploring the Experiences of Caring for a Family Member With Intellectual Disabilities Displaying Behaviours That Challenge and/or Mental Health Difficulties Within the United Kingdom: A Meta-Ethnographic Review
 **כתב עת:** 📄 J Appl Res Intellect Disabil | **מחברים:** Yates L et al. | **תאריך:** 2026 Mar
 
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41995276/)
+
+---
+
+### The history of (not) understanding autism: From Hugh Blair and "The wild boy of Aveyron" to ICD-11 and the DSM-5-TR
+**כתב עת:** 📄 Hist Psychol | **מחברים:** Pierucka M et al. | **תאריך:** 2026 Feb
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41989411/)
 
 ---
 
@@ -73,26 +82,8 @@
 
 ---
 
-### 'I Know Death': Perceptions and Attitudes Towards Death Among Middle-Aged Adults With Intellectual Disabilities in South Korea
-**כתב עת:** 📄 J Appl Res Intellect Disabil | **מחברים:** Yi J et al. | **תאריך:** 2026 Mar
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41995220/)
-
----
-
 ## פסיכיאטריה של הילד והמתבגר
 *Child & Adolescent Psychiatry*
-
-### Microenvironment dysregulation in autism spectrum disorder: Immune, epigenetic, synaptic, and gut-brain mechanisms
-**כתב עת:** ⭐ Med *(IF: 96.2)* | **מחברים:** Zhao Y et al. | **תאריך:** 2026 Apr 10
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41966707/)
-
----
 
 ### Maternal immune activation: A critical prenatal risk factor for autism spectrum disorder
 **כתב עת:** ⭐ Med *(IF: 96.2)* | **מחברים:** Yuan B et al. | **תאריך:** 2026 Apr 10
@@ -139,6 +130,15 @@
 
 ---
 
+### AVATA Cure Digital Therapeutics for Social Communication in Children With Autism Spectrum Disorder: A Pilot Clinical Trial
+**כתב עת:** 📄 Psychiatry Investig | **מחברים:** Kim M et al. | **תאריך:** 2026 Apr
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41987610/)
+
+---
+
 ### Effect of Aquatic Training Versus Land Exercises on Motor Function in Children With Autism Spectrum Disorder: A Randomized Controlled Trial
 **כתב עת:** 📄 Physiother Res Int | **מחברים:** Albadry ES et al. | **תאריך:** 2026 Apr
 
@@ -148,12 +148,12 @@
 
 ---
 
-### AVATA Cure Digital Therapeutics for Social Communication in Children With Autism Spectrum Disorder: A Pilot Clinical Trial
-**כתב עת:** 📄 Psychiatry Investig | **מחברים:** Kim M et al. | **תאריך:** 2026 Apr
+### Accelerated intermittent theta burst stimulation targeting personalized fronto-parietal control network improves core symptoms of autism spectrum disorder: a double-blind, randomized controlled trial
+**כתב עת:** 📄 Mol Psychiatry | **מחברים:** Liu Q et al. | **תאריך:** 2026 Apr 15
 
 (Abstract not available)
 
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41987610/)
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/41986743/)
 
 ---
 
@@ -350,4 +350,4 @@
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד — יש לקרוא את המאמר המלא לפני שימוש קליני
 
-*נוצר אוטומטית ב-19/04/2026 19:51 UTC*
+*נוצר אוטומטית ב-19/04/2026 20:43 UTC*
