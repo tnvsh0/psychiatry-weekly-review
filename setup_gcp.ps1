@@ -52,7 +52,8 @@ gcloud services enable run.googleapis.com artifactregistry.googleapis.com secret
 
 # 3. Create Artifact Registry repository
 Write-Host "[3/9] Creating Artifact Registry repository 'psychiatry'..." -ForegroundColor Yellow
-$repoExists = gcloud artifacts repositories describe psychiatry --location=$Region --format="value(name)" 2>$null
+$repoExists = $null
+try { $repoExists = gcloud artifacts repositories describe psychiatry --location=$Region --format="value(name)" 2>$null } catch {}
 if (-not $repoExists) {
     gcloud artifacts repositories create psychiatry `
         --repository-format=docker `
@@ -77,7 +78,8 @@ if (-not (Test-Path $StorageState)) {
     Write-Error "NotebookLM session not found at $StorageState`nRun first: notebooklm login"
 }
 
-$secretExists = gcloud secrets describe $SecretId --format="value(name)" 2>$null
+$secretExists = $null
+try { $secretExists = gcloud secrets describe $SecretId --format="value(name)" 2>$null } catch {}
 if (-not $secretExists) {
     gcloud secrets create $SecretId --replication-policy=automatic
     Write-Host "  Secret created." -ForegroundColor Green
@@ -94,7 +96,8 @@ Write-Host "  Secret '$SecretId' updated." -ForegroundColor Green
 # 6. Create service account
 Write-Host "[6/9] Creating service account..." -ForegroundColor Yellow
 $SA = "weekly-review-runner@$Project.iam.gserviceaccount.com"
-$saExists = gcloud iam service-accounts describe $SA --format="value(email)" 2>$null
+$saExists = $null
+try { $saExists = gcloud iam service-accounts describe $SA --format="value(email)" 2>$null } catch {}
 if (-not $saExists) {
     gcloud iam service-accounts create weekly-review-runner `
         --display-name="Weekly Review Runner"
@@ -115,7 +118,8 @@ if ($NtfyTopic) {
     $envVarsList = "$envVarsList,NTFY_TOPIC=$NtfyTopic"
 }
 
-$jobExists = gcloud run jobs describe $JobName --region=$Region --format="value(name)" 2>$null
+$jobExists = $null
+try { $jobExists = gcloud run jobs describe $JobName --region=$Region --format="value(name)" 2>$null } catch {}
 if (-not $jobExists) {
     gcloud run jobs create $JobName `
         --image="${Registry}:latest" `
@@ -146,7 +150,8 @@ if (-not $jobExists) {
 Write-Host "[8/9] Creating Cloud Scheduler trigger (Sunday 06:00 UTC)..." -ForegroundColor Yellow
 $JobUri = "https://$Region-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/$Project/jobs/${JobName}:run"
 
-$schedulerExists = gcloud scheduler jobs describe "$JobName-trigger" --location=$Region --format="value(name)" 2>$null
+$schedulerExists = $null
+try { $schedulerExists = gcloud scheduler jobs describe "$JobName-trigger" --location=$Region --format="value(name)" 2>$null } catch {}
 if (-not $schedulerExists) {
     gcloud scheduler jobs create http "$JobName-trigger" `
         --location=$Region `
