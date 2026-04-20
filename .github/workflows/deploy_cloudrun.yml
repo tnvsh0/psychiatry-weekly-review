@@ -1,0 +1,67 @@
+name: 🚀 Deploy to Cloud Run
+
+# Triggered on every push to main.
+# Builds the Docker image, pushes it to Artifact Registry,
+# and updates the Cloud Run Job to use the new image.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/**'
+      - 'requirements.txt'
+      - 'Dockerfile'
+  workflow_dispatch:   # allow manual trigger
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      PROJECT:    ${{ secrets.GCP_PROJECT }}
+      REGION:     ${{ secrets.GCP_REGION }}
+      JOB_NAME:   psychiatry-weekly-review
+      IMAGE_BASE: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/psychiatry/psychiatry-weekly-review
+
+    steps:
+      # ── Checkout ──────────────────────────────────────────────────────────
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ── Authenticate to GCP ───────────────────────────────────────────────
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      # ── Set up gcloud ─────────────────────────────────────────────────────
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      # ── Configure Docker to use Artifact Registry ─────────────────────────
+      - name: Configure Docker
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      # ── Build & push image ────────────────────────────────────────────────
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t "${{ env.IMAGE_BASE }}:${{ github.sha }}" \
+            -t "${{ env.IMAGE_BASE }}:latest" \
+            .
+
+      - name: Push Docker image
+        run: |
+          docker push "${{ env.IMAGE_BASE }}:${{ github.sha }}"
+          docker push "${{ env.IMAGE_BASE }}:latest"
+
+      # ── Update Cloud Run Job ──────────────────────────────────────────────
+      - name: Update Cloud Run Job
+        run: |
+          gcloud run jobs update ${{ env.JOB_NAME }} \
+            --image="${{ env.IMAGE_BASE }}:${{ github.sha }}" \
+            --region=${{ env.REGION }} \
+            --quiet
+          echo "✅ Cloud Run Job updated to image SHA ${{ github.sha }}"
