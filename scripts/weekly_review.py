@@ -121,67 +121,138 @@ def if_badge(impact_factor: float) -> str:
 
 
 # ── Topic Definitions ──────────────────────────────────────────────────────────
-# Each topic has:
-#   journals  -- searched first, directly; guarantees top journals are included
-#   broad     -- broad MeSH/keyword queries as supplement
-#   max_articles -- cap per topic
-#   podcast_prompt -- Hebrew instruction to NotebookLM
+# Each topic:
+#   journals  -- searched directly (guarantees top journals are always included)
+#   broad     -- supplemental queries (MeSH + filtered high-impact journals)
+#   max_articles, podcast_prompt
 TOPICS = [
     {
+        # ── CLUSTER 1 ───────────────────────────────────────────────────────────
+        # Primary journals of child & adolescent psychiatry (ALL new articles)
+        # PLUS relevant articles filtered from top-tier general/pediatric journals
         "id":       "child_adolescent",
         "label_en": "Child & Adolescent Psychiatry",
         "label_he": "\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d4\u05de\u05ea\u05d1\u05d2\u05e8",
         "journals": [
-            "J Am Acad Child Adolesc Psychiatry",
-            "JAMA Psychiatry",
-            "Lancet Psychiatry",
-            "J Child Psychol Psychiatry",
-            "Eur Child Adolesc Psychiatry",
-            "Child Adolesc Psychiatry Ment Health",
+            "J Am Acad Child Adolesc Psychiatry",   # JAACAP — the flagship journal
+            "J Child Psychol Psychiatry",            # JCPP
+            "Child Adolesc Mental Health",           # CAMH
+            "Eur Child Adolesc Psychiatry",          # ECAP
         ],
         "broad": [
+            # High-impact general psychiatry journals — filtered for child/adolescent content
+            '"JAMA Psychiatry"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "youth"[Title/Abstract])',
+            '"Lancet Psychiatry"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "youth"[Title/Abstract])',
+            # Top pediatric journals — filtered for mental health / neurodevelopment
+            '"JAMA Pediatr"[Journal] AND ("mental health"[Title/Abstract] OR "psychiatry"[Title/Abstract] OR "neurodevelopment"[Title/Abstract] OR "autism"[Title/Abstract] OR "ADHD"[Title/Abstract])',
+            '"Lancet"[Journal] AND ("child psychiatry"[Title/Abstract] OR "adolescent psychiatry"[Title/Abstract] OR "autism"[Title/Abstract] OR "ADHD"[Title/Abstract] OR "mental health"[Title/Abstract])',
+            '"N Engl J Med"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH]) AND ("psychiatry"[Title/Abstract] OR "mental health"[Title/Abstract] OR "autism"[Title/Abstract] OR "ADHD"[Title/Abstract])',
+            # Broad MeSH fallback
             '"child psychiatry"[MeSH] OR "adolescent psychiatry"[MeSH]',
-            '"autism spectrum disorder"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"autism spectrum disorder"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
             '"attention deficit disorder with hyperactivity"[MeSH]',
-            '"conduct disorder"[MeSH] OR "oppositional defiant disorder"[Title/Abstract]',
             '"anxiety disorders"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
             '"depressive disorder"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
             '"eating disorders"[MeSH] AND "adolescent"[MeSH]',
             '"self-injurious behavior"[MeSH] AND "adolescent"[MeSH]',
+            '"conduct disorder"[MeSH] OR "oppositional defiant disorder"[Title/Abstract]',
         ],
         "max_articles": 20,
         "podcast_prompt": (
             "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05d5\u05de\u05e8\u05ea\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05ea\u05d9\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05e9\u05dc \u05d4\u05e9\u05d1\u05d5\u05e2 "
-            "\u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d4\u05de\u05ea\u05d1\u05d2\u05e8. \u05d3\u05d2\u05e9 \u05e2\u05dc \u05e8\u05dc\u05d5\u05d5\u05e0\u05d8\u05d9\u05d5\u05ea \u05e7\u05dc\u05d9\u05e0\u05d9\u05ea, \u05d2\u05d9\u05e9\u05d5\u05ea \u05d8\u05d9\u05e4\u05d5\u05dc\u05d9\u05d5\u05ea "
-            "\u05d7\u05d3\u05e9\u05d5\u05ea, \u05d5\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05dc\u05de\u05ea\u05de\u05d7\u05d4 \u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4."
+            "\u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d4\u05de\u05ea\u05d1\u05d2\u05e8. \u05d3\u05d2\u05e9 \u05e2\u05dc \u05e8\u05dc\u05d5\u05d5\u05e0\u05d8\u05d9\u05d5\u05ea \u05e7\u05dc\u05d9\u05e0\u05d9\u05ea, "
+            "\u05d2\u05d9\u05e9\u05d5\u05ea \u05d8\u05d9\u05e4\u05d5\u05dc\u05d9\u05d5\u05ea \u05d7\u05d3\u05e9\u05d5\u05ea, \u05d5\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05dc\u05de\u05ea\u05de\u05d7\u05d4 \u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4."
         ),
     },
     {
+        # ── CLUSTER 2 ───────────────────────────────────────────────────────────
+        # Top-tier general psychiatry journals — adults, high-impact research
+        "id":       "general_psychiatry",
+        "label_en": "General Psychiatry — High Impact",
+        "label_he": "\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05db\u05dc\u05dc\u05d9\u05ea",
+        "journals": [
+            "World Psychiatry",
+            "JAMA Psychiatry",
+            "Am J Psychiatry",
+            "Mol Psychiatry",
+            "Lancet Psychiatry",
+        ],
+        "broad": [
+            # NEJM filtered for psychiatry
+            '"N Engl J Med"[Journal] AND ("psychiatry"[Title/Abstract] OR "mental health"[Title/Abstract] OR "schizophrenia"[Title/Abstract] OR "depression"[Title/Abstract] OR "bipolar"[Title/Abstract])',
+            # Broad topic coverage
+            '("schizophrenia"[MeSH] OR "bipolar disorder"[MeSH]) AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
+            '"depressive disorder, major"[MeSH] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
+            '"suicide"[MeSH] AND ("prevention"[Title/Abstract] OR "risk factors"[Title/Abstract])',
+            '"psychosis"[Title/Abstract] AND "first episode"[Title/Abstract]',
+            '"borderline personality disorder"[MeSH] AND ("treatment"[Title/Abstract] OR "therapy"[Title/Abstract])',
+        ],
+        "max_articles": 15,
+        "podcast_prompt": (
+            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05ea\u05d9\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 \u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05d4\u05db\u05dc\u05dc\u05d9\u05ea. "
+            "\u05d3\u05d2\u05e9 \u05e2\u05dc \u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05e9\u05de\u05e9\u05e0\u05d9\u05dd \u05d0\u05ea \u05d4\u05e4\u05e8\u05e7\u05d8\u05d9\u05e7\u05d4 \u05d4\u05e7\u05dc\u05d9\u05e0\u05d9\u05ea \u05d5\u05e8\u05dc\u05d5\u05d5\u05e0\u05d8\u05d9\u05d9\u05dd \u05d2\u05dd \u05dc\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d9\u05ea \u05d9\u05dc\u05d3\u05d9\u05dd."
+        ),
+    },
+    {
+        # ── CLUSTER 3 ───────────────────────────────────────────────────────────
+        # Child development — developmental science, early childhood, parenting
         "id":       "child_development",
-        "label_en": "Child Development & Mental Health",
-        "label_he": "\u05d4\u05ea\u05e4\u05ea\u05d7\u05d5\u05ea \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d1\u05e8\u05d9\u05d0\u05d5\u05ea \u05d4\u05e0\u05e4\u05e9",
+        "label_en": "Child Development",
+        "label_he": "\u05d4\u05ea\u05e4\u05ea\u05d7\u05d5\u05ea \u05d4\u05d9\u05dc\u05d3",
         "journals": [
             "Child Dev",
             "Dev Psychopathol",
             "J Abnorm Child Psychol",
-            "J Child Psychol Psychiatry",
             "Infant Ment Health J",
+            "Dev Sci",
         ],
         "broad": [
-            '"child development"[MeSH] AND ("mental health"[Title/Abstract] OR "behavior disorders"[MeSH])',
+            '"child development"[MeSH] AND ("mental health"[Title/Abstract] OR "behavior disorders"[MeSH] OR "psychopathology"[Title/Abstract])',
             '"adverse childhood experiences"[Title/Abstract]',
             '"parenting"[MeSH] AND ("child behavior"[MeSH] OR "mental health"[Title/Abstract])',
             '"attachment behavior"[MeSH]',
             '"early intervention"[MeSH] AND ("child"[MeSH] OR "infant"[MeSH])',
             '"social-emotional development"[Title/Abstract]',
+            '"trauma"[Title/Abstract] AND ("child"[MeSH] OR "infant"[MeSH])',
         ],
         "max_articles": 15,
         "podcast_prompt": (
             "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 \u05d1\u05ea\u05d7\u05d5\u05dd "
-            "\u05d4\u05ea\u05e4\u05ea\u05d7\u05d5\u05ea \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d1\u05e8\u05d9\u05d0\u05d5\u05ea \u05d4\u05e0\u05e4\u05e9 \u05d1\u05d2\u05d9\u05dc \u05d4\u05e8\u05da \u05d5\u05d1\u05d2\u05d9\u05dc \u05d4\u05d9\u05dc\u05d3\u05d5\u05ea."
+            "\u05d4\u05ea\u05e4\u05ea\u05d7\u05d5\u05ea \u05d4\u05d9\u05dc\u05d3. \u05d3\u05d2\u05e9 \u05e2\u05dc \u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05e7\u05dc\u05d9\u05e0\u05d9\u05ea \u05dc\u05de\u05ea\u05de\u05d7\u05d4 \u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3."
         ),
     },
     {
+        # ── CLUSTER 4 ───────────────────────────────────────────────────────────
+        # Neuroscience, neurobiology, neuropsychology — relevant to psychiatry
+        "id":       "neuroscience",
+        "label_en": "Neuroscience & Neuropsychology",
+        "label_he": "\u05de\u05d3\u05e2\u05d9 \u05d4\u05de\u05d5\u05d7 \u05d5\u05e0\u05d5\u05d9\u05e8\u05d5\u05e4\u05e1\u05d9\u05db\u05d5\u05dc\u05d5\u05d2\u05d9\u05d4",
+        "journals": [
+            "Nat Neurosci",
+            "Neuron",
+            "Brain",
+            "J Neurosci",
+            "Neuropsychopharmacology",
+        ],
+        "broad": [
+            # Filtered for psychiatric/developmental relevance
+            '"Nature Neuroscience"[Journal] AND ("psychiatry"[Title/Abstract] OR "depression"[Title/Abstract] OR "schizophrenia"[Title/Abstract] OR "autism"[Title/Abstract] OR "development"[Title/Abstract])',
+            '"brain development"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"prefrontal cortex"[MeSH] AND ("adolescent"[MeSH] OR "development"[Title/Abstract])',
+            '"neuroplasticity"[MeSH] AND ("psychiatric disorders"[Title/Abstract] OR "mental health"[Title/Abstract])',
+            '"cognitive development"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"executive function"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"stress"[MeSH] AND ("brain"[Title/Abstract] OR "neurobiology"[Title/Abstract]) AND ("child"[MeSH] OR "adolescent"[MeSH])',
+        ],
+        "max_articles": 12,
+        "podcast_prompt": (
+            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 \u05d1\u05ea\u05d7\u05d5\u05dd \u05de\u05d3\u05e2\u05d9 \u05d4\u05de\u05d5\u05d7 \u05d5\u05e0\u05d5\u05d9\u05e8\u05d5\u05e4\u05e1\u05d9\u05db\u05d5\u05dc\u05d5\u05d2\u05d9\u05d4. "
+            "\u05d3\u05d2\u05e9 \u05e2\u05dc \u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05dc\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3 \u05d5\u05dc\u05d4\u05d1\u05e0\u05ea \u05d4\u05de\u05e0\u05d2\u05e0\u05d5\u05e0\u05d9\u05dd \u05d4\u05e2\u05e6\u05d1\u05d9\u05d9\u05dd."
+        ),
+    },
+    {
+        # ── CLUSTER 5 ───────────────────────────────────────────────────────────
+        # Psychotherapy — children AND adults, evidence-based treatments
         "id":       "psychotherapy",
         "label_en": "Psychotherapy & Interventions",
         "label_he": "\u05e4\u05e1\u05d9\u05db\u05d5\u05ea\u05e8\u05e4\u05d9\u05d4 \u05d5\u05d4\u05ea\u05e2\u05e8\u05d1\u05d5\u05d9\u05d5\u05ea",
@@ -190,67 +261,21 @@ TOPICS = [
             "Behav Res Ther",
             "Psychother Psychosom",
             "Clin Child Fam Psychol Rev",
+            "Psychol Med",
         ],
         "broad": [
-            '"psychotherapy"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH]) AND ("randomized controlled trial"[pt] OR "clinical trial"[pt])',
-            '"cognitive behavioral therapy"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"psychotherapy"[MeSH] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
+            '"cognitive behavioral therapy"[Title/Abstract] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
             '"dialectical behavior therapy"[Title/Abstract]',
             '"parent training"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"family therapy"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"exposure therapy"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"family therapy"[MeSH] AND ("randomized controlled trial"[pt] OR "clinical trial"[pt])',
+            '"mindfulness"[Title/Abstract] AND ("mental health"[Title/Abstract] OR "depression"[Title/Abstract] OR "anxiety"[Title/Abstract]) AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
+            '"trauma-focused"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
         ],
         "max_articles": 12,
         "podcast_prompt": (
-            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 "
-            "\u05d1\u05e4\u05e1\u05d9\u05db\u05d5\u05ea\u05e8\u05e4\u05d9\u05d4 \u05d5\u05d4\u05ea\u05e2\u05e8\u05d1\u05d5\u05d9\u05d5\u05ea \u05e4\u05e1\u05d9\u05db\u05d5\u05dc\u05d5\u05d2\u05d9\u05d5\u05ea \u05d1\u05d9\u05dc\u05d3\u05d9\u05dd \u05d5\u05de\u05ea\u05d1\u05d2\u05e8\u05d9\u05dd."
-        ),
-    },
-    {
-        "id":       "general_psychiatry",
-        "label_en": "General Psychiatry - High Impact",
-        "label_he": "\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05db\u05dc\u05dc\u05d9\u05ea",
-        "journals": [
-            "JAMA Psychiatry",
-            "Lancet Psychiatry",
-            "Am J Psychiatry",
-            "World Psychiatry",
-            "Biol Psychiatry",
-            "Mol Psychiatry",
-        ],
-        "broad": [
-            '("schizophrenia"[MeSH] OR "depressive disorder"[MeSH] OR "bipolar disorder"[MeSH]) AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
-            '"anxiety disorders"[MeSH] AND ("meta-analysis"[pt] OR "systematic review"[pt])',
-            '"suicide"[MeSH] AND ("prevention"[Title/Abstract] OR "risk"[Title/Abstract])',
-            '"psychosis"[Title/Abstract] AND ("early intervention"[Title/Abstract] OR "first episode"[Title/Abstract])',
-        ],
-        "max_articles": 15,
-        "podcast_prompt": (
-            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05ea\u05d9\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 "
-            "\u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05d4\u05db\u05dc\u05dc\u05d9\u05ea \u05de\u05de\u05d7\u05e7\u05e8\u05d9\u05dd \u05d1\u05db\u05ea\u05d1\u05d9 \u05e2\u05ea \u05de\u05d5\u05d1\u05d9\u05dc\u05d9\u05dd."
-        ),
-    },
-    {
-        "id":       "psychopharmacology",
-        "label_en": "Pediatric Psychopharmacology",
-        "label_he": "\u05e4\u05e1\u05d9\u05db\u05d5\u05e4\u05e8\u05de\u05e7\u05d5\u05dc\u05d5\u05d2\u05d9\u05d4 \u05d9\u05dc\u05d3\u05d9\u05ea",
-        "journals": [
-            "J Child Adolesc Psychopharmacol",
-            "Neuropsychopharmacology",
-            "J Clin Psychiatry",
-            "J Clin Psychopharmacol",
-        ],
-        "broad": [
-            '("antidepressive agents"[MeSH] OR "antipsychotic agents"[MeSH] OR "central nervous system stimulants"[MeSH]) AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"methylphenidate"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"aripiprazole"[MeSH] OR "risperidone"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"fluoxetine"[MeSH] OR "sertraline"[MeSH] AND "adolescent"[MeSH]',
-            '"medication"[Title/Abstract] AND "autism"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-        ],
-        "max_articles": 12,
-        "podcast_prompt": (
-            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 "
-            "\u05d1\u05e4\u05e1\u05d9\u05db\u05d5\u05e4\u05e8\u05de\u05e7\u05d5\u05dc\u05d5\u05d2\u05d9\u05d4 \u05d9\u05dc\u05d3\u05d9\u05ea. \u05db\u05dc\u05d5\u05dc \u05e2\u05d3\u05db\u05d5\u05e0\u05d9\u05dd \u05e2\u05dc \u05ea\u05e8\u05d5\u05e4\u05d5\u05ea, "
-            "\u05de\u05d9\u05e0\u05d5\u05e0\u05d9\u05dd, \u05d9\u05e2\u05d9\u05dc\u05d5\u05ea \u05d5\u05ea\u05d5\u05e4\u05e2\u05d5\u05ea \u05dc\u05d5\u05d5\u05d0\u05d9."
+            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 \u05d1\u05e4\u05e1\u05d9\u05db\u05d5\u05ea\u05e8\u05e4\u05d9\u05d4 \u05d5\u05d4\u05ea\u05e2\u05e8\u05d1\u05d5\u05d9\u05d5\u05ea. "
+            "\u05db\u05dc\u05d5\u05dc \u05d4\u05ea\u05e2\u05e8\u05d1\u05d5\u05d9\u05d5\u05ea \u05dc\u05d9\u05dc\u05d3\u05d9\u05dd \u05d5\u05de\u05d1\u05d5\u05d2\u05e8\u05d9\u05dd. \u05d3\u05d2\u05e9 \u05e2\u05dc \u05d9\u05d9\u05e9\u05d5\u05dd \u05e7\u05dc\u05d9\u05e0\u05d9 \u05d5\u05e2\u05d3\u05d5\u05d9\u05d5\u05ea \u05d0\u05de\u05e4\u05d9\u05e8\u05d9\u05d5\u05ea."
         ),
     },
 ]
