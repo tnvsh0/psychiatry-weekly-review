@@ -64,11 +64,12 @@ if (-not $repoExists) {
     Write-Host "  Repository already exists, skipping." -ForegroundColor Gray
 }
 
-# 4. Build and push Docker image
-Write-Host "[4/9] Building and pushing Docker image (this may take a few minutes)..." -ForegroundColor Yellow
-gcloud auth configure-docker "$Region-docker.pkg.dev" --quiet
-docker build -t "${Registry}:latest" .
-docker push "${Registry}:latest"
+# 4. Build and push Docker image via Cloud Build (no local Docker needed)
+Write-Host "[4/9] Building Docker image on Google Cloud Build (5-10 min)..." -ForegroundColor Yellow
+Write-Host "      No local Docker required - build runs on GCP." -ForegroundColor Gray
+gcloud builds submit . `
+    --tag="${Registry}:latest" `
+    --project=$Project
 Write-Host "  Image pushed: ${Registry}:latest" -ForegroundColor Green
 
 # 5. Upload NotebookLM session to Secret Manager
