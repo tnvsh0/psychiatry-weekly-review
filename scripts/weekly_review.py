@@ -765,17 +765,21 @@ def send_notification(nb_infos: list[dict], env: dict):
         "actions":  actions[:3],
     }
 
-    for attempt in range(3):
+    for attempt in range(5):
         try:
             r = requests.post("https://ntfy.sh", json=payload, timeout=15)
             print(f"  Notification sent (status {r.status_code})")
             if r.status_code == 429:
-                print("  Rate limited — retrying in 60s...")
-                time.sleep(60)
+                wait = 90 * (attempt + 1)   # 90s, 180s, 270s, 360s, 450s
+                print(f"  Rate limited (attempt {attempt+1}/5) -- retrying in {wait}s...")
+                time.sleep(wait)
                 continue
             break
         except Exception as e:
             print(f"  ERROR: Notification failed: {e}")
+            if attempt < 4:
+                time.sleep(30)
+                continue
             break
 
 
@@ -789,6 +793,32 @@ def main():
 
     env = os.environ.copy()
     has_notebooklm = bool(env.get("NOTEBOOKLM_AUTH_JSON"))
+
+    # ── Auth pre-check: warn immediately via ntfy if session looks bad ────────
+    if has_notebooklm:
+        print("Verifying NotebookLM session...")
+        result = subprocess.run(
+            ["notebooklm", "list", "--json"],
+            capture_output=True, text=True, timeout=60,
+        )
+        combined = (result.stdout + result.stderr).lower()
+        if any(w in combined for w in ["auth", "signin", "login", "expired", "redirect"]):
+            print("WARNING: NotebookLM session is EXPIRED -- NotebookLM steps will be skipped.")
+            ntfy_topic = env.get("NTFY_TOPIC", "")
+            if ntfy_topic:
+                try:
+                    requests.post("https://ntfy.sh", json={
+                        "topic":    ntfy_topic,
+                        "title":    "Auth expired -- action required",
+                        "message":  "NotebookLM session expired. Run update_auth.ps1 on your PC, then re-trigger the weekly review.",
+                        "tags":     ["warning"],
+                        "priority": 4,
+                    }, timeout=15)
+                except Exception:
+                    pass
+            has_notebooklm = False
+        else:
+            print("Session is alive.")
 
     # ── Phase 1: Search + Summaries ───────────────────────────────────────────
     nb_infos: list[dict] = []

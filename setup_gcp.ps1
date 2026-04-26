@@ -147,10 +147,11 @@ if (-not $jobExists) {
     Write-Host "  Job updated." -ForegroundColor Green
 }
 
-# 8. Create Cloud Scheduler trigger (Sunday 06:00 UTC)
-Write-Host "[8/9] Creating Cloud Scheduler trigger (Sunday 06:00 UTC)..." -ForegroundColor Yellow
+# 8. Create Cloud Scheduler triggers
+Write-Host "[8/9] Creating Cloud Scheduler triggers..." -ForegroundColor Yellow
 $JobUri = "https://$Region-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/$Project/jobs/${JobName}:run"
 
+# 8a. Sunday 06:00 UTC -- weekly review trigger
 $schedulerExists = $null
 try { $schedulerExists = gcloud scheduler jobs describe "$JobName-trigger" --location=$Region --format="value(name)" 2>$null } catch {}
 if (-not $schedulerExists) {
@@ -162,9 +163,37 @@ if (-not $schedulerExists) {
         --oauth-service-account-email=$SA `
         --time-zone="UTC" `
         --description="Weekly psychiatry literature review - every Sunday 06:00 UTC"
-    Write-Host "  Scheduler trigger created." -ForegroundColor Green
+    Write-Host "  Weekly trigger created (Sunday 06:00 UTC)." -ForegroundColor Green
 } else {
-    Write-Host "  Scheduler trigger already exists, skipping." -ForegroundColor Gray
+    Write-Host "  Weekly trigger already exists, skipping." -ForegroundColor Gray
+}
+
+# 8b. Saturday 17:00 UTC (= 20:00 Israel summer) -- auth-refresh reminder via ntfy
+if ($NtfyTopic) {
+    $reminderName = "psychiatry-auth-reminder"
+    $reminderExists = $null
+    try { $reminderExists = gcloud scheduler jobs describe $reminderName --location=$Region --format="value(name)" 2>$null } catch {}
+
+    $reminderBody = "{`"topic`":`"$NtfyTopic`",`"title`":`"Action required: refresh NotebookLM auth`",`"message`":`"The weekly psychiatry review runs tomorrow at 06:00 UTC (09:00 Israel). Please run update_auth.ps1 NOW to refresh your session.`",`"tags`":[`"warning`"],`"priority`":4}"
+    $reminderBody | Out-File -FilePath "$env:TEMP\ntfy_body.json" -Encoding utf8 -NoNewline
+
+    if (-not $reminderExists) {
+        gcloud scheduler jobs create http $reminderName `
+            --location=$Region `
+            --schedule="0 17 * * 6" `
+            --uri="https://ntfy.sh" `
+            --http-method=POST `
+            --headers="Content-Type=application/json" `
+            --message-body-from-file="$env:TEMP\ntfy_body.json" `
+            --time-zone="UTC" `
+            --description="Saturday reminder to refresh NotebookLM auth before Sunday review"
+        Write-Host "  Auth reminder created (Saturday 17:00 UTC)." -ForegroundColor Green
+    } else {
+        Write-Host "  Auth reminder already exists, skipping." -ForegroundColor Gray
+    }
+    Remove-Item "$env:TEMP\ntfy_body.json" -Force -ErrorAction SilentlyContinue
+} else {
+    Write-Host "  Skipping auth reminder (no NtfyTopic provided)." -ForegroundColor Gray
 }
 
 # 9. Set GitHub Actions secrets for CI/CD
