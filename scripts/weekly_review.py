@@ -751,6 +751,11 @@ def send_notification(nb_infos: list[dict], env: dict):
             "url":    f"{server}/{repo}/tree/main/summaries/{DATE_STR}",
         })
 
+    # Add Streamlit UI link
+    ui_url = env.get("UI_URL", "")
+    if ui_url and len(actions) < 3:
+        actions.insert(0, {"action": "view", "label": "Streamlit UI", "url": ui_url})
+
     payload = {
         "topic":    ntfy_topic,
         "title":    f"\U0001f4da \u05e1\u05e7\u05d9\u05e8\u05ea \u05e1\u05e4\u05e8\u05d5\u05ea \u05e9\u05d1\u05d5\u05e2\u05d9\u05ea \u2014 {DATE_STR}",
