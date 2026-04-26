@@ -14,7 +14,7 @@ param(
     [string]$Project,
 
     [string]$SecretId = "notebooklm-auth",
-    [string]$Region   = "us-central1"
+    [string]$Region   = "me-west1"
 )
 
 $ErrorActionPreference = "Stop"
@@ -61,4 +61,7 @@ Write-Host "  Auth updated successfully!" -ForegroundColor Green
 Write-Host ""
 Write-Host "  Verify with a test run:" -ForegroundColor White
 Write-Host "  gcloud run jobs execute psychiatry-weekly-review --region=$Region --wait" -ForegroundColor Cyan
+  Write-Host ""
+  Write-Host "  Or trigger and watch logs:" -ForegroundColor White
+  Write-Host "  gcloud run jobs execute psychiatry-weekly-review --region=$Region --async" -ForegroundColor Cyan
 Write-Host "==========================================" -ForegroundColor Green
