@@ -16,10 +16,11 @@ import requests
 import streamlit as st
 
 # ── Config ─────────────────────────────────────────────────────────────────────
-GITHUB_REPO = os.environ.get("GH_REPO", "tnvsh0/psychiatry-weekly-review")
-AUTH_JSON   = os.environ.get("NOTEBOOKLM_AUTH_JSON", "")
+GITHUB_REPO  = os.environ.get("GH_REPO", "tnvsh0/psychiatry-weekly-review")
+AUTH_JSON    = os.environ.get("NOTEBOOKLM_AUTH_JSON", "")
+APP_PASSWORD = os.environ.get("APP_PASSWORD", "")
 
-# Write auth to disk once on startup
+# Write NotebookLM auth to disk once on startup
 if AUTH_JSON:
     storage_path = Path.home() / ".notebooklm" / "storage_state.json"
     storage_path.parent.mkdir(parents=True, exist_ok=True)
@@ -163,6 +164,21 @@ def generate_custom_podcast(selected: list[dict], prompt: str) -> str | None:
 
 
 # ── Main UI ────────────────────────────────────────────────────────────────────
+# ── Password gate ─────────────────────────────────────────────────────────────
+if APP_PASSWORD:
+    if "authenticated" not in st.session_state:
+        st.session_state.authenticated = False
+    if not st.session_state.authenticated:
+        st.title("📚 Psychiatry Weekly Review")
+        pwd = st.text_input("Password", type="password", placeholder="Enter access password")
+        if st.button("Login"):
+            if pwd == APP_PASSWORD:
+                st.session_state.authenticated = True
+                st.rerun()
+            else:
+                st.error("Incorrect password.")
+        st.stop()
+
 st.title("📚 Psychiatry Weekly Review")
 
 # Date selector
