@@ -374,9 +374,10 @@ with tab_articles:
                     col_cb, col_content = st.columns([0.04, 0.96])
                     with col_cb:
                         checked = st.checkbox(
-                            "", key=f"sel_{pmid}",
+                            "Select",
+                            key=f"sel_{pmid}",
                             value=(pmid in st.session_state.selected_pmids),
-                            label_visibility="collapsed",
+                            label_visibility="hidden",
                         )
                         if checked:
                             st.session_state.selected_pmids.add(pmid)
