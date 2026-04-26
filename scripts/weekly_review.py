@@ -792,9 +792,19 @@ def main():
     print(f"{sep}\n")
 
     env = os.environ.copy()
-    has_notebooklm = bool(env.get("NOTEBOOKLM_AUTH_JSON"))
 
-    # ── Auth pre-check: warn immediately via ntfy if session looks bad ────────
+    # Cloud Run: NOTEBOOKLM_AUTH_JSON env var → write to local file
+    auth_json = env.get("NOTEBOOKLM_AUTH_JSON", "")
+    if auth_json:
+        storage_path = Path.home() / ".notebooklm" / "storage_state.json"
+        storage_path.parent.mkdir(parents=True, exist_ok=True)
+        storage_path.write_text(auth_json, encoding="utf-8")
+
+    # Local run: detect existing session file even without the env var
+    local_session = Path.home() / ".notebooklm" / "storage_state.json"
+    has_notebooklm = bool(auth_json) or local_session.exists()
+
+    # ── Auth pre-check: verify session is alive before doing any work ─────────
     if has_notebooklm:
         print("Verifying NotebookLM session...")
         result = subprocess.run(
@@ -810,7 +820,7 @@ def main():
                     requests.post("https://ntfy.sh", json={
                         "topic":    ntfy_topic,
                         "title":    "Auth expired -- action required",
-                        "message":  "NotebookLM session expired. Run update_auth.ps1 on your PC, then re-trigger the weekly review.",
+                        "message":  "NotebookLM session expired. Run: notebooklm login",
                         "tags":     ["warning"],
                         "priority": 4,
                     }, timeout=15)
@@ -858,7 +868,7 @@ def main():
         nb["summary_path"] = create_topic_summary(nb["topic"], nb["articles"])
 
     if not has_notebooklm:
-        print("\nWARNING: NOTEBOOKLM_AUTH_JSON not set -- skipping notebooks & podcasts")
+        print("\nWARNING: No NotebookLM session found -- skipping notebooks & podcasts")
         send_notification(nb_infos, env)
         return
 

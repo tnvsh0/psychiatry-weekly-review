@@ -20,9 +20,9 @@ jobs:
 
     env:
       PROJECT:    ${{ secrets.GCP_PROJECT }}
-      REGION:     ${{ secrets.GCP_REGION }}
+      REGION:     me-west1
       JOB_NAME:   psychiatry-weekly-review
-      IMAGE_BASE: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/psychiatry/psychiatry-weekly-review
+      IMAGE_BASE: me-west1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/psychiatry/psychiatry-weekly-review
 
     steps:
       - name: Checkout
