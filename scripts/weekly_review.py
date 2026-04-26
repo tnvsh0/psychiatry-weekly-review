@@ -599,7 +599,8 @@ def download_podcast(nb_id: str, artifact_id: str, topic_id: str, env: dict) -> 
 # ── Upload to GitHub Release ───────────────────────────────────────────────────
 def upload_to_github_release(podcast_path: str, topic: dict, env: dict) -> str | None:
     tag    = f"weekly-{DATE_STR}-{topic['id']}"
-    repo   = env.get("GITHUB_REPOSITORY", "")
+    # Support both GitHub Actions (GITHUB_REPOSITORY) and Cloud Run (GH_REPO)
+    repo   = env.get("GITHUB_REPOSITORY") or env.get("GH_REPO", "")
     server = env.get("GITHUB_SERVER_URL", "https://github.com")
 
     if not repo:
@@ -657,7 +658,7 @@ def send_notification(nb_infos: list[dict], env: dict):
                 "url":    nb["podcast_url"],
             })
 
-    repo   = env.get("GITHUB_REPOSITORY", "")
+    repo   = env.get("GITHUB_REPOSITORY") or env.get("GH_REPO", "")
     server = env.get("GITHUB_SERVER_URL", "https://github.com")
     if repo and len(actions) < 3:
         actions.append({
@@ -675,11 +676,18 @@ def send_notification(nb_infos: list[dict], env: dict):
         "actions":  actions[:3],
     }
 
-    try:
-        r = requests.post("https://ntfy.sh", json=payload, timeout=15)
-        print(f"  Notification sent (status {r.status_code})")
-    except Exception as e:
-        print(f"  ERROR: Notification failed: {e}")
+    for attempt in range(3):
+        try:
+            r = requests.post("https://ntfy.sh", json=payload, timeout=15)
+            print(f"  Notification sent (status {r.status_code})")
+            if r.status_code == 429:
+                print("  Rate limited — retrying in 60s...")
+                time.sleep(60)
+                continue
+            break
+        except Exception as e:
+            print(f"  ERROR: Notification failed: {e}")
+            break
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
