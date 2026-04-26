@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Weekly Psychiatry Literature Review — Multi-Topic Edition
 ──────────────────────────────────────────────────────────
@@ -378,36 +378,120 @@ def search_topic(topic: dict) -> list[dict]:
     return articles
 
 
-# ── Step 2: Fetch Abstracts ────────────────────────────────────────────────────
-def fetch_abstracts(articles: list[dict]) -> list[dict]:
-    """Fetch abstracts for a flat list of articles (modifies in-place)."""
-    print(f"\nFetching {len(articles)} abstracts (1.5s delay each)...")
+# -- Step 2: Fetch article text (full text via PMC when available) -------------
+def _fetch_pmc_id(pmid: str) -> str | None:
+    """Return PMC ID for this PubMed article, or None if not open-access."""
+    try:
+        r = requests.get(PUBMED_BASE + "elink.fcgi", params={
+            "dbfrom": "pubmed", "db": "pmc",
+            "id": pmid, "retmode": "json",
+        }, timeout=15)
+        r.raise_for_status()
+        for ls in r.json().get("linksets", []):
+            for lsdb in ls.get("linksetdbs", []):
+                if lsdb.get("dbto") == "pmc":
+                    links = lsdb.get("links", [])
+                    if links:
+                        return str(links[0])
+    except Exception:
+        pass
+    return None
+
+
+def _parse_abstract(raw_text: str) -> str:
+    """Extract abstract section from PubMed efetch plain-text output."""
+    lines = [ln.strip() for ln in raw_text.strip().split("\n") if ln.strip()]
+    abstract_lines, in_abstract = [], False
+    for line in lines:
+        if "Abstract" in line[:30] or line.upper().startswith("ABSTRACT"):
+            in_abstract = True
+            continue
+        if in_abstract and any(line.startswith(x) for x in ["PMID:", "DOI:", "Copyright", "©"]):
+            break
+        if in_abstract:
+            abstract_lines.append(line)
+    return " ".join(abstract_lines) or "(Abstract not available)"
+
+
+def fetch_article_text(articles: list[dict]) -> list[dict]:
+    """Fetch full text (PMC open access) or abstract for each article.
+    Adds 'abstract', 'has_full_text', and 'pmc_id' keys. Modifies in-place."""
+    print(f"\nFetching text for {len(articles)} articles (PMC full text when available)...")
+    pmc_count = 0
+
     for i, article in enumerate(articles):
+        pmid = article["pmid"]
+        article["has_full_text"] = False
+        article["pmc_id"] = None
+
+        # Try PMC full text first
+        pmc_id = _fetch_pmc_id(pmid)
+        time.sleep(0.3)
+        if pmc_id:
+            try:
+                r = requests.get(PUBMED_BASE + "efetch.fcgi", params={
+                    "db": "pmc", "id": pmc_id,
+                    "rettype": "full", "retmode": "text",
+                }, timeout=30)
+                if r.status_code == 200 and len(r.text) > 1000:
+                    article["abstract"]      = r.text.strip()[:15000]
+                    article["has_full_text"] = True
+                    article["pmc_id"]        = pmc_id
+                    pmc_count += 1
+                    if (i + 1) % 10 == 0:
+                        print(f"  {i+1}/{len(articles)} done  (full-text: {pmc_count})")
+                    time.sleep(0.5)
+                    continue
+            except Exception:
+                pass
+
+        # Fall back to abstract
         try:
             r = requests.get(PUBMED_BASE + "efetch.fcgi", params={
-                "db": "pubmed", "id": article["pmid"],
+                "db": "pubmed", "id": pmid,
                 "rettype": "abstract", "retmode": "text",
             }, timeout=20)
-            lines = [ln.strip() for ln in r.text.strip().split("\n") if ln.strip()]
-            abstract_lines, in_abstract = [], False
-            for line in lines:
-                if "Abstract" in line[:30] or line.upper().startswith("ABSTRACT"):
-                    in_abstract = True
-                    continue
-                if in_abstract and any(line.startswith(x) for x in ["PMID:", "DOI:", "Copyright", "\u00a9"]):
-                    break
-                if in_abstract:
-                    abstract_lines.append(line)
-            article["abstract"] = " ".join(abstract_lines[:8]) or "(Abstract not available)"
-            time.sleep(1.5)
+            article["abstract"] = _parse_abstract(r.text)
         except Exception:
             article["abstract"] = "(Could not fetch abstract)"
+
         if (i + 1) % 10 == 0:
-            print(f"  {i+1}/{len(articles)} done...")
+            print(f"  {i+1}/{len(articles)} done  (full-text: {pmc_count})")
+        time.sleep(1.2)
+
+    print(f"  Done: {pmc_count}/{len(articles)} articles with PMC full text.")
     return articles
 
+# ── Step 3a: Save articles.json (for Streamlit UI) ────────────────────────────
+def save_articles_json(nb_infos: list[dict]) -> None:
+    """Save all articles as articles.json for the web UI."""
+    out_dir = Path("summaries") / DATE_STR
+    out_dir.mkdir(parents=True, exist_ok=True)
+    data = []
+    for nb in nb_infos:
+        topic = nb["topic"]
+        for a in nb["articles"]:
+            data.append({
+                "pmid":          a["pmid"],
+                "title":         a["title"],
+                "journal":       a["journal"],
+                "authors":       a["authors"],
+                "pub_date":      a["pub_date"],
+                "url":           a["url"],
+                "impact_factor": a.get("impact_factor", 0.0),
+                "abstract":      a.get("abstract", ""),
+                "has_full_text": a.get("has_full_text", False),
+                "pmc_id":        a.get("pmc_id"),
+                "topic_id":      topic["id"],
+                "topic_he":      topic["label_he"],
+                "topic_en":      topic["label_en"],
+            })
+    out_path = out_dir / "articles.json"
+    out_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  Saved: {out_path}  ({len(data)} articles)")
 
-# ── Step 3: Create per-topic Markdown summary ──────────────────────────────────
+
+# ── Step 3b: Create per-topic Markdown summary ─────────────────────────────────
 def create_topic_summary(topic: dict, articles: list[dict]) -> str:
     """Write summaries/{DATE}/{topic_id}.md and return the path string."""
     date_range = f"{WEEK_START.strftime('%d/%m/%Y')} \u2013 {TODAY.strftime('%d/%m/%Y')}"
@@ -729,10 +813,11 @@ def main():
         send_notification([], env)
         sys.exit(1)
 
-    # Fetch abstracts for ALL articles in one pass
-    fetch_abstracts(all_articles)
+    # Fetch text for ALL articles in one pass (PMC full text when available)
+    fetch_article_text(all_articles)
 
-    # Create per-topic summaries
+    # Save articles.json for web UI, then per-topic summaries
+    save_articles_json(nb_infos)
     print("\n\U0001f4dd Creating topic summaries...")
     for nb in nb_infos:
         nb["summary_path"] = create_topic_summary(nb["topic"], nb["articles"])
