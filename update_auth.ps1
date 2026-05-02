@@ -47,12 +47,22 @@ try {
 
 # Step 2: Upload to Secret Manager (raw bytes - avoids BOM)
 Write-Host "[2/2] Uploading session to Secret Manager secret '$SecretId'..." -ForegroundColor Yellow
-gcloud config set project $Project
+
+# Set project and verify access before proceeding
+gcloud config set project $Project --quiet
+$testAccess = gcloud projects describe $Project --format="value(projectId)" 2>$null
+if (-not $testAccess) {
+    Write-Error "Cannot access project '$Project'. Check the project ID and that you are authenticated: gcloud auth login"
+}
 
 $bytes = [System.IO.File]::ReadAllBytes($StorageState)
 $tmpFile = [System.IO.Path]::GetTempFileName()
 [System.IO.File]::WriteAllBytes($tmpFile, $bytes)
-gcloud secrets versions add $SecretId --data-file=$tmpFile
+gcloud secrets versions add $SecretId --data-file=$tmpFile --project=$Project
+if (-not $?) {
+    Remove-Item $tmpFile -Force -ErrorAction SilentlyContinue
+    Write-Error "Failed to upload session to Secret Manager. See error above."
+}
 Remove-Item $tmpFile -Force
 
 Write-Host ""
