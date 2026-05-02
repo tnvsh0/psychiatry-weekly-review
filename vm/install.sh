@@ -36,10 +36,8 @@ SHELL=/bin/bash
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # Weekly psychiatry review - Sunday 06:00 UTC
+# Cloud Scheduler starts the VM at 05:50; this cron fires at 06:00 and shuts down when done
 0 6 * * 0 root /opt/run_review.sh
-
-# NotebookLM session keepalive - every 2 hours (runs while VM is on)
-0 */2 * * * root /opt/run_keepalive.sh
 CRON
 chmod 644 /etc/cron.d/weekly-review
 
