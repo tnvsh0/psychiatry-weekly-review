@@ -680,6 +680,51 @@ def download_podcast(nb_id: str, artifact_id: str, topic_id: str, env: dict) -> 
     return None
 
 
+# ── Commit summaries to GitHub ────────────────────────────────────────────────
+def commit_summaries_to_github(env: dict):
+    """Commit and push today's summaries folder to GitHub main branch."""
+    repo  = env.get("GITHUB_REPOSITORY") or env.get("GH_REPO", "")
+    token = env.get("GITHUB_TOKEN") or env.get("GH_TOKEN", "")
+    if not repo or not token:
+        print("  WARNING: GH_REPO / GH_TOKEN not set -- skipping commit")
+        return
+
+    # Set git identity so the commit is accepted
+    subprocess.run(["git", "config", "user.email", "bot@weekly-review"], check=False)
+    subprocess.run(["git", "config", "user.name",  "Weekly Review Bot"],  check=False)
+
+    # Configure remote with token for authenticated push
+    remote_url = f"https://x-access-token:{token}@github.com/{repo}.git"
+    subprocess.run(["git", "remote", "set-url", "origin", remote_url], check=False)
+
+    # Stage only today's summaries directory
+    summaries_dir = f"summaries/{DATE_STR}"
+    subprocess.run(["git", "add", summaries_dir], check=False)
+
+    # Check if there's anything to commit
+    status = subprocess.run(["git", "diff", "--cached", "--quiet"], capture_output=True)
+    if status.returncode == 0:
+        print("  No new summaries to commit.")
+        return
+
+    result = subprocess.run(
+        ["git", "commit", "-m", f"\U0001f4da Weekly review {DATE_STR}"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        print(f"  WARNING: git commit failed: {result.stderr.strip()}")
+        return
+
+    push = subprocess.run(
+        ["git", "push", "origin", "main"],
+        capture_output=True, text=True,
+    )
+    if push.returncode == 0:
+        print(f"  Summaries committed and pushed to GitHub ({summaries_dir})")
+    else:
+        print(f"  WARNING: git push failed: {push.stderr.strip()}")
+
+
 # ── Upload to GitHub Release ───────────────────────────────────────────────────
 def upload_to_github_release(podcast_path: str, topic: dict, env: dict) -> str | None:
     tag    = f"weekly-{DATE_STR}-{topic['id']}"
@@ -866,6 +911,10 @@ def main():
     print("\n\U0001f4dd Creating topic summaries...")
     for nb in nb_infos:
         nb["summary_path"] = create_topic_summary(nb["topic"], nb["articles"])
+
+    # Commit summaries to GitHub regardless of NotebookLM status
+    print("\n\U0001f4e4 Committing summaries to GitHub...")
+    commit_summaries_to_github(env)
 
     if not has_notebooklm:
         print("\nWARNING: No NotebookLM session found -- skipping notebooks & podcasts")
