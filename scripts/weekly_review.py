@@ -17,6 +17,7 @@ IMPORTANT: Never fabricates articles — only real PubMed data is used.
 """
 
 import os
+import re
 import sys
 import json
 import time
@@ -41,35 +42,54 @@ JOURNAL_IF: dict[str, float] = {
     "n engl j med":                                             96.2,
     "lancet":                                                   99.5,
     "lancet psychiatry":                                        64.3,
+    "lancet child adolesc health":                              45.7,
     "nature medicine":                                          87.2,
     "nature":                                                   69.5,
     "science":                                                  67.2,
     "world psychiatry":                                         73.3,
     "bmj":                                                     105.7,
     "nature neuroscience":                                      25.0,
+    "nat neurosci":                                             25.0,
     "jama pediatrics":                                          27.6,
+    "jama pediatr":                                             27.6,
     "american journal of psychiatry":                           18.1,
     "am j psychiatry":                                          18.1,
     "annals of internal medicine":                              39.2,
+    "psychotherapy and psychosomatics":                         15.0,
+    "psychother psychosom":                                     15.0,
     "brain":                                                    14.5,
     # Tier 2
     "molecular psychiatry":                                     13.4,
+    "mol psychiatry":                                           13.4,
+    "clinical psychology review":                               12.0,
+    "clin psychol rev":                                         12.0,
+    "psychological review":                                     12.0,
+    "psychol rev":                                              12.0,
     "biological psychiatry":                                    12.8,
+    "biol psychiatry":                                          12.8,
     "jaacap":                                                   10.2,
     "journal of the american academy of child and adolescent psychiatry": 10.2,
     "j am acad child adolesc psychiatry":                       10.2,
     "neuropsychopharmacology":                                   8.0,
     "pediatrics":                                                8.0,
     "journal of neuroscience":                                   6.7,
+    "j neurosci":                                                6.7,
     "schizophrenia bulletin":                                    7.4,
     "journal of child psychology and psychiatry":                7.2,
     "j child psychol psychiatry":                                7.2,
     "acta psychiatrica scandinavica":                            6.7,
     "psychological medicine":                                    6.0,
+    "psychol med":                                               6.0,
     "european child and adolescent psychiatry":                  6.0,
     "eur child adolesc psychiatry":                              6.0,
     "depression and anxiety":                                    6.0,
     "european neuropsychopharmacology":                          5.5,
+    "behavioral and brain sciences":                            20.0,
+    "behav brain sci":                                          20.0,
+    "psychological science":                                     5.5,
+    "psychol sci":                                               5.5,
+    "journal of experimental psychology general":                5.5,
+    "j exp psychol gen":                                         5.5,
     "j consult clin psychol":                                    5.2,
     "journal of consulting and clinical psychology":             5.2,
     "behav res ther":                                            5.0,
@@ -87,15 +107,40 @@ JOURNAL_IF: dict[str, float] = {
     "comprehensive psychiatry":                                  3.5,
     "frontiers in psychiatry":                                   3.2,
     "child and adolescent psychiatry and mental health":          3.0,
+    "child adolesc ment health":                                  3.0,
     "journal of developmental and behavioral pediatrics":         3.0,
     "j child adolesc psychopharmacol":                           3.5,
     "journal of child and adolescent psychopharmacology":        3.5,
     "dev med child neurol":                                      4.5,
     "developmental medicine and child neurology":                4.5,
-    "dev psychopathol":                                          4.8,
-    "development and psychopathology":                           4.8,
-    "child dev":                                                 4.7,
-    "child development":                                         4.7,
+    "dev psychopathol":                                          5.8,
+    "development and psychopathology":                           5.8,
+    "child dev":                                                 5.4,
+    "child development":                                         5.4,
+    "developmental psychology":                                  5.0,
+    "dev psychol":                                               5.0,
+    "developmental science":                                     4.4,
+    "dev sci":                                                   4.4,
+    "infant mental health journal":                              2.5,
+    "infant ment health j":                                      2.5,
+    "neuron":                                                   17.2,
+    "cerebral cortex":                                           4.9,
+    "journal of cognitive neuroscience":                         4.4,
+    "j cogn neurosci":                                           4.4,
+    "cognitive psychology":                                      3.5,
+    "cogn psychol":                                              3.5,
+    "cognition":                                                 3.5,
+    "journal of experimental child psychology":                  3.5,
+    "j exp child psychol":                                       3.5,
+    "behavioral neuroscience":                                   3.0,
+    "behav neurosci":                                            3.0,
+    "journal of applied behavior analysis":                      2.5,
+    "j appl behav anal":                                         2.5,
+    "international journal of psychoanalysis":                   1.5,
+    "int j psychoanal":                                          1.5,
+    "psychoanalytic psychology":                                 1.7,
+    "attachment and human development":                          3.5,
+    "attach hum dev":                                            3.5,
 }
 
 
@@ -122,92 +167,133 @@ def if_badge(impact_factor: float) -> str:
 
 # ── Topic Definitions ──────────────────────────────────────────────────────────
 # Each topic:
-#   journals  -- searched directly (guarantees top journals are always included)
-#   broad     -- supplemental queries (MeSH + filtered high-impact journals)
+#   journals  -- searched directly by journal name (all recent articles)
+#   broad     -- PubMed queries used when content filtering is needed
 #   max_articles, podcast_prompt
+#
+# CLUSTER OVERVIEW (10 topics):
+#  1. child_adolescent_core        — JAACAP, JCPP, ECAP, CAMH (ALL articles)
+#  2. child_adolescent_highimpact  — JAMA Psych/Pediatr, Lancet Psych/Child, NEJM (child-filtered)
+#  3. general_psychiatry_clinical  — World Psych, JAMA Psych, AJP, Lancet Psych (NOT child)
+#  4. general_psychiatry_bio       — Mol Psychiatry, Biol Psychiatry, NEJM (NOT child)
+#  5. child_development            — Dev Psychopathol, Child Dev, Dev Psychol, Dev Sci, IMHJ
+#  6. neuroscience                 — Nat Neurosci, Neuron, Biol Psychiatry, Brain, NPP, J Neurosci
+#  7. psychotherapy                — Psychother Psychosom, Clin Psychol Rev, BRT, JCCP, Int J Psychoanal
+#  8. behavioral_sciences          — Behav Brain Sci, Psychol Sci, J Exp Psychol Gen, Behav Neurosci
+#  9. cognition                    — Psychol Rev, J Cogn Neurosci, Cogn Psychol, Cognition, J Exp Child Psychol
+# 10. child_adolescent_misc        — broad MeSH child/adolescent psych, NOT from clusters 1+2
 TOPICS = [
     {
-        # ── CLUSTER 1 ───────────────────────────────────────────────────────────
-        # Primary journals of child & adolescent psychiatry (ALL new articles)
-        # PLUS relevant articles filtered from top-tier general/pediatric journals
-        "id":       "child_adolescent",
-        "label_en": "Child & Adolescent Psychiatry",
-        "label_he": "\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d4\u05de\u05ea\u05d1\u05d2\u05e8",
+        # ── CLUSTER 1 ────────────────────────────────────────────────────────────────────
+        # Core child & adolescent psychiatry journals — ALL new articles
+        "id":       "child_adolescent_core",
+        "label_en": "Child & Adolescent Psychiatry — Core",
+        "label_he": "ליבה — פסיכיאטריית ילד ומתבגר",
         "journals": [
-            "J Am Acad Child Adolesc Psychiatry",   # JAACAP — the flagship journal
+            "J Am Acad Child Adolesc Psychiatry",   # JAACAP — flagship
             "J Child Psychol Psychiatry",            # JCPP
-            "Child Adolesc Mental Health",           # CAMH
             "Eur Child Adolesc Psychiatry",          # ECAP
+            "Child Adolesc Mental Health",           # CAMH
         ],
-        "broad": [
-            # High-impact general psychiatry journals — filtered for child/adolescent content
-            '"JAMA Psychiatry"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "youth"[Title/Abstract])',
-            '"Lancet Psychiatry"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "youth"[Title/Abstract])',
-            # Top pediatric journals — filtered for mental health / neurodevelopment
-            '"JAMA Pediatr"[Journal] AND ("mental health"[Title/Abstract] OR "psychiatry"[Title/Abstract] OR "neurodevelopment"[Title/Abstract] OR "autism"[Title/Abstract] OR "ADHD"[Title/Abstract])',
-            '"Lancet"[Journal] AND ("child psychiatry"[Title/Abstract] OR "adolescent psychiatry"[Title/Abstract] OR "autism"[Title/Abstract] OR "ADHD"[Title/Abstract] OR "mental health"[Title/Abstract])',
-            '"N Engl J Med"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH]) AND ("psychiatry"[Title/Abstract] OR "mental health"[Title/Abstract] OR "autism"[Title/Abstract] OR "ADHD"[Title/Abstract])',
-            # Broad MeSH fallback
-            '"child psychiatry"[MeSH] OR "adolescent psychiatry"[MeSH]',
-            '"autism spectrum disorder"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"attention deficit disorder with hyperactivity"[MeSH]',
-            '"anxiety disorders"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"depressive disorder"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"eating disorders"[MeSH] AND "adolescent"[MeSH]',
-            '"self-injurious behavior"[MeSH] AND "adolescent"[MeSH]',
-            '"conduct disorder"[MeSH] OR "oppositional defiant disorder"[Title/Abstract]',
-        ],
-        "max_articles": 20,
+        "broad": [],
+        "max_articles": 40,
         "podcast_prompt": (
-            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05d5\u05de\u05e8\u05ea\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05ea\u05d9\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05e9\u05dc \u05d4\u05e9\u05d1\u05d5\u05e2 "
-            "\u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3 \u05d5\u05d4\u05de\u05ea\u05d1\u05d2\u05e8. \u05d3\u05d2\u05e9 \u05e2\u05dc \u05e8\u05dc\u05d5\u05d5\u05e0\u05d8\u05d9\u05d5\u05ea \u05e7\u05dc\u05d9\u05e0\u05d9\u05ea, "
-            "\u05d2\u05d9\u05e9\u05d5\u05ea \u05d8\u05d9\u05e4\u05d5\u05dc\u05d9\u05d5\u05ea \u05d7\u05d3\u05e9\u05d5\u05ea, \u05d5\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05dc\u05de\u05ea\u05de\u05d7\u05d4 \u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4."
+            "צור דיון מעמיק ומרתק על הממצאים המשמעותיים ביותר של השבוע "
+            "בפסיכיאטריה של הילד והמתבגר. דגש על רלוונטיות קלינית, "
+            "גישות טיפוליות חדשות, ומשמעות הממצאים למתמחה בפסיכיאטריה."
         ),
     },
     {
-        # ── CLUSTER 2 ───────────────────────────────────────────────────────────
-        # Top-tier general psychiatry journals — adults, high-impact research
-        "id":       "general_psychiatry",
-        "label_en": "General Psychiatry — High Impact",
-        "label_he": "\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05db\u05dc\u05dc\u05d9\u05ea",
+        # ── CLUSTER 2 ────────────────────────────────────────────────────────────────────
+        # High-impact journals filtered for child / adolescent content
+        "id":       "child_adolescent_highimpact",
+        "label_en": "Child & Adolescent Psychiatry — High Impact",
+        "label_he": "השפעה גבוהה — ילד ומתבגר",
         "journals": [
-            "World Psychiatry",
-            "JAMA Psychiatry",
-            "Am J Psychiatry",
-            "Mol Psychiatry",
-            "Lancet Psychiatry",
+            "Lancet Child Adolesc Health",           # IF~45 — dedicated child journal
+            "JAMA Pediatr",                          # IF~27 — mental-health filtered via broad
         ],
         "broad": [
-            # NEJM filtered for psychiatry
-            '"N Engl J Med"[Journal] AND ("psychiatry"[Title/Abstract] OR "mental health"[Title/Abstract] OR "schizophrenia"[Title/Abstract] OR "depression"[Title/Abstract] OR "bipolar"[Title/Abstract])',
-            # Broad topic coverage
+            '"JAMA Psychiatry"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "youth"[Title/Abstract] OR "pediatric"[Title/Abstract])',
+            '"Lancet Psychiatry"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "youth"[Title/Abstract])',
+            '"Am J Psychiatry"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "pediatric"[Title/Abstract])',
+            '"World Psychiatry"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "youth"[Title/Abstract])',
+            '"N Engl J Med"[Journal] AND ("child psychiatry"[Title/Abstract] OR "adolescent psychiatry"[Title/Abstract] OR "autism"[Title/Abstract] OR "ADHD"[Title/Abstract] OR "child mental health"[Title/Abstract])',
+            '"JAMA"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH]) AND ("mental health"[Title/Abstract] OR "psychiatry"[Title/Abstract] OR "autism"[Title/Abstract] OR "ADHD"[Title/Abstract])',
+        ],
+        "max_articles": 20,
+        "podcast_prompt": (
+            "צור דיון על המאמרים בעלי ההשפעה הגבוהה ביותר מהשבוע הנוגעים לילדים ומתבגרים "
+            "מכתבי עת מובילים. דגש על חשיבות הממצאים, שינויים פוטנציאליים בפרקטיקה, "
+            "ומשמעות עבור פסיכיאטריית ילד ומתבגר."
+        ),
+    },
+    {
+        # ── CLUSTER 3 ────────────────────────────────────────────────────────────────────
+        # General clinical psychiatry — adult-focused (excludes child/adolescent)
+        "id":       "general_psychiatry_clinical",
+        "label_en": "General Psychiatry — Clinical",
+        "label_he": "פסיכיאטריה כללית — קלינית",
+        "journals": [
+            "World Psychiatry",
+            "Am J Psychiatry",
+            "Acta Psychiatr Scand",
+        ],
+        "broad": [
+            '"JAMA Psychiatry"[Journal] NOT ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"Lancet Psychiatry"[Journal] NOT ("child"[MeSH] OR "adolescent"[MeSH])',
             '("schizophrenia"[MeSH] OR "bipolar disorder"[MeSH]) AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
             '"depressive disorder, major"[MeSH] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
             '"suicide"[MeSH] AND ("prevention"[Title/Abstract] OR "risk factors"[Title/Abstract])',
             '"psychosis"[Title/Abstract] AND "first episode"[Title/Abstract]',
             '"borderline personality disorder"[MeSH] AND ("treatment"[Title/Abstract] OR "therapy"[Title/Abstract])',
         ],
-        "max_articles": 15,
+        "max_articles": 12,
         "podcast_prompt": (
-            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05ea\u05d9\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 \u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05d4\u05db\u05dc\u05dc\u05d9\u05ea. "
-            "\u05d3\u05d2\u05e9 \u05e2\u05dc \u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05e9\u05de\u05e9\u05e0\u05d9\u05dd \u05d0\u05ea \u05d4\u05e4\u05e8\u05e7\u05d8\u05d9\u05e7\u05d4 \u05d4\u05e7\u05dc\u05d9\u05e0\u05d9\u05ea \u05d5\u05e8\u05dc\u05d5\u05d5\u05e0\u05d8\u05d9\u05d9\u05dd \u05d2\u05dd \u05dc\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d9\u05ea \u05d9\u05dc\u05d3\u05d9\u05dd."
+            "צור דיון על הממצאים הקליניים המשמעותיים בפסיכיאטריה הכללית של השבוע. "
+            "דגש על מה מהפסיכיאטריה הכללית רלוונטי לטיפול בילדים ומתבגרים, "
+            "ומה המתמחה יכול ללמוד מהפסיכיאטריה הכללית."
         ),
     },
     {
-        # ── CLUSTER 3 ───────────────────────────────────────────────────────────
+        # ── CLUSTER 4 ────────────────────────────────────────────────────────────────────
+        # Biological psychiatry — genetics, neurobiology, pharmacology
+        "id":       "general_psychiatry_bio",
+        "label_en": "Biological Psychiatry",
+        "label_he": "פסיכיאטריה ביולוגית",
+        "journals": [
+            "Mol Psychiatry",
+            "Biol Psychiatry",
+            "Neuropsychopharmacology",
+        ],
+        "broad": [
+            '"N Engl J Med"[Journal] AND ("psychiatry"[Title/Abstract] OR "mental health"[Title/Abstract] OR "schizophrenia"[Title/Abstract] OR "depression"[Title/Abstract] OR "bipolar"[Title/Abstract]) NOT ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"genetics"[MeSH] AND ("psychiatry"[Title/Abstract] OR "psychiatric disorders"[Title/Abstract]) AND ("genome-wide"[Title/Abstract] OR "GWAS"[Title/Abstract])',
+            '"antidepressants"[MeSH] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
+            '"antipsychotic agents"[MeSH] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
+        ],
+        "max_articles": 10,
+        "podcast_prompt": (
+            "צור דיון על המחקר הביולוגי והפסיכופרמקולוגי המשמעותי ביותר של השבוע. "
+            "דגש על מנגנונים ביולוגיים, גנטיקה, וטיפולים תרופתיים — "
+            "מה המשמעות לפסיכיאטריית ילד ומתבגר?"
+        ),
+    },
+    {
+        # ── CLUSTER 5 ────────────────────────────────────────────────────────────────────
         # Child development — developmental science, early childhood, parenting
         "id":       "child_development",
         "label_en": "Child Development",
-        "label_he": "\u05d4\u05ea\u05e4\u05ea\u05d7\u05d5\u05ea \u05d4\u05d9\u05dc\u05d3",
+        "label_he": "התפתחות הילד",
         "journals": [
             "Child Dev",
             "Dev Psychopathol",
-            "J Abnorm Child Psychol",
-            "Infant Ment Health J",
+            "Dev Psychol",
             "Dev Sci",
+            "Infant Ment Health J",
+            "J Abnorm Child Psychol",
         ],
         "broad": [
-            '"child development"[MeSH] AND ("mental health"[Title/Abstract] OR "behavior disorders"[MeSH] OR "psychopathology"[Title/Abstract])',
             '"adverse childhood experiences"[Title/Abstract]',
             '"parenting"[MeSH] AND ("child behavior"[MeSH] OR "mental health"[Title/Abstract])',
             '"attachment behavior"[MeSH]',
@@ -215,67 +301,138 @@ TOPICS = [
             '"social-emotional development"[Title/Abstract]',
             '"trauma"[Title/Abstract] AND ("child"[MeSH] OR "infant"[MeSH])',
         ],
-        "max_articles": 15,
+        "max_articles": 10,
         "podcast_prompt": (
-            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 \u05d1\u05ea\u05d7\u05d5\u05dd "
-            "\u05d4\u05ea\u05e4\u05ea\u05d7\u05d5\u05ea \u05d4\u05d9\u05dc\u05d3. \u05d3\u05d2\u05e9 \u05e2\u05dc \u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05e7\u05dc\u05d9\u05e0\u05d9\u05ea \u05dc\u05de\u05ea\u05de\u05d7\u05d4 \u05d1\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3."
+            "צור דיון על המחקרים המשמעותיים בתחום התפתחות הילד של השבוע. "
+            "דגש על השלכות לפסיכיאטריה של הילד, חשיבות ממצאים "
+            "להתפתחות תקינה ופתולוגית, התקשרות, והתערבות מוקדמת."
         ),
     },
     {
-        # ── CLUSTER 4 ───────────────────────────────────────────────────────────
-        # Neuroscience, neurobiology, neuropsychology — relevant to psychiatry
+        # ── CLUSTER 6 ────────────────────────────────────────────────────────────────────
+        # Neuroscience — brain, circuits, development; psychiatry-relevant
         "id":       "neuroscience",
-        "label_en": "Neuroscience & Neuropsychology",
-        "label_he": "\u05de\u05d3\u05e2\u05d9 \u05d4\u05de\u05d5\u05d7 \u05d5\u05e0\u05d5\u05d9\u05e8\u05d5\u05e4\u05e1\u05d9\u05db\u05d5\u05dc\u05d5\u05d2\u05d9\u05d4",
+        "label_en": "Neuroscience",
+        "label_he": "מדעי המוח",
         "journals": [
             "Nat Neurosci",
             "Neuron",
             "Brain",
             "J Neurosci",
-            "Neuropsychopharmacology",
         ],
         "broad": [
-            # Filtered for psychiatric/developmental relevance
             '"Nature Neuroscience"[Journal] AND ("psychiatry"[Title/Abstract] OR "depression"[Title/Abstract] OR "schizophrenia"[Title/Abstract] OR "autism"[Title/Abstract] OR "development"[Title/Abstract])',
             '"brain development"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
             '"prefrontal cortex"[MeSH] AND ("adolescent"[MeSH] OR "development"[Title/Abstract])',
             '"neuroplasticity"[MeSH] AND ("psychiatric disorders"[Title/Abstract] OR "mental health"[Title/Abstract])',
-            '"cognitive development"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"executive function"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
             '"stress"[MeSH] AND ("brain"[Title/Abstract] OR "neurobiology"[Title/Abstract]) AND ("child"[MeSH] OR "adolescent"[MeSH])',
         ],
-        "max_articles": 12,
+        "max_articles": 10,
         "podcast_prompt": (
-            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 \u05d1\u05ea\u05d7\u05d5\u05dd \u05de\u05d3\u05e2\u05d9 \u05d4\u05de\u05d5\u05d7 \u05d5\u05e0\u05d5\u05d9\u05e8\u05d5\u05e4\u05e1\u05d9\u05db\u05d5\u05dc\u05d5\u05d2\u05d9\u05d4. "
-            "\u05d3\u05d2\u05e9 \u05e2\u05dc \u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05dc\u05e4\u05e1\u05d9\u05db\u05d9\u05d0\u05d8\u05e8\u05d9\u05d4 \u05e9\u05dc \u05d4\u05d9\u05dc\u05d3 \u05d5\u05dc\u05d4\u05d1\u05e0\u05ea \u05d4\u05de\u05e0\u05d2\u05e0\u05d5\u05e0\u05d9\u05dd \u05d4\u05e2\u05e6\u05d1\u05d9\u05d9\u05dd."
+            "צור דיון על ממצאי מדעי המוח המשמעותיים ביותר של השבוע. "
+            "דגש על השלכות לפסיכיאטריה של הילד ולהבנת המנגנונים העצביים "
+            "של הפרעות פסיכיאטריות."
         ),
     },
     {
-        # ── CLUSTER 5 ───────────────────────────────────────────────────────────
-        # Psychotherapy — children AND adults, evidence-based treatments
+        # ── CLUSTER 7 ────────────────────────────────────────────────────────────────────
+        # Psychotherapy & interventions — children and adults, evidence-based
         "id":       "psychotherapy",
         "label_en": "Psychotherapy & Interventions",
-        "label_he": "\u05e4\u05e1\u05d9\u05db\u05d5\u05ea\u05e8\u05e4\u05d9\u05d4 \u05d5\u05d4\u05ea\u05e2\u05e8\u05d1\u05d5\u05d9\u05d5\u05ea",
+        "label_he": "פסיכותרפיה והתערבויות",
         "journals": [
-            "J Consult Clin Psychol",
-            "Behav Res Ther",
             "Psychother Psychosom",
-            "Clin Child Fam Psychol Rev",
-            "Psychol Med",
+            "Clin Psychol Rev",
+            "Behav Res Ther",
+            "J Consult Clin Psychol",
         ],
         "broad": [
+            '"Int J Psychoanal"[Journal] OR "International Journal of Psychoanalysis"[Journal]',
             '"psychotherapy"[MeSH] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
             '"cognitive behavioral therapy"[Title/Abstract] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
             '"dialectical behavior therapy"[Title/Abstract]',
             '"parent training"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"family therapy"[MeSH] AND ("randomized controlled trial"[pt] OR "clinical trial"[pt])',
-            '"mindfulness"[Title/Abstract] AND ("mental health"[Title/Abstract] OR "depression"[Title/Abstract] OR "anxiety"[Title/Abstract]) AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
             '"trauma-focused"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
         ],
-        "max_articles": 12,
+        "max_articles": 10,
         "podcast_prompt": (
-            "\u05e6\u05d5\u05e8 \u05d3\u05d9\u05d5\u05df \u05de\u05e2\u05de\u05d9\u05e7 \u05e2\u05dc \u05d4\u05de\u05de\u05e6\u05d0\u05d9\u05dd \u05d4\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d4\u05e9\u05d1\u05d5\u05e2 \u05d1\u05e4\u05e1\u05d9\u05db\u05d5\u05ea\u05e8\u05e4\u05d9\u05d4 \u05d5\u05d4\u05ea\u05e2\u05e8\u05d1\u05d5\u05d9\u05d5\u05ea. "
-            "\u05db\u05dc\u05d5\u05dc \u05d4\u05ea\u05e2\u05e8\u05d1\u05d5\u05d9\u05d5\u05ea \u05dc\u05d9\u05dc\u05d3\u05d9\u05dd \u05d5\u05de\u05d1\u05d5\u05d2\u05e8\u05d9\u05dd. \u05d3\u05d2\u05e9 \u05e2\u05dc \u05d9\u05d9\u05e9\u05d5\u05dd \u05e7\u05dc\u05d9\u05e0\u05d9 \u05d5\u05e2\u05d3\u05d5\u05d9\u05d5\u05ea \u05d0\u05de\u05e4\u05d9\u05e8\u05d9\u05d5\u05ea."
+            "צור דיון על הממצאים המשמעותיים בפסיכותרפיה ובהתערבויות של השבוע. "
+            "כלול התערבויות לילדים, מתבגרים ומבוגרים. "
+            "דגש על יישום קליני ועדויות אמפיריות."
+        ),
+    },
+    {
+        # ── CLUSTER 8 ────────────────────────────────────────────────────────────────────
+        # Behavioral sciences — learning, reinforcement, social cognition
+        "id":       "behavioral_sciences",
+        "label_en": "Behavioral Sciences",
+        "label_he": "מדעי ההתנהגות",
+        "journals": [
+            "Behav Brain Sci",
+            "Psychol Sci",
+            "J Exp Psychol Gen",
+            "Behav Neurosci",
+        ],
+        "broad": [
+            '"learning"[MeSH] AND ("behavior"[Title/Abstract] OR "conditioning"[Title/Abstract]) AND ("child"[MeSH] OR "adolescent"[MeSH] OR "psychiatric"[Title/Abstract])',
+            '"reward"[Title/Abstract] AND ("adolescent"[MeSH] OR "development"[Title/Abstract]) AND ("brain"[Title/Abstract] OR "behavior"[Title/Abstract])',
+            '"social cognition"[Title/Abstract] AND ("autism"[MeSH] OR "schizophrenia"[MeSH] OR "child"[MeSH])',
+        ],
+        "max_articles": 10,
+        "podcast_prompt": (
+            "צור דיון על ממצאי מדעי ההתנהגות המשמעותיים ביותר של השבוע. "
+            "דגש על השלכות לפסיכיאטריה ולהבנת התנהגות אנושית — "
+            "למידה, חיזוק, קוגניציה חברתית."
+        ),
+    },
+    {
+        # ── CLUSTER 9 ────────────────────────────────────────────────────────────────────
+        # Cognition — cognitive psychology, cognitive neuroscience
+        "id":       "cognition",
+        "label_en": "Cognition & Cognitive Science",
+        "label_he": "קוגניציה ומדעי הקוגניציה",
+        "journals": [
+            "Psychol Rev",
+            "J Cogn Neurosci",
+            "Cogn Psychol",
+            "Cognition",
+            "J Exp Child Psychol",
+        ],
+        "broad": [
+            '"executive function"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"working memory"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "development"[Title/Abstract])',
+            '"attention"[MeSH] AND "development"[Title/Abstract] AND ("child"[MeSH] OR "infant"[MeSH])',
+            '"language development"[MeSH]',
+        ],
+        "max_articles": 10,
+        "podcast_prompt": (
+            "צור דיון על הממצאים המשמעותיים בתחום הקוגניציה של השבוע. "
+            "דגש על השלכות להתפתחות קוגניטיבית, להפרעות קוגניטיביות, "
+            "ולפסיכיאטריה של הילד."
+        ),
+    },
+    {
+        # ── CLUSTER 10 ───────────────────────────────────────────────────────────────────
+        # Child & adolescent miscellaneous (non-core journals, broad MeSH)
+        "id":       "child_adolescent_misc",
+        "label_en": "Child & Adolescent — Miscellaneous",
+        "label_he": "ילדים ומתבגרים — מגוון",
+        "journals": [],
+        "broad": [
+            # Broad MeSH — exclude core journals already covered by clusters 1+2
+            '"child psychiatry"[MeSH] NOT "J Am Acad Child Adolesc Psychiatry"[Journal] NOT "J Child Psychol Psychiatry"[Journal] NOT "Eur Child Adolesc Psychiatry"[Journal] NOT "Child Adolesc Mental Health"[Journal] NOT "Lancet Child Adolesc Health"[Journal] NOT "JAMA Pediatr"[Journal]',
+            '"adolescent psychiatry"[MeSH] NOT "J Am Acad Child Adolesc Psychiatry"[Journal] NOT "J Child Psychol Psychiatry"[Journal] NOT "Lancet Child Adolesc Health"[Journal]',
+            '"autism spectrum disorder"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH]) NOT "J Am Acad Child Adolesc Psychiatry"[Journal] NOT "J Child Psychol Psychiatry"[Journal]',
+            '"attention deficit disorder with hyperactivity"[MeSH] NOT "J Am Acad Child Adolesc Psychiatry"[Journal] NOT "J Child Psychol Psychiatry"[Journal]',
+            '"self-injurious behavior"[MeSH] AND "adolescent"[MeSH]',
+            '"eating disorders"[MeSH] AND "adolescent"[MeSH]',
+            '"anxiety disorders"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH]) NOT "J Am Acad Child Adolesc Psychiatry"[Journal]',
+        ],
+        "max_articles": 10,
+        "podcast_prompt": (
+            "צור דיון על מאמרים מגוונים ומעניינים בתחום ילדים ומתבגרים מהשבוע. "
+            "אלו מאמרים מכתבי עת שונים שלא כוסו בסקירות האחרות. "
+            "דגש על ממצאים מעניינים, מפתיעים, או בעלי חשיבות קלינית."
         ),
     },
 ]
@@ -828,6 +985,57 @@ def send_notification(nb_infos: list[dict], env: dict):
             break
 
 
+
+# ── Cleanup old project notebooks ─────────────────────────────────────────────
+def cleanup_old_notebooks(env: dict):
+    """Delete [PsychReview] project notebooks older than 4 weeks.
+
+    Only notebooks whose title starts with '[PsychReview]' are touched —
+    personal notebooks are never deleted.
+    """
+    cutoff = TODAY - timedelta(weeks=4)
+    print("\n\U0001f5d1\ufe0f  Cleaning up old [PsychReview] notebooks (older than 4 weeks)...")
+    try:
+        out = subprocess.run(
+            ["notebooklm", "list", "--json"],
+            capture_output=True, text=True, env=env, timeout=60,
+        )
+        data = json.loads(out.stdout.strip() or "{}")
+        notebooks = data.get("notebooks", [])
+    except Exception as e:
+        print(f"  WARNING: Could not list notebooks for cleanup: {e}")
+        return
+
+    deleted = 0
+    for nb in notebooks:
+        title = nb.get("title", "")
+        nb_id = nb.get("id", "")
+        if not title.startswith("[PsychReview]") or not nb_id:
+            continue
+        # Extract date from end of title: "[PsychReview] ... \u2014 YYYY-MM-DD"
+        m = re.search(r"(\d{4}-\d{2}-\d{2})$", title.strip())
+        if not m:
+            continue
+        try:
+            nb_date = datetime.strptime(m.group(1), "%Y-%m-%d")
+        except ValueError:
+            continue
+        if nb_date < cutoff:
+            result = subprocess.run(
+                ["notebooklm", "delete", "-n", nb_id, "--yes"],
+                capture_output=True, text=True, env=env, timeout=30,
+            )
+            if result.returncode == 0:
+                print(f"  Deleted: {title}")
+                deleted += 1
+            else:
+                print(f"  WARNING: Failed to delete {nb_id}: {result.stderr[:100]}")
+    if deleted == 0:
+        print("  No old project notebooks to delete.")
+    else:
+        print(f"  Deleted {deleted} old project notebook(s).")
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 def main():
     sep = "=" * 65
@@ -921,10 +1129,13 @@ def main():
         send_notification(nb_infos, env)
         return
 
+    # ── Clean up old project notebooks (keep last 4 weeks) ─────────────────────
+    cleanup_old_notebooks(env)
+
     # ── Phase 2: Create notebooks ─────────────────────────────────────────────
     print(f"\n\U0001f5d2\ufe0f  Creating {len(nb_infos)} notebooks...")
     for nb in nb_infos:
-        title = f"{nb['topic']['label_he']} \u2014 {DATE_STR}"
+        title = f"[PsychReview] {nb['topic']['label_he']} \u2014 {DATE_STR}"
         print(f"  Creating: {title}")
         nb_id, nb_url = create_notebook(title, env)
         nb["nb_id"]  = nb_id
