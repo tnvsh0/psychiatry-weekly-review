@@ -1059,7 +1059,27 @@ def main():
 
     # ── Auth pre-check: verify session is alive before doing any work ─────────
     if has_notebooklm:
-        print("Verifying NotebookLM session...")
+        print("Verifying & refreshing NotebookLM session...")
+
+        # Try to refresh auth tokens first (fixes "session expired" issues)
+        try:
+            from notebooklm import NotebookLMClient
+            import asyncio
+
+            async def refresh_tokens():
+                async with await NotebookLMClient.from_storage() as client:
+                    tokens = await client.refresh_auth()
+                    return tokens
+
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+            tokens = loop.run_until_complete(refresh_tokens())
+            loop.close()
+            print(f"  ✓ Auth tokens refreshed")
+        except Exception as e:
+            print(f"  ⚠ Could not refresh tokens: {e}")
+
+        # Now verify session with list command
         result = subprocess.run(
             ["notebooklm", "list", "--json"],
             capture_output=True, text=True, timeout=60,
@@ -1081,7 +1101,7 @@ def main():
                     pass
             has_notebooklm = False
         else:
-            print("Session is alive.")
+            print("  ✓ Session verified and ready.")
 
     # ── Phase 1: Search + Summaries ───────────────────────────────────────────
     nb_infos: list[dict] = []
