@@ -1,6 +1,9 @@
 #!/bin/bash
-# NotebookLM session keepalive — runs on the VM every 2 hours while VM is on.
-# Saves updated session cookies back to Secret Manager after each successful ping.
+# NotebookLM session keepalive — runs every 6h while VM is on.
+# Pings NotebookLM from the VM's static IP to reset Google's inactivity clock.
+# Critical: this MUST run from the same IP the user logged in from (the VM's
+# static IP, set up via Chrome Remote Desktop). Running from any other IP
+# will cause Google to invalidate the session.
 
 exec >> /var/log/keepalive.log 2>&1
 echo "--- Keepalive: $(date) ---"
@@ -8,15 +11,32 @@ echo "--- Keepalive: $(date) ---"
 export PATH=/opt/venv/bin:$PATH
 cd /opt/psychiatry-weekly-review
 
-export NOTEBOOKLM_AUTH_JSON=$(gcloud secrets versions access latest --secret=notebooklm-auth --project=psych-research-agent)
-python scripts/keepalive.py
-EXIT_CODE=$?
-
-# Save updated session cookies back to Secret Manager
 AUTH_FILE="$HOME/.notebooklm/storage_state.json"
-if [ -f "$AUTH_FILE" ] && [ $EXIT_CODE -eq 0 ]; then
-    gcloud secrets versions add notebooklm-auth \
-        --data-file="$AUTH_FILE" \
-        --project=psych-research-agent 2>/dev/null || true
-    echo "Session saved to Secret Manager."
+if [ ! -f "$AUTH_FILE" ]; then
+    echo "WARNING: $AUTH_FILE not found. Run 'notebooklm login' via Chrome Remote Desktop."
+    exit 0
 fi
+
+# Lightweight ping to keep session warm. Output is checked but exit is always
+# 0 — keepalive failure shouldn't crash anything.
+output=$(notebooklm list --json 2>&1) || true
+
+if echo "$output" | grep -qi "auth\|signin\|login\|expired\|redirect"; then
+    echo "WARNING: session appears expired."
+    echo "Connect via Chrome Remote Desktop and run: notebooklm login"
+    # Notify user via ntfy if configured
+    NTFY_TOPIC="psychiatry-review-tnvsh"
+    curl -s -X POST "https://ntfy.sh/${NTFY_TOPIC}" \
+        -H "Title: NotebookLM session expired" \
+        -H "Priority: high" \
+        -d "Connect to weekly-review-vm via Chrome Remote Desktop and run: notebooklm login" \
+        > /dev/null 2>&1 || true
+    exit 0
+fi
+
+echo "Session is alive."
+
+# Save back to Secret Manager (keeps a fresh backup)
+gcloud secrets versions add notebooklm-auth \
+    --data-file="$AUTH_FILE" \
+    --project=psych-research-agent > /dev/null 2>&1 || true

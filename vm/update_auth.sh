@@ -1,34 +1,25 @@
 #!/bin/bash
-# Manual auth refresh: Run this whenever auth expires
-# Usage: ./vm/update_auth.sh
+# DEPRECATED — do not use this in the new architecture.
 #
-# On local machine:
-#   1. notebooklm login
-#   2. ./vm/update_auth.sh
+# Old flow (BROKEN):
+#   1. notebooklm login on user's PC -> cookies tied to home IP
+#   2. ./vm/update_auth.sh -> upload cookies to Secret Manager
+#   3. VM pulls cookies from Secret Manager -> uses them from VM IP
+#   4. Google sees IP mismatch -> invalidates session within ~2 days
 #
-# This uploads the fresh session to Google Cloud Secret Manager for the VM
+# New flow (CORRECT):
+#   1. Connect to weekly-review-vm via Chrome Remote Desktop
+#      (https://remotedesktop.google.com/access)
+#   2. Inside the VM, run: notebooklm login
+#   3. Cookies are created from the VM's IP, used from same IP -> stable.
+#
+# See SETUP_VM_LOGIN.md for the full procedure.
 
-echo "=== Uploading NotebookLM session to Secret Manager ==="
-
-AUTH_FILE="$HOME/.notebooklm/storage_state.json"
-if [ ! -f "$AUTH_FILE" ]; then
-    echo "ERROR: $AUTH_FILE not found"
-    echo "Please run 'notebooklm login' first"
-    exit 1
-fi
-
-echo "Uploading to Google Cloud Secret Manager..."
-gcloud secrets versions add notebooklm-auth \
-    --data-file="$AUTH_FILE" \
-    --project=psych-research-agent
-
-if [ $? -eq 0 ]; then
-    echo ""
-    echo "SUCCESS! Auth has been updated in Secret Manager."
-    echo ""
-    echo "The VM will use this fresh session on the next run."
-    echo "You can verify with: ./vm/test_auth.sh"
-else
-    echo "ERROR: Failed to upload auth"
-    exit 1
-fi
+echo "ERROR: This script is deprecated."
+echo ""
+echo "The auth must be created from inside the VM, not uploaded from your PC."
+echo "Connect via Chrome Remote Desktop to weekly-review-vm and run:"
+echo "    notebooklm login"
+echo ""
+echo "See SETUP_VM_LOGIN.md for instructions."
+exit 1
