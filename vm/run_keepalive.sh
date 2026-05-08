@@ -8,10 +8,15 @@
 exec >> /var/log/keepalive.log 2>&1
 echo "--- Keepalive: $(date) ---"
 
+# Auth was created by 'User' inside the VM via Chrome Remote Desktop.
+# Cron runs as root, so we must explicitly target User's home and run
+# notebooklm as User (matching HOME for token paths).
 export PATH=/opt/venv/bin:$PATH
+export HOME=/home/User
+export NOTEBOOKLM_HOME=/home/User/.notebooklm
 cd /opt/psychiatry-weekly-review
 
-AUTH_FILE="$HOME/.notebooklm/storage_state.json"
+AUTH_FILE="/home/User/.notebooklm/storage_state.json"
 if [ ! -f "$AUTH_FILE" ]; then
     echo "WARNING: $AUTH_FILE not found. Run 'notebooklm login' via Chrome Remote Desktop."
     exit 0
@@ -19,7 +24,7 @@ fi
 
 # Lightweight ping to keep session warm. Output is checked but exit is always
 # 0 — keepalive failure shouldn't crash anything.
-output=$(notebooklm list --json 2>&1) || true
+output=$(sudo -u User -E /opt/venv/bin/notebooklm list --json 2>&1) || true
 
 if echo "$output" | grep -qi "auth\|signin\|login\|expired\|redirect"; then
     echo "WARNING: session appears expired."

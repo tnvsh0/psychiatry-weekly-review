@@ -9,13 +9,14 @@ exec >> "$LOG" 2>&1
 echo "=== Weekly review: $(date) ==="
 
 export PATH=/opt/venv/bin:$PATH
+# Auth was created by 'User' inside the VM via Chrome Remote Desktop.
+# Run the review as User so notebooklm finds the right home directory.
+export HOME=/home/User
+export NOTEBOOKLM_HOME=/home/User/.notebooklm
 cd /opt/psychiatry-weekly-review
 git pull --ff-only origin main
 
-# Auth lives on the VM filesystem in ~/.notebooklm/storage_state.json
-# (created via 'notebooklm login' from inside the VM via Chrome Remote Desktop).
-# Secret Manager is used as a backup only.
-AUTH_FILE="$HOME/.notebooklm/storage_state.json"
+AUTH_FILE="/home/User/.notebooklm/storage_state.json"
 if [ ! -f "$AUTH_FILE" ]; then
     echo "ERROR: $AUTH_FILE not found."
     echo "Connect via Chrome Remote Desktop and run: notebooklm login"
@@ -27,7 +28,7 @@ export GH_REPO="tnvsh0/psychiatry-weekly-review"
 export NTFY_TOPIC="psychiatry-review-tnvsh"
 export UI_URL="https://psychiatry-ui-690391711540.us-central1.run.app"
 
-python scripts/weekly_review.py
+sudo -u User -E /opt/venv/bin/python scripts/weekly_review.py
 EXIT_CODE=$?
 
 # Back up the (possibly refreshed) session to Secret Manager
