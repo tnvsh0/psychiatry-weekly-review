@@ -33,7 +33,7 @@ export UI_URL="https://psychiatry-ui-690391711540.us-central1.run.app"
 # sudo strips PATH for security even with -E, so we re-set it via env.
 # weekly_review.py shells out to `notebooklm` and `gh` — both must be findable.
 sudo -u User -E env "PATH=/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
-    /opt/venv/bin/python scripts/weekly_review.py
+    /opt/venv/bin/python -u scripts/weekly_review.py
 EXIT_CODE=$?
 
 # Back up the (possibly refreshed) session to Secret Manager
