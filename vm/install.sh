@@ -33,12 +33,13 @@ fi
 echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session
 chmod +x /etc/chrome-remote-desktop-session
 
-# Clone repo
+# Clone repo (owned by User so runtime can write to summaries/, podcasts/, .git)
 if [ ! -d /opt/psychiatry-weekly-review ]; then
     git clone https://github.com/tnvsh0/psychiatry-weekly-review.git /opt/psychiatry-weekly-review
 else
     git -C /opt/psychiatry-weekly-review pull --ff-only
 fi
+chown -R User:User /opt/psychiatry-weekly-review
 
 # Python venv + dependencies
 python3 -m venv /opt/venv

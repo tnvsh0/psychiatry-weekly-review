@@ -14,7 +14,9 @@ export PATH=/opt/venv/bin:$PATH
 export HOME=/home/User
 export NOTEBOOKLM_HOME=/home/User/.notebooklm
 cd /opt/psychiatry-weekly-review
-git pull --ff-only origin main
+# Run git pull as User so any new files stay User-owned (script writes to
+# summaries/ and podcasts/ as User; root-owned files would break next run).
+sudo -u User git pull --ff-only origin main
 
 AUTH_FILE="/home/User/.notebooklm/storage_state.json"
 if [ ! -f "$AUTH_FILE" ]; then
