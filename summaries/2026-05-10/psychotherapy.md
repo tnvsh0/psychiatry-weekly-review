@@ -46,7 +46,7 @@
 ### Who benefits from a digital intervention for appearance concerns? A randomized controlled trial of a large mixed-gender sample
 **כתב עת:** 🔷 J Consult Clin Psychol *(IF: 5.2)* | **מחברים:** Patel TA, Cougle JR | **תאריך:** 2026 Apr
 
-<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article xml:lang="en" article-type="research-article" dtd-version="1.4"><!--The publisher of this article does not allow downloading of the full text in XML form.--><front><journal-meta><journal-id journal-id-type="nlm-ta">J Consult Clin Psychol</journal-id><journal-id journal-id-type="iso-abbrev">J Consult Clin Psychol</jo…
+(Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42080861/)
 
@@ -101,4 +101,4 @@
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-10/05/2026 07:00 UTC*
+*נוצר אוטומטית ב-10/05/2026 07:33 UTC*

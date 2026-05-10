@@ -37,7 +37,7 @@ synthesis. We included 1505 prevalence datapoints from 780 studies eligible for 
 ### Adjunctive Antipsychotics in Major Depressive Disorder: A Systematic Review and Network Meta-Analysis
 **כתב עת:** ⭐ JAMA Psychiatry *(IF: 25.8)* | **מחברים:** McIntyre RS et al. | **תאריך:** 2026 May 6
 
-(Abstract not available)
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article xml:lang="en" article-type="research-article" dtd-version="1.4"><!--The publisher of this article does not allow downloading of the full text in XML form.--><front><journal-meta><journal-id journal-id-type="nlm-ta">JAMA Psychiatry</journal-id><journal-id journal-id-type="iso-abbrev">JAMA Psychiatry</journal-id><jour…
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42090141/)
 
@@ -119,4 +119,4 @@ synthesis. We included 1505 prevalence datapoints from 780 studies eligible for 
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-10/05/2026 07:00 UTC*
+*נוצר אוטומטית ב-10/05/2026 07:33 UTC*

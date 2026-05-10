@@ -28,7 +28,7 @@
 ### Cash Transfers in the Perinatal Period and Investigations of Infant Maltreatment
 **כתב עת:** ⭐ JAMA Pediatr *(IF: 27.6)* | **מחברים:** Agarwal S et al. | **תאריך:** 2026 May 7
 
-(Abstract not available)
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article xml:lang="en" article-type="research-article" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">JAMA Pediatr</journal-id><journal-id jou…
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42097130/)
 
@@ -55,7 +55,7 @@
 ### Percentage Errors in Results Section of Abstract and Text
 **כתב עת:** ⭐ JAMA Pediatr *(IF: 27.6)* | **מחברים:** Unknown | **תאריך:** 2026 May 1
 
-<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article xml:lang="en" article-type="correction" dtd-version="1.4"><!--The publisher of this article does not allow downloading of the full text in XML form.--><front><journal-meta><journal-id journal-id-type="nlm-ta">JAMA Pediatr</journal-id><journal-id journal-id-type="iso-abbrev">JAMA Pediatr</journal-id><journal-id journ…
+(Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42081223/)
 
@@ -74,4 +74,4 @@
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-10/05/2026 07:00 UTC*
+*נוצר אוטומטית ב-10/05/2026 07:33 UTC*

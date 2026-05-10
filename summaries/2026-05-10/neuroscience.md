@@ -34,21 +34,21 @@
 
 ---
 
-### Microglia-dependent regulation of fear memory extinction
-**כתב עת:** ⭐ Nat Neurosci *(IF: 25.0)* | **מחברים:** Liu Y et al. | **תאריך:** 2026 May 4
-
-(Abstract not available)
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42082816/)
-
----
-
 ### Neurons for seeing and imagining
 **כתב עת:** ⭐ Nat Neurosci *(IF: 25.0)* | **מחברים:** Howells H | **תאריך:** 2026 May
 
 (Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42104103/)
+
+---
+
+### Microglia-dependent regulation of fear memory extinction
+**כתב עת:** ⭐ Nat Neurosci *(IF: 25.0)* | **מחברים:** Liu Y et al. | **תאריך:** 2026 May 4
+
+(Abstract not available)
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42082816/)
 
 ---
 
@@ -101,4 +101,4 @@
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-10/05/2026 07:00 UTC*
+*נוצר אוטומטית ב-10/05/2026 07:33 UTC*

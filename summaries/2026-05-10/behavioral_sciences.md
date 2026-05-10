@@ -37,7 +37,7 @@
 ### Learning for the Long Run: Children Increasingly Prioritize Generalizable Knowledge in Tool Selection
 **כתב עת:** 📄 Dev Sci *(IF: 4.4)* | **מחברים:** Walker CM et al. | **תאריך:** 2026 Jul
 
-<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article id="desc70215" xml:lang="en" article-type="brief-report" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">Dev Sci</journal-id><journal-…
+(Abstract not available)
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42087394/)
 
@@ -82,7 +82,7 @@
 ### The sound of silence: Binding and retrieval of silence in distractor-response binding
 **כתב עת:** 📄 Atten Percept Psychophys | **מחברים:** Nemeth M et al. | **תאריך:** 2026 May 5
 
-(Abstract not available)
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article article-type="research-article" xml:lang="en" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">Atten Percept Psychophys</journal-id><jo…
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42086955/)
 
@@ -101,4 +101,4 @@
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-10/05/2026 07:00 UTC*
+*נוצר אוטומטית ב-10/05/2026 07:33 UTC*
