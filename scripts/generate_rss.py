@@ -3,8 +3,10 @@
 Generate a podcast RSS feed (iTunes / Spotify compatible) from the weekly
 podcasts that have been uploaded to GitHub Releases.
 
-Output: podcast/feed.xml — committed to the repo and served via GitHub Pages
-(branch=main, dir=/podcast) at https://<user>.github.io/<repo>/feed.xml
+Output: docs/feed.xml — committed to the repo and served via GitHub Pages
+(branch=main, dir=/docs) at https://<user>.github.io/<repo>/feed.xml
+
+(GitHub Pages only allows / or /docs as the source folder, so we use /docs.)
 
 Required environment variables:
     GH_REPO     "owner/repo" — e.g. "tnvsh0/psychiatry-weekly-review"
@@ -251,7 +253,7 @@ def build_feed(repo: str, out_path: Path) -> None:
 
 def main() -> int:
     repo = _resolve_repo()
-    out_path = Path(__file__).resolve().parent.parent / "podcast" / "feed.xml"
+    out_path = Path(__file__).resolve().parent.parent / "docs" / "feed.xml"
     build_feed(repo, out_path)
     return 0
 

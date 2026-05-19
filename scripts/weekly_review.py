@@ -1113,7 +1113,7 @@ def update_rss_feed(env: dict) -> None:
             print(f"  WARNING: generate_rss.py failed: {result.stderr[:200]}")
             return
         # Commit + push the new feed.xml
-        subprocess.run(["git", "add", "podcast/feed.xml"], check=False)
+        subprocess.run(["git", "add", "docs/feed.xml"], check=False)
         status = subprocess.run(
             ["git", "diff", "--cached", "--quiet"], capture_output=True,
         )
