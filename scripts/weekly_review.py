@@ -198,9 +198,11 @@ TOPICS = [
         "broad": [],
         "max_articles": 40,
         "podcast_prompt": (
-            "צור דיון מעמיק ומרתק על הממצאים המשמעותיים ביותר של השבוע "
-            "בפסיכיאטריה של הילד והמתבגר. דגש על רלוונטיות קלינית, "
-            "גישות טיפוליות חדשות, ומשמעות הממצאים למתמחה בפסיכיאטריה."
+            "Produce a comprehensive discussion of this week's key findings in child "
+            "and adolescent psychiatry. Cover each paper according to its own focus — "
+            "methods, findings, clinical implications, and what a child/adolescent "
+            "psychiatry resident should take from it. "
+            "Generate the podcast entirely in Hebrew."
         ),
     },
     {
@@ -223,9 +225,10 @@ TOPICS = [
         ],
         "max_articles": 20,
         "podcast_prompt": (
-            "צור דיון על המאמרים בעלי ההשפעה הגבוהה ביותר מהשבוע הנוגעים לילדים ומתבגרים "
-            "מכתבי עת מובילים. דגש על חשיבות הממצאים, שינויים פוטנציאליים בפרקטיקה, "
-            "ומשמעות עבור פסיכיאטריית ילד ומתבגר."
+            "Discuss the high-impact child/adolescent papers of the week from leading "
+            "medical journals. For each: significance, potential practice changes, "
+            "and relevance to child and adolescent psychiatry. "
+            "Generate the podcast entirely in Hebrew."
         ),
     },
     {
@@ -250,9 +253,13 @@ TOPICS = [
         ],
         "max_articles": 12,
         "podcast_prompt": (
-            "צור דיון על הממצאים הקליניים המשמעותיים בפסיכיאטריה הכללית של השבוע. "
-            "דגש על מה מהפסיכיאטריה הכללית רלוונטי לטיפול בילדים ומתבגרים, "
-            "ומה המתמחה יכול ללמוד מהפסיכיאטריה הכללית."
+            "Review this week's key clinical findings in general (adult) psychiatry. "
+            "Discuss each paper on its own terms — methods, findings, and clinical "
+            "implications for the population the study addresses. "
+            "Do NOT filter or shorten papers because they focus on adults. "
+            "Where a finding has a clear bearing on child or adolescent psychiatry, "
+            "add a brief note — but only when the connection arises from the paper itself. "
+            "Generate the podcast entirely in Hebrew."
         ),
     },
     {
@@ -274,9 +281,12 @@ TOPICS = [
         ],
         "max_articles": 10,
         "podcast_prompt": (
-            "צור דיון על המחקר הביולוגי והפסיכופרמקולוגי המשמעותי ביותר של השבוע. "
-            "דגש על מנגנונים ביולוגיים, גנטיקה, וטיפולים תרופתיים — "
-            "מה המשמעות לפסיכיאטריית ילד ומתבגר?"
+            "Review this week's key biological and psychopharmacological research. "
+            "Discuss mechanisms, genetics, and pharmacological findings in the "
+            "original context of each study. Cover adult-focused findings fully. "
+            "Add notes on relevance to child/adolescent psychiatry only when the "
+            "study itself supports such a link. "
+            "Generate the podcast entirely in Hebrew."
         ),
     },
     {
@@ -303,9 +313,10 @@ TOPICS = [
         ],
         "max_articles": 10,
         "podcast_prompt": (
-            "צור דיון על המחקרים המשמעותיים בתחום התפתחות הילד של השבוע. "
-            "דגש על השלכות לפסיכיאטריה של הילד, חשיבות ממצאים "
-            "להתפתחות תקינה ופתולוגית, התקשרות, והתערבות מוקדמת."
+            "Review this week's key research in child development. Cover developmental "
+            "science, attachment, early intervention, and the implications for "
+            "understanding normative and pathological development. "
+            "Generate the podcast entirely in Hebrew."
         ),
     },
     {
@@ -329,9 +340,13 @@ TOPICS = [
         ],
         "max_articles": 10,
         "podcast_prompt": (
-            "צור דיון על ממצאי מדעי המוח המשמעותיים ביותר של השבוע. "
-            "דגש על השלכות לפסיכיאטריה של הילד ולהבנת המנגנונים העצביים "
-            "של הפרעות פסיכיאטריות."
+            "Review this week's neuroscience findings most relevant to child and "
+            "adolescent psychiatry. These journals are NOT psychiatry-dedicated, "
+            "so filter for studies that bear on psychiatric disorders, brain "
+            "development, childhood/adolescent neural circuits, or mechanisms "
+            "underlying disorders seen in young patients. Skip purely basic "
+            "findings without clinical or developmental relevance. "
+            "Generate the podcast entirely in Hebrew."
         ),
     },
     {
@@ -356,9 +371,10 @@ TOPICS = [
         ],
         "max_articles": 10,
         "podcast_prompt": (
-            "צור דיון על הממצאים המשמעותיים בפסיכותרפיה ובהתערבויות של השבוע. "
-            "כלול התערבויות לילדים, מתבגרים ומבוגרים. "
-            "דגש על יישום קליני ועדויות אמפיריות."
+            "Review this week's key findings in psychotherapy and interventions, "
+            "covering treatments for children, adolescents, and adults. Emphasize "
+            "clinical implementation and the strength of the empirical evidence. "
+            "Generate the podcast entirely in Hebrew."
         ),
     },
     {
@@ -380,9 +396,13 @@ TOPICS = [
         ],
         "max_articles": 10,
         "podcast_prompt": (
-            "צור דיון על ממצאי מדעי ההתנהגות המשמעותיים ביותר של השבוע. "
-            "דגש על השלכות לפסיכיאטריה ולהבנת התנהגות אנושית — "
-            "למידה, חיזוק, קוגניציה חברתית."
+            "Review this week's behavioral-science findings most relevant to child "
+            "and adolescent psychiatry. These journals are NOT psychiatry-dedicated, "
+            "so filter for studies on learning, reinforcement, social cognition, or "
+            "behavior with bearing on psychiatric disorders in children or "
+            "adolescents. Skip purely basic findings unconnected to clinical or "
+            "developmental questions. "
+            "Generate the podcast entirely in Hebrew."
         ),
     },
     {
@@ -406,9 +426,13 @@ TOPICS = [
         ],
         "max_articles": 10,
         "podcast_prompt": (
-            "צור דיון על הממצאים המשמעותיים בתחום הקוגניציה של השבוע. "
-            "דגש על השלכות להתפתחות קוגניטיבית, להפרעות קוגניטיביות, "
-            "ולפסיכיאטריה של הילד."
+            "Review this week's cognitive-science findings most relevant to child "
+            "and adolescent psychiatry. These journals are NOT psychiatry-dedicated, "
+            "so filter for studies on cognitive development, executive function, "
+            "attention, working memory, or language with bearing on psychiatric "
+            "disorders or developmental psychopathology. Skip purely basic findings "
+            "unconnected to clinical or developmental questions. "
+            "Generate the podcast entirely in Hebrew."
         ),
     },
     {
@@ -430,12 +454,28 @@ TOPICS = [
         ],
         "max_articles": 10,
         "podcast_prompt": (
-            "צור דיון על מאמרים מגוונים ומעניינים בתחום ילדים ומתבגרים מהשבוע. "
-            "אלו מאמרים מכתבי עת שונים שלא כוסו בסקירות האחרות. "
-            "דגש על ממצאים מעניינים, מפתיעים, או בעלי חשיבות קלינית."
+            "Discuss a varied set of child- and adolescent-related papers from this "
+            "week — papers from journals not covered in the other reviews. Highlight "
+            "interesting, surprising, or clinically meaningful findings. "
+            "Generate the podcast entirely in Hebrew."
         ),
     },
 ]
+
+
+# ── Shared tone guidance — appended to every podcast prompt ───────────────────
+# Lives separately so we can edit once and have it apply to all 10 clusters
+# (and any new clusters added later). Written in English for instruction
+# fidelity; the closing sentence reminds the model to keep the Hebrew output
+# balanced as well.
+TONE_GUIDANCE = (
+    " Tone: professional, balanced, precise. AVOID superlatives "
+    "('groundbreaking', 'paradigm-shifting', 'stunning', 'revolutionary', "
+    "'changes everything we knew'). Describe findings in measured language. "
+    "Always note methodological limitations and effect sizes. "
+    "The difference between 'effective' and 'highly effective' matters — "
+    "do not inflate. Maintain the same balanced tone when speaking Hebrew."
+)
 
 
 # ── Step 1: PubMed Search ──────────────────────────────────────────────────────
@@ -754,10 +794,12 @@ def start_podcast(nb_id: str, prompt: str, env: dict) -> str | None:
         ["notebooklm", "use", nb_id],
         capture_output=True, env=env, timeout=30,
     )
+    full_prompt = prompt + TONE_GUIDANCE
     try:
         out = subprocess.run([
-            "notebooklm", "generate", "audio", prompt,
-            "--format", "deep-dive", "--language", "he", "--json",
+            "notebooklm", "generate", "audio", full_prompt,
+            "--format", "deep-dive", "--length", "long",
+            "--language", "he", "--json",
         ], capture_output=True, text=True, env=env, timeout=120)
         data = json.loads(out.stdout.strip())
         return data.get("task_id") or None
@@ -1036,6 +1078,64 @@ def cleanup_old_notebooks(env: dict):
         print(f"  Deleted {deleted} old project notebook(s).")
 
 
+# ── Drive backup + RSS feed (delegated to sibling scripts) ────────────────────
+SCRIPTS_DIR = Path(__file__).resolve().parent
+
+
+def backup_to_drive(env: dict) -> None:
+    """Run scripts/backup_to_drive.py for today's folder. Non-fatal on failure."""
+    if not env.get("GDRIVE_SERVICE_ACCOUNT_JSON") or not env.get("GDRIVE_FOLDER_ID"):
+        return  # feature simply off — silent
+    print("\n\U0001f4be Backing up to Google Drive...")
+    try:
+        subprocess.run(
+            [sys.executable, str(SCRIPTS_DIR / "backup_to_drive.py"),
+             "--date", DATE_STR],
+            env=env, check=False, timeout=600,
+        )
+    except Exception as e:
+        print(f"  WARNING: Drive backup failed (non-fatal): {e}")
+
+
+def update_rss_feed(env: dict) -> None:
+    """Regenerate podcast/feed.xml and commit + push the change. Non-fatal."""
+    repo = env.get("GH_REPO") or env.get("GITHUB_REPOSITORY", "")
+    if not repo:
+        print("\n  RSS feed skipped: GH_REPO not set.")
+        return
+    print("\n\U0001f4e1 Updating podcast RSS feed...")
+    try:
+        result = subprocess.run(
+            [sys.executable, str(SCRIPTS_DIR / "generate_rss.py")],
+            env=env, capture_output=True, text=True, timeout=120,
+        )
+        if result.returncode != 0:
+            print(f"  WARNING: generate_rss.py failed: {result.stderr[:200]}")
+            return
+        # Commit + push the new feed.xml
+        subprocess.run(["git", "add", "docs/feed.xml"], check=False)
+        status = subprocess.run(
+            ["git", "diff", "--cached", "--quiet"], capture_output=True,
+        )
+        if status.returncode == 0:
+            print("  No feed change to commit.")
+            return
+        subprocess.run(
+            ["git", "commit", "-m", f"feed: update for {DATE_STR}"],
+            capture_output=True, text=True, check=False,
+        )
+        push = subprocess.run(
+            ["git", "push", "origin", "main"],
+            capture_output=True, text=True, check=False,
+        )
+        if push.returncode == 0:
+            print("  RSS feed published.")
+        else:
+            print(f"  WARNING: git push failed: {push.stderr.strip()[:200]}")
+    except Exception as e:
+        print(f"  WARNING: RSS feed update failed (non-fatal): {e}")
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 def main():
     sep = "=" * 65
@@ -1184,7 +1284,8 @@ def main():
             time.sleep(10)   # short pause to avoid rate-limiting
 
     # ── Phase 5: Wait for all podcasts (parallel on Google's side) ────────────
-    wait_for_all_podcasts(nb_infos, env, max_wait=2700)
+    # Long-format podcasts take longer to render — allow up to 75 minutes.
+    wait_for_all_podcasts(nb_infos, env, max_wait=4500)
 
     # ── Phase 6: Download + Upload ────────────────────────────────────────────
     print("\n\u2b07\ufe0f  Downloading & uploading completed podcasts...")
@@ -1198,7 +1299,11 @@ def main():
                 nb["podcast_url"] = url
                 print(f"  -> {url}")
 
-    # ── Phase 7: Notify ───────────────────────────────────────────────────────
+    # ── Phase 7: Drive backup (MP3s) + RSS feed for podcast distribution ────
+    backup_to_drive(env)
+    update_rss_feed(env)
+
+    # ── Phase 8: Notify ───────────────────────────────────────────────────────
     send_notification(nb_infos, env)
 
     # ── Final summary ─────────────────────────────────────────────────────────

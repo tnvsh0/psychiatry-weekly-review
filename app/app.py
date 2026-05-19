@@ -246,9 +246,20 @@ def generate_custom_podcast(selected: list[dict], prompt: str) -> str | None:
     st.info("Source uploaded. Waiting 40s for indexing...")
     time.sleep(40)
 
+    wrapped_prompt = (
+        f"User request (in Hebrew): {prompt}\n\n"
+        "Produce a comprehensive Hebrew-language podcast addressing the user's "
+        "request above. Discuss each selected paper on its own terms. "
+        "Tone: professional, balanced, precise. AVOID superlatives "
+        "('groundbreaking', 'paradigm-shifting', 'stunning', 'revolutionary'). "
+        "Note methodological limitations and effect sizes. "
+        "Generate the podcast entirely in Hebrew."
+    )
+
     subprocess.run([
-        "notebooklm", "generate", "audio", prompt,
-        "--format", "deep-dive", "--language", "he", "--json",
+        "notebooklm", "generate", "audio", wrapped_prompt,
+        "--format", "deep-dive", "--length", "long",
+        "--language", "he", "--json",
     ], capture_output=True, text=True, env=env, timeout=60)
 
     return nb_url
