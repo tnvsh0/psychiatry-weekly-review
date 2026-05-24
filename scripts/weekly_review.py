@@ -213,8 +213,24 @@ TOPICS = [
         "label_he": "השפעה גבוהה — ילד ומתבגר",
         "journals": [
             "Lancet Child Adolesc Health",           # IF~45 — dedicated child journal
-            "JAMA Pediatr",                          # IF~27 — mental-health filtered via broad
+            "JAMA Pediatr",                          # IF~27 — filtered to mental-health content
         ],
+        # Per-journal filter — applied to each journal query so we keep ONLY
+        # mental-health / psychiatry-relevant articles from generalist pediatric
+        # and child-health journals (JAMA Pediatr publishes plenty of non-MH
+        # pediatrics; Lancet Child Adolesc Health publishes oncology / ID etc.).
+        "journal_filter": (
+            '("mental health"[Title/Abstract] OR "psychiat*"[Title/Abstract] '
+            'OR "psychopathology"[Title/Abstract] OR "ADHD"[Title/Abstract] '
+            'OR "attention-deficit"[Title/Abstract] OR "autism"[Title/Abstract] '
+            'OR "anxiety"[Title/Abstract] OR "depress*"[Title/Abstract] '
+            'OR "behavior*"[Title/Abstract] OR "suicid*"[Title/Abstract] '
+            'OR "self-harm"[Title/Abstract] OR "eating disorder*"[Title/Abstract] '
+            'OR "substance use"[Title/Abstract] OR "trauma*"[Title/Abstract] '
+            'OR "neurodevelopmental"[Title/Abstract] OR "tic*"[Title/Abstract] '
+            'OR "OCD"[Title/Abstract] OR "obsessive"[Title/Abstract] '
+            'OR "psychosis"[Title/Abstract] OR "schizophrenia"[Title/Abstract])'
+        ),
         "broad": [
             '"JAMA Psychiatry"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "youth"[Title/Abstract] OR "pediatric"[Title/Abstract])',
             '"Lancet Psychiatry"[Journal] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "youth"[Title/Abstract])',
@@ -303,6 +319,22 @@ TOPICS = [
             "Infant Ment Health J",
             "J Abnorm Child Psychol",
         ],
+        # Filter developmental journals (Dev Psychol, Dev Sci, Child Dev publish
+        # plenty of non-clinical developmental research) for content relevant to
+        # child & adolescent psychiatry. Dev Psychopathol, IMHJ, J Abnorm Child
+        # Psychol are inherently relevant — the filter just doesn't shrink them.
+        "journal_filter": (
+            '("psychiat*"[Title/Abstract] OR "mental health"[Title/Abstract] '
+            'OR "psychopathology"[Title/Abstract] OR "disorder*"[Title/Abstract] '
+            'OR "ADHD"[Title/Abstract] OR "autism"[Title/Abstract] '
+            'OR "anxiety"[Title/Abstract] OR "depress*"[Title/Abstract] '
+            'OR "internalizing"[Title/Abstract] OR "externalizing"[Title/Abstract] '
+            'OR "trauma*"[Title/Abstract] OR "attachment"[Title/Abstract] '
+            'OR "abuse"[Title/Abstract] OR "neglect"[Title/Abstract] '
+            'OR "adverse"[Title/Abstract] OR "behavior problems"[Title/Abstract] '
+            'OR "self-regulation"[Title/Abstract] OR "emotion regulation"[Title/Abstract] '
+            'OR "suicid*"[Title/Abstract] OR "self-harm"[Title/Abstract])'
+        ),
         "broad": [
             '"adverse childhood experiences"[Title/Abstract]',
             '"parenting"[MeSH] AND ("child behavior"[MeSH] OR "mental health"[Title/Abstract])',
@@ -331,21 +363,24 @@ TOPICS = [
             "Brain",
             "J Neurosci",
         ],
-        "broad": [
-            '"Nature Neuroscience"[Journal] AND ("psychiatry"[Title/Abstract] OR "depression"[Title/Abstract] OR "schizophrenia"[Title/Abstract] OR "autism"[Title/Abstract] OR "development"[Title/Abstract])',
-            '"brain development"[MeSH] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"prefrontal cortex"[MeSH] AND ("adolescent"[MeSH] OR "development"[Title/Abstract])',
-            '"neuroplasticity"[MeSH] AND ("psychiatric disorders"[Title/Abstract] OR "mental health"[Title/Abstract])',
-            '"stress"[MeSH] AND ("brain"[Title/Abstract] OR "neurobiology"[Title/Abstract]) AND ("child"[MeSH] OR "adolescent"[MeSH])',
-        ],
-        "max_articles": 10,
+        # No journal_filter — goal is a general overview of what is happening
+        # in top neuroscience journals, regardless of direct psychiatric link.
+        "broad": [],
+        "max_articles": 12,
         "podcast_prompt": (
-            "Review this week's neuroscience findings most relevant to child and "
-            "adolescent psychiatry. These journals are NOT psychiatry-dedicated, "
-            "so filter for studies that bear on psychiatric disorders, brain "
-            "development, childhood/adolescent neural circuits, or mechanisms "
-            "underlying disorders seen in young patients. Skip purely basic "
-            "findings without clinical or developmental relevance. "
+            "Review this week's neuroscience findings from the top journals — "
+            "Nature Neuroscience, Neuron, Brain, J Neurosci. The goal is a "
+            "GENERAL OVERVIEW of what is happening in neuroscience this week. "
+            "Cover the most important and recent papers regardless of direct "
+            "psychiatric relevance. Discuss each paper on its own terms: "
+            "the scientific question, the methods, the findings, and the "
+            "significance within neuroscience. "
+            "Where a finding has a clear bearing on child or adolescent psychiatry "
+            "(neural development, circuits underlying ADHD / autism / mood / "
+            "psychosis, pharmacological mechanisms, stress neurobiology), add a "
+            "brief connecting note for the listener — but do NOT let perceived "
+            "clinical relevance drive paper selection or how much time you spend. "
+            "Treat each paper according to its own merits. "
             "Generate the podcast entirely in Hebrew."
         ),
     },
@@ -361,19 +396,28 @@ TOPICS = [
             "Behav Res Ther",
             "J Consult Clin Psychol",
         ],
+        # No journal_filter — goal is a general overview of psychotherapy
+        # research, both for children and adults.
         "broad": [
             '"Int J Psychoanal"[Journal] OR "International Journal of Psychoanalysis"[Journal]',
             '"psychotherapy"[MeSH] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
             '"cognitive behavioral therapy"[Title/Abstract] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
             '"dialectical behavior therapy"[Title/Abstract]',
-            '"parent training"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"trauma-focused"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
+            '"psychodynamic"[Title/Abstract] AND ("randomized controlled trial"[pt] OR "meta-analysis"[pt])',
         ],
-        "max_articles": 10,
+        "max_articles": 12,
         "podcast_prompt": (
-            "Review this week's key findings in psychotherapy and interventions, "
-            "covering treatments for children, adolescents, and adults. Emphasize "
-            "clinical implementation and the strength of the empirical evidence. "
+            "Review this week's key findings in psychotherapy research from the "
+            "leading journals (Psychother Psychosom, Clin Psychol Rev, Behav Res "
+            "Ther, J Consult Clin Psychol, Int J Psychoanal). The goal is a "
+            "GENERAL OVERVIEW of what is happening in psychotherapy research — "
+            "cover the most important and recent papers regardless of age group. "
+            "Adult-focused psychotherapy work should NOT be downplayed. "
+            "For each paper: methods (RCT design, comparator, blinding), effect "
+            "sizes, attrition, and implementation feasibility. Where a paper "
+            "obviously bears on child or adolescent practice (e.g. parent "
+            "training, trauma-focused work, school-based intervention), add a "
+            "brief connecting note — but do NOT let this drive selection. "
             "Generate the podcast entirely in Hebrew."
         ),
     },
@@ -389,19 +433,23 @@ TOPICS = [
             "J Exp Psychol Gen",
             "Behav Neurosci",
         ],
-        "broad": [
-            '"learning"[MeSH] AND ("behavior"[Title/Abstract] OR "conditioning"[Title/Abstract]) AND ("child"[MeSH] OR "adolescent"[MeSH] OR "psychiatric"[Title/Abstract])',
-            '"reward"[Title/Abstract] AND ("adolescent"[MeSH] OR "development"[Title/Abstract]) AND ("brain"[Title/Abstract] OR "behavior"[Title/Abstract])',
-            '"social cognition"[Title/Abstract] AND ("autism"[MeSH] OR "schizophrenia"[MeSH] OR "child"[MeSH])',
-        ],
-        "max_articles": 10,
+        # No journal_filter — goal is a general overview of what is happening
+        # in top behavioral-science journals, not only psychiatry-relevant work.
+        "broad": [],
+        "max_articles": 12,
         "podcast_prompt": (
-            "Review this week's behavioral-science findings most relevant to child "
-            "and adolescent psychiatry. These journals are NOT psychiatry-dedicated, "
-            "so filter for studies on learning, reinforcement, social cognition, or "
-            "behavior with bearing on psychiatric disorders in children or "
-            "adolescents. Skip purely basic findings unconnected to clinical or "
-            "developmental questions. "
+            "Review this week's behavioral-science findings from the leading "
+            "journals (Behavioral and Brain Sciences, Psychological Science, "
+            "J Experimental Psychology: General, Behavioral Neuroscience). The "
+            "goal is a GENERAL OVERVIEW of what is happening in the field — "
+            "learning, reinforcement, social cognition, behavior — regardless "
+            "of direct psychiatric relevance. "
+            "Discuss each paper on its own terms: theoretical claim, "
+            "experimental design, findings, and implications within behavioral "
+            "science. Where a finding bears on child or adolescent psychiatry "
+            "(learning mechanisms relevant to anxiety / conduct, reward "
+            "processing in ADHD / addiction, social cognition in autism), add "
+            "a brief connecting note — but do NOT let this drive paper selection. "
             "Generate the podcast entirely in Hebrew."
         ),
     },
@@ -418,20 +466,24 @@ TOPICS = [
             "Cognition",
             "J Exp Child Psychol",
         ],
-        "broad": [
-            '"executive function"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH])',
-            '"working memory"[Title/Abstract] AND ("child"[MeSH] OR "adolescent"[MeSH] OR "development"[Title/Abstract])',
-            '"attention"[MeSH] AND "development"[Title/Abstract] AND ("child"[MeSH] OR "infant"[MeSH])',
-            '"language development"[MeSH]',
-        ],
-        "max_articles": 10,
+        # No journal_filter — goal is a general overview of what is happening
+        # in top cognition journals, not only studies pre-filtered for child use.
+        "broad": [],
+        "max_articles": 12,
         "podcast_prompt": (
-            "Review this week's cognitive-science findings most relevant to child "
-            "and adolescent psychiatry. These journals are NOT psychiatry-dedicated, "
-            "so filter for studies on cognitive development, executive function, "
-            "attention, working memory, or language with bearing on psychiatric "
-            "disorders or developmental psychopathology. Skip purely basic findings "
-            "unconnected to clinical or developmental questions. "
+            "Review this week's cognitive-science findings from the top journals "
+            "(Psychological Review, J Cognitive Neuroscience, Cognitive "
+            "Psychology, Cognition, J Experimental Child Psychology). The goal "
+            "is a GENERAL OVERVIEW of cognition research — cover the most "
+            "important and recent papers regardless of direct psychiatric "
+            "relevance. "
+            "Discuss each paper on its own terms: the cognitive question, the "
+            "paradigm, the findings, theoretical significance. Where a finding "
+            "bears on child or adolescent psychiatry (executive function in "
+            "ADHD, working memory deficits, attention, language development "
+            "and developmental psychopathology), add a brief connecting note — "
+            "but do NOT let this drive paper selection or how much time you "
+            "spend on a paper. "
             "Generate the podcast entirely in Hebrew."
         ),
     },
@@ -463,18 +515,80 @@ TOPICS = [
 ]
 
 
-# ── Shared tone guidance — appended to every podcast prompt ───────────────────
-# Lives separately so we can edit once and have it apply to all 10 clusters
-# (and any new clusters added later). Written in English for instruction
-# fidelity; the closing sentence reminds the model to keep the Hebrew output
-# balanced as well.
+# ── Shared tone / structure guidance — appended to every podcast prompt ──────
+# Lives separately so we can edit once and have it apply to all clusters
+# (regular + spotlight). Written in English for instruction fidelity; the
+# Hebrew disclaimer is given verbatim because that's what listeners hear.
 TONE_GUIDANCE = (
-    " Tone: professional, balanced, precise. AVOID superlatives "
-    "('groundbreaking', 'paradigm-shifting', 'stunning', 'revolutionary', "
-    "'changes everything we knew'). Describe findings in measured language. "
-    "Always note methodological limitations and effect sizes. "
-    "The difference between 'effective' and 'highly effective' matters — "
-    "do not inflate. Maintain the same balanced tone when speaking Hebrew."
+    "\n\n"
+    "========================================================================\n"
+    "MANDATORY OPENING — the FIRST thing said in the podcast, verbatim:\n"
+    "========================================================================\n"
+    "Open with this exact Hebrew disclaimer, read calmly and clearly:\n"
+    "'הפודקאסט הבא נוצר באופן אוטומטי באמצעות בינה מלאכותית. התוכן עלול להכיל "
+    "אי-דיוקים, פרשנויות שגויות או המצאות. אין להסתמך עליו לקבלת החלטות "
+    "קליניות. חובה לבדוק כל פרט באופן עצמאי מול המקור המקורי.'\n"
+    "\n"
+    "========================================================================\n"
+    "FRAMING (after the disclaimer):\n"
+    "========================================================================\n"
+    "A short, episode-specific framing is welcome and even encouraged — one or "
+    "two sentences that tie together what is genuinely interesting about THIS "
+    "week's particular papers (a tension between two studies, a surprising "
+    "finding, a clinically actionable result). Make the framing UNIQUE to this "
+    "episode's content. It must be content-driven, not boilerplate.\n"
+    "\n"
+    "STRICTLY FORBIDDEN openings (these have been overused and are banal):\n"
+    "  • Any explanation of what child psychiatry is as a field\n"
+    "  • Comparing psychiatry to 'general medicine looking for a fracture line'\n"
+    "  • Calling the field 'fuzzy', 'ambiguous', 'lacking clear boundaries', or\n"
+    "    contrasting it with other medical specialties as a framing device\n"
+    "  • Meta-commentary on the difficulty / uniqueness of the specialty\n"
+    "  • Generic statements about 'staying current with the literature'\n"
+    "  • Any opening that could equally fit any other episode\n"
+    "If you find yourself reaching for those framings, skip the framing entirely\n"
+    "and dive straight into the first paper.\n"
+    "\n"
+    "========================================================================\n"
+    "JOURNAL ATTRIBUTION (MANDATORY, every paper):\n"
+    "========================================================================\n"
+    "For EVERY paper you discuss, state the journal name aloud — e.g. "
+    "'המאמר פורסם ב-JAMA Psychiatry' or 'מאמר ב-Lancet Psychiatry'. "
+    "Non-negotiable. Listeners need to know where each finding comes from.\n"
+    "\n"
+    "========================================================================\n"
+    "DEPTH AND COVERAGE:\n"
+    "========================================================================\n"
+    "Cover EVERY paper in the source material — do not skip papers because they "
+    "seem less interesting. Spend 2-4 minutes per paper: methods, findings with "
+    "effect sizes, limitations, and clinical implications. The podcast should be "
+    "as LONG and EXHAUSTIVE as possible. Listeners want depth, not a teaser. "
+    "Do not summarize multiple papers in one sentence — each gets its own time.\n"
+    "\n"
+    "========================================================================\n"
+    "CONTINUITY WITH PREVIOUS WEEK ('משבוע שעבר' section):\n"
+    "========================================================================\n"
+    "The source material may end with a section titled 'משבוע שעבר — לקונטקסט "
+    "בלבד'. The papers listed there were COVERED IN LAST WEEK'S PODCAST — they "
+    "are NOT new content this week.\n"
+    "  • Do NOT re-summarize those papers as if they were new.\n"
+    "  • Do NOT spend airtime on them on their own merit.\n"
+    "  • DO use them as context: if a paper THIS WEEK is by the same authors, "
+    "extends the same line of work, contradicts last week's finding, or "
+    "addresses the same clinical question — name the connection briefly "
+    "('כפי שראינו בשבוע שעבר, Smith וחבריו פרסמו ב-X; השבוע...'). This makes "
+    "the podcast feel like an ongoing series rather than 10 disconnected episodes.\n"
+    "  • If there is no meaningful connection — ignore the section entirely.\n"
+    "\n"
+    "========================================================================\n"
+    "TONE:\n"
+    "========================================================================\n"
+    "Professional, balanced, precise. AVOID superlatives ('groundbreaking', "
+    "'paradigm-shifting', 'stunning', 'revolutionary', 'changes everything we "
+    "knew'). Describe findings in measured language. Always note methodological "
+    "limitations and effect sizes. The difference between 'effective' and "
+    "'highly effective' matters — do not inflate. Maintain the same balanced "
+    "tone when speaking Hebrew.\n"
 )
 
 
@@ -539,15 +653,38 @@ def _esummary(pmids: list[str], topic_label: str) -> list[dict]:
 
 def search_topic(topic: dict) -> list[dict]:
     """Search PubMed for one topic.
-    Journal-specific queries run first -> top journals are always represented."""
+    Journal-specific queries run first -> top journals are always represented.
+
+    Supports two optional topic-level fields:
+      * journal_filter — extra PubMed query string ANDed to every per-journal
+        search. Used by clusters that pull from generalist journals
+        (JAMA Pediatrics, Developmental Psychology) where we want only
+        psychiatry / mental-health content.
+      * _forced_articles — list of pre-fetched article dicts. When present,
+        skip PubMed entirely and use them directly. Used by spotlight reviews
+        so each chosen review gets its own dedicated notebook + podcast.
+    """
     label = topic["label_en"]
     print(f"\n[{label}]")
 
+    # Spotlight reviews: bypass PubMed search, use the article we already have
+    if topic.get("_forced_articles"):
+        articles = list(topic["_forced_articles"])
+        for a in articles:
+            a["impact_factor"] = get_journal_if(a["journal"])
+        articles.sort(key=lambda a: -a["impact_factor"])
+        print(f"  Spotlight: 1 review article forced into this notebook.")
+        return articles
+
     seen: dict[str, bool] = {}   # pmid -> True, insertion-ordered
+    journal_filter = (topic.get("journal_filter") or "").strip()
 
     # 1. Journal-targeted searches (high priority)
     for journal in topic.get("journals", []):
-        ids = _esearch(f'"{journal}"[Journal]', retmax=6)
+        q = f'"{journal}"[Journal]'
+        if journal_filter:
+            q = f'{q} AND {journal_filter}'
+        ids = _esearch(q, retmax=6)
         new = [p for p in ids if p not in seen]
         for p in new:
             seen[p] = True
@@ -575,6 +712,173 @@ def search_topic(topic: dict) -> list[dict]:
     return articles
 
 
+# ── Step 1b: Spotlight reviews (one dedicated podcast per major review) ───────
+# Important review articles (Stahl on antipsychotics, big meta-analyses, etc.)
+# deserve their own podcast — when packed into a 10-paper cluster they get
+# only a minute of airtime. This pass finds them and adds dedicated topics.
+
+SPOTLIGHT_HIGH_SIGNAL_AUTHORS = [
+    # Psychopharmacology
+    "Stahl SM",
+    # Translational psychiatry / neurodevelopment
+    "Insel TR", "Cuthbert BN", "Pine DS", "Leibenluft E",
+    # Child & adolescent psychiatry
+    "Volkmar FR", "Rapoport JL", "Sonuga-Barke E", "Polanczyk GV",
+    "Findling RL", "Vitiello B", "Wagner KD",
+    # ADHD / pharmacology
+    "Faraone SV", "Buitelaar JK", "Banaschewski T", "Coghill D",
+    # Schizophrenia / psychosis
+    "Correll CU", "Kahn RS", "Howes OD",
+    # Neurobiology / circuits
+    "Krystal JH", "Nestler EJ",
+]
+
+SPOTLIGHT_JOURNALS = [
+    "JAMA Psychiatry", "Lancet Psychiatry", "World Psychiatry",
+    "Am J Psychiatry", "Mol Psychiatry", "Biol Psychiatry",
+    "Neuropsychopharmacology", "J Am Acad Child Adolesc Psychiatry",
+    "Lancet Child Adolesc Health", "JAMA", "JAMA Pediatr",
+    "N Engl J Med", "Lancet", "BMJ", "Nature Medicine",
+    "Nature Reviews Neuroscience", "Nature Reviews Disease Primers",
+]
+
+# Cap on number of spotlight podcasts per week — keeps the output manageable
+# and the most-important reviews surface to the top via sort-by-IF.
+MAX_SPOTLIGHT_REVIEWS = 3
+
+
+def _esearch_reldate(query: str, reldate: int, retmax: int = 12) -> list[str]:
+    """esearch variant with caller-specified reldate window."""
+    try:
+        r = requests.get(PUBMED_BASE + "esearch.fcgi", params={
+            "db": "pubmed", "term": query,
+            "reldate": reldate, "datetype": "edat",
+            "retmax": retmax, "retmode": "json", "sort": "relevance",
+        }, timeout=30)
+        r.raise_for_status()
+        return r.json().get("esearchresult", {}).get("idlist", [])
+    except Exception as e:
+        print(f"    Warning: esearch error: {e}")
+        return []
+    finally:
+        time.sleep(0.4)
+
+
+def find_spotlight_reviews() -> list[dict]:
+    """Find recent high-impact REVIEW articles deserving dedicated podcasts.
+
+    Each return value is a topic dict (same shape as entries in TOPICS) with a
+    `_forced_articles` field carrying the single article. search_topic() will
+    pick this up and skip PubMed.
+
+    Looks back 14 days (broader than the 8-day window used for regular topics)
+    so important reviews are not missed if they were published just before the
+    weekly run.
+    """
+    print("\n🔍 Searching for spotlight review articles (last 14 days)...")
+
+    pub_type_filter = (
+        '("review"[Publication Type] OR "systematic review"[Publication Type] '
+        'OR "meta-analysis"[Publication Type])'
+    )
+    journal_clause = "(" + " OR ".join(
+        f'"{j}"[Journal]' for j in SPOTLIGHT_JOURNALS
+    ) + ")"
+    author_clause = "(" + " OR ".join(
+        f'"{a}"[Author]' for a in SPOTLIGHT_HIGH_SIGNAL_AUTHORS
+    ) + ")"
+
+    queries = [
+        # Reviews in top journals — captures big meta-analyses, NEJM reviews, etc.
+        f'{pub_type_filter} AND {journal_clause}',
+        # Reviews by named high-signal authors — catches Stahl etc. even if the
+        # journal is not on the spotlight list above.
+        f'{pub_type_filter} AND {author_clause}',
+    ]
+
+    seen: dict[str, bool] = {}
+    for q in queries:
+        ids = _esearch_reldate(q, reldate=14, retmax=12)
+        for p in ids:
+            if p not in seen:
+                seen[p] = True
+
+    if not seen:
+        print("  No spotlight reviews this week.")
+        return []
+
+    articles = _esummary(list(seen.keys()), "Spotlight Review")
+    for a in articles:
+        a["impact_factor"] = get_journal_if(a["journal"])
+
+    # Keep only those in high-IF journals (>=10). Stahl in JCAP (IF~3.5) still
+    # passes through the author route because we keep IF >= 10 OR known author.
+    known_authors_lc = {a.lower() for a in SPOTLIGHT_HIGH_SIGNAL_AUTHORS}
+    def _has_signal_author(article: dict) -> bool:
+        # Check whether any high-signal author name appears in the authors string
+        authors_lc = article.get("authors", "").lower()
+        return any(name in authors_lc for name in known_authors_lc)
+
+    articles = [
+        a for a in articles
+        if a["impact_factor"] >= 10 or _has_signal_author(a)
+    ]
+    articles.sort(key=lambda a: -a["impact_factor"])
+    articles = articles[:MAX_SPOTLIGHT_REVIEWS]
+
+    if not articles:
+        print("  No spotlight reviews this week (after filtering).")
+        return []
+
+    print(f"  Found {len(articles)} spotlight review(s):")
+    for a in articles:
+        print(f"    • {a['journal']} (IF {a['impact_factor']:.1f}): {a['title'][:70]}")
+
+    spotlight_topics: list[dict] = []
+    for a in articles:
+        pmid = a["pmid"]
+        # Short label — notebook titles have length limits in NotebookLM
+        title_short = a["title"][:50] + ("…" if len(a["title"]) > 50 else "")
+        first_author = a["authors"].split(",")[0].replace(" et al.", "").strip()
+        spotlight_topics.append({
+            "id":       f"spotlight_{pmid}",
+            "label_en": f"Spotlight: {first_author} — {title_short}",
+            "label_he": f"מאמר סקירה: {first_author} — {title_short}",
+            "journals": [],
+            "broad":    [],
+            "max_articles": 1,
+            "_forced_articles": [a],
+            "podcast_prompt": (
+                f"This is a DEDICATED, single-paper deep-dive podcast on one "
+                f"high-impact review article:\n"
+                f"  Title: \"{a['title']}\"\n"
+                f"  Authors: {a['authors']}\n"
+                f"  Journal: {a['journal']} (IF: {a['impact_factor']:.1f})\n"
+                f"  Type: review / systematic review / meta-analysis\n\n"
+                "Treat this as a LONG, comprehensive single-paper podcast — "
+                "every section of the review deserves real discussion. "
+                "Cover: (a) the clinical or scientific question motivating the "
+                "review, (b) the methodology (for a systematic review: search "
+                "strategy, inclusion criteria, risk-of-bias assessment, "
+                "heterogeneity I², publication bias; for a narrative review: "
+                "the author's framework and how they structure the evidence), "
+                "(c) the synthesis of evidence with effect sizes and confidence "
+                "intervals where given, (d) controversies and counter-arguments, "
+                "(e) limitations of the evidence base, (f) clinical implications "
+                "for everyday practice. "
+                "If this is a Stahl-style psychopharmacology review: name the "
+                "receptors, mechanisms, pharmacokinetics, and clinical pearls "
+                "carefully — that level of mechanistic detail is what makes "
+                "Stahl reviews valuable. "
+                "For a child / adolescent psychiatry resident: emphasize what "
+                "should change in clinical practice, what remains uncertain, "
+                "what to do differently tomorrow morning. "
+                "Generate the podcast entirely in Hebrew."
+            ),
+        })
+    return spotlight_topics
+
+
 # -- Step 2: Fetch article text (full text via PMC when available) -------------
 def _fetch_pmc_id(pmid: str) -> str | None:
     """Return PMC ID for this PubMed article, or None if not open-access."""
@@ -595,19 +899,37 @@ def _fetch_pmc_id(pmid: str) -> str | None:
     return None
 
 
-def _parse_abstract(raw_text: str) -> str:
-    """Extract abstract section from PubMed efetch plain-text output."""
-    lines = [ln.strip() for ln in raw_text.strip().split("\n") if ln.strip()]
-    abstract_lines, in_abstract = [], False
-    for line in lines:
-        if "Abstract" in line[:30] or line.upper().startswith("ABSTRACT"):
-            in_abstract = True
-            continue
-        if in_abstract and any(line.startswith(x) for x in ["PMID:", "DOI:", "Copyright", "©"]):
-            break
-        if in_abstract:
-            abstract_lines.append(line)
-    return " ".join(abstract_lines) or "(Abstract not available)"
+def _fetch_abstract_xml(pmid: str) -> str:
+    """Fetch a PubMed abstract via the XML endpoint and assemble it.
+
+    The XML format is far more reliable than the plain-text rendering — it
+    explicitly tags AbstractText elements (and labels structured-abstract
+    sections like BACKGROUND / METHODS / RESULTS / CONCLUSIONS), so we never
+    have to guess where the abstract starts or ends.
+    """
+    import xml.etree.ElementTree as ET
+    try:
+        r = requests.get(PUBMED_BASE + "efetch.fcgi", params={
+            "db": "pubmed", "id": pmid,
+            "rettype": "abstract", "retmode": "xml",
+        }, timeout=20)
+        if r.status_code != 200:
+            return "(Abstract not available)"
+        try:
+            root = ET.fromstring(r.content)
+        except ET.ParseError:
+            return "(Abstract not available)"
+
+        parts: list[str] = []
+        for elem in root.iter("AbstractText"):
+            label = (elem.get("Label") or "").strip()
+            text = " ".join(elem.itertext()).strip()
+            if not text:
+                continue
+            parts.append(f"{label.upper()}: {text}" if label else text)
+        return "\n\n".join(parts) if parts else "(Abstract not available)"
+    except Exception:
+        return "(Abstract not available)"
 
 
 def fetch_article_text(articles: list[dict]) -> list[dict]:
@@ -642,15 +964,9 @@ def fetch_article_text(articles: list[dict]) -> list[dict]:
             except Exception:
                 pass
 
-        # Fall back to abstract
-        try:
-            r = requests.get(PUBMED_BASE + "efetch.fcgi", params={
-                "db": "pubmed", "id": pmid,
-                "rettype": "abstract", "retmode": "text",
-            }, timeout=20)
-            article["abstract"] = _parse_abstract(r.text)
-        except Exception:
-            article["abstract"] = "(Could not fetch abstract)"
+        # Fall back to abstract — uses XML format for reliable parsing of
+        # structured abstracts (BACKGROUND / METHODS / RESULTS / CONCLUSIONS).
+        article["abstract"] = _fetch_abstract_xml(pmid)
 
         if (i + 1) % 10 == 0:
             print(f"  {i+1}/{len(articles)} done  (full-text: {pmc_count})")
@@ -658,6 +974,59 @@ def fetch_article_text(articles: list[dict]) -> list[dict]:
 
     print(f"  Done: {pmc_count}/{len(articles)} articles with PMC full text.")
     return articles
+
+# ── Step 2b: Load previous week's articles (continuity / "Last Week" section) ─
+def load_previous_week_articles() -> dict[str, list[dict]]:
+    """Find the most recent past articles.json (strictly before DATE_STR) and
+    return its articles grouped by topic_id.
+
+    The articles.json is committed to the repo every week, so any past run's
+    data is available on disk. Used to add a "משבוע שעבר" section to each
+    cluster's Markdown summary — gives NotebookLM context for continuity
+    without re-covering the same papers.
+
+    Returns an empty dict if there is no previous week or the file is missing.
+    """
+    sum_dir = Path("summaries")
+    if not sum_dir.exists():
+        return {}
+
+    # Find all YYYY-MM-DD subdirs strictly before today's date
+    past_dates: list[str] = []
+    for sub in sum_dir.iterdir():
+        if not sub.is_dir():
+            continue
+        try:
+            datetime.strptime(sub.name, "%Y-%m-%d")
+        except ValueError:
+            continue
+        if sub.name < DATE_STR:
+            past_dates.append(sub.name)
+
+    if not past_dates:
+        return {}
+
+    past_dates.sort(reverse=True)
+    for date_str in past_dates:
+        json_file = sum_dir / date_str / "articles.json"
+        if not json_file.exists():
+            continue
+        try:
+            data = json.loads(json_file.read_text(encoding="utf-8"))
+        except Exception as e:
+            print(f"  Warning: could not load {json_file}: {e}")
+            continue
+
+        by_topic: dict[str, list[dict]] = {}
+        for a in data:
+            tid = a.get("topic_id", "")
+            if tid:
+                by_topic.setdefault(tid, []).append(a)
+        print(f"  Loaded previous week ({date_str}): {len(data)} articles across {len(by_topic)} topics.")
+        return by_topic
+
+    return {}
+
 
 # ── Step 3a: Save articles.json (for Streamlit UI) ────────────────────────────
 def save_articles_json(nb_infos: list[dict]) -> None:
@@ -689,8 +1058,19 @@ def save_articles_json(nb_infos: list[dict]) -> None:
 
 
 # ── Step 3b: Create per-topic Markdown summary ─────────────────────────────────
-def create_topic_summary(topic: dict, articles: list[dict]) -> str:
-    """Write summaries/{DATE}/{topic_id}.md and return the path string."""
+def create_topic_summary(
+    topic: dict,
+    articles: list[dict],
+    prev_week_articles: list[dict] | None = None,
+) -> str:
+    """Write summaries/{DATE}/{topic_id}.md and return the path string.
+
+    If `prev_week_articles` is provided (top papers from the same topic in last
+    week's run), a "משבוע שעבר" section is appended at the end as context.
+    The podcast prompt instructs NotebookLM not to re-cover those papers as
+    new content, but to draw connections when this week's papers extend or
+    relate to them.
+    """
     date_range = f"{WEEK_START.strftime('%d/%m/%Y')} \u2013 {TODAY.strftime('%d/%m/%Y')}"
 
     t1 = sum(1 for a in articles if a.get("impact_factor", 0) >= 15)
@@ -713,8 +1093,11 @@ def create_topic_summary(topic: dict, articles: list[dict]) -> str:
 
     for a in articles:
         abstract = a.get("abstract", "")
-        if len(abstract) > 500:
-            abstract = abstract[:500] + "\u2026"
+        # Generous limit (2000 chars) so NotebookLM gets the full structured
+        # abstract (BACKGROUND / METHODS / RESULTS / CONCLUSIONS) per paper \u2014
+        # this is what drives podcast depth.
+        if len(abstract) > 2000:
+            abstract = abstract[:2000] + "\u2026"
         if_val = a.get("impact_factor", 0)
         if if_val > 0:
             journal_str = f"{if_badge(if_val)} {a['journal']} *(IF: {if_val:.1f})*"
@@ -732,7 +1115,37 @@ def create_topic_summary(topic: dict, articles: list[dict]) -> str:
             "",
         ]
 
+    # \u2500\u2500 "Last Week" section \u2014 context for continuity \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+    # Lists last week's top papers in this same topic. The podcast prompt tells
+    # NotebookLM to use this as CONTEXT only (not new content), and to draw
+    # connections when this week's papers extend / contradict / build on them.
+    if prev_week_articles:
+        top_prev = sorted(
+            prev_week_articles,
+            key=lambda a: -a.get("impact_factor", 0),
+        )[:5]
+        lines += [
+            "",
+            "---",
+            "",
+            "## \U0001f4c5 \u05de\u05e9\u05d1\u05d5\u05e2 \u05e9\u05e2\u05d1\u05e8 \u2014 \u05dc\u05e7\u05d5\u05e0\u05d8\u05e7\u05e1\u05d8 \u05d1\u05dc\u05d1\u05d3",
+            "",
+            "> \u05d4\u05de\u05d0\u05de\u05e8\u05d9\u05dd \u05d4\u05d1\u05d0\u05d9\u05dd \u05e0\u05d3\u05d5\u05e0\u05d5 \u05d1\u05e4\u05e8\u05e7 \u05d4\u05e7\u05d5\u05d3\u05dd \u05e9\u05dc \u05e0\u05d5\u05e9\u05d0 \u05d6\u05d4. "
+            "**\u05d0\u05dc \u05ea\u05db\u05e1\u05d4 \u05d0\u05d5\u05ea\u05dd \u05db\u05ea\u05d5\u05db\u05df \u05d7\u05d3\u05e9.** "
+            "\u05d0\u05dd \u05de\u05d0\u05de\u05e8 \u05de\u05d4\u05e9\u05d1\u05d5\u05e2 \u05d4\u05e0\u05d5\u05db\u05d7\u05d9 \u05de\u05de\u05e9\u05d9\u05da, \u05e1\u05d5\u05ea\u05e8 \u05d0\u05d5 \u05de\u05e8\u05d7\u05d9\u05d1 \u05de\u05d0\u05de\u05e8 \u05de\u05db\u05d0\u05df \u2014 \u05e6\u05d9\u05d9\u05df \u05d0\u05ea \u05d4\u05e7\u05e9\u05e8 \u05d1\u05e7\u05e6\u05e8\u05d4. "
+            "\u05d0\u05d7\u05e8\u05ea \u2014 \u05d0\u05d9\u05df \u05e6\u05d5\u05e8\u05da \u05dc\u05d4\u05ea\u05d9\u05d9\u05d7\u05e1 \u05d0\u05dc\u05d9\u05d4\u05dd.",
+            "",
+        ]
+        for a in top_prev:
+            j = a.get("journal", "?")
+            au = a.get("authors", "?")
+            t = a.get("title", "?")
+            lines.append(f"- **{j}** \u2014 {au} \u2014 *{t}*")
+        lines.append("")
+
     lines += [
+        "---",
+        "",
         "## \U0001f4dd \u05d4\u05e2\u05e8\u05d5\u05ea",
         "- \u05de\u05d0\u05de\u05e8\u05d9\u05dd \u05e0\u05de\u05e6\u05d0\u05d5 \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea \u05d3\u05e8\u05da PubMed E-utilities API",
         "- \u05d4\u05e1\u05d9\u05db\u05d5\u05de\u05d9\u05dd \u05de\u05d1\u05d5\u05e1\u05e1\u05d9\u05dd \u05e2\u05dc \u05ea\u05e7\u05e6\u05d9\u05e8\u05d9\u05dd (Abstracts) \u05d1\u05dc\u05d1\u05d3",
@@ -873,7 +1286,14 @@ def download_podcast(nb_id: str, artifact_id: str, topic_id: str, env: dict) -> 
     )
     if result.returncode == 0 and path.exists() and path.stat().st_size > 0:
         size_mb = path.stat().st_size / (1024 * 1024)
-        print(f"  Downloaded {topic_id}: {size_mb:.1f} MB")
+        # A "long" deep-dive podcast in Hebrew with 10 articles should be well
+        # over 5 MB. Anything under ~3 MB usually means generation got cut
+        # short or produced a tiny artifact — flag it so we can investigate.
+        if size_mb < 3.0:
+            print(f"  ⚠ WARNING: {topic_id} podcast is unusually small "
+                  f"({size_mb:.1f} MB) — generation may have been truncated.")
+        else:
+            print(f"  Downloaded {topic_id}: {size_mb:.1f} MB")
         return str(path)
     print(f"  ERROR: Download failed: {result.stderr[:200]}")
     return None
@@ -925,7 +1345,13 @@ def commit_summaries_to_github(env: dict):
 
 
 # ── Upload to GitHub Release ───────────────────────────────────────────────────
-def upload_to_github_release(podcast_path: str, topic: dict, env: dict) -> str | None:
+def upload_to_github_release(
+    podcast_path: str,
+    topic: dict,
+    env: dict,
+    episode_number: int | None = None,
+    episode_total: int | None = None,
+) -> str | None:
     tag    = f"weekly-{DATE_STR}-{topic['id']}"
     # Support both GitHub Actions (GITHUB_REPOSITORY) and Cloud Run (GH_REPO)
     repo   = env.get("GITHUB_REPOSITORY") or env.get("GH_REPO", "")
@@ -935,9 +1361,16 @@ def upload_to_github_release(podcast_path: str, topic: dict, env: dict) -> str |
         print("  WARNING: GITHUB_REPOSITORY not set")
         return None
 
+    # Episode number prefix \u2014 e.g. "(3/12) " \u2014 surfaces in the release title
+    # (and downstream in the RSS feed) so the user can see episode progress
+    # in any podcast app.
+    ep_prefix = ""
+    if episode_number and episode_total:
+        ep_prefix = f"({episode_number}/{episode_total}) "
+
     subprocess.run([
         "gh", "release", "create", tag, podcast_path,
-        "--title", f"\U0001f4da {topic['label_he']} \u2014 {DATE_STR}",
+        "--title", f"\U0001f4da {ep_prefix}{topic['label_he']} \u2014 {DATE_STR}",
         "--notes", f"{topic['label_en']} weekly literature review {DATE_STR}\n\n*Generated automatically*",
         "--repo", repo,
     ], capture_output=True, text=True, env=env, timeout=180)
@@ -972,7 +1405,10 @@ def send_notification(nb_infos: list[dict], env: dict):
     ]
     for nb in nb_infos:
         icon = "\U0001f399\ufe0f" if nb.get("podcast_url") else ("\U0001f4d3" if nb.get("nb_url") else "\U0001f4cb")
-        body_lines.append(f"  {icon} {nb['topic']['label_he']}: {len(nb['articles'])} \u05de\u05d0\u05de\u05e8\u05d9\u05dd")
+        ep_num = nb.get("episode_number")
+        ep_total = nb.get("episode_total")
+        ep_prefix = f"({ep_num}/{ep_total}) " if ep_num and ep_total else ""
+        body_lines.append(f"  {icon} {ep_prefix}{nb['topic']['label_he']}: {len(nb['articles'])} \u05de\u05d0\u05de\u05e8\u05d9\u05dd")
     if ready_podcasts:
         body_lines.append(f"\n\u2705 {ready_podcasts}/{len(nb_infos)} \u05e4\u05d5\u05d3\u05e7\u05d0\u05e1\u05d8\u05d9\u05dd \u05de\u05d5\u05db\u05e0\u05d9\u05dd.")
 
@@ -980,9 +1416,12 @@ def send_notification(nb_infos: list[dict], env: dict):
     actions = []
     for nb in nb_infos:
         if nb.get("podcast_url") and len(actions) < 3:
+            ep_num = nb.get("episode_number")
+            ep_total = nb.get("episode_total")
+            ep_prefix = f"({ep_num}/{ep_total}) " if ep_num and ep_total else ""
             actions.append({
                 "action": "view",
-                "label":  f"\U0001f399\ufe0f {nb['topic']['label_he']}",
+                "label":  f"\U0001f399\ufe0f {ep_prefix}{nb['topic']['label_he']}",
                 "url":    nb["podcast_url"],
             })
 
@@ -1226,19 +1665,59 @@ def main():
             "podcast_url":   None,
         })
 
+    # Spotlight reviews — each high-impact review gets its own dedicated podcast,
+    # in addition to (not instead of) the regular cluster podcasts.
+    for stopic in find_spotlight_reviews():
+        articles = search_topic(stopic)  # uses _forced_articles internally
+        if not articles:
+            continue
+        all_articles.extend(articles)
+        nb_infos.append({
+            "topic":         stopic,
+            "articles":      articles,
+            "summary_path":  None,
+            "nb_id":         None,
+            "nb_url":        None,
+            "artifact_id":   None,
+            "podcast_ready": False,
+            "podcast_path":  None,
+            "podcast_url":   None,
+        })
+
     if not nb_infos:
         print("ERROR: No articles found in any topic!")
         send_notification([], env)
         sys.exit(1)
 
+    # ── Assign episode numbers (X/Y) within this week's batch ─────────────────
+    # Order: regular cluster topics first (in TOPICS order), then spotlight
+    # reviews (highest IF first). This is the natural progression a listener
+    # would follow. The number shows in the notebook title, the GitHub release
+    # title, the ntfy notification, and the RSS feed — so the user can track
+    # what they have already listened to.
+    total_episodes = len(nb_infos)
+    for idx, nb in enumerate(nb_infos, start=1):
+        nb["episode_number"] = idx
+        nb["episode_total"]  = total_episodes
+    print(f"\n📋 This week: {total_episodes} podcast episode(s) to produce.")
+
     # Fetch text for ALL articles in one pass (PMC full text when available)
     fetch_article_text(all_articles)
 
-    # Save articles.json for web UI, then per-topic summaries
+    # Save articles.json for web UI, then per-topic summaries.
     save_articles_json(nb_infos)
+
+    # Load previous week's articles so each summary can include a "משבוע שעבר"
+    # context section. Empty dict (and no section) if this is the first run.
+    print("\n\U0001f4c5 Loading previous week for continuity...")
+    prev_week = load_previous_week_articles()
+
     print("\n\U0001f4dd Creating topic summaries...")
     for nb in nb_infos:
-        nb["summary_path"] = create_topic_summary(nb["topic"], nb["articles"])
+        prev_for_topic = prev_week.get(nb["topic"]["id"], [])
+        nb["summary_path"] = create_topic_summary(
+            nb["topic"], nb["articles"], prev_for_topic,
+        )
 
     # Commit summaries to GitHub regardless of NotebookLM status
     print("\n\U0001f4e4 Committing summaries to GitHub...")
@@ -1255,7 +1734,8 @@ def main():
     # ── Phase 2: Create notebooks ─────────────────────────────────────────────
     print(f"\n\U0001f5d2\ufe0f  Creating {len(nb_infos)} notebooks...")
     for nb in nb_infos:
-        title = f"[PsychReview] {nb['topic']['label_he']} \u2014 {DATE_STR}"
+        ep = f"({nb['episode_number']}/{nb['episode_total']})"
+        title = f"[PsychReview] {ep} {nb['topic']['label_he']} \u2014 {DATE_STR}"
         print(f"  Creating: {title}")
         nb_id, nb_url = create_notebook(title, env)
         nb["nb_id"]  = nb_id
@@ -1295,7 +1775,10 @@ def main():
             nb["podcast_path"] = path
             if path:
                 print(f"  Uploading {nb['topic']['label_en']}...")
-                url = upload_to_github_release(path, nb["topic"], env)
+                url = upload_to_github_release(
+                    path, nb["topic"], env,
+                    nb.get("episode_number"), nb.get("episode_total"),
+                )
                 nb["podcast_url"] = url
                 print(f"  -> {url}")
 

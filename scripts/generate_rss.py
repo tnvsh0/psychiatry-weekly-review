@@ -20,11 +20,17 @@ Optional environment variables:
 """
 
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+
+
+# Matches the "(N/M)" episode-number prefix that weekly_review.py embeds into
+# the release title (e.g. "📚 (3/12) פסיכיאטריה ביולוגית — 2026-05-24").
+EPISODE_NUM_RE = re.compile(r"\((\d+)\s*/\s*(\d+)\)")
 
 
 # Topic labels — id -> (Hebrew title, English title, episode description).
@@ -207,9 +213,37 @@ def build_feed(repo: str, out_path: Path) -> None:
         if not parsed:
             continue
         date_str, topic_id = parsed
+        # Extract episode number (e.g. "(3/12)") from the release title if
+        # present. Older releases (pre-numbering) simply have no match here.
+        rel_name_raw = rel.get("name", "")
+        ep_match = EPISODE_NUM_RE.search(rel_name_raw)
+        ep_prefix = f"({ep_match.group(1)}/{ep_match.group(2)}) " if ep_match else ""
+
         labels = TOPIC_LABELS.get(topic_id)
         if not labels:
-            continue
+            # Spotlight reviews use dynamic topic_ids of the form
+            # `spotlight_{pmid}`. Pull the actual article title from the
+            # release's own name (which carries it verbatim from the
+            # weekly_review.py side).
+            if topic_id.startswith("spotlight_"):
+                rel_name = rel_name_raw.replace("📚 ", "").strip()
+                # Drop the episode-number prefix from the embedded title — we
+                # re-attach a clean prefix below.
+                rel_name = EPISODE_NUM_RE.sub("", rel_name, count=1).strip()
+                parts = rel_name.split(" — ")
+                # Trailing segment is the YYYY-MM-DD; everything before is title.
+                if len(parts) > 1:
+                    episode_title_he = " — ".join(parts[:-1]).strip()
+                else:
+                    episode_title_he = rel_name or "מאמר סקירה מרכזי"
+                labels = (
+                    episode_title_he,
+                    "Spotlight Review",
+                    "פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — "
+                    "סקירה ארוכה ומעמיקה של מאמר בודד.",
+                )
+            else:
+                continue
         label_he, label_en, topic_desc = labels
 
         assets = rel.get("assets", [])
@@ -231,7 +265,9 @@ def build_feed(repo: str, out_path: Path) -> None:
         local_mp3 = repo_root / "podcasts" / date_str / f"{topic_id}.mp3"
         duration = _audio_duration_seconds(local_mp3)
 
-        title = f"{label_he} — {date_str}"
+        # Episode number prefix (e.g. "(3/12) ") goes at the front of the title
+        # so listeners can track progress within the week from their podcast app.
+        title = f"{ep_prefix}{label_he} — {date_str}"
         description = f"{topic_desc}\n\nסקירה אוטומטית מ-{date_str}.\n\n{label_en}"
 
         fe = fg.add_entry()
