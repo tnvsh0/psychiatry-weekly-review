@@ -22,6 +22,13 @@ if ! command -v google-chrome >/dev/null 2>&1; then
     rm /tmp/chrome.deb
 fi
 
+# GitHub CLI (used by weekly_review.py to upload podcasts to GitHub Releases)
+if ! command -v gh >/dev/null 2>&1; then
+    wget -q https://github.com/cli/cli/releases/download/v2.62.0/gh_2.62.0_linux_amd64.deb -O /tmp/gh.deb
+    apt-get install -y /tmp/gh.deb
+    rm /tmp/gh.deb
+fi
+
 # Chrome Remote Desktop (for one-time NotebookLM login from inside the VM)
 if ! command -v chrome-remote-desktop >/dev/null 2>&1; then
     wget -q https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb -O /tmp/crd.deb

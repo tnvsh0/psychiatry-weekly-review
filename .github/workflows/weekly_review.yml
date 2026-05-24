@@ -29,12 +29,15 @@ jobs:
 
       - name: Run weekly review
         env:
-          NOTEBOOKLM_AUTH_JSON: ${{ secrets.NOTEBOOKLM_AUTH_JSON }}
-          NTFY_TOPIC:           ${{ secrets.NTFY_TOPIC }}
-          GH_TOKEN:             ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY:    ${{ github.repository }}
-          GITHUB_SERVER_URL:    ${{ github.server_url }}
-        run: python scripts/weekly_review.py
+          NOTEBOOKLM_AUTH_JSON:        ${{ secrets.NOTEBOOKLM_AUTH_JSON }}
+          NTFY_TOPIC:                  ${{ secrets.NTFY_TOPIC }}
+          GH_TOKEN:                    ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY:           ${{ github.repository }}
+          GITHUB_SERVER_URL:           ${{ github.server_url }}
+          # Optional — Google Drive backup. If unset, backup step is skipped.
+          GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+          GDRIVE_FOLDER_ID:            ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: python -u scripts/weekly_review.py
 
       # Commit the new summary markdown so it's readable from GitHub
       - name: Commit summary to repository
