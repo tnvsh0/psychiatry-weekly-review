@@ -777,22 +777,27 @@ SPOTLIGHT_JOURNALS_GENERAL = [
     "Nature Reviews Neuroscience", "Nature Reviews Disease Primers",
 ]
 
-# Title/abstract filter applied to reviews from SPOTLIGHT_JOURNALS_GENERAL.
+# TITLE-only filter applied to reviews from SPOTLIGHT_JOURNALS_GENERAL.
+# Using [Title] (not [Title/Abstract]) is intentional: in generalist journals
+# papers on non-psychiatric topics frequently mention "mental health" or
+# "depression" in their abstract as a comorbidity, even when the paper is
+# really about kidney disease, oncology, etc. Requiring the psychiatric
+# term in the TITLE keeps only papers whose primary subject is psychiatry.
 SPOTLIGHT_PSY_FILTER = (
-    '("psychiat*"[Title/Abstract] OR "mental health"[Title/Abstract] '
-    'OR "psychopathology"[Title/Abstract] OR "depress*"[Title/Abstract] '
-    'OR "anxiety"[Title/Abstract] OR "schizophrenia"[Title/Abstract] '
-    'OR "bipolar"[Title/Abstract] OR "ADHD"[Title/Abstract] '
-    'OR "attention-deficit"[Title/Abstract] OR "autism"[Title/Abstract] '
-    'OR "OCD"[Title/Abstract] OR "obsessive"[Title/Abstract] '
-    'OR "PTSD"[Title/Abstract] OR "post-traumatic"[Title/Abstract] '
-    'OR "psychosis"[Title/Abstract] OR "suicid*"[Title/Abstract] '
-    'OR "antipsychotic*"[Title/Abstract] OR "antidepressant*"[Title/Abstract] '
-    'OR "psychotropic"[Title/Abstract] OR "psychotherapy"[Title/Abstract] '
-    'OR "neurodevelopmental"[Title/Abstract] OR "eating disorder*"[Title/Abstract] '
-    'OR "substance use"[Title/Abstract] OR "addiction"[Title/Abstract] '
-    'OR "personality disorder*"[Title/Abstract] OR "child psychiatry"[Title/Abstract] '
-    'OR "adolescent psychiatry"[Title/Abstract])'
+    '("psychiat*"[Title] OR "mental disorder*"[Title] OR "mental health"[Title] '
+    'OR "mental illness"[Title] OR "psychopathology"[Title] '
+    'OR "depress*"[Title] OR "anxiety"[Title] OR "schizophrenia"[Title] '
+    'OR "bipolar"[Title] OR "ADHD"[Title] OR "attention-deficit"[Title] '
+    'OR "autism"[Title] OR "OCD"[Title] OR "obsessive-compulsive"[Title] '
+    'OR "PTSD"[Title] OR "post-traumatic stress"[Title] '
+    'OR "psychosis"[Title] OR "psychotic"[Title] OR "suicid*"[Title] '
+    'OR "antipsychotic*"[Title] OR "antidepressant*"[Title] '
+    'OR "psychotropic"[Title] OR "psychotherapy"[Title] '
+    'OR "neurodevelopmental"[Title] OR "eating disorder*"[Title] '
+    'OR "substance use"[Title] OR "addict*"[Title] '
+    'OR "personality disorder*"[Title] OR "child psychiatry"[Title] '
+    'OR "adolescent psychiatry"[Title] OR "self-harm"[Title] '
+    'OR "self-injury"[Title] OR "anorexia"[Title] OR "bulimia"[Title])'
 )
 
 # Cap on number of spotlight podcasts per week — keeps the output manageable
