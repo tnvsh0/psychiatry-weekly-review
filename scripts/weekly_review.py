@@ -759,14 +759,41 @@ SPOTLIGHT_HIGH_SIGNAL_AUTHORS = [
     "Krystal JH", "Nestler EJ",
 ]
 
-SPOTLIGHT_JOURNALS = [
+# Dedicated psychiatry journals — ANY review in these counts as psychiatric.
+SPOTLIGHT_JOURNALS_PSYCHIATRY = [
     "JAMA Psychiatry", "Lancet Psychiatry", "World Psychiatry",
     "Am J Psychiatry", "Mol Psychiatry", "Biol Psychiatry",
     "Neuropsychopharmacology", "J Am Acad Child Adolesc Psychiatry",
-    "Lancet Child Adolesc Health", "JAMA", "JAMA Pediatr",
+    "Lancet Child Adolesc Health",
+]
+
+# Generalist top journals — reviews here only count when they are actually
+# about mental health / psychiatry (filtered with SPOTLIGHT_PSY_FILTER).
+# Without this filter, BMJ / Lancet / JAMA reviews on orthopedics, calcium
+# supplementation, ovarian syndrome etc. would flood the spotlight list.
+SPOTLIGHT_JOURNALS_GENERAL = [
+    "JAMA", "JAMA Pediatr",
     "N Engl J Med", "Lancet", "BMJ", "Nature Medicine",
     "Nature Reviews Neuroscience", "Nature Reviews Disease Primers",
 ]
+
+# Title/abstract filter applied to reviews from SPOTLIGHT_JOURNALS_GENERAL.
+SPOTLIGHT_PSY_FILTER = (
+    '("psychiat*"[Title/Abstract] OR "mental health"[Title/Abstract] '
+    'OR "psychopathology"[Title/Abstract] OR "depress*"[Title/Abstract] '
+    'OR "anxiety"[Title/Abstract] OR "schizophrenia"[Title/Abstract] '
+    'OR "bipolar"[Title/Abstract] OR "ADHD"[Title/Abstract] '
+    'OR "attention-deficit"[Title/Abstract] OR "autism"[Title/Abstract] '
+    'OR "OCD"[Title/Abstract] OR "obsessive"[Title/Abstract] '
+    'OR "PTSD"[Title/Abstract] OR "post-traumatic"[Title/Abstract] '
+    'OR "psychosis"[Title/Abstract] OR "suicid*"[Title/Abstract] '
+    'OR "antipsychotic*"[Title/Abstract] OR "antidepressant*"[Title/Abstract] '
+    'OR "psychotropic"[Title/Abstract] OR "psychotherapy"[Title/Abstract] '
+    'OR "neurodevelopmental"[Title/Abstract] OR "eating disorder*"[Title/Abstract] '
+    'OR "substance use"[Title/Abstract] OR "addiction"[Title/Abstract] '
+    'OR "personality disorder*"[Title/Abstract] OR "child psychiatry"[Title/Abstract] '
+    'OR "adolescent psychiatry"[Title/Abstract])'
+)
 
 # Cap on number of spotlight podcasts per week — keeps the output manageable
 # and the most-important reviews surface to the top via sort-by-IF.
@@ -807,18 +834,26 @@ def find_spotlight_reviews() -> list[dict]:
         '("review"[Publication Type] OR "systematic review"[Publication Type] '
         'OR "meta-analysis"[Publication Type])'
     )
-    journal_clause = "(" + " OR ".join(
-        f'"{j}"[Journal]' for j in SPOTLIGHT_JOURNALS
+    psy_journals = "(" + " OR ".join(
+        f'"{j}"[Journal]' for j in SPOTLIGHT_JOURNALS_PSYCHIATRY
+    ) + ")"
+    gen_journals = "(" + " OR ".join(
+        f'"{j}"[Journal]' for j in SPOTLIGHT_JOURNALS_GENERAL
     ) + ")"
     author_clause = "(" + " OR ".join(
         f'"{a}"[Author]' for a in SPOTLIGHT_HIGH_SIGNAL_AUTHORS
     ) + ")"
 
     queries = [
-        # Reviews in top journals — captures big meta-analyses, NEJM reviews, etc.
-        f'{pub_type_filter} AND {journal_clause}',
-        # Reviews by named high-signal authors — catches Stahl etc. even if the
-        # journal is not on the spotlight list above.
+        # 1. Reviews in dedicated psychiatry journals — every review counts.
+        f'{pub_type_filter} AND {psy_journals}',
+        # 2. Reviews in generalist medical journals — MUST also be about
+        #    psychiatry / mental health, otherwise we get calcium-supplement
+        #    and oncology reviews crowding out actual psychiatric content.
+        f'{pub_type_filter} AND {gen_journals} AND {SPOTLIGHT_PSY_FILTER}',
+        # 3. Reviews by named high-signal psychiatry/neuroscience authors —
+        #    these authors write almost exclusively in psychiatry, so no
+        #    extra topic filter needed.
         f'{pub_type_filter} AND {author_clause}',
     ]
 
