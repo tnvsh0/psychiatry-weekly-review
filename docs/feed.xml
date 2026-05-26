@@ -7,16 +7,22 @@
     <atom:link href="https://tnvsh0.github.io/psychiatry-weekly-review/feed.xml" rel="self"/>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
+    <image>
+      <url>https://tnvsh0.github.io/psychiatry-weekly-review/cover.png</url>
+      <title>סקירה שבועית בפסיכיאטריה</title>
+      <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
+    </image>
     <language>he</language>
-    <lastBuildDate>Tue, 26 May 2026 17:40:51 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 17:45:45 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
     </itunes:category>
+    <itunes:image href="https://tnvsh0.github.io/psychiatry-weekly-review/cover.png"/>
     <itunes:explicit>no</itunes:explicit>
     <itunes:owner>
       <itunes:name>Tovia Wen</itunes:name>
-      <itunes:email>tovia.wen@gmail.com</itunes:email>
+      <itunes:email>toviagpt@gmail.com</itunes:email>
     </itunes:owner>
     <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע. אינו מהווה ייעוץ רפואי.</itunes:summary>
     <itunes:type>episodic</itunes:type>
@@ -184,7 +190,6 @@ General Psychiatry — Clinical</description>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_clinical/general_psychiatry_clinical.mp3" length="33636409" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:duration>8264</itunes:duration>
       <itunes:summary>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
 
 סקירה אוטומטית מ-2026-05-10.
