@@ -18,6 +18,12 @@ cd /opt/psychiatry-weekly-review
 # summaries/ and podcasts/ as User; root-owned files would break next run).
 sudo -u User git pull --ff-only origin main
 
+# Keep Python dependencies in sync with requirements.txt. Without this, a
+# requirement added to the repo (e.g. feedgen for RSS, mutagen for podcast
+# duration) silently fails at runtime — the script logs "WARNING: ... failed"
+# with empty stderr and continues, producing a broken pipeline.
+/opt/venv/bin/pip install -q -r requirements.txt 2>&1 | tail -5
+
 AUTH_FILE="/home/User/.notebooklm/storage_state.json"
 if [ ! -f "$AUTH_FILE" ]; then
     echo "ERROR: $AUTH_FILE not found."
