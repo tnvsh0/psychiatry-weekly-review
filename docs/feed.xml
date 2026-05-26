@@ -8,7 +8,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>he</language>
-    <lastBuildDate>Tue, 26 May 2026 11:25:07 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 17:40:51 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -557,6 +557,23 @@ Psychotherapy &amp; Interventions</itunes:summary>
 Spotlight Review</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42167272/spotlight_42167272.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42167272/spotlight_42167272.mp3" length="34789553" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Spotlight Review</itunes:summary>
+    </item>
+    <item>
+      <title>(11/12) מאמר סקירה: Nourredine M — Pharmacological interventions for ADHD: a systemat… — 2026-05-25</title>
+      <description>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Spotlight Review</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42134365/spotlight_42134365.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42134365/spotlight_42134365.mp3" length="39691866" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
