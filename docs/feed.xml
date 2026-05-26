@@ -1,0 +1,569 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>סקירה שבועית בפסיכיאטריה</title>
+    <link>https://tnvsh0.github.io/psychiatry-weekly-review/feed.xml</link>
+    <description>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע. אינו מהווה ייעוץ רפואי.</description>
+    <atom:link href="https://tnvsh0.github.io/psychiatry-weekly-review/feed.xml" rel="self"/>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <language>he</language>
+    <lastBuildDate>Tue, 26 May 2026 11:25:07 +0000</lastBuildDate>
+    <itunes:author>Tovia Wen</itunes:author>
+    <itunes:category text="Health &amp; Fitness">
+      <itunes:category text="Medicine"/>
+    </itunes:category>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:owner>
+      <itunes:name>Tovia Wen</itunes:name>
+      <itunes:email>tovia.wen@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע. אינו מהווה ייעוץ רפואי.</itunes:summary>
+    <itunes:type>episodic</itunes:type>
+    <item>
+      <title>התפתחות הילד — 2026-04-20</title>
+      <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+סקירה אוטומטית מ-2026-04-20.
+
+Child Development</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-04-20-child_development/child_development.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-04-20-child_development/child_development.mp3" length="39417587" type="audio/mpeg"/>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+סקירה אוטומטית מ-2026-04-20.
+
+Child Development</itunes:summary>
+    </item>
+    <item>
+      <title>פסיכותרפיה והתערבויות — 2026-04-20</title>
+      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+סקירה אוטומטית מ-2026-04-20.
+
+Psychotherapy &amp; Interventions</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-04-20-psychotherapy/psychotherapy.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-04-20-psychotherapy/psychotherapy.mp3" length="20631057" type="audio/mpeg"/>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+סקירה אוטומטית מ-2026-04-20.
+
+Psychotherapy &amp; Interventions</itunes:summary>
+    </item>
+    <item>
+      <title>מדעי ההתנהגות — 2026-05-10</title>
+      <description>למידה, חיזוק וקוגניציה חברתית.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Behavioral Sciences</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-behavioral_sciences/behavioral_sciences.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-behavioral_sciences/behavioral_sciences.mp3" length="21838619" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Behavioral Sciences</itunes:summary>
+    </item>
+    <item>
+      <title>ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-10</title>
+      <description>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Child &amp; Adolescent Psychiatry — Core</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_core/child_adolescent_core.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_core/child_adolescent_core.mp3" length="36111528" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Child &amp; Adolescent Psychiatry — Core</itunes:summary>
+    </item>
+    <item>
+      <title>השפעה גבוהה — ילד ומתבגר — 2026-05-10</title>
+      <description>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Child &amp; Adolescent — High Impact</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_highimpact/child_adolescent_highimpact.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_highimpact/child_adolescent_highimpact.mp3" length="25982456" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Child &amp; Adolescent — High Impact</itunes:summary>
+    </item>
+    <item>
+      <title>ילדים ומתבגרים — מגוון — 2026-05-10</title>
+      <description>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Child &amp; Adolescent — Miscellaneous</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_misc/child_adolescent_misc.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_misc/child_adolescent_misc.mp3" length="35001712" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Child &amp; Adolescent — Miscellaneous</itunes:summary>
+    </item>
+    <item>
+      <title>התפתחות הילד — 2026-05-10</title>
+      <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Child Development</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_development/child_development.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_development/child_development.mp3" length="48832142" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Child Development</itunes:summary>
+    </item>
+    <item>
+      <title>קוגניציה ומדעי הקוגניציה — 2026-05-10</title>
+      <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Cognition &amp; Cognitive Science</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-cognition/cognition.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-cognition/cognition.mp3" length="36524757" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Cognition &amp; Cognitive Science</itunes:summary>
+    </item>
+    <item>
+      <title>פסיכיאטריה ביולוגית — 2026-05-10</title>
+      <description>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Biological Psychiatry</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_bio/general_psychiatry_bio.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_bio/general_psychiatry_bio.mp3" length="32188931" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Biological Psychiatry</itunes:summary>
+    </item>
+    <item>
+      <title>פסיכיאטריה כללית — קלינית — 2026-05-10</title>
+      <description>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+
+סקירה אוטומטית מ-2026-05-10.
+
+General Psychiatry — Clinical</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_clinical/general_psychiatry_clinical.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_clinical/general_psychiatry_clinical.mp3" length="33636409" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:duration>8264</itunes:duration>
+      <itunes:summary>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+
+סקירה אוטומטית מ-2026-05-10.
+
+General Psychiatry — Clinical</itunes:summary>
+    </item>
+    <item>
+      <title>מדעי המוח — 2026-05-10</title>
+      <description>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Neuroscience</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-neuroscience/neuroscience.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-neuroscience/neuroscience.mp3" length="47663426" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Neuroscience</itunes:summary>
+    </item>
+    <item>
+      <title>פסיכותרפיה והתערבויות — 2026-05-10</title>
+      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Psychotherapy &amp; Interventions</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-psychotherapy/psychotherapy.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-psychotherapy/psychotherapy.mp3" length="36145145" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+סקירה אוטומטית מ-2026-05-10.
+
+Psychotherapy &amp; Interventions</itunes:summary>
+    </item>
+    <item>
+      <title>מדעי ההתנהגות — 2026-05-17</title>
+      <description>למידה, חיזוק וקוגניציה חברתית.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Behavioral Sciences</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-behavioral_sciences/behavioral_sciences.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-behavioral_sciences/behavioral_sciences.mp3" length="28638475" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Behavioral Sciences</itunes:summary>
+    </item>
+    <item>
+      <title>ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-17</title>
+      <description>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Child &amp; Adolescent Psychiatry — Core</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_core/child_adolescent_core.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_core/child_adolescent_core.mp3" length="26927807" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Child &amp; Adolescent Psychiatry — Core</itunes:summary>
+    </item>
+    <item>
+      <title>השפעה גבוהה — ילד ומתבגר — 2026-05-17</title>
+      <description>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Child &amp; Adolescent — High Impact</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_highimpact/child_adolescent_highimpact.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_highimpact/child_adolescent_highimpact.mp3" length="45493961" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Child &amp; Adolescent — High Impact</itunes:summary>
+    </item>
+    <item>
+      <title>ילדים ומתבגרים — מגוון — 2026-05-17</title>
+      <description>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Child &amp; Adolescent — Miscellaneous</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_misc/child_adolescent_misc.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_misc/child_adolescent_misc.mp3" length="23415450" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Child &amp; Adolescent — Miscellaneous</itunes:summary>
+    </item>
+    <item>
+      <title>התפתחות הילד — 2026-05-17</title>
+      <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Child Development</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_development/child_development.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_development/child_development.mp3" length="31753922" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Child Development</itunes:summary>
+    </item>
+    <item>
+      <title>קוגניציה ומדעי הקוגניציה — 2026-05-17</title>
+      <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Cognition &amp; Cognitive Science</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-cognition/cognition.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-cognition/cognition.mp3" length="26223865" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Cognition &amp; Cognitive Science</itunes:summary>
+    </item>
+    <item>
+      <title>פסיכיאטריה ביולוגית — 2026-05-17</title>
+      <description>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Biological Psychiatry</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-general_psychiatry_bio/general_psychiatry_bio.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-general_psychiatry_bio/general_psychiatry_bio.mp3" length="43334955" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Biological Psychiatry</itunes:summary>
+    </item>
+    <item>
+      <title>פסיכיאטריה כללית — קלינית — 2026-05-17</title>
+      <description>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+
+סקירה אוטומטית מ-2026-05-17.
+
+General Psychiatry — Clinical</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-general_psychiatry_clinical/general_psychiatry_clinical.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-general_psychiatry_clinical/general_psychiatry_clinical.mp3" length="28210937" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+
+סקירה אוטומטית מ-2026-05-17.
+
+General Psychiatry — Clinical</itunes:summary>
+    </item>
+    <item>
+      <title>מדעי המוח — 2026-05-17</title>
+      <description>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Neuroscience</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-neuroscience/neuroscience.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-neuroscience/neuroscience.mp3" length="41002636" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Neuroscience</itunes:summary>
+    </item>
+    <item>
+      <title>פסיכותרפיה והתערבויות — 2026-05-17</title>
+      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Psychotherapy &amp; Interventions</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-psychotherapy/psychotherapy.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-psychotherapy/psychotherapy.mp3" length="43529301" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+סקירה אוטומטית מ-2026-05-17.
+
+Psychotherapy &amp; Interventions</itunes:summary>
+    </item>
+    <item>
+      <title>(7/12) מדעי ההתנהגות — 2026-05-25</title>
+      <description>למידה, חיזוק וקוגניציה חברתית.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Behavioral Sciences</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-behavioral_sciences/behavioral_sciences.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-behavioral_sciences/behavioral_sciences.mp3" length="32200883" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Behavioral Sciences</itunes:summary>
+    </item>
+    <item>
+      <title>(1/12) ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-25</title>
+      <description>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Child &amp; Adolescent Psychiatry — Core</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_adolescent_core/child_adolescent_core.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_adolescent_core/child_adolescent_core.mp3" length="37257086" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Child &amp; Adolescent Psychiatry — Core</itunes:summary>
+    </item>
+    <item>
+      <title>(9/12) ילדים ומתבגרים — מגוון — 2026-05-25</title>
+      <description>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Child &amp; Adolescent — Miscellaneous</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_adolescent_misc/child_adolescent_misc.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_adolescent_misc/child_adolescent_misc.mp3" length="27799202" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Child &amp; Adolescent — Miscellaneous</itunes:summary>
+    </item>
+    <item>
+      <title>(4/12) התפתחות הילד — 2026-05-25</title>
+      <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Child Development</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_development/child_development.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_development/child_development.mp3" length="27705076" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Child Development</itunes:summary>
+    </item>
+    <item>
+      <title>(8/12) קוגניציה ומדעי הקוגניציה — 2026-05-25</title>
+      <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Cognition &amp; Cognitive Science</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-cognition/cognition.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-cognition/cognition.mp3" length="36616642" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Cognition &amp; Cognitive Science</itunes:summary>
+    </item>
+    <item>
+      <title>(3/12) פסיכיאטריה ביולוגית — 2026-05-25</title>
+      <description>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Biological Psychiatry</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-general_psychiatry_bio/general_psychiatry_bio.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-general_psychiatry_bio/general_psychiatry_bio.mp3" length="31983379" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Biological Psychiatry</itunes:summary>
+    </item>
+    <item>
+      <title>(2/12) פסיכיאטריה כללית — קלינית — 2026-05-25</title>
+      <description>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+
+סקירה אוטומטית מ-2026-05-25.
+
+General Psychiatry — Clinical</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-general_psychiatry_clinical/general_psychiatry_clinical.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-general_psychiatry_clinical/general_psychiatry_clinical.mp3" length="42244678" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+
+סקירה אוטומטית מ-2026-05-25.
+
+General Psychiatry — Clinical</itunes:summary>
+    </item>
+    <item>
+      <title>(5/12) מדעי המוח — 2026-05-25</title>
+      <description>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Neuroscience</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-neuroscience/neuroscience.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-neuroscience/neuroscience.mp3" length="31080609" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Neuroscience</itunes:summary>
+    </item>
+    <item>
+      <title>(6/12) פסיכותרפיה והתערבויות — 2026-05-25</title>
+      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Psychotherapy &amp; Interventions</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-psychotherapy/psychotherapy.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-psychotherapy/psychotherapy.mp3" length="55397312" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Psychotherapy &amp; Interventions</itunes:summary>
+    </item>
+    <item>
+      <title>(10/12) מאמר סקירה: GBD 2023 Mental Disorder Collaborators — Updated trends in the global prevalence and burden… — 2026-05-25</title>
+      <description>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Spotlight Review</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42167272/spotlight_42167272.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42167272/spotlight_42167272.mp3" length="34789553" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
+
+סקירה אוטומטית מ-2026-05-25.
+
+Spotlight Review</itunes:summary>
+    </item>
+  </channel>
+</rss>
