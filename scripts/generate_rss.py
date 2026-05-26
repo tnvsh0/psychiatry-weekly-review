@@ -97,10 +97,16 @@ PODCAST_DESCRIPTION = (
     "אינו מהווה ייעוץ רפואי."
 )
 PODCAST_AUTHOR = "Tovia Wen"
-PODCAST_EMAIL = "tovia.wen@gmail.com"
+PODCAST_EMAIL = "toviagpt@gmail.com"
 PODCAST_LANGUAGE = "he"
 PODCAST_CATEGORY = "Health & Fitness"
 PODCAST_SUBCATEGORY = "Medicine"
+
+# Cover image — required by Apple Podcasts, recommended by Spotify.
+# Hosted on GitHub Pages alongside the feed itself. The default URL works
+# for the production deployment; override via PODCAST_IMAGE_URL env var if
+# you're testing locally or hosting elsewhere.
+PODCAST_IMAGE_URL_DEFAULT = "https://tnvsh0.github.io/psychiatry-weekly-review/cover.png"
 
 
 def _resolve_repo() -> str:
@@ -199,6 +205,10 @@ def build_feed(repo: str, out_path: Path) -> None:
     fg.podcast.itunes_explicit("no")
     fg.podcast.itunes_category(PODCAST_CATEGORY, PODCAST_SUBCATEGORY)
     fg.podcast.itunes_type("episodic")
+    # Cover image — Apple Podcasts will reject the feed without this.
+    image_url = os.environ.get("PODCAST_IMAGE_URL", PODCAST_IMAGE_URL_DEFAULT)
+    fg.podcast.itunes_image(image_url)
+    fg.image(image_url, PODCAST_TITLE, site_url)
 
     print(f"Fetching releases from {repo}...")
     releases = _fetch_releases(repo)
