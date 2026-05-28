@@ -583,6 +583,18 @@ TONE_GUIDANCE = (
     "Non-negotiable. Listeners need to know where each finding comes from.\n"
     "\n"
     "========================================================================\n"
+    "STUDY TYPE (MANDATORY, every paper):\n"
+    "========================================================================\n"
+    "When you START discussing a paper, also state its STUDY TYPE — מטה-אנליזה, "
+    "סקירה שיטתית, RCT, מחקר עוקבה, מחקר תצפיתי, תיאור מקרה, מאמר סקירה, "
+    "מאמר מערכת, etc. The source material includes a 'סוג מחקר:' field per "
+    "paper — use it verbatim, do NOT guess. When the field says 'מאמר מחקרי' "
+    "(the generic fallback), try to identify a more specific design from the "
+    "abstract (e.g., 'מחקר חתך', 'מחקר עוקבה פרוספקטיבי') and say so. "
+    "Study type matters for how listeners weigh the evidence — an RCT carries "
+    "different weight than a case report.\n"
+    "\n"
+    "========================================================================\n"
     "DEPTH AND COVERAGE:\n"
     "========================================================================\n"
     "Cover EVERY paper in the source material — do not skip papers because they "
@@ -636,6 +648,52 @@ def _esearch(query: str, retmax: int = 8) -> list[str]:
         time.sleep(0.4)
 
 
+# ── Study-type classification (PubMed pubtype → Hebrew label) ─────────────────
+# PubMed returns a `pubtype` list per article, often with multiple values
+# (e.g. ["Journal Article", "Review", "Systematic Review"]). We pick the
+# MOST informative one and translate to Hebrew so listeners hear concrete
+# methodology ("מטה-אנליזה", "RCT", "מחקר עוקבה") instead of generic
+# "מאמר מחקרי".
+STUDY_TYPE_PRIORITY: list[tuple[str, str]] = [
+    # (substring to match in pubtype — case-insensitive, Hebrew label)
+    ("meta-analysis",               "מטה-אנליזה"),
+    ("systematic review",           "סקירה שיטתית"),
+    ("randomized controlled trial", "RCT (מחקר אקראי מבוקר)"),
+    ("clinical trial, phase iii",   "מחקר קליני שלב 3"),
+    ("clinical trial, phase ii",    "מחקר קליני שלב 2"),
+    ("clinical trial, phase i",     "מחקר קליני שלב 1"),
+    ("clinical trial",              "מחקר קליני"),
+    ("multicenter study",           "מחקר רב-מרכזי"),
+    ("observational study",         "מחקר תצפיתי"),
+    ("cohort studies",              "מחקר עוקבה"),
+    ("case-control studies",        "מחקר מקרה-ביקורת"),
+    ("cross-sectional studies",     "מחקר חתך"),
+    ("validation study",            "מחקר ולידציה"),
+    ("comparative study",           "מחקר השוואתי"),
+    ("practice guideline",          "הנחיות קליניות"),
+    ("guideline",                   "הנחיות קליניות"),
+    ("consensus development",       "מסמך קונצנזוס"),
+    ("case reports",                "תיאור מקרה"),
+    ("review",                      "מאמר סקירה"),
+    ("editorial",                   "מאמר מערכת"),
+    ("comment",                     "תגובה / commentary"),
+    ("letter",                      "מכתב למערכת"),
+    ("news",                        "ידיעה"),
+]
+
+
+def classify_study_type_he(pubtypes: list[str]) -> str:
+    """Pick the most informative study type from PubMed pubtype list and
+    translate to Hebrew. Falls back to a generic label if none match."""
+    if not pubtypes:
+        return "מאמר מחקרי"
+    types_lower = [str(t).lower() for t in pubtypes]
+    for needle, he_label in STUDY_TYPE_PRIORITY:
+        if any(needle in t for t in types_lower):
+            return he_label
+    return "מאמר מחקרי"
+
+
 def _esummary(pmids: list[str], topic_label: str) -> list[dict]:
     """Fetch esummary for PMIDs. Returns list of article dicts."""
     if not pmids:
@@ -663,6 +721,7 @@ def _esummary(pmids: list[str], topic_label: str) -> list[dict]:
             author_str += " et al."
         elif len(authors) == 2:
             author_str += f", {authors[-1]['name']}"
+        pubtypes = doc.get("pubtype", []) or []
         articles.append({
             "pmid":          pmid,
             "title":         doc.get("title", "").rstrip("."),
@@ -673,6 +732,8 @@ def _esummary(pmids: list[str], topic_label: str) -> list[dict]:
             "topic":         topic_label,
             "abstract":      "",
             "impact_factor": 0.0,
+            "pubtype":       pubtypes,
+            "study_type_he": classify_study_type_he(pubtypes),
         })
     return articles
 
@@ -1117,6 +1178,8 @@ def save_articles_json(nb_infos: list[dict]) -> None:
                 "topic_id":      topic["id"],
                 "topic_he":      topic["label_he"],
                 "topic_en":      topic["label_en"],
+                "pubtype":       a.get("pubtype", []),
+                "study_type_he": a.get("study_type_he", "מאמר מחקרי"),
             })
     out_path = out_dir / "articles.json"
     out_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -1169,9 +1232,10 @@ def create_topic_summary(
             journal_str = f"{if_badge(if_val)} {a['journal']} *(IF: {if_val:.1f})*"
         else:
             journal_str = f"\U0001f4c4 {a['journal']}"
+        study_type = a.get("study_type_he") or "\u05de\u05d0\u05de\u05e8 \u05de\u05d7\u05e7\u05e8\u05d9"
         lines += [
             f"### {a['title']}",
-            f"**\u05db\u05ea\u05d1 \u05e2\u05ea:** {journal_str} | **\u05de\u05d7\u05d1\u05e8\u05d9\u05dd:** {a['authors']} | **\u05ea\u05d0\u05e8\u05d9\u05da:** {a['pub_date']}",
+            f"**\u05db\u05ea\u05d1 \u05e2\u05ea:** {journal_str} | **\u05e1\u05d5\u05d2 \u05de\u05d7\u05e7\u05e8:** {study_type} | **\u05de\u05d7\u05d1\u05e8\u05d9\u05dd:** {a['authors']} | **\u05ea\u05d0\u05e8\u05d9\u05da:** {a['pub_date']}",
             "",
             abstract,
             "",
@@ -1641,6 +1705,73 @@ def update_rss_feed(env: dict) -> None:
         print(f"  WARNING: RSS feed update failed (non-fatal): {e}")
 
 
+# ── Auto-split crowded topics into Part 1 / Part 2 / ... ─────────────────────
+# If a cluster collected too many articles for one comfortable listen, split
+# it into multiple parts. Each part becomes its own notebook + podcast +
+# GitHub release, with `_part{N}` appended to the topic_id and "(חלק N/M)"
+# appended to the Hebrew label. Articles are sorted by Impact Factor
+# (descending) and divided round-robin among the parts so each part gets a
+# balanced mix of high-IF papers rather than Part 1 hoarding the best.
+
+SPLIT_THRESHOLD = 20   # split topics with more than this many articles
+SPLIT_TARGET    = 14   # aim for ~this many articles per part
+
+
+def auto_split_topics(nb_infos: list[dict]) -> list[dict]:
+    """Split any nb_info with too many articles into multiple parts."""
+    new_infos: list[dict] = []
+    for nb in nb_infos:
+        articles = nb["articles"]
+        topic    = nb["topic"]
+        if len(articles) <= SPLIT_THRESHOLD:
+            new_infos.append(nb)
+            continue
+
+        # Sort by IF descending so the highest-impact papers are spread evenly
+        sorted_articles = sorted(
+            articles, key=lambda a: -a.get("impact_factor", 0.0),
+        )
+        n_parts = max(2, (len(sorted_articles) + SPLIT_TARGET - 1) // SPLIT_TARGET)
+
+        # Round-robin assignment — keeps IF distribution balanced across parts.
+        chunks: list[list[dict]] = [[] for _ in range(n_parts)]
+        for i, a in enumerate(sorted_articles):
+            chunks[i % n_parts].append(a)
+
+        print(f"  Split {topic['id']} ({len(articles)} articles) "
+              f"→ {n_parts} parts of ~{len(chunks[0])} each")
+
+        for part_idx, chunk in enumerate(chunks, start=1):
+            new_topic = dict(topic)
+            new_topic["id"]          = f"{topic['id']}_part{part_idx}"
+            new_topic["label_he"]    = f"{topic['label_he']} — חלק {part_idx}/{n_parts}"
+            new_topic["label_en"]    = f"{topic['label_en']} — Part {part_idx}/{n_parts}"
+            new_topic["max_articles"] = len(chunk)
+            # The prompt is identical across parts — the topic content is the
+            # same, just split for length. Adding a note so NotebookLM knows
+            # it's covering only a slice.
+            new_topic["podcast_prompt"] = (
+                topic["podcast_prompt"]
+                + f"\n\n[NOTE: This is part {part_idx} of {n_parts} for this "
+                f"topic. The source material contains only the papers assigned "
+                f"to this part. Cover them as a coherent stand-alone episode "
+                f"without referring to 'part 1' or 'part 2' explicitly.]"
+            )
+
+            new_infos.append({
+                "topic":         new_topic,
+                "articles":      chunk,
+                "summary_path":  None,
+                "nb_id":         None,
+                "nb_url":        None,
+                "artifact_id":   None,
+                "podcast_ready": False,
+                "podcast_path":  None,
+                "podcast_url":   None,
+            })
+    return new_infos
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 def main():
     sep = "=" * 65
@@ -1754,6 +1885,9 @@ def main():
         print("ERROR: No articles found in any topic!")
         send_notification([], env)
         sys.exit(1)
+
+    # ── Auto-split crowded topics into Part 1 / Part 2 / ... ──────────────────
+    nb_infos = auto_split_topics(nb_infos)
 
     # ── Assign episode numbers (X/Y) within this week's batch ─────────────────
     # Order: regular cluster topics first (in TOPICS order), then spotlight

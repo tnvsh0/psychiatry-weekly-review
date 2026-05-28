@@ -33,6 +33,84 @@ import requests
 EPISODE_NUM_RE = re.compile(r"\((\d+)\s*/\s*(\d+)\)")
 
 
+# ── Playlists (Spotify / Apple "seasons") ─────────────────────────────────────
+# The 10 weekly clusters generate too many episodes to scan visually, so we
+# group them into 9 themed playlists. Each playlist is an iTunes "season"
+# (numeric only — there's no <itunes:season-name> standard tag, so playlist
+# IDENTITY lives in the episode title prefix `[ילד]`, `[נוירומדע]`, etc.).
+PLAYLISTS: dict[int, dict] = {
+    1: {"id": "child_psychiatry",      "he": "פסיכיאטריית הילד והמתבגר",
+        "en": "Child & Adolescent Psychiatry",  "tag_he": "ילד"},
+    2: {"id": "child_development",     "he": "התפתחות הילד",
+        "en": "Child Development",              "tag_he": "התפתחות"},
+    3: {"id": "general_psychiatry",    "he": "פסיכיאטריה כללית",
+        "en": "General Psychiatry",             "tag_he": "כללית"},
+    4: {"id": "biological_psychiatry", "he": "פסיכיאטריה ביולוגית",
+        "en": "Biological Psychiatry",          "tag_he": "ביולוגית"},
+    5: {"id": "neuroscience",          "he": "מדעי המוח",
+        "en": "Neuroscience",                   "tag_he": "נוירומדע"},
+    6: {"id": "cognition",             "he": "קוגניציה",
+        "en": "Cognition",                      "tag_he": "קוגניציה"},
+    7: {"id": "psychotherapy",         "he": "פסיכותרפיה",
+        "en": "Psychotherapy",                  "tag_he": "פסיכותרפיה"},
+    8: {"id": "behavioral_sciences",   "he": "מדעי ההתנהגות",
+        "en": "Behavioral Sciences",            "tag_he": "התנהגות"},
+    9: {"id": "spotlight_reviews",     "he": "מאמרי סקירה מובחנים",
+        "en": "Spotlight Reviews",              "tag_he": "סקירה"},
+}
+
+# Routes a regular topic_id to its playlist number. Note that 3 child clusters
+# all collapse into playlist 1 — that's the whole point of playlists.
+TOPIC_TO_PLAYLIST: dict[str, int] = {
+    "child_adolescent_core":           1,
+    "child_adolescent_highimpact":     1,
+    "child_adolescent_misc":           1,
+    "child_development":               2,
+    "general_psychiatry_clinical":     3,
+    "general_psychiatry_bio":          4,
+    "neuroscience":                    5,
+    "cognition":                       6,
+    "psychotherapy":                   7,
+    "behavioral_sciences":             8,
+    # spotlight_<pmid> handled separately by examining release title
+}
+
+# Keywords (Hebrew + English) that route a spotlight review into the child
+# psychiatry playlist (1) instead of the generic spotlight playlist (9).
+CHILD_PSYCH_KEYWORDS: list[str] = [
+    "child", "adolescent", "pediatric", "paediatric", "youth", "infant",
+    "school-age", "preschool", "perinatal",
+    "ADHD", "attention-deficit", "attention deficit",
+    "autism", "ASD", "autistic",
+    "ילד", "ילדים", "מתבגר", "מתבגרים", "פדיאטר", "אוטיזם",
+]
+
+
+def _topic_id_base(topic_id: str) -> str:
+    """Strip auto-split suffix so `child_adolescent_core_part2` maps to the
+    same playlist as `child_adolescent_core`."""
+    if "_part" in topic_id:
+        return topic_id.rsplit("_part", 1)[0]
+    return topic_id
+
+
+def get_playlist_number(topic_id: str, release_name: str = "") -> int:
+    """Return the playlist (=iTunes season) number for an episode.
+
+    Regular topics use TOPIC_TO_PLAYLIST. Spotlight reviews are routed by
+    title content — child-related ones join the child playlist; otherwise
+    they go to the spotlight playlist."""
+    base = _topic_id_base(topic_id)
+    if base in TOPIC_TO_PLAYLIST:
+        return TOPIC_TO_PLAYLIST[base]
+    if base.startswith("spotlight_"):
+        name_lower = release_name.lower()
+        if any(kw.lower() in name_lower for kw in CHILD_PSYCH_KEYWORDS):
+            return 1
+        return 9
+    return 9  # safe default — anything unknown lands in the catch-all playlist
+
+
 # Topic labels — id -> (Hebrew title, English title, episode description).
 # Kept in sync with the TOPICS list in weekly_review.py.
 TOPIC_LABELS: dict[str, tuple[str, str, str]] = {
@@ -275,10 +353,24 @@ def build_feed(repo: str, out_path: Path) -> None:
         local_mp3 = repo_root / "podcasts" / date_str / f"{topic_id}.mp3"
         duration = _audio_duration_seconds(local_mp3)
 
-        # Episode number prefix (e.g. "(3/12) ") goes at the front of the title
-        # so listeners can track progress within the week from their podcast app.
-        title = f"{ep_prefix}{label_he} — {date_str}"
-        description = f"{topic_desc}\n\nסקירה אוטומטית מ-{date_str}.\n\n{label_en}"
+        # Playlist routing — every episode belongs to exactly one of the 9
+        # themed playlists. We emit <itunes:season>N</itunes:season> so podcast
+        # apps that respect seasons display them as separate tabs, and we
+        # prefix the title with the playlist tag (`[ילד]`, `[נוירומדע]`, …)
+        # so listeners can identify the playlist even in apps that don't
+        # render seasons.
+        playlist_num = get_playlist_number(topic_id, rel_name_raw)
+        playlist = PLAYLISTS[playlist_num]
+        playlist_tag = f"[{playlist['tag_he']}] "
+
+        # Episode number prefix (e.g. "(3/12) ") tracks within-week progress.
+        title = f"{playlist_tag}{ep_prefix}{label_he} — {date_str}"
+        description = (
+            f"{topic_desc}\n\n"
+            f"פלייליסט: {playlist['he']} ({playlist['en']}).\n\n"
+            f"סקירה אוטומטית מ-{date_str}.\n\n"
+            f"{label_en}"
+        )
 
         fe = fg.add_entry()
         fe.id(audio_url)
@@ -288,6 +380,7 @@ def build_feed(repo: str, out_path: Path) -> None:
         fe.pubDate(pub_date)
         fe.podcast.itunes_summary(description)
         fe.podcast.itunes_author(PODCAST_AUTHOR)
+        fe.podcast.itunes_season(playlist_num)
         if duration is not None:
             fe.podcast.itunes_duration(duration)
         episodes += 1
