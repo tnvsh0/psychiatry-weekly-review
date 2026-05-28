@@ -13,7 +13,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Tue, 26 May 2026 17:45:45 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2026 04:46:51 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -27,8 +27,10 @@
     <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע. אינו מהווה ייעוץ רפואי.</itunes:summary>
     <itunes:type>episodic</itunes:type>
     <item>
-      <title>התפתחות הילד — 2026-04-20</title>
+      <title>[התפתחות] התפתחות הילד — 2026-04-20</title>
       <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+פלייליסט: התפתחות הילד (Child Development).
 
 סקירה אוטומטית מ-2026-04-20.
 
@@ -39,13 +41,18 @@ Child Development</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
 
+פלייליסט: התפתחות הילד (Child Development).
+
 סקירה אוטומטית מ-2026-04-20.
 
 Child Development</itunes:summary>
+      <itunes:season>2</itunes:season>
     </item>
     <item>
-      <title>פסיכותרפיה והתערבויות — 2026-04-20</title>
+      <title>[פסיכותרפיה] פסיכותרפיה והתערבויות — 2026-04-20</title>
       <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+פלייליסט: פסיכותרפיה (Psychotherapy).
 
 סקירה אוטומטית מ-2026-04-20.
 
@@ -56,13 +63,18 @@ Psychotherapy &amp; Interventions</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
 
+פלייליסט: פסיכותרפיה (Psychotherapy).
+
 סקירה אוטומטית מ-2026-04-20.
 
 Psychotherapy &amp; Interventions</itunes:summary>
+      <itunes:season>7</itunes:season>
     </item>
     <item>
-      <title>מדעי ההתנהגות — 2026-05-10</title>
+      <title>[התנהגות] מדעי ההתנהגות — 2026-05-10</title>
       <description>למידה, חיזוק וקוגניציה חברתית.
+
+פלייליסט: מדעי ההתנהגות (Behavioral Sciences).
 
 סקירה אוטומטית מ-2026-05-10.
 
@@ -73,13 +85,18 @@ Behavioral Sciences</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
 
+פלייליסט: מדעי ההתנהגות (Behavioral Sciences).
+
 סקירה אוטומטית מ-2026-05-10.
 
 Behavioral Sciences</itunes:summary>
+      <itunes:season>8</itunes:season>
     </item>
     <item>
-      <title>ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-10</title>
+      <title>[ילד] ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-10</title>
       <description>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
 
 סקירה אוטומטית מ-2026-05-10.
 
@@ -90,13 +107,18 @@ Child &amp; Adolescent Psychiatry — Core</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
 
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
+
 סקירה אוטומטית מ-2026-05-10.
 
 Child &amp; Adolescent Psychiatry — Core</itunes:summary>
+      <itunes:season>1</itunes:season>
     </item>
     <item>
-      <title>השפעה גבוהה — ילד ומתבגר — 2026-05-10</title>
+      <title>[ילד] השפעה גבוהה — ילד ומתבגר — 2026-05-10</title>
       <description>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
+
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
 
 סקירה אוטומטית מ-2026-05-10.
 
@@ -107,13 +129,18 @@ Child &amp; Adolescent — High Impact</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
 
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
+
 סקירה אוטומטית מ-2026-05-10.
 
 Child &amp; Adolescent — High Impact</itunes:summary>
+      <itunes:season>1</itunes:season>
     </item>
     <item>
-      <title>ילדים ומתבגרים — מגוון — 2026-05-10</title>
+      <title>[ילד] ילדים ומתבגרים — מגוון — 2026-05-10</title>
       <description>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
 
 סקירה אוטומטית מ-2026-05-10.
 
@@ -124,13 +151,18 @@ Child &amp; Adolescent — Miscellaneous</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
 
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
+
 סקירה אוטומטית מ-2026-05-10.
 
 Child &amp; Adolescent — Miscellaneous</itunes:summary>
+      <itunes:season>1</itunes:season>
     </item>
     <item>
-      <title>התפתחות הילד — 2026-05-10</title>
+      <title>[התפתחות] התפתחות הילד — 2026-05-10</title>
       <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+פלייליסט: התפתחות הילד (Child Development).
 
 סקירה אוטומטית מ-2026-05-10.
 
@@ -141,13 +173,18 @@ Child Development</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
 
+פלייליסט: התפתחות הילד (Child Development).
+
 סקירה אוטומטית מ-2026-05-10.
 
 Child Development</itunes:summary>
+      <itunes:season>2</itunes:season>
     </item>
     <item>
-      <title>קוגניציה ומדעי הקוגניציה — 2026-05-10</title>
+      <title>[קוגניציה] קוגניציה ומדעי הקוגניציה — 2026-05-10</title>
       <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+פלייליסט: קוגניציה (Cognition).
 
 סקירה אוטומטית מ-2026-05-10.
 
@@ -158,13 +195,18 @@ Cognition &amp; Cognitive Science</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
 
+פלייליסט: קוגניציה (Cognition).
+
 סקירה אוטומטית מ-2026-05-10.
 
 Cognition &amp; Cognitive Science</itunes:summary>
+      <itunes:season>6</itunes:season>
     </item>
     <item>
-      <title>פסיכיאטריה ביולוגית — 2026-05-10</title>
+      <title>[ביולוגית] פסיכיאטריה ביולוגית — 2026-05-10</title>
       <description>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+
+פלייליסט: פסיכיאטריה ביולוגית (Biological Psychiatry).
 
 סקירה אוטומטית מ-2026-05-10.
 
@@ -175,13 +217,18 @@ Biological Psychiatry</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
 
+פלייליסט: פסיכיאטריה ביולוגית (Biological Psychiatry).
+
 סקירה אוטומטית מ-2026-05-10.
 
 Biological Psychiatry</itunes:summary>
+      <itunes:season>4</itunes:season>
     </item>
     <item>
-      <title>פסיכיאטריה כללית — קלינית — 2026-05-10</title>
+      <title>[כללית] פסיכיאטריה כללית — קלינית — 2026-05-10</title>
       <description>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+
+פלייליסט: פסיכיאטריה כללית (General Psychiatry).
 
 סקירה אוטומטית מ-2026-05-10.
 
@@ -192,13 +239,18 @@ General Psychiatry — Clinical</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
 
+פלייליסט: פסיכיאטריה כללית (General Psychiatry).
+
 סקירה אוטומטית מ-2026-05-10.
 
 General Psychiatry — Clinical</itunes:summary>
+      <itunes:season>3</itunes:season>
     </item>
     <item>
-      <title>מדעי המוח — 2026-05-10</title>
+      <title>[נוירומדע] מדעי המוח — 2026-05-10</title>
       <description>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+
+פלייליסט: מדעי המוח (Neuroscience).
 
 סקירה אוטומטית מ-2026-05-10.
 
@@ -209,13 +261,18 @@ Neuroscience</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
 
+פלייליסט: מדעי המוח (Neuroscience).
+
 סקירה אוטומטית מ-2026-05-10.
 
 Neuroscience</itunes:summary>
+      <itunes:season>5</itunes:season>
     </item>
     <item>
-      <title>פסיכותרפיה והתערבויות — 2026-05-10</title>
+      <title>[פסיכותרפיה] פסיכותרפיה והתערבויות — 2026-05-10</title>
       <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+פלייליסט: פסיכותרפיה (Psychotherapy).
 
 סקירה אוטומטית מ-2026-05-10.
 
@@ -226,13 +283,18 @@ Psychotherapy &amp; Interventions</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
 
+פלייליסט: פסיכותרפיה (Psychotherapy).
+
 סקירה אוטומטית מ-2026-05-10.
 
 Psychotherapy &amp; Interventions</itunes:summary>
+      <itunes:season>7</itunes:season>
     </item>
     <item>
-      <title>מדעי ההתנהגות — 2026-05-17</title>
+      <title>[התנהגות] מדעי ההתנהגות — 2026-05-17</title>
       <description>למידה, חיזוק וקוגניציה חברתית.
+
+פלייליסט: מדעי ההתנהגות (Behavioral Sciences).
 
 סקירה אוטומטית מ-2026-05-17.
 
@@ -243,13 +305,18 @@ Behavioral Sciences</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
 
+פלייליסט: מדעי ההתנהגות (Behavioral Sciences).
+
 סקירה אוטומטית מ-2026-05-17.
 
 Behavioral Sciences</itunes:summary>
+      <itunes:season>8</itunes:season>
     </item>
     <item>
-      <title>ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-17</title>
+      <title>[ילד] ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-17</title>
       <description>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
 
 סקירה אוטומטית מ-2026-05-17.
 
@@ -260,13 +327,18 @@ Child &amp; Adolescent Psychiatry — Core</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
 
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
+
 סקירה אוטומטית מ-2026-05-17.
 
 Child &amp; Adolescent Psychiatry — Core</itunes:summary>
+      <itunes:season>1</itunes:season>
     </item>
     <item>
-      <title>השפעה גבוהה — ילד ומתבגר — 2026-05-17</title>
+      <title>[ילד] השפעה גבוהה — ילד ומתבגר — 2026-05-17</title>
       <description>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
+
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
 
 סקירה אוטומטית מ-2026-05-17.
 
@@ -277,13 +349,18 @@ Child &amp; Adolescent — High Impact</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
 
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
+
 סקירה אוטומטית מ-2026-05-17.
 
 Child &amp; Adolescent — High Impact</itunes:summary>
+      <itunes:season>1</itunes:season>
     </item>
     <item>
-      <title>ילדים ומתבגרים — מגוון — 2026-05-17</title>
+      <title>[ילד] ילדים ומתבגרים — מגוון — 2026-05-17</title>
       <description>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
 
 סקירה אוטומטית מ-2026-05-17.
 
@@ -294,13 +371,18 @@ Child &amp; Adolescent — Miscellaneous</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
 
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
+
 סקירה אוטומטית מ-2026-05-17.
 
 Child &amp; Adolescent — Miscellaneous</itunes:summary>
+      <itunes:season>1</itunes:season>
     </item>
     <item>
-      <title>התפתחות הילד — 2026-05-17</title>
+      <title>[התפתחות] התפתחות הילד — 2026-05-17</title>
       <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+פלייליסט: התפתחות הילד (Child Development).
 
 סקירה אוטומטית מ-2026-05-17.
 
@@ -311,13 +393,18 @@ Child Development</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
 
+פלייליסט: התפתחות הילד (Child Development).
+
 סקירה אוטומטית מ-2026-05-17.
 
 Child Development</itunes:summary>
+      <itunes:season>2</itunes:season>
     </item>
     <item>
-      <title>קוגניציה ומדעי הקוגניציה — 2026-05-17</title>
+      <title>[קוגניציה] קוגניציה ומדעי הקוגניציה — 2026-05-17</title>
       <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+פלייליסט: קוגניציה (Cognition).
 
 סקירה אוטומטית מ-2026-05-17.
 
@@ -328,13 +415,18 @@ Cognition &amp; Cognitive Science</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
 
+פלייליסט: קוגניציה (Cognition).
+
 סקירה אוטומטית מ-2026-05-17.
 
 Cognition &amp; Cognitive Science</itunes:summary>
+      <itunes:season>6</itunes:season>
     </item>
     <item>
-      <title>פסיכיאטריה ביולוגית — 2026-05-17</title>
+      <title>[ביולוגית] פסיכיאטריה ביולוגית — 2026-05-17</title>
       <description>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+
+פלייליסט: פסיכיאטריה ביולוגית (Biological Psychiatry).
 
 סקירה אוטומטית מ-2026-05-17.
 
@@ -345,13 +437,18 @@ Biological Psychiatry</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
 
+פלייליסט: פסיכיאטריה ביולוגית (Biological Psychiatry).
+
 סקירה אוטומטית מ-2026-05-17.
 
 Biological Psychiatry</itunes:summary>
+      <itunes:season>4</itunes:season>
     </item>
     <item>
-      <title>פסיכיאטריה כללית — קלינית — 2026-05-17</title>
+      <title>[כללית] פסיכיאטריה כללית — קלינית — 2026-05-17</title>
       <description>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+
+פלייליסט: פסיכיאטריה כללית (General Psychiatry).
 
 סקירה אוטומטית מ-2026-05-17.
 
@@ -362,13 +459,18 @@ General Psychiatry — Clinical</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
 
+פלייליסט: פסיכיאטריה כללית (General Psychiatry).
+
 סקירה אוטומטית מ-2026-05-17.
 
 General Psychiatry — Clinical</itunes:summary>
+      <itunes:season>3</itunes:season>
     </item>
     <item>
-      <title>מדעי המוח — 2026-05-17</title>
+      <title>[נוירומדע] מדעי המוח — 2026-05-17</title>
       <description>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+
+פלייליסט: מדעי המוח (Neuroscience).
 
 סקירה אוטומטית מ-2026-05-17.
 
@@ -379,13 +481,18 @@ Neuroscience</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
 
+פלייליסט: מדעי המוח (Neuroscience).
+
 סקירה אוטומטית מ-2026-05-17.
 
 Neuroscience</itunes:summary>
+      <itunes:season>5</itunes:season>
     </item>
     <item>
-      <title>פסיכותרפיה והתערבויות — 2026-05-17</title>
+      <title>[פסיכותרפיה] פסיכותרפיה והתערבויות — 2026-05-17</title>
       <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+פלייליסט: פסיכותרפיה (Psychotherapy).
 
 סקירה אוטומטית מ-2026-05-17.
 
@@ -396,13 +503,18 @@ Psychotherapy &amp; Interventions</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
 
+פלייליסט: פסיכותרפיה (Psychotherapy).
+
 סקירה אוטומטית מ-2026-05-17.
 
 Psychotherapy &amp; Interventions</itunes:summary>
+      <itunes:season>7</itunes:season>
     </item>
     <item>
-      <title>(7/12) מדעי ההתנהגות — 2026-05-25</title>
+      <title>[התנהגות] (7/12) מדעי ההתנהגות — 2026-05-25</title>
       <description>למידה, חיזוק וקוגניציה חברתית.
+
+פלייליסט: מדעי ההתנהגות (Behavioral Sciences).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -413,13 +525,18 @@ Behavioral Sciences</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
 
+פלייליסט: מדעי ההתנהגות (Behavioral Sciences).
+
 סקירה אוטומטית מ-2026-05-25.
 
 Behavioral Sciences</itunes:summary>
+      <itunes:season>8</itunes:season>
     </item>
     <item>
-      <title>(1/12) ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-25</title>
+      <title>[ילד] (1/12) ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-25</title>
       <description>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -430,13 +547,18 @@ Child &amp; Adolescent Psychiatry — Core</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
 
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
+
 סקירה אוטומטית מ-2026-05-25.
 
 Child &amp; Adolescent Psychiatry — Core</itunes:summary>
+      <itunes:season>1</itunes:season>
     </item>
     <item>
-      <title>(9/12) ילדים ומתבגרים — מגוון — 2026-05-25</title>
+      <title>[ילד] (9/12) ילדים ומתבגרים — מגוון — 2026-05-25</title>
       <description>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -447,13 +569,18 @@ Child &amp; Adolescent — Miscellaneous</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
 
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
+
 סקירה אוטומטית מ-2026-05-25.
 
 Child &amp; Adolescent — Miscellaneous</itunes:summary>
+      <itunes:season>1</itunes:season>
     </item>
     <item>
-      <title>(4/12) התפתחות הילד — 2026-05-25</title>
+      <title>[התפתחות] (4/12) התפתחות הילד — 2026-05-25</title>
       <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+
+פלייליסט: התפתחות הילד (Child Development).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -464,13 +591,18 @@ Child Development</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
 
+פלייליסט: התפתחות הילד (Child Development).
+
 סקירה אוטומטית מ-2026-05-25.
 
 Child Development</itunes:summary>
+      <itunes:season>2</itunes:season>
     </item>
     <item>
-      <title>(8/12) קוגניציה ומדעי הקוגניציה — 2026-05-25</title>
+      <title>[קוגניציה] (8/12) קוגניציה ומדעי הקוגניציה — 2026-05-25</title>
       <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+פלייליסט: קוגניציה (Cognition).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -481,13 +613,18 @@ Cognition &amp; Cognitive Science</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
 
+פלייליסט: קוגניציה (Cognition).
+
 סקירה אוטומטית מ-2026-05-25.
 
 Cognition &amp; Cognitive Science</itunes:summary>
+      <itunes:season>6</itunes:season>
     </item>
     <item>
-      <title>(3/12) פסיכיאטריה ביולוגית — 2026-05-25</title>
+      <title>[ביולוגית] (3/12) פסיכיאטריה ביולוגית — 2026-05-25</title>
       <description>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+
+פלייליסט: פסיכיאטריה ביולוגית (Biological Psychiatry).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -498,13 +635,18 @@ Biological Psychiatry</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
 
+פלייליסט: פסיכיאטריה ביולוגית (Biological Psychiatry).
+
 סקירה אוטומטית מ-2026-05-25.
 
 Biological Psychiatry</itunes:summary>
+      <itunes:season>4</itunes:season>
     </item>
     <item>
-      <title>(2/12) פסיכיאטריה כללית — קלינית — 2026-05-25</title>
+      <title>[כללית] (2/12) פסיכיאטריה כללית — קלינית — 2026-05-25</title>
       <description>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+
+פלייליסט: פסיכיאטריה כללית (General Psychiatry).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -515,13 +657,18 @@ General Psychiatry — Clinical</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
 
+פלייליסט: פסיכיאטריה כללית (General Psychiatry).
+
 סקירה אוטומטית מ-2026-05-25.
 
 General Psychiatry — Clinical</itunes:summary>
+      <itunes:season>3</itunes:season>
     </item>
     <item>
-      <title>(5/12) מדעי המוח — 2026-05-25</title>
+      <title>[נוירומדע] (5/12) מדעי המוח — 2026-05-25</title>
       <description>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+
+פלייליסט: מדעי המוח (Neuroscience).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -532,13 +679,18 @@ Neuroscience</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
 
+פלייליסט: מדעי המוח (Neuroscience).
+
 סקירה אוטומטית מ-2026-05-25.
 
 Neuroscience</itunes:summary>
+      <itunes:season>5</itunes:season>
     </item>
     <item>
-      <title>(6/12) פסיכותרפיה והתערבויות — 2026-05-25</title>
+      <title>[פסיכותרפיה] (6/12) פסיכותרפיה והתערבויות — 2026-05-25</title>
       <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+פלייליסט: פסיכותרפיה (Psychotherapy).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -549,13 +701,18 @@ Psychotherapy &amp; Interventions</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
 
+פלייליסט: פסיכותרפיה (Psychotherapy).
+
 סקירה אוטומטית מ-2026-05-25.
 
 Psychotherapy &amp; Interventions</itunes:summary>
+      <itunes:season>7</itunes:season>
     </item>
     <item>
-      <title>(10/12) מאמר סקירה: GBD 2023 Mental Disorder Collaborators — Updated trends in the global prevalence and burden… — 2026-05-25</title>
+      <title>[סקירה] (10/12) מאמר סקירה: GBD 2023 Mental Disorder Collaborators — Updated trends in the global prevalence and burden… — 2026-05-25</title>
       <description>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
+
+פלייליסט: מאמרי סקירה מובחנים (Spotlight Reviews).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -566,13 +723,18 @@ Spotlight Review</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
 
+פלייליסט: מאמרי סקירה מובחנים (Spotlight Reviews).
+
 סקירה אוטומטית מ-2026-05-25.
 
 Spotlight Review</itunes:summary>
+      <itunes:season>9</itunes:season>
     </item>
     <item>
-      <title>(11/12) מאמר סקירה: Nourredine M — Pharmacological interventions for ADHD: a systemat… — 2026-05-25</title>
+      <title>[ילד] (11/12) מאמר סקירה: Nourredine M — Pharmacological interventions for ADHD: a systemat… — 2026-05-25</title>
       <description>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
+
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
 
 סקירה אוטומטית מ-2026-05-25.
 
@@ -583,9 +745,12 @@ Spotlight Review</description>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
 
+פלייליסט: פסיכיאטריית הילד והמתבגר (Child &amp; Adolescent Psychiatry).
+
 סקירה אוטומטית מ-2026-05-25.
 
 Spotlight Review</itunes:summary>
+      <itunes:season>1</itunes:season>
     </item>
   </channel>
 </rss>
