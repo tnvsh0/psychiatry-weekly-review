@@ -197,6 +197,15 @@ THERAPY_KEYWORDS: list[str] = [
     "פסיכותרפיה", "טיפול פסיכולוגי", "טיפול קוגניטיבי",
 ]
 
+# Standalone AI-disclosure line — appended to every channel description and
+# every episode description so listeners encountering the show anywhere
+# (Apple's directory, Spotify show page, a podcast app's notes pane)
+# immediately see the disclaimer.
+AI_DISCLOSURE = (
+    "⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ "
+    "רפואי, חובה לבדוק כל פרט מול המקור המקורי."
+)
+
 CHANNELS: list[dict] = [
     {
         "id":          "child",
@@ -207,8 +216,8 @@ CHANNELS: list[dict] = [
             "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריית הילד "
             "והמתבגר ובהתפתחות הילד — מבוסס על PubMed ומופק אוטומטית מדי "
             "שבוע. כולל את ליבת הפסיכיאטריה של הילד, מאמרים רלוונטיים "
-            "מכתבי עת רפואיים מובילים, ומאמרי סקירה משמעותיים. אינו מהווה "
-            "ייעוץ רפואי."
+            "מכתבי עת רפואיים מובילים, ומאמרי סקירה משמעותיים.\n\n"
+            f"{AI_DISCLOSURE}"
         ),
         "topic_ids":   [
             "child_adolescent_core",
@@ -216,7 +225,7 @@ CHANNELS: list[dict] = [
             "child_adolescent_misc",
             "child_development",
         ],
-        "spotlight_routing": "child",   # absorbs child-keyword spotlights
+        "spotlight_routing": "child",
     },
     {
         "id":          "psychiatry",
@@ -227,14 +236,15 @@ CHANNELS: list[dict] = [
             "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה כללית "
             "(קלינית וביולוגית) ובמדעי המוח — מבוסס על PubMed ומופק "
             "אוטומטית מדי שבוע. כולל מאמרי סקירה משמעותיים בפסיכופרמקולוגיה "
-            "ובמחקר ביולוגי. אינו מהווה ייעוץ רפואי."
+            "ובמחקר ביולוגי.\n\n"
+            f"{AI_DISCLOSURE}"
         ),
         "topic_ids":   [
             "general_psychiatry_clinical",
             "general_psychiatry_bio",
             "neuroscience",
         ],
-        "spotlight_routing": "default",  # absorbs everything not child/therapy
+        "spotlight_routing": "default",
     },
     {
         "id":          "therapy",
@@ -245,8 +255,8 @@ CHANNELS: list[dict] = [
             "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכותרפיה, "
             "במדעי ההתנהגות ובקוגניציה — מבוסס על PubMed ומופק אוטומטית "
             "מדי שבוע. כולל ראיות עדכניות על CBT, DBT, התערבויות "
-            "פסיכולוגיות, מנגנונים קוגניטיביים והתנהגותיים. אינו מהווה "
-            "ייעוץ רפואי."
+            "פסיכולוגיות, מנגנונים קוגניטיביים והתנהגותיים.\n\n"
+            f"{AI_DISCLOSURE}"
         ),
         "topic_ids":   [
             "psychotherapy",
@@ -255,8 +265,6 @@ CHANNELS: list[dict] = [
         ],
         "spotlight_routing": "therapy",
     },
-    # Combined feed — kept so the existing Spotify subscription at the
-    # original feed.xml URL doesn't break. Contains every episode.
     {
         "id":          "combined",
         "feed_file":   "feed.xml",
@@ -265,8 +273,8 @@ CHANNELS: list[dict] = [
         "description": (
             "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, "
             "פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה "
-            "וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע. "
-            "אינו מהווה ייעוץ רפואי."
+            "וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע.\n\n"
+            f"{AI_DISCLOSURE}"
         ),
         "topic_ids":   None,             # None = include every episode
         "spotlight_routing": "default",
@@ -381,6 +389,107 @@ def _extract_spotlight_title(rel_name_raw: str) -> str:
     if len(parts) > 1:
         return " — ".join(parts[:-1]).strip()
     return rel_name or "מאמר סקירה מרכזי"
+
+
+# Memoise articles.json loads — the same date may be looked up many times
+# during one feed build (one episode per topic in the same week).
+_ARTICLES_CACHE: dict[str, list[dict]] = {}
+
+
+def _load_articles_for_date(date_str: str, repo_root: Path) -> list[dict]:
+    """Read summaries/{date}/articles.json once and cache it.
+    Returns [] if the file is missing (older weeks pre-articles.json)."""
+    if date_str in _ARTICLES_CACHE:
+        return _ARTICLES_CACHE[date_str]
+    path = repo_root / "summaries" / date_str / "articles.json"
+    if not path.exists():
+        _ARTICLES_CACHE[date_str] = []
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(data, list):
+            data = []
+    except Exception:
+        data = []
+    _ARTICLES_CACHE[date_str] = data
+    return data
+
+
+def _articles_for_release(date_str: str, topic_id: str,
+                           repo_root: Path) -> list[dict]:
+    """Return the articles that this specific episode covered, sorted by
+    Impact Factor (descending). Empty list if no metadata is available."""
+    all_articles = _load_articles_for_date(date_str, repo_root)
+    if not all_articles:
+        return []
+    # Exact match first — handles split topics ("psychotherapy_part2").
+    matches = [a for a in all_articles if a.get("topic_id") == topic_id]
+    if not matches:
+        # Fall back to the cluster base id.
+        base = topic_id.split("_part")[0]
+        matches = [a for a in all_articles if a.get("topic_id") == base]
+    matches.sort(key=lambda a: -float(a.get("impact_factor", 0) or 0))
+    return matches
+
+
+def _format_episode_description(
+    articles: list[dict],
+    cluster_label_he: str | None,
+    playlist_he: str,
+    label_en: str,
+    date_str: str,
+) -> str:
+    """Build the per-episode <description> shown in the podcast app.
+
+    Strategy: pull the actual paper list from articles.json so listeners
+    see what's covered before they press play. Top 3 by Impact Factor get
+    a bullet; the rest are summarised as a count. Falls back to a generic
+    description when the metadata is unavailable (very old releases)."""
+    lines: list[str] = []
+
+    if articles:
+        if len(articles) == 1:
+            a = articles[0]
+            t = a.get("title", "")
+            if len(t) > 140:
+                t = t[:140] + "…"
+            j = a.get("journal", "")
+            study = a.get("study_type_he") or ""
+            extras = " · ".join(x for x in (j, study) if x)
+            lines.append(f"פרק זה מוקדש למאמר אחד:")
+            lines.append(f"• {t}")
+            if extras:
+                lines.append(f"  ({extras})")
+        else:
+            n = len(articles)
+            lines.append(f"פרק זה כולל סקירה של {n} מאמרים, ביניהם:")
+            for a in articles[:3]:
+                t = a.get("title", "")
+                if len(t) > 140:
+                    t = t[:140] + "…"
+                j = a.get("journal", "")
+                study = a.get("study_type_he") or ""
+                extras = " · ".join(x for x in (j, study) if x)
+                if extras:
+                    lines.append(f"• {t} ({extras})")
+                else:
+                    lines.append(f"• {t}")
+            if n > 3:
+                lines.append(f"ועוד {n - 3} מאמרים נוספים.")
+    elif cluster_label_he:
+        lines.append(f"סקירה שבועית של מאמרים מהקלאסטר: {cluster_label_he}.")
+
+    lines.append("")
+    if cluster_label_he:
+        lines.append(f"קלאסטר: {cluster_label_he}")
+    lines.append(f"סדרה: {playlist_he}")
+    lines.append(f"תאריך הסקירה: {date_str}")
+    lines.append("")
+    lines.append(AI_DISCLOSURE)
+    if label_en:
+        lines.append("")
+        lines.append(f"— {label_en} —")
+    return "\n".join(lines)
 
 
 def _extract_release_display_title(rel_name_raw: str) -> str:
@@ -511,14 +620,12 @@ def build_feed(repo: str, channel: dict, releases: list[dict],
         else:
             title = f"{display_title} — {date_str}"
 
-        # Description shows cluster context regardless of channel.
-        cluster_line = f"קלאסטר: {cluster_label_he}\n" if cluster_label_he else ""
-        description = (
-            f"{topic_desc}\n\n"
-            f"{cluster_line}"
-            f"שייך לסדרה: {playlist_he}.\n"
-            f"סקירה אוטומטית מ-{date_str}.\n\n"
-            f"{label_en}"
+        # Build the description from the actual paper list (top 3 by IF +
+        # count of the rest). Falls back to generic text when articles.json
+        # isn't available for very old releases.
+        articles = _articles_for_release(date_str, topic_id, repo_root)
+        description = _format_episode_description(
+            articles, cluster_label_he, playlist_he, label_en, date_str,
         )
 
         fe = fg.add_entry()
