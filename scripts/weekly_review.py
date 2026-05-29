@@ -1387,7 +1387,14 @@ def wait_for_all_podcasts(nb_infos: list[dict], env: dict, max_wait: int = 2700)
                         label  = nb["topic"]["label_en"]
                         print(f"  [{elapsed // 60}m] {label}: {status}")
                         if status == "completed":
-                            nb["podcast_ready"] = True
+                            nb["podcast_ready"]  = True
+                            # NotebookLM auto-generates an engaging Hebrew
+                            # title for each Deep Dive audio artifact (e.g.
+                            # "מדידת הנפש מהיער ועד לגלי המוח"). Capture it
+                            # so we can use it in the GitHub Release title
+                            # and the RSS feed instead of the dry cluster
+                            # label ("פסיכותרפיה והתערבויות").
+                            nb["artifact_title"] = (a.get("title") or "").strip()
                             del pending[nb_id]
                         elif status in ("failed", "unknown"):
                             print(f"  ERROR: {label} podcast failed.")
@@ -1479,8 +1486,9 @@ def upload_to_github_release(
     podcast_path: str,
     topic: dict,
     env: dict,
-    episode_number: int | None = None,
-    episode_total: int | None = None,
+    episode_number: int | None = None,  # kept for back-compat, unused now
+    episode_total: int | None = None,   # kept for back-compat, unused now
+    artifact_title: str | None = None,
 ) -> str | None:
     tag    = f"weekly-{DATE_STR}-{topic['id']}"
     # Support both GitHub Actions (GITHUB_REPOSITORY) and Cloud Run (GH_REPO)
@@ -1491,17 +1499,20 @@ def upload_to_github_release(
         print("  WARNING: GITHUB_REPOSITORY not set")
         return None
 
-    # Episode number prefix \u2014 e.g. "(3/12) " \u2014 surfaces in the release title
-    # (and downstream in the RSS feed) so the user can see episode progress
-    # in any podcast app.
-    ep_prefix = ""
-    if episode_number and episode_total:
-        ep_prefix = f"({episode_number}/{episode_total}) "
+    # Episode display title:
+    #   1. NotebookLM's auto-generated artifact title if we captured one
+    #      (engaging, content-specific, e.g. "\u05de\u05d3\u05d9\u05d3\u05ea \u05d4\u05e0\u05e4\u05e9 \u05de\u05d4\u05d9\u05e2\u05e8 \u05d5\u05e2\u05d3 \u05dc\u05d2\u05dc\u05d9 \u05d4\u05de\u05d5\u05d7")
+    #   2. Cluster label_he as fallback (the dry "\u05e4\u05e1\u05d9\u05db\u05d5\u05ea\u05e8\u05e4\u05d9\u05d4 \u05d5\u05d4\u05ea\u05e2\u05e8\u05d1\u05d5\u05d9\u05d5\u05ea")
+    # No more (N/M) prefix \u2014 the channel/playlist split obsoletes it.
+    display_title = (artifact_title or "").strip() or topic["label_he"]
 
     subprocess.run([
         "gh", "release", "create", tag, podcast_path,
-        "--title", f"\U0001f4da {ep_prefix}{topic['label_he']} \u2014 {DATE_STR}",
-        "--notes", f"{topic['label_en']} weekly literature review {DATE_STR}\n\n*Generated automatically*",
+        "--title", f"\U0001f4da {display_title} \u2014 {DATE_STR}",
+        "--notes",
+            f"{topic['label_en']} weekly literature review {DATE_STR}\n\n"
+            f"Cluster: {topic['label_he']}\n\n"
+            f"*Generated automatically*",
         "--repo", repo,
     ], capture_output=True, text=True, env=env, timeout=180)
 
@@ -1535,10 +1546,11 @@ def send_notification(nb_infos: list[dict], env: dict):
     ]
     for nb in nb_infos:
         icon = "\U0001f399\ufe0f" if nb.get("podcast_url") else ("\U0001f4d3" if nb.get("nb_url") else "\U0001f4cb")
-        ep_num = nb.get("episode_number")
-        ep_total = nb.get("episode_total")
-        ep_prefix = f"({ep_num}/{ep_total}) " if ep_num and ep_total else ""
-        body_lines.append(f"  {icon} {ep_prefix}{nb['topic']['label_he']}: {len(nb['articles'])} \u05de\u05d0\u05de\u05e8\u05d9\u05dd")
+        # Prefer the NotebookLM artifact title (engaging, content-specific);
+        # fall back to the cluster label when the artifact title is missing
+        # (failed generation, etc.).
+        nice_title = (nb.get("artifact_title") or "").strip() or nb["topic"]["label_he"]
+        body_lines.append(f"  {icon} {nice_title}: {len(nb['articles'])} \u05de\u05d0\u05de\u05e8\u05d9\u05dd")
     if ready_podcasts:
         body_lines.append(f"\n\u2705 {ready_podcasts}/{len(nb_infos)} \u05e4\u05d5\u05d3\u05e7\u05d0\u05e1\u05d8\u05d9\u05dd \u05de\u05d5\u05db\u05e0\u05d9\u05dd.")
 
@@ -1546,12 +1558,13 @@ def send_notification(nb_infos: list[dict], env: dict):
     actions = []
     for nb in nb_infos:
         if nb.get("podcast_url") and len(actions) < 3:
-            ep_num = nb.get("episode_number")
-            ep_total = nb.get("episode_total")
-            ep_prefix = f"({ep_num}/{ep_total}) " if ep_num and ep_total else ""
+            btn_title = (nb.get("artifact_title") or "").strip() or nb["topic"]["label_he"]
+            # ntfy button labels work best under ~30 chars
+            if len(btn_title) > 30:
+                btn_title = btn_title[:29] + "\u2026"
             actions.append({
                 "action": "view",
-                "label":  f"\U0001f399\ufe0f {ep_prefix}{nb['topic']['label_he']}",
+                "label":  f"\U0001f399\ufe0f {btn_title}",
                 "url":    nb["podcast_url"],
             })
 
@@ -1978,6 +1991,7 @@ def main():
                 url = upload_to_github_release(
                     path, nb["topic"], env,
                     nb.get("episode_number"), nb.get("episode_total"),
+                    artifact_title=nb.get("artifact_title"),
                 )
                 nb["podcast_url"] = url
                 print(f"  -> {url}")

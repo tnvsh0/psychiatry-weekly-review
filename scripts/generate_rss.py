@@ -383,6 +383,26 @@ def _extract_spotlight_title(rel_name_raw: str) -> str:
     return rel_name or "מאמר סקירה מרכזי"
 
 
+def _extract_release_display_title(rel_name_raw: str) -> str:
+    """Pull the actual display title out of a release name.
+
+    Handles both the old format (📚 (3/12) ליבה — פסיכיאטריית ילד ומתבגר — DATE)
+    and the new NotebookLM-titled format (📚 מדידת הנפש מהיער ועד לגלי המוח — DATE).
+    Strips the book emoji, the (N/M) prefix, and the trailing "— YYYY-MM-DD"."""
+    name = rel_name_raw.replace("📚 ", "").strip()
+    name = EPISODE_NUM_RE.sub("", name, count=1).strip()
+    parts = name.split(" — ")
+    if len(parts) > 1:
+        last = parts[-1].strip()
+        # Strip the trailing segment only if it looks like a YYYY-MM-DD
+        try:
+            datetime.strptime(last, "%Y-%m-%d")
+            return " — ".join(parts[:-1]).strip()
+        except ValueError:
+            pass
+    return name.strip()
+
+
 def build_feed(repo: str, channel: dict, releases: list[dict],
                out_dir: Path, pages_base: str) -> None:
     """Build the RSS feed for one channel and write it to out_dir/{feed_file}.
@@ -430,20 +450,19 @@ def build_feed(repo: str, channel: dict, releases: list[dict],
         date_str, topic_id = parsed
         rel_name_raw = rel.get("name", "")
 
-        # Resolve labels
+        # Resolve cluster labels (used for topic_desc + label_en orientation)
         labels = TOPIC_LABELS.get(_topic_id_base(topic_id))
         if not labels:
             if topic_id.startswith("spotlight_"):
-                title_he = _extract_spotlight_title(rel_name_raw)
                 labels = (
-                    title_he,
+                    None,  # display title comes from release name
                     "Spotlight Review",
                     "פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — "
                     "סקירה ארוכה ומעמיקה של מאמר בודד.",
                 )
             else:
                 continue
-        label_he, label_en, topic_desc = labels
+        cluster_label_he, label_en, topic_desc = labels
 
         # Channel filtering — skip episodes that don't belong to this channel
         episode_channel = get_channel_for_episode(topic_id, rel_name_raw)
@@ -469,20 +488,34 @@ def build_feed(repo: str, channel: dict, releases: list[dict],
         local_mp3 = repo_root / "podcasts" / date_str / f"{topic_id}.mp3"
         duration = _audio_duration_seconds(local_mp3)
 
-        # Clean title — no [tag] prefix, no (N/M) counter. The channel itself
-        # signals the topic in dedicated feeds. In the combined feed we still
-        # tag the playlist in the description so listeners know where each
-        # episode "would have lived" in the split shows.
-        title = f"{label_he} — {date_str}"
+        # Display title comes from the release name itself — this is either
+        # the NotebookLM-generated title (newer releases) or the old cluster
+        # label (releases from before the NotebookLM-title capture landed).
+        # Either way, parsing the release name uses what's actually there.
+        display_title = _extract_release_display_title(rel_name_raw)
+        if not display_title:
+            # Truly empty? Fall back to cluster label.
+            display_title = cluster_label_he or "פרק"
 
-        # Description carries the channel/playlist info for orientation.
         playlist_he = {
             "child":      "פסיכיאטריית הילד והמתבגר",
             "psychiatry": "פסיכיאטריה ומדעי המוח",
             "therapy":    "פסיכותרפיה וקוגניציה",
         }[episode_channel]
+
+        # In dedicated channel feeds — clean title.
+        # In the combined feed — append the playlist tag so listeners
+        # browsing the combined feed know which series each episode came from.
+        if is_combined:
+            title = f"{display_title} | {playlist_he} — {date_str}"
+        else:
+            title = f"{display_title} — {date_str}"
+
+        # Description shows cluster context regardless of channel.
+        cluster_line = f"קלאסטר: {cluster_label_he}\n" if cluster_label_he else ""
         description = (
             f"{topic_desc}\n\n"
+            f"{cluster_line}"
             f"שייך לסדרה: {playlist_he}.\n"
             f"סקירה אוטומטית מ-{date_str}.\n\n"
             f"{label_en}"
