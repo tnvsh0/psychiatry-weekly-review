@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>סקירה שבועית — פסיכותרפיה וקוגניציה</title>
+    <link>https://tnvsh0.github.io/psychiatry-weekly-review/feed-therapy.xml</link>
+    <description>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכותרפיה, במדעי ההתנהגות ובקוגניציה — מבוסס על PubMed ומופק אוטומטית מדי שבוע. כולל ראיות עדכניות על CBT, DBT, התערבויות פסיכולוגיות, מנגנונים קוגניטיביים והתנהגותיים. אינו מהווה ייעוץ רפואי.</description>
+    <atom:link href="https://tnvsh0.github.io/psychiatry-weekly-review/feed-therapy.xml" rel="self"/>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <image>
+      <url>https://tnvsh0.github.io/psychiatry-weekly-review/cover-therapy.png</url>
+      <title>סקירה שבועית — פסיכותרפיה וקוגניציה</title>
+      <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
+    </image>
+    <language>he</language>
+    <lastBuildDate>Fri, 29 May 2026 08:02:03 +0000</lastBuildDate>
+    <itunes:author>Tovia Wen</itunes:author>
+    <itunes:category text="Health &amp; Fitness">
+      <itunes:category text="Medicine"/>
+    </itunes:category>
+    <itunes:image href="https://tnvsh0.github.io/psychiatry-weekly-review/cover-therapy.png"/>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:owner>
+      <itunes:name>Tovia Wen</itunes:name>
+      <itunes:email>toviagpt@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכותרפיה, במדעי ההתנהגות ובקוגניציה — מבוסס על PubMed ומופק אוטומטית מדי שבוע. כולל ראיות עדכניות על CBT, DBT, התערבויות פסיכולוגיות, מנגנונים קוגניטיביים והתנהגותיים. אינו מהווה ייעוץ רפואי.</itunes:summary>
+    <itunes:type>episodic</itunes:type>
+    <item>
+      <title>פסיכותרפיה והתערבויות — 2026-04-20</title>
+      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-04-20.
+
+Psychotherapy &amp; Interventions</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-04-20-psychotherapy/psychotherapy.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-04-20-psychotherapy/psychotherapy.mp3" length="20631057" type="audio/mpeg"/>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-04-20.
+
+Psychotherapy &amp; Interventions</itunes:summary>
+    </item>
+    <item>
+      <title>מדעי ההתנהגות — 2026-05-10</title>
+      <description>למידה, חיזוק וקוגניציה חברתית.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-10.
+
+Behavioral Sciences</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-behavioral_sciences/behavioral_sciences.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-behavioral_sciences/behavioral_sciences.mp3" length="21838619" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-10.
+
+Behavioral Sciences</itunes:summary>
+    </item>
+    <item>
+      <title>קוגניציה ומדעי הקוגניציה — 2026-05-10</title>
+      <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-10.
+
+Cognition &amp; Cognitive Science</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-cognition/cognition.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-cognition/cognition.mp3" length="36524757" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-10.
+
+Cognition &amp; Cognitive Science</itunes:summary>
+    </item>
+    <item>
+      <title>פסיכותרפיה והתערבויות — 2026-05-10</title>
+      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-10.
+
+Psychotherapy &amp; Interventions</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-psychotherapy/psychotherapy.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-psychotherapy/psychotherapy.mp3" length="36145145" type="audio/mpeg"/>
+      <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-10.
+
+Psychotherapy &amp; Interventions</itunes:summary>
+    </item>
+    <item>
+      <title>מדעי ההתנהגות — 2026-05-17</title>
+      <description>למידה, חיזוק וקוגניציה חברתית.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-17.
+
+Behavioral Sciences</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-behavioral_sciences/behavioral_sciences.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-behavioral_sciences/behavioral_sciences.mp3" length="28638475" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-17.
+
+Behavioral Sciences</itunes:summary>
+    </item>
+    <item>
+      <title>קוגניציה ומדעי הקוגניציה — 2026-05-17</title>
+      <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-17.
+
+Cognition &amp; Cognitive Science</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-cognition/cognition.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-cognition/cognition.mp3" length="26223865" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-17.
+
+Cognition &amp; Cognitive Science</itunes:summary>
+    </item>
+    <item>
+      <title>פסיכותרפיה והתערבויות — 2026-05-17</title>
+      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-17.
+
+Psychotherapy &amp; Interventions</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-psychotherapy/psychotherapy.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-psychotherapy/psychotherapy.mp3" length="43529301" type="audio/mpeg"/>
+      <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-17.
+
+Psychotherapy &amp; Interventions</itunes:summary>
+    </item>
+    <item>
+      <title>מדעי ההתנהגות — 2026-05-25</title>
+      <description>למידה, חיזוק וקוגניציה חברתית.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-25.
+
+Behavioral Sciences</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-behavioral_sciences/behavioral_sciences.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-behavioral_sciences/behavioral_sciences.mp3" length="32200883" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-25.
+
+Behavioral Sciences</itunes:summary>
+    </item>
+    <item>
+      <title>קוגניציה ומדעי הקוגניציה — 2026-05-25</title>
+      <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-25.
+
+Cognition &amp; Cognitive Science</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-cognition/cognition.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-cognition/cognition.mp3" length="36616642" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-25.
+
+Cognition &amp; Cognitive Science</itunes:summary>
+    </item>
+    <item>
+      <title>פסיכותרפיה והתערבויות — 2026-05-25</title>
+      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-25.
+
+Psychotherapy &amp; Interventions</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-psychotherapy/psychotherapy.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-psychotherapy/psychotherapy.mp3" length="55397312" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+
+שייך לסדרה: פסיכותרפיה וקוגניציה.
+סקירה אוטומטית מ-2026-05-25.
+
+Psychotherapy &amp; Interventions</itunes:summary>
+    </item>
+  </channel>
+</rss>
