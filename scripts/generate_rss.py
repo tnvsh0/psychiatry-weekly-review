@@ -266,20 +266,10 @@ CHANNELS: list[dict] = [
         ],
         "spotlight_routing": "therapy",
     },
-    {
-        "id":          "combined",
-        "feed_file":   "feed.xml",
-        "cover_file":  "cover.png",
-        "title":       "סקירה שבועית בפסיכיאטריה",
-        "description": (
-            "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, "
-            "פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה "
-            "וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע.\n\n"
-            f"{AI_DISCLOSURE}"
-        ),
-        "topic_ids":   None,             # None = include every episode
-        "spotlight_routing": "default",
-    },
+    # Combined feed retired 2026-05-29 — superseded by the 3 dedicated
+    # channels above. We deliberately stop generating feed.xml AND delete
+    # the leftover file from docs/ so Spotify gets 404 on its next poll
+    # of the old subscription and the listing eventually drops.
 ]
 
 
