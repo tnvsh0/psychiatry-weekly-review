@@ -3,7 +3,9 @@
   <channel>
     <title>סקירה שבועית בפסיכיאטריה</title>
     <link>https://tnvsh0.github.io/psychiatry-weekly-review/feed.xml</link>
-    <description>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע. אינו מהווה ייעוץ רפואי.</description>
+    <description>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע.
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</description>
     <atom:link href="https://tnvsh0.github.io/psychiatry-weekly-review/feed.xml" rel="self"/>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
@@ -13,7 +15,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Fri, 29 May 2026 13:06:57 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 13:22:11 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -24,728 +26,858 @@
       <itunes:name>Tovia Wen</itunes:name>
       <itunes:email>toviagpt@gmail.com</itunes:email>
     </itunes:owner>
-    <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע. אינו מהווה ייעוץ רפואי.</itunes:summary>
+    <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע.
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</itunes:summary>
     <itunes:type>episodic</itunes:type>
     <item>
       <title>התפתחות הילד ובריאות הנפש | פסיכיאטריית הילד והמתבגר — 2026-04-20</title>
-      <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: התפתחות הילד.
 
 קלאסטר: התפתחות הילד
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-04-20.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-04-20
 
-Child Development</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child Development —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-04-20-child_development/child_development.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-04-20-child_development/child_development.mp3" length="39417587" type="audio/mpeg"/>
       <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: התפתחות הילד.
 
 קלאסטר: התפתחות הילד
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-04-20.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-04-20
 
-Child Development</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child Development —</itunes:summary>
       <itunes:season>2</itunes:season>
     </item>
     <item>
       <title>פסיכותרפיה והתערבויות | פסיכותרפיה וקוגניציה — 2026-04-20</title>
-      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכותרפיה והתערבויות.
 
 קלאסטר: פסיכותרפיה והתערבויות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-04-20.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-04-20
 
-Psychotherapy &amp; Interventions</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Psychotherapy &amp; Interventions —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-04-20-psychotherapy/psychotherapy.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-04-20-psychotherapy/psychotherapy.mp3" length="20631057" type="audio/mpeg"/>
       <pubDate>Mon, 20 Apr 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: פסיכותרפיה והתערבויות.
 
 קלאסטר: פסיכותרפיה והתערבויות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-04-20.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-04-20
 
-Psychotherapy &amp; Interventions</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Psychotherapy &amp; Interventions —</itunes:summary>
       <itunes:season>7</itunes:season>
     </item>
     <item>
       <title>מדעי ההתנהגות | פסיכותרפיה וקוגניציה — 2026-05-10</title>
-      <description>למידה, חיזוק וקוגניציה חברתית.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: מדעי ההתנהגות.
 
 קלאסטר: מדעי ההתנהגות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-10
 
-Behavioral Sciences</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Behavioral Sciences —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-behavioral_sciences/behavioral_sciences.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-behavioral_sciences/behavioral_sciences.mp3" length="21838619" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: מדעי ההתנהגות.
 
 קלאסטר: מדעי ההתנהגות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-10
 
-Behavioral Sciences</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Behavioral Sciences —</itunes:summary>
       <itunes:season>8</itunes:season>
     </item>
     <item>
       <title>ליבה — פסיכיאטריית ילד ומתבגר | פסיכיאטריית הילד והמתבגר — 2026-05-10</title>
-      <description>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: ליבה — פסיכיאטריית ילד ומתבגר.
 
 קלאסטר: ליבה — פסיכיאטריית ילד ומתבגר
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-10
 
-Child &amp; Adolescent Psychiatry — Core</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent Psychiatry — Core —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_core/child_adolescent_core.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_core/child_adolescent_core.mp3" length="36111528" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: ליבה — פסיכיאטריית ילד ומתבגר.
 
 קלאסטר: ליבה — פסיכיאטריית ילד ומתבגר
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-10
 
-Child &amp; Adolescent Psychiatry — Core</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent Psychiatry — Core —</itunes:summary>
       <itunes:season>1</itunes:season>
     </item>
     <item>
       <title>השפעה גבוהה — ילד ומתבגר | פסיכיאטריית הילד והמתבגר — 2026-05-10</title>
-      <description>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: השפעה גבוהה — ילד ומתבגר.
 
 קלאסטר: השפעה גבוהה — ילד ומתבגר
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-10
 
-Child &amp; Adolescent — High Impact</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent — High Impact —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_highimpact/child_adolescent_highimpact.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_highimpact/child_adolescent_highimpact.mp3" length="25982456" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: השפעה גבוהה — ילד ומתבגר.
 
 קלאסטר: השפעה גבוהה — ילד ומתבגר
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-10
 
-Child &amp; Adolescent — High Impact</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent — High Impact —</itunes:summary>
       <itunes:season>1</itunes:season>
     </item>
     <item>
       <title>ילדים ומתבגרים — מגוון | פסיכיאטריית הילד והמתבגר — 2026-05-10</title>
-      <description>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: ילדים ומתבגרים — מגוון.
 
 קלאסטר: ילדים ומתבגרים — מגוון
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-10
 
-Child &amp; Adolescent — Miscellaneous</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent — Miscellaneous —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_misc/child_adolescent_misc.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_adolescent_misc/child_adolescent_misc.mp3" length="35001712" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: ילדים ומתבגרים — מגוון.
 
 קלאסטר: ילדים ומתבגרים — מגוון
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-10
 
-Child &amp; Adolescent — Miscellaneous</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent — Miscellaneous —</itunes:summary>
       <itunes:season>1</itunes:season>
     </item>
     <item>
       <title>התפתחות הילד | פסיכיאטריית הילד והמתבגר — 2026-05-10</title>
-      <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: התפתחות הילד.
 
 קלאסטר: התפתחות הילד
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-10
 
-Child Development</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child Development —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_development/child_development.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-child_development/child_development.mp3" length="48832142" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: התפתחות הילד.
 
 קלאסטר: התפתחות הילד
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-10
 
-Child Development</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child Development —</itunes:summary>
       <itunes:season>2</itunes:season>
     </item>
     <item>
       <title>קוגניציה ומדעי הקוגניציה | פסיכותרפיה וקוגניציה — 2026-05-10</title>
-      <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: קוגניציה ומדעי הקוגניציה.
 
 קלאסטר: קוגניציה ומדעי הקוגניציה
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-10
 
-Cognition &amp; Cognitive Science</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Cognition &amp; Cognitive Science —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-cognition/cognition.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-cognition/cognition.mp3" length="36524757" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: קוגניציה ומדעי הקוגניציה.
 
 קלאסטר: קוגניציה ומדעי הקוגניציה
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-10
 
-Cognition &amp; Cognitive Science</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Cognition &amp; Cognitive Science —</itunes:summary>
       <itunes:season>6</itunes:season>
     </item>
     <item>
       <title>פסיכיאטריה ביולוגית | פסיכיאטריה ומדעי המוח — 2026-05-10</title>
-      <description>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה ביולוגית.
 
 קלאסטר: פסיכיאטריה ביולוגית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-10
 
-Biological Psychiatry</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Biological Psychiatry —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_bio/general_psychiatry_bio.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_bio/general_psychiatry_bio.mp3" length="32188931" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה ביולוגית.
 
 קלאסטר: פסיכיאטריה ביולוגית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-10
 
-Biological Psychiatry</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Biological Psychiatry —</itunes:summary>
       <itunes:season>4</itunes:season>
     </item>
     <item>
       <title>פסיכיאטריה כללית — קלינית | פסיכיאטריה ומדעי המוח — 2026-05-10</title>
-      <description>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה כללית — קלינית.
 
 קלאסטר: פסיכיאטריה כללית — קלינית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-10
 
-General Psychiatry — Clinical</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— General Psychiatry — Clinical —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_clinical/general_psychiatry_clinical.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_clinical/general_psychiatry_clinical.mp3" length="33636409" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה כללית — קלינית.
 
 קלאסטר: פסיכיאטריה כללית — קלינית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-10
 
-General Psychiatry — Clinical</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— General Psychiatry — Clinical —</itunes:summary>
       <itunes:season>3</itunes:season>
     </item>
     <item>
       <title>מדעי המוח | פסיכיאטריה ומדעי המוח — 2026-05-10</title>
-      <description>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: מדעי המוח.
 
 קלאסטר: מדעי המוח
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-10
 
-Neuroscience</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Neuroscience —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-neuroscience/neuroscience.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-neuroscience/neuroscience.mp3" length="47663426" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: מדעי המוח.
 
 קלאסטר: מדעי המוח
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-10
 
-Neuroscience</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Neuroscience —</itunes:summary>
       <itunes:season>5</itunes:season>
     </item>
     <item>
       <title>פסיכותרפיה והתערבויות | פסיכותרפיה וקוגניציה — 2026-05-10</title>
-      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכותרפיה והתערבויות.
 
 קלאסטר: פסיכותרפיה והתערבויות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-10
 
-Psychotherapy &amp; Interventions</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Psychotherapy &amp; Interventions —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-psychotherapy/psychotherapy.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-psychotherapy/psychotherapy.mp3" length="36145145" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: פסיכותרפיה והתערבויות.
 
 קלאסטר: פסיכותרפיה והתערבויות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-10.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-10
 
-Psychotherapy &amp; Interventions</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Psychotherapy &amp; Interventions —</itunes:summary>
       <itunes:season>7</itunes:season>
     </item>
     <item>
       <title>המנגנונים הנסתרים שמשכתבים את המוח והמוסר | פסיכותרפיה וקוגניציה — 2026-05-17</title>
-      <description>למידה, חיזוק וקוגניציה חברתית.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: מדעי ההתנהגות.
 
 קלאסטר: מדעי ההתנהגות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-17
 
-Behavioral Sciences</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Behavioral Sciences —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-behavioral_sciences/behavioral_sciences.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-behavioral_sciences/behavioral_sciences.mp3" length="28638475" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: מדעי ההתנהגות.
 
 קלאסטר: מדעי ההתנהגות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-17
 
-Behavioral Sciences</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Behavioral Sciences —</itunes:summary>
       <itunes:season>8</itunes:season>
     </item>
     <item>
       <title>השפעת זיהום ומזג האוויר על המוח | פסיכיאטריית הילד והמתבגר — 2026-05-17</title>
-      <description>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: ליבה — פסיכיאטריית ילד ומתבגר.
 
 קלאסטר: ליבה — פסיכיאטריית ילד ומתבגר
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-17
 
-Child &amp; Adolescent Psychiatry — Core</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent Psychiatry — Core —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_core/child_adolescent_core.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_core/child_adolescent_core.mp3" length="26927807" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: ליבה — פסיכיאטריית ילד ומתבגר.
 
 קלאסטר: ליבה — פסיכיאטריית ילד ומתבגר
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-17
 
-Child &amp; Adolescent Psychiatry — Core</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent Psychiatry — Core —</itunes:summary>
       <itunes:season>1</itunes:season>
     </item>
     <item>
       <title>בינה מלאכותית ומדיניות בחזית רפואת הילדים | פסיכיאטריית הילד והמתבגר — 2026-05-17</title>
-      <description>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: השפעה גבוהה — ילד ומתבגר.
 
 קלאסטר: השפעה גבוהה — ילד ומתבגר
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-17
 
-Child &amp; Adolescent — High Impact</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent — High Impact —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_highimpact/child_adolescent_highimpact.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_highimpact/child_adolescent_highimpact.mp3" length="45493961" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מאמרים בעלי השפעה גבוהה בנושאי ילד/מתבגר מכתבי עת רפואיים מובילים.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: השפעה גבוהה — ילד ומתבגר.
 
 קלאסטר: השפעה גבוהה — ילד ומתבגר
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-17
 
-Child &amp; Adolescent — High Impact</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent — High Impact —</itunes:summary>
       <itunes:season>1</itunes:season>
     </item>
     <item>
       <title>אוטיזם וקשב מהמעבדה ועד הטרמפולינה | פסיכיאטריית הילד והמתבגר — 2026-05-17</title>
-      <description>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: ילדים ומתבגרים — מגוון.
 
 קלאסטר: ילדים ומתבגרים — מגוון
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-17
 
-Child &amp; Adolescent — Miscellaneous</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent — Miscellaneous —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_misc/child_adolescent_misc.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_adolescent_misc/child_adolescent_misc.mp3" length="23415450" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: ילדים ומתבגרים — מגוון.
 
 קלאסטר: ילדים ומתבגרים — מגוון
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-17
 
-Child &amp; Adolescent — Miscellaneous</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent — Miscellaneous —</itunes:summary>
       <itunes:season>1</itunes:season>
     </item>
     <item>
       <title>איך הסביבה הרגשית משנה את ביולוגיית הילד | פסיכיאטריית הילד והמתבגר — 2026-05-17</title>
-      <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: התפתחות הילד.
 
 קלאסטר: התפתחות הילד
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-17
 
-Child Development</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child Development —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_development/child_development.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-child_development/child_development.mp3" length="31753922" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: התפתחות הילד.
 
 קלאסטר: התפתחות הילד
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-17
 
-Child Development</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child Development —</itunes:summary>
       <itunes:season>2</itunes:season>
     </item>
     <item>
       <title>מערכת ההפעלה של המוח והתפתחות הילד | פסיכותרפיה וקוגניציה — 2026-05-17</title>
-      <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: קוגניציה ומדעי הקוגניציה.
 
 קלאסטר: קוגניציה ומדעי הקוגניציה
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-17
 
-Cognition &amp; Cognitive Science</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Cognition &amp; Cognitive Science —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-cognition/cognition.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-cognition/cognition.mp3" length="26223865" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: קוגניציה ומדעי הקוגניציה.
 
 קלאסטר: קוגניציה ומדעי הקוגניציה
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-17
 
-Cognition &amp; Cognitive Science</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Cognition &amp; Cognitive Science —</itunes:summary>
       <itunes:season>6</itunes:season>
     </item>
     <item>
       <title>הפסיכיאטריה הופכת למדע ביולוגי מדויק | פסיכיאטריה ומדעי המוח — 2026-05-17</title>
-      <description>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה ביולוגית.
 
 קלאסטר: פסיכיאטריה ביולוגית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-17
 
-Biological Psychiatry</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Biological Psychiatry —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-general_psychiatry_bio/general_psychiatry_bio.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-general_psychiatry_bio/general_psychiatry_bio.mp3" length="43334955" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה ביולוגית.
 
 קלאסטר: פסיכיאטריה ביולוגית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-17
 
-Biological Psychiatry</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Biological Psychiatry —</itunes:summary>
       <itunes:season>4</itunes:season>
     </item>
     <item>
       <title>איך כדור לאקנה משפיע על התפתחות סכיזופרניה | פסיכיאטריה ומדעי המוח — 2026-05-17</title>
-      <description>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה כללית — קלינית.
 
 קלאסטר: פסיכיאטריה כללית — קלינית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-17
 
-General Psychiatry — Clinical</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— General Psychiatry — Clinical —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-general_psychiatry_clinical/general_psychiatry_clinical.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-general_psychiatry_clinical/general_psychiatry_clinical.mp3" length="28210937" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה כללית — קלינית.
 
 קלאסטר: פסיכיאטריה כללית — קלינית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-17
 
-General Psychiatry — Clinical</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— General Psychiatry — Clinical —</itunes:summary>
       <itunes:season>3</itunes:season>
     </item>
     <item>
       <title>איך המוח מפריד בין מציאות לדמיון | פסיכיאטריה ומדעי המוח — 2026-05-17</title>
-      <description>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: מדעי המוח.
 
 קלאסטר: מדעי המוח
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-17
 
-Neuroscience</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Neuroscience —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-neuroscience/neuroscience.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-neuroscience/neuroscience.mp3" length="41002636" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: מדעי המוח.
 
 קלאסטר: מדעי המוח
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-17
 
-Neuroscience</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Neuroscience —</itunes:summary>
       <itunes:season>5</itunes:season>
     </item>
     <item>
       <title>טיפול נפשי בין אלגוריתמים לקשר אנושי | פסיכותרפיה וקוגניציה — 2026-05-17</title>
-      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכותרפיה והתערבויות.
 
 קלאסטר: פסיכותרפיה והתערבויות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-17
 
-Psychotherapy &amp; Interventions</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Psychotherapy &amp; Interventions —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-psychotherapy/psychotherapy.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-psychotherapy/psychotherapy.mp3" length="43529301" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: פסיכותרפיה והתערבויות.
 
 קלאסטר: פסיכותרפיה והתערבויות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-17.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-17
 
-Psychotherapy &amp; Interventions</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Psychotherapy &amp; Interventions —</itunes:summary>
       <itunes:season>7</itunes:season>
     </item>
     <item>
       <title>איך המוח מחפש מילים חפצים ואהבה | פסיכותרפיה וקוגניציה — 2026-05-25</title>
-      <description>למידה, חיזוק וקוגניציה חברתית.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: מדעי ההתנהגות.
 
 קלאסטר: מדעי ההתנהגות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-25
 
-Behavioral Sciences</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Behavioral Sciences —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-behavioral_sciences/behavioral_sciences.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-behavioral_sciences/behavioral_sciences.mp3" length="32200883" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>למידה, חיזוק וקוגניציה חברתית.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: מדעי ההתנהגות.
 
 קלאסטר: מדעי ההתנהגות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-25
 
-Behavioral Sciences</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Behavioral Sciences —</itunes:summary>
       <itunes:season>8</itunes:season>
     </item>
     <item>
       <title>ממנגנוני דלקת ושינה ועד רפואה מותאמת אישית | פסיכיאטריית הילד והמתבגר — 2026-05-25</title>
-      <description>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: ליבה — פסיכיאטריית ילד ומתבגר.
 
 קלאסטר: ליבה — פסיכיאטריית ילד ומתבגר
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-25
 
-Child &amp; Adolescent Psychiatry — Core</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent Psychiatry — Core —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_adolescent_core/child_adolescent_core.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_adolescent_core/child_adolescent_core.mp3" length="37257086" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>סקירה שבועית של כתבי העת המרכזיים בפסיכיאטריית הילד והמתבגר.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: ליבה — פסיכיאטריית ילד ומתבגר.
 
 קלאסטר: ליבה — פסיכיאטריית ילד ומתבגר
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-25
 
-Child &amp; Adolescent Psychiatry — Core</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent Psychiatry — Core —</itunes:summary>
       <itunes:season>1</itunes:season>
     </item>
     <item>
       <title>אשליית הסיבתיות הישירה בפסיכיאטריית ילדים | פסיכיאטריית הילד והמתבגר — 2026-05-25</title>
-      <description>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: ילדים ומתבגרים — מגוון.
 
 קלאסטר: ילדים ומתבגרים — מגוון
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-25
 
-Child &amp; Adolescent — Miscellaneous</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent — Miscellaneous —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_adolescent_misc/child_adolescent_misc.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_adolescent_misc/child_adolescent_misc.mp3" length="27799202" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מאמרים מגוונים בנושאי ילד/מתבגר מכתבי עת שאינם בליבה.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: ילדים ומתבגרים — מגוון.
 
 קלאסטר: ילדים ומתבגרים — מגוון
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-25
 
-Child &amp; Adolescent — Miscellaneous</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child &amp; Adolescent — Miscellaneous —</itunes:summary>
       <itunes:season>1</itunes:season>
     </item>
     <item>
       <title>חוויות ילדות כמדד ביולוגי חיוני | פסיכיאטריית הילד והמתבגר — 2026-05-25</title>
-      <description>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: התפתחות הילד.
 
 קלאסטר: התפתחות הילד
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-25
 
-Child Development</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child Development —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_development/child_development.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-child_development/child_development.mp3" length="27705076" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקרי התפתחות, התקשרות, הורות, התערבות מוקדמת, וטראומה.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: התפתחות הילד.
 
 קלאסטר: התפתחות הילד
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-25
 
-Child Development</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Child Development —</itunes:summary>
       <itunes:season>2</itunes:season>
     </item>
     <item>
       <title>המוח אינו מצלמה הוא בונה מציאות | פסיכותרפיה וקוגניציה — 2026-05-25</title>
-      <description>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: קוגניציה ומדעי הקוגניציה.
 
 קלאסטר: קוגניציה ומדעי הקוגניציה
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-25
 
-Cognition &amp; Cognitive Science</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Cognition &amp; Cognitive Science —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-cognition/cognition.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-cognition/cognition.mp3" length="36616642" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>התפתחות קוגניטיבית, תפקודים ניהוליים, וזיכרון עבודה.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: קוגניציה ומדעי הקוגניציה.
 
 קלאסטר: קוגניציה ומדעי הקוגניציה
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-25
 
-Cognition &amp; Cognitive Science</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Cognition &amp; Cognitive Science —</itunes:summary>
       <itunes:season>6</itunes:season>
     </item>
     <item>
       <title>איך מחלה וסביבה מפסלות את חיווט המוח | פסיכיאטריה ומדעי המוח — 2026-05-25</title>
-      <description>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה ביולוגית.
 
 קלאסטר: פסיכיאטריה ביולוגית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
 
-Biological Psychiatry</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Biological Psychiatry —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-general_psychiatry_bio/general_psychiatry_bio.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-general_psychiatry_bio/general_psychiatry_bio.mp3" length="31983379" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקר ביולוגי ופסיכופרמקולוגי — מנגנונים, גנטיקה, וטיפולים תרופתיים.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה ביולוגית.
 
 קלאסטר: פסיכיאטריה ביולוגית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
 
-Biological Psychiatry</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Biological Psychiatry —</itunes:summary>
       <itunes:season>4</itunes:season>
     </item>
     <item>
       <title>התרופה הראשונה שהמטופל נוטל היא הנרטיב | פסיכיאטריה ומדעי המוח — 2026-05-25</title>
-      <description>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה כללית — קלינית.
 
 קלאסטר: פסיכיאטריה כללית — קלינית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
 
-General Psychiatry — Clinical</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— General Psychiatry — Clinical —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-general_psychiatry_clinical/general_psychiatry_clinical.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-general_psychiatry_clinical/general_psychiatry_clinical.mp3" length="42244678" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>סקירה קלינית של פסיכיאטריה כללית — שיזופרניה, דיכאון, חרדה, התאבדות.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: פסיכיאטריה כללית — קלינית.
 
 קלאסטר: פסיכיאטריה כללית — קלינית
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
 
-General Psychiatry — Clinical</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— General Psychiatry — Clinical —</itunes:summary>
       <itunes:season>3</itunes:season>
     </item>
     <item>
       <title>מחלות מוח שמתחילות בכלל מחוץ למוח | פסיכיאטריה ומדעי המוח — 2026-05-25</title>
-      <description>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: מדעי המוח.
 
 קלאסטר: מדעי המוח
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
 
-Neuroscience</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Neuroscience —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-neuroscience/neuroscience.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-neuroscience/neuroscience.mp3" length="31080609" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>ממצאי מדעי המוח הרלוונטיים לפסיכיאטריה ולהתפתחות מוחית.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: מדעי המוח.
 
 קלאסטר: מדעי המוח
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
 
-Neuroscience</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Neuroscience —</itunes:summary>
       <itunes:season>5</itunes:season>
     </item>
     <item>
       <title>מדידת הנפש מהיער ועד לגלי המוח | פסיכותרפיה וקוגניציה — 2026-05-25</title>
-      <description>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+      <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכותרפיה והתערבויות.
 
 קלאסטר: פסיכותרפיה והתערבויות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-25
 
-Psychotherapy &amp; Interventions</description>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Psychotherapy &amp; Interventions —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-psychotherapy/psychotherapy.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-psychotherapy/psychotherapy.mp3" length="55397312" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>מחקר עדכני בפסיכותרפיה — CBT, DBT, התערבויות לילדים ומבוגרים.
+      <itunes:summary>סקירה שבועית של מאמרים מהקלאסטר: פסיכותרפיה והתערבויות.
 
 קלאסטר: פסיכותרפיה והתערבויות
-שייך לסדרה: פסיכותרפיה וקוגניציה.
-סקירה אוטומטית מ-2026-05-25.
+סדרה: פסיכותרפיה וקוגניציה
+תאריך הסקירה: 2026-05-25
 
-Psychotherapy &amp; Interventions</itunes:summary>
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Psychotherapy &amp; Interventions —</itunes:summary>
       <itunes:season>7</itunes:season>
     </item>
     <item>
       <title>למה התמותה מפסיכיאטריה נמחקה מהסטטיסטיקה העולמית | פסיכיאטריה ומדעי המוח — 2026-05-25</title>
-      <description>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
+      <description>
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
 
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-25.
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
 
-Spotlight Review</description>
+— Spotlight Review —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42167272/spotlight_42167272.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42167272/spotlight_42167272.mp3" length="34789553" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
+      <itunes:summary>
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
 
-שייך לסדרה: פסיכיאטריה ומדעי המוח.
-סקירה אוטומטית מ-2026-05-25.
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
 
-Spotlight Review</itunes:summary>
+— Spotlight Review —</itunes:summary>
       <itunes:season>9</itunes:season>
     </item>
     <item>
       <title>מציאת המינון האופטימלי לטיפול ב-ADHD | פסיכיאטריית הילד והמתבגר — 2026-05-25</title>
-      <description>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
+      <description>
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-25
 
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-25.
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
 
-Spotlight Review</description>
+— Spotlight Review —</description>
       <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42134365/spotlight_42134365.mp3</guid>
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42134365/spotlight_42134365.mp3" length="39691866" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — סקירה ארוכה ומעמיקה של מאמר בודד.
+      <itunes:summary>
+סדרה: פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-25
 
-שייך לסדרה: פסיכיאטריית הילד והמתבגר.
-סקירה אוטומטית מ-2026-05-25.
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
 
-Spotlight Review</itunes:summary>
+— Spotlight Review —</itunes:summary>
       <itunes:season>1</itunes:season>
     </item>
   </channel>
