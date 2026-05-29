@@ -167,24 +167,140 @@ TOPIC_LABELS: dict[str, tuple[str, str, str]] = {
 }
 
 
-PODCAST_TITLE = "סקירה שבועית בפסיכיאטריה"
-PODCAST_DESCRIPTION = (
-    "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, "
-    "פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה וקוגניציה. "
-    "מבוסס על PubMed ומופק אוטומטית מדי שבוע. "
-    "אינו מהווה ייעוץ רפואי."
-)
 PODCAST_AUTHOR = "Tovia Wen"
 PODCAST_EMAIL = "toviagpt@gmail.com"
 PODCAST_LANGUAGE = "he"
 PODCAST_CATEGORY = "Health & Fitness"
 PODCAST_SUBCATEGORY = "Medicine"
 
-# Cover image — required by Apple Podcasts, recommended by Spotify.
-# Hosted on GitHub Pages alongside the feed itself. The default URL works
-# for the production deployment; override via PODCAST_IMAGE_URL env var if
-# you're testing locally or hosting elsewhere.
-PODCAST_IMAGE_URL_DEFAULT = "https://tnvsh0.github.io/psychiatry-weekly-review/cover.png"
+# Base URL where covers and feeds are served — GitHub Pages by default.
+DEFAULT_PAGES_BASE = "https://tnvsh0.github.io/psychiatry-weekly-review"
+
+
+# ── Channels — one Spotify show per channel ───────────────────────────────────
+# Three themed shows that each get their own RSS feed, cover image, and title.
+# A 4th "combined" entry preserves the original feed.xml for the existing
+# Spotify subscription (so anyone already following the old URL doesn't break).
+#
+# Spotlight reviews are routed by keyword in the article title:
+#   * Child / adolescent / ADHD / autism / pediatric → channel "child"
+#   * Psychotherapy / CBT / DBT / therapy           → channel "therapy"
+#   * Everything else (pharmacology, genetics,
+#     methodology, neuroscience, ...)               → channel "psychiatry"
+THERAPY_KEYWORDS: list[str] = [
+    "psychotherapy", "psycho-therapy",
+    "CBT", "cognitive behavioral", "cognitive-behavioral", "cognitive behaviour",
+    "DBT", "dialectical behavior", "dialectical behaviour",
+    "MBT", "mentalization",
+    "psychodynamic", "interpersonal therapy", "IPT",
+    "intervention", "psychological treatment",
+    "פסיכותרפיה", "טיפול פסיכולוגי", "טיפול קוגניטיבי",
+]
+
+CHANNELS: list[dict] = [
+    {
+        "id":          "child",
+        "feed_file":   "feed-child.xml",
+        "cover_file":  "cover-child.png",
+        "title":       "סקירה שבועית — פסיכיאטריית הילד והמתבגר",
+        "description": (
+            "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריית הילד "
+            "והמתבגר ובהתפתחות הילד — מבוסס על PubMed ומופק אוטומטית מדי "
+            "שבוע. כולל את ליבת הפסיכיאטריה של הילד, מאמרים רלוונטיים "
+            "מכתבי עת רפואיים מובילים, ומאמרי סקירה משמעותיים. אינו מהווה "
+            "ייעוץ רפואי."
+        ),
+        "topic_ids":   [
+            "child_adolescent_core",
+            "child_adolescent_highimpact",
+            "child_adolescent_misc",
+            "child_development",
+        ],
+        "spotlight_routing": "child",   # absorbs child-keyword spotlights
+    },
+    {
+        "id":          "psychiatry",
+        "feed_file":   "feed-psychiatry.xml",
+        "cover_file":  "cover-psychiatry.png",
+        "title":       "סקירה שבועית — פסיכיאטריה ומדעי המוח",
+        "description": (
+            "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה כללית "
+            "(קלינית וביולוגית) ובמדעי המוח — מבוסס על PubMed ומופק "
+            "אוטומטית מדי שבוע. כולל מאמרי סקירה משמעותיים בפסיכופרמקולוגיה "
+            "ובמחקר ביולוגי. אינו מהווה ייעוץ רפואי."
+        ),
+        "topic_ids":   [
+            "general_psychiatry_clinical",
+            "general_psychiatry_bio",
+            "neuroscience",
+        ],
+        "spotlight_routing": "default",  # absorbs everything not child/therapy
+    },
+    {
+        "id":          "therapy",
+        "feed_file":   "feed-therapy.xml",
+        "cover_file":  "cover-therapy.png",
+        "title":       "סקירה שבועית — פסיכותרפיה וקוגניציה",
+        "description": (
+            "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכותרפיה, "
+            "במדעי ההתנהגות ובקוגניציה — מבוסס על PubMed ומופק אוטומטית "
+            "מדי שבוע. כולל ראיות עדכניות על CBT, DBT, התערבויות "
+            "פסיכולוגיות, מנגנונים קוגניטיביים והתנהגותיים. אינו מהווה "
+            "ייעוץ רפואי."
+        ),
+        "topic_ids":   [
+            "psychotherapy",
+            "behavioral_sciences",
+            "cognition",
+        ],
+        "spotlight_routing": "therapy",
+    },
+    # Combined feed — kept so the existing Spotify subscription at the
+    # original feed.xml URL doesn't break. Contains every episode.
+    {
+        "id":          "combined",
+        "feed_file":   "feed.xml",
+        "cover_file":  "cover.png",
+        "title":       "סקירה שבועית בפסיכיאטריה",
+        "description": (
+            "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה, "
+            "פסיכיאטריית הילד והמתבגר, התפתחות, נוירולוגיה, פסיכותרפיה "
+            "וקוגניציה. מבוסס על PubMed ומופק אוטומטית מדי שבוע. "
+            "אינו מהווה ייעוץ רפואי."
+        ),
+        "topic_ids":   None,             # None = include every episode
+        "spotlight_routing": "default",
+    },
+]
+
+
+def get_channel_for_episode(topic_id: str, release_name: str = "") -> str:
+    """Return the channel id ('child' / 'psychiatry' / 'therapy') that an
+    episode belongs to. Used both for filtering and for the playlist note
+    that appears in the combined feed's episode descriptions."""
+    base = _topic_id_base(topic_id)
+    # Regular cluster — match by topic_id
+    for ch in CHANNELS:
+        if ch["id"] == "combined":
+            continue
+        if ch["topic_ids"] and base in ch["topic_ids"]:
+            return ch["id"]
+    # Spotlight — match by keywords in the release name
+    if base.startswith("spotlight_"):
+        name_lower = release_name.lower()
+        if any(kw.lower() in name_lower for kw in CHILD_PSYCH_KEYWORDS):
+            return "child"
+        if any(kw.lower() in name_lower for kw in THERAPY_KEYWORDS):
+            return "therapy"
+        return "psychiatry"
+    return "psychiatry"  # safe default
+
+
+def channel_for_id(channel_id: str) -> dict:
+    for ch in CHANNELS:
+        if ch["id"] == channel_id:
+            return ch
+    raise KeyError(f"Unknown channel id: {channel_id}")
 
 
 def _resolve_repo() -> str:
@@ -256,43 +372,54 @@ def _audio_duration_seconds(local_mp3: Path) -> int | None:
         return None
 
 
-def build_feed(repo: str, out_path: Path) -> None:
+def _extract_spotlight_title(rel_name_raw: str) -> str:
+    """Pull the human-readable spotlight article title out of a release name
+    like '📚 (10/12) מאמר סקירה: GBD 2023 ... — 2026-05-25'."""
+    rel_name = rel_name_raw.replace("📚 ", "").strip()
+    rel_name = EPISODE_NUM_RE.sub("", rel_name, count=1).strip()
+    parts = rel_name.split(" — ")
+    if len(parts) > 1:
+        return " — ".join(parts[:-1]).strip()
+    return rel_name or "מאמר סקירה מרכזי"
+
+
+def build_feed(repo: str, channel: dict, releases: list[dict],
+               out_dir: Path, pages_base: str) -> None:
+    """Build the RSS feed for one channel and write it to out_dir/{feed_file}.
+
+    `releases` is the full release list (fetched once and reused across the
+    four feeds). Episodes are filtered to those whose channel matches.
+    For the combined feed (channel["topic_ids"] is None) all episodes pass."""
     try:
         from feedgen.feed import FeedGenerator
     except ImportError:
         print("ERROR: feedgen not installed. pip install feedgen")
         sys.exit(2)
 
-    owner = repo.split("/", 1)[0]
-    repo_name = repo.split("/", 1)[1]
-    default_feed_url = f"https://{owner}.github.io/{repo_name}/feed.xml"
-    feed_url = os.environ.get("FEED_BASE_URL", default_feed_url)
-    site_url = f"https://github.com/{repo}"
+    out_path  = out_dir / channel["feed_file"]
+    feed_url  = f"{pages_base}/{channel['feed_file']}"
+    image_url = f"{pages_base}/{channel['cover_file']}"
+    site_url  = f"https://github.com/{repo}"
 
     fg = FeedGenerator()
     fg.load_extension("podcast")
-    fg.title(PODCAST_TITLE)
+    fg.title(channel["title"])
     fg.link(href=site_url, rel="alternate")
     fg.link(href=feed_url, rel="self")
-    fg.description(PODCAST_DESCRIPTION)
+    fg.description(channel["description"])
     fg.language(PODCAST_LANGUAGE)
     fg.author({"name": PODCAST_AUTHOR, "email": PODCAST_EMAIL})
     fg.podcast.itunes_author(PODCAST_AUTHOR)
-    fg.podcast.itunes_summary(PODCAST_DESCRIPTION)
+    fg.podcast.itunes_summary(channel["description"])
     fg.podcast.itunes_owner(name=PODCAST_AUTHOR, email=PODCAST_EMAIL)
     fg.podcast.itunes_explicit("no")
     fg.podcast.itunes_category(PODCAST_CATEGORY, PODCAST_SUBCATEGORY)
     fg.podcast.itunes_type("episodic")
-    # Cover image — Apple Podcasts will reject the feed without this.
-    image_url = os.environ.get("PODCAST_IMAGE_URL", PODCAST_IMAGE_URL_DEFAULT)
     fg.podcast.itunes_image(image_url)
-    fg.image(image_url, PODCAST_TITLE, site_url)
+    fg.image(image_url, channel["title"], site_url)
 
-    print(f"Fetching releases from {repo}...")
-    releases = _fetch_releases(repo)
-    print(f"  Found {len(releases)} release(s).")
-
-    repo_root = Path(__file__).resolve().parent.parent
+    is_combined = channel["topic_ids"] is None
+    repo_root   = Path(__file__).resolve().parent.parent
 
     episodes = 0
     for rel in releases:
@@ -301,31 +428,15 @@ def build_feed(repo: str, out_path: Path) -> None:
         if not parsed:
             continue
         date_str, topic_id = parsed
-        # Extract episode number (e.g. "(3/12)") from the release title if
-        # present. Older releases (pre-numbering) simply have no match here.
         rel_name_raw = rel.get("name", "")
-        ep_match = EPISODE_NUM_RE.search(rel_name_raw)
-        ep_prefix = f"({ep_match.group(1)}/{ep_match.group(2)}) " if ep_match else ""
 
-        labels = TOPIC_LABELS.get(topic_id)
+        # Resolve labels
+        labels = TOPIC_LABELS.get(_topic_id_base(topic_id))
         if not labels:
-            # Spotlight reviews use dynamic topic_ids of the form
-            # `spotlight_{pmid}`. Pull the actual article title from the
-            # release's own name (which carries it verbatim from the
-            # weekly_review.py side).
             if topic_id.startswith("spotlight_"):
-                rel_name = rel_name_raw.replace("📚 ", "").strip()
-                # Drop the episode-number prefix from the embedded title — we
-                # re-attach a clean prefix below.
-                rel_name = EPISODE_NUM_RE.sub("", rel_name, count=1).strip()
-                parts = rel_name.split(" — ")
-                # Trailing segment is the YYYY-MM-DD; everything before is title.
-                if len(parts) > 1:
-                    episode_title_he = " — ".join(parts[:-1]).strip()
-                else:
-                    episode_title_he = rel_name or "מאמר סקירה מרכזי"
+                title_he = _extract_spotlight_title(rel_name_raw)
                 labels = (
-                    episode_title_he,
+                    title_he,
                     "Spotlight Review",
                     "פודקאסט ייעודי על מאמר סקירה מרכזי מהשבוע — "
                     "סקירה ארוכה ומעמיקה של מאמר בודד.",
@@ -333,6 +444,11 @@ def build_feed(repo: str, out_path: Path) -> None:
             else:
                 continue
         label_he, label_en, topic_desc = labels
+
+        # Channel filtering — skip episodes that don't belong to this channel
+        episode_channel = get_channel_for_episode(topic_id, rel_name_raw)
+        if not is_combined and episode_channel != channel["id"]:
+            continue
 
         assets = rel.get("assets", [])
         if not assets:
@@ -353,21 +469,21 @@ def build_feed(repo: str, out_path: Path) -> None:
         local_mp3 = repo_root / "podcasts" / date_str / f"{topic_id}.mp3"
         duration = _audio_duration_seconds(local_mp3)
 
-        # Playlist routing — every episode belongs to exactly one of the 9
-        # themed playlists. We emit <itunes:season>N</itunes:season> so podcast
-        # apps that respect seasons display them as separate tabs, and we
-        # prefix the title with the playlist tag (`[ילד]`, `[נוירומדע]`, …)
-        # so listeners can identify the playlist even in apps that don't
-        # render seasons.
-        playlist_num = get_playlist_number(topic_id, rel_name_raw)
-        playlist = PLAYLISTS[playlist_num]
-        playlist_tag = f"[{playlist['tag_he']}] "
+        # Clean title — no [tag] prefix, no (N/M) counter. The channel itself
+        # signals the topic in dedicated feeds. In the combined feed we still
+        # tag the playlist in the description so listeners know where each
+        # episode "would have lived" in the split shows.
+        title = f"{label_he} — {date_str}"
 
-        # Episode number prefix (e.g. "(3/12) ") tracks within-week progress.
-        title = f"{playlist_tag}{ep_prefix}{label_he} — {date_str}"
+        # Description carries the channel/playlist info for orientation.
+        playlist_he = {
+            "child":      "פסיכיאטריית הילד והמתבגר",
+            "psychiatry": "פסיכיאטריה ומדעי המוח",
+            "therapy":    "פסיכותרפיה וקוגניציה",
+        }[episode_channel]
         description = (
             f"{topic_desc}\n\n"
-            f"פלייליסט: {playlist['he']} ({playlist['en']}).\n\n"
+            f"שייך לסדרה: {playlist_he}.\n"
             f"סקירה אוטומטית מ-{date_str}.\n\n"
             f"{label_en}"
         )
@@ -380,20 +496,31 @@ def build_feed(repo: str, out_path: Path) -> None:
         fe.pubDate(pub_date)
         fe.podcast.itunes_summary(description)
         fe.podcast.itunes_author(PODCAST_AUTHOR)
-        fe.podcast.itunes_season(playlist_num)
         if duration is not None:
             fe.podcast.itunes_duration(duration)
+        # Combined feed keeps iTunes seasons (1-9) for backwards compat with
+        # any listener using the season filter on the old subscription.
+        if is_combined:
+            fe.podcast.itunes_season(get_playlist_number(topic_id, rel_name_raw))
         episodes += 1
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     fg.rss_file(str(out_path), pretty=True)
-    print(f"  Wrote {episodes} episode(s) to {out_path}")
+    print(f"  {channel['id']:11s} → {out_path.name}  ({episodes} episode(s))")
 
 
 def main() -> int:
     repo = _resolve_repo()
-    out_path = Path(__file__).resolve().parent.parent / "docs" / "feed.xml"
-    build_feed(repo, out_path)
+    out_dir = Path(__file__).resolve().parent.parent / "docs"
+    pages_base = os.environ.get("PAGES_BASE_URL", DEFAULT_PAGES_BASE)
+
+    print(f"Fetching releases from {repo}...")
+    releases = _fetch_releases(repo)
+    print(f"  Found {len(releases)} release(s).\n")
+
+    print("Building feeds:")
+    for channel in CHANNELS:
+        build_feed(repo, channel, releases, out_dir, pages_base)
     return 0
 
 
