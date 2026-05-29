@@ -19,6 +19,7 @@ Optional environment variables:
                    Defaults to GitHub Pages URL for the repo.
 """
 
+import json
 import os
 import re
 import sys
