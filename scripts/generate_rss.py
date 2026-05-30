@@ -300,19 +300,29 @@ CHANNELS: list[dict] = [
 ]
 
 
-def get_channels_for_episode(topic_id: str, release_name: str = "") -> list[str]:
+def get_channels_for_episode(
+    topic_id: str,
+    release_name: str = "",
+    date_str: str | None = None,
+    repo_root: Path | None = None,
+) -> list[str]:
     """Return ALL channels an episode belongs to.
 
     For regular cluster topics: always exactly one channel (by topic_id).
-    For spotlights: one OR MORE channels, by keyword match in the article
-    title. A spotlight whose title hits both child + psychiatry keywords
-    (e.g. 'Pharmacological interventions for ADHD') is cross-listed —
-    appearing in both the child feed and the psychiatry feed so listeners
-    in either won't miss it.
+    For spotlights: one OR MORE channels, by keyword match. A spotlight
+    whose title hits both child + psychiatry keywords (e.g. 'Pharmacological
+    interventions for ADHD') is cross-listed — appearing in both feeds.
 
-    Returns channels in priority order (child > therapy > psychiatry).
-    The first entry is treated as the 'primary' channel for description
-    display when needed."""
+    For spotlights we match against TWO sources of text:
+      1. The original English article title from articles.json (technical,
+         full of medical jargon — best signal for cross-listing).
+      2. The release name (which may be the Hebrew NotebookLM title for
+         updated releases) — picks up Hebrew keyword variants.
+    Both are checked because the release title alone (after NotebookLM
+    retitling) is often poetic Hebrew that doesn't contain the technical
+    English terms we'd match on.
+
+    Returns channels in priority order (child > therapy > psychiatry)."""
     base = _topic_id_base(topic_id)
     # Regular cluster — single channel by topic_id
     for ch in CHANNELS:
@@ -320,17 +330,23 @@ def get_channels_for_episode(topic_id: str, release_name: str = "") -> list[str]
             continue
         if ch["topic_ids"] and base in ch["topic_ids"]:
             return [ch["id"]]
-    # Spotlight — every channel whose keywords match
+    # Spotlight — combine release name with original English article title
     if base.startswith("spotlight_"):
-        name_lower = release_name.lower()
+        match_text = release_name.lower()
+        if date_str and repo_root is not None:
+            pmid = base.replace("spotlight_", "")
+            for a in _load_articles_for_date(date_str, repo_root):
+                if a.get("pmid") == pmid:
+                    eng_title = a.get("title", "")
+                    match_text = f"{match_text} {eng_title.lower()}"
+                    break
         chs: list[str] = []
-        if any(kw.lower() in name_lower for kw in CHILD_PSYCH_KEYWORDS):
+        if any(kw.lower() in match_text for kw in CHILD_PSYCH_KEYWORDS):
             chs.append("child")
-        if any(kw.lower() in name_lower for kw in THERAPY_KEYWORDS):
+        if any(kw.lower() in match_text for kw in THERAPY_KEYWORDS):
             chs.append("therapy")
-        if any(kw.lower() in name_lower for kw in PSYCHIATRY_KEYWORDS):
+        if any(kw.lower() in match_text for kw in PSYCHIATRY_KEYWORDS):
             chs.append("psychiatry")
-        # Default fallback when no keywords matched
         return chs or ["psychiatry"]
     return ["psychiatry"]
 
@@ -608,7 +624,12 @@ def build_feed(repo: str, channel: dict, releases: list[dict],
         # Spotlights may be cross-listed: an episode whose title hits keywords
         # of multiple channels appears in each of them (e.g. an ADHD
         # pharmacology review lands in both child and psychiatry feeds).
-        episode_channels = get_channels_for_episode(topic_id, rel_name_raw)
+        # date_str + repo_root let the spotlight router consult the original
+        # English article title from articles.json (not just the Hebrew
+        # NotebookLM-generated release title which often lacks technical terms).
+        episode_channels = get_channels_for_episode(
+            topic_id, rel_name_raw, date_str, repo_root,
+        )
         episode_channel  = episode_channels[0]  # primary, for description
         if not is_combined and channel["id"] not in episode_channels:
             continue
