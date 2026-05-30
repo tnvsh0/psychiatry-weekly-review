@@ -194,8 +194,35 @@ THERAPY_KEYWORDS: list[str] = [
     "DBT", "dialectical behavior", "dialectical behaviour",
     "MBT", "mentalization",
     "psychodynamic", "interpersonal therapy", "IPT",
-    "intervention", "psychological treatment",
-    "פסיכותרפיה", "טיפול פסיכולוגי", "טיפול קוגניטיבי",
+    # "intervention" alone is too generic — "pharmacological intervention"
+    # would wrongly trigger this. Require specific psychological phrasing.
+    "psychological intervention", "behavioral intervention",
+    "psychological treatment", "talk therapy",
+    "trauma-focused", "exposure therapy", "ACT therapy",
+    "parent training", "parent-child interaction",
+    "פסיכותרפיה", "טיפול פסיכולוגי", "טיפול קוגניטיבי", "טיפול דינמי",
+]
+
+# Keywords that mark a spotlight as belonging to the "psychiatry & neuroscience"
+# channel. Used for CROSS-LISTING — a spotlight whose title contains terms
+# from both CHILD_PSYCH_KEYWORDS and PSYCHIATRY_KEYWORDS (e.g., "Pharmacological
+# interventions for ADHD") will appear in BOTH the child feed and the
+# psychiatry feed, so listeners subscribed to either don't miss it.
+PSYCHIATRY_KEYWORDS: list[str] = [
+    "pharmacology", "pharmacological", "pharmacokinetic", "pharmacodynamic",
+    "antipsychotic", "antidepressant", "psychotropic",
+    "mood stabilizer", "anxiolytic", "stimulant", "ssri", "snri",
+    "schizophrenia", "schizoaffective", "psychosis", "psychotic",
+    "bipolar", "depression", "depressive", "major depressive",
+    "suicide", "suicidal", "self-harm",
+    "personality disorder", "borderline personality",
+    "anxiety disorder", "obsessive-compulsive", "OCD",
+    "ptsd", "post-traumatic stress",
+    "neuroimaging", "fMRI", "EEG", "diffusion tensor",
+    "genetics", "GWAS", "genome-wide", "polygenic",
+    "neurobiology", "neural circuit", "neuroplasticity",
+    "פרמקולוג", "אנטי-פסיכוטי", "אנטי-דיכאוני", "סכיזופרניה",
+    "דיכאון", "דו-קוטבי",
 ]
 
 # Standalone AI-disclosure line — appended to every channel description and
@@ -273,26 +300,44 @@ CHANNELS: list[dict] = [
 ]
 
 
-def get_channel_for_episode(topic_id: str, release_name: str = "") -> str:
-    """Return the channel id ('child' / 'psychiatry' / 'therapy') that an
-    episode belongs to. Used both for filtering and for the playlist note
-    that appears in the combined feed's episode descriptions."""
+def get_channels_for_episode(topic_id: str, release_name: str = "") -> list[str]:
+    """Return ALL channels an episode belongs to.
+
+    For regular cluster topics: always exactly one channel (by topic_id).
+    For spotlights: one OR MORE channels, by keyword match in the article
+    title. A spotlight whose title hits both child + psychiatry keywords
+    (e.g. 'Pharmacological interventions for ADHD') is cross-listed —
+    appearing in both the child feed and the psychiatry feed so listeners
+    in either won't miss it.
+
+    Returns channels in priority order (child > therapy > psychiatry).
+    The first entry is treated as the 'primary' channel for description
+    display when needed."""
     base = _topic_id_base(topic_id)
-    # Regular cluster — match by topic_id
+    # Regular cluster — single channel by topic_id
     for ch in CHANNELS:
         if ch["id"] == "combined":
             continue
         if ch["topic_ids"] and base in ch["topic_ids"]:
-            return ch["id"]
-    # Spotlight — match by keywords in the release name
+            return [ch["id"]]
+    # Spotlight — every channel whose keywords match
     if base.startswith("spotlight_"):
         name_lower = release_name.lower()
+        chs: list[str] = []
         if any(kw.lower() in name_lower for kw in CHILD_PSYCH_KEYWORDS):
-            return "child"
+            chs.append("child")
         if any(kw.lower() in name_lower for kw in THERAPY_KEYWORDS):
-            return "therapy"
-        return "psychiatry"
-    return "psychiatry"  # safe default
+            chs.append("therapy")
+        if any(kw.lower() in name_lower for kw in PSYCHIATRY_KEYWORDS):
+            chs.append("psychiatry")
+        # Default fallback when no keywords matched
+        return chs or ["psychiatry"]
+    return ["psychiatry"]
+
+
+def get_channel_for_episode(topic_id: str, release_name: str = "") -> str:
+    """Primary (display) channel — first entry of get_channels_for_episode."""
+    return get_channels_for_episode(topic_id, release_name)[0]
 
 
 def channel_for_id(channel_id: str) -> dict:
@@ -432,45 +477,40 @@ def _format_episode_description(
 ) -> str:
     """Build the per-episode <description> shown in the podcast app.
 
-    Strategy: pull the actual paper list from articles.json so listeners
-    see what's covered before they press play. Top 3 by Impact Factor get
-    a bullet; the rest are summarised as a count. Falls back to a generic
-    description when the metadata is unavailable (very old releases)."""
+    Lists EVERY paper covered with a PubMed link, so listeners can
+    immediately click through to the original abstract. Falls back to a
+    generic description when articles.json is unavailable (older releases
+    pre-articles.json). One-paper spotlights get a 'מאמר יחיד' framing."""
     lines: list[str] = []
 
     if articles:
-        if len(articles) == 1:
-            a = articles[0]
-            t = a.get("title", "")
-            if len(t) > 140:
-                t = t[:140] + "…"
-            j = a.get("journal", "")
-            study = a.get("study_type_he") or ""
-            extras = " · ".join(x for x in (j, study) if x)
-            lines.append(f"פרק זה מוקדש למאמר אחד:")
-            lines.append(f"• {t}")
-            if extras:
-                lines.append(f"  ({extras})")
+        n = len(articles)
+        if n == 1:
+            lines.append("פרק זה מוקדש למאמר אחד:")
         else:
-            n = len(articles)
-            lines.append(f"פרק זה כולל סקירה של {n} מאמרים, ביניהם:")
-            for a in articles[:3]:
-                t = a.get("title", "")
-                if len(t) > 140:
-                    t = t[:140] + "…"
-                j = a.get("journal", "")
-                study = a.get("study_type_he") or ""
-                extras = " · ".join(x for x in (j, study) if x)
-                if extras:
-                    lines.append(f"• {t} ({extras})")
-                else:
-                    lines.append(f"• {t}")
-            if n > 3:
-                lines.append(f"ועוד {n - 3} מאמרים נוספים.")
+            lines.append(f"פרק זה כולל סקירה של {n} מאמרים:")
+        lines.append("")
+        for a in articles:
+            title = a.get("title", "")
+            if len(title) > 180:
+                title = title[:180] + "…"
+            journal = a.get("journal", "")
+            study   = a.get("study_type_he") or ""
+            url     = a.get("url", "")
+            extras  = " · ".join(x for x in (journal, study) if x)
+            if extras:
+                lines.append(f"• {title} ({extras})")
+            else:
+                lines.append(f"• {title}")
+            if url:
+                # Indented URL on its own line — universally clickable in
+                # podcast apps and easy to copy.
+                lines.append(f"  {url}")
+            lines.append("")  # blank line between entries
     elif cluster_label_he:
         lines.append(f"סקירה שבועית של מאמרים מהקלאסטר: {cluster_label_he}.")
+        lines.append("")
 
-    lines.append("")
     if cluster_label_he:
         lines.append(f"קלאסטר: {cluster_label_he}")
     lines.append(f"סדרה: {playlist_he}")
@@ -564,9 +604,13 @@ def build_feed(repo: str, channel: dict, releases: list[dict],
                 continue
         cluster_label_he, label_en, topic_desc = labels
 
-        # Channel filtering — skip episodes that don't belong to this channel
-        episode_channel = get_channel_for_episode(topic_id, rel_name_raw)
-        if not is_combined and episode_channel != channel["id"]:
+        # Channel filtering — skip episodes that don't belong to this channel.
+        # Spotlights may be cross-listed: an episode whose title hits keywords
+        # of multiple channels appears in each of them (e.g. an ADHD
+        # pharmacology review lands in both child and psychiatry feeds).
+        episode_channels = get_channels_for_episode(topic_id, rel_name_raw)
+        episode_channel  = episode_channels[0]  # primary, for description
+        if not is_combined and channel["id"] not in episode_channels:
             continue
 
         assets = rel.get("assets", [])
@@ -597,19 +641,21 @@ def build_feed(repo: str, channel: dict, releases: list[dict],
             # Truly empty? Fall back to cluster label.
             display_title = cluster_label_he or "פרק"
 
+        # Use the channel currently being built for the "סדרה" line in the
+        # description, so a cross-listed spotlight tells each listener the
+        # name of the channel they're on (not the primary channel).
         playlist_he = {
             "child":      "פסיכיאטריית הילד והמתבגר",
             "psychiatry": "פסיכיאטריה ומדעי המוח",
             "therapy":    "פסיכותרפיה וקוגניציה",
-        }[episode_channel]
+        }.get(channel["id"], {
+            "child":      "פסיכיאטריית הילד והמתבגר",
+            "psychiatry": "פסיכיאטריה ומדעי המוח",
+            "therapy":    "פסיכותרפיה וקוגניציה",
+        }.get(episode_channel, "—"))
 
-        # In dedicated channel feeds — clean title.
-        # In the combined feed — append the playlist tag so listeners
-        # browsing the combined feed know which series each episode came from.
-        if is_combined:
-            title = f"{display_title} | {playlist_he} — {date_str}"
-        else:
-            title = f"{display_title} — {date_str}"
+        # Clean title — no [tag] prefix, no (N/M).
+        title = f"{display_title} — {date_str}"
 
         # Build the description from the actual paper list (top 3 by IF +
         # count of the rest). Falls back to generic text when articles.json
