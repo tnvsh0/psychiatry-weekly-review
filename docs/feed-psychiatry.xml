@@ -15,7 +15,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Fri, 29 May 2026 14:07:17 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2026 21:02:44 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -32,11 +32,37 @@
     <itunes:type>episodic</itunes:type>
     <item>
       <title>פסיכיאטריה ביולוגית — 2026-05-10</title>
-      <description>פרק זה כולל סקירה של 10 מאמרים, ביניהם:
+      <description>פרק זה כולל סקירה של 10 מאמרים:
+
 • Heterogeneous functional state dynamics and its structural substrates in male individuals with autism spectrum disorder (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42069873/
+
 • Physiological Age and Homeostatic Dysregulation Following Child Maltreatment in Youth (Mol Psychiatry)
-• Spatial concordance metrics and related risk factors of brain-peripheral barrier axes: unveiling distinct concordance patterns for mental an… (Mol Psychiatry)
-ועוד 7 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42098264/
+
+• Spatial concordance metrics and related risk factors of brain-peripheral barrier axes: unveiling distinct concordance patterns for mental and neurological axes (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42104116/
+
+• Stable depression subtypes identified using functional connectome normative deviation models and their response to rTMS (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42098265/
+
+• ASD mutations in the ciliary gene CEP41 impact development of projection neurons and interneurons in a human cortical organoid model (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42082754/
+
+• Cocaine facilitates Ca(2+) fluctuations in prefrontal cortex astrocytes via norepinephrine transmission in awake mice (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42104115/
+
+• Facilitating Thought Progression: A Neurocognitive Framework Linking Thought Dynamics and Mood Disorders (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42069104/
+
+• Implications of Glucagon-Like Peptide-1 Receptor Agonists (GLP-1 RAs) for Mood Disorders and Suicide Risk (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42069105/
+
+• Structural Brain Network Alterations in Relation to Treatment and Illness Severity in Bipolar Disorder (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42092437/
+
+• The Promise and Challenges of Mapping Brain-Behavior Associations in Psychiatry: A New Leap Forward (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42067277/
 
 קלאסטר: פסיכיאטריה ביולוגית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -49,11 +75,37 @@
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_bio/general_psychiatry_bio.mp3" length="32188931" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פרק זה כולל סקירה של 10 מאמרים, ביניהם:
+      <itunes:summary>פרק זה כולל סקירה של 10 מאמרים:
+
 • Heterogeneous functional state dynamics and its structural substrates in male individuals with autism spectrum disorder (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42069873/
+
 • Physiological Age and Homeostatic Dysregulation Following Child Maltreatment in Youth (Mol Psychiatry)
-• Spatial concordance metrics and related risk factors of brain-peripheral barrier axes: unveiling distinct concordance patterns for mental an… (Mol Psychiatry)
-ועוד 7 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42098264/
+
+• Spatial concordance metrics and related risk factors of brain-peripheral barrier axes: unveiling distinct concordance patterns for mental and neurological axes (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42104116/
+
+• Stable depression subtypes identified using functional connectome normative deviation models and their response to rTMS (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42098265/
+
+• ASD mutations in the ciliary gene CEP41 impact development of projection neurons and interneurons in a human cortical organoid model (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42082754/
+
+• Cocaine facilitates Ca(2+) fluctuations in prefrontal cortex astrocytes via norepinephrine transmission in awake mice (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42104115/
+
+• Facilitating Thought Progression: A Neurocognitive Framework Linking Thought Dynamics and Mood Disorders (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42069104/
+
+• Implications of Glucagon-Like Peptide-1 Receptor Agonists (GLP-1 RAs) for Mood Disorders and Suicide Risk (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42069105/
+
+• Structural Brain Network Alterations in Relation to Treatment and Illness Severity in Bipolar Disorder (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42092437/
+
+• The Promise and Challenges of Mapping Brain-Behavior Associations in Psychiatry: A New Leap Forward (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42067277/
 
 קלאסטר: פסיכיאטריה ביולוגית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -65,11 +117,43 @@
     </item>
     <item>
       <title>פסיכיאטריה כללית — קלינית — 2026-05-10</title>
-      <description>פרק זה כולל סקירה של 12 מאמרים, ביניהם:
+      <description>פרק זה כולל סקירה של 12 מאמרים:
+
 • The global prevalence of major depressive disorder during the peripartum period: a systematic review and meta-regression (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42070579/
+
 • Mental health research funding: from snapshot to shared infrastructure (Lancet Psychiatry)
-• Ketamine Infusions and Rapid Reduction of Suicidal and Depressive Symptoms in Major Depressive Episode: A Systematic Review and Meta-Analysi… (JAMA Psychiatry)
-ועוד 9 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42102829/
+
+• Ketamine Infusions and Rapid Reduction of Suicidal and Depressive Symptoms in Major Depressive Episode: A Systematic Review and Meta-Analysis (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090166/
+
+• Adjunctive Antipsychotics in Major Depressive Disorder: A Systematic Review and Network Meta-Analysis (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090141/
+
+• Intermittent Theta Burst Stimulation of the Dorsomedial PFC and Expectancy-Driven Placebo Mood Effects: A Randomized Clinical Trial (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090145/
+
+• Links Between Toxic Exposures and Mental Health Conditions Among US Military (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090169/
+
+• A Closer Look at Ketogenic Diet Effects in Depression (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090139/
+
+• A Closer Look at Ketogenic Diet Effects in Depression (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090134/
+
+• Clinical and Cognitive Outcomes Comparing Right Unilateral Ultrabrief Electroconvulsive Therapy Versus Magnetic Seizure Therapy for Bipolar Depression: The CORRECT-BD Trial (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42087328/
+
+• Psychiatric History and Postpartum Depression: The Mediating Role of Obstetric Complications (Acta Psychiatr Scand)
+  https://pubmed.ncbi.nlm.nih.gov/42087350/
+
+• Virtual Reality for the Treatment of Auditory Hallucinations in Schizophrenia Spectrum Disorders: a Systematic Review and Meta-Analysis (Schizophr Bull)
+  https://pubmed.ncbi.nlm.nih.gov/42084440/
+
+• Effectiveness of Cognitive Behavioral Therapies Targeting Cognitive Biases and Beliefs in Schizophrenia-Spectrum Disorders: A Systematic Review and Meta-Analysis (Schizophr Bull)
+  https://pubmed.ncbi.nlm.nih.gov/42104795/
 
 קלאסטר: פסיכיאטריה כללית — קלינית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -82,11 +166,43 @@
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-general_psychiatry_clinical/general_psychiatry_clinical.mp3" length="33636409" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פרק זה כולל סקירה של 12 מאמרים, ביניהם:
+      <itunes:summary>פרק זה כולל סקירה של 12 מאמרים:
+
 • The global prevalence of major depressive disorder during the peripartum period: a systematic review and meta-regression (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42070579/
+
 • Mental health research funding: from snapshot to shared infrastructure (Lancet Psychiatry)
-• Ketamine Infusions and Rapid Reduction of Suicidal and Depressive Symptoms in Major Depressive Episode: A Systematic Review and Meta-Analysi… (JAMA Psychiatry)
-ועוד 9 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42102829/
+
+• Ketamine Infusions and Rapid Reduction of Suicidal and Depressive Symptoms in Major Depressive Episode: A Systematic Review and Meta-Analysis (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090166/
+
+• Adjunctive Antipsychotics in Major Depressive Disorder: A Systematic Review and Network Meta-Analysis (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090141/
+
+• Intermittent Theta Burst Stimulation of the Dorsomedial PFC and Expectancy-Driven Placebo Mood Effects: A Randomized Clinical Trial (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090145/
+
+• Links Between Toxic Exposures and Mental Health Conditions Among US Military (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090169/
+
+• A Closer Look at Ketogenic Diet Effects in Depression (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090139/
+
+• A Closer Look at Ketogenic Diet Effects in Depression (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42090134/
+
+• Clinical and Cognitive Outcomes Comparing Right Unilateral Ultrabrief Electroconvulsive Therapy Versus Magnetic Seizure Therapy for Bipolar Depression: The CORRECT-BD Trial (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42087328/
+
+• Psychiatric History and Postpartum Depression: The Mediating Role of Obstetric Complications (Acta Psychiatr Scand)
+  https://pubmed.ncbi.nlm.nih.gov/42087350/
+
+• Virtual Reality for the Treatment of Auditory Hallucinations in Schizophrenia Spectrum Disorders: a Systematic Review and Meta-Analysis (Schizophr Bull)
+  https://pubmed.ncbi.nlm.nih.gov/42084440/
+
+• Effectiveness of Cognitive Behavioral Therapies Targeting Cognitive Biases and Beliefs in Schizophrenia-Spectrum Disorders: A Systematic Review and Meta-Analysis (Schizophr Bull)
+  https://pubmed.ncbi.nlm.nih.gov/42104795/
 
 קלאסטר: פסיכיאטריה כללית — קלינית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -98,11 +214,37 @@
     </item>
     <item>
       <title>מדעי המוח — 2026-05-10</title>
-      <description>פרק זה כולל סקירה של 10 מאמרים, ביניהם:
+      <description>פרק זה כולל סקירה של 10 מאמרים:
+
 • Molecular mechanism of calcium permeability and magnesium block in NMDA receptors (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42086762/
+
 • Stochastic growth and ligand-receptor interaction-mediated stabilization generate stereotyped dendritic arbors (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42082815/
+
 • Human hippocampal ripples coordinate planning sequences and compositional representations in neocortex (Nat Neurosci)
-ועוד 7 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42092183/
+
+• Neurons for seeing and imagining (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42104103/
+
+• Microglia-dependent regulation of fear memory extinction (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42082816/
+
+• A couple of couplings (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42104104/
+
+• Finding clues to circuit structure in population dynamics and single-neuron selectivity (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42097126/
+
+• Mitochondrial fission factor regulates mitochondrial Ca(2+) homeostasis and neuronal activity in AgRP neurons (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42068979/
+
+• Scaffolding human and AI instruction: Neural alignment and learning gains in online education (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42066775/
+
+• Not just muscle: Exercise-induced brain rewiring as a driver of endurance and metabolic adaptation (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42097123/
 
 קלאסטר: מדעי המוח
 סדרה: פסיכיאטריה ומדעי המוח
@@ -115,11 +257,37 @@
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-10-neuroscience/neuroscience.mp3" length="47663426" type="audio/mpeg"/>
       <pubDate>Sun, 10 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פרק זה כולל סקירה של 10 מאמרים, ביניהם:
+      <itunes:summary>פרק זה כולל סקירה של 10 מאמרים:
+
 • Molecular mechanism of calcium permeability and magnesium block in NMDA receptors (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42086762/
+
 • Stochastic growth and ligand-receptor interaction-mediated stabilization generate stereotyped dendritic arbors (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42082815/
+
 • Human hippocampal ripples coordinate planning sequences and compositional representations in neocortex (Nat Neurosci)
-ועוד 7 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42092183/
+
+• Neurons for seeing and imagining (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42104103/
+
+• Microglia-dependent regulation of fear memory extinction (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42082816/
+
+• A couple of couplings (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42104104/
+
+• Finding clues to circuit structure in population dynamics and single-neuron selectivity (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42097126/
+
+• Mitochondrial fission factor regulates mitochondrial Ca(2+) homeostasis and neuronal activity in AgRP neurons (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42068979/
+
+• Scaffolding human and AI instruction: Neural alignment and learning gains in online education (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42066775/
+
+• Not just muscle: Exercise-induced brain rewiring as a driver of endurance and metabolic adaptation (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42097123/
 
 קלאסטר: מדעי המוח
 סדרה: פסיכיאטריה ומדעי המוח
@@ -131,11 +299,37 @@
     </item>
     <item>
       <title>הפסיכיאטריה הופכת למדע ביולוגי מדויק — 2026-05-17</title>
-      <description>פרק זה כולל סקירה של 10 מאמרים, ביניהם:
+      <description>פרק זה כולל סקירה של 10 מאמרים:
+
 • Integrating cell-type-specific gene expression and genome-wide associations identifies risk genes for schizophrenia (Mol Psychiatry)
-• Spatial concordance metrics and related risk factors of brain-peripheral barrier axes: unveiling distinct concordance patterns for mental an… (Mol Psychiatry)
-• Comparison of the clinical efficacy, safety and EEG functional connectivity changes between 18-Hz rTMS and iTBS of accelerated dTMS treatmen… (Mol Psychiatry)
-ועוד 7 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42106519/
+
+• Spatial concordance metrics and related risk factors of brain-peripheral barrier axes: unveiling distinct concordance patterns for mental and neurological axes (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42104116/
+
+• Comparison of the clinical efficacy, safety and EEG functional connectivity changes between 18-Hz rTMS and iTBS of accelerated dTMS treatment for major depressive disorder: a rando… (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42115366/
+
+• Dynamic immune and metabolic dysregulation in women with post-traumatic stress disorder: Longitudinal transcriptomic insights following sexual assault (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42120554/
+
+• Revolutionizing MDD diagnosis: the integrated role of circRNAs and biosensor technology (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42120555/
+
+• Thalamo-cortical white matter connectivity-defined thalamic subarea volumes predict individual delay discounting (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42129478/
+
+• Erratum (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42118078/
+
+• Focused Ultrasound Ablation for Neurological Disorders (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42107848/
+
+• Dysfunctional brain circuits overlap in lesional and idiopathic obsessive-compulsive disorder (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42119759/
+
+• Reply to: Phenotype, Genetics, and Interpretation: Further Considerations on Atypical Depression (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42104972/
 
 קלאסטר: פסיכיאטריה ביולוגית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -148,11 +342,37 @@
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-general_psychiatry_bio/general_psychiatry_bio.mp3" length="43334955" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פרק זה כולל סקירה של 10 מאמרים, ביניהם:
+      <itunes:summary>פרק זה כולל סקירה של 10 מאמרים:
+
 • Integrating cell-type-specific gene expression and genome-wide associations identifies risk genes for schizophrenia (Mol Psychiatry)
-• Spatial concordance metrics and related risk factors of brain-peripheral barrier axes: unveiling distinct concordance patterns for mental an… (Mol Psychiatry)
-• Comparison of the clinical efficacy, safety and EEG functional connectivity changes between 18-Hz rTMS and iTBS of accelerated dTMS treatmen… (Mol Psychiatry)
-ועוד 7 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42106519/
+
+• Spatial concordance metrics and related risk factors of brain-peripheral barrier axes: unveiling distinct concordance patterns for mental and neurological axes (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42104116/
+
+• Comparison of the clinical efficacy, safety and EEG functional connectivity changes between 18-Hz rTMS and iTBS of accelerated dTMS treatment for major depressive disorder: a rando… (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42115366/
+
+• Dynamic immune and metabolic dysregulation in women with post-traumatic stress disorder: Longitudinal transcriptomic insights following sexual assault (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42120554/
+
+• Revolutionizing MDD diagnosis: the integrated role of circRNAs and biosensor technology (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42120555/
+
+• Thalamo-cortical white matter connectivity-defined thalamic subarea volumes predict individual delay discounting (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42129478/
+
+• Erratum (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42118078/
+
+• Focused Ultrasound Ablation for Neurological Disorders (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42107848/
+
+• Dysfunctional brain circuits overlap in lesional and idiopathic obsessive-compulsive disorder (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42119759/
+
+• Reply to: Phenotype, Genetics, and Interpretation: Further Considerations on Atypical Depression (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42104972/
 
 קלאסטר: פסיכיאטריה ביולוגית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -164,11 +384,43 @@
     </item>
     <item>
       <title>איך כדור לאקנה משפיע על התפתחות סכיזופרניה — 2026-05-17</title>
-      <description>פרק זה כולל סקירה של 12 מאמרים, ביניהם:
+      <description>פרק זה כולל סקירה של 12 מאמרים:
+
 • Agency and well-being (World Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42136414/
+
 • The burnout paradox (World Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42136517/
+
 • Child and adolescent psychiatry: challenges, solutions, opportunities, and future directions (World Psychiatry)
-ועוד 9 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42136439/
+
+• Towards a more inclusive psychiatry: diversity among presenters and participants in the 25th World Congress of Psychiatry (World Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42136438/
+
+• Predicting long-term poor outcomes in individuals at clinical high risk for psychosis using real-world clinical data: the OASIS1000 prospective study (World Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42136514/
+
+• Implementing precision psychiatry in psychosis (World Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42136422/
+
+• Doxycycline, Schizophrenia, and Toxoplasmosis (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121014/
+
+• Doxycycline and Schizophrenia: Response to Letters (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121017/
+
+• Doxycycline and the Parasite × Genotype × Stress Model of Schizophrenia (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121013/
+
+• Schizophrenia and Doxycycline: Microbiome Mediator? (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121018/
+
+• Doxycycline Use, Developmental Vulnerability, Patterns of Care, and Antibiotic Selection (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121016/
+
+• Reporting of Sex Specific Findings Leads to Altered Conclusions Regarding Potential Protective Effects of Doxycycline for Schizophrenia (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121015/
 
 קלאסטר: פסיכיאטריה כללית — קלינית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -181,11 +433,43 @@
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-general_psychiatry_clinical/general_psychiatry_clinical.mp3" length="28210937" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פרק זה כולל סקירה של 12 מאמרים, ביניהם:
+      <itunes:summary>פרק זה כולל סקירה של 12 מאמרים:
+
 • Agency and well-being (World Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42136414/
+
 • The burnout paradox (World Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42136517/
+
 • Child and adolescent psychiatry: challenges, solutions, opportunities, and future directions (World Psychiatry)
-ועוד 9 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42136439/
+
+• Towards a more inclusive psychiatry: diversity among presenters and participants in the 25th World Congress of Psychiatry (World Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42136438/
+
+• Predicting long-term poor outcomes in individuals at clinical high risk for psychosis using real-world clinical data: the OASIS1000 prospective study (World Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42136514/
+
+• Implementing precision psychiatry in psychosis (World Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42136422/
+
+• Doxycycline, Schizophrenia, and Toxoplasmosis (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121014/
+
+• Doxycycline and Schizophrenia: Response to Letters (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121017/
+
+• Doxycycline and the Parasite × Genotype × Stress Model of Schizophrenia (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121013/
+
+• Schizophrenia and Doxycycline: Microbiome Mediator? (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121018/
+
+• Doxycycline Use, Developmental Vulnerability, Patterns of Care, and Antibiotic Selection (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121016/
+
+• Reporting of Sex Specific Findings Leads to Altered Conclusions Regarding Potential Protective Effects of Doxycycline for Schizophrenia (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42121015/
 
 קלאסטר: פסיכיאטריה כללית — קלינית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -197,11 +481,37 @@
     </item>
     <item>
       <title>איך המוח מפריד בין מציאות לדמיון — 2026-05-17</title>
-      <description>פרק זה כולל סקירה של 10 מאמרים, ביניהם:
+      <description>פרק זה כולל סקירה של 10 מאמרים:
+
 • Screening for photoreceptor survival (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42104106/
+
 • Optics-free spatial genomics for mapping mammalian brain aging by IRISeq (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42120609/
+
 • A couple of couplings (Nat Neurosci)
-ועוד 7 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42104104/
+
+• Neurons for seeing and imagining (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42104103/
+
+• The choreography of cerebral vasculature development (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42104105/
+
+• Parsing autism spectrum heterogeneity through fMRI (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42141308/
+
+• A neurovascular survival axis for adult sympathetic neurons (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42102805/
+
+• Cell-type-specific APOE4 cascade across the Alzheimer's disease continuum (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42140183/
+
+• A peritumoral microenvironment engaged by Reg-EXTL3 axis fosters nerve-cancer interactions in pancreatic ductal adenocarcinoma (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42102806/
+
+• Intrinsic endothelial remodeling drives brain capillary repair (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42119560/
 
 קלאסטר: מדעי המוח
 סדרה: פסיכיאטריה ומדעי המוח
@@ -214,11 +524,37 @@
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-17-neuroscience/neuroscience.mp3" length="41002636" type="audio/mpeg"/>
       <pubDate>Sun, 17 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פרק זה כולל סקירה של 10 מאמרים, ביניהם:
+      <itunes:summary>פרק זה כולל סקירה של 10 מאמרים:
+
 • Screening for photoreceptor survival (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42104106/
+
 • Optics-free spatial genomics for mapping mammalian brain aging by IRISeq (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42120609/
+
 • A couple of couplings (Nat Neurosci)
-ועוד 7 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42104104/
+
+• Neurons for seeing and imagining (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42104103/
+
+• The choreography of cerebral vasculature development (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42104105/
+
+• Parsing autism spectrum heterogeneity through fMRI (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42141308/
+
+• A neurovascular survival axis for adult sympathetic neurons (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42102805/
+
+• Cell-type-specific APOE4 cascade across the Alzheimer's disease continuum (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42140183/
+
+• A peritumoral microenvironment engaged by Reg-EXTL3 axis fosters nerve-cancer interactions in pancreatic ductal adenocarcinoma (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42102806/
+
+• Intrinsic endothelial remodeling drives brain capillary repair (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42119560/
 
 קלאסטר: מדעי המוח
 סדרה: פסיכיאטריה ומדעי המוח
@@ -230,11 +566,37 @@
     </item>
     <item>
       <title>איך מחלה וסביבה מפסלות את חיווט המוח — 2026-05-25</title>
-      <description>פרק זה כולל סקירה של 10 מאמרים, ביניהם:
+      <description>פרק זה כולל סקירה של 10 מאמרים:
+
 • Cerebral cortical alterations in adolescent early-onset psychosis: a surface-based morphometry mega-analysis (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42156536/
+
 • MSK1 mediates BDNF-dependent MeCP2-S421 phosphorylation in postnatal striatal development and psychiatric-relevant behaviours (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42151442/
+
 • Protective TMEM106B-rs3173615 delays age at onset in GRN mutation carriers (Mol Psychiatry)
-ועוד 7 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42151443/
+
+• White matter microstructure in relatives of people with schizophrenia or bipolar disorder: an ENIGMA meta-analysis (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42168580/
+
+• Microbial Legacy: Mycobacterium vaccae ATCC 15483(T) intergenerationally diversifies the microbiome and enhances stress resilience in male mice (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42174231/
+
+• Rethinking schizophrenia: insights from genomics and implications for research (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42162224/
+
+• Psychiatric risk implications from behavioral and neural effects of adolescent exposure to environmental insecticides: a systematic review of rodent studies (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42142799/
+
+• Preclinical and Emerging Clinical Evidence Supporting the Translational Potential of GLP-1 Receptor Agonists for Treating Psychostimulant and Nicotine Use Disorders (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42142797/
+
+• Continuous Theta-Burst Stimulation Improves Long-Term Outcomes in Alcohol Use Disorder by Modulating a Craving-Related Dynamic Network (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42142798/
+
+• Good vibrations: Sternal vibration enhances white matter density and interoceptive awareness (Neuropsychopharmacology)
+  https://pubmed.ncbi.nlm.nih.gov/42143134/
 
 קלאסטר: פסיכיאטריה ביולוגית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -247,11 +609,37 @@
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-general_psychiatry_bio/general_psychiatry_bio.mp3" length="31983379" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פרק זה כולל סקירה של 10 מאמרים, ביניהם:
+      <itunes:summary>פרק זה כולל סקירה של 10 מאמרים:
+
 • Cerebral cortical alterations in adolescent early-onset psychosis: a surface-based morphometry mega-analysis (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42156536/
+
 • MSK1 mediates BDNF-dependent MeCP2-S421 phosphorylation in postnatal striatal development and psychiatric-relevant behaviours (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42151442/
+
 • Protective TMEM106B-rs3173615 delays age at onset in GRN mutation carriers (Mol Psychiatry)
-ועוד 7 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42151443/
+
+• White matter microstructure in relatives of people with schizophrenia or bipolar disorder: an ENIGMA meta-analysis (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42168580/
+
+• Microbial Legacy: Mycobacterium vaccae ATCC 15483(T) intergenerationally diversifies the microbiome and enhances stress resilience in male mice (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42174231/
+
+• Rethinking schizophrenia: insights from genomics and implications for research (Mol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42162224/
+
+• Psychiatric risk implications from behavioral and neural effects of adolescent exposure to environmental insecticides: a systematic review of rodent studies (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42142799/
+
+• Preclinical and Emerging Clinical Evidence Supporting the Translational Potential of GLP-1 Receptor Agonists for Treating Psychostimulant and Nicotine Use Disorders (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42142797/
+
+• Continuous Theta-Burst Stimulation Improves Long-Term Outcomes in Alcohol Use Disorder by Modulating a Craving-Related Dynamic Network (Biol Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42142798/
+
+• Good vibrations: Sternal vibration enhances white matter density and interoceptive awareness (Neuropsychopharmacology)
+  https://pubmed.ncbi.nlm.nih.gov/42143134/
 
 קלאסטר: פסיכיאטריה ביולוגית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -263,11 +651,43 @@
     </item>
     <item>
       <title>התרופה הראשונה שהמטופל נוטל היא הנרטיב — 2026-05-25</title>
-      <description>פרק זה כולל סקירה של 12 מאמרים, ביניהם:
+      <description>פרק זה כולל סקירה של 12 מאמרים:
+
 • Are you suicidal? (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42167304/
+
 • The ADOS-2 rapport item: an unexamined assumption (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42150589/
+
 • Schools at the centre: embedding adolescent mental health within the education ecosystem (Lancet Psychiatry)
-ועוד 9 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42155510/
+
+• Three fallacies in arguments made against euthanasia for people with psychiatric disorders (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42161322/
+
+• Neuroplastogen Treatment for Posttraumatic Stress Disorder (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42160082/
+
+• Military Sexual Trauma in the United States (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42160071/
+
+• Structure of the Genetic Risks for Psychiatric Disorders in Swedish Population-Based Registries (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42160045/
+
+• Interleukin 6 as a Treatment Target for Depression: A Proof-of-Concept Randomized Clinical Trial (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42160062/
+
+• Low-Dose Buprenorphine Following Ketamine Treatment for Suicidal Ideation in Major Depressive Disorder: A Randomized, Double-Blind, Placebo-Controlled Trial (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42151794/
+
+• Impact of Obstetric Complications in Subjects at Clinical High Risk for Psychosis: A Systematic Review and Meta-Analysis (Acta Psychiatr Scand)
+  https://pubmed.ncbi.nlm.nih.gov/42154536/
+
+• Perception of ADHD and Compliance in Relation to ADHD Medication (Acta Psychiatr Scand)
+  https://pubmed.ncbi.nlm.nih.gov/42152484/
+
+• Systematic Review and Meta-Analysis of Mood Stabilizers in the Treatment of Adolescent Patients With Nonsuicidal Self-Injury in China (J Clin Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42159376/
 
 קלאסטר: פסיכיאטריה כללית — קלינית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -280,11 +700,43 @@
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-general_psychiatry_clinical/general_psychiatry_clinical.mp3" length="42244678" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פרק זה כולל סקירה של 12 מאמרים, ביניהם:
+      <itunes:summary>פרק זה כולל סקירה של 12 מאמרים:
+
 • Are you suicidal? (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42167304/
+
 • The ADOS-2 rapport item: an unexamined assumption (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42150589/
+
 • Schools at the centre: embedding adolescent mental health within the education ecosystem (Lancet Psychiatry)
-ועוד 9 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42155510/
+
+• Three fallacies in arguments made against euthanasia for people with psychiatric disorders (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42161322/
+
+• Neuroplastogen Treatment for Posttraumatic Stress Disorder (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42160082/
+
+• Military Sexual Trauma in the United States (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42160071/
+
+• Structure of the Genetic Risks for Psychiatric Disorders in Swedish Population-Based Registries (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42160045/
+
+• Interleukin 6 as a Treatment Target for Depression: A Proof-of-Concept Randomized Clinical Trial (JAMA Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42160062/
+
+• Low-Dose Buprenorphine Following Ketamine Treatment for Suicidal Ideation in Major Depressive Disorder: A Randomized, Double-Blind, Placebo-Controlled Trial (Am J Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42151794/
+
+• Impact of Obstetric Complications in Subjects at Clinical High Risk for Psychosis: A Systematic Review and Meta-Analysis (Acta Psychiatr Scand)
+  https://pubmed.ncbi.nlm.nih.gov/42154536/
+
+• Perception of ADHD and Compliance in Relation to ADHD Medication (Acta Psychiatr Scand)
+  https://pubmed.ncbi.nlm.nih.gov/42152484/
+
+• Systematic Review and Meta-Analysis of Mood Stabilizers in the Treatment of Adolescent Patients With Nonsuicidal Self-Injury in China (J Clin Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42159376/
 
 קלאסטר: פסיכיאטריה כללית — קלינית
 סדרה: פסיכיאטריה ומדעי המוח
@@ -296,11 +748,43 @@
     </item>
     <item>
       <title>מחלות מוח שמתחילות בכלל מחוץ למוח — 2026-05-25</title>
-      <description>פרק זה כולל סקירה של 12 מאמרים, ביניהם:
+      <description>פרק זה כולל סקירה של 12 מאמרים:
+
 • Spatial proteomic analysis in human Alzheimer's disease brains enables identification of microenvironment-dependent microglial cell states (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42151483/
+
 • Considering biological limitations of lesion network mapping (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42162275/
+
 • Tau aggregates cause reactivation of transposable DNA elements, leading to Z-RNA-ZBP1-mediated neuronal death (Nat Neurosci)
-ועוד 9 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42162276/
+
+• Foamy microglia link oxylipins to disease progression in multiple sclerosis (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42168651/
+
+• fMRI at ultra-high field: From acquisition to interpretation (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42155454/
+
+• Novelty beyond counting (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42161247/
+
+• ATF2 phosphorylation is a core transcriptional driver of neuron apoptosis (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42161275/
+
+• Precision fMRI reveals densely interdigitated network patches with conserved motifs in the lateral prefrontal cortex (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42155453/
+
+• Before synapses are lost: Do endogenous retroviruses drive microglial overpruning in autism spectrum disorders? (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42161244/
+
+• Enhancing myelination in a high-poxic environment (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42161245/
+
+• Parkinson's disease beyond the brain: erythrocyte α-synuclein transfer across the blood-brain barrier (Brain)
+  https://pubmed.ncbi.nlm.nih.gov/42153334/
+
+• MIF modulates impaired astrocyte distribution in schizophrenia cortical spheroids (Brain)
+  https://pubmed.ncbi.nlm.nih.gov/42153336/
 
 קלאסטר: מדעי המוח
 סדרה: פסיכיאטריה ומדעי המוח
@@ -313,11 +797,43 @@
       <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-neuroscience/neuroscience.mp3" length="31080609" type="audio/mpeg"/>
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:summary>פרק זה כולל סקירה של 12 מאמרים, ביניהם:
+      <itunes:summary>פרק זה כולל סקירה של 12 מאמרים:
+
 • Spatial proteomic analysis in human Alzheimer's disease brains enables identification of microenvironment-dependent microglial cell states (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42151483/
+
 • Considering biological limitations of lesion network mapping (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42162275/
+
 • Tau aggregates cause reactivation of transposable DNA elements, leading to Z-RNA-ZBP1-mediated neuronal death (Nat Neurosci)
-ועוד 9 מאמרים נוספים.
+  https://pubmed.ncbi.nlm.nih.gov/42162276/
+
+• Foamy microglia link oxylipins to disease progression in multiple sclerosis (Nat Neurosci)
+  https://pubmed.ncbi.nlm.nih.gov/42168651/
+
+• fMRI at ultra-high field: From acquisition to interpretation (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42155454/
+
+• Novelty beyond counting (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42161247/
+
+• ATF2 phosphorylation is a core transcriptional driver of neuron apoptosis (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42161275/
+
+• Precision fMRI reveals densely interdigitated network patches with conserved motifs in the lateral prefrontal cortex (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42155453/
+
+• Before synapses are lost: Do endogenous retroviruses drive microglial overpruning in autism spectrum disorders? (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42161244/
+
+• Enhancing myelination in a high-poxic environment (Neuron)
+  https://pubmed.ncbi.nlm.nih.gov/42161245/
+
+• Parkinson's disease beyond the brain: erythrocyte α-synuclein transfer across the blood-brain barrier (Brain)
+  https://pubmed.ncbi.nlm.nih.gov/42153334/
+
+• MIF modulates impaired astrocyte distribution in schizophrenia cortical spheroids (Brain)
+  https://pubmed.ncbi.nlm.nih.gov/42153336/
 
 קלאסטר: מדעי המוח
 סדרה: פסיכיאטריה ומדעי המוח
@@ -330,8 +846,9 @@
     <item>
       <title>למה התמותה מפסיכיאטריה נמחקה מהסטטיסטיקה העולמית — 2026-05-25</title>
       <description>פרק זה מוקדש למאמר אחד:
-• Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease St…
-  (Lancet)
+
+• Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 (Lancet)
+  https://pubmed.ncbi.nlm.nih.gov/42167272/
 
 סדרה: פסיכיאטריה ומדעי המוח
 תאריך הסקירה: 2026-05-25
@@ -344,8 +861,9 @@
       <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>פרק זה מוקדש למאמר אחד:
-• Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease St…
-  (Lancet)
+
+• Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 (Lancet)
+  https://pubmed.ncbi.nlm.nih.gov/42167272/
 
 סדרה: פסיכיאטריה ומדעי המוח
 תאריך הסקירה: 2026-05-25
