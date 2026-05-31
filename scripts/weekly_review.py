@@ -1680,12 +1680,18 @@ def backup_to_drive(env: dict) -> None:
 
 
 def update_rss_feed(env: dict) -> None:
-    """Regenerate podcast/feed.xml and commit + push the change. Non-fatal."""
+    """Regenerate all RSS feeds and commit + push the changes. Non-fatal.
+
+    Note: we now produce multiple feeds (feed-child.xml, feed-psychiatry.xml,
+    feed-therapy.xml) for the 3 topical Spotify shows. The old single
+    feed.xml was retired in May 2026. The git-add glob below picks up all
+    feed*.xml files so adding a new channel later doesn't break this step.
+    """
     repo = env.get("GH_REPO") or env.get("GITHUB_REPOSITORY", "")
     if not repo:
         print("\n  RSS feed skipped: GH_REPO not set.")
         return
-    print("\n\U0001f4e1 Updating podcast RSS feed...")
+    print("\n\U0001f4e1 Updating podcast RSS feeds...")
     try:
         result = subprocess.run(
             [sys.executable, str(SCRIPTS_DIR / "generate_rss.py")],
@@ -1694,8 +1700,15 @@ def update_rss_feed(env: dict) -> None:
         if result.returncode != 0:
             print(f"  WARNING: generate_rss.py failed: {result.stderr[:200]}")
             return
-        # Commit + push the new feed.xml
-        subprocess.run(["git", "add", "docs/feed.xml"], check=False)
+        # Echo the feed builder's summary so the log shows per-feed counts.
+        for line in result.stdout.splitlines()[-6:]:
+            print(f"  {line}")
+
+        # Stage every regenerated feed file. Glob handles both legacy and
+        # current names (`feed.xml`, `feed-*.xml`).
+        for feed_path in Path("docs").glob("feed*.xml"):
+            subprocess.run(["git", "add", str(feed_path)], check=False)
+
         status = subprocess.run(
             ["git", "diff", "--cached", "--quiet"], capture_output=True,
         )
@@ -1711,7 +1724,7 @@ def update_rss_feed(env: dict) -> None:
             capture_output=True, text=True, check=False,
         )
         if push.returncode == 0:
-            print("  RSS feed published.")
+            print("  RSS feeds published.")
         else:
             print(f"  WARNING: git push failed: {push.stderr.strip()[:200]}")
     except Exception as e:
