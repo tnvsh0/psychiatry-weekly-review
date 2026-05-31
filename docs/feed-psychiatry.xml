@@ -3,7 +3,13 @@
   <channel>
     <title>סקירה שבועית — פסיכיאטריה ומדעי המוח</title>
     <link>https://tnvsh0.github.io/psychiatry-weekly-review/feed-psychiatry.xml</link>
-    <description>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה כללית (קלינית וביולוגית) ובמדעי המוח — מבוסס על PubMed ומופק אוטומטית מדי שבוע. כולל מאמרי סקירה משמעותיים בפסיכופרמקולוגיה ובמחקר ביולוגי.
+    <description>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה כללית (קלינית וביולוגית) ובמדעי המוח — מבוסס על PubMed ומופק אוטומטית מדי שבוע.
+
+מקרא התיוגים בכותרות:
+• [קליני] — פסיכיאטריה קלינית במבוגרים: סכיזופרניה, דיכאון, OCD, חרדה (Am J Psychiatry, JAMA Psychiatry, World Psychiatry)
+• [ביולוגי/פרמקולוגיה] — מחקר ביולוגי, גנטי ופסיכופרמקולוגי (Mol Psychiatry, Biol Psychiatry, Neuropsychopharmacology)
+• [מדעי המוח] — מחקר נוירומדע בסיסי (Nature Neuroscience, Neuron, Brain, J Neuroscience)
+• [סקירה] — מאמר סקירה משמעותי שמקבל פרק ייעודי
 
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</description>
     <atom:link href="https://tnvsh0.github.io/psychiatry-weekly-review/feed-psychiatry.xml" rel="self"/>
@@ -15,7 +21,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Sun, 31 May 2026 16:39:43 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2026 17:18:07 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -26,12 +32,18 @@
       <itunes:name>Tovia Wen</itunes:name>
       <itunes:email>toviagpt@gmail.com</itunes:email>
     </itunes:owner>
-    <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה כללית (קלינית וביולוגית) ובמדעי המוח — מבוסס על PubMed ומופק אוטומטית מדי שבוע. כולל מאמרי סקירה משמעותיים בפסיכופרמקולוגיה ובמחקר ביולוגי.
+    <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה כללית (קלינית וביולוגית) ובמדעי המוח — מבוסס על PubMed ומופק אוטומטית מדי שבוע.
+
+מקרא התיוגים בכותרות:
+• [קליני] — פסיכיאטריה קלינית במבוגרים: סכיזופרניה, דיכאון, OCD, חרדה (Am J Psychiatry, JAMA Psychiatry, World Psychiatry)
+• [ביולוגי/פרמקולוגיה] — מחקר ביולוגי, גנטי ופסיכופרמקולוגי (Mol Psychiatry, Biol Psychiatry, Neuropsychopharmacology)
+• [מדעי המוח] — מחקר נוירומדע בסיסי (Nature Neuroscience, Neuron, Brain, J Neuroscience)
+• [סקירה] — מאמר סקירה משמעותי שמקבל פרק ייעודי
 
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</itunes:summary>
     <itunes:type>episodic</itunes:type>
     <item>
-      <title>פסיכיאטריה ביולוגית — 2026-05-10</title>
+      <title>[ביולוגי/פרמקולוגיה] פסיכיאטריה ביולוגית — 2026-05-10</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Heterogeneous functional state dynamics and its structural substrates in male individuals with autism spectrum disorder (Mol Psychiatry)
@@ -116,7 +128,7 @@
 — Biological Psychiatry —</itunes:summary>
     </item>
     <item>
-      <title>פסיכיאטריה כללית — קלינית — 2026-05-10</title>
+      <title>[קליני] פסיכיאטריה כללית — קלינית — 2026-05-10</title>
       <description>פרק זה כולל סקירה של 12 מאמרים:
 
 • The global prevalence of major depressive disorder during the peripartum period: a systematic review and meta-regression (Lancet Psychiatry)
@@ -213,7 +225,7 @@
 — General Psychiatry — Clinical —</itunes:summary>
     </item>
     <item>
-      <title>מדעי המוח — 2026-05-10</title>
+      <title>[מדעי המוח] מדעי המוח — 2026-05-10</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Molecular mechanism of calcium permeability and magnesium block in NMDA receptors (Nat Neurosci)
@@ -298,7 +310,7 @@
 — Neuroscience —</itunes:summary>
     </item>
     <item>
-      <title>הפסיכיאטריה הופכת למדע ביולוגי מדויק — 2026-05-17</title>
+      <title>[ביולוגי/פרמקולוגיה] הפסיכיאטריה הופכת למדע ביולוגי מדויק — 2026-05-17</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Integrating cell-type-specific gene expression and genome-wide associations identifies risk genes for schizophrenia (Mol Psychiatry)
@@ -383,7 +395,7 @@
 — Biological Psychiatry —</itunes:summary>
     </item>
     <item>
-      <title>איך כדור לאקנה משפיע על התפתחות סכיזופרניה — 2026-05-17</title>
+      <title>[קליני] איך כדור לאקנה משפיע על התפתחות סכיזופרניה — 2026-05-17</title>
       <description>פרק זה כולל סקירה של 12 מאמרים:
 
 • Agency and well-being (World Psychiatry)
@@ -480,7 +492,7 @@
 — General Psychiatry — Clinical —</itunes:summary>
     </item>
     <item>
-      <title>איך המוח מפריד בין מציאות לדמיון — 2026-05-17</title>
+      <title>[מדעי המוח] איך המוח מפריד בין מציאות לדמיון — 2026-05-17</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Screening for photoreceptor survival (Nat Neurosci)
@@ -565,7 +577,7 @@
 — Neuroscience —</itunes:summary>
     </item>
     <item>
-      <title>איך מחלה וסביבה מפסלות את חיווט המוח — 2026-05-25</title>
+      <title>[ביולוגי/פרמקולוגיה] איך מחלה וסביבה מפסלות את חיווט המוח — 2026-05-25</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Cerebral cortical alterations in adolescent early-onset psychosis: a surface-based morphometry mega-analysis (Mol Psychiatry)
@@ -650,7 +662,7 @@
 — Biological Psychiatry —</itunes:summary>
     </item>
     <item>
-      <title>התרופה הראשונה שהמטופל נוטל היא הנרטיב — 2026-05-25</title>
+      <title>[קליני] התרופה הראשונה שהמטופל נוטל היא הנרטיב — 2026-05-25</title>
       <description>פרק זה כולל סקירה של 12 מאמרים:
 
 • Are you suicidal? (Lancet Psychiatry)
@@ -747,7 +759,7 @@
 — General Psychiatry — Clinical —</itunes:summary>
     </item>
     <item>
-      <title>מחלות מוח שמתחילות בכלל מחוץ למוח — 2026-05-25</title>
+      <title>[מדעי המוח] מחלות מוח שמתחילות בכלל מחוץ למוח — 2026-05-25</title>
       <description>פרק זה כולל סקירה של 12 מאמרים:
 
 • Spatial proteomic analysis in human Alzheimer's disease brains enables identification of microenvironment-dependent microglial cell states (Nat Neurosci)
@@ -844,7 +856,7 @@
 — Neuroscience —</itunes:summary>
     </item>
     <item>
-      <title>למה התמותה מפסיכיאטריה נמחקה מהסטטיסטיקה העולמית — 2026-05-25</title>
+      <title>[סקירה] למה התמותה מפסיכיאטריה נמחקה מהסטטיסטיקה העולמית — 2026-05-25</title>
       <description>פרק זה מוקדש למאמר אחד:
 
 • Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 (Lancet)
@@ -873,7 +885,7 @@
 — Spotlight Review —</itunes:summary>
     </item>
     <item>
-      <title>מציאת המינון האופטימלי לטיפול ב-ADHD — 2026-05-25</title>
+      <title>[סקירה] מציאת המינון האופטימלי לטיפול ב-ADHD — 2026-05-25</title>
       <description>פרק זה מוקדש למאמר אחד:
 
 • Pharmacological interventions for ADHD: a systematic review and dose-effect network meta-analysis (Lancet Psychiatry)
@@ -902,7 +914,7 @@
 — Spotlight Review —</itunes:summary>
     </item>
     <item>
-      <title>המנגנונים העצביים של פאניקה הימנעות ואובדנות — 2026-05-31</title>
+      <title>[ביולוגי/פרמקולוגיה] המנגנונים העצביים של פאניקה הימנעות ואובדנות — 2026-05-31</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Psychedelic-induced hypomania and mania: a systematic review and meta-analysis (Mol Psychiatry · מאמר סקירה)
@@ -987,7 +999,7 @@
 — Biological Psychiatry —</itunes:summary>
     </item>
     <item>
-      <title>המתח בין רצף המטופל לספי המערכת — 2026-05-31</title>
+      <title>[קליני] המתח בין רצף המטופל לספי המערכת — 2026-05-31</title>
       <description>פרק זה כולל סקירה של 12 מאמרים:
 
 • Inherent commonalities between arts-based leisure activities and psychological therapies (Lancet Psychiatry · מאמר סקירה)
@@ -1084,7 +1096,7 @@
 — General Psychiatry — Clinical —</itunes:summary>
     </item>
     <item>
-      <title>הדיאלוג המפתיע בין הגוף למוח — 2026-05-31</title>
+      <title>[מדעי המוח] הדיאלוג המפתיע בין הגוף למוח — 2026-05-31</title>
       <description>פרק זה כולל סקירה של 12 מאמרים:
 
 • The multiple scales of astrocytic functional units (Nat Neurosci · מאמר סקירה)
@@ -1181,7 +1193,7 @@
 — Neuroscience —</itunes:summary>
     </item>
     <item>
-      <title>למה דיכאון לא יכול להרוג מתמטית — 2026-05-31</title>
+      <title>[סקירה] למה דיכאון לא יכול להרוג מתמטית — 2026-05-31</title>
       <description>פרק זה מוקדש למאמר אחד:
 
 • Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 (Lancet · סקירה שיטתית)
@@ -1210,7 +1222,7 @@
 — Spotlight Review —</itunes:summary>
     </item>
     <item>
-      <title>האמנות כתרופה עם מנגנון פעולה קליני — 2026-05-31</title>
+      <title>[סקירה] האמנות כתרופה עם מנגנון פעולה קליני — 2026-05-31</title>
       <description>פרק זה מוקדש למאמר אחד:
 
 • Inherent commonalities between arts-based leisure activities and psychological therapies (Lancet Psychiatry · מאמר סקירה)

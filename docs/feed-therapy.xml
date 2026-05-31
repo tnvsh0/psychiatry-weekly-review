@@ -3,7 +3,13 @@
   <channel>
     <title>סקירה שבועית — פסיכותרפיה וקוגניציה</title>
     <link>https://tnvsh0.github.io/psychiatry-weekly-review/feed-therapy.xml</link>
-    <description>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכותרפיה, במדעי ההתנהגות ובקוגניציה — מבוסס על PubMed ומופק אוטומטית מדי שבוע. כולל ראיות עדכניות על CBT, DBT, התערבויות פסיכולוגיות, מנגנונים קוגניטיביים והתנהגותיים.
+    <description>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכותרפיה, במדעי ההתנהגות ובקוגניציה — מבוסס על PubMed ומופק אוטומטית מדי שבוע.
+
+מקרא התיוגים בכותרות:
+• [פסיכותרפיה] — מחקר פסיכותרפיה: CBT, DBT, פסיכודינמי, IPT (Psychother Psychosom, Clin Psychol Rev, J Consult Clin Psychol)
+• [מדעי ההתנהגות] — מחקרי למידה, חיזוק וקוגניציה חברתית (Behavioral and Brain Sciences, Psychological Science)
+• [קוגניציה] — תפקודים קוגניטיביים: זיכרון עבודה, תשומת לב, שפה (Cognition, J Cognitive Neuroscience, Cognitive Psychology)
+• [סקירה] — מאמר סקירה משמעותי שמקבל פרק ייעודי
 
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</description>
     <atom:link href="https://tnvsh0.github.io/psychiatry-weekly-review/feed-therapy.xml" rel="self"/>
@@ -15,7 +21,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Sun, 31 May 2026 16:39:44 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2026 17:18:07 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -26,12 +32,18 @@
       <itunes:name>Tovia Wen</itunes:name>
       <itunes:email>toviagpt@gmail.com</itunes:email>
     </itunes:owner>
-    <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכותרפיה, במדעי ההתנהגות ובקוגניציה — מבוסס על PubMed ומופק אוטומטית מדי שבוע. כולל ראיות עדכניות על CBT, DBT, התערבויות פסיכולוגיות, מנגנונים קוגניטיביים והתנהגותיים.
+    <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכותרפיה, במדעי ההתנהגות ובקוגניציה — מבוסס על PubMed ומופק אוטומטית מדי שבוע.
+
+מקרא התיוגים בכותרות:
+• [פסיכותרפיה] — מחקר פסיכותרפיה: CBT, DBT, פסיכודינמי, IPT (Psychother Psychosom, Clin Psychol Rev, J Consult Clin Psychol)
+• [מדעי ההתנהגות] — מחקרי למידה, חיזוק וקוגניציה חברתית (Behavioral and Brain Sciences, Psychological Science)
+• [קוגניציה] — תפקודים קוגניטיביים: זיכרון עבודה, תשומת לב, שפה (Cognition, J Cognitive Neuroscience, Cognitive Psychology)
+• [סקירה] — מאמר סקירה משמעותי שמקבל פרק ייעודי
 
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</itunes:summary>
     <itunes:type>episodic</itunes:type>
     <item>
-      <title>פסיכותרפיה והתערבויות — 2026-04-20</title>
+      <title>[פסיכותרפיה] פסיכותרפיה והתערבויות — 2026-04-20</title>
       <description>סקירה שבועית של מאמרים מהקלאסטר: פסיכותרפיה והתערבויות.
 
 קלאסטר: פסיכותרפיה והתערבויות
@@ -56,7 +68,7 @@
 — Psychotherapy &amp; Interventions —</itunes:summary>
     </item>
     <item>
-      <title>מדעי ההתנהגות — 2026-05-10</title>
+      <title>[מדעי ההתנהגות] מדעי ההתנהגות — 2026-05-10</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Slower motor speed as a predictor of suicide attempts in high-risk youth (Psychol Med)
@@ -141,7 +153,7 @@
 — Behavioral Sciences —</itunes:summary>
     </item>
     <item>
-      <title>קוגניציה ומדעי הקוגניציה — 2026-05-10</title>
+      <title>[קוגניציה] קוגניציה ומדעי הקוגניציה — 2026-05-10</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Early Simultaneous Brain Indexes of Phonological, Semantic, and Pragmatic Information Access in Language Understanding and Production (J Cogn Neurosci)
@@ -226,7 +238,7 @@
 — Cognition &amp; Cognitive Science —</itunes:summary>
     </item>
     <item>
-      <title>פסיכותרפיה והתערבויות — 2026-05-10</title>
+      <title>[פסיכותרפיה] פסיכותרפיה והתערבויות — 2026-05-10</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • A historical review of gaslighting: Tracing changing conceptualizations within psychiatry and psychology (Clin Psychol Rev)
@@ -311,7 +323,7 @@
 — Psychotherapy &amp; Interventions —</itunes:summary>
     </item>
     <item>
-      <title>המנגנונים הנסתרים שמשכתבים את המוח והמוסר — 2026-05-17</title>
+      <title>[מדעי ההתנהגות] המנגנונים הנסתרים שמשכתבים את המוח והמוסר — 2026-05-17</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Network diffusion modeling predicts spatiotemporal gray matter alterations in internet gaming disorder (Psychol Med)
@@ -396,7 +408,7 @@
 — Behavioral Sciences —</itunes:summary>
     </item>
     <item>
-      <title>מערכת ההפעלה של המוח והתפתחות הילד — 2026-05-17</title>
+      <title>[קוגניציה] מערכת ההפעלה של המוח והתפתחות הילד — 2026-05-17</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Reverse engineering the centered self (Psychol Rev)
@@ -481,7 +493,7 @@
 — Cognition &amp; Cognitive Science —</itunes:summary>
     </item>
     <item>
-      <title>טיפול נפשי בין אלגוריתמים לקשר אנושי — 2026-05-17</title>
+      <title>[פסיכותרפיה] טיפול נפשי בין אלגוריתמים לקשר אנושי — 2026-05-17</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Commercial AI-based Mental Health Chatbots as Low-Intensity Adjuncts to Psychotherapy: Effectiveness, Adherence, and Safety-A Systematic Review and Meta-analysis (Psychother Psychosom)
@@ -566,7 +578,7 @@
 — Psychotherapy &amp; Interventions —</itunes:summary>
     </item>
     <item>
-      <title>איך המוח מחפש מילים חפצים ואהבה — 2026-05-25</title>
+      <title>[מדעי ההתנהגות] איך המוח מחפש מילים חפצים ואהבה — 2026-05-25</title>
       <description>פרק זה כולל סקירה של 7 מאמרים:
 
 • Multitarget Visual Search Flexibly Switches Between Concurrent and Sequential Search Modes (Psychol Sci)
@@ -633,7 +645,7 @@
 — Behavioral Sciences —</itunes:summary>
     </item>
     <item>
-      <title>המוח אינו מצלמה הוא בונה מציאות — 2026-05-25</title>
+      <title>[קוגניציה] המוח אינו מצלמה הוא בונה מציאות — 2026-05-25</title>
       <description>פרק זה כולל סקירה של 12 מאמרים:
 
 • The format of representation for objects in orbit: Composite and internally referenced (Psychol Rev)
@@ -730,7 +742,7 @@
 — Cognition &amp; Cognitive Science —</itunes:summary>
     </item>
     <item>
-      <title>מדידת הנפש מהיער ועד לגלי המוח — 2026-05-25</title>
+      <title>[פסיכותרפיה] מדידת הנפש מהיער ועד לגלי המוח — 2026-05-25</title>
       <description>פרק זה כולל סקירה של 12 מאמרים:
 
 • Response to the Letter to the Editor Regarding "Online Intensive Short-Term Dynamic Psychotherapy for Treatment-Resistant Somatic Symptom Disorder: An Interrupted Time-Series Study… (Psychother Psychosom)
@@ -827,7 +839,7 @@
 — Psychotherapy &amp; Interventions —</itunes:summary>
     </item>
     <item>
-      <title>למה המוח חייב להכניס הכל למשבצת — 2026-05-31</title>
+      <title>[מדעי ההתנהגות] למה המוח חייב להכניס הכל למשבצת — 2026-05-31</title>
       <description>פרק זה כולל סקירה של 7 מאמרים:
 
 • Love as a lived experience (Behav Brain Sci · מאמר מחקרי)
@@ -894,7 +906,7 @@
 — Behavioral Sciences —</itunes:summary>
     </item>
     <item>
-      <title>המוח אינו חומרה סטטית אלא תלוי הקשר — 2026-05-31</title>
+      <title>[קוגניציה] המוח אינו חומרה סטטית אלא תלוי הקשר — 2026-05-31</title>
       <description>פרק זה כולל סקירה של 12 מאמרים:
 
 • Can Category-selective Cortex Predict Categorization Behavior? (J Cogn Neurosci · מאמר מחקרי)
@@ -991,7 +1003,7 @@
 — Cognition &amp; Cognitive Science —</itunes:summary>
     </item>
     <item>
-      <title>למוטט את הדיכאון דרך פרימת רשת התסמינים — 2026-05-31</title>
+      <title>[פסיכותרפיה] למוטט את הדיכאון דרך פרימת רשת התסמינים — 2026-05-31</title>
       <description>פרק זה כולל סקירה של 12 מאמרים:
 
 • Long-Term Efficacy of Psilocybin with Adjunct Psychotherapy in Treatment-Resistant Major Depression (EPIsoDE): 6- and 12-Month Naturalistic Follow-Up of a Phase 2b Trial (Psychother Psychosom · מאמר מחקרי)

@@ -3,7 +3,14 @@
   <channel>
     <title>סקירה שבועית — פסיכיאטריית הילד והמתבגר</title>
     <link>https://tnvsh0.github.io/psychiatry-weekly-review/feed-child.xml</link>
-    <description>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריית הילד והמתבגר ובהתפתחות הילד — מבוסס על PubMed ומופק אוטומטית מדי שבוע. כולל את ליבת הפסיכיאטריה של הילד, מאמרים רלוונטיים מכתבי עת רפואיים מובילים, ומאמרי סקירה משמעותיים.
+    <description>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריית הילד והמתבגר ובהתפתחות הילד — מבוסס על PubMed ומופק אוטומטית מדי שבוע.
+
+מקרא התיוגים בכותרות:
+• [פסיכ׳ ילד] — מכתבי העת המובילים של פסיכיאטריית הילד (JAACAP, JCPP, ECAP)
+• [מהרפואה הכללית] — מאמרים על ילדים מכתבי עת רפואיים כלליים (JAMA, Lancet, NEJM, JAMA Pediatrics)
+• [כתבי עת נוספים] — מאמרים על ילדים מכתבי עת אחרים
+• [התפתחות] — מחקרי התפתחות הילד מכתבי עת ייעודיים (Child Dev, Dev Psychopathol)
+• [סקירה] — מאמר סקירה משמעותי שמקבל פרק ייעודי
 
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</description>
     <atom:link href="https://tnvsh0.github.io/psychiatry-weekly-review/feed-child.xml" rel="self"/>
@@ -15,7 +22,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Sun, 31 May 2026 16:39:43 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 May 2026 17:18:07 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -26,12 +33,19 @@
       <itunes:name>Tovia Wen</itunes:name>
       <itunes:email>toviagpt@gmail.com</itunes:email>
     </itunes:owner>
-    <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריית הילד והמתבגר ובהתפתחות הילד — מבוסס על PubMed ומופק אוטומטית מדי שבוע. כולל את ליבת הפסיכיאטריה של הילד, מאמרים רלוונטיים מכתבי עת רפואיים מובילים, ומאמרי סקירה משמעותיים.
+    <itunes:summary>סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריית הילד והמתבגר ובהתפתחות הילד — מבוסס על PubMed ומופק אוטומטית מדי שבוע.
+
+מקרא התיוגים בכותרות:
+• [פסיכ׳ ילד] — מכתבי העת המובילים של פסיכיאטריית הילד (JAACAP, JCPP, ECAP)
+• [מהרפואה הכללית] — מאמרים על ילדים מכתבי עת רפואיים כלליים (JAMA, Lancet, NEJM, JAMA Pediatrics)
+• [כתבי עת נוספים] — מאמרים על ילדים מכתבי עת אחרים
+• [התפתחות] — מחקרי התפתחות הילד מכתבי עת ייעודיים (Child Dev, Dev Psychopathol)
+• [סקירה] — מאמר סקירה משמעותי שמקבל פרק ייעודי
 
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</itunes:summary>
     <itunes:type>episodic</itunes:type>
     <item>
-      <title>התפתחות הילד ובריאות הנפש — 2026-04-20</title>
+      <title>[התפתחות] התפתחות הילד ובריאות הנפש — 2026-04-20</title>
       <description>סקירה שבועית של מאמרים מהקלאסטר: התפתחות הילד.
 
 קלאסטר: התפתחות הילד
@@ -56,7 +70,7 @@
 — Child Development —</itunes:summary>
     </item>
     <item>
-      <title>ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-10</title>
+      <title>[פסיכ׳ ילד] ליבה — פסיכיאטריית ילד ומתבגר — 2026-05-10</title>
       <description>פרק זה כולל סקירה של 7 מאמרים:
 
 • Scaling Up Evidence-Based Treatments: An Analysis of 25,000 Sessions of Trauma-Focused Cognitive Behavioral Therapy (TF-CBT) in Routine Care (J Am Acad Child Adolesc Psychiatry)
@@ -123,7 +137,7 @@
 — Child &amp; Adolescent Psychiatry — Core —</itunes:summary>
     </item>
     <item>
-      <title>השפעה גבוהה — ילד ומתבגר — 2026-05-10</title>
+      <title>[מהרפואה הכללית] השפעה גבוהה — ילד ומתבגר — 2026-05-10</title>
       <description>פרק זה כולל סקירה של 7 מאמרים:
 
 • Childhood verbal abuse by adults: young people speaking up (Lancet Child Adolesc Health)
@@ -190,7 +204,7 @@
 — Child &amp; Adolescent — High Impact —</itunes:summary>
     </item>
     <item>
-      <title>ילדים ומתבגרים — מגוון — 2026-05-10</title>
+      <title>[כתבי עת נוספים] ילדים ומתבגרים — מגוון — 2026-05-10</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Sensory processing differences and behavioural problems in children with autism: a retrospective study using statistical modelling and multi-output machine learning (BMJ Paediatr Open)
@@ -275,7 +289,7 @@
 — Child &amp; Adolescent — Miscellaneous —</itunes:summary>
     </item>
     <item>
-      <title>התפתחות הילד — 2026-05-10</title>
+      <title>[התפתחות] התפתחות הילד — 2026-05-10</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Parenting practices and child irritability across diverse racial-ethnic backgrounds: A temporal network analysis (Dev Psychopathol)
@@ -360,7 +374,7 @@
 — Child Development —</itunes:summary>
     </item>
     <item>
-      <title>השפעת זיהום ומזג האוויר על המוח — 2026-05-17</title>
+      <title>[פסיכ׳ ילד] השפעת זיהום ומזג האוויר על המוח — 2026-05-17</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Fetal Exposure to Maternal Infection by SARS-CoV-2 and Effects on Child Neurodevelopment (J Am Acad Child Adolesc Psychiatry)
@@ -445,7 +459,7 @@
 — Child &amp; Adolescent Psychiatry — Core —</itunes:summary>
     </item>
     <item>
-      <title>בינה מלאכותית ומדיניות בחזית רפואת הילדים — 2026-05-17</title>
+      <title>[מהרפואה הכללית] בינה מלאכותית ומדיניות בחזית רפואת הילדים — 2026-05-17</title>
       <description>פרק זה כולל סקירה של 13 מאמרים:
 
 • Pharmacological interventions for ADHD: a systematic review and dose-effect network meta-analysis (Lancet Psychiatry)
@@ -548,7 +562,7 @@
 — Child &amp; Adolescent — High Impact —</itunes:summary>
     </item>
     <item>
-      <title>אוטיזם וקשב מהמעבדה ועד הטרמפולינה — 2026-05-17</title>
+      <title>[כתבי עת נוספים] אוטיזם וקשב מהמעבדה ועד הטרמפולינה — 2026-05-17</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • rTMS Modulates Static and Dynamic Brain Functional Networks in Children with Autism Spectrum Disorder: An EEG Microstate Study (Brain Topogr)
@@ -633,7 +647,7 @@
 — Child &amp; Adolescent — Miscellaneous —</itunes:summary>
     </item>
     <item>
-      <title>איך הסביבה הרגשית משנה את ביולוגיית הילד — 2026-05-17</title>
+      <title>[התפתחות] איך הסביבה הרגשית משנה את ביולוגיית הילד — 2026-05-17</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Testing an intergenerational cascade model of adolescent family and individual functioning, young adult Romantic competence, and third-generation child adjustment: Developmental pr… (Dev Psychopathol)
@@ -718,7 +732,7 @@
 — Child Development —</itunes:summary>
     </item>
     <item>
-      <title>ממנגנוני דלקת ושינה ועד רפואה מותאמת אישית — 2026-05-25</title>
+      <title>[פסיכ׳ ילד] ממנגנוני דלקת ושינה ועד רפואה מותאמת אישית — 2026-05-25</title>
       <description>פרק זה כולל סקירה של 18 מאמרים:
 
 • Developmental Pathways From Genetic Predispositions to Psychopathology in Adolescence (J Am Acad Child Adolesc Psychiatry)
@@ -851,7 +865,7 @@
 — Child &amp; Adolescent Psychiatry — Core —</itunes:summary>
     </item>
     <item>
-      <title>אשליית הסיבתיות הישירה בפסיכיאטריית ילדים — 2026-05-25</title>
+      <title>[כתבי עת נוספים] אשליית הסיבתיות הישירה בפסיכיאטריית ילדים — 2026-05-25</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Neurodevelopmental outcomes of children born to diabetic mothers in the Qatari population: a retrospective study (BMJ Paediatr Open)
@@ -936,7 +950,7 @@
 — Child &amp; Adolescent — Miscellaneous —</itunes:summary>
     </item>
     <item>
-      <title>חוויות ילדות כמדד ביולוגי חיוני — 2026-05-25</title>
+      <title>[התפתחות] חוויות ילדות כמדד ביולוגי חיוני — 2026-05-25</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Pilot study evidence suggests that mother-infant dyads respond differently to technoference following phone calls and text messages (Dev Psychopathol)
@@ -1021,7 +1035,7 @@
 — Child Development —</itunes:summary>
     </item>
     <item>
-      <title>מציאת המינון האופטימלי לטיפול ב-ADHD — 2026-05-25</title>
+      <title>[סקירה] מציאת המינון האופטימלי לטיפול ב-ADHD — 2026-05-25</title>
       <description>פרק זה מוקדש למאמר אחד:
 
 • Pharmacological interventions for ADHD: a systematic review and dose-effect network meta-analysis (Lancet Psychiatry)
@@ -1050,7 +1064,7 @@
 — Spotlight Review —</itunes:summary>
     </item>
     <item>
-      <title>גנטיקה סביבה וטיפול בדיכאון בילדים — 2026-05-31</title>
+      <title>[פסיכ׳ ילד] גנטיקה סביבה וטיפול בדיכאון בילדים — 2026-05-31</title>
       <description>פרק זה כולל סקירה של 14 מאמרים:
 
 • Addressing Nihilism and the Glorification of Violence in Adolescents in Clinical Settings (J Am Acad Child Adolesc Psychiatry · מאמר מערכת)
@@ -1159,7 +1173,7 @@
 — Child &amp; Adolescent Psychiatry — Core —</itunes:summary>
     </item>
     <item>
-      <title>איך תרבות וגנטיקה מעצבות את האוטיזם — 2026-05-31</title>
+      <title>[כתבי עת נוספים] איך תרבות וגנטיקה מעצבות את האוטיזם — 2026-05-31</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Navigating through the care of children with autism spectrum disorder: parents' lived experiences in a Ghanaian Regional Hospital (BMJ Paediatr Open · מאמר מחקרי)
@@ -1244,7 +1258,7 @@
 — Child &amp; Adolescent — Miscellaneous —</itunes:summary>
     </item>
     <item>
-      <title>איך דיכאון מגן על מתבגרים מבדידות — 2026-05-31</title>
+      <title>[התפתחות] איך דיכאון מגן על מתבגרים מבדידות — 2026-05-31</title>
       <description>פרק זה כולל סקירה של 10 מאמרים:
 
 • Adverse childhood experiences in children and youth experiencing homelessness: a systematic review and meta-analysis (Lancet Public Health · מאמר מחקרי)
@@ -1329,7 +1343,7 @@
 — Child Development —</itunes:summary>
     </item>
     <item>
-      <title>האפלה אבחנתית והכשל המערכתי בתסמונת דאון — 2026-05-31</title>
+      <title>[סקירה] האפלה אבחנתית והכשל המערכתי בתסמונת דאון — 2026-05-31</title>
       <description>פרק זה מוקדש למאמר אחד:
 
 • Advancing health-care access to optimise health and quality of life for children and young people with Down syndrome worldwide (Lancet Child Adolesc Health · מאמר סקירה)
