@@ -60,6 +60,37 @@ PLAYLISTS: dict[int, dict] = {
         "en": "Spotlight Reviews",              "tag_he": "סקירה"},
 }
 
+# Short Hebrew tags shown in [brackets] at the start of each episode title.
+# These let a listener tell at a glance which cluster the episode came from
+# WITHIN their channel (e.g., when listening to the child channel, is this
+# from the main child psychiatry journals, child content from general
+# medical journals like JAMA / Lancet, other journals, or developmental
+# research?). Tags are written to describe the SOURCE in plain Hebrew —
+# no in-house jargon like "core" / "misc" / "IF" — so a random listener
+# can decode them from the channel description's tag legend.
+CLUSTER_TAGS: dict[str, str] = {
+    "child_adolescent_core":          "פסיכ׳ ילד",
+    "child_adolescent_highimpact":    "מהרפואה הכללית",
+    "child_adolescent_misc":          "כתבי עת נוספים",
+    "child_development":              "התפתחות",
+    "general_psychiatry_clinical":    "קליני",
+    "general_psychiatry_bio":         "ביולוגי/פרמקולוגיה",
+    "neuroscience":                   "מדעי המוח",
+    "psychotherapy":                  "פסיכותרפיה",
+    "behavioral_sciences":            "מדעי ההתנהגות",
+    "cognition":                      "קוגניציה",
+}
+
+
+def get_cluster_tag(topic_id: str) -> str:
+    """Return the short bracket-tag for a topic. Strips _partN suffix so
+    split-cluster episodes get the same tag as the parent."""
+    base = _topic_id_base(topic_id)
+    if base.startswith("spotlight_"):
+        return "סקירה"
+    return CLUSTER_TAGS.get(base, "")
+
+
 # Routes a regular topic_id to its playlist number. Note that 3 child clusters
 # all collapse into playlist 1 — that's the whole point of playlists.
 TOPIC_TO_PLAYLIST: dict[str, int] = {
@@ -243,8 +274,16 @@ CHANNELS: list[dict] = [
         "description": (
             "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריית הילד "
             "והמתבגר ובהתפתחות הילד — מבוסס על PubMed ומופק אוטומטית מדי "
-            "שבוע. כולל את ליבת הפסיכיאטריה של הילד, מאמרים רלוונטיים "
-            "מכתבי עת רפואיים מובילים, ומאמרי סקירה משמעותיים.\n\n"
+            "שבוע.\n\n"
+            "מקרא התיוגים בכותרות:\n"
+            "• [פסיכ׳ ילד] — מכתבי העת המובילים של פסיכיאטריית הילד "
+            "(JAACAP, JCPP, ECAP)\n"
+            "• [מהרפואה הכללית] — מאמרים על ילדים מכתבי עת רפואיים "
+            "כלליים (JAMA, Lancet, NEJM, JAMA Pediatrics)\n"
+            "• [כתבי עת נוספים] — מאמרים על ילדים מכתבי עת אחרים\n"
+            "• [התפתחות] — מחקרי התפתחות הילד מכתבי עת ייעודיים "
+            "(Child Dev, Dev Psychopathol)\n"
+            "• [סקירה] — מאמר סקירה משמעותי שמקבל פרק ייעודי\n\n"
             f"{AI_DISCLOSURE}"
         ),
         "topic_ids":   [
@@ -263,8 +302,15 @@ CHANNELS: list[dict] = [
         "description": (
             "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכיאטריה כללית "
             "(קלינית וביולוגית) ובמדעי המוח — מבוסס על PubMed ומופק "
-            "אוטומטית מדי שבוע. כולל מאמרי סקירה משמעותיים בפסיכופרמקולוגיה "
-            "ובמחקר ביולוגי.\n\n"
+            "אוטומטית מדי שבוע.\n\n"
+            "מקרא התיוגים בכותרות:\n"
+            "• [קליני] — פסיכיאטריה קלינית במבוגרים: סכיזופרניה, דיכאון, "
+            "OCD, חרדה (Am J Psychiatry, JAMA Psychiatry, World Psychiatry)\n"
+            "• [ביולוגי/פרמקולוגיה] — מחקר ביולוגי, גנטי ופסיכופרמקולוגי "
+            "(Mol Psychiatry, Biol Psychiatry, Neuropsychopharmacology)\n"
+            "• [מדעי המוח] — מחקר נוירומדע בסיסי "
+            "(Nature Neuroscience, Neuron, Brain, J Neuroscience)\n"
+            "• [סקירה] — מאמר סקירה משמעותי שמקבל פרק ייעודי\n\n"
             f"{AI_DISCLOSURE}"
         ),
         "topic_ids":   [
@@ -282,8 +328,15 @@ CHANNELS: list[dict] = [
         "description": (
             "סקירה שבועית בעברית של המאמרים המרכזיים בפסיכותרפיה, "
             "במדעי ההתנהגות ובקוגניציה — מבוסס על PubMed ומופק אוטומטית "
-            "מדי שבוע. כולל ראיות עדכניות על CBT, DBT, התערבויות "
-            "פסיכולוגיות, מנגנונים קוגניטיביים והתנהגותיים.\n\n"
+            "מדי שבוע.\n\n"
+            "מקרא התיוגים בכותרות:\n"
+            "• [פסיכותרפיה] — מחקר פסיכותרפיה: CBT, DBT, פסיכודינמי, IPT "
+            "(Psychother Psychosom, Clin Psychol Rev, J Consult Clin Psychol)\n"
+            "• [מדעי ההתנהגות] — מחקרי למידה, חיזוק וקוגניציה חברתית "
+            "(Behavioral and Brain Sciences, Psychological Science)\n"
+            "• [קוגניציה] — תפקודים קוגניטיביים: זיכרון עבודה, תשומת לב, "
+            "שפה (Cognition, J Cognitive Neuroscience, Cognitive Psychology)\n"
+            "• [סקירה] — מאמר סקירה משמעותי שמקבל פרק ייעודי\n\n"
             f"{AI_DISCLOSURE}"
         ),
         "topic_ids":   [
@@ -675,8 +728,14 @@ def build_feed(repo: str, channel: dict, releases: list[dict],
             "therapy":    "פסיכותרפיה וקוגניציה",
         }.get(episode_channel, "—"))
 
-        # Clean title — no [tag] prefix, no (N/M).
-        title = f"{display_title} — {date_str}"
+        # Cluster tag — short Hebrew label like [פסיכ׳ ילד], [מהרפואה הכללית],
+        # [סקירה] — so a listener within a channel can tell WHICH cluster
+        # this episode came from at a glance. The tag legend lives in each
+        # channel's description.
+        cluster_tag = get_cluster_tag(topic_id)
+        tag_prefix  = f"[{cluster_tag}] " if cluster_tag else ""
+
+        title = f"{tag_prefix}{display_title} — {date_str}"
 
         # Build the description from the actual paper list (top 3 by IF +
         # count of the rest). Falls back to generic text when articles.json
