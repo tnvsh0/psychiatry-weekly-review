@@ -872,49 +872,25 @@ SPOTLIGHT_HIGH_SIGNAL_AUTHORS = [
     "Krystal JH", "Nestler EJ",
 ]
 
-# Dedicated psychiatry journals — ANY review in these counts as psychiatric.
+# Dedicated psychiatry journals — every review here is, by definition,
+# psychiatric content. Generalist journals (BMJ / JAMA / Lancet / NEJM /
+# Nature Medicine) used to be included with a title-keyword filter, but
+# the filter still let through papers that touch psychiatry tangentially
+# (e.g. a Lancet review on kidney health mentioning "mental health"
+# comorbidity in the title). User decided to drop generalists entirely —
+# Stahl-style breakthroughs in NEJM still get caught by the signal-author
+# search below.
 SPOTLIGHT_JOURNALS_PSYCHIATRY = [
     "JAMA Psychiatry", "Lancet Psychiatry", "World Psychiatry",
     "Am J Psychiatry", "Mol Psychiatry", "Biol Psychiatry",
     "Neuropsychopharmacology", "J Am Acad Child Adolesc Psychiatry",
     "Lancet Child Adolesc Health",
+    # ECNP's translational neuroscience journal — explicitly psychiatric scope
+    "Neuroscience Applied",
 ]
 
-# Generalist top journals — reviews here only count when they are actually
-# about mental health / psychiatry (filtered with SPOTLIGHT_PSY_FILTER).
-# Without this filter, BMJ / Lancet / JAMA reviews on orthopedics, calcium
-# supplementation, ovarian syndrome etc. would flood the spotlight list.
-SPOTLIGHT_JOURNALS_GENERAL = [
-    "JAMA", "JAMA Pediatr",
-    "N Engl J Med", "Lancet", "BMJ", "Nature Medicine",
-    "Nature Reviews Neuroscience", "Nature Reviews Disease Primers",
-]
-
-# TITLE-only filter applied to reviews from SPOTLIGHT_JOURNALS_GENERAL.
-# Using [Title] (not [Title/Abstract]) is intentional: in generalist journals
-# papers on non-psychiatric topics frequently mention "mental health" or
-# "depression" in their abstract as a comorbidity, even when the paper is
-# really about kidney disease, oncology, etc. Requiring the psychiatric
-# term in the TITLE keeps only papers whose primary subject is psychiatry.
-SPOTLIGHT_PSY_FILTER = (
-    '("psychiat*"[Title] OR "mental disorder*"[Title] OR "mental health"[Title] '
-    'OR "mental illness"[Title] OR "psychopathology"[Title] '
-    'OR "depress*"[Title] OR "anxiety"[Title] OR "schizophrenia"[Title] '
-    'OR "bipolar"[Title] OR "ADHD"[Title] OR "attention-deficit"[Title] '
-    'OR "autism"[Title] OR "OCD"[Title] OR "obsessive-compulsive"[Title] '
-    'OR "PTSD"[Title] OR "post-traumatic stress"[Title] '
-    'OR "psychosis"[Title] OR "psychotic"[Title] OR "suicid*"[Title] '
-    'OR "antipsychotic*"[Title] OR "antidepressant*"[Title] '
-    'OR "psychotropic"[Title] OR "psychotherapy"[Title] '
-    'OR "neurodevelopmental"[Title] OR "eating disorder*"[Title] '
-    'OR "substance use"[Title] OR "addict*"[Title] '
-    'OR "personality disorder*"[Title] OR "child psychiatry"[Title] '
-    'OR "adolescent psychiatry"[Title] OR "self-harm"[Title] '
-    'OR "self-injury"[Title] OR "anorexia"[Title] OR "bulimia"[Title])'
-)
-
-# Cap on number of spotlight podcasts per week — keeps the output manageable
-# and the most-important reviews surface to the top via sort-by-IF.
+# Cap on number of spotlight podcasts per week. NOT a target — a ceiling.
+# A week with 0 qualifying reviews produces 0 spotlights; we don't fabricate.
 MAX_SPOTLIGHT_REVIEWS = 3
 
 
@@ -955,24 +931,26 @@ def find_spotlight_reviews() -> list[dict]:
     psy_journals = "(" + " OR ".join(
         f'"{j}"[Journal]' for j in SPOTLIGHT_JOURNALS_PSYCHIATRY
     ) + ")"
-    gen_journals = "(" + " OR ".join(
-        f'"{j}"[Journal]' for j in SPOTLIGHT_JOURNALS_GENERAL
-    ) + ")"
     author_clause = "(" + " OR ".join(
         f'"{a}"[Author]' for a in SPOTLIGHT_HIGH_SIGNAL_AUTHORS
     ) + ")"
 
     queries = [
-        # 1. Reviews in dedicated psychiatry journals — every review counts.
+        # 1. Reviews in dedicated psychiatry journals (curated, no risk of
+        #    off-topic content; the IF>=10 gate below filters lower-tier
+        #    psychiatry journals like Neuropsychopharmacology + Neuroscience
+        #    Applied unless they're by a signal author).
         f'{pub_type_filter} AND {psy_journals}',
-        # 2. Reviews in generalist medical journals — MUST also be about
-        #    psychiatry / mental health, otherwise we get calcium-supplement
-        #    and oncology reviews crowding out actual psychiatric content.
-        f'{pub_type_filter} AND {gen_journals} AND {SPOTLIGHT_PSY_FILTER}',
-        # 3. Reviews by named high-signal psychiatry/neuroscience authors —
-        #    these authors write almost exclusively in psychiatry, so no
-        #    extra topic filter needed.
+        # 2. Reviews by named high-signal psychiatry/neuroscience authors —
+        #    catches Stahl-class reviews even in lower-IF journals.
         f'{pub_type_filter} AND {author_clause}',
+        # Generalist medical journals (BMJ / JAMA / Lancet / NEJM / Nature
+        # Medicine / Nature Reviews) used to be a third query with a
+        # title-keyword filter, but it still let through papers that touch
+        # psychiatry only tangentially (e.g. "kidney health" reviews
+        # mentioning "mental health" comorbidity in the title). Dropped per
+        # user request — signal-author search still catches breakthrough
+        # psychiatry reviews published outside dedicated psychiatry journals.
     ]
 
     seen: dict[str, bool] = {}
