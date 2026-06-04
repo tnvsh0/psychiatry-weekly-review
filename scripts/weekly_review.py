@@ -74,6 +74,12 @@ JOURNAL_IF: dict[str, float] = {
     "pediatrics":                                                8.0,
     "journal of neuroscience":                                   6.7,
     "j neurosci":                                                6.7,
+    # ECNP's "Neuroscience Applied" — launched 2022, IF not yet indexed by
+    # JCR. Placeholder value of 3.0 puts it in tier 3 so it doesn't crowd
+    # out the established journals when sorting; the user can adjust once
+    # an official IF lands.
+    "neuroscience applied":                                      3.0,
+    "neurosci appl":                                             3.0,
     "schizophrenia bulletin":                                    7.4,
     "journal of child psychology and psychiatry":                7.2,
     "j child psychol psychiatry":                                7.2,
@@ -362,6 +368,9 @@ TOPICS = [
             "Neuron",
             "Brain",
             "J Neurosci",
+            # ECNP's official open-access journal — translational neuroscience
+            # with strong psychiatry focus (added per user request, 2026-05-31).
+            "Neuroscience Applied",
         ],
         # No journal_filter — goal is a general overview of what is happening
         # in top neuroscience journals, regardless of direct psychiatric link.
@@ -648,6 +657,37 @@ def _esearch(query: str, retmax: int = 8) -> list[str]:
         time.sleep(0.4)
 
 
+# ── Non-research PubTypes — articles to DROP from the feed ───────────────────
+# These pubtype labels mark content that isn't original research: letters
+# to the editor, editorials, errata, pre-registration protocols (no results
+# yet), news items, biographies, etc. If ANY of an article's PubMed pubtype
+# strings matches this set (case-insensitive), the article is dropped at
+# _esummary time and never reaches the markdown / podcast pipeline.
+# Case Reports are NOT excluded — they're primary clinical research, even
+# at n=1.
+EXCLUDED_PUBTYPES: set[str] = {
+    # Non-research correspondence
+    "letter", "comment", "editorial",
+    # Errata and retractions
+    "published erratum", "erratum", "correction",
+    "retraction of publication", "retracted publication",
+    # News and opinion pieces
+    "news", "newspaper article",
+    # Biography / autobiography / interviews
+    "biography", "autobiography", "interview",
+    # Lectures and addresses
+    "lectures", "address",
+    # Patient-education and similar
+    "patient education handout",
+    # Protocols — pre-registration, no results yet
+    "clinical trial protocol", "research protocol", "study protocol",
+    # Personal narrative / opinion essays
+    "personal narrative",
+    # Multimedia / non-text
+    "webcasts", "video-audio media",
+}
+
+
 # ── Study-type classification (PubMed pubtype → Hebrew label) ─────────────────
 # PubMed returns a `pubtype` list per article, often with multiple values
 # (e.g. ["Journal Article", "Review", "Systematic Review"]). We pick the
@@ -709,19 +749,28 @@ def _esummary(pmids: list[str], topic_label: str) -> list[dict]:
         return []
 
     articles = []
+    dropped_non_research = 0
     for pmid in pmids:
         if pmid == "uids":
             continue
         doc = result.get(pmid, {})
         if not doc or doc.get("error"):
             continue
+        pubtypes = doc.get("pubtype", []) or []
+
+        # Drop non-research content (letters, editorials, errata, protocols,
+        # news, etc.) — see EXCLUDED_PUBTYPES above for the full list.
+        pubtypes_lower = {str(t).lower() for t in pubtypes}
+        if pubtypes_lower & EXCLUDED_PUBTYPES:
+            dropped_non_research += 1
+            continue
+
         authors = doc.get("authors", [])
         author_str = authors[0]["name"] if authors else "Unknown"
         if len(authors) > 2:
             author_str += " et al."
         elif len(authors) == 2:
             author_str += f", {authors[-1]['name']}"
-        pubtypes = doc.get("pubtype", []) or []
         articles.append({
             "pmid":          pmid,
             "title":         doc.get("title", "").rstrip("."),
@@ -735,6 +784,9 @@ def _esummary(pmids: list[str], topic_label: str) -> list[dict]:
             "pubtype":       pubtypes,
             "study_type_he": classify_study_type_he(pubtypes),
         })
+    if dropped_non_research:
+        print(f"    Dropped {dropped_non_research} non-research item(s) "
+              f"(letters/editorials/protocols/errata)")
     return articles
 
 
