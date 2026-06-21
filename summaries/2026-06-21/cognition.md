@@ -8,7 +8,7 @@
 ---
 
 ### The relative psychometric function: A general analysis framework for relating psychological processes
-**כתב עת:** 🔷 Psychol Rev *(IF: 12.0)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Maniscalco B et al. | **תאריך:** 2026 Jun 15
+**כתב עת:** 🔷 Psychological Review (Psychol Rev) *(IF: 12.0)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Maniscalco B et al. | **תאריך:** 2026 Jun 15
 
 Psychophysics seeks to quantitatively characterize relationships between objective properties of the world and subjective properties of perception. However, traditional approaches fall short of identifying quantitative relationships  among  psychological processes. This latter goal is particularly important when certain processes may depend on each other, such as for subjective experience and task performance: Typically, better performance is accompanied by stronger subjective experiences of clarity, vividness, or confidence. But is the relationship between performance and subjective experience fixed, or can it vary, for example, by task or attentional demands? Such questions are key for better understanding psychological processes in general and subjective experience in particular. Here, we develop and showcase a new psychophysical method designed to answer such questions:  relative psychometric function  (RPF) analysis, which characterizes the nonlinear psychometric relationships between psychological processes and how these relationships change under different circumstances (e.g., experimental manipulations). We demonstrate the advantages of RPF analysis using a data set in which human subjects discriminated random dot kinematograms which varied in motion coherence and overall dot density (dots per visual degree) and rated confidence. RPF analysis revealed systematic changes in the relationship between performance and two subjective measures (confidence and metacognitive sensitivity) due to dot density and task design choices. These empirical results showcase how RPF analysis may reveal changes in quantitative relationships between any two psychological measures in future studies: performance, vividness, clarity, reaction time, confidence, and more. To enable the scientific community to use RPF analysis on their data, we also present our open-source RPF toolbox. (PsycInfo Database Record (c) 2026 APA, all rights reserved).
 
@@ -17,7 +17,7 @@ Psychophysics seeks to quantitatively characterize relationships between objecti
 ---
 
 ### Seeing, hearing, and feeling causation
-**כתב עת:** 📄 Cogn Psychol *(IF: 3.5)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Chase EDZ et al. | **תאריך:** 2026 Jun 17
+**כתב עת:** 📄 Cognitive Psychology (Cogn Psychol) *(IF: 3.5)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Chase EDZ et al. | **תאריך:** 2026 Jun 17
 
 How do people decide whether one event caused another? While previous research has focused on visual and auditory cues in causal perception, the role of touch remains underexplored. Here, we investigate how haptic feedback contributes to causal judgments across three psychophysical experiments. In Experiment 1, we introduced force-based haptic feedback to a visual launching paradigm and found that haptic information increased causal judgments compared to visual feedback alone. Experiment 2 combined vision, audio, force-based haptics, and vibrotactile haptics, revealing that additional sensory cues increase causal judgments with diminishing returns - the largest benefit comes from adding a second modality. In Experiment 3, we examined how both the number and physical realism of multisensory cues affect causal perception, finding that both factors boosted causal judgments. We present a Bayesian multimodal inference model that captures human judgments by integrating visual, auditory, and haptic information based on their relative timing, uncertainty, and realism. Taken together, these experiments show that haptic information contributes to causal judgments by shaping the multisensory evidence observers use when deciding whether one event physically caused another, including how realistic and physically coherent the event appears. More broadly, we find that temporal alignment and cross-modal coherence are key constraints for how multisensory evidence shapes causal judgments, with implications for virtual reality, robotics, and human-computer interaction systems.
 
@@ -80,7 +80,7 @@ Comprehenders in many of the world's languages exhibit a preference or a greater
 ---
 
 ### Do young children understand the objectivity of reality?
-**כתב עת:** 📄 J Exp Child Psychol *(IF: 3.5)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Li L et al. | **תאריך:** 2026 Jun 15
+**כתב עת:** 📄 Journal of Experimental Child Psychology (J Exp Child Psychol) *(IF: 3.5)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Li L et al. | **תאריך:** 2026 Jun 15
 
 Much research has examined young children's (lack of) understanding of the subjectivity of beliefs, yet the other side of the issue has remained overlooked: Do young children understand the objectivity of reality? In this study, 83 children from 4 to 5 years of age completed: (i) the False Belief Task, which assessed children's understanding that a character's subjective beliefs may not correspond to an altered objective reality and (ii) a novel Objective Reality Task, which assessed children's understanding that the objective reality may not correspond to a character's altered subjective beliefs. Performances on the two tasks improved in similar trajectories from 4 to 5 years of age and were correlated, including when controlling for age, suggesting similar underlying developmental processes. These findings provide empirical support for the analytical supposition that subjectivity and objectivity are complementary forms of understanding.
 
@@ -107,4 +107,4 @@ Much research has examined young children's (lack of) understanding of the subje
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-21/06/2026 06:00 UTC*
+*נוצר אוטומטית ב-21/06/2026 18:07 UTC*

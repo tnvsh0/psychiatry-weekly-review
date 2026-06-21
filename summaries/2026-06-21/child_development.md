@@ -1,14 +1,23 @@
 # 📚 התפתחות הילד
 ### סקירת ספרות שבועית — 2026-06-21
 
-**תקופה:** 14/06/2026 – 21/06/2026 | **מאמרים:** 10 (⭐ IF≥15: 0 | 🔷 IF 5-14: 5 | 📄 אחר: 5)
+**תקופה:** 14/06/2026 – 21/06/2026 | **מאמרים:** 10 (⭐ IF≥15: 1 | 🔷 IF 5-14: 5 | 📄 אחר: 4)
 
 > **מפתח:** ⭐ כתב עת מדרגה ראשונה (IF ≥ 15) · 🔷 כתב עת מוביל (IF 5–14) · 📄 כתב עת מוכר
 
 ---
 
+### Adverse childhood experiences and risk of living with HIV among lesbian, gay, bisexual, transgender, and queer/questioning (LGBTQ+) people: a cross-sectional study
+**כתב עת:** ⭐ Lancet Reg Health West Pac *(IF: 99.5)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Yang J et al. | **תאריך:** 2026 Jun
+
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article article-type="research-article" xml:lang="en" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">Lancet Reg Health West Pac</journal-id><journal-id journal-id-type="iso-abbrev">Lancet Reg Health West Pac</journal-id><journal-id journal-id-type="pmc-domain-id">4068</journal-id><journal-id journal-id-type="pmc-domain">lrhwp</journal-id><journal-title-group><journal-title>The Lancet Regional Health: Western Pacific</journal-title></journal-title-group><issn pub-type="epub">2666-6065</issn><publisher><publisher-name>Elsevier</publisher-name></publisher></journal-meta><article-meta><article-id pub-id-type="pmcid">PMC13263765</article-id><article-id pub-id-type="pmcid-ver">PMC13263765.1</article-id><article-id pub-id-type="pmcaid">13263765</article-id><article-id pub-id-type="pmcaiid">13263765</article-id><article-id pub-id-type="pmid">42293408</article-id><article-id pub-id-type="doi">10.1016/j.lanwpc.2026.101893</article-id><article-id pub-id-type="pii">S2666-6065(26)00097-0</article-id><article-id pub-id-type="publisher-id">101893</article-id><article-version article-version-type="pmc-version">1</article-version><article-categories><subj-group subj-group-type="heading"><subject>Articles</subject></subj-group></article-categories><title-group><article-title>Adverse childhood experiences and risk of living with HIV among lesbian, gay, bisexual, transgender, and queer/questioning (LGBTQ+) people: a cross-sectional study</article-title></title-group><contrib-group><contrib contrib-type="author" id="au1"><name name-style="western"><surname>Yang</surname><given-names initials="J">Jingli</given-names></name><xref rid="a…
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42293408/)
+
+---
+
 ### Trajectories of distressing psychotic-like experience in youth: the interplay of recent negative life events and screen time
-**כתב עת:** 🔷 Dev Psychopathol *(IF: 5.8)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Gupta T et al. | **תאריך:** 2026 Jun 19
+**כתב עת:** 🔷 Development and Psychopathology (Dev Psychopathol) *(IF: 5.8)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Gupta T et al. | **תאריך:** 2026 Jun 19
 
 Adolescence is marked by increased risk for psychopathology, alongside behavioral changes such as greater screen time. Adolescents who experience distressing psychotic-like experiences (PLEs) are particularly vulnerable to the onset of psychopathology and often report exposure to negative life events. This study examined how screen time and recent negative life events contribute to trajectories of PLE distress using the Adolescent Brain Cognitive Development (ABCD) Study®. Latent Growth Mixture Models identified PLE distress trajectories over five timepoints. Linear mixed-effects models assessed how screen time, recent negative life events, and their interactions predicted these trajectories. Sensitivity analyses were conducted examining the influence of cumulative stress. Three PLE distress trajectories emerged: increasing, decreasing, no distress. The increasing and decreasing PLE distress trajectories reported similar amounts of daily screen time. However, youth in the increasing PLE distress trajectory reported more recent negative life events, and associations between more weekend texting and social media use at ages 11-12 and PLE distress levels at ages 13-14 were strongest for people who were exposed to more recent negative life events (but not cumulative stress). These findings suggest that more proximal adverse life experiences may have an impact on screen time and PLE distress levels.
 
@@ -17,7 +26,7 @@ Adolescence is marked by increased risk for psychopathology, alongside behaviora
 ---
 
 ### Neighborhood disorder and infant screen time: Buffering effects of the PlayReadVIP parent-child program
-**כתב עת:** 🔷 Child Dev *(IF: 5.4)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Canfield CF et al. | **תאריך:** 2026 Jun 15
+**כתב עת:** 🔷 Child Development (Child Dev) *(IF: 5.4)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Canfield CF et al. | **תאריך:** 2026 Jun 15
 
 The neighborhood environment influences the amount of children's screen time, which in turn affects later development. Few studies have examined the potential for parent-child interventions to moderate such associations. This study examined the link between neighborhood disorder (observed and parent-reported) and infant screen time at 9 months, and whether the PlayReadVIP intervention attenuates this relation among Black/African-American and White families in Flint, MI. Three -hundred and ninety-nine families were included in analyses. Multigroup SEM path analyses indicated that observed neighborhood disorder predicted screen time for all participants (β=.19), but perceived neighborhood disorder was a significant -predictor of infant screen time only for the Control group (β=.11). Findings support the potential of early parent-child -programs to attenuate a range of risk factors for children's development.
 
@@ -28,7 +37,7 @@ Neighborhood disorder, including litter, vandalism, and empty houses or storefro
 ---
 
 ### Situating developmental science in cultural context: Lessons from the study of Asian-heritage children
-**כתב עת:** 🔷 Child Dev *(IF: 5.4)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Wang Q et al. | **תאריך:** 2026 Jun 15
+**כתב עת:** 🔷 Child Development (Child Dev) *(IF: 5.4)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Wang Q et al. | **תאריך:** 2026 Jun 15
 
 Research with Asian-heritage children has made landmark advances in recent years. Drawing on influential studies across diverse Asian cultural communities, we discuss the theoretical, methodological, empirical, and applied contributions of this research and advance the following guiding principles for future developmental science. First, development can be understood only by examining the influences of interactive forces within cultural ecology. Second, development may follow unique pathways as a result of adaptation to local conditions and challenges. Third, human experiences are both universal and culturally diverse, contributing to developmental commonalities and specificities. Fourth, developmental science must evolve beyond merely describing development to understanding ways to facilitate positive growth. Finally, researchers bear responsibility for translating knowledge into policy reforms and institutional practices that tangibly improve children's lives. Research with children of Asian-heritage suggests that culturally attuned research is needed to drive equitable change.
 
@@ -39,7 +48,7 @@ In this article, we discuss how research with Asian-heritage children and famili
 ---
 
 ### Family cohesion and cultural socialization as buffers of the association between discrimination and internalizing symptoms across adolescence
-**כתב עת:** 🔷 Dev Psychol *(IF: 5.0)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Valentino K et al. | **תאריך:** 2026 Jun 18
+**כתב עת:** 🔷 Developmental Psychology (Dev Psychol) *(IF: 5.0)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Valentino K et al. | **תאריך:** 2026 Jun 18
 
 Mexican-origin individuals constitute the largest immigrant subgroup in the United States. With this rapidly growing population, it is critical to identify factors that promote positive mental health outcomes among Mexican-origin youth, who face discrimination as well as elevated rates of psychopathology. Family processes can play a key malleable role in fostering resilience and mitigating internalizing symptoms. This study examined family protective factors that may buffer the impact of racial-ethnic discrimination on adolescent mental health in a sample of 344 Mexican-origin youth, aged 12-15, with 335 mothers and 171 fathers across three waves of yearly data collection in a new migration area in the Midwestern United States. Youth reported on discrimination and internalizing symptoms at all waves. Youth, mothers, and fathers reported their perspectives on familism, family cohesion, and cultural socialization at all waves. Initial levels of discrimination were positively associated with final levels of internalizing symptoms. Latent growth curve moderation analyses revealed that youth-reported family cohesion and father-reported cultural socialization were significant buffers against the association between discrimination and distress. Contrary to our hypotheses, no moderating effects of familism were observed. Implications of these results for family-level prevention and intervention programs aimed at enhancing family resilience are highlighted. (PsycInfo Database Record (c) 2026 APA, all rights reserved).
 
@@ -48,11 +57,20 @@ Mexican-origin individuals constitute the largest immigrant subgroup in the Unit
 ---
 
 ### Understanding the dynamics of interparental conflict, adolescents' responses, and adjustment problems: A network analysis
-**כתב עת:** 🔷 Dev Psychol *(IF: 5.0)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Jia J et al. | **תאריך:** 2026 Jun 15
+**כתב עת:** 🔷 Developmental Psychology (Dev Psychol) *(IF: 5.0)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Jia J et al. | **תאריך:** 2026 Jun 15
 
 Grounded in family theories, interparental conflict is conceptualized as a relational process that interacts dynamically with adolescents' responses to interparental conflict and their adjustment problems, potentially forming a negative cycle within the family system. The present study investigated three contemporaneous network models and two cross-lagged panel network models to explore the relationship among the components of interparental conflict (i.e., hostility, constructive, withdrawal, and compliance), adolescents' responses (i.e., scapegoating, mediation, avoidance, father-adolescent coalition, and mother-adolescent coalition), and their adjustment problems (i.e., depression, anxiety, aggression, and deviant behavior). A total of 768 adolescents ( M age  = 15.02,  SD  = 1.57; 49.60% girls) completed the survey. Results indicated that (a) the components of all subsystems are intercorrelated and coalesce into a feedback-based network of family; (b) compliance conflict behaviors are related to coalition with the compliant parent, while other conflict behaviors are related to coalition with the parent without corresponding behavior; and (c) interparental conflict behaviors of fathers and mothers have different associations with adolescents' responses and adjustment outcomes. These findings revealed how negative dynamics are interconnected within the family system, highlighted the distinct nature of different interparental conflict behaviors, and suggested that the gender of parents should be considered. (PsycInfo Database Record (c) 2026 APA, all rights reserved).
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42295224/)
+
+---
+
+### It's Not Nature versus Nurture; It's Neural Networks: Adverse Childhood Experiences and Attachment Disruption as Neurodevelopmental Causes of Adult Mental Illness and Addiction
+**כתב עת:** 📄 Psychodyn Psychiatry | **סוג מחקר:** מאמר סקירה | **מחברים:** Chambers RA | **תאריך:** 2026 Jun
+
+Neuroscience continues to uncover anatomical, mechanistic, and etiological linkages between mental illness and addiction. The neurodevelopmental pathogenesis of these often intertwined brain disorders is contributed to by both genetic and experiential-causal events. This article introduces the term  ecocausatypes  to describe traumatically adverse experiences and attachment disruptions that are biologically potent on par with genes, and highly interactive with genetics in causing psychiatric and addiction phenotypes. Neural network theory explains how genotypes and ecocausatypes are biologically integrated, leading to pathological patterns of social-emotional function and motivation in adulthood. At the heart of this pathogenesis, impulsivity is a behavioral feature of motivational neural network dysfunction that is associated with and interlinks disturbances in attachment, trauma-spectrum psychiatric disorders, and addiction vulnerability. On the neural network level, impulsivity is a product of neural wiring and information processing that involves connectivity between the prefrontal cortex, the amygdala, hippocampal formation, and the nucleus accumbens-the primary motivational neural network that is pathologically altered by addictive drugs. Recognizing the effects of ecocausatypes on the development of these frontal cortical-striatal-temporal limbic networks provides a clear understanding of how disordered attachment, trauma-spectrum mental illness, and addiction pathogenesis are biologically and clinically interlinked. This neuroscience has significant implications for training, clinical practice, and research in psychiatry, in which adverse childhood experiences and attachment disruptions are understood as being just as biologically important as genetics, and where medication management and attachment-based psychotherapies are routinely integrated.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42301158/)
 
 ---
 
@@ -86,34 +104,12 @@ RESULTS: Among 540 participants (median age 21 years; 60.4% female), 54.6% repor
 
 ---
 
-### Timing of adverse childhood experiences shapes epigenetic ageing and life-history outcomes
-**כתב עת:** 📄 Sci Rep | **סוג מחקר:** מאמר מחקרי | **מחברים:** Wang WJ, Akimova ET | **תאריך:** 2026 Jun 19
+### Lifetime and childhood traumatic experiences as risk factors for persistent post-concussive symptoms among US service members
+**כתב עת:** 📄 Front Neurol | **סוג מחקר:** מאמר מחקרי | **מחברים:** Remigio-Baker RA et al. | **תאריך:** 2026
 
-Early-life adversity is widely linked to accelerated biological ageing, yet it remains unclear whether such associations reflect exposure during sensitive developmental periods, the cumulative burden of exposures, or temporal proximity to later outcomes. Here, we leverage life-history theory and a life course framework to nuance how the timing of adverse childhood experiences (ACEs) becomes biologically embedded through epigenetic ageing. Using longitudinal data from the Future of Families and Child Wellbeing Study (N=1,974), we apply statistical learning and structured life course modelling to test sensitive period, cumulative risk, and recency hypotheses across multiple domains of adversity (poverty, instability, deprivation, and maltreatment). We find that adversity exposure during specific developmental periods, rather than cumulative burden or recent exposure, are most strongly associated with epigenetic age acceleration in late childhood ([Formula: see text]=0.003). Moreover, the timing and direction of these effects vary by adversity type. Epigenetic ageing is in turn associated with later health-related risks ([Formula: see text]=0.29, SE=0.06; [Formula: see text]=1.62, SE=0.27) and demographic behaviour ([Formula: see text]=0.21, SE=0.08; [Formula: see text]=0.22, SE=0.11), and further mediates the association between ACEs and outcomes in young adulthood, particularly for BMI ([Formula: see text]=0.003, SE=0.002, [Formula: see text]=11%). These findings demonstrate that childhood adversity may be linked to biological ageing in developmentally specific and domain-dependent ways, with certain developmental periods appearing more sensitive to adversity exposure than others.
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article xml:lang="en" article-type="research-article" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">Front Neurol</journal-id><journal-id journal-id-type="iso-abbrev">Front Neurol</journal-id><journal-id journal-id-type="pmc-domain-id">1401</journal-id><journal-id journal-id-type="pmc-domain">frontneurology</journal-id><journal-id journal-id-type="publisher-id">Front. Neurol.</journal-id><journal-title-group><journal-title>Frontiers in Neurology</journal-title></journal-title-group><issn pub-type="epub">1664-2295</issn><publisher><publisher-name>Frontiers Media SA</publisher-name></publisher></journal-meta><article-meta><article-id pub-id-type="pmcid">PMC13256092</article-id><article-id pub-id-type="pmcid-ver">PMC13256092.1</article-id><article-id pub-id-type="pmcaid">13256092</article-id><article-id pub-id-type="pmcaiid">13256092</article-id><article-id pub-id-type="pmid">42293097</article-id><article-id pub-id-type="doi">10.3389/fneur.2026.1816906</article-id><article-version-alternatives><article-version article-version-type="pmc-version">1</article-version><article-version article-version-type="Version of Record" vocab="NISO-RP-8-2008"/></article-version-alternatives><article-categories><subj-group subj-group-type="heading"><subject>Original Research</subject></subj-group></article-categories><title-group><article-title>Lifetime and childhood traumatic experiences as risk factors for persistent post-concussive symptoms among US service members</article-title></title-group><contrib-group><contrib contrib-type="author" corresp="yes"><name name-style="western"><surname>Remigio-Baker</surname><given-names initials…
 
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42321381/)
-
----
-
-### It's Not Nature versus Nurture; It's Neural Networks: Adverse Childhood Experiences and Attachment Disruption as Neurodevelopmental Causes of Adult Mental Illness and Addiction
-**כתב עת:** 📄 Psychodyn Psychiatry | **סוג מחקר:** מאמר סקירה | **מחברים:** Chambers RA | **תאריך:** 2026 Jun
-
-Neuroscience continues to uncover anatomical, mechanistic, and etiological linkages between mental illness and addiction. The neurodevelopmental pathogenesis of these often intertwined brain disorders is contributed to by both genetic and experiential-causal events. This article introduces the term  ecocausatypes  to describe traumatically adverse experiences and attachment disruptions that are biologically potent on par with genes, and highly interactive with genetics in causing psychiatric and addiction phenotypes. Neural network theory explains how genotypes and ecocausatypes are biologically integrated, leading to pathological patterns of social-emotional function and motivation in adulthood. At the heart of this pathogenesis, impulsivity is a behavioral feature of motivational neural network dysfunction that is associated with and interlinks disturbances in attachment, trauma-spectrum psychiatric disorders, and addiction vulnerability. On the neural network level, impulsivity is a product of neural wiring and information processing that involves connectivity between the prefrontal cortex, the amygdala, hippocampal formation, and the nucleus accumbens-the primary motivational neural network that is pathologically altered by addictive drugs. Recognizing the effects of ecocausatypes on the development of these frontal cortical-striatal-temporal limbic networks provides a clear understanding of how disordered attachment, trauma-spectrum mental illness, and addiction pathogenesis are biologically and clinically interlinked. This neuroscience has significant implications for training, clinical practice, and research in psychiatry, in which adverse childhood experiences and attachment disruptions are understood as being just as biologically important as genetics, and where medication management and attachment-based psychotherapies are routinely integrated.
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42301158/)
-
----
-
-### Expanded adverse childhood experiences and postpartum mental health among an under-resourced sample of Spanish- and English-speaking mothers referred for community-based mental health services during pregnancy
-**כתב עת:** 📄 BMC Pregnancy Childbirth | **סוג מחקר:** מאמר מחקרי | **מחברים:** Hash JB et al. | **תאריך:** 2026 Jun 13
-
-BACKGROUND: Adverse childhood experiences (ACEs) historically include 10 types of adversities (the "Conventional 10"), developed in the context of the landmark CDC-Kaiser ACEs study. These 10 ACEs are associated with an increased risk of perinatal depression and anxiety, but they may also overlook traumas that harm disadvantaged and minoritized groups. This study investigated an Expanded set of ACEs (the Conventional 10 plus five additional) among a sample of Spanish- and English-speaking postpartum mothers who had previously received a referral for a prenatal mental health concern from a community-based service providing care to under-resourced populations. Specific aims were to: (1) Describe the Conventional 10 and Expanded 15 ACEs in this sample, and compare the Conventional 10 in this sample to that of the existing landmark CDC-Kaiser ACEs study sample (reference sample), (2) Investigate demographic variation in the Conventional 10 and Expanded 15 ACE scores in this sample, and (3) Examine associations between ACEs and symptoms of depression, anxiety, and post-traumatic stress disorder (PTSD) at 6-12 weeks postpartum in this sample.
-
-METHODS: Participants included 244 Spanish- and English-speaking mothers from under-resourced communities who were previously referred for a mental health concern during pregnancy. Participants reported on their ACEs and their 6-to-12-week postpartum mental health including depression, anxiety, and post-traumatic stress symptoms. Reference sample data (descriptives of the Conventional 10 ACEs in the CDC-Kaiser ACEs study sample women) were obtained from a publicly available report.
-
-RESULTS: The proportion of mothers reporting each of the Conventional 10 ACEs was greater in this sample than that of the reference CDC-Kaiser sample. Among the present study sample, mothers who came to the United States (US) in adulthood reported fewer ACEs compared to mothers born in the US. Additionally, among the present study sample, correlations wi…
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42288803/)
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42293097/)
 
 ---
 
@@ -136,4 +132,4 @@ RESULTS: The proportion of mothers reporting each of the Conventional 10 ACEs wa
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-21/06/2026 06:00 UTC*
+*נוצר אוטומטית ב-21/06/2026 18:07 UTC*

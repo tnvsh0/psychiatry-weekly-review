@@ -67,6 +67,28 @@ Sleep disorders are a frequent comorbidity in patients with Attention-Deficit/Hy
 
 ---
 
+### Clinical and laboratory characteristics of pediatric patients diagnosed with thyroid hormone resistance: A single-center experience
+**כתב עת:** 📄 Endocrine | **סוג מחקר:** מאמר מחקרי | **מחברים:** Kolbaşı B et al. | **תאריך:** 2026 Jun 19
+
+BACKGROUND: Thyroid hormone resistance β (RTHβ) is a rare genetic disorder characterized by reduced tissue responsiveness to thyroid hormones. This study aimed to describe the clinical, biochemical, and genetic characteristics of pediatric patients diagnosed with RTHβ.
+
+METHODS: Children diagnosed with RTHβ were retrospectively included in the study. Clinical, biochemical, hormonal, and genetic characteristics of the patients were analyzed RESULTS: A total of 13 patients were included. The mean age at diagnosis was 8.89 ± 4.80 years. The diagnosis was established based on abnormal thyroid function tests in 53.8% of patients, family screening in 23.1%, investigation of short stature in 7.7%, and elevated TSH detected during newborn screening in 15.4%. Thyroid ultrasonography revealed no abnormalities in 77% of patients. Attention-deficit/hyperactivity disorder (ADHD) was present in 23.1% of patients, learning disabilities in 30.8%, tachycardia in 38.5%, and hypertension in 15.4%. One patient (7.7%) was receiving levothyroxine (LT4) therapy due to a prior misdiagnosis of hypothyroidism. Molecular genetic analysis identified 10 different heterozygous missense variants in the THRB gene, classified as likely pathogenic or pathogenic, one of which was novel.
+
+CONCLUSIONS: The combination of elevated free T3 (fT3) and free T4 (fT4) levels with normal or elevated TSH should raise suspicion for RTHβ. The condition is usually asymptomatic and does not require treatment; however, misdiagnosis as hypo- or hyperthyroidism may lead to unnecessary interventions. Approximately 25-30% of patients present with ADHD and/or learning difficulties. Therefore, multidisciplinary evaluation including child psychiatry and early recognition of neurodevelopmental disorders may improve long-term outcomes.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42319533/)
+
+---
+
+### Caregiver Strain and Girls' ADHD, ODD, and Personality Pathology Symptoms: A One-Year Prospective Study
+**כתב עת:** 📄 Res Child Adolesc Psychopathol | **סוג מחקר:** מאמר מחקרי | **מחברים:** Alacha HF et al. | **תאריך:** 2026 Jun 13
+
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article article-type="research-article" xml:lang="en" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">Res Child Adolesc Psychopathol</journal-id><journal-id journal-id-type="iso-abbrev">Res Child Adolesc Psychopathol</journal-id><journal-id journal-id-type="pmc-domain-id">365</journal-id><journal-id journal-id-type="pmc-domain">springeropen</journal-id><journal-title-group><journal-title>Research on Child and Adolescent Psychopathology</journal-title></journal-title-group><issn pub-type="ppub">2730-7166</issn><issn pub-type="epub">2730-7174</issn><custom-meta-group><custom-meta><meta-name>pmc-is-collection-domain</meta-name><meta-value>yes</meta-value></custom-meta><custom-meta><meta-name>pmc-collection-title</meta-name><meta-value>Springer</meta-value></custom-meta></custom-meta-group></journal-meta><article-meta><article-id pub-id-type="pmcid">PMC13264552</article-id><article-id pub-id-type="pmcid-ver">PMC13264552.1</article-id><article-id pub-id-type="pmcaid">13264552</article-id><article-id pub-id-type="pmcaiid">13264552</article-id><article-id pub-id-type="pmid">42287593</article-id><article-id pub-id-type="doi">10.1007/s10802-026-01472-9</article-id><article-id pub-id-type="publisher-id">1472</article-id><article-version article-version-type="pmc-version">1</article-version><article-categories><subj-group subj-group-type="heading"><subject>Article</subject></subj-group></article-categories><title-group><article-title>Caregiver Strain and Girls’ ADHD, ODD, and Personality Pathology Symptoms: A One-Year Prospective Study</article-title></title-group><contrib-group><contrib contrib-type="author" corresp="yes"><c…
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42287593/)
+
+---
+
 ### Occupational injury risk and workplace safety challenges among adults with ADHD: A systematic review
 **כתב עת:** 📄 J Safety Res | **סוג מחקר:** סקירה שיטתית | **מחברים:** Min SN | **תאריך:** 2026 Jun
 
@@ -81,25 +103,6 @@ RESULTS: Adults with ADHD were found to have 1.8 to 2.3 times greater risk of oc
 CONCLUSION: The findings emphasize the importance of recognizing ADHD as a risk factor in occupational safety management. Tailored safety training, organizational policy adjustments, and legal protections are necessary to enhance workplace safety for neurodiverse workers.
 
 🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42297499/)
-
----
-
-### Vipr2 Gene Expression Is Upregulated in the Nucleus Accumbens of Spontaneous Hypertensive Rats During Early Life
-**כתב עת:** 📄 Neuropsychopharmacol Rep | **סוג מחקר:** מאמר מחקרי | **מחברים:** Araki R et al. | **תאריך:** 2026 Jun
-
-<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article id="npr270143" xml:lang="en" article-type="research-article" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">Neuropsychopharmacol Rep</journal-id><journal-id journal-id-type="iso-abbrev">Neuropsychopharmacol Rep</journal-id><journal-id journal-id-type="pmc-domain-id">3880</journal-id><journal-id journal-id-type="pmc-domain">neurorep</journal-id><journal-id journal-id-type="publisher-id">NPR2</journal-id><journal-title-group><journal-title>Neuropsychopharmacology Reports</journal-title></journal-title-group><issn pub-type="epub">2574-173X</issn><publisher><publisher-name>Wiley</publisher-name></publisher></journal-meta><article-meta><article-id pub-id-type="pmcid">PMC13275169</article-id><article-id pub-id-type="pmcid-ver">PMC13275169.1</article-id><article-id pub-id-type="pmcaid">13275169</article-id><article-id pub-id-type="pmcaiid">13275169</article-id><article-id pub-id-type="pmid">42309546</article-id><article-id pub-id-type="doi">10.1002/npr2.70143</article-id><article-id pub-id-type="publisher-id">NPR270143</article-id><article-id pub-id-type="other">8729877</article-id><article-version article-version-type="pmc-version">1</article-version><article-categories><subj-group subj-group-type="overline"><subject>Original Article</subject></subj-group><subj-group subj-group-type="heading"><subject>Original Article</subject></subj-group></article-categories><title-group><article-title>
-<italic toggle="no">Vipr2</italic> Gene Expression Is Upregulated in the Nucleus Accumbens of Spontaneous Hypertensive Rats During Early Life</article-title></title-group><contrib-group><contrib id="npr270143-cr-0001" contrib-t…
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42309546/)
-
----
-
-### Caregiver Strain and Girls' ADHD, ODD, and Personality Pathology Symptoms: A One-Year Prospective Study
-**כתב עת:** 📄 Res Child Adolesc Psychopathol | **סוג מחקר:** מאמר מחקרי | **מחברים:** Alacha HF et al. | **תאריך:** 2026 Jun 13
-
-<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article article-type="research-article" xml:lang="en" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">Res Child Adolesc Psychopathol</journal-id><journal-id journal-id-type="iso-abbrev">Res Child Adolesc Psychopathol</journal-id><journal-id journal-id-type="pmc-domain-id">365</journal-id><journal-id journal-id-type="pmc-domain">springeropen</journal-id><journal-title-group><journal-title>Research on Child and Adolescent Psychopathology</journal-title></journal-title-group><issn pub-type="ppub">2730-7166</issn><issn pub-type="epub">2730-7174</issn><custom-meta-group><custom-meta><meta-name>pmc-is-collection-domain</meta-name><meta-value>yes</meta-value></custom-meta><custom-meta><meta-name>pmc-collection-title</meta-name><meta-value>Springer</meta-value></custom-meta></custom-meta-group></journal-meta><article-meta><article-id pub-id-type="pmcid">PMC13264552</article-id><article-id pub-id-type="pmcid-ver">PMC13264552.1</article-id><article-id pub-id-type="pmcaid">13264552</article-id><article-id pub-id-type="pmcaiid">13264552</article-id><article-id pub-id-type="pmid">42287593</article-id><article-id pub-id-type="doi">10.1007/s10802-026-01472-9</article-id><article-id pub-id-type="publisher-id">1472</article-id><article-version article-version-type="pmc-version">1</article-version><article-categories><subj-group subj-group-type="heading"><subject>Article</subject></subj-group></article-categories><title-group><article-title>Caregiver Strain and Girls’ ADHD, ODD, and Personality Pathology Symptoms: A One-Year Prospective Study</article-title></title-group><contrib-group><contrib contrib-type="author" corresp="yes"><c…
-
-🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42287593/)
 
 ---
 
@@ -122,4 +125,4 @@ CONCLUSION: The findings emphasize the importance of recognizing ADHD as a risk 
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-21/06/2026 06:00 UTC*
+*נוצר אוטומטית ב-21/06/2026 18:07 UTC*
