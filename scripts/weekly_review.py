@@ -2015,10 +2015,17 @@ def update_rss_feed(env: dict) -> None:
 # (descending) and divided round-robin among the parts so each part gets a
 # balanced mix of high-IF papers rather than Part 1 hoarding the best.
 
-SPLIT_THRESHOLD = 18   # split topics with more than this many articles
-SPLIT_TARGET    = 13   # aim for ~this many articles per part
-                       # → a crowded 20-22 article cluster becomes 2 parts
-                       #   of ~10-11 each; a 12-article cluster stays whole.
+SPLIT_THRESHOLD = 13   # split topics with more than this many articles
+SPLIT_TARGET    = 11   # aim for ~this many articles per part
+                       # Rationale: NotebookLM produces a roughly FIXED-length
+                       # episode (~25-35 min) regardless of article count —
+                       # empirically verified, episode size does not correlate
+                       # with how many papers we feed it. So the constraint is
+                       # DEPTH PER ARTICLE, not episode length: ~10-12 articles
+                       # in a ~30-min episode gives each ~2.5-3 min. Above 13
+                       # coverage gets too shallow, so we split. A crowded
+                       # 20-22 article cluster → 2 parts of ~10-11; a normal
+                       # ≤13 article cluster stays whole.
 
 
 def auto_split_topics(nb_infos: list[dict]) -> list[dict]:
