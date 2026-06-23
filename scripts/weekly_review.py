@@ -2083,6 +2083,81 @@ def auto_split_topics(nb_infos: list[dict]) -> list[dict]:
     return new_infos
 
 
+def _clean_cluster_label(label_he: str) -> str:
+    """Strip the ' — חלק N/M' split suffix to get the base cluster name,
+    for use in cross-reference text ('הסקירה השבועית של פסיכיאטריה ביולוגית')."""
+    for sep in (" — חלק", " - חלק", " — Part", " - Part"):
+        if sep in label_he:
+            return label_he.split(sep)[0].strip()
+    return label_he.strip()
+
+
+def compute_cross_references(nb_infos: list[dict]) -> None:
+    """Wire spoken cross-references between a spotlight and the regular cluster
+    that also contains the same paper this week. Mutates nb_infos in place,
+    adding an `xref_directive` (English prompt instruction) to both sides.
+
+    Titles of the OTHER episode are NOT known at prompt time (NotebookLM names
+    each artifact only after generation), so the cross-references are generic:
+    'a separate dedicated episode' / 'the weekly overview of <area>'.
+    """
+    # Map each spotlight nb to its single paper's PMID
+    spotlights = [nb for nb in nb_infos
+                  if nb["topic"]["id"].startswith("spotlight_")]
+    clusters = [nb for nb in nb_infos
+                if not nb["topic"]["id"].startswith("spotlight_")]
+    if not spotlights:
+        return
+
+    n_links = 0
+    for snb in spotlights:
+        if not snb["articles"]:
+            continue
+        spmid = str(snb["articles"][0].get("pmid", ""))
+        s_title = snb["articles"][0].get("title", "")
+        # Find a cluster that also contains this paper
+        for cnb in clusters:
+            if any(str(a.get("pmid", "")) == spmid for a in cnb["articles"]):
+                area = _clean_cluster_label(cnb["topic"]["label_he"])
+
+                # Spotlight side: note it also appears in the weekly overview.
+                snb["xref_directive"] = (
+                    "\n\n"
+                    "========================================================================\n"
+                    "CROSS-REFERENCE (say this naturally during the episode):\n"
+                    "========================================================================\n"
+                    f"This same paper also appears, more briefly, inside this week's "
+                    f"weekly-overview episode on {area} (פרק הסקירה השבועית של "
+                    f"\"{area}\"). Mention this once, naturally — e.g. that listeners "
+                    f"who heard the overview will recognise this paper, and that this "
+                    f"dedicated episode goes deeper because the review is especially "
+                    f"notable and important. Do NOT name a specific episode title.\n"
+                )
+
+                # Cluster side: note a dedicated episode exists for this paper.
+                directive = cnb.get("xref_directive", "")
+                if not directive:
+                    directive = (
+                        "\n\n"
+                        "========================================================================\n"
+                        "CROSS-REFERENCE (say this naturally when you reach the paper):\n"
+                        "========================================================================\n"
+                        "One or more papers in this overview ALSO have their own dedicated, "
+                        "in-depth 'spotlight' episode this week because they are especially "
+                        "important reviews. When you reach such a paper, cover it briefly "
+                        "here as part of the overview and mention that a separate, dedicated "
+                        "episode goes deeper into it. The papers are:\n"
+                    )
+                directive += f"  • \"{s_title}\"\n"
+                cnb["xref_directive"] = directive
+
+                n_links += 1
+                break
+
+    if n_links:
+        print(f"  Cross-referenced {n_links} spotlight(s) with their clusters.")
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 def main():
     sep = "=" * 65
@@ -2154,23 +2229,32 @@ def main():
     nb_infos: list[dict] = []
     all_articles: list[dict] = []
 
-    # Dedup set — PMIDs covered in the last 4 weekly runs. Any paper already
-    # discussed recently is skipped so the same article doesn't reappear across
-    # consecutive weeks (the 8-day regular window and 14-day spotlight window
-    # both overlap the 7-day cadence).
+    # ── Two dedup sets, deliberately different ────────────────────────────────
+    # past_pmids: PMIDs covered in the last 4 weekly runs. FROZEN. Used to
+    #   prevent a paper recurring across consecutive weeks.
+    # week_pmids: past_pmids PLUS this week's cluster picks, accumulating. Used
+    #   so a paper doesn't appear in two regular clusters in the same week.
+    #
+    # Crucially, SPOTLIGHTS are deduplicated against past_pmids ONLY — NOT
+    # against this week's clusters. A genuinely important review must get its
+    # dedicated episode even if it also surfaced inside a regular cluster's
+    # search. (Before this fix, such reviews were silently absorbed into a
+    # cluster and never spotlighted — the user caught this.) The resulting
+    # duplication is intentional and gets a spoken cross-reference (below).
     print("\U0001f504 Loading recent PMIDs for deduplication...")
-    recent_pmids = load_recent_pmids(weeks_back=4)
+    past_pmids = load_recent_pmids(weeks_back=4)
+    week_pmids = set(past_pmids)
 
     print("\U0001f50d Searching PubMed for all topics...")
     for topic in TOPICS:
-        articles = search_topic(topic, exclude_pmids=recent_pmids)
+        articles = search_topic(topic, exclude_pmids=week_pmids)
         if not articles:
             print(f"  WARNING: No articles for {topic['label_en']}, skipping.")
             continue
-        # Add this week's picks to the exclude set so a paper appearing in two
-        # clusters' searches lands in only the first (highest-priority) one.
+        # Add this week's picks so a paper matching two clusters lands only in
+        # the first (highest-priority) one.
         for a in articles:
-            recent_pmids.add(str(a.get("pmid", "")))
+            week_pmids.add(str(a.get("pmid", "")))
         all_articles.extend(articles)
         nb_infos.append({
             "topic":         topic,
@@ -2184,16 +2268,13 @@ def main():
             "podcast_url":   None,
         })
 
-    # Spotlight reviews — each high-impact review gets its own dedicated podcast,
-    # in addition to (not instead of) the regular cluster podcasts. Exclude both
-    # recent-weeks PMIDs and this week's already-selected articles so a review
-    # never appears both as a spotlight and inside a regular cluster.
-    for stopic in find_spotlight_reviews(exclude_pmids=recent_pmids):
+    # Spotlight reviews — each important review gets its own dedicated podcast,
+    # IN ADDITION TO (not instead of) any regular cluster it also appears in.
+    # Dedup against past weeks only, so this-week cluster overlap is allowed.
+    for stopic in find_spotlight_reviews(exclude_pmids=past_pmids):
         articles = search_topic(stopic)  # uses _forced_articles internally
         if not articles:
             continue
-        for a in articles:
-            recent_pmids.add(str(a.get("pmid", "")))
         all_articles.extend(articles)
         nb_infos.append({
             "topic":         stopic,
@@ -2214,6 +2295,13 @@ def main():
 
     # ── Auto-split crowded topics into Part 1 / Part 2 / ... ──────────────────
     nb_infos = auto_split_topics(nb_infos)
+
+    # ── Cross-reference spotlights ↔ the clusters they also appear in ─────────
+    # A spotlight paper may also live inside a regular cluster this week (we now
+    # allow that). Wire up a two-way spoken cross-reference so the duplication
+    # feels intentional: the cluster mentions a dedicated episode exists; the
+    # spotlight mentions it also appears in the weekly overview.
+    compute_cross_references(nb_infos)
 
     # ── Assign episode numbers (X/Y) within this week's batch ─────────────────
     # Order: regular cluster topics first (in TOPICS order), then spotlight
@@ -2283,8 +2371,10 @@ def main():
     print(f"\n\U0001f3d9\ufe0f  Starting {len(nb_infos)} podcast generation(s)...")
     for nb in nb_infos:
         if nb["nb_id"]:
+            # Append any spotlight↔cluster cross-reference directive.
+            base_prompt = nb["topic"]["podcast_prompt"] + nb.get("xref_directive", "")
             artifact_id = start_podcast(
-                nb["nb_id"], nb["topic"]["podcast_prompt"], env,
+                nb["nb_id"], base_prompt, env,
                 topic_id=nb["topic"]["id"],
             )
             nb["artifact_id"] = artifact_id
