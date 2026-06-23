@@ -2380,7 +2380,12 @@ def main():
             nb["artifact_id"] = artifact_id
             status = f"artifact {artifact_id}" if artifact_id else "FAILED to start"
             print(f"  {'OK' if artifact_id else 'FAIL'}: {nb['topic']['label_en']} -> {status}")
-            time.sleep(10)   # short pause to avoid rate-limiting
+            # Pause between generation starts to avoid NotebookLM rate-limiting.
+            # Raised 10s -> 25s: with spotlights now allowed to overlap clusters
+            # plus auto-split, a busy week can reach ~15-16 episodes. At 10s we
+            # saw the 11th/12th generations fail ("FAILED to start") in May; the
+            # wider gap keeps each start request comfortably spaced.
+            time.sleep(25)
 
     # ── Phase 5: Wait for all podcasts (parallel on Google's side) ────────────
     # Long-format podcasts take longer to render — allow up to 75 minutes.
