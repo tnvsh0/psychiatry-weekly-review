@@ -21,7 +21,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Sun, 28 Jun 2026 06:34:55 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 06:36:32 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -2637,6 +2637,35 @@
 — Neuroscience —</itunes:summary>
     </item>
     <item>
+      <title>[סקירה] המנגנון הנוראדרנרגי מאחורי אגיטציה וחרדה — 2026-06-28</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• A new hope: locus coeruleus-norepinephrine system at the nexus of neuropsychiatric symptoms (Mol Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42332025/
+
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-06-28
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-28-spotlight_42332025/spotlight_42332025.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-28-spotlight_42332025/spotlight_42332025.mp3" length="39761340" type="audio/mpeg"/>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• A new hope: locus coeruleus-norepinephrine system at the nexus of neuropsychiatric symptoms (Mol Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42332025/
+
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-06-28
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
       <title>[סקירה] טיפול מהיר ומדויק בדיכאון עמיד — 2026-06-28</title>
       <description>פרק זה מוקדש למאמר אחד:
 
@@ -2666,29 +2695,470 @@
 — Spotlight Review —</itunes:summary>
     </item>
     <item>
-      <title>[סקירה] המנגנון הנוראדרנרגי מאחורי אגיטציה וחרדה — 2026-06-28</title>
+      <title>[ביולוגי/פרמקולוגיה] חפיפה גנטית בחרדה והתאום הדיגיטלי במוח — 2026-07-05</title>
+      <description>פרק זה כולל סקירה של 13 מאמרים:
+
+• Towards ecological psychiatry: The herbicide glyphosate disrupts behavior through microbiota-gut-brain axis (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42380611/
+
+• TranDep: a transcriptomics atlas of depression (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42380608/
+
+• Copy number variant scores are associated with cerebrovascular pathology in aging (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42399414/
+
+• BDNF-DT and BDNF-AS-DT: novel genes in the BDNF locus (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42380610/
+
+• Effects of cannabidiol on anxiety- and depressive-like behaviors and cognition: a systematic review and meta-analysis of preclinical studies (Mol Psychiatry · סקירה שיטתית)
+  https://pubmed.ncbi.nlm.nih.gov/42380607/
+
+• Genome-wide genetic overlap between fear-based disorders and generalised anxiety disorder (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42374129/
+
+• Neuroimaging of Heterogeneity in Neuropsychiatric Disorders: Toward Disease Progression Modeling (Biol Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42398645/
+
+• Kappa opioid receptor availability in borderline personality disorder: An in-vivo investigation with [(11)C]EKAP PET imaging (Biol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42373036/
+
+• Impact of Transcranial Direct Current Stimulation-Induced Electric Fields on Slowing Cognitive Decline in Older Adults With Mild Cognitive Impairment or Remitted Major Depressive D… (Biol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42381270/
+
+• Auditory event-related potentials and psychosis dimensions (Neuropsychopharmacology · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42401756/
+
+• A ventral hippocampus to nucleus accumbens pathway regulates impulsivity in male but not female rats (Neuropsychopharmacology · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42362776/
+
+• Splice isoforms of the histone variant macroH2A1 differentially regulate hippocampal gene expression and memory formation (Neuropsychopharmacology · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42373913/
+
+• Chronic ethanol self-administration alters dopamine in the caudate nucleus and putamen of rhesus macaques in a sex-dependent manner (Neuropsychopharmacology · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42365095/
+
+קלאסטר: פסיכיאטריה ביולוגית
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Biological Psychiatry —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-general_psychiatry_bio/general_psychiatry_bio.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-general_psychiatry_bio/general_psychiatry_bio.mp3" length="31529064" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה כולל סקירה של 13 מאמרים:
+
+• Towards ecological psychiatry: The herbicide glyphosate disrupts behavior through microbiota-gut-brain axis (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42380611/
+
+• TranDep: a transcriptomics atlas of depression (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42380608/
+
+• Copy number variant scores are associated with cerebrovascular pathology in aging (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42399414/
+
+• BDNF-DT and BDNF-AS-DT: novel genes in the BDNF locus (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42380610/
+
+• Effects of cannabidiol on anxiety- and depressive-like behaviors and cognition: a systematic review and meta-analysis of preclinical studies (Mol Psychiatry · סקירה שיטתית)
+  https://pubmed.ncbi.nlm.nih.gov/42380607/
+
+• Genome-wide genetic overlap between fear-based disorders and generalised anxiety disorder (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42374129/
+
+• Neuroimaging of Heterogeneity in Neuropsychiatric Disorders: Toward Disease Progression Modeling (Biol Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42398645/
+
+• Kappa opioid receptor availability in borderline personality disorder: An in-vivo investigation with [(11)C]EKAP PET imaging (Biol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42373036/
+
+• Impact of Transcranial Direct Current Stimulation-Induced Electric Fields on Slowing Cognitive Decline in Older Adults With Mild Cognitive Impairment or Remitted Major Depressive D… (Biol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42381270/
+
+• Auditory event-related potentials and psychosis dimensions (Neuropsychopharmacology · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42401756/
+
+• A ventral hippocampus to nucleus accumbens pathway regulates impulsivity in male but not female rats (Neuropsychopharmacology · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42362776/
+
+• Splice isoforms of the histone variant macroH2A1 differentially regulate hippocampal gene expression and memory formation (Neuropsychopharmacology · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42373913/
+
+• Chronic ethanol self-administration alters dopamine in the caudate nucleus and putamen of rhesus macaques in a sex-dependent manner (Neuropsychopharmacology · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42365095/
+
+קלאסטר: פסיכיאטריה ביולוגית
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Biological Psychiatry —</itunes:summary>
+    </item>
+    <item>
+      <title>[קליני] מתי מצוקה הופכת להפרעה שדורשת טיפול — 2026-07-05</title>
+      <description>פרק זה כולל סקירה של 8 מאמרים:
+
+• Risk and Protective Factors for Suicide Mortality in Youths: A Systematic Review and Meta-Analysis (JAMA Netw Open · מטה-אנליזה)
+  https://pubmed.ncbi.nlm.nih.gov/42390862/
+
+• Interventions to support recovery of people with psychosis in low-income and middle-income countries: a systematic review (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379205/
+
+• My voice's vocabulary: how antipsychotics change the way my voice speaks (Lancet Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42372773/
+
+• Adolescent Peers' Diagnoses and Genetic Predispositions and Subsequent Risk of Mental Disorders (JAMA Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42384372/
+
+• The Clinical Threshold for Treatment in Psychiatry (JAMA Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42384391/
+
+• Developmental Trauma as a Prognostic Factor for Later Psychotic Disorder in an Adolescent Clinical Cohort: A 20-Year Follow Up Study (Acta Psychiatr Scand · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42386520/
+
+• Effects of Group Interpersonal and Social Rhythm Therapy on Mood Symptoms and Suicide-Related Interpersonal Constructs in Patients With Bipolar Disorder: A Quasi-Experimental Study (Clin Psychol Psychother · RCT (מחקר אקראי מבוקר))
+  https://pubmed.ncbi.nlm.nih.gov/42389953/
+
+• COMBINA: The EAAD four-level approach for depression and suicide prevention and wellbeing promotion in the community and vulnerable populations. A cross-country study protocol from… (PLoS One · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42391280/
+
+קלאסטר: פסיכיאטריה כללית — קלינית
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— General Psychiatry — Clinical —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-general_psychiatry_clinical_part1/general_psychiatry_clinical_part1.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-general_psychiatry_clinical_part1/general_psychiatry_clinical_part1.mp3" length="42116187" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה כולל סקירה של 8 מאמרים:
+
+• Risk and Protective Factors for Suicide Mortality in Youths: A Systematic Review and Meta-Analysis (JAMA Netw Open · מטה-אנליזה)
+  https://pubmed.ncbi.nlm.nih.gov/42390862/
+
+• Interventions to support recovery of people with psychosis in low-income and middle-income countries: a systematic review (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379205/
+
+• My voice's vocabulary: how antipsychotics change the way my voice speaks (Lancet Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42372773/
+
+• Adolescent Peers' Diagnoses and Genetic Predispositions and Subsequent Risk of Mental Disorders (JAMA Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42384372/
+
+• The Clinical Threshold for Treatment in Psychiatry (JAMA Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42384391/
+
+• Developmental Trauma as a Prognostic Factor for Later Psychotic Disorder in an Adolescent Clinical Cohort: A 20-Year Follow Up Study (Acta Psychiatr Scand · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42386520/
+
+• Effects of Group Interpersonal and Social Rhythm Therapy on Mood Symptoms and Suicide-Related Interpersonal Constructs in Patients With Bipolar Disorder: A Quasi-Experimental Study (Clin Psychol Psychother · RCT (מחקר אקראי מבוקר))
+  https://pubmed.ncbi.nlm.nih.gov/42389953/
+
+• COMBINA: The EAAD four-level approach for depression and suicide prevention and wellbeing promotion in the community and vulnerable populations. A cross-country study protocol from… (PLoS One · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42391280/
+
+קלאסטר: פסיכיאטריה כללית — קלינית
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— General Psychiatry — Clinical —</itunes:summary>
+    </item>
+    <item>
+      <title>[קליני] מזכויות אדם ועד למיפוי ליתיום במוח — 2026-07-05</title>
+      <description>פרק זה כולל סקירה של 7 מאמרים:
+
+• Psychosis, human rights, and legal frameworks: global perspectives, with a focus on low-income and middle-income countries (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379204/
+
+• Brain lithium temporospatial kinetics in bipolar disorder: a repeated-measures (7)Li MRI study of dosing regimens in Germany (Lancet Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42365853/
+
+• Mapping lithium in the brain using innovative technology (Lancet Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42365852/
+
+• Semaglutide in Schizophrenia-A Top Clinical Trial (JAMA Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42384388/
+
+• Social Determinants of Health in Psychiatric Disorders: Exciting Opportunities for Biopsychosocial Research and Clinical Care (Am J Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42380754/
+
+• Enhancing Affective Cognitive Control in Bipolar Disorder Using Transcranial Alternating Current Stimulation: A Double-Blind, Randomized, Sham-Controlled Clinical Trial and Proof o… (Bipolar Disord · RCT (מחקר אקראי מבוקר))
+  https://pubmed.ncbi.nlm.nih.gov/42381254/
+
+• [Analysis of trends and influencing factors of pesticide-related suicide based on a sixteen years repeated cross-sectional investigation] (Zhonghua Lao Dong Wei Sheng Zhi Ye Bing Za Zhi · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42373520/
+
+קלאסטר: פסיכיאטריה כללית — קלינית
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— General Psychiatry — Clinical —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-general_psychiatry_clinical_part2/general_psychiatry_clinical_part2.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-general_psychiatry_clinical_part2/general_psychiatry_clinical_part2.mp3" length="32694792" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה כולל סקירה של 7 מאמרים:
+
+• Psychosis, human rights, and legal frameworks: global perspectives, with a focus on low-income and middle-income countries (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379204/
+
+• Brain lithium temporospatial kinetics in bipolar disorder: a repeated-measures (7)Li MRI study of dosing regimens in Germany (Lancet Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42365853/
+
+• Mapping lithium in the brain using innovative technology (Lancet Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42365852/
+
+• Semaglutide in Schizophrenia-A Top Clinical Trial (JAMA Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42384388/
+
+• Social Determinants of Health in Psychiatric Disorders: Exciting Opportunities for Biopsychosocial Research and Clinical Care (Am J Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42380754/
+
+• Enhancing Affective Cognitive Control in Bipolar Disorder Using Transcranial Alternating Current Stimulation: A Double-Blind, Randomized, Sham-Controlled Clinical Trial and Proof o… (Bipolar Disord · RCT (מחקר אקראי מבוקר))
+  https://pubmed.ncbi.nlm.nih.gov/42381254/
+
+• [Analysis of trends and influencing factors of pesticide-related suicide based on a sixteen years repeated cross-sectional investigation] (Zhonghua Lao Dong Wei Sheng Zhi Ye Bing Za Zhi · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42373520/
+
+קלאסטר: פסיכיאטריה כללית — קלינית
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— General Psychiatry — Clinical —</itunes:summary>
+    </item>
+    <item>
+      <title>[מדעי המוח] איך המוח נבנה ומה משתבש בדרך — 2026-07-05</title>
+      <description>פרק זה כולל סקירה של 8 מאמרים:
+
+• Neural timescales from a computational perspective (Nat Neurosci · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42393348/
+
+• Connectomic evidence that ordered activity drives neuromuscular network formation (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42380673/
+
+• Goal-directed hippocampal theta sweeps during memory-guided navigation (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42386948/
+
+• Dynamic coordination and segregation mechanisms in higher cortex for parallel task processing (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42372720/
+
+• Blood cytotoxic natural killer-like CD8 + CD94+ T cells migrate to the brain and predict multiple sclerosis severity (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42377966/
+
+• Disrupted WWOX-MYC interplay impairs neurogenesis in human brain organoids (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42397075/
+
+• Proactive visual and motor prioritization differentially scale with cue reliability (J Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42386518/
+
+• Shared genetic architecture between psychiatric and insulin-related traits in the general population (Neurosci Appl · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42375481/
+
+קלאסטר: מדעי המוח
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Neuroscience —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-neuroscience_part1/neuroscience_part1.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-neuroscience_part1/neuroscience_part1.mp3" length="28212431" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה כולל סקירה של 8 מאמרים:
+
+• Neural timescales from a computational perspective (Nat Neurosci · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42393348/
+
+• Connectomic evidence that ordered activity drives neuromuscular network formation (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42380673/
+
+• Goal-directed hippocampal theta sweeps during memory-guided navigation (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42386948/
+
+• Dynamic coordination and segregation mechanisms in higher cortex for parallel task processing (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42372720/
+
+• Blood cytotoxic natural killer-like CD8 + CD94+ T cells migrate to the brain and predict multiple sclerosis severity (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42377966/
+
+• Disrupted WWOX-MYC interplay impairs neurogenesis in human brain organoids (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42397075/
+
+• Proactive visual and motor prioritization differentially scale with cue reliability (J Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42386518/
+
+• Shared genetic architecture between psychiatric and insulin-related traits in the general population (Neurosci Appl · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42375481/
+
+קלאסטר: מדעי המוח
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Neuroscience —</itunes:summary>
+    </item>
+    <item>
+      <title>[מדעי המוח] האיזון העדין בין הפעלה לריסון במוח — 2026-07-05</title>
+      <description>פרק זה כולל סקירה של 7 מאמרים:
+
+• Striatal control of amygdalar acetylcholine release during salience-associated processing (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42362886/
+
+• Noninvasive decoding of typed sentences from human brain activity (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42374156/
+
+• Microglial fitness in moderation: Tuning TREM2 signaling through Ptpn6 (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42385676/
+
+• TGF-β1-induced endothelial transcytosis drives blood-brain barrier leakage during aging (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42385697/
+
+• Two scripts, two pathways: dorsal-ventral biases in post-stroke kana-kanji agraphia (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42380014/
+
+• Vestibular function drives gaze stability in locomoting macaques (J Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42399106/
+
+• The extended language network: Language-responsive brain areas whose contributions to language remain to be discovered (J Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42373548/
+
+קלאסטר: מדעי המוח
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Neuroscience —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-neuroscience_part2/neuroscience_part2.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-neuroscience_part2/neuroscience_part2.mp3" length="32101411" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה כולל סקירה של 7 מאמרים:
+
+• Striatal control of amygdalar acetylcholine release during salience-associated processing (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42362886/
+
+• Noninvasive decoding of typed sentences from human brain activity (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42374156/
+
+• Microglial fitness in moderation: Tuning TREM2 signaling through Ptpn6 (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42385676/
+
+• TGF-β1-induced endothelial transcytosis drives blood-brain barrier leakage during aging (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42385697/
+
+• Two scripts, two pathways: dorsal-ventral biases in post-stroke kana-kanji agraphia (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42380014/
+
+• Vestibular function drives gaze stability in locomoting macaques (J Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42399106/
+
+• The extended language network: Language-responsive brain areas whose contributions to language remain to be discovered (J Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42373548/
+
+קלאסטר: מדעי המוח
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Neuroscience —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] זכויות אדם מול כפייה בפסיכיאטריה — 2026-07-05</title>
       <description>פרק זה מוקדש למאמר אחד:
 
-• A new hope: locus coeruleus-norepinephrine system at the nexus of neuropsychiatric symptoms (Mol Psychiatry · מאמר סקירה)
-  https://pubmed.ncbi.nlm.nih.gov/42332025/
+• Psychosis, human rights, and legal frameworks: global perspectives, with a focus on low-income and middle-income countries (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379204/
 
 סדרה: פסיכיאטריה ומדעי המוח
-תאריך הסקירה: 2026-06-28
+תאריך הסקירה: 2026-07-05
 
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
 
 — Spotlight Review —</description>
-      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-28-spotlight_42332025/spotlight_42332025.mp3</guid>
-      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-28-spotlight_42332025/spotlight_42332025.mp3" length="39761340" type="audio/mpeg"/>
-      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42379204/spotlight_42379204.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42379204/spotlight_42379204.mp3" length="30049348" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
       <itunes:summary>פרק זה מוקדש למאמר אחד:
 
-• A new hope: locus coeruleus-norepinephrine system at the nexus of neuropsychiatric symptoms (Mol Psychiatry · מאמר סקירה)
-  https://pubmed.ncbi.nlm.nih.gov/42332025/
+• Psychosis, human rights, and legal frameworks: global perspectives, with a focus on low-income and middle-income countries (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379204/
 
 סדרה: פסיכיאטריה ומדעי המוח
-תאריך הסקירה: 2026-06-28
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] הפער בין מוח מאוזן למציאות הרוסה — 2026-07-05</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Interventions to support recovery of people with psychosis in low-income and middle-income countries: a systematic review (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379205/
+
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42379205/spotlight_42379205.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42379205/spotlight_42379205.mp3" length="34359774" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Interventions to support recovery of people with psychosis in low-income and middle-income countries: a systematic review (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379205/
+
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] איך המציאות החברתית נחקקת בתוך המוח — 2026-07-05</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Social Determinants of Health in Psychiatric Disorders: Exciting Opportunities for Biopsychosocial Research and Clinical Care (Am J Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42380754/
+
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42380754/spotlight_42380754.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42380754/spotlight_42380754.mp3" length="53889955" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Social Determinants of Health in Psychiatric Disorders: Exciting Opportunities for Biopsychosocial Research and Clinical Care (Am J Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42380754/
+
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
 
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
 
