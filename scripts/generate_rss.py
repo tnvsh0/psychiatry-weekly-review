@@ -346,11 +346,81 @@ CHANNELS: list[dict] = [
         ],
         "spotlight_routing": "therapy",
     },
-    # Combined feed retired 2026-05-29 — superseded by the 3 dedicated
-    # channels above. We deliberately stop generating feed.xml AND delete
-    # the leftover file from docs/ so Spotify gets 404 on its next poll
-    # of the old subscription and the listing eventually drops.
+    # ── Spotlight channels (added 2026-07) ────────────────────────────────────
+    # Each review channel above has a PAIRED spotlight channel here. Single-paper
+    # deep-dive episodes ("spotlights") no longer cross-list into the review
+    # feeds — they live in their own show, so a listener can follow the weekly
+    # overview and the in-depth single-paper episodes separately. Spotlights are
+    # routed to the child / psychiatry / therapy spotlight channel by keyword
+    # (same keyword logic as before), and may be cross-listed across several
+    # spotlight channels when a paper spans areas. `topic_ids` is [] because
+    # spotlights arrive via keyword routing, not by cluster id.
+    {
+        "id":          "child-spotlight",
+        "feed_file":   "feed-child-spotlight.xml",
+        "cover_file":  "cover-child-spotlight.png",
+        "title":       "Spotlight — פסיכיאטריית הילד והמתבגר",
+        "description": (
+            "פרקים ייעודיים ומעמיקים בפסיכיאטריית הילד והמתבגר — כל פרק "
+            "מוקדש למאמר מרכזי אחד (מטה-אנליזה, מחקר אקראי מבוקר, סקירה "
+            "שיטתית, הנחיה קלינית או מחקר פורץ דרך) מכתבי העת המובילים. "
+            "פרק-לוויין לסדרת הסקירה השבועית — מבוסס על PubMed ומופק "
+            "אוטומטית.\n\n"
+            f"{AI_DISCLOSURE}"
+        ),
+        "topic_ids":   [],
+        "spotlight_routing": "child",
+    },
+    {
+        "id":          "psychiatry-spotlight",
+        "feed_file":   "feed-psychiatry-spotlight.xml",
+        "cover_file":  "cover-psychiatry-spotlight.png",
+        "title":       "Spotlight — פסיכיאטריה ומדעי המוח",
+        "description": (
+            "פרקים ייעודיים ומעמיקים בפסיכיאטריה כללית, ביולוגית ובמדעי "
+            "המוח — כל פרק מוקדש למאמר מרכזי אחד (מטה-אנליזה, מחקר אקראי "
+            "מבוקר, סקירה שיטתית, הנחיה קלינית או מחקר פורץ דרך) מכתבי "
+            "העת המובילים. פרק-לוויין לסדרת הסקירה השבועית — מבוסס על "
+            "PubMed ומופק אוטומטית.\n\n"
+            f"{AI_DISCLOSURE}"
+        ),
+        "topic_ids":   [],
+        "spotlight_routing": "default",
+    },
+    {
+        "id":          "therapy-spotlight",
+        "feed_file":   "feed-therapy-spotlight.xml",
+        "cover_file":  "cover-therapy-spotlight.png",
+        "title":       "Spotlight — פסיכותרפיה וקוגניציה",
+        "description": (
+            "פרקים ייעודיים ומעמיקים בפסיכותרפיה, במדעי ההתנהגות "
+            "ובקוגניציה — כל פרק מוקדש למאמר מרכזי אחד (מטה-אנליזה, מחקר "
+            "אקראי מבוקר, סקירה שיטתית או מחקר פורץ דרך) מכתבי העת "
+            "המובילים. פרק-לוויין לסדרת הסקירה השבועית — מבוסס על PubMed "
+            "ומופק אוטומטית.\n\n"
+            f"{AI_DISCLOSURE}"
+        ),
+        "topic_ids":   [],
+        "spotlight_routing": "therapy",
+    },
+    # Combined feed retired 2026-05-29 — superseded by the dedicated channels
+    # above. We deliberately stop generating feed.xml AND delete the leftover
+    # file from docs/ so Spotify gets 404 on its next poll of the old
+    # subscription and the listing eventually drops.
 ]
+
+
+# Human-readable "סדרה" (series) name per channel id — shown in each episode's
+# description. Spotlight channels share their review channel's series name so a
+# listener understands the pairing.
+PLAYLIST_HE_BY_CHANNEL: dict[str, str] = {
+    "child":                "פסיכיאטריית הילד והמתבגר",
+    "psychiatry":           "פסיכיאטריה ומדעי המוח",
+    "therapy":              "פסיכותרפיה וקוגניציה",
+    "child-spotlight":      "Spotlight — פסיכיאטריית הילד והמתבגר",
+    "psychiatry-spotlight": "Spotlight — פסיכיאטריה ומדעי המוח",
+    "therapy-spotlight":    "Spotlight — פסיכותרפיה וקוגניציה",
+}
 
 
 def get_channels_for_episode(
@@ -361,10 +431,11 @@ def get_channels_for_episode(
 ) -> list[str]:
     """Return ALL channels an episode belongs to.
 
-    For regular cluster topics: always exactly one channel (by topic_id).
-    For spotlights: one OR MORE channels, by keyword match. A spotlight
+    For regular cluster topics: always exactly one REVIEW channel (by topic_id).
+    For spotlights: one OR MORE SPOTLIGHT channels, by keyword match. A spotlight
     whose title hits both child + psychiatry keywords (e.g. 'Pharmacological
-    interventions for ADHD') is cross-listed — appearing in both feeds.
+    interventions for ADHD') is cross-listed — appearing in both spotlight feeds.
+    Spotlights no longer appear in the review feeds; they have their own shows.
 
     For spotlights we match against TWO sources of text:
       1. The original English article title from articles.json (technical,
@@ -395,12 +466,12 @@ def get_channels_for_episode(
                     break
         chs: list[str] = []
         if any(kw.lower() in match_text for kw in CHILD_PSYCH_KEYWORDS):
-            chs.append("child")
+            chs.append("child-spotlight")
         if any(kw.lower() in match_text for kw in THERAPY_KEYWORDS):
-            chs.append("therapy")
+            chs.append("therapy-spotlight")
         if any(kw.lower() in match_text for kw in PSYCHIATRY_KEYWORDS):
-            chs.append("psychiatry")
-        return chs or ["psychiatry"]
+            chs.append("psychiatry-spotlight")
+        return chs or ["psychiatry-spotlight"]
     return ["psychiatry"]
 
 
@@ -718,15 +789,10 @@ def build_feed(repo: str, channel: dict, releases: list[dict],
         # Use the channel currently being built for the "סדרה" line in the
         # description, so a cross-listed spotlight tells each listener the
         # name of the channel they're on (not the primary channel).
-        playlist_he = {
-            "child":      "פסיכיאטריית הילד והמתבגר",
-            "psychiatry": "פסיכיאטריה ומדעי המוח",
-            "therapy":    "פסיכותרפיה וקוגניציה",
-        }.get(channel["id"], {
-            "child":      "פסיכיאטריית הילד והמתבגר",
-            "psychiatry": "פסיכיאטריה ומדעי המוח",
-            "therapy":    "פסיכותרפיה וקוגניציה",
-        }.get(episode_channel, "—"))
+        playlist_he = PLAYLIST_HE_BY_CHANNEL.get(
+            channel["id"],
+            PLAYLIST_HE_BY_CHANNEL.get(episode_channel, "—"),
+        )
 
         # Cluster tag — short Hebrew label like [פסיכ׳ ילד], [מהרפואה הכללית],
         # [סקירה] — so a listener within a channel can tell WHICH cluster

@@ -68,8 +68,12 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # Keepalive every 6 hours — pings NotebookLM from VM's static IP
 0 */6 * * * root /opt/run_keepalive.sh
 
-# Weekly psychiatry review — Sunday 06:00 UTC
-0 6 * * 0 root /opt/run_review.sh
+# Weekly run is split across two days to stay under NotebookLM's generation
+# rate limits (each day fires fewer podcast generations):
+#   • Sunday 06:00 UTC    — REVIEWS (weekly clusters)
+#   • Wednesday 06:00 UTC — SPOTLIGHTS (single-paper deep-dives)
+0 6 * * 0 root /opt/run_review.sh reviews
+0 6 * * 3 root /opt/run_review.sh spotlights
 CRON
 chmod 644 /etc/cron.d/weekly-review
 

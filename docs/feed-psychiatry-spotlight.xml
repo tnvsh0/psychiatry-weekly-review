@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>Spotlight — פסיכיאטריה ומדעי המוח</title>
+    <link>https://tnvsh0.github.io/psychiatry-weekly-review/feed-psychiatry-spotlight.xml</link>
+    <description>פרקים ייעודיים ומעמיקים בפסיכיאטריה כללית, ביולוגית ובמדעי המוח — כל פרק מוקדש למאמר מרכזי אחד (מטה-אנליזה, מחקר אקראי מבוקר, סקירה שיטתית, הנחיה קלינית או מחקר פורץ דרך) מכתבי העת המובילים. פרק-לוויין לסדרת הסקירה השבועית — מבוסס על PubMed ומופק אוטומטית.
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</description>
+    <atom:link href="https://tnvsh0.github.io/psychiatry-weekly-review/feed-psychiatry-spotlight.xml" rel="self"/>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <image>
+      <url>https://tnvsh0.github.io/psychiatry-weekly-review/cover-psychiatry-spotlight.png</url>
+      <title>Spotlight — פסיכיאטריה ומדעי המוח</title>
+      <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
+    </image>
+    <language>he</language>
+    <lastBuildDate>Tue, 07 Jul 2026 13:37:16 +0000</lastBuildDate>
+    <itunes:author>Tovia Wen</itunes:author>
+    <itunes:category text="Health &amp; Fitness">
+      <itunes:category text="Medicine"/>
+    </itunes:category>
+    <itunes:image href="https://tnvsh0.github.io/psychiatry-weekly-review/cover-psychiatry-spotlight.png"/>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:owner>
+      <itunes:name>Tovia Wen</itunes:name>
+      <itunes:email>toviagpt@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:summary>פרקים ייעודיים ומעמיקים בפסיכיאטריה כללית, ביולוגית ובמדעי המוח — כל פרק מוקדש למאמר מרכזי אחד (מטה-אנליזה, מחקר אקראי מבוקר, סקירה שיטתית, הנחיה קלינית או מחקר פורץ דרך) מכתבי העת המובילים. פרק-לוויין לסדרת הסקירה השבועית — מבוסס על PubMed ומופק אוטומטית.
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</itunes:summary>
+    <itunes:type>episodic</itunes:type>
+    <item>
+      <title>[סקירה] למה התמותה מפסיכיאטריה נמחקה מהסטטיסטיקה העולמית — 2026-05-25</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 (Lancet)
+  https://pubmed.ncbi.nlm.nih.gov/42167272/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42167272/spotlight_42167272.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42167272/spotlight_42167272.mp3" length="34789553" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 (Lancet)
+  https://pubmed.ncbi.nlm.nih.gov/42167272/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] מציאת המינון האופטימלי לטיפול ב-ADHD — 2026-05-25</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Pharmacological interventions for ADHD: a systematic review and dose-effect network meta-analysis (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42134365/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42134365/spotlight_42134365.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42134365/spotlight_42134365.mp3" length="39691866" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Pharmacological interventions for ADHD: a systematic review and dose-effect network meta-analysis (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42134365/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-25
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] למה דיכאון לא יכול להרוג מתמטית — 2026-05-31</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 (Lancet · סקירה שיטתית)
+  https://pubmed.ncbi.nlm.nih.gov/42167272/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-31
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-31-spotlight_42167272/spotlight_42167272.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-31-spotlight_42167272/spotlight_42167272.mp3" length="27236450" type="audio/mpeg"/>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Updated trends in the global prevalence and burden of mental disorders, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023 (Lancet · סקירה שיטתית)
+  https://pubmed.ncbi.nlm.nih.gov/42167272/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-31
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] האמנות כתרופה עם מנגנון פעולה קליני — 2026-05-31</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Inherent commonalities between arts-based leisure activities and psychological therapies (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42202844/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-31
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-31-spotlight_42202844/spotlight_42202844.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-31-spotlight_42202844/spotlight_42202844.mp3" length="36426147" type="audio/mpeg"/>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Inherent commonalities between arts-based leisure activities and psychological therapies (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42202844/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-05-31
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] המנגנון הנוראדרנרגי מאחורי אגיטציה וחרדה — 2026-06-28</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• A new hope: locus coeruleus-norepinephrine system at the nexus of neuropsychiatric symptoms (Mol Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42332025/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-06-28
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-28-spotlight_42332025/spotlight_42332025.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-28-spotlight_42332025/spotlight_42332025.mp3" length="39761340" type="audio/mpeg"/>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• A new hope: locus coeruleus-norepinephrine system at the nexus of neuropsychiatric symptoms (Mol Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42332025/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-06-28
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] טיפול מהיר ומדויק בדיכאון עמיד — 2026-06-28</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Novel approaches in depression treatment: from rapid-acting antidepressants to personalized interventions (Mol Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42350785/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-06-28
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-28-spotlight_42350785/spotlight_42350785.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-28-spotlight_42350785/spotlight_42350785.mp3" length="31007399" type="audio/mpeg"/>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Novel approaches in depression treatment: from rapid-acting antidepressants to personalized interventions (Mol Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42350785/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-06-28
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] זכויות אדם מול כפייה בפסיכיאטריה — 2026-07-05</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Psychosis, human rights, and legal frameworks: global perspectives, with a focus on low-income and middle-income countries (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379204/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42379204/spotlight_42379204.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42379204/spotlight_42379204.mp3" length="30049348" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Psychosis, human rights, and legal frameworks: global perspectives, with a focus on low-income and middle-income countries (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379204/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] הפער בין מוח מאוזן למציאות הרוסה — 2026-07-05</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Interventions to support recovery of people with psychosis in low-income and middle-income countries: a systematic review (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379205/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42379205/spotlight_42379205.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42379205/spotlight_42379205.mp3" length="34359774" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Interventions to support recovery of people with psychosis in low-income and middle-income countries: a systematic review (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42379205/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] איך המציאות החברתית נחקקת בתוך המוח — 2026-07-05</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Social Determinants of Health in Psychiatric Disorders: Exciting Opportunities for Biopsychosocial Research and Clinical Care (Am J Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42380754/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42380754/spotlight_42380754.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-07-05-spotlight_42380754/spotlight_42380754.mp3" length="53889955" type="audio/mpeg"/>
+      <pubDate>Sun, 05 Jul 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Social Determinants of Health in Psychiatric Disorders: Exciting Opportunities for Biopsychosocial Research and Clinical Care (Am J Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42380754/
+
+סדרה: Spotlight — פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-07-05
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+  </channel>
+</rss>

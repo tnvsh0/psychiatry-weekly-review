@@ -1,9 +1,18 @@
 name: 📚 Weekly Psychiatry Literature Review
 
 on:
-  # Cloud Run (Cloud Scheduler) is the primary runner for weekly execution.
-  # This workflow is kept only for manual testing via "Run workflow" button.
+  # The VM (cron) is the primary runner for weekly execution. This workflow is
+  # kept only for manual testing via the "Run workflow" button.
   workflow_dispatch:   # manual trigger from GitHub UI for testing
+    inputs:
+      mode:
+        description: "Which run to execute"
+        type: choice
+        default: all
+        options:
+          - all
+          - reviews
+          - spotlights
 
 jobs:
   review:
@@ -37,7 +46,11 @@ jobs:
           # Optional — Google Drive backup. If unset, backup step is skipped.
           GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
           GDRIVE_FOLDER_ID:            ${{ secrets.GDRIVE_FOLDER_ID }}
-        run: python -u scripts/weekly_review.py
+          # Optional — weekly digests (take-home + clinical questions) & QC.
+          # One Gemini key does both (Gemini also listens to audio for QC).
+          # Each step skips itself when the key is unset.
+          GEMINI_API_KEY:              ${{ secrets.GEMINI_API_KEY }}
+        run: python -u scripts/weekly_review.py --mode "${{ github.event.inputs.mode || 'all' }}"
 
       # Commit the new summary markdown so it's readable from GitHub
       - name: Commit summary to repository

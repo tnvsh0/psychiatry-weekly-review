@@ -105,14 +105,35 @@ CHANNELS: list[dict] = [
                            "Psychotherapy & Cognition"],
         "accent":         ACCENT_CORAL,
     },
-    # Combined feed — kept for backwards compatibility with the existing
-    # Spotify subscription. Uses the original gold accent.
+    # (The combined-feed cover "cover.png" was retired 2026-05-29 along with the
+    #  combined feed itself — see CHANNELS in generate_rss.py.)
+    # ── Spotlight channels ────────────────────────────────────────────────────
+    # Paired with the three review channels above (same accent colour) but
+    # branded "Spotlight" at the top instead of "סקירה שבועית" so the two shows
+    # are instantly distinguishable in a podcast library.
     {
-        "out":            "cover.png",
-        "subtitle_lines": ["בפסיכיאטריה", "ילד ומתבגר"],
-        "en_lines":       ["Weekly Psychiatry Review",
-                           "Combined Feed"],
+        "out":            "cover-child-spotlight.png",
+        "brand":          "Spotlight",
+        "subtitle_lines": ["פסיכיאטריית", "הילד והמתבגר"],
+        "en_lines":       ["Spotlight",
+                           "Child & Adolescent Psychiatry"],
         "accent":         ACCENT_GOLD,
+    },
+    {
+        "out":            "cover-psychiatry-spotlight.png",
+        "brand":          "Spotlight",
+        "subtitle_lines": ["פסיכיאטריה", "ומדעי המוח"],
+        "en_lines":       ["Spotlight",
+                           "Psychiatry & Neuroscience"],
+        "accent":         ACCENT_TEAL,
+    },
+    {
+        "out":            "cover-therapy-spotlight.png",
+        "brand":          "Spotlight",
+        "subtitle_lines": ["פסיכותרפיה", "וקוגניציה"],
+        "en_lines":       ["Spotlight",
+                           "Psychotherapy & Cognition"],
+        "accent":         ACCENT_CORAL,
     },
 ]
 
@@ -211,8 +232,10 @@ def render(channel: dict) -> Image.Image:
     en_font   = _find_font(FONT_CANDIDATES_REGULAR, 52)
     tag_font  = _find_font(FONT_CANDIDATES_REGULAR, 38)
 
-    # Top: shared brand title "סקירה שבועית"
-    _draw_centered(draw, heb("סקירה שבועית"), main_font, 220, TEXT_WHITE, shadow=True)
+    # Top: brand title — "סקירה שבועית" for review channels, "Spotlight" for
+    # spotlight channels (overridable per channel via the "brand" key).
+    brand = channel.get("brand", "סקירה שבועית")
+    _draw_centered(draw, heb(brand), main_font, 220, TEXT_WHITE, shadow=True)
 
     # Accent divider line (channel-coloured)
     line_y = 410

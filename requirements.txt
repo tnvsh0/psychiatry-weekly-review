@@ -8,3 +8,8 @@ mutagen>=1.47.0
 # Google Drive backup
 google-api-python-client>=2.100.0
 google-auth>=2.20.0
+
+# Weekly text digests (take-home + clinical questions) and the QC judge.
+# Gemini is multimodal: it also LISTENS to episode audio for QC, so no separate
+# speech-to-text package is needed. Only used when GEMINI_API_KEY is set.
+google-genai>=1.0.0
