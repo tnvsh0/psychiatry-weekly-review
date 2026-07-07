@@ -641,15 +641,13 @@ def _intro_directive_for(topic_id: str) -> str:
     return (
         "\n\n"
         "========================================================================\n"
-        "CLUSTER FRAMING (say this right after the disclaimer, in Hebrew):\n"
+        "WHAT KIND OF EPISODE THIS IS (say right after the disclaimer, in Hebrew):\n"
         "========================================================================\n"
-        "Immediately after the AI disclaimer, and before the episode's own "
-        "intellectual framing, the hosts should tell the listener what kind of "
-        "episode this is — naturally, in their own words, conveying this idea:\n"
+        "Right after the disclaimer, orient the listener to what this episode "
+        "covers — naturally, in the hosts' own words, conveying this idea:\n"
         f"  \"{intro}\"\n"
-        "Do NOT read it robotically or announce an internal category name. "
-        "Weave it into the opening conversation so it sounds like two "
-        "knowledgeable hosts orienting the listener.\n"
+        "Weave it into the opening; do not read it robotically or name an "
+        "internal category.\n"
     )
 
 
@@ -657,141 +655,68 @@ def _intro_directive_for(topic_id: str) -> str:
 # Lives separately so we can edit once and have it apply to all clusters
 # (regular + spotlight). Written in English for instruction fidelity; the
 # Hebrew disclaimer is given verbatim because that's what listeners hear.
+#
+# DESIGN NOTE (why this is deliberately short): NotebookLM's audio model
+# degrades when the prompt piles on many competing "MANDATORY" blocks — it
+# rushes to satisfy all of them and starts clipping sentences mid-thought
+# ("the jumps"). We keep ONLY the rules that measurably matter and state each
+# once. The single most important quality rule — unhurried pace + complete
+# sentences — is placed FIRST so it isn't buried.
 TONE_GUIDANCE = (
     "\n\n"
     "========================================================================\n"
-    "MANDATORY OPENING — the FIRST thing said in the podcast, verbatim:\n"
+    "HOW TO SPEAK (most important — read first):\n"
     "========================================================================\n"
-    "Open with this exact Hebrew disclaimer, read calmly and clearly:\n"
+    "Speak at a calm, unhurried pace. There is no need to rush or to cram — "
+    "take the time each point needs. Every sentence must be COMPLETE and "
+    "well-formed: never start a thought and jump to the next one, never cut a "
+    "sentence off, never leave a fragment or a half-word hanging. It is far "
+    "better to say less, fully, than more, in broken pieces.\n"
+    "This is a TWO-HOST Hebrew conversation. Keep it a real dialogue: the hosts "
+    "genuinely alternate — one never delivers both sides or answers their own "
+    "question. Keep each host's voice stable start to finish. Hebrew is "
+    "gendered: each host addresses the other with the correct gender forms "
+    "CONSISTENTLY (a male addressing a female says 'את אמרת'; a female "
+    "addressing a male says 'אתה אמרת') — never flip mid-episode.\n"
+    "\n"
+    "========================================================================\n"
+    "MANDATORY OPENING — say this FIRST, verbatim, calmly:\n"
+    "========================================================================\n"
     "'הפודקאסט הבא נוצר באופן אוטומטי באמצעות בינה מלאכותית. התוכן עלול להכיל "
     "אי-דיוקים, פרשנויות שגויות או המצאות. אין להסתמך עליו לקבלת החלטות "
     "קליניות. חובה לבדוק כל פרט באופן עצמאי מול המקור המקורי.'\n"
     "\n"
-    "========================================================================\n"
-    "OPENING NARRATIVE (after the disclaimer):\n"
-    "========================================================================\n"
-    "The podcast SHOULD open with a meaningful philosophical or clinical "
-    "framing — roughly 1-3 minutes — that creates a narrative thread for the "
-    "episode. A thoughtful opening adds real value: it tells the resident what "
-    "to listen for and gives them a lens through which to think about the "
-    "week's papers. Do NOT skip the framing — a good one is wanted.\n"
-    "\n"
-    "Good framings include (any one is enough):\n"
-    "  • A tension between two specific papers in this week's set, and the\n"
-    "    question they raise together.\n"
-    "  • A clinically actionable question raised by the week's findings —\n"
-    "    e.g. 'if finding X holds up, what should we be doing differently\n"
-    "    when we see Y in clinic?'\n"
-    "  • Points to think about (נקודות למחשבה) — how a paper from a\n"
-    "    non-clinical field (basic neuroscience, cognition, behavioral\n"
-    "    science) bears on child / adolescent psychiatric practice.\n"
-    "  • A methodological or conceptual thread that recurs across several\n"
-    "    of this week's papers.\n"
-    "\n"
-    "The framing MUST be:\n"
-    "  • Anchored in actual papers from THIS WEEK's source material — name\n"
-    "    a paper, a finding, or a specific question. Generic philosophical\n"
-    "    musing without a concrete hook does not work.\n"
-    "  • Genuinely fresh — DIFFERENT from how previous episodes opened. The\n"
-    "    same framing template every week is the failure mode to avoid.\n"
-    "\n"
-    "The framing MUST NOT be:\n"
-    "  • An explanation of what child psychiatry is or what child\n"
-    "    psychiatrists do. The audience is a child psychiatry resident —\n"
-    "    they know.\n"
-    "  • The 'fracture line vs fuzzy psychiatry' framing, or any variant of\n"
-    "    'general medicine has clear boundaries, psychiatry doesn't'. This\n"
-    "    pattern has been overused and is explicitly banned.\n"
-    "  • Boilerplate about 'the literature is vast', 'the field is complex',\n"
-    "    or 'staying current is hard'.\n"
-    "  • Any opening that could equally well fit any other week's episode —\n"
-    "    if the same words could open last week's podcast, the framing is\n"
-    "    too generic.\n"
-    "\n"
-    "In short: a philosophical / reflective opening is encouraged. What is\n"
-    "forbidden is recycling the same generic template week after week, or\n"
-    "explaining basics the audience already knows. If you anchor every\n"
-    "framing in this week's actual papers, variety follows automatically.\n"
+    "Then open with a short framing (1-2 min) anchored in a SPECIFIC paper or "
+    "question from THIS WEEK's papers — a tension between two findings, or a "
+    "clinically actionable question they raise. Do NOT explain what child "
+    "psychiatry is (the audience is a resident), and do NOT reuse the same "
+    "generic opening as previous weeks. Anchoring it in this week's papers "
+    "keeps it fresh automatically.\n"
     "\n"
     "========================================================================\n"
-    "JOURNAL ATTRIBUTION (MANDATORY, every paper):\n"
+    "FOR EVERY PAPER, state two things:\n"
     "========================================================================\n"
-    "For EVERY paper you discuss, state the journal name aloud — e.g. "
-    "'המאמר פורסם ב-JAMA Psychiatry' or 'מאמר ב-Lancet Psychiatry'. "
-    "Non-negotiable. Listeners need to know where each finding comes from.\n"
-    "Say the journal's FULL NAME, not its abbreviation. The source lists each "
-    "journal as 'Full Name (Abbrev)' — read the full name aloud (e.g. say "
-    "'Journal of Child Psychology and Psychiatry', NOT 'J Child Psychol "
-    "Psychiatry'; say 'The New England Journal of Medicine', NOT 'N Engl J "
-    "Med'). Abbreviations sound cryptic when spoken.\n"
+    "1. The journal, by its FULL name, not its abbreviation. The source lists "
+    "each as 'Full Name (Abbrev)' — read the full name aloud (say 'Journal of "
+    "Child Psychology and Psychiatry', not 'J Child Psychol Psychiatry').\n"
+    "2. The study type, taken verbatim from the 'סוג מחקר:' field in the source "
+    "(מטה-אנליזה, RCT, מחקר עוקבה, וכו'). Do not guess. If it says the generic "
+    "'מאמר מחקרי', infer a more specific design from the abstract if you can. "
+    "Study type matters — an RCT weighs differently than a case report.\n"
     "\n"
     "========================================================================\n"
-    "STUDY TYPE (MANDATORY, every paper):\n"
+    "COVERAGE, CONTINUITY, TONE:\n"
     "========================================================================\n"
-    "When you START discussing a paper, also state its STUDY TYPE — מטה-אנליזה, "
-    "סקירה שיטתית, RCT, מחקר עוקבה, מחקר תצפיתי, תיאור מקרה, מאמר סקירה, "
-    "מאמר מערכת, etc. The source material includes a 'סוג מחקר:' field per "
-    "paper — use it verbatim, do NOT guess. When the field says 'מאמר מחקרי' "
-    "(the generic fallback), try to identify a more specific design from the "
-    "abstract (e.g., 'מחקר חתך', 'מחקר עוקבה פרוספקטיבי') and say so. "
-    "Study type matters for how listeners weigh the evidence — an RCT carries "
-    "different weight than a case report.\n"
-    "\n"
-    "========================================================================\n"
-    "NARRATION QUALITY (read carefully — these errors are common and jarring):\n"
-    "========================================================================\n"
-    "This is a TWO-HOST conversation in Hebrew. Maintain these throughout:\n"
-    "  • GRAMMATICAL GENDER CONSISTENCY. Hebrew is gendered. Each host must "
-    "address the other with the correct gender forms CONSISTENTLY for the "
-    "whole episode. If one host is male and the other female, a male host "
-    "addressing the female says 'את אמרת', 'את צודקת'; the female addressing "
-    "the male says 'אתה אמרת', 'אתה צודק'. Never flip mid-episode. Never have "
-    "a host use feminine forms toward a male co-host or vice versa.\n"
-    "  • TRUE DIALOGUE, NOT MONOLOGUE. The two hosts genuinely alternate. One "
-    "host must NOT deliver both sides of an exchange or answer their own "
-    "rhetorical question as if the other spoke. Each turn belongs to one host.\n"
-    "  • STABLE VOICES. Keep each host's voice/persona consistent start to "
-    "finish — no sudden shifts in who is speaking.\n"
-    "  • COMPLETE SENTENCES. Speak in full, well-formed sentences. Do NOT "
-    "start a sentence mid-thought, cut off, or leave fragments hanging. "
-    "Avoid broken or truncated words.\n"
-    "  • SELF-PROOFREAD. Before finalizing, mentally re-read the script for "
-    "spelling slips, garbled words, and half-sentences, and fix them. The "
-    "output should sound like a polished, professionally edited podcast.\n"
-    "\n"
-    "========================================================================\n"
-    "DEPTH AND COVERAGE:\n"
-    "========================================================================\n"
-    "Cover EVERY paper in the source material — do not skip papers because they "
-    "seem less interesting. Spend 2-4 minutes per paper: methods, findings with "
-    "effect sizes, limitations, and clinical implications. The podcast should be "
-    "as LONG and EXHAUSTIVE as possible. Listeners want depth, not a teaser. "
-    "Do not summarize multiple papers in one sentence — each gets its own time.\n"
-    "\n"
-    "========================================================================\n"
-    "CONTINUITY WITH PREVIOUS WEEK ('משבוע שעבר' section):\n"
-    "========================================================================\n"
-    "The source material may end with a section titled 'משבוע שעבר — לקונטקסט "
-    "בלבד'. The papers listed there were COVERED IN LAST WEEK'S PODCAST — they "
-    "are NOT new content this week.\n"
-    "  • Do NOT re-summarize those papers as if they were new.\n"
-    "  • Do NOT spend airtime on them on their own merit.\n"
-    "  • DO use them as context: if a paper THIS WEEK is by the same authors, "
-    "extends the same line of work, contradicts last week's finding, or "
-    "addresses the same clinical question — name the connection briefly "
-    "('כפי שראינו בשבוע שעבר, Smith וחבריו פרסמו ב-X; השבוע...'). This makes "
-    "the podcast feel like an ongoing series rather than 10 disconnected episodes.\n"
-    "  • If there is no meaningful connection — ignore the section entirely.\n"
-    "\n"
-    "========================================================================\n"
-    "TONE:\n"
-    "========================================================================\n"
-    "Professional, balanced, precise. AVOID superlatives ('groundbreaking', "
-    "'paradigm-shifting', 'stunning', 'revolutionary', 'changes everything we "
-    "knew'). Describe findings in measured language. Always note methodological "
-    "limitations and effect sizes. The difference between 'effective' and "
-    "'highly effective' matters — do not inflate. Maintain the same balanced "
-    "tone when speaking Hebrew.\n"
+    "Cover EVERY paper in the source — none skipped. Give each its own time "
+    "(methods, findings with effect sizes, limitations, clinical implications); "
+    "do not compress several papers into one sentence.\n"
+    "If the source ends with a 'משבוע שעבר' section, those papers were covered "
+    "LAST week — do not re-summarize them. Use them only to draw a brief "
+    "connection when a paper THIS week extends or contradicts them; otherwise "
+    "ignore the section.\n"
+    "Keep the tone professional and measured. Avoid superlatives "
+    "('groundbreaking', 'revolutionary'); always name limitations and effect "
+    "sizes. The gap between 'effective' and 'highly effective' matters.\n"
 )
 
 
@@ -1062,9 +987,91 @@ SPOTLIGHT_JOURNALS_PSYCHIATRY = [
     "Neuroscience Applied",
 ]
 
-# Cap on number of spotlight podcasts per week. NOT a target — a ceiling.
-# A week with 0 qualifying reviews produces 0 spotlights; we don't fabricate.
-MAX_SPOTLIGHT_REVIEWS = 3
+# ── Spotlight selection tuning ────────────────────────────────────────────────
+# Spotlights used to be REVIEWS ONLY. Broadened 2026-07 (user request): now
+# ANY high-signal article from a top-tier journal can earn a dedicated deep-dive
+# — a landmark RCT, a major cohort, a practice guideline, or a meta-analysis.
+# The gate is an importance SCORE (study design + journal impact factor + signal
+# author), not the publication type alone. Spotlights now live in their OWN RSS
+# channels (child / psychiatry / therapy spotlight), so we can afford more of
+# them — but we cap PER AREA so one field doesn't crowd out the others, and cap
+# the weekly TOTAL to stay under NotebookLM's generation rate limits (the reason
+# the weekly run is also split across two days: reviews one day, spotlights
+# another). All three numbers are ceilings, NOT targets — a quiet week yields
+# fewer; we never fabricate.
+SPOTLIGHT_MIN_SCORE       = 4   # minimum importance score to earn a spotlight
+MAX_SPOTLIGHT_PER_CHANNEL = 3   # ceiling per area (child / psychiatry / therapy)
+MAX_SPOTLIGHT_TOTAL       = 8   # ceiling across all areas in one run
+# Back-compat alias — older helper scripts may import MAX_SPOTLIGHT_REVIEWS.
+MAX_SPOTLIGHT_REVIEWS     = MAX_SPOTLIGHT_TOTAL
+
+
+# Compact keyword lists used ONLY to bucket a spotlight into an area for the
+# per-channel cap. The authoritative RSS routing (which can cross-list one
+# episode into several feeds) lives in generate_rss.py; here we just need each
+# article's PRIMARY area so the caps stay balanced.
+_SPOTLIGHT_CHILD_KW = [
+    "child", "adolesc", "pediatric", "paediatric", "youth", "infant",
+    "adhd", "attention-deficit", "attention deficit", "autism", "asd",
+    "school-age", "preschool", "perinatal", "neurodevelopment",
+]
+_SPOTLIGHT_THERAPY_KW = [
+    "psychotherap", "cognitive behavioral", "cognitive-behavioral", "cbt",
+    "dialectical behavior", "dbt", "psychodynamic", "mentaliz",
+    "interpersonal therapy", "exposure therapy", "trauma-focused",
+    "parent training", "parent-child interaction",
+]
+
+
+def _spotlight_area(article: dict) -> str:
+    """Bucket a spotlight article into child / therapy / psychiatry (in that
+    priority order) for per-channel capping. Matches the English title."""
+    t = (article.get("title") or "").lower()
+    if any(kw in t for kw in _SPOTLIGHT_CHILD_KW):
+        return "child"
+    if any(kw in t for kw in _SPOTLIGHT_THERAPY_KW):
+        return "therapy"
+    return "psychiatry"
+
+
+def _spotlight_score(article: dict, has_signal_author: bool) -> int:
+    """Importance heuristic — higher = more spotlight-worthy.
+
+    Rewards strong study designs (meta-analysis, RCT, guideline), elite-journal
+    impact factor, and named high-signal authors. A plain narrative review in a
+    mid-tier journal scores low and is filtered out by SPOTLIGHT_MIN_SCORE."""
+    score = 0
+    pts = [str(t).lower() for t in article.get("pubtype", [])]
+
+    def has(*needles: str) -> bool:
+        return any(n in t for t in pts for n in needles)
+
+    if has("meta-analysis"):
+        score += 3
+    elif has("systematic review"):
+        score += 3
+    if has("practice guideline", "guideline", "consensus"):
+        score += 3
+    if has("randomized controlled trial", "clinical trial, phase iii"):
+        score += 3
+    elif has("clinical trial", "multicenter study"):
+        score += 2
+    elif has("cohort", "observational", "case-control", "cross-sectional"):
+        score += 1   # original research design — modest signal
+    if score == 0 and has("review"):
+        score += 1   # narrative review with no stronger signal
+
+    if_val = article.get("impact_factor", 0.0)
+    if if_val >= 40:        # Lancet Psychiatry, World Psychiatry, NEJM, Lancet
+        score += 3
+    elif if_val >= 20:      # JAMA Psychiatry, JAMA Pediatrics
+        score += 2
+    elif if_val >= 10:      # AJP, Mol/Biol Psychiatry, JAACAP
+        score += 1
+
+    if has_signal_author:
+        score += 2
+    return score
 
 
 def _esearch_reldate(query: str, reldate: int, retmax: int = 12) -> list[str]:
@@ -1084,55 +1091,87 @@ def _esearch_reldate(query: str, reldate: int, retmax: int = 12) -> list[str]:
         time.sleep(0.4)
 
 
-def find_spotlight_reviews(exclude_pmids: set[str] | None = None) -> list[dict]:
-    """Find recent high-impact REVIEW articles deserving dedicated podcasts.
+def _spotlight_prompt(a: dict) -> str:
+    """Single-paper deep-dive prompt, adapted to the article's study type.
+    Used to be review-only; now covers trials, cohorts, guidelines too."""
+    return (
+        f"This is a DEDICATED, single-paper deep-dive podcast on one "
+        f"high-signal article:\n"
+        f"  Title: \"{a['title']}\"\n"
+        f"  Authors: {a['authors']}\n"
+        f"  Journal: {a['journal']} (IF: {a['impact_factor']:.1f})\n"
+        f"  Study type: {a.get('study_type_he', 'מאמר')}\n\n"
+        "Treat this as a LONG, comprehensive single-paper episode — every part "
+        "of the paper deserves real discussion. Cover, ADAPTING to the study "
+        "type:\n"
+        "  • The clinical or scientific question the paper addresses.\n"
+        "  • The methodology — for a randomized trial: design, randomization, "
+        "blinding, comparator, primary/secondary outcomes, effect sizes, NNT, "
+        "adverse events, attrition; for a meta-analysis / systematic review: "
+        "search strategy, inclusion criteria, risk-of-bias, heterogeneity (I²), "
+        "publication bias; for a cohort / observational study: sample, "
+        "follow-up, confounders, and causal caveats; for a practice guideline: "
+        "the key recommendations and the strength of evidence behind each; for "
+        "a narrative review: the author's framework.\n"
+        "  • The main findings with the actual numbers, and how certain they are.\n"
+        "  • Controversies, counter-arguments, and the limitations.\n"
+        "  • Clinical implications — for a child/adolescent psychiatry resident, "
+        "what should change in practice, what stays uncertain, what to do "
+        "differently tomorrow morning.\n"
+        "If this is a Stahl-style psychopharmacology paper, name the receptors, "
+        "mechanisms, pharmacokinetics, and clinical pearls carefully.\n"
+        "Generate the podcast entirely in Hebrew."
+    )
+
+
+def find_spotlight_articles(exclude_pmids: set[str] | None = None) -> list[dict]:
+    """Find recent high-signal articles (ANY study type) from top-tier journals
+    that each deserve a dedicated single-paper deep-dive podcast.
 
     Each return value is a topic dict (same shape as entries in TOPICS) with a
-    `_forced_articles` field carrying the single article. search_topic() will
-    pick this up and skip PubMed.
+    `_forced_articles` field carrying the single article. search_topic() picks
+    this up and skips PubMed.
+
+    Selection: pull recent candidates from the elite psychiatry journal list
+    (any type) plus strong-design papers by named signal authors, then keep
+    only those scoring >= SPOTLIGHT_MIN_SCORE (see _spotlight_score), and pick
+    greedily under the per-area and total caps.
 
     Looks back 14 days (broader than the 8-day window used for regular topics)
-    so important reviews are not missed if they were published just before the
-    weekly run. Because the 14-day window spans two weekly runs, dedup is
-    essential here: `exclude_pmids` drops any review already spotlighted (or
-    covered in a regular cluster) in a recent week.
+    so an important paper isn't missed if it was published just before the run.
+    `exclude_pmids` drops anything already covered in a recent week.
     """
     exclude_pmids = exclude_pmids or set()
-    print("\n🔍 Searching for spotlight review articles (last 14 days)...")
+    print("\n🔍 Searching for spotlight articles (last 14 days)...")
 
-    pub_type_filter = (
-        '("review"[Publication Type] OR "systematic review"[Publication Type] '
-        'OR "meta-analysis"[Publication Type])'
-    )
     psy_journals = "(" + " OR ".join(
         f'"{j}"[Journal]' for j in SPOTLIGHT_JOURNALS_PSYCHIATRY
     ) + ")"
     author_clause = "(" + " OR ".join(
         f'"{a}"[Author]' for a in SPOTLIGHT_HIGH_SIGNAL_AUTHORS
     ) + ")"
+    # Strong designs only for the author route — avoid pulling every paper a
+    # prolific author co-signs (editorials, letters, minor commentaries).
+    strong_types = (
+        '("review"[Publication Type] OR "systematic review"[Publication Type] '
+        'OR "meta-analysis"[Publication Type] '
+        'OR "randomized controlled trial"[Publication Type] '
+        'OR "practice guideline"[Publication Type] OR "guideline"[Publication Type])'
+    )
 
     queries = [
-        # 1. Reviews in dedicated psychiatry journals (curated, no risk of
-        #    off-topic content; the IF>=10 gate below filters lower-tier
-        #    psychiatry journals like Neuropsychopharmacology + Neuroscience
-        #    Applied unless they're by a signal author).
-        f'{pub_type_filter} AND {psy_journals}',
-        # 2. Reviews by named high-signal psychiatry/neuroscience authors —
-        #    catches Stahl-class reviews even in lower-IF journals.
-        f'{pub_type_filter} AND {author_clause}',
-        # Generalist medical journals (BMJ / JAMA / Lancet / NEJM / Nature
-        # Medicine / Nature Reviews) used to be a third query with a
-        # title-keyword filter, but it still let through papers that touch
-        # psychiatry only tangentially (e.g. "kidney health" reviews
-        # mentioning "mental health" comorbidity in the title). Dropped per
-        # user request — signal-author search still catches breakthrough
-        # psychiatry reviews published outside dedicated psychiatry journals.
+        # 1. ALL recent articles in the elite psychiatry journal list (any
+        #    type) — the score gate below keeps only the high-signal ones.
+        psy_journals,
+        # 2. Strong-design papers by named high-signal authors — catches
+        #    Stahl-class work even in lower-IF journals.
+        f'{strong_types} AND {author_clause}',
     ]
 
     seen: dict[str, bool] = {}
     skipped_dup = 0
     for q in queries:
-        ids = _esearch_reldate(q, reldate=14, retmax=12)
+        ids = _esearch_reldate(q, reldate=14, retmax=25)
         for p in ids:
             if p in seen:
                 continue
@@ -1141,80 +1180,70 @@ def find_spotlight_reviews(exclude_pmids: set[str] | None = None) -> list[dict]:
                 continue
             seen[p] = True
     if skipped_dup:
-        print(f"  Skipped {skipped_dup} review(s) already covered in recent weeks")
+        print(f"  Skipped {skipped_dup} article(s) already covered in recent weeks")
 
     if not seen:
-        print("  No spotlight reviews this week.")
+        print("  No spotlight candidates this week.")
         return []
 
-    articles = _esummary(list(seen.keys()), "Spotlight Review")
+    articles = _esummary(list(seen.keys()), "Spotlight")
     for a in articles:
         a["impact_factor"] = get_journal_if(a["journal"])
 
-    # Keep only those in high-IF journals (>=10). Stahl in JCAP (IF~3.5) still
-    # passes through the author route because we keep IF >= 10 OR known author.
     known_authors_lc = {a.lower() for a in SPOTLIGHT_HIGH_SIGNAL_AUTHORS}
     def _has_signal_author(article: dict) -> bool:
-        # Check whether any high-signal author name appears in the authors string
         authors_lc = article.get("authors", "").lower()
         return any(name in authors_lc for name in known_authors_lc)
 
-    articles = [
-        a for a in articles
-        if a["impact_factor"] >= 10 or _has_signal_author(a)
-    ]
-    articles.sort(key=lambda a: -a["impact_factor"])
-    articles = articles[:MAX_SPOTLIGHT_REVIEWS]
+    # Score + gate.
+    scored: list[dict] = []
+    for a in articles:
+        s = _spotlight_score(a, _has_signal_author(a))
+        if s >= SPOTLIGHT_MIN_SCORE:
+            a["_spot_score"] = s
+            scored.append(a)
+    scored.sort(key=lambda a: (-a["_spot_score"], -a["impact_factor"]))
 
-    if not articles:
-        print("  No spotlight reviews this week (after filtering).")
+    # Greedy pick under per-area + total caps so no single field dominates.
+    picked: list[dict] = []
+    per_area = {"child": 0, "therapy": 0, "psychiatry": 0}
+    for a in scored:
+        if len(picked) >= MAX_SPOTLIGHT_TOTAL:
+            break
+        area = _spotlight_area(a)
+        if per_area[area] >= MAX_SPOTLIGHT_PER_CHANNEL:
+            continue
+        per_area[area] += 1
+        picked.append(a)
+
+    if not picked:
+        print("  No spotlight articles this week (after scoring/caps).")
         return []
 
-    print(f"  Found {len(articles)} spotlight review(s):")
-    for a in articles:
-        print(f"    • {a['journal']} (IF {a['impact_factor']:.1f}): {a['title'][:70]}")
+    print(f"  Found {len(picked)} spotlight article(s) "
+          f"[child:{per_area['child']} psychiatry:{per_area['psychiatry']} "
+          f"therapy:{per_area['therapy']}]:")
+    for a in picked:
+        print(f"    • [{a.get('study_type_he', '?')}] {a['journal']} "
+              f"(IF {a['impact_factor']:.1f}, score {a['_spot_score']}): "
+              f"{a['title'][:60]}")
 
     spotlight_topics: list[dict] = []
-    for a in articles:
+    for a in picked:
         pmid = a["pmid"]
         # Short label — notebook titles have length limits in NotebookLM
         title_short = a["title"][:50] + ("…" if len(a["title"]) > 50 else "")
         first_author = a["authors"].split(",")[0].replace(" et al.", "").strip()
+        study_he = a.get("study_type_he") or "מאמר"
         spotlight_topics.append({
             "id":       f"spotlight_{pmid}",
             "label_en": f"Spotlight: {first_author} — {title_short}",
-            "label_he": f"מאמר סקירה: {first_author} — {title_short}",
+            "label_he": f"{study_he}: {first_author} — {title_short}",
             "journals": [],
             "broad":    [],
             "max_articles": 1,
             "_forced_articles": [a],
-            "podcast_prompt": (
-                f"This is a DEDICATED, single-paper deep-dive podcast on one "
-                f"high-impact review article:\n"
-                f"  Title: \"{a['title']}\"\n"
-                f"  Authors: {a['authors']}\n"
-                f"  Journal: {a['journal']} (IF: {a['impact_factor']:.1f})\n"
-                f"  Type: review / systematic review / meta-analysis\n\n"
-                "Treat this as a LONG, comprehensive single-paper podcast — "
-                "every section of the review deserves real discussion. "
-                "Cover: (a) the clinical or scientific question motivating the "
-                "review, (b) the methodology (for a systematic review: search "
-                "strategy, inclusion criteria, risk-of-bias assessment, "
-                "heterogeneity I², publication bias; for a narrative review: "
-                "the author's framework and how they structure the evidence), "
-                "(c) the synthesis of evidence with effect sizes and confidence "
-                "intervals where given, (d) controversies and counter-arguments, "
-                "(e) limitations of the evidence base, (f) clinical implications "
-                "for everyday practice. "
-                "If this is a Stahl-style psychopharmacology review: name the "
-                "receptors, mechanisms, pharmacokinetics, and clinical pearls "
-                "carefully — that level of mechanistic detail is what makes "
-                "Stahl reviews valuable. "
-                "For a child / adolescent psychiatry resident: emphasize what "
-                "should change in clinical practice, what remains uncertain, "
-                "what to do differently tomorrow morning. "
-                "Generate the podcast entirely in Hebrew."
-            ),
+            "podcast_prompt": _spotlight_prompt(a),
         })
     return spotlight_topics
 
@@ -1368,16 +1397,26 @@ def load_previous_week_articles() -> dict[str, list[dict]]:
     return {}
 
 
-def load_recent_pmids(weeks_back: int = 4) -> set[str]:
+def load_recent_pmids(weeks_back: int = 4, kinds: str = "all") -> set[str]:
     """Return the set of PMIDs covered in the last `weeks_back` weekly runs.
 
     Used to deduplicate: any article already discussed in a recent episode is
     dropped from this week's search so the same paper doesn't reappear across
-    consecutive weeks. This matters because:
-      * regular search uses an 8-day window but runs every 7 days → 1-day
-        overlap can re-catch a Sunday-morning paper;
-      * spotlights use a 14-day window → a review would otherwise repeat two
-        weeks running almost every time.
+    consecutive weeks.
+
+    `kinds` picks WHICH past episodes count toward the dedup set, keyed on each
+    article's topic_id in articles.json:
+      * "reviews"    — only past REVIEW clusters (topic_id NOT starting with
+                       'spotlight_'). Reviews dedup against this so a paper isn't
+                       repeated in the review channel two weeks running — but
+                       crucially NOT against past spotlights, so getting a
+                       spotlight NEVER removes a paper from the review episodes.
+      * "spotlights" — only past SPOTLIGHTS (topic_id starting with 'spotlight_').
+                       Spotlights dedup against this so the same paper isn't
+                       spotlighted two weeks running — but NOT against reviews,
+                       so a paper covered in this week's review can still earn
+                       its own dedicated spotlight.
+      * "all"        — every past PMID (legacy behaviour, used by mode="all").
 
     Reads the committed summaries/<date>/articles.json files. Only counts the
     `weeks_back` most-recent past dates (so the set stays bounded and we don't
@@ -1400,6 +1439,14 @@ def load_recent_pmids(weeks_back: int = 4) -> set[str]:
     past_dates.sort(reverse=True)
     recent = past_dates[:weeks_back]
 
+    def _kind_matches(topic_id: str) -> bool:
+        is_spot = str(topic_id).startswith("spotlight_")
+        if kinds == "reviews":
+            return not is_spot
+        if kinds == "spotlights":
+            return is_spot
+        return True  # "all"
+
     pmids: set[str] = set()
     for date_str in recent:
         json_file = sum_dir / date_str / "articles.json"
@@ -1410,13 +1457,15 @@ def load_recent_pmids(weeks_back: int = 4) -> set[str]:
         except Exception:
             continue
         for a in data:
+            if not _kind_matches(a.get("topic_id", "")):
+                continue
             pmid = str(a.get("pmid", "")).strip()
             if pmid:
                 pmids.add(pmid)
 
     if pmids:
-        print(f"  Dedup: {len(pmids)} PMIDs seen in last {len(recent)} week(s) "
-              f"will be skipped.")
+        print(f"  Dedup ({kinds}): {len(pmids)} PMIDs seen in last "
+              f"{len(recent)} week(s) will be skipped.")
     return pmids
 
 
@@ -2007,6 +2056,62 @@ def update_rss_feed(env: dict) -> None:
         print(f"  WARNING: RSS feed update failed (non-fatal): {e}")
 
 
+def generate_digests(env: dict) -> None:
+    """Run scripts/generate_digests.py — per-channel take-home files + a weekly
+    clinical-questions file. Non-fatal. Writes into summaries/<date>/ so the
+    subsequent commit_summaries_to_github() picks the files up. Skips itself
+    (inside the script) when GEMINI_API_KEY is unset."""
+    if not (env.get("GEMINI_API_KEY") or env.get("GOOGLE_API_KEY")):
+        return  # feature off — silent, like the Drive backup
+    print("\n\U0001f4dd Generating weekly digests (take-home + clinical questions)...")
+    try:
+        subprocess.run(
+            [sys.executable, str(SCRIPTS_DIR / "generate_digests.py"),
+             "--date", DATE_STR],
+            env=env, check=False, timeout=600,
+        )
+    except Exception as e:
+        print(f"  WARNING: Digest generation failed (non-fatal): {e}")
+
+
+def run_qc(env: dict) -> None:
+    """Run scripts/qc_review.py — Gemini listens to each episode and scores it
+    against the source abstracts, then commit the qc-report.md. Non-fatal.
+    Needs GEMINI_API_KEY; the script skips itself if it is missing."""
+    if not (env.get("GEMINI_API_KEY") or env.get("GOOGLE_API_KEY")):
+        return  # QC off — silent
+    print("\n\U0001f50e Running podcast QC review...")
+    try:
+        subprocess.run(
+            [sys.executable, str(SCRIPTS_DIR / "qc_review.py"),
+             "--date", DATE_STR],
+            env=env, check=False, timeout=3000,
+        )
+    except Exception as e:
+        print(f"  WARNING: QC review failed (non-fatal): {e}")
+        return
+    # Commit the QC report (written after the summaries commit already ran).
+    report = Path("summaries") / DATE_STR / "qc-report.md"
+    if not report.exists():
+        return
+    try:
+        subprocess.run(["git", "add", str(report)], check=False)
+        status = subprocess.run(
+            ["git", "diff", "--cached", "--quiet"], capture_output=True,
+        )
+        if status.returncode == 0:
+            return
+        subprocess.run(
+            ["git", "commit", "-m", f"qc: report for {DATE_STR}"],
+            capture_output=True, text=True, check=False,
+        )
+        subprocess.run(["git", "push", "origin", "main"],
+                       capture_output=True, text=True, check=False)
+        print("  QC report committed.")
+    except Exception as e:
+        print(f"  WARNING: committing QC report failed (non-fatal): {e}")
+
+
 # ── Auto-split crowded topics into Part 1 / Part 2 / ... ─────────────────────
 # If a cluster collected too many articles for one comfortable listen, split
 # it into multiple parts. Each part becomes its own notebook + podcast +
@@ -2015,17 +2120,21 @@ def update_rss_feed(env: dict) -> None:
 # (descending) and divided round-robin among the parts so each part gets a
 # balanced mix of high-IF papers rather than Part 1 hoarding the best.
 
-SPLIT_THRESHOLD = 13   # split topics with more than this many articles
-SPLIT_TARGET    = 11   # aim for ~this many articles per part
+SPLIT_THRESHOLD = 9    # split topics with more than this many articles
+SPLIT_TARGET    = 7    # aim for ~this many articles per part
                        # Rationale: NotebookLM produces a roughly FIXED-length
-                       # episode (~25-35 min) regardless of article count —
-                       # empirically verified, episode size does not correlate
-                       # with how many papers we feed it. So the constraint is
-                       # DEPTH PER ARTICLE, not episode length: ~10-12 articles
-                       # in a ~30-min episode gives each ~2.5-3 min. Above 13
-                       # coverage gets too shallow, so we split. A crowded
-                       # 20-22 article cluster → 2 parts of ~10-11; a normal
-                       # ≤13 article cluster stays whole.
+                       # episode regardless of article count. The built-in
+                       # `--length long` is already the maximum (options are
+                       # only short/default/long, upper bound ~25 min) — asking
+                       # the hosts to "be longer" does NOT extend it. So the
+                       # ONLY lever against dense/shallow episodes is fewer
+                       # articles per part. Lowered 13→9 (target 11→7) so each
+                       # paper in a ~25-min episode gets ~3-4 min instead of
+                       # being rushed. A crowded 20-article cluster now → 3
+                       # parts of ~7; a normal ≤9 article cluster stays whole.
+                       # NOTE: this produces MORE episodes per week — mitigated
+                       # by splitting the weekly run across two days (reviews /
+                       # spotlights) to stay under NotebookLM's rate limits.
 
 
 def auto_split_topics(nb_infos: list[dict]) -> list[dict]:
@@ -2159,11 +2268,16 @@ def compute_cross_references(nb_infos: list[dict]) -> None:
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
-def main():
+def main(mode: str = "all"):
     sep = "=" * 65
+    mode_label = {
+        "reviews":    "REVIEWS only (weekly clusters)",
+        "spotlights": "SPOTLIGHTS only (single-paper deep-dives)",
+        "all":        "ALL (reviews + spotlights)",
+    }.get(mode, mode)
     print(f"\n{sep}")
     print(f"\U0001f4da Weekly Psychiatry Literature Review -- {DATE_STR}")
-    print(f"   {len(TOPICS)} topics, journal-targeted searches + broad MeSH")
+    print(f"   Mode: {mode_label}")
     print(f"{sep}\n")
 
     env = os.environ.copy()
@@ -2229,34 +2343,8 @@ def main():
     nb_infos: list[dict] = []
     all_articles: list[dict] = []
 
-    # ── Two dedup sets, deliberately different ────────────────────────────────
-    # past_pmids: PMIDs covered in the last 4 weekly runs. FROZEN. Used to
-    #   prevent a paper recurring across consecutive weeks.
-    # week_pmids: past_pmids PLUS this week's cluster picks, accumulating. Used
-    #   so a paper doesn't appear in two regular clusters in the same week.
-    #
-    # Crucially, SPOTLIGHTS are deduplicated against past_pmids ONLY — NOT
-    # against this week's clusters. A genuinely important review must get its
-    # dedicated episode even if it also surfaced inside a regular cluster's
-    # search. (Before this fix, such reviews were silently absorbed into a
-    # cluster and never spotlighted — the user caught this.) The resulting
-    # duplication is intentional and gets a spoken cross-reference (below).
-    print("\U0001f504 Loading recent PMIDs for deduplication...")
-    past_pmids = load_recent_pmids(weeks_back=4)
-    week_pmids = set(past_pmids)
-
-    print("\U0001f50d Searching PubMed for all topics...")
-    for topic in TOPICS:
-        articles = search_topic(topic, exclude_pmids=week_pmids)
-        if not articles:
-            print(f"  WARNING: No articles for {topic['label_en']}, skipping.")
-            continue
-        # Add this week's picks so a paper matching two clusters lands only in
-        # the first (highest-priority) one.
-        for a in articles:
-            week_pmids.add(str(a.get("pmid", "")))
-        all_articles.extend(articles)
-        nb_infos.append({
+    def _mk_nb(topic: dict, articles: list[dict]) -> dict:
+        return {
             "topic":         topic,
             "articles":      articles,
             "summary_path":  None,
@@ -2266,29 +2354,54 @@ def main():
             "podcast_ready": False,
             "podcast_path":  None,
             "podcast_url":   None,
-        })
+        }
 
-    # Spotlight reviews — each important review gets its own dedicated podcast,
-    # IN ADDITION TO (not instead of) any regular cluster it also appears in.
-    # Dedup against past weeks only, so this-week cluster overlap is allowed.
-    for stopic in find_spotlight_reviews(exclude_pmids=past_pmids):
-        articles = search_topic(stopic)  # uses _forced_articles internally
-        if not articles:
-            continue
-        all_articles.extend(articles)
-        nb_infos.append({
-            "topic":         stopic,
-            "articles":      articles,
-            "summary_path":  None,
-            "nb_id":         None,
-            "nb_url":        None,
-            "artifact_id":   None,
-            "podcast_ready": False,
-            "podcast_path":  None,
-            "podcast_url":   None,
-        })
+    do_reviews    = mode in ("reviews", "all")
+    do_spotlights = mode in ("spotlights", "all")
+    print("\U0001f504 Loading recent PMIDs for deduplication...")
+
+    # ── Review clusters ───────────────────────────────────────────────────────
+    # Deduplicated against the last 4 weeks of REVIEWS (kinds="reviews") PLUS
+    # this run's accumulating picks, so a paper matching two clusters lands only
+    # in the first (highest-priority) one. NOT deduplicated against past
+    # spotlights — a paper getting a spotlight must NOT be dropped from the
+    # review episodes; the review channel covers everything in scope.
+    if do_reviews:
+        past_pmids = load_recent_pmids(weeks_back=4, kinds="reviews")
+        week_pmids = set(past_pmids)
+        print("\U0001f50d Searching PubMed for review clusters...")
+        for topic in TOPICS:
+            articles = search_topic(topic, exclude_pmids=week_pmids)
+            if not articles:
+                print(f"  WARNING: No articles for {topic['label_en']}, skipping.")
+                continue
+            for a in articles:
+                week_pmids.add(str(a.get("pmid", "")))
+            all_articles.extend(articles)
+            nb_infos.append(_mk_nb(topic, articles))
+
+    # ── Spotlights ────────────────────────────────────────────────────────────
+    # Each high-signal paper gets its own dedicated deep-dive in its own RSS
+    # channel. Deduplicated against the last 4 weeks of SPOTLIGHTS only
+    # (kinds="spotlights") so the same paper isn't spotlighted two weeks running
+    # — but NOT against reviews, so a paper covered in this week's review (which
+    # ran earlier, on the reviews day) can still earn its own spotlight.
+    if do_spotlights:
+        spot_exclude = load_recent_pmids(weeks_back=4, kinds="spotlights")
+        for stopic in find_spotlight_articles(exclude_pmids=spot_exclude):
+            articles = search_topic(stopic)  # uses _forced_articles internally
+            if not articles:
+                continue
+            all_articles.extend(articles)
+            nb_infos.append(_mk_nb(stopic, articles))
 
     if not nb_infos:
+        # A spotlights-only run with no qualifying papers is NORMAL, not an
+        # error — exit cleanly (exit 0) so the VM still backs up the session.
+        if mode == "spotlights":
+            print("No spotlight articles this week — nothing to produce. "
+                  "Exiting cleanly.")
+            return
         print("ERROR: No articles found in any topic!")
         send_notification([], env)
         sys.exit(1)
@@ -2333,7 +2446,12 @@ def main():
             nb["topic"], nb["articles"], prev_for_topic,
         )
 
-    # Commit summaries to GitHub regardless of NotebookLM status
+    # Weekly text digests (take-home messages per channel + clinical questions)
+    # from the same abstracts. Written into summaries/<date>/ so the commit
+    # below picks them up. No-op without GEMINI_API_KEY.
+    generate_digests(env)
+
+    # Commit summaries (and any digests) to GitHub regardless of NotebookLM status
     print("\n\U0001f4e4 Committing summaries to GitHub...")
     commit_summaries_to_github(env)
 
@@ -2381,10 +2499,11 @@ def main():
             status = f"artifact {artifact_id}" if artifact_id else "FAILED to start"
             print(f"  {'OK' if artifact_id else 'FAIL'}: {nb['topic']['label_en']} -> {status}")
             # Pause between generation starts to avoid NotebookLM rate-limiting.
-            # Raised 10s -> 25s: with spotlights now allowed to overlap clusters
-            # plus auto-split, a busy week can reach ~15-16 episodes. At 10s we
-            # saw the 11th/12th generations fail ("FAILED to start") in May; the
-            # wider gap keeps each start request comfortably spaced.
+            # 25s gap: at 10s we saw the 11th/12th generations fail ("FAILED to
+            # start") in May. Splitting the weekly run across two days (reviews
+            # day / spotlights day) keeps each day's burst smaller, but the wide
+            # gap still matters — a heavy reviews day (lower split threshold →
+            # more parts) can still queue a dozen-plus generations.
             time.sleep(25)
 
     # ── Phase 5: Wait for all podcasts (parallel on Google's side) ────────────
@@ -2414,6 +2533,11 @@ def main():
     # ── Phase 8: Notify ───────────────────────────────────────────────────────
     send_notification(nb_infos, env)
 
+    # ── Phase 9: QC review (Gemini listens to + judges each episode) ──────────
+    # Runs last: needs the downloaded MP3s. Non-fatal, and a no-op unless
+    # GEMINI_API_KEY is set. Commits its own report.
+    run_qc(env)
+
     # ── Final summary ─────────────────────────────────────────────────────────
     print(f"\n{sep}")
     print("All done!")
@@ -2426,4 +2550,20 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Weekly psychiatry literature review + podcast pipeline.",
+    )
+    parser.add_argument(
+        "--mode",
+        choices=["reviews", "spotlights", "all"],
+        default="all",
+        help=(
+            "reviews = weekly clusters only (run on the reviews day); "
+            "spotlights = single-paper deep-dives only (run on the spotlights "
+            "day); all = both in one run (manual / legacy default)."
+        ),
+    )
+    args = parser.parse_args()
+    main(mode=args.mode)

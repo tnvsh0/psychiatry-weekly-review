@@ -1,0 +1,21 @@
+# ── Secrets — NEVER commit API keys or credentials ───────────────────────────
+# The system reads all keys from environment variables (on the VM, from GCP
+# Secret Manager). These patterns are a safety net so a local key file can
+# never be committed by accident.
+.env
+.env.*
+*.key
+*-key.txt
+*_key.txt
+gemini-api-key*
+secrets/
+service-account*.json
+*service_account*.json
+storage_state.json
+credentials.json
+
+# ── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+.venv/
+venv/

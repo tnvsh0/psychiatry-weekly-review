@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>Spotlight — פסיכיאטריית הילד והמתבגר</title>
+    <link>https://tnvsh0.github.io/psychiatry-weekly-review/feed-child-spotlight.xml</link>
+    <description>פרקים ייעודיים ומעמיקים בפסיכיאטריית הילד והמתבגר — כל פרק מוקדש למאמר מרכזי אחד (מטה-אנליזה, מחקר אקראי מבוקר, סקירה שיטתית, הנחיה קלינית או מחקר פורץ דרך) מכתבי העת המובילים. פרק-לוויין לסדרת הסקירה השבועית — מבוסס על PubMed ומופק אוטומטית.
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</description>
+    <atom:link href="https://tnvsh0.github.io/psychiatry-weekly-review/feed-child-spotlight.xml" rel="self"/>
+    <docs>http://www.rssboard.org/rss-specification</docs>
+    <generator>python-feedgen</generator>
+    <image>
+      <url>https://tnvsh0.github.io/psychiatry-weekly-review/cover-child-spotlight.png</url>
+      <title>Spotlight — פסיכיאטריית הילד והמתבגר</title>
+      <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
+    </image>
+    <language>he</language>
+    <lastBuildDate>Tue, 07 Jul 2026 13:37:16 +0000</lastBuildDate>
+    <itunes:author>Tovia Wen</itunes:author>
+    <itunes:category text="Health &amp; Fitness">
+      <itunes:category text="Medicine"/>
+    </itunes:category>
+    <itunes:image href="https://tnvsh0.github.io/psychiatry-weekly-review/cover-child-spotlight.png"/>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:owner>
+      <itunes:name>Tovia Wen</itunes:name>
+      <itunes:email>toviagpt@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:summary>פרקים ייעודיים ומעמיקים בפסיכיאטריית הילד והמתבגר — כל פרק מוקדש למאמר מרכזי אחד (מטה-אנליזה, מחקר אקראי מבוקר, סקירה שיטתית, הנחיה קלינית או מחקר פורץ דרך) מכתבי העת המובילים. פרק-לוויין לסדרת הסקירה השבועית — מבוסס על PubMed ומופק אוטומטית.
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.</itunes:summary>
+    <itunes:type>episodic</itunes:type>
+    <item>
+      <title>[סקירה] מציאת המינון האופטימלי לטיפול ב-ADHD — 2026-05-25</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Pharmacological interventions for ADHD: a systematic review and dose-effect network meta-analysis (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42134365/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-25
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42134365/spotlight_42134365.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-25-spotlight_42134365/spotlight_42134365.mp3" length="39691866" type="audio/mpeg"/>
+      <pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Pharmacological interventions for ADHD: a systematic review and dose-effect network meta-analysis (Lancet Psychiatry)
+  https://pubmed.ncbi.nlm.nih.gov/42134365/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-25
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] האפלה אבחנתית והכשל המערכתי בתסמונת דאון — 2026-05-31</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Advancing health-care access to optimise health and quality of life for children and young people with Down syndrome worldwide (Lancet Child Adolesc Health · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42190671/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-31
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-31-spotlight_42190671/spotlight_42190671.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-05-31-spotlight_42190671/spotlight_42190671.mp3" length="33715595" type="audio/mpeg"/>
+      <pubDate>Sun, 31 May 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Advancing health-care access to optimise health and quality of life for children and young people with Down syndrome worldwide (Lancet Child Adolesc Health · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42190671/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-05-31
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] הצללה אבחנתית ופערי הטיפול בתסמונת דאון — 2026-06-07</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Advancing health-care access to optimise health and quality of life for children and young people with Down syndrome worldwide (Lancet Child Adolesc Health · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42190671/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-07
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-07-spotlight_42190671/spotlight_42190671.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-07-spotlight_42190671/spotlight_42190671.mp3" length="38801048" type="audio/mpeg"/>
+      <pubDate>Sun, 07 Jun 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Advancing health-care access to optimise health and quality of life for children and young people with Down syndrome worldwide (Lancet Child Adolesc Health · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42190671/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-07
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] שינוי תרבות הצוות למניעת קשירות בילדים — 2026-06-07</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Interventions to prevent and reduce coercive measures in psychiatric and residential care for youth: a mixed-methods systematic review (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42242278/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-07
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-07-spotlight_42242278/spotlight_42242278.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-07-spotlight_42242278/spotlight_42242278.mp3" length="32656693" type="audio/mpeg"/>
+      <pubDate>Sun, 07 Jun 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Interventions to prevent and reduce coercive measures in psychiatric and residential care for youth: a mixed-methods systematic review (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42242278/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-07
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] הגבלת המטופל או ניהול חרדת המערכת — 2026-06-14</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Interventions to prevent and reduce coercive measures in psychiatric and residential care for youth: a mixed-methods systematic review (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42242278/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-14
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-14-spotlight_42242278/spotlight_42242278.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-14-spotlight_42242278/spotlight_42242278.mp3" length="38801048" type="audio/mpeg"/>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Interventions to prevent and reduce coercive measures in psychiatric and residential care for youth: a mixed-methods systematic review (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42242278/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-14
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] הילדים שמעצבים את חוקי הניסויים הקליניים — 2026-06-14</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• SPIRIT-Children and Adolescents (SPIRIT-C) 2026 extension statement: enhancing the reporting and usefulness of paediatric randomised trial protocols (Lancet Child Adolesc Health · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42283642/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-14
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-14-spotlight_42283642/spotlight_42283642.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-14-spotlight_42283642/spotlight_42283642.mp3" length="41921841" type="audio/mpeg"/>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• SPIRIT-Children and Adolescents (SPIRIT-C) 2026 extension statement: enhancing the reporting and usefulness of paediatric randomised trial protocols (Lancet Child Adolesc Health · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42283642/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-14
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] הנחיות CONSORT-C והשקיפות החדשה במחקרי ילדים ונוער — 2026-06-14</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• CONSORT-Children and Adolescents (CONSORT-C) 2026 extension statement: enhancing the reporting and impact of paediatric randomised trials (Lancet Child Adolesc Health · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42283643/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-14
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-14-spotlight_42283643/spotlight_42283643.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-14-spotlight_42283643/spotlight_42283643.mp3" length="40064007" type="audio/mpeg"/>
+      <pubDate>Sun, 14 Jun 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• CONSORT-Children and Adolescents (CONSORT-C) 2026 extension statement: enhancing the reporting and impact of paediatric randomised trials (Lancet Child Adolesc Health · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42283643/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-14
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+    <item>
+      <title>[סקירה] קנאביס כגורם תורם לפסיכוזה בקרב מתבגרים — 2026-06-28</title>
+      <description>פרק זה מוקדש למאמר אחד:
+
+• Relationships between cannabis use and mental disorders: assessing the coherence of evidence from studies with different methodologies (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42309106/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-28
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-28-spotlight_42309106/spotlight_42309106.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-06-28-spotlight_42309106/spotlight_42309106.mp3" length="27556299" type="audio/mpeg"/>
+      <pubDate>Sun, 28 Jun 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:summary>פרק זה מוקדש למאמר אחד:
+
+• Relationships between cannabis use and mental disorders: assessing the coherence of evidence from studies with different methodologies (Lancet Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42309106/
+
+סדרה: Spotlight — פסיכיאטריית הילד והמתבגר
+תאריך הסקירה: 2026-06-28
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור המקורי.
+
+— Spotlight Review —</itunes:summary>
+    </item>
+  </channel>
+</rss>

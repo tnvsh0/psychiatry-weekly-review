@@ -16,8 +16,9 @@ static IP from the start. The VM stays on 24/7, so the IP never changes.
 weekly-review-vm (me-west1-b)        Static IP: 34.165.125.35
 ├── Always on (24/7, ~$16/mo)
 ├── ~/.notebooklm/storage_state.json   ← created via Chrome Remote Desktop
-├── cron: keepalive every 6h           ← pings from same IP
-└── cron: weekly review Sunday 06:00   ← uses same IP
+├── cron: keepalive every 6h              ← pings from same IP
+├── cron: reviews    Sunday 06:00 UTC     ← uses same IP
+└── cron: spotlights Wednesday 06:00 UTC  ← uses same IP
 ```
 
 ## One-time setup (after vm/install.sh has run on the VM)
@@ -77,13 +78,42 @@ That's the old broken flow.
 
 ## Daily/weekly automation (handled by VM cron)
 
-| When             | What                          |
-|------------------|-------------------------------|
-| Every 6 hours    | `notebooklm list` ping        |
-| Sunday 06:00 UTC | Full weekly review + podcasts |
+| When                | What                                        |
+|---------------------|---------------------------------------------|
+| Every 6 hours       | `notebooklm list` ping                      |
+| Sunday 06:00 UTC    | REVIEWS run — weekly cluster podcasts        |
+| Wednesday 06:00 UTC | SPOTLIGHTS run — single-paper deep-dives     |
+
+The weekly run is split across two days so each day fires fewer podcast
+generations and stays under NotebookLM's rate limits. `run_review.sh reviews`
+runs Sunday; `run_review.sh spotlights` runs Wednesday.
+
+## Optional features (weekly digests + QC review)
+
+Two extra, self-contained features are OFF by default and turn on together when
+**one** Gemini API key exists as a GCP secret (read by `vm/run_review.sh`).
+Gemini is multimodal, so the same key powers both the text digests and the QC
+step, which hands the episode audio straight to Gemini — no separate
+speech-to-text service or ffmpeg needed.
+
+| Feature | What it produces |
+|---------|------------------|
+| **Digests** (items 7+8) | `summaries/<date>/takehome-<channel>.md` (per-channel take-home messages) + `summaries/<date>/clinical-questions.md` (questions to ask patients, grounded in the week's findings) |
+| **QC review** | `summaries/<date>/qc-report.md` — Gemini listens to each episode and scores accuracy/coverage/fluency vs the source abstracts; pushes an ntfy summary |
+
+To enable, create the secret in the same GCP project:
+
+```bash
+printf '%s' "AI..." | gcloud secrets create gemini-api-key --data-file=- --project=psych-research-agent
+```
+
+If the secret is missing, both steps skip themselves — the podcasts still run.
+Model is configurable via `DIGEST_MODEL` / `QC_MODEL` env (default
+`gemini-2.5-flash`; use `gemini-2.5-pro` for a stricter QC judge). Rough cost
+with Flash: a few cents per week.
 
 ## Cost
 
 - e2-small VM running 24/7 in me-west1: ~$13/mo
 - Static external IP (already in use): ~$3/mo
-- **Total: ~$16/mo (~₪60)**
+- **Total: ~$16/mo (~₪60)** (digests + QC add only cents/week on Gemini Flash)

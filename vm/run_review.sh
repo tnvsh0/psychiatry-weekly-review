@@ -1,12 +1,18 @@
 #!/bin/bash
-# Weekly psychiatry review — runs on the VM every Sunday 06:00 UTC.
-# Triggered by cron. VM stays running 24/7 with static IP so the NotebookLM
-# session (created by Chrome Remote Desktop login from inside the VM) keeps
-# working from the same IP that Google originally validated against.
+# Weekly psychiatry review — runs on the VM via cron. The weekly run is split
+# across two days to stay under NotebookLM's generation rate limits:
+#   run_review.sh reviews     (Sunday)    — weekly clusters
+#   run_review.sh spotlights  (Wednesday) — single-paper deep-dives
+#   run_review.sh             (no arg)    — everything in one run (manual)
+# VM stays running 24/7 with static IP so the NotebookLM session (created by
+# Chrome Remote Desktop login from inside the VM) keeps working from the same
+# IP that Google originally validated against.
 
-LOG=/var/log/weekly-review-$(date +%Y-%m-%d).log
+MODE="${1:-all}"   # reviews | spotlights | all
+
+LOG=/var/log/weekly-review-${MODE}-$(date +%Y-%m-%d).log
 exec >> "$LOG" 2>&1
-echo "=== Weekly review: $(date) ==="
+echo "=== Weekly review (mode=$MODE): $(date) ==="
 
 export PATH=/opt/venv/bin:$PATH
 # Auth was created by 'User' inside the VM via Chrome Remote Desktop.
@@ -36,10 +42,16 @@ export GH_REPO="tnvsh0/psychiatry-weekly-review"
 export NTFY_TOPIC="psychiatry-review-tnvsh"
 export UI_URL="https://psychiatry-ui-690391711540.us-central1.run.app"
 
+# Optional API key — enables the weekly digests (take-home + clinical
+# questions) AND the QC review (Gemini listens to each episode and scores it).
+# One key does both. If the secret does not exist yet, the var is left empty
+# and those steps skip themselves silently.
+export GEMINI_API_KEY=$(gcloud secrets versions access latest --secret=gemini-api-key --project=psych-research-agent 2>/dev/null || echo "")
+
 # sudo strips PATH for security even with -E, so we re-set it via env.
 # weekly_review.py shells out to `notebooklm` and `gh` — both must be findable.
 sudo -u User -E env "PATH=/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
-    /opt/venv/bin/python -u scripts/weekly_review.py
+    /opt/venv/bin/python -u scripts/weekly_review.py --mode "$MODE"
 EXIT_CODE=$?
 
 # Back up the (possibly refreshed) session to Secret Manager
