@@ -1,0 +1,42 @@
+[
+  {
+    "pmid": "42409040",
+    "title": "Defining neonatal encephalopathy: an international real-time Delphi consensus process",
+    "journal": "Lancet Child Adolesc Health",
+    "authors": "Branagan A et al.",
+    "pub_date": "2026 Jul 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42409040/",
+    "impact_factor": 45.7,
+    "abstract": "Neonatal encephalopathy refers to disturbed neurological function in the neonatal period and has multiple potential aetiologies. A systematic review showed that neonatal encephalopathy, hypoxic-ischaemic encephalopathy, and perinatal asphyxia are often used interchangeably in clinical trials and communications. We aimed to establish an international, consensus-based definition as a preliminary step towards standardising terminology. Findings from a systematic review of definitions guided the creation of a real-time Delphi survey. Three consensus meetings were held to finalise the definition, which was approved by the steering committee. Participants were recruited from a broad range of stakeholder groups, including health-care providers; researchers; parents, family members, guardians, or representatives of children with neonatal encephalopathy; or adults who had neonatal encephalopathy as infants. From Feb 1 to May 31, 2024, the survey received 235 complete and 143 partial responses. Respondents were from 52 countries, with 75 (20%) from low-income and middle-income countries. Although most respondents were health-care workers, 23 (6%) represented parents and caregivers. 62 individuals participated in at least one consensus development meeting. The final definition was organised into primary, secondary, and tertiary domains. The primary domain is as follows: neonatal encephalopathy is a heterogeneous clinical condition characterised by abnormal or impaired brain function with multiple potential causes. It presents with an altered level of consciousness and may include seizures, abnormal primitive and deep tendon reflexes, altered muscle tone, posture or movements, or an abnormal brain-related breathing pattern. Neonatal encephalopathy can be associated with a heightened risk of morbidity and mortality. This Delphi process established a novel consensus definition for neonatal encephalopathy, with contributions from a diverse range of international stakeholders, including families. Adopting consensus-based terminology and definitions will enhance communication among health-care professionals and families, facilitate research and data synthesis, improve the interpretation and application of research findings, and ultimately improve care.",
+    "has_full_text": false,
+    "pmc_id": null,
+    "topic_id": "spotlight_42409040",
+    "topic_he": "מאמר סקירה: Branagan A — Defining neonatal encephalopathy: an international…",
+    "topic_en": "Spotlight: Branagan A — Defining neonatal encephalopathy: an international…",
+    "pubtype": [
+      "Journal Article",
+      "Review"
+    ],
+    "study_type_he": "מאמר סקירה"
+  },
+  {
+    "pmid": "42403080",
+    "title": "Brain Aging in Specific Phobia: An ENIGMA-Anxiety Mega-Analysis",
+    "journal": "Hum Brain Mapp",
+    "authors": "Blake KV et al.",
+    "pub_date": "2026 Jul",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42403080/",
+    "impact_factor": 14.5,
+    "abstract": "Specific phobia (SPH) is a prevalent anxiety disorder and may involve advanced biological aging. However, limited brain age research has been conducted in anxiety disorders. This mega-analysis investigated brain aging in SPH participants within the ENIGMA-Anxiety Working Group. 3D brain structural MRI scans from 17 international samples (600 SPH individuals, of whom 504 formally diagnosed and 96 questionnaire-based cases; 1134 controls; age range: 22-75 years) were processed with FreeSurfer. Brain age was estimated from 77 subcortical and cortical regions with a publicly available ENIGMA brain age model. The brain-predicted age difference (brain-PAD) was calculated as brain age minus chronological age. Linear mixed-effects models examined group differences in brain-PAD and moderation by age. No significant group difference in brain-PAD manifested (β diagnosis  [SE] = 0.37 years [0.43], p = 0.39). A negative diagnosis-by-age interaction was identified, which was most pronounced in formally diagnosed SPH (β diagnosis-by-age  = -0.08 [0.03], pFDR = 0.02). This interaction remained significant when excluding participants with anxiety comorbidities, depressive comorbidities, and medication use. Post hoc analyses revealed a group difference for formal SPH diagnosis in younger participants (22-35 years; β diagnosis  = 1.20 [0.60], p < 0.05, mixed-effects d [95% confidence interval] = 0.14 [0.00-0.28]), but not older participants (36-75 years; β diagnosis  = 0.07 [0.65], p = 0.91). Brain aging did not relate to SPH in the full sample. However, a diagnosis-by-age interaction was observed across analyses, and was strongest in formally diagnosed SPH. Post hoc analyses showed subtle advanced brain aging in young adults with formally diagnosed SPH. Taken together, these findings indicate the importance of clinical severity, impairment, and persistence, and may suggest a slightly earlier end to maturational processes or subtle decline of brain structure in SPH.",
+    "has_full_text": false,
+    "pmc_id": null,
+    "topic_id": "spotlight_42403080",
+    "topic_he": "מטה-אנליזה: Blake KV — Brain Aging in Specific Phobia: An ENIGMA-Anxiety …",
+    "topic_en": "Spotlight: Blake KV — Brain Aging in Specific Phobia: An ENIGMA-Anxiety …",
+    "pubtype": [
+      "Journal Article",
+      "Meta-Analysis"
+    ],
+    "study_type_he": "מטה-אנליזה"
+  }
+]
