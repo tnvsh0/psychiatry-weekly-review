@@ -1006,46 +1006,90 @@ MAX_SPOTLIGHT_TOTAL       = 8   # ceiling across all areas in one run
 MAX_SPOTLIGHT_REVIEWS     = MAX_SPOTLIGHT_TOTAL
 
 
-# Compact keyword lists used ONLY to bucket a spotlight into an area for the
-# per-channel cap. The authoritative RSS routing (which can cross-list one
-# episode into several feeds) lives in generate_rss.py; here we just need each
-# article's PRIMARY area so the caps stay balanced.
-_SPOTLIGHT_CHILD_KW = [
-    "child", "adolesc", "pediatric", "paediatric", "youth", "infant",
-    "adhd", "attention-deficit", "attention deficit", "autism", "asd",
-    "school-age", "preschool", "perinatal", "neurodevelopment",
-]
-_SPOTLIGHT_THERAPY_KW = [
-    "psychotherap", "cognitive behavioral", "cognitive-behavioral", "cbt",
-    "dialectical behavior", "dbt", "psychodynamic", "mentaliz",
-    "interpersonal therapy", "exposure therapy", "trauma-focused",
-    "parent training", "parent-child interaction",
-]
+# Spotlights are now SELECTED FROM the weekly review articles (2026-07), not
+# from a separate psychiatry-only search. Each review cluster maps to one
+# spotlight channel; we pick the top-scoring reviewed papers per channel. This
+# guarantees every domain (neuroscience, psychotherapy, cognition, development —
+# not just psychiatry) can earn a spotlight, drawn from its own journals.
+CLUSTER_TO_SPOTLIGHT_CHANNEL: dict[str, str] = {
+    "child_adolescent_core":        "child",
+    "child_adolescent_highimpact":  "child",
+    "child_adolescent_misc":        "child",
+    "child_development":            "child",
+    "general_psychiatry_clinical":  "psychiatry",
+    "general_psychiatry_bio":       "psychiatry",
+    "neuroscience":                 "psychiatry",
+    "psychotherapy":                "therapy",
+    "cognition":                    "therapy",
+    "behavioral_sciences":          "therapy",
+}
+
+# Human-readable channel name for spoken cross-references.
+SPOTLIGHT_CHANNEL_HE: dict[str, str] = {
+    "child":      "פסיכיאטריית הילד והמתבגר",
+    "psychiatry": "פסיכיאטריה ומדעי המוח",
+    "therapy":    "פסיכותרפיה וקוגניציה",
+}
+
+# Tier-1 eligibility gate: a paper may earn a spotlight only if it comes from a
+# curated top journal of its domain. Built from the clusters' own journal lists
+# (per-domain quality, so it doesn't penalise lower-IF psychotherapy journals)
+# plus the elite psychiatry list. A paper from a broad-MeSH pull in a non-listed
+# journal is reviewed but NOT spotlight-eligible.
+SPOTLIGHT_ELIGIBLE_JOURNALS: set[str] = {
+    j.lower().strip()
+    for t in TOPICS for j in t.get("journals", [])
+} | {j.lower().strip() for j in SPOTLIGHT_JOURNALS_PSYCHIATRY} | {
+    # PubMed abbreviation variants of the above (PubMed's 'source' can differ
+    # from our search term, e.g. it emits "Ment" for "Mental").
+    "child adolesc ment health",
+    "j am acad child adolesc psychiatry",
+}
 
 
-def _spotlight_area(article: dict) -> str:
-    """Bucket a spotlight article into child / therapy / psychiatry (in that
-    priority order) for per-channel capping. Matches the English title."""
-    t = (article.get("title") or "").lower()
-    if any(kw in t for kw in _SPOTLIGHT_CHILD_KW):
-        return "child"
-    if any(kw in t for kw in _SPOTLIGHT_THERAPY_KW):
-        return "therapy"
-    return "psychiatry"
+def _spotlight_eligible_journal(journal: str) -> bool:
+    """Tier-1 gate: is this journal in the curated per-domain top-journal set?
+
+    EXACT (normalized) match — deliberately NOT a loose substring match, so that
+    short elite names like "Brain" don't wrongly admit "Brain Sci" / "Brain Res"
+    etc. A paper whose journal abbreviation isn't recognised is simply not
+    spotlight-eligible (it's still reviewed) — a safe miss."""
+    name = (journal or "").lower().strip()
+    return bool(name) and name in SPOTLIGHT_ELIGIBLE_JOURNALS
+
+
+# Content-signal keywords (matched in title + abstract) that mark a paper as
+# especially spotlight-worthy: a new drug, a new mechanism/target, or a
+# policy/guideline document. These add to the importance score (tier-2 content).
+_SPOT_KW_NEW_DRUG = [
+    "first-in-class", "first in class", "newly approved", "fda approval",
+    "new drug", "novel agent", "novel compound", "novel antidepressant",
+    "novel antipsychotic", "novel treatment", "new treatment", "new medication",
+]
+_SPOT_KW_NEW_MECHANISM = [
+    "novel mechanism", "new mechanism", "mechanism of action", "novel target",
+    "new target", "therapeutic target", "novel pathway",
+]
+_SPOT_KW_POLICY = [
+    "guideline", "practice parameter", "consensus statement", "consensus guideline",
+    "recommendation", "policy statement", "position statement",
+]
 
 
 def _spotlight_score(article: dict, has_signal_author: bool) -> int:
     """Importance heuristic — higher = more spotlight-worthy.
 
-    Rewards strong study designs (meta-analysis, RCT, guideline), elite-journal
-    impact factor, and named high-signal authors. A plain narrative review in a
-    mid-tier journal scores low and is filtered out by SPOTLIGHT_MIN_SCORE."""
+    Tier-2 content score (tier-1 eligibility is the curated per-domain journal
+    list, checked separately). Rewards strong study designs (meta-analysis, RCT,
+    guideline), elite-journal impact factor, high-value content (new drug / new
+    mechanism / policy), and named high-signal authors."""
     score = 0
     pts = [str(t).lower() for t in article.get("pubtype", [])]
 
     def has(*needles: str) -> bool:
         return any(n in t for t in pts for n in needles)
 
+    # Study design.
     if has("meta-analysis"):
         score += 3
     elif has("systematic review"):
@@ -1061,6 +1105,7 @@ def _spotlight_score(article: dict, has_signal_author: bool) -> int:
     if score == 0 and has("review"):
         score += 1   # narrative review with no stronger signal
 
+    # Journal impact factor.
     if_val = article.get("impact_factor", 0.0)
     if if_val >= 40:        # Lancet Psychiatry, World Psychiatry, NEJM, Lancet
         score += 3
@@ -1069,9 +1114,24 @@ def _spotlight_score(article: dict, has_signal_author: bool) -> int:
     elif if_val >= 10:      # AJP, Mol/Biol Psychiatry, JAACAP
         score += 1
 
+    # High-value content (title + abstract keywords).
+    text = f"{article.get('title', '')} {article.get('abstract', '')}".lower()
+    if any(k in text for k in _SPOT_KW_NEW_DRUG):
+        score += 2       # new drug / first-in-class
+    if any(k in text for k in _SPOT_KW_NEW_MECHANISM):
+        score += 2       # new mechanism / therapeutic target
+    if any(k in text for k in _SPOT_KW_POLICY):
+        score += 2       # policy / guideline (also caught by pubtype above; ok)
+
     if has_signal_author:
         score += 2
     return score
+
+
+def _has_signal_author(article: dict) -> bool:
+    """True if any high-signal author appears in the article's author string."""
+    authors_lc = article.get("authors", "").lower()
+    return any(name.lower() in authors_lc for name in SPOTLIGHT_HIGH_SIGNAL_AUTHORS)
 
 
 def _esearch_reldate(query: str, reldate: int, retmax: int = 12) -> list[str]:
@@ -1091,9 +1151,21 @@ def _esearch_reldate(query: str, reldate: int, retmax: int = 12) -> list[str]:
         time.sleep(0.4)
 
 
-def _spotlight_prompt(a: dict) -> str:
+def _spotlight_prompt(a: dict, review_channel_he: str = "") -> str:
     """Single-paper deep-dive prompt, adapted to the article's study type.
-    Used to be review-only; now covers trials, cohorts, guidelines too."""
+    Covers trials, cohorts, guidelines, reviews. `review_channel_he` (when set)
+    adds a spoken cross-reference back to the weekly-review channel that briefly
+    covered this same paper a few days earlier."""
+    xref = ""
+    if review_channel_he:
+        xref = (
+            "\n\n"
+            "CROSS-REFERENCE (say once, naturally, near the start): this same "
+            f"paper was covered briefly in this week's weekly-review episode of "
+            f"\"{review_channel_he}\". Listeners who heard the overview will "
+            "recognise it; this dedicated episode goes deeper because the paper "
+            "is especially important. Do NOT name a specific episode title.\n"
+        )
     return (
         f"This is a DEDICATED, single-paper deep-dive podcast on one "
         f"high-signal article:\n"
@@ -1121,131 +1193,179 @@ def _spotlight_prompt(a: dict) -> str:
         "If this is a Stahl-style psychopharmacology paper, name the receptors, "
         "mechanisms, pharmacokinetics, and clinical pearls carefully.\n"
         "Generate the podcast entirely in Hebrew."
+        + xref
     )
 
 
-def find_spotlight_articles(exclude_pmids: set[str] | None = None) -> list[dict]:
-    """Find recent high-signal articles (ANY study type) from top-tier journals
-    that each deserve a dedicated single-paper deep-dive podcast.
+def build_spotlight_topic(rec: dict) -> dict:
+    """Build a TOPICS-shaped topic dict from a selection record
+    {pmid, channel, score, source_topic_id, article}. The article carries a
+    `spotlight_channel` field so save_articles_json + generate_rss route it to
+    the right spotlight feed (no keyword guessing)."""
+    a = dict(rec["article"])
+    channel = rec["channel"]
+    a["spotlight_channel"] = channel
+    pmid = str(a["pmid"])
+    title_short = a["title"][:50] + ("…" if len(a["title"]) > 50 else "")
+    first_author = a["authors"].split(",")[0].replace(" et al.", "").strip()
+    study_he = a.get("study_type_he") or "מאמר"
+    return {
+        "id":              f"spotlight_{pmid}",
+        "label_en":        f"Spotlight: {first_author} — {title_short}",
+        "label_he":        f"{study_he}: {first_author} — {title_short}",
+        "journals":        [],
+        "broad":           [],
+        "max_articles":    1,
+        "_forced_articles": [a],
+        "spotlight_channel": channel,
+        "podcast_prompt":  _spotlight_prompt(
+            a, review_channel_he=SPOTLIGHT_CHANNEL_HE.get(channel, ""),
+        ),
+    }
 
-    Each return value is a topic dict (same shape as entries in TOPICS) with a
-    `_forced_articles` field carrying the single article. search_topic() picks
-    this up and skips PubMed.
 
-    Selection: pull recent candidates from the elite psychiatry journal list
-    (any type) plus strong-design papers by named signal authors, then keep
-    only those scoring >= SPOTLIGHT_MIN_SCORE (see _spotlight_score), and pick
-    greedily under the per-area and total caps.
+def select_spotlights(nb_infos: list[dict]) -> list[dict]:
+    """Pick the spotlight papers FROM this run's review articles.
 
-    Looks back 14 days (broader than the 8-day window used for regular topics)
-    so an important paper isn't missed if it was published just before the run.
-    `exclude_pmids` drops anything already covered in a recent week.
+    Tier-1 gate: the paper's journal is in the curated per-domain top-journal
+    set (_spotlight_eligible_journal). Tier-2: importance score (_spotlight_
+    score). Each review cluster maps to one channel (CLUSTER_TO_SPOTLIGHT_
+    CHANNEL); we take the top MAX_SPOTLIGHT_PER_CHANNEL papers per channel,
+    guaranteeing every domain is represented, not just psychiatry.
+
+    Returns selection records: {pmid, channel, score, source_topic_id, article}.
     """
-    exclude_pmids = exclude_pmids or set()
-    print("\n🔍 Searching for spotlight articles (last 14 days)...")
-
-    psy_journals = "(" + " OR ".join(
-        f'"{j}"[Journal]' for j in SPOTLIGHT_JOURNALS_PSYCHIATRY
-    ) + ")"
-    author_clause = "(" + " OR ".join(
-        f'"{a}"[Author]' for a in SPOTLIGHT_HIGH_SIGNAL_AUTHORS
-    ) + ")"
-    # Strong designs only for the author route — avoid pulling every paper a
-    # prolific author co-signs (editorials, letters, minor commentaries).
-    strong_types = (
-        '("review"[Publication Type] OR "systematic review"[Publication Type] '
-        'OR "meta-analysis"[Publication Type] '
-        'OR "randomized controlled trial"[Publication Type] '
-        'OR "practice guideline"[Publication Type] OR "guideline"[Publication Type])'
-    )
-
-    queries = [
-        # 1. ALL recent articles in the elite psychiatry journal list (any
-        #    type) — the score gate below keeps only the high-signal ones.
-        psy_journals,
-        # 2. Strong-design papers by named high-signal authors — catches
-        #    Stahl-class work even in lower-IF journals.
-        f'{strong_types} AND {author_clause}',
-    ]
-
-    seen: dict[str, bool] = {}
-    skipped_dup = 0
-    for q in queries:
-        ids = _esearch_reldate(q, reldate=14, retmax=25)
-        for p in ids:
-            if p in seen:
-                continue
-            if p in exclude_pmids:
-                skipped_dup += 1
-                continue
-            seen[p] = True
-    if skipped_dup:
-        print(f"  Skipped {skipped_dup} article(s) already covered in recent weeks")
-
-    if not seen:
-        print("  No spotlight candidates this week.")
-        return []
-
-    articles = _esummary(list(seen.keys()), "Spotlight")
-    for a in articles:
-        a["impact_factor"] = get_journal_if(a["journal"])
-
-    known_authors_lc = {a.lower() for a in SPOTLIGHT_HIGH_SIGNAL_AUTHORS}
-    def _has_signal_author(article: dict) -> bool:
-        authors_lc = article.get("authors", "").lower()
-        return any(name in authors_lc for name in known_authors_lc)
-
-    # Score + gate.
-    scored: list[dict] = []
-    for a in articles:
-        s = _spotlight_score(a, _has_signal_author(a))
-        if s >= SPOTLIGHT_MIN_SCORE:
-            a["_spot_score"] = s
-            scored.append(a)
-    scored.sort(key=lambda a: (-a["_spot_score"], -a["impact_factor"]))
-
-    # Greedy pick under per-area + total caps so no single field dominates.
-    picked: list[dict] = []
-    per_area = {"child": 0, "therapy": 0, "psychiatry": 0}
-    for a in scored:
-        if len(picked) >= MAX_SPOTLIGHT_TOTAL:
-            break
-        area = _spotlight_area(a)
-        if per_area[area] >= MAX_SPOTLIGHT_PER_CHANNEL:
+    by_channel: dict[str, list[tuple]] = {"child": [], "psychiatry": [], "therapy": []}
+    for nb in nb_infos:
+        base = nb["topic"]["id"].split("_part")[0]
+        if base.startswith("spotlight_"):
             continue
-        per_area[area] += 1
-        picked.append(a)
+        channel = CLUSTER_TO_SPOTLIGHT_CHANNEL.get(base)
+        if not channel:
+            continue
+        for a in nb["articles"]:
+            if not _spotlight_eligible_journal(a.get("journal", "")):
+                continue
+            s = _spotlight_score(a, _has_signal_author(a))
+            if s >= SPOTLIGHT_MIN_SCORE:
+                by_channel[channel].append((s, a, nb["topic"]["id"]))
 
-    if not picked:
-        print("  No spotlight articles this week (after scoring/caps).")
+    selection: list[dict] = []
+    seen: set[str] = set()
+    for channel in ("child", "psychiatry", "therapy"):
+        cands = sorted(
+            by_channel[channel],
+            key=lambda x: (-x[0], -x[1].get("impact_factor", 0.0)),
+        )
+        picked = 0
+        for s, a, tid in cands:
+            if picked >= MAX_SPOTLIGHT_PER_CHANNEL:
+                break
+            pmid = str(a.get("pmid", ""))
+            if not pmid or pmid in seen:
+                continue
+            seen.add(pmid)
+            selection.append({
+                "pmid": pmid, "channel": channel, "score": s,
+                "source_topic_id": tid, "article": a,
+            })
+            picked += 1
+
+    counts = {c: sum(1 for r in selection if r["channel"] == c)
+              for c in ("child", "psychiatry", "therapy")}
+    print(f"  Spotlight selection: {len(selection)} paper(s) "
+          f"[child:{counts['child']} psychiatry:{counts['psychiatry']} "
+          f"therapy:{counts['therapy']}]")
+    for r in selection:
+        a = r["article"]
+        print(f"    • [{r['channel']}] score {r['score']} · {a['journal']} · "
+              f"{a['title'][:55]}")
+    return selection
+
+
+def save_spotlight_selection(selection: list[dict], date_str: str) -> None:
+    """Persist the spotlight selection so the spotlights run (a few days later)
+    can generate exactly these papers — no fresh search, perfect sync with the
+    reviews. Committed with the rest of summaries/<date>/."""
+    out_dir = Path("summaries") / date_str
+    out_dir.mkdir(parents=True, exist_ok=True)
+    data = [{
+        "pmid": r["pmid"], "channel": r["channel"], "score": r["score"],
+        "source_topic_id": r["source_topic_id"], "article": r["article"],
+    } for r in selection]
+    (out_dir / "spotlight-selection.json").write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8",
+    )
+    print(f"  Saved spotlight selection: "
+          f"summaries/{date_str}/spotlight-selection.json ({len(data)} paper(s))")
+
+
+def load_spotlight_selection(max_age_days: int = 6) -> list[dict]:
+    """Load the most recent spotlight-selection.json from THIS week's reviews
+    run (strictly before today, within max_age_days so we never resurrect an
+    old week's selection). Returns [] if none is recent enough."""
+    sum_dir = Path("summaries")
+    if not sum_dir.exists():
         return []
+    cutoff = (TODAY - timedelta(days=max_age_days)).strftime("%Y-%m-%d")
+    dates: list[str] = []
+    for sub in sum_dir.iterdir():
+        if not sub.is_dir():
+            continue
+        try:
+            datetime.strptime(sub.name, "%Y-%m-%d")
+        except ValueError:
+            continue
+        if (sub.name < DATE_STR and sub.name >= cutoff
+                and (sub / "spotlight-selection.json").exists()):
+            dates.append(sub.name)
+    if not dates:
+        print("  No recent spotlight selection found "
+              "(the reviews run may not have produced one).")
+        return []
+    date = max(dates)
+    try:
+        data = json.loads(
+            (sum_dir / date / "spotlight-selection.json").read_text(encoding="utf-8")
+        )
+    except Exception as e:
+        print(f"  Warning: could not read spotlight selection: {e}")
+        return []
+    print(f"  Loaded spotlight selection from {date}: {len(data)} paper(s).")
+    return data if isinstance(data, list) else []
 
-    print(f"  Found {len(picked)} spotlight article(s) "
-          f"[child:{per_area['child']} psychiatry:{per_area['psychiatry']} "
-          f"therapy:{per_area['therapy']}]:")
-    for a in picked:
-        print(f"    • [{a.get('study_type_he', '?')}] {a['journal']} "
-              f"(IF {a['impact_factor']:.1f}, score {a['_spot_score']}): "
-              f"{a['title'][:60]}")
 
-    spotlight_topics: list[dict] = []
-    for a in picked:
-        pmid = a["pmid"]
-        # Short label — notebook titles have length limits in NotebookLM
-        title_short = a["title"][:50] + ("…" if len(a["title"]) > 50 else "")
-        first_author = a["authors"].split(",")[0].replace(" et al.", "").strip()
-        study_he = a.get("study_type_he") or "מאמר"
-        spotlight_topics.append({
-            "id":       f"spotlight_{pmid}",
-            "label_en": f"Spotlight: {first_author} — {title_short}",
-            "label_he": f"{study_he}: {first_author} — {title_short}",
-            "journals": [],
-            "broad":    [],
-            "max_articles": 1,
-            "_forced_articles": [a],
-            "podcast_prompt": _spotlight_prompt(a),
-        })
-    return spotlight_topics
+def wire_review_spotlight_xrefs(nb_infos: list[dict], selection: list[dict]) -> None:
+    """Inject a spoken cross-reference into each REVIEW cluster whose articles
+    include a paper chosen for a spotlight, so the review episode tells listeners
+    a dedicated deep-dive is coming in the matching spotlight channel."""
+    if not selection:
+        return
+    sel_pmids = {r["pmid"] for r in selection}
+    n = 0
+    for nb in nb_infos:
+        if nb["topic"]["id"].split("_part")[0].startswith("spotlight_"):
+            continue
+        titles = [a.get("title", "") for a in nb["articles"]
+                  if str(a.get("pmid", "")) in sel_pmids]
+        if not titles:
+            continue
+        directive = (
+            "\n\n"
+            "========================================================================\n"
+            "CROSS-REFERENCE (say naturally when you reach the paper):\n"
+            "========================================================================\n"
+            "One or more papers in this review will ALSO get their own dedicated, "
+            "in-depth 'spotlight' episode in a few days, in the matching spotlight "
+            "channel, because they are especially important. When you reach such a "
+            "paper, cover it here as part of the review and invite interested "
+            "listeners to hear the deep-dive in the spotlight channel. The papers:\n"
+            + "".join(f"  • \"{t}\"\n" for t in titles)
+        )
+        nb["xref_directive"] = nb.get("xref_directive", "") + directive
+        n += 1
+    if n:
+        print(f"  Wired spotlight cross-references into {n} review cluster(s).")
 
 
 # -- Step 2: Fetch article text (full text via PMC when available) -------------
@@ -1494,6 +1614,10 @@ def save_articles_json(nb_infos: list[dict]) -> None:
                 "topic_en":      topic["label_en"],
                 "pubtype":       a.get("pubtype", []),
                 "study_type_he": a.get("study_type_he", "מאמר מחקרי"),
+                # Set on spotlight articles so generate_rss routes them to the
+                # right spotlight feed by the channel assigned on the reviews day
+                # (no keyword guessing). Absent/None on regular review articles.
+                "spotlight_channel": a.get("spotlight_channel"),
             })
     out_path = out_dir / "articles.json"
     out_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -2201,70 +2325,9 @@ def _clean_cluster_label(label_he: str) -> str:
     return label_he.strip()
 
 
-def compute_cross_references(nb_infos: list[dict]) -> None:
-    """Wire spoken cross-references between a spotlight and the regular cluster
-    that also contains the same paper this week. Mutates nb_infos in place,
-    adding an `xref_directive` (English prompt instruction) to both sides.
-
-    Titles of the OTHER episode are NOT known at prompt time (NotebookLM names
-    each artifact only after generation), so the cross-references are generic:
-    'a separate dedicated episode' / 'the weekly overview of <area>'.
-    """
-    # Map each spotlight nb to its single paper's PMID
-    spotlights = [nb for nb in nb_infos
-                  if nb["topic"]["id"].startswith("spotlight_")]
-    clusters = [nb for nb in nb_infos
-                if not nb["topic"]["id"].startswith("spotlight_")]
-    if not spotlights:
-        return
-
-    n_links = 0
-    for snb in spotlights:
-        if not snb["articles"]:
-            continue
-        spmid = str(snb["articles"][0].get("pmid", ""))
-        s_title = snb["articles"][0].get("title", "")
-        # Find a cluster that also contains this paper
-        for cnb in clusters:
-            if any(str(a.get("pmid", "")) == spmid for a in cnb["articles"]):
-                area = _clean_cluster_label(cnb["topic"]["label_he"])
-
-                # Spotlight side: note it also appears in the weekly overview.
-                snb["xref_directive"] = (
-                    "\n\n"
-                    "========================================================================\n"
-                    "CROSS-REFERENCE (say this naturally during the episode):\n"
-                    "========================================================================\n"
-                    f"This same paper also appears, more briefly, inside this week's "
-                    f"weekly-overview episode on {area} (פרק הסקירה השבועית של "
-                    f"\"{area}\"). Mention this once, naturally — e.g. that listeners "
-                    f"who heard the overview will recognise this paper, and that this "
-                    f"dedicated episode goes deeper because the review is especially "
-                    f"notable and important. Do NOT name a specific episode title.\n"
-                )
-
-                # Cluster side: note a dedicated episode exists for this paper.
-                directive = cnb.get("xref_directive", "")
-                if not directive:
-                    directive = (
-                        "\n\n"
-                        "========================================================================\n"
-                        "CROSS-REFERENCE (say this naturally when you reach the paper):\n"
-                        "========================================================================\n"
-                        "One or more papers in this overview ALSO have their own dedicated, "
-                        "in-depth 'spotlight' episode this week because they are especially "
-                        "important reviews. When you reach such a paper, cover it briefly "
-                        "here as part of the overview and mention that a separate, dedicated "
-                        "episode goes deeper into it. The papers are:\n"
-                    )
-                directive += f"  • \"{s_title}\"\n"
-                cnb["xref_directive"] = directive
-
-                n_links += 1
-                break
-
-    if n_links:
-        print(f"  Cross-referenced {n_links} spotlight(s) with their clusters.")
+# (Old compute_cross_references() removed 2026-07: spotlight↔review cross-refs
+#  are now wired directly — the review side by wire_review_spotlight_xrefs(), the
+#  spotlight side by _spotlight_prompt(review_channel_he=...).)
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
@@ -2356,8 +2419,7 @@ def main(mode: str = "all"):
             "podcast_url":   None,
         }
 
-    do_reviews    = mode in ("reviews", "all")
-    do_spotlights = mode in ("spotlights", "all")
+    do_reviews = mode in ("reviews", "all")
     print("\U0001f504 Loading recent PMIDs for deduplication...")
 
     # ── Review clusters ───────────────────────────────────────────────────────
@@ -2380,56 +2442,59 @@ def main(mode: str = "all"):
             all_articles.extend(articles)
             nb_infos.append(_mk_nb(topic, articles))
 
-    # ── Spotlights ────────────────────────────────────────────────────────────
-    # Each high-signal paper gets its own dedicated deep-dive in its own RSS
-    # channel. Deduplicated against the last 4 weeks of SPOTLIGHTS only
-    # (kinds="spotlights") so the same paper isn't spotlighted two weeks running
-    # — but NOT against reviews, so a paper covered in this week's review (which
-    # ran earlier, on the reviews day) can still earn its own spotlight.
-    if do_spotlights:
-        spot_exclude = load_recent_pmids(weeks_back=4, kinds="spotlights")
-        for stopic in find_spotlight_articles(exclude_pmids=spot_exclude):
-            articles = search_topic(stopic)  # uses _forced_articles internally
-            if not articles:
-                continue
-            all_articles.extend(articles)
-            nb_infos.append(_mk_nb(stopic, articles))
+    # ── Spotlights (Wednesday): generate from the reviews-day SELECTION ────────
+    # Spotlights are the papers the REVIEWS run already chose a few days earlier,
+    # from the same week's articles — NOT a fresh search. Perfect sync: every
+    # spotlight paper was also reviewed. build_spotlight_topic() carries the
+    # channel + the reverse cross-reference ("reviewed briefly this week").
+    if mode == "spotlights":
+        for rec in load_spotlight_selection():
+            stopic = build_spotlight_topic(rec)
+            arts = stopic["_forced_articles"]
+            all_articles.extend(arts)
+            nb_infos.append(_mk_nb(stopic, arts))
 
     if not nb_infos:
-        # A spotlights-only run with no qualifying papers is NORMAL, not an
-        # error — exit cleanly (exit 0) so the VM still backs up the session.
+        # A spotlights-only run with no selection is NORMAL, not an error —
+        # exit cleanly (exit 0) so the VM still backs up the session.
         if mode == "spotlights":
-            print("No spotlight articles this week — nothing to produce. "
-                  "Exiting cleanly.")
+            print("No spotlight selection to produce this week — exiting cleanly.")
             return
         print("ERROR: No articles found in any topic!")
         send_notification([], env)
         sys.exit(1)
 
-    # ── Auto-split crowded topics into Part 1 / Part 2 / ... ──────────────────
+    # ── Auto-split crowded review clusters into Part 1 / Part 2 / ... ──────────
     nb_infos = auto_split_topics(nb_infos)
 
-    # ── Cross-reference spotlights ↔ the clusters they also appear in ─────────
-    # A spotlight paper may also live inside a regular cluster this week (we now
-    # allow that). Wire up a two-way spoken cross-reference so the duplication
-    # feels intentional: the cluster mentions a dedicated episode exists; the
-    # spotlight mentions it also appears in the weekly overview.
-    compute_cross_references(nb_infos)
+    # Fetch text for ALL articles in one pass (PMC full text when available).
+    # Must run BEFORE spotlight selection so content-keyword scoring sees the
+    # abstracts.
+    fetch_article_text(all_articles)
 
-    # ── Assign episode numbers (X/Y) within this week's batch ─────────────────
-    # Order: regular cluster topics first (in TOPICS order), then spotlight
-    # reviews (highest IF first). This is the natural progression a listener
-    # would follow. The number shows in the notebook title, the GitHub release
-    # title, the ntfy notification, and the RSS feed — so the user can track
-    # what they have already listened to.
+    # ── Spotlight SELECTION (reviews day) ─────────────────────────────────────
+    # From THIS run's review articles, pick the top spotlight-worthy papers per
+    # channel (tier-1 journal gate + tier-2 content score) and SAVE the choice
+    # so the spotlights run (a few days later) generates exactly these. Also wire
+    # the review episodes to announce the upcoming spotlight. In "all" mode
+    # (manual) we additionally build + generate the spotlights in this same run.
+    if do_reviews:
+        selection = select_spotlights(nb_infos)
+        save_spotlight_selection(selection, DATE_STR)
+        wire_review_spotlight_xrefs(nb_infos, selection)
+        if mode == "all":
+            for rec in selection:
+                stopic = build_spotlight_topic(rec)
+                arts = stopic["_forced_articles"]
+                all_articles.extend(arts)
+                nb_infos.append(_mk_nb(stopic, arts))
+
+    # ── Assign episode numbers within this week's batch (after nb_infos final) ─
     total_episodes = len(nb_infos)
     for idx, nb in enumerate(nb_infos, start=1):
         nb["episode_number"] = idx
         nb["episode_total"]  = total_episodes
     print(f"\n📋 This week: {total_episodes} podcast episode(s) to produce.")
-
-    # Fetch text for ALL articles in one pass (PMC full text when available)
-    fetch_article_text(all_articles)
 
     # Save articles.json for web UI, then per-topic summaries.
     save_articles_json(nb_infos)
