@@ -454,16 +454,22 @@ def get_channels_for_episode(
             continue
         if ch["topic_ids"] and base in ch["topic_ids"]:
             return [ch["id"]]
-    # Spotlight — combine release name with original English article title
+    # Spotlight — prefer the channel ASSIGNED on the reviews day (stored in
+    # articles.json as `spotlight_channel`); fall back to keyword routing for
+    # older releases produced before that field existed.
     if base.startswith("spotlight_"):
-        match_text = release_name.lower()
+        pmid = base.replace("spotlight_", "")
+        eng_title = ""
         if date_str and repo_root is not None:
-            pmid = base.replace("spotlight_", "")
             for a in _load_articles_for_date(date_str, repo_root):
                 if a.get("pmid") == pmid:
+                    assigned = a.get("spotlight_channel")
+                    if assigned in ("child", "psychiatry", "therapy"):
+                        return [f"{assigned}-spotlight"]
                     eng_title = a.get("title", "")
-                    match_text = f"{match_text} {eng_title.lower()}"
                     break
+        # Fallback: keyword routing (may cross-list into several spotlight feeds).
+        match_text = f"{release_name.lower()} {eng_title.lower()}"
         chs: list[str] = []
         if any(kw.lower() in match_text for kw in CHILD_PSYCH_KEYWORDS):
             chs.append("child-spotlight")
