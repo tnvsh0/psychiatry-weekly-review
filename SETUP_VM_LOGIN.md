@@ -107,7 +107,31 @@ To enable, create the secret in the same GCP project:
 printf '%s' "AI..." | gcloud secrets create gemini-api-key --data-file=- --project=psych-research-agent
 ```
 
-If the secret is missing, both steps skip themselves — the podcasts still run.
+### QC publish gate (hold + approve flagged episodes)
+
+When QC is on, each run **QCs episodes BEFORE publishing** and HOLDS only the
+genuinely-bad ones (verdict `problem`, or accuracy ≤ 2) as GitHub **draft**
+releases. Drafts are excluded from the RSS feeds, so a flagged episode does NOT
+reach Spotify until you approve it. Clean episodes publish automatically.
+
+After a run, review `summaries/<date>/qc-report.md`, then on the VM:
+
+```bash
+cd /opt/psychiatry-weekly-review
+# publish an approved held episode (→ goes live on Spotify):
+sudo -u User /opt/venv/bin/python scripts/publish_episode.py --date <date> --topic <topic_id>
+# or publish everything that was held:
+sudo -u User /opt/venv/bin/python scripts/publish_episode.py --date <date> --all-held
+# regenerate a bad episode (NotebookLM is non-deterministic → usually cleaner),
+# add --publish to also make it live:
+sudo -u User /opt/venv/bin/python scripts/regenerate_episode.py --date <date> --topic <topic_id> [--publish]
+```
+
+Held/notebook data lives in `summaries/<date>/run-manifest.json` (notebooks
+survive ~4 weeks, so regenerate within that window).
+
+If the secret is missing, QC + gate skip themselves — every episode publishes
+automatically as before.
 Model is configurable via `DIGEST_MODEL` / `QC_MODEL` env (default
 `gemini-2.5-flash`; use `gemini-2.5-pro` for a stricter QC judge). Rough cost
 with Flash: a few cents per week.

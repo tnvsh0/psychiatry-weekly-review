@@ -729,6 +729,10 @@ def build_feed(repo: str, channel: dict, releases: list[dict],
 
     episodes = 0
     for rel in releases:
+        # DRAFT releases are episodes HELD by the QC gate — never publish them
+        # to the feed (Spotify) until a human publishes the release.
+        if rel.get("draft"):
+            continue
         tag = rel.get("tag_name", "")
         parsed = _parse_tag(tag)
         if not parsed:
