@@ -65,12 +65,19 @@ JUDGE_INSTRUCTIONS = (
     '  "coverage": integer 1-5 (5 = all source papers discussed),\n'
     '  "fluency": integer 1-5 (5 = complete sentences, no cut-offs/"jumps", '
     'consistent host genders, real two-host dialogue),\n'
-    '  "hallucinations": array of short Hebrew strings (claims not supported by '
-    'the source; [] if none),\n'
+    '  "discrepancies": array of objects — every factual problem, each as\n'
+    '     {"said": "<in HEBREW, what the episode actually claimed — quote or '
+    'close paraphrase, with the timestamp if you can>",\n'
+    '      "source": "<in HEBREW, what the source abstract actually says on this '
+    'point, OR the literal text \'לא מופיע במקור\' if the claim has no basis>",\n'
+    '      "severity": "high"  (changes the clinical/scientific meaning) or '
+    '"low" (minor, e.g. a mispronounced author name)}.\n'
+    '     Use [] if there are none. Put author-name mispronunciations here with '
+    'severity "low".\n'
     '  "missed_papers": array of short Hebrew strings (source papers not '
     'discussed; [] if none),\n'
-    '  "notes": array of short Hebrew strings (other quality issues, e.g. '
-    'cut-off sentences, gender flips),\n'
+    '  "notes": array of short Hebrew strings (non-factual quality issues, e.g. '
+    'cut-off sentences, gender flips; [] if none),\n'
     '  "verdict": one of "ok", "review", "problem".'
 )
 
@@ -236,15 +243,41 @@ def _write_report(date_str: str, results: list[dict]) -> None:
             f"| {r.get('fluency','?')} | {r.get('verdict','')} |"
         )
     lines.append("")
+
+    def _cell(s) -> str:
+        """Make text safe for a Markdown table cell."""
+        return str(s).replace("|", "\\|").replace("\n", " ").strip()
+
     flagged = [r for r in results if r.get("verdict") != "ok"
-               or r.get("hallucinations") or r.get("missed_papers")]
+               or r.get("discrepancies") or r.get("missed_papers")]
     if flagged:
-        lines += ["---", "", "## פירוט לפרקים שסומנו", ""]
+        lines += ["---", "", "## פירוט לפרקים שסומנו",
+                  "", "*לכל אי-דיוק: מה נאמר בפודקאסט מול מה שכתוב במקור.*", ""]
         for r in flagged:
-            lines.append(f"### {_verdict_icon(r.get('verdict',''))} {r.get('title', r['topic_id'])}")
-            for label, key in (("הזיות/אי-דיוקים", "hallucinations"),
-                               ("מאמרים שדולגו", "missed_papers"),
-                               ("הערות איכות", "notes")):
+            lines.append(
+                f"### {_verdict_icon(r.get('verdict',''))} "
+                f"{r.get('title', r['topic_id'])}  "
+                f"(דיוק {r.get('accuracy','?')} · כיסוי {r.get('coverage','?')} · "
+                f"שטף {r.get('fluency','?')})"
+            )
+            lines.append("")
+            # Discrepancies table: what the podcast said vs. the source.
+            disc = r.get("discrepancies") or []
+            disc = sorted(disc, key=lambda d: 0 if d.get("severity") == "high" else 1)
+            if disc:
+                lines += [
+                    "| חומרה | מה נאמר בפודקאסט | מול המקור |",
+                    "|:---:|---|---|",
+                ]
+                for d in disc:
+                    sev = "⚠️" if d.get("severity") == "high" else "▪️"
+                    lines.append(
+                        f"| {sev} | {_cell(d.get('said',''))} "
+                        f"| {_cell(d.get('source',''))} |"
+                    )
+                lines.append("")
+            for label, key in (("מאמרים שדולגו", "missed_papers"),
+                               ("הערות איכות (שטף/מגדר/וכו')", "notes")):
                 items = r.get(key) or []
                 if items:
                     lines.append(f"**{label}:**")
