@@ -266,14 +266,25 @@ def _notify(date_str: str, results: list[dict]) -> None:
     avg_acc = sum(r.get("accuracy", 0) for r in results) / n if n else 0
     msg = (f"נבדקו {n} פרקים · דיוק ממוצע {avg_acc:.1f}/5 · "
            f"🔴 {probs} · 🟡 {revs}")
+    payload = {
+        "topic": topic,
+        "title": f"🔎 בקרת איכות — {date_str}",
+        "message": msg,
+        "priority": 4 if probs else 3,
+        "tags": ["mag"],
+    }
+    # Link to the full report on GitHub (rendered Markdown). `click` opens it
+    # when the notification is tapped; the action adds an explicit button.
+    repo = os.environ.get("GH_REPO") or os.environ.get("GITHUB_REPOSITORY", "")
+    if repo:
+        report_url = (f"https://github.com/{repo}/blob/main/"
+                      f"summaries/{date_str}/qc-report.md")
+        payload["click"] = report_url
+        payload["actions"] = [{
+            "action": "view", "label": "📋 דוח מלא", "url": report_url,
+        }]
     try:
-        requests.post("https://ntfy.sh", json={
-            "topic": topic,
-            "title": f"🔎 בקרת איכות — {date_str}",
-            "message": msg,
-            "priority": 4 if probs else 3,
-            "tags": ["mag"],
-        }, timeout=15)
+        requests.post("https://ntfy.sh", json=payload, timeout=15)
     except Exception as e:
         print(f"  ntfy failed: {e}")
 
