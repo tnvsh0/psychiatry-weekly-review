@@ -1938,7 +1938,12 @@ def upload_to_github_release(
     episode_number: int | None = None,  # kept for back-compat, unused now
     episode_total: int | None = None,   # kept for back-compat, unused now
     artifact_title: str | None = None,
+    draft: bool = False,
 ) -> str | None:
+    """Create a GitHub release for the episode. `draft=True` HOLDS it: draft
+    releases are excluded from the RSS feed (generate_rss skips them), so the
+    episode does NOT go to Spotify until a human publishes it (the QC gate for
+    flagged episodes)."""
     tag    = f"weekly-{DATE_STR}-{topic['id']}"
     # Support both GitHub Actions (GITHUB_REPOSITORY) and Cloud Run (GH_REPO)
     repo   = env.get("GITHUB_REPOSITORY") or env.get("GH_REPO", "")
@@ -1955,15 +1960,22 @@ def upload_to_github_release(
     # No more (N/M) prefix \u2014 the channel/playlist split obsoletes it.
     display_title = (artifact_title or "").strip() or topic["label_he"]
 
-    subprocess.run([
+    notes = (
+        f"{topic['label_en']} weekly literature review {DATE_STR}\n\n"
+        f"Cluster: {topic['label_he']}\n\n"
+        f"*Generated automatically*"
+    )
+    if draft:
+        notes += "\n\n\u23f8\ufe0f HELD by QC \u2014 pending human review before publishing."
+    cmd = [
         "gh", "release", "create", tag, podcast_path,
         "--title", f"\U0001f4da {display_title} \u2014 {DATE_STR}",
-        "--notes",
-            f"{topic['label_en']} weekly literature review {DATE_STR}\n\n"
-            f"Cluster: {topic['label_he']}\n\n"
-            f"*Generated automatically*",
+        "--notes", notes,
         "--repo", repo,
-    ], capture_output=True, text=True, env=env, timeout=180)
+    ]
+    if draft:
+        cmd.append("--draft")
+    subprocess.run(cmd, capture_output=True, text=True, env=env, timeout=180)
 
     view = subprocess.run([
         "gh", "release", "view", tag,
@@ -2200,8 +2212,10 @@ def generate_digests(env: dict) -> None:
 
 def run_qc(env: dict) -> None:
     """Run scripts/qc_review.py — Gemini listens to each episode and scores it
-    against the source abstracts, then commit the qc-report.md. Non-fatal.
-    Needs GEMINI_API_KEY; the script skips itself if it is missing."""
+    against the source abstracts, writing qc-report.md + qc-results.json (the
+    latter drives the publish GATE). Non-fatal. Needs GEMINI_API_KEY; the script
+    skips itself if it is missing. Committing is done later by the caller (one
+    combined commit of the report + results + run-manifest)."""
     if not (env.get("GEMINI_API_KEY") or env.get("GOOGLE_API_KEY")):
         return  # QC off — silent
     print("\n\U0001f50e Running podcast QC review...")
@@ -2213,27 +2227,59 @@ def run_qc(env: dict) -> None:
         )
     except Exception as e:
         print(f"  WARNING: QC review failed (non-fatal): {e}")
-        return
-    # Commit the QC report (written after the summaries commit already ran).
-    report = Path("summaries") / DATE_STR / "qc-report.md"
-    if not report.exists():
-        return
+
+
+# ── QC publish gate ───────────────────────────────────────────────────────────
+# Only genuinely-bad episodes are HELD (uploaded as GitHub draft releases, which
+# generate_rss excludes → they don't reach Spotify) pending a human decision.
+# Clean and merely-"review" episodes publish automatically, so the weekly manual
+# burden is tiny (~0-2 held/week). A human then publishes or regenerates a held
+# episode via scripts/publish_episode.py / scripts/regenerate_episode.py.
+QC_HOLD_ACCURACY_AT_OR_BELOW = 2
+
+
+def load_qc_results() -> dict[str, dict]:
+    """topic_id → {verdict, accuracy, ...} from summaries/<date>/qc-results.json.
+    Empty dict when QC didn't run → nothing is held (everything publishes)."""
+    path = Path("summaries") / DATE_STR / "qc-results.json"
+    if not path.exists():
+        return {}
     try:
-        subprocess.run(["git", "add", str(report)], check=False)
-        status = subprocess.run(
-            ["git", "diff", "--cached", "--quiet"], capture_output=True,
-        )
-        if status.returncode == 0:
-            return
-        subprocess.run(
-            ["git", "commit", "-m", f"qc: report for {DATE_STR}"],
-            capture_output=True, text=True, check=False,
-        )
-        subprocess.run(["git", "push", "origin", "main"],
-                       capture_output=True, text=True, check=False)
-        print("  QC report committed.")
-    except Exception as e:
-        print(f"  WARNING: committing QC report failed (non-fatal): {e}")
+        return json.loads(path.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return {}
+
+
+def _qc_should_hold(qc: dict | None) -> bool:
+    if not qc:
+        return False
+    if qc.get("verdict") == "problem":
+        return True
+    acc = qc.get("accuracy")
+    return isinstance(acc, int) and acc <= QC_HOLD_ACCURACY_AT_OR_BELOW
+
+
+def save_run_manifest(nb_infos: list[dict]) -> None:
+    """Persist per-episode {nb_id, full_prompt, held, release_tag} so the
+    regenerate / publish tools can act on a specific episode later (the
+    notebook survives ~4 weeks)."""
+    out_dir = Path("summaries") / DATE_STR
+    out_dir.mkdir(parents=True, exist_ok=True)
+    data = {}
+    for nb in nb_infos:
+        tid = nb["topic"]["id"]
+        if not nb.get("nb_id"):
+            continue
+        data[tid] = {
+            "nb_id":       nb["nb_id"],
+            "full_prompt": nb.get("full_prompt", ""),
+            "held":        bool(nb.get("held")),
+            "release_tag": f"weekly-{DATE_STR}-{tid}",
+            "label_he":    nb["topic"]["label_he"],
+        }
+    (out_dir / "run-manifest.json").write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  Saved run manifest ({len(data)} episode(s)).")
 
 
 # ── Auto-split crowded topics into Part 1 / Part 2 / ... ─────────────────────
@@ -2556,6 +2602,11 @@ def main(mode: str = "all"):
         if nb["nb_id"]:
             # Append any spotlight↔cluster cross-reference directive.
             base_prompt = nb["topic"]["podcast_prompt"] + nb.get("xref_directive", "")
+            # Persist the FULL prompt (same one start_podcast builds internally)
+            # so regenerate_episode.py can reproduce this episode faithfully.
+            nb["full_prompt"] = (
+                base_prompt + _intro_directive_for(nb["topic"]["id"]) + TONE_GUIDANCE
+            )
             artifact_id = start_podcast(
                 nb["nb_id"], base_prompt, env,
                 topic_id=nb["topic"]["id"],
@@ -2563,45 +2614,57 @@ def main(mode: str = "all"):
             nb["artifact_id"] = artifact_id
             status = f"artifact {artifact_id}" if artifact_id else "FAILED to start"
             print(f"  {'OK' if artifact_id else 'FAIL'}: {nb['topic']['label_en']} -> {status}")
-            # Pause between generation starts to avoid NotebookLM rate-limiting.
-            # 25s gap: at 10s we saw the 11th/12th generations fail ("FAILED to
-            # start") in May. Splitting the weekly run across two days (reviews
-            # day / spotlights day) keeps each day's burst smaller, but the wide
-            # gap still matters — a heavy reviews day (lower split threshold →
-            # more parts) can still queue a dozen-plus generations.
+            # Pause between generation starts to avoid NotebookLM rate-limiting
+            # (a heavy reviews day can queue a dozen-plus generations).
             time.sleep(25)
 
     # ── Phase 5: Wait for all podcasts (parallel on Google's side) ────────────
     # Long-format podcasts take longer to render — allow up to 75 minutes.
     wait_for_all_podcasts(nb_infos, env, max_wait=4500)
 
-    # ── Phase 6: Download + Upload ────────────────────────────────────────────
-    print("\n\u2b07\ufe0f  Downloading & uploading completed podcasts...")
+    # ── Phase 6: Download all MP3s (upload comes AFTER QC, so the gate can hold
+    #    flagged episodes as drafts) ─────────────────────────────
+    print("\n⬇️  Downloading completed podcasts...")
     for nb in nb_infos:
         if nb.get("podcast_ready") and nb.get("nb_id") and nb.get("artifact_id"):
-            path = download_podcast(nb["nb_id"], nb["artifact_id"], nb["topic"]["id"], env)
-            nb["podcast_path"] = path
-            if path:
-                print(f"  Uploading {nb['topic']['label_en']}...")
-                url = upload_to_github_release(
-                    path, nb["topic"], env,
-                    nb.get("episode_number"), nb.get("episode_total"),
-                    artifact_title=nb.get("artifact_title"),
-                )
-                nb["podcast_url"] = url
-                print(f"  -> {url}")
+            nb["podcast_path"] = download_podcast(
+                nb["nb_id"], nb["artifact_id"], nb["topic"]["id"], env,
+            )
 
-    # ── Phase 7: Drive backup (MP3s) + RSS feed for podcast distribution ────
+    # ── Phase 7: QC BEFORE publishing (so we can gate) ─────────────────────
+    # Gemini judges each downloaded episode → qc-report.md + qc-results.json.
+    run_qc(env)
+    qc_results = load_qc_results()
+
+    # ── Phase 8: Upload — HOLD flagged episodes as drafts, publish the rest ────
+    print("\n⬆️  Uploading (holding QC-flagged episodes as drafts)...")
+    held = 0
+    for nb in nb_infos:
+        if not nb.get("podcast_path"):
+            continue
+        hold = _qc_should_hold(qc_results.get(nb["topic"]["id"]))
+        nb["held"] = hold
+        held += 1 if hold else 0
+        print(f"  {'⏸️ HOLD' if hold else 'Publishing'} {nb['topic']['label_en']}...")
+        nb["podcast_url"] = upload_to_github_release(
+            nb["podcast_path"], nb["topic"], env,
+            artifact_title=nb.get("artifact_title"), draft=hold,
+        )
+        print(f"  -> {nb['podcast_url']}")
+    if held:
+        print(f"\n  ⏸️ {held} episode(s) HELD for your review (draft — not on "
+              f"Spotify). Publish/regenerate with scripts/publish_episode.py / "
+              f"scripts/regenerate_episode.py.")
+
+    # Manifest (nb_id + prompt per episode) for the regenerate/publish tools,
+    # then one commit picks up the QC report + results + manifest.
+    save_run_manifest(nb_infos)
+    commit_summaries_to_github(env)
+
+    # ── Phase 9: Drive backup + RSS (draft episodes excluded) + notify ──────
     backup_to_drive(env)
     update_rss_feed(env)
-
-    # ── Phase 8: Notify ───────────────────────────────────────────────────────
     send_notification(nb_infos, env)
-
-    # ── Phase 9: QC review (Gemini listens to + judges each episode) ──────────
-    # Runs last: needs the downloaded MP3s. Non-fatal, and a no-op unless
-    # GEMINI_API_KEY is set. Commits its own report.
-    run_qc(env)
 
     # ── Final summary ─────────────────────────────────────────────────────────
     print(f"\n{sep}")

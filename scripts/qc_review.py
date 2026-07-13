@@ -222,8 +222,26 @@ def main() -> int:
         return 0
 
     _write_report(args.date, results)
+    _write_results_json(args.date, results)
     _notify(args.date, results)
     return 0
+
+
+def _write_results_json(date_str: str, results: list[dict]) -> None:
+    """Machine-readable verdicts (topic_id → scores/verdict) so the pipeline can
+    GATE publishing on them (hold flagged episodes as drafts)."""
+    out = REPO_ROOT / "summaries" / date_str / "qc-results.json"
+    slim = {
+        r["topic_id"]: {
+            "verdict": r.get("verdict"),
+            "accuracy": r.get("accuracy"),
+            "coverage": r.get("coverage"),
+            "fluency": r.get("fluency"),
+        }
+        for r in results if r.get("topic_id")
+    }
+    out.write_text(json.dumps(slim, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  Wrote {out.relative_to(REPO_ROOT)}")
 
 
 def _write_report(date_str: str, results: list[dict]) -> None:
