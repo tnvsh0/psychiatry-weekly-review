@@ -2282,6 +2282,75 @@ def save_run_manifest(nb_infos: list[dict]) -> None:
     print(f"  Saved run manifest ({len(data)} episode(s)).")
 
 
+# ── Auto-retry: regenerate QC-failing episodes before escalating to a human ───
+# NotebookLM is non-deterministic, so regenerating a bad episode with the SAME
+# input usually gives a cleaner take. We auto-regenerate flagged episodes and
+# re-QC; only those that STILL fail after MAX_QC_RETRIES are held for the user.
+# This is a bounded retry, NOT prompt-optimization (which would chase noise).
+MAX_QC_RETRIES        = 1   # auto-regenerate a failing episode this many times
+MAX_AUTO_RETRY_EPISODES = 5  # if MORE than this fail at once, skip auto-retry
+                             # (likely systemic — hold all + let the human look)
+
+
+def _regenerate_episode_audio(nb: dict, env: dict) -> bool:
+    """Generate a fresh audio for one episode's existing notebook, wait, and
+    download (overwriting its MP3). Returns True on success. Reuses the same
+    prompt the original used."""
+    base_prompt = nb["topic"]["podcast_prompt"] + nb.get("xref_directive", "")
+    artifact_id = start_podcast(
+        nb["nb_id"], base_prompt, env, topic_id=nb["topic"]["id"],
+    )
+    if not artifact_id:
+        return False
+    one = {"nb_id": nb["nb_id"], "artifact_id": artifact_id,
+           "topic": nb["topic"], "podcast_ready": False}
+    wait_for_all_podcasts([one], env, max_wait=2400)
+    if not one.get("podcast_ready"):
+        return False
+    path = download_podcast(nb["nb_id"], artifact_id, nb["topic"]["id"], env)
+    if not path:
+        return False
+    nb["podcast_path"]   = path
+    nb["artifact_id"]    = artifact_id
+    nb["artifact_title"] = one.get("artifact_title") or nb.get("artifact_title")
+    return True
+
+
+def auto_retry_flagged(nb_infos: list[dict], env: dict) -> None:
+    """After the first QC pass, regenerate episodes the gate would hold, then
+    re-QC — up to MAX_QC_RETRIES rounds. Mutates the MP3s + rewrites the QC
+    report/results so the final gate decision reflects the regenerated audio."""
+    if not (env.get("GEMINI_API_KEY") or env.get("GOOGLE_API_KEY")):
+        return
+    for attempt in range(1, MAX_QC_RETRIES + 1):
+        qc = load_qc_results()
+        flagged = [
+            nb for nb in nb_infos
+            if nb.get("podcast_path") and nb.get("nb_id") and nb.get("full_prompt")
+            and _qc_should_hold(qc.get(nb["topic"]["id"]))
+        ]
+        if not flagged:
+            return
+        if len(flagged) > MAX_AUTO_RETRY_EPISODES:
+            print(f"\n🔁 {len(flagged)} episodes flagged (> {MAX_AUTO_RETRY_EPISODES}) "
+                  f"— skipping auto-retry (likely systemic); holding all for review.")
+            return
+        print(f"\n🔁 QC auto-retry round {attempt}/{MAX_QC_RETRIES}: "
+              f"regenerating {len(flagged)} flagged episode(s)...")
+        regenerated = 0
+        for nb in flagged:
+            print(f"  ↻ {nb['topic']['label_en']}...")
+            if _regenerate_episode_audio(nb, env):
+                regenerated += 1
+            time.sleep(25)   # rate-limit spacing between generations
+        if not regenerated:
+            print("  No episode regenerated — leaving them held.")
+            return
+        # Re-QC everything so the report + results reflect the new audio.
+        print("  Re-running QC on the regenerated audio...")
+        run_qc(env)
+
+
 # ── Auto-split crowded topics into Part 1 / Part 2 / ... ─────────────────────
 # If a cluster collected too many articles for one comfortable listen, split
 # it into multiple parts. Each part becomes its own notebook + podcast +
@@ -2634,6 +2703,9 @@ def main(mode: str = "all"):
     # ── Phase 7: QC BEFORE publishing (so we can gate) ─────────────────────
     # Gemini judges each downloaded episode → qc-report.md + qc-results.json.
     run_qc(env)
+    # Auto-regenerate + re-QC episodes that would be held; only those that still
+    # fail after the retry stay flagged for the human.
+    auto_retry_flagged(nb_infos, env)
     qc_results = load_qc_results()
 
     # ── Phase 8: Upload — HOLD flagged episodes as drafts, publish the rest ────
