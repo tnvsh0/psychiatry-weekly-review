@@ -1,0 +1,26 @@
+{
+  "spotlight_42399415": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5
+  },
+  "spotlight_42407425": {
+    "verdict": "review",
+    "accuracy": 3,
+    "coverage": 5,
+    "fluency": 4
+  },
+  "spotlight_42418174": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 4
+  },
+  "spotlight_42425118": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 4
+  }
+}
