@@ -52,11 +52,39 @@ JUDGE_SYSTEM = (
     "You are a meticulous medical-education QC reviewer. You are given (A) the "
     "SOURCE abstracts a Hebrew podcast episode was built from, and (B) the "
     "AUDIO of that episode. Listen to the audio and judge how faithful and how "
-    "well-made the episode is. Be strict about factual accuracy: flag any "
-    "claim, number, or conclusion in the audio that is not supported by the "
-    "source, and any source paper that was not actually discussed. Judge ONLY "
-    "against the provided source; do not use outside knowledge. Reply with ONLY "
-    "a JSON object."
+    "well-made the episode is. Be strict about factual accuracy about the "
+    "STUDIES; but the episode is BY DESIGN more than a read-out of the abstracts "
+    "(see PODCAST SPEC) — do not penalise intended structure. Judge ONLY against "
+    "the provided source for scientific facts; do not use outside knowledge. "
+    "Reply with ONLY a JSON object."
+)
+
+# What the episode is SUPPOSED to contain beyond the raw abstracts. Given to the
+# judge so it doesn't flag the podcast for FOLLOWING our own instructions
+# (a common false positive: the AI disclaimer, the full journal name, framing).
+PODCAST_SPEC = (
+    "=== PODCAST SPEC (intended structure — NOT hallucinations) ===\n"
+    "The episode DELIBERATELY includes the following, which are correct by "
+    "design. Do NOT list any of these as discrepancies / inaccuracies:\n"
+    "  • An opening AI disclaimer in Hebrew ('הפודקאסט הבא נוצר באופן אוטומטי "
+    "באמצעות בינה מלאכותית...'). It is a mandatory legal opening — NOT a claim "
+    "about the research and NOT expected to appear in the abstracts.\n"
+    "  • Saying each journal's FULL name aloud even if the abstract text shows "
+    "only the abbreviation (e.g. 'The New England Journal of Medicine' for "
+    "'N Engl J Med'). This is an explicit instruction — correct, not an error.\n"
+    "  • Stating each paper's STUDY TYPE (מטה-אנליזה / RCT / מחקר עוקבה ...).\n"
+    "  • A 1–3 minute opening philosophical/clinical FRAMING in the hosts' own "
+    "words, and 'points to think about'.\n"
+    "  • CLINICAL INTERPRETATION and 'what a resident should do differently' — "
+    "expected professional commentary, not a claim that must be in the source.\n"
+    "  • Brief CONNECTING notes to child/adolescent psychiatry.\n"
+    "  • A 'משבוע שעבר' (last-week continuity) mention.\n"
+    "  • Two-host Hebrew conversation: transitions, rephrasing, reasoning aloud.\n"
+    "ONLY flag FACTUAL problems about the STUDIES THEMSELVES — a finding, "
+    "number, effect size, method, sample, or conclusion stated in the audio "
+    "that contradicts or is unsupported by the source abstract; or a source "
+    "paper not discussed at all. Accuracy = correctness of the SCIENCE, not of "
+    "the framing/disclaimer/attribution layer."
 )
 
 JUDGE_INSTRUCTIONS = (
@@ -119,7 +147,8 @@ def judge_episode(client, types, mp3: Path, source_md: str, model: str) -> dict 
             myfile = client.files.get(name=myfile.name)
 
         prompt = (
-            f"{JUDGE_INSTRUCTIONS}\n\n=== SOURCE ABSTRACTS ===\n{source_md[:18000]}"
+            f"{PODCAST_SPEC}\n\n{JUDGE_INSTRUCTIONS}\n\n"
+            f"=== SOURCE ABSTRACTS ===\n{source_md[:18000]}"
         )
         resp = client.models.generate_content(
             model=model,
