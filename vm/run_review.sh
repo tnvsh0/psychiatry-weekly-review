@@ -65,5 +65,8 @@ if [ -f "$AUTH_FILE" ] && [ $EXIT_CODE -eq 0 ]; then
 fi
 
 echo "=== Done: $(date) (exit $EXIT_CODE) ==="
-# NOTE: Do NOT shut down the VM. Keeping it on preserves the IP Google
-# validated the session against. Static IP + always-on = stable session.
+# NOTE: This script does not power the VM off, but the VM being on 24/7 is NOT
+# what keeps the session valid — the RESERVED static IP is. Cloud Scheduler
+# stops/starts this VM around each run and the session survives, because the IP
+# is the same on every start. Do not release weekly-review-static-ip.
+# (NotebookLM account: toviagpt@gmail.com — shared with the book-podcasts project.)

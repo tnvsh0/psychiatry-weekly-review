@@ -8,17 +8,30 @@ session within 1–2 days. Every cloud-based attempt (GitHub Actions, Cloud Run,
 ephemeral VMs) failed for the same reason.
 
 The fix: log in **from inside the VM**, so the cookies are tied to the VM's
-static IP from the start. The VM stays on 24/7, so the IP never changes.
+static IP from the start. What keeps the session valid is the **reserved
+static IP** (`weekly-review-static-ip`, 34.165.125.35) — it stays attached to
+the VM across stop/start, so Google always sees the same IP. The VM does NOT
+need to stay on: Cloud Scheduler stops and starts it around each run, and the
+session survives because the IP never changes. **Releasing the static IP is
+what would break auth — not powering off.**
+
+## Google account
+
+The automation signs in to NotebookLM as **toviagpt@gmail.com** — a dedicated
+account, kept separate from personal daily NotebookLM use so the automation's
+notebooks never clutter a personal account. Both the weekly-review and the
+book-podcasts projects share this one login (`storage_state.json` on the VM).
 
 ## Architecture
 
 ```
-weekly-review-vm (me-west1-b)        Static IP: 34.165.125.35
-├── Always on (24/7, ~$16/mo)
-├── ~/.notebooklm/storage_state.json   ← created via Chrome Remote Desktop
+weekly-review-vm (me-west1-b)        Static IP: 34.165.125.35 (reserved)
+├── Scheduler-driven start/stop (NOT always-on)   ← IP survives stop/start
+├── ~/.notebooklm/storage_state.json   ← toviagpt@gmail.com, via Chrome Remote Desktop
 ├── cron: keepalive every 6h              ← pings from same IP
 ├── cron: reviews    Sunday 06:00 UTC     ← uses same IP
-└── cron: spotlights Wednesday 06:00 UTC  ← uses same IP
+├── cron: spotlights Wednesday 06:00 UTC  ← uses same IP
+└── cron: book podcasts Fri/Sat           ← separate project, same login
 ```
 
 ## One-time setup (after vm/install.sh has run on the VM)
@@ -51,8 +64,16 @@ sudo apt-get install -y ./chrome-remote-desktop_current_amd64.deb
    ```bash
    notebooklm login
    ```
-5. A Chrome window opens **on the VM** — complete Google sign-in there
+5. A Chrome window opens **on the VM** — complete Google sign-in there **with
+   toviagpt@gmail.com**. If Chrome is already signed in to another account,
+   click "Use another account" and pick toviagpt@gmail.com.
 6. Press ENTER in the terminal when done
+
+> Switching accounts later uses this exact same step: run `notebooklm login`
+> inside the VM and sign in as the new account. The new `storage_state.json`
+> replaces the old one and BOTH projects pick it up immediately. Old notebooks
+> left on the previous account won't be auto-deleted (cleanup now runs under the
+> new account) — delete them by hand once.
 
 ### 4. Verify
 
@@ -138,6 +159,10 @@ with Flash: a few cents per week.
 
 ## Cost
 
-- e2-small VM running 24/7 in me-west1: ~$13/mo
-- Static external IP (already in use): ~$3/mo
-- **Total: ~$16/mo (~₪60)** (digests + QC add only cents/week on Gemini Flash)
+- e2-small VM, scheduler-driven (on only during runs, not 24/7): ~$1–3/mo
+- Static external IP (reserved so auth survives — keep it): ~$3/mo
+- **Total: ~$5/mo (~₪18)** (digests + QC add only cents/week on Gemini Flash)
+
+> Note: earlier revisions of this doc said the VM must stay on 24/7. That is
+> stale. Cloud Scheduler already stops/starts it, and the reserved static IP is
+> what preserves the session — see "Why this exists" above.
