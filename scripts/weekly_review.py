@@ -2460,16 +2460,31 @@ def main(mode: str = "all"):
 
     env = os.environ.copy()
 
+    # Where the NotebookLM session lives. notebooklm-py >=0.7 keeps it under
+    # ~/.notebooklm/profiles/<profile>/, while 0.3.x used the flat
+    # ~/.notebooklm/storage_state.json — and 0.7's `login` MIGRATES the flat
+    # file away. Hardcoding either one silently disables podcasts (the run
+    # still writes summaries, so it looks like a success). Prefer whatever
+    # NOTEBOOKLM_HOME points at (the vm/ run scripts resolve it), then try both
+    # known layouts.
+    _nb_home = env.get("NOTEBOOKLM_HOME", "").strip()
+    _candidates = ([Path(_nb_home) / "storage_state.json"] if _nb_home else []) + [
+        Path.home() / ".notebooklm" / "profiles" / "default" / "storage_state.json",
+        Path.home() / ".notebooklm" / "storage_state.json",
+    ]
+
     # Cloud Run: NOTEBOOKLM_AUTH_JSON env var → write to local file
     auth_json = env.get("NOTEBOOKLM_AUTH_JSON", "")
     if auth_json:
-        storage_path = Path.home() / ".notebooklm" / "storage_state.json"
+        storage_path = _candidates[0]
         storage_path.parent.mkdir(parents=True, exist_ok=True)
         storage_path.write_text(auth_json, encoding="utf-8")
 
     # Local run: detect existing session file even without the env var
-    local_session = Path.home() / ".notebooklm" / "storage_state.json"
+    local_session = next((c for c in _candidates if c.exists()), _candidates[-1])
     has_notebooklm = bool(auth_json) or local_session.exists()
+    if has_notebooklm and not auth_json:
+        print(f"  Session file: {local_session}")
 
     # ── Auth pre-check: verify session is alive before doing any work ─────────
     if has_notebooklm:
