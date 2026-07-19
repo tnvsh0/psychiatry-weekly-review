@@ -58,4 +58,4 @@ Spatial navigation involves integrating spatial cues with prior spatial knowledg
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-19/07/2026 12:27 UTC*
+*נוצר אוטומטית ב-19/07/2026 13:26 UTC*

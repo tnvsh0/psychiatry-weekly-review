@@ -79,4 +79,4 @@ Too few children receive the mental health care that they need. This cross-secti
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-19/07/2026 12:27 UTC*
+*נוצר אוטומטית ב-19/07/2026 13:26 UTC*

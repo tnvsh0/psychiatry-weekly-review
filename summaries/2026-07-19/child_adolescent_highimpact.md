@@ -35,4 +35,4 @@ FINDINGS: All five symptom domains showed substantial improvements during the fi
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-19/07/2026 12:27 UTC*
+*נוצר אוטומטית ב-19/07/2026 13:26 UTC*
