@@ -18,7 +18,9 @@ export PATH=/opt/venv/bin:$PATH
 # Auth was created by 'User' inside the VM via Chrome Remote Desktop.
 # Run the review as User so notebooklm finds the right home directory.
 export HOME=/home/User
-export NOTEBOOKLM_HOME=/home/User/.notebooklm/profiles/default
+AUTH_FILE=/home/User/.notebooklm/profiles/default/storage_state.json
+[ -f "$AUTH_FILE" ] || AUTH_FILE=/home/User/.notebooklm/storage_state.json
+export NOTEBOOKLM_HOME="$(dirname "$AUTH_FILE")"
 cd /opt/psychiatry-weekly-review
 # Run git pull as User so any new files stay User-owned (script writes to
 # summaries/ and podcasts/ as User; root-owned files would break next run).
@@ -30,7 +32,7 @@ sudo -u User git pull --ff-only origin main
 # with empty stderr and continues, producing a broken pipeline.
 /opt/venv/bin/pip install -q -r requirements.txt 2>&1 | tail -5
 
-AUTH_FILE="/home/User/.notebooklm/profiles/default/storage_state.json"
+
 if [ ! -f "$AUTH_FILE" ]; then
     echo "ERROR: $AUTH_FILE not found."
     echo "Connect via Chrome Remote Desktop and run: notebooklm login"

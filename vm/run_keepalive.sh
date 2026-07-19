@@ -13,10 +13,12 @@ echo "--- Keepalive: $(date) ---"
 # notebooklm as User (matching HOME for token paths).
 export PATH=/opt/venv/bin:$PATH
 export HOME=/home/User
-export NOTEBOOKLM_HOME=/home/User/.notebooklm/profiles/default
+AUTH_FILE=/home/User/.notebooklm/profiles/default/storage_state.json
+[ -f "$AUTH_FILE" ] || AUTH_FILE=/home/User/.notebooklm/storage_state.json
+export NOTEBOOKLM_HOME="$(dirname "$AUTH_FILE")"
 cd /opt/psychiatry-weekly-review
 
-AUTH_FILE="/home/User/.notebooklm/profiles/default/storage_state.json"
+
 if [ ! -f "$AUTH_FILE" ]; then
     echo "WARNING: $AUTH_FILE not found. Run 'notebooklm login' via Chrome Remote Desktop."
     exit 0
