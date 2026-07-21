@@ -355,53 +355,30 @@ CHANNELS: list[dict] = [
     # (same keyword logic as before), and may be cross-listed across several
     # spotlight channels when a paper spans areas. `topic_ids` is [] because
     # spotlights arrive via keyword routing, not by cluster id.
+    # ONE spotlight channel (merged 2026-07-19, was three: child / psychiatry /
+    # therapy). The split fragmented a small stream: psychiatry had 14 episodes,
+    # child 9, and therapy just 2 — a feed that barely updates isn't worth a
+    # separate subscription, and three thin feeds are more tiring to follow than
+    # one healthy one (~3 episodes/week). NOTE: only the FEED is merged. The
+    # per-area selection caps in weekly_review.py (MAX_SPOTLIGHT_PER_CHANNEL)
+    # are unchanged, so the mix across child / psychiatry / therapy stays
+    # balanced — it just arrives in one place.
     {
-        "id":          "child-spotlight",
-        "feed_file":   "feed-child-spotlight.xml",
-        "cover_file":  "cover-child-spotlight.png",
-        "title":       "Spotlight — פסיכיאטריית הילד והמתבגר",
+        "id":          "spotlight",
+        "feed_file":   "feed-spotlight.xml",
+        "cover_file":  "cover-spotlight.png",
+        "title":       "Spotlight — מאמרי עומק בפסיכיאטריה",
         "description": (
-            "פרקים ייעודיים ומעמיקים בפסיכיאטריית הילד והמתבגר — כל פרק "
-            "מוקדש למאמר מרכזי אחד (מטה-אנליזה, מחקר אקראי מבוקר, סקירה "
-            "שיטתית, הנחיה קלינית או מחקר פורץ דרך) מכתבי העת המובילים. "
-            "פרק-לוויין לסדרת הסקירה השבועית — מבוסס על PubMed ומופק "
-            "אוטומטית.\n\n"
-            f"{AI_DISCLOSURE}"
-        ),
-        "topic_ids":   [],
-        "spotlight_routing": "child",
-    },
-    {
-        "id":          "psychiatry-spotlight",
-        "feed_file":   "feed-psychiatry-spotlight.xml",
-        "cover_file":  "cover-psychiatry-spotlight.png",
-        "title":       "Spotlight — פסיכיאטריה ומדעי המוח",
-        "description": (
-            "פרקים ייעודיים ומעמיקים בפסיכיאטריה כללית, ביולוגית ובמדעי "
-            "המוח — כל פרק מוקדש למאמר מרכזי אחד (מטה-אנליזה, מחקר אקראי "
-            "מבוקר, סקירה שיטתית, הנחיה קלינית או מחקר פורץ דרך) מכתבי "
-            "העת המובילים. פרק-לוויין לסדרת הסקירה השבועית — מבוסס על "
-            "PubMed ומופק אוטומטית.\n\n"
-            f"{AI_DISCLOSURE}"
-        ),
-        "topic_ids":   [],
-        "spotlight_routing": "default",
-    },
-    {
-        "id":          "therapy-spotlight",
-        "feed_file":   "feed-therapy-spotlight.xml",
-        "cover_file":  "cover-therapy-spotlight.png",
-        "title":       "Spotlight — פסיכותרפיה וקוגניציה",
-        "description": (
-            "פרקים ייעודיים ומעמיקים בפסיכותרפיה, במדעי ההתנהגות "
-            "ובקוגניציה — כל פרק מוקדש למאמר מרכזי אחד (מטה-אנליזה, מחקר "
-            "אקראי מבוקר, סקירה שיטתית או מחקר פורץ דרך) מכתבי העת "
-            "המובילים. פרק-לוויין לסדרת הסקירה השבועית — מבוסס על PubMed "
+            "פרקים ייעודיים ומעמיקים — כל פרק מוקדש למאמר מרכזי אחד "
+            "(מטה-אנליזה, מחקר אקראי מבוקר, סקירה שיטתית, הנחיה קלינית או "
+            "מחקר פורץ דרך) מכתבי העת המובילים, על פני פסיכיאטריית הילד "
+            "והמתבגר, פסיכיאטריה כללית וביולוגית, מדעי המוח, פסיכותרפיה "
+            "וקוגניציה. פרק-לוויין לסדרת הסקירה השבועית — מבוסס על PubMed "
             "ומופק אוטומטית.\n\n"
             f"{AI_DISCLOSURE}"
         ),
         "topic_ids":   [],
-        "spotlight_routing": "therapy",
+        "spotlight_routing": "all",
     },
     # Combined feed retired 2026-05-29 — superseded by the dedicated channels
     # above. We deliberately stop generating feed.xml AND delete the leftover
@@ -411,15 +388,12 @@ CHANNELS: list[dict] = [
 
 
 # Human-readable "סדרה" (series) name per channel id — shown in each episode's
-# description. Spotlight channels share their review channel's series name so a
-# listener understands the pairing.
+# description.
 PLAYLIST_HE_BY_CHANNEL: dict[str, str] = {
-    "child":                "פסיכיאטריית הילד והמתבגר",
-    "psychiatry":           "פסיכיאטריה ומדעי המוח",
-    "therapy":              "פסיכותרפיה וקוגניציה",
-    "child-spotlight":      "Spotlight — פסיכיאטריית הילד והמתבגר",
-    "psychiatry-spotlight": "Spotlight — פסיכיאטריה ומדעי המוח",
-    "therapy-spotlight":    "Spotlight — פסיכותרפיה וקוגניציה",
+    "child":      "פסיכיאטריית הילד והמתבגר",
+    "psychiatry": "פסיכיאטריה ומדעי המוח",
+    "therapy":    "פסיכותרפיה וקוגניציה",
+    "spotlight":  "Spotlight — מאמרי עומק",
 }
 
 
@@ -454,30 +428,16 @@ def get_channels_for_episode(
             continue
         if ch["topic_ids"] and base in ch["topic_ids"]:
             return [ch["id"]]
-    # Spotlight — prefer the channel ASSIGNED on the reviews day (stored in
-    # articles.json as `spotlight_channel`); fall back to keyword routing for
-    # older releases produced before that field existed.
+    # Spotlight — every spotlight goes to the single merged spotlight feed.
+    # Since the 2026-07-19 merge there is nothing to route BY: the per-area
+    # keyword matching and the `spotlight_channel` field only ever decided
+    # which of the three feeds an episode landed in. That field is still
+    # written and still drives the balanced per-area SELECTION upstream in
+    # weekly_review.py — it just no longer picks a feed. This also fixes old
+    # releases automatically: they all fall into the one feed regardless of
+    # what they were originally tagged with.
     if base.startswith("spotlight_"):
-        pmid = base.replace("spotlight_", "")
-        eng_title = ""
-        if date_str and repo_root is not None:
-            for a in _load_articles_for_date(date_str, repo_root):
-                if a.get("pmid") == pmid:
-                    assigned = a.get("spotlight_channel")
-                    if assigned in ("child", "psychiatry", "therapy"):
-                        return [f"{assigned}-spotlight"]
-                    eng_title = a.get("title", "")
-                    break
-        # Fallback: keyword routing (may cross-list into several spotlight feeds).
-        match_text = f"{release_name.lower()} {eng_title.lower()}"
-        chs: list[str] = []
-        if any(kw.lower() in match_text for kw in CHILD_PSYCH_KEYWORDS):
-            chs.append("child-spotlight")
-        if any(kw.lower() in match_text for kw in THERAPY_KEYWORDS):
-            chs.append("therapy-spotlight")
-        if any(kw.lower() in match_text for kw in PSYCHIATRY_KEYWORDS):
-            chs.append("psychiatry-spotlight")
-        return chs or ["psychiatry-spotlight"]
+        return ["spotlight"]
     return ["psychiatry"]
 
 

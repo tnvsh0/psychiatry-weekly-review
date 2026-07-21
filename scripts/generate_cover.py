@@ -107,33 +107,18 @@ CHANNELS: list[dict] = [
     },
     # (The combined-feed cover "cover.png" was retired 2026-05-29 along with the
     #  combined feed itself — see CHANNELS in generate_rss.py.)
-    # ── Spotlight channels ────────────────────────────────────────────────────
-    # Paired with the three review channels above (same accent colour) but
-    # branded "Spotlight" at the top instead of "סקירה שבועית" so the two shows
-    # are instantly distinguishable in a podcast library.
+    # ── Spotlight channel ─────────────────────────────────────────────────────
+    # ONE cover since the three spotlight feeds were merged 2026-07-19 (see
+    # CHANNELS in generate_rss.py). Branded "Spotlight" at the top instead of
+    # "סקירה שבועית" so the two shows are instantly distinguishable in a podcast
+    # library. Teal accent — it carries the broadest of the three areas.
     {
-        "out":            "cover-child-spotlight.png",
+        "out":            "cover-spotlight.png",
         "brand":          "Spotlight",
-        "subtitle_lines": ["פסיכיאטריית", "הילד והמתבגר"],
+        "subtitle_lines": ["מאמרי עומק", "בפסיכיאטריה"],
         "en_lines":       ["Spotlight",
-                           "Child & Adolescent Psychiatry"],
-        "accent":         ACCENT_GOLD,
-    },
-    {
-        "out":            "cover-psychiatry-spotlight.png",
-        "brand":          "Spotlight",
-        "subtitle_lines": ["פסיכיאטריה", "ומדעי המוח"],
-        "en_lines":       ["Spotlight",
-                           "Psychiatry & Neuroscience"],
+                           "In-Depth Psychiatry Papers"],
         "accent":         ACCENT_TEAL,
-    },
-    {
-        "out":            "cover-therapy-spotlight.png",
-        "brand":          "Spotlight",
-        "subtitle_lines": ["פסיכותרפיה", "וקוגניציה"],
-        "en_lines":       ["Spotlight",
-                           "Psychotherapy & Cognition"],
-        "accent":         ACCENT_CORAL,
     },
 ]
 
