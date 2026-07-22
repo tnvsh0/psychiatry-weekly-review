@@ -1,0 +1,44 @@
+[
+  {
+    "pmid": "42468545",
+    "title": "Research priorities for metabolic interventions in severe mental illness: results of a James Lind Alliance Priority Setting Partnership",
+    "journal": "Lancet Psychiatry",
+    "authors": "Farran D et al.",
+    "pub_date": "2026 Jul 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42468545/",
+    "impact_factor": 64.3,
+    "abstract": "People with severe mental illness have higher rates of cardiometabolic morbidity and premature mortality than the general population. Altered brain energy metabolism can contribute to psychiatric symptoms, suggesting metabolic interventions could improve mental and physical health outcomes. We aimed to identify and prioritise unanswered research questions on metabolic interventions in people with severe mental illness, co-designed with people with lived experience. We conducted a James Lind Alliance (JLA) Priority Setting Partnership involving people with lived experience of severe mental illness, carers, and health and social care professionals, following JLA methodology. Research uncertainties were gathered through an international online survey. Submissions were refined through inductive thematic synthesis; out-of-scope questions were removed and the remainder checked against an umbrella review of evidence to confirm they were unanswered. Verified questions were ranked in an interim prioritisation survey. Final consensus on the top ten priorities was reached through a structured stakeholder workshop. In the initial survey, 456 participants contributed 1439 questions reflecting stakeholder perspectives. After synthesis, 51 summary questions across 13 domains were generated; two were considered answered, leaving 49 uncertainties. An interim prioritisation survey completed by 317 participants produced a shortlist of 19 questions; these were discussed in a final workshop with 31 participants (16 lived experience or carers and 15 professionals). The top ten priorities emphasised mental health effects of dietary and lifestyle interventions, roles of weight-loss medications, mechanisms linking metabolic change to brain outcomes, and metabolic effects of psychiatric medications beyond weight gain. Eight priorities focused on mental health outcomes. Stakeholders prioritised mental health outcomes and mechanistic understanding of metabolic interventions over traditional metabolic endpoints, highlighting a disconnect between current research agendas and stakeholder priorities. These priorities provide a stakeholder-driven research agenda to inform funding, policy, and future studies aimed at improving mental and physical health in severe mental illness.",
+    "has_full_text": false,
+    "pmc_id": null,
+    "topic_id": "spotlight_42468545",
+    "topic_he": "מאמר סקירה: Farran D — Research priorities for metabolic interventions in…",
+    "topic_en": "Spotlight: Farran D — Research priorities for metabolic interventions in…",
+    "pubtype": [
+      "Journal Article",
+      "Review"
+    ],
+    "study_type_he": "מאמר סקירה",
+    "spotlight_channel": "psychiatry"
+  },
+  {
+    "pmid": "42456704",
+    "title": "Association of GLP-1 receptor agonists with alcohol use disorder-related and substance use disorder-related hospital admissions during treatment and after discontinuation: a Swedish register-based within-individual observational study",
+    "journal": "Lancet Psychiatry",
+    "authors": "Bach P et al.",
+    "pub_date": "2026 Aug",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42456704/",
+    "impact_factor": 64.3,
+    "abstract": "BACKGROUND: Evidence suggests that GLP-1 receptor agonists might reduce substance use across different substance use disorders. However, data on substance use-related outcomes after GLP-1 discontinuation are absent. This study aimed to investigate the risk of alcohol and substance use-related hospitalisations during and after exposure to GLP-1 receptor agonists.\n\nMETHODS: This within-individual observational study used Swedish registers to identify residents of Stockholm County with a first registered diagnosis of type 2 diabetes between Jan 1, 2005, and Dec 31, 2024 who had received GLP-1 receptor agonists and, for comparison, DPP-4 inhibitors. Active follow‑up started on Jan 1, 2015, or on the date of the first registered diabetes diagnosis, whichever occurred later. Patients were followed up until the end of the observation period (Dec 31, 2024). The main outcomes were hospitalisations related to alcohol use disorder and substance use disorder (which included the alcohol use disorder-related events). Fixed-effects Poisson regression models were used to estimate rate ratios (RRs) of hospitalisations, comparing periods of GLP-1 receptor agonist or DPP-4 inhibitor exposure and two post-exposure windows (days 1-182 and 183-364) with unexposed periods in the same individuals. People with lived experience were not involved in the study.\n\nFINDINGS: 167 026 individuals with type 2 diabetes (mean age 63·98 years [SD 13·77]; median age 65·00 years [IQR 55·00-74·00]; 96 133 [57·6%] males and 70 893 [42·4%] females) were included in the study. Ethnicity data were unavailable. 1559 (0·9%) individuals had at least one alcohol use disorder-related hospitalisation and 2008 (1·2%) had at least one substance use disorder-related hospitalisation. 41 109 (24·6%) individuals received GLP-1 receptor agonists during the study period, and 23 666 (14·2%) received DPP-4 inhibitors. 308 (0·7%) of those receiving GLP-1 receptor agonists had at least one alcohol-related hospitalisation during the observational period, and 444 (1·1%) had at least one substance use-related hospitalisation; 957 (66·1%) of the 1447 substance use disorder-related hospitalisations recorded in these 444 individuals were attributed to alcohol use disorder. GLP-1 exposure was associated with lower rates of hospitalisations related to alcohol use disorder (RR 0·55, 95% CI 0·43-0·70) and substance use disorder (0·61, 0·50-0·74) compared with unexposed periods for the same individuals. For individuals with alcohol use disorder, the association with hospitalisation rate reduction persisted during days 1-182 after discontinuation of GLP-1 receptor agonists (0·70, 0·50-0·98) but was no longer evident during days 183-364 after discontinuation (1·07, 0·71-1·63); for substance use disorder, there were no statistically significant associations with reduction after discontinuation of GLP-1 receptor agonists (days 1-182: 0·79, 0·61-1·02; days 183-364: 0·89, 0·63-1·26). DPP-4 inhibitors were not associated with consistent rate reductions.\n\nINTERPRETATION: GLP-1 receptor agonist treatment was associated with lower rates of hospitalisation in individuals with alcohol use disorder and substance use disorder. This association extended into the first 182 days after discontinuation for alcohol use disorder but not for substance use disorder. Findings support clinical monitoring of substance use when GLP-1 receptor agonist treatment is stopped.\n\nFUNDING: Forte, Karolinska Institutet, and Region Stockholm.",
+    "has_full_text": false,
+    "pmc_id": null,
+    "topic_id": "spotlight_42456704",
+    "topic_he": "מחקר תצפיתי: Bach P — Association of GLP-1 receptor agonists with alcoho…",
+    "topic_en": "Spotlight: Bach P — Association of GLP-1 receptor agonists with alcoho…",
+    "pubtype": [
+      "Journal Article",
+      "Observational Study"
+    ],
+    "study_type_he": "מחקר תצפיתי",
+    "spotlight_channel": "psychiatry"
+  }
+]
