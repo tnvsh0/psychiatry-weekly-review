@@ -184,13 +184,95 @@ def backfill_batch(topic_ids: list[str], date_str: str, arts: list[dict],
     return ok
 
 
+def _recent_dates(n: int) -> list[str]:
+    """The N most recent summaries/<date> folders that have an articles.json,
+    newest first. Bounded to ~4 weeks because notebooks are deleted after that
+    and can no longer be regenerated."""
+    from datetime import datetime, timedelta
+    root = REPO_ROOT / "summaries"
+    if not root.exists():
+        return []
+    cutoff = (datetime.utcnow() - timedelta(days=26)).strftime("%Y-%m-%d")
+    dates = []
+    for sub in root.iterdir():
+        if not sub.is_dir() or not (sub / "articles.json").exists():
+            continue
+        try:
+            datetime.strptime(sub.name, "%Y-%m-%d")
+        except ValueError:
+            continue
+        if sub.name >= cutoff:
+            dates.append(sub.name)
+    return sorted(dates, reverse=True)[:n]
+
+
+def _sweep(n: int, limit: int, dry_run: bool) -> int:
+    """Self-heal pass: backfill anything missing across the recent runs.
+
+    Safe to run every week — when nothing is missing it does nothing. Episodes
+    whose notebook has aged out are reported and skipped, so a permanently
+    unrecoverable episode can't cause an endless retry loop."""
+    repo = _repo()
+    env = os.environ.copy()
+    dates = _recent_dates(n)
+    print(f"🩹 Backfill sweep over {len(dates)} recent run(s): {', '.join(dates)}")
+    budget = limit or 0
+    total = 0
+    for date_str in dates:
+        arts = _articles(date_str)
+        topics = sorted({a["topic_id"] for a in arts})
+        present = _existing_release_topics(repo, date_str)
+        missing = [t for t in topics if t not in present]
+        if not missing:
+            print(f"  {date_str}: complete.")
+            continue
+        print(f"  {date_str}: {len(missing)} missing -> {', '.join(missing)}")
+        if dry_run:
+            continue
+        if budget:
+            missing = missing[:budget]
+        ok = backfill_batch(missing, date_str, arts, _manifest(date_str),
+                            repo, env)
+        total += ok
+        if budget:
+            budget -= ok
+            if budget <= 0:
+                print("  (episode budget for this sweep is used up)")
+                break
+    if total:
+        print(f"\nBackfilled {total} episode(s); rebuilding feeds...")
+        subprocess.run([sys.executable, str(SCRIPTS_DIR / "generate_rss.py")],
+                       env=env, check=False, timeout=180)
+        for feed in (REPO_ROOT / "docs").glob("feed*.xml"):
+            subprocess.run(["git", "add", str(feed)], check=False)
+        if subprocess.run(["git", "diff", "--cached", "--quiet"],
+                          capture_output=True).returncode != 0:
+            subprocess.run(["git", "commit", "-m",
+                            "feed: backfill missing episodes"],
+                           capture_output=True, check=False)
+            subprocess.run(["git", "push", "origin", "main"],
+                           capture_output=True, check=False)
+            print("Feeds pushed.")
+    elif not dry_run:
+        print("Nothing to backfill.")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="Backfill never-produced episodes.")
-    ap.add_argument("--date", required=True, help="YYYY-MM-DD of the run")
+    ap.add_argument("--date", help="YYYY-MM-DD of the run")
+    ap.add_argument("--recent", type=int, metavar="N",
+                    help="sweep the N most recent run dates instead of --date "
+                         "(used by the automatic Wednesday self-heal)")
     ap.add_argument("--topic", help="only this topic_id")
     ap.add_argument("--dry-run", action="store_true", help="list what's missing")
     ap.add_argument("--limit", type=int, default=0, help="cap episodes this run")
     args = ap.parse_args()
+
+    if args.recent:
+        return _sweep(args.recent, args.limit, args.dry_run)
+    if not args.date:
+        print("Give --date YYYY-MM-DD or --recent N."); return 2
 
     repo = _repo()
     env = os.environ.copy()

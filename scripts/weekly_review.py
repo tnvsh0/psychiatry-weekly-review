@@ -2267,6 +2267,24 @@ def generate_digests(env: dict) -> None:
         print(f"  WARNING: Digest generation failed (non-fatal): {e}")
 
 
+def run_backfill_sweep(env: dict) -> None:
+    """Self-heal: after the (small) spotlights run, produce any episode from a
+    recent week whose generation had failed, so no week is left with articles
+    that never became a podcast. No-op when nothing is missing. Runs on the
+    spotlights day because that day's own workload is light."""
+    print("\n\U0001fa79 Backfill sweep for previously-missing episodes...")
+    try:
+        subprocess.run(
+            [sys.executable, str(SCRIPTS_DIR / "backfill_episodes.py"),
+             # 6 run dates ≈ the 4-week window in which notebooks still exist
+             # (reviews + spotlights runs alternate, so 6 dates ≈ 3 weeks).
+             "--recent", "6", "--limit", "10"],
+            env=env, check=False, timeout=9000,
+        )
+    except Exception as e:
+        print(f"  WARNING: backfill sweep failed (non-fatal): {e}")
+
+
 def run_qc(env: dict) -> None:
     """Run scripts/qc_review.py — Gemini listens to each episode and scores it
     against the source abstracts, writing qc-report.md + qc-results.json (the
@@ -2651,7 +2669,9 @@ def main(mode: str = "all"):
         # A spotlights-only run with no selection is NORMAL, not an error —
         # exit cleanly (exit 0) so the VM still backs up the session.
         if mode == "spotlights":
-            print("No spotlight selection to produce this week — exiting cleanly.")
+            print("No spotlight selection to produce this week.")
+            # Still worth using the day's capacity to heal earlier failures.
+            run_backfill_sweep(env)
             return
         print("ERROR: No articles found in any topic!")
         send_notification([], env)
@@ -2834,6 +2854,12 @@ def main(mode: str = "all"):
     backup_to_drive(env)
     update_rss_feed(env)
     send_notification(nb_infos, env)
+
+    # ── Phase 10: self-heal earlier weeks (spotlights day only) ───────────────
+    # The spotlights run is light, so it has the headroom to produce episodes
+    # that failed to generate in a previous week. No-op when nothing is missing.
+    if mode == "spotlights":
+        run_backfill_sweep(env)
 
     # ── Final summary ─────────────────────────────────────────────────────────
     print(f"\n{sep}")
