@@ -699,6 +699,10 @@ TONE_GUIDANCE = (
     "1. The journal, by its FULL name, not its abbreviation. The source lists "
     "each as 'Full Name (Abbrev)' — read the full name aloud (say 'Journal of "
     "Child Psychology and Psychiatry', not 'J Child Psychol Psychiatry').\n"
+    "   Do NOT try to pronounce foreign author surnames — they come out garbled "
+    "in Hebrew TTS. Say 'החוקרים', 'צוות המחקר', or 'קבוצת המחקר' instead (e.g. "
+    "'צוות מחקר מאוניברסיטת X'). Name an author aloud only when they are famous "
+    "enough to be recognised by name (e.g. Stahl), and then only the surname.\n"
     "2. The study type, taken verbatim from the 'סוג מחקר:' field in the source "
     "(מטה-אנליזה, RCT, מחקר עוקבה, וכו'). Do not guess. If it says the generic "
     "'מאמר מחקרי', infer a more specific design from the abstract if you can. "
@@ -707,9 +711,20 @@ TONE_GUIDANCE = (
     "========================================================================\n"
     "COVERAGE, CONTINUITY, TONE:\n"
     "========================================================================\n"
-    "Cover EVERY paper in the source — none skipped. Give each its own time "
-    "(methods, findings with effect sizes, limitations, clinical implications); "
-    "do not compress several papers into one sentence.\n"
+    "Cover EVERY paper in the source — none skipped, and do not compress several "
+    "papers into one sentence.\n"
+    "HOW TO SPEND THE TIME ON EACH PAPER (important): roughly ~20% on the "
+    "question and the design, ~45% on THE RESULTS, ~35% on what they mean. "
+    "Methodology is the SETUP, not the destination: say concisely what was "
+    "compared with what and anything that decides how much to trust the finding "
+    "(blinding, the primary outcome, heterogeneity, key confounders) — then MOVE "
+    "ON. Do not walk through design details for their own sake.\n"
+    "THE RESULTS are the heart: give the primary outcome with the actual numbers "
+    "and effect size, what it means in practical terms, notable secondary "
+    "outcomes or adverse events, and how certain or uncertain the number is. "
+    "Then the MEANING: what the authors conclude and whether the data support "
+    "it, how it fits or clashes with what was believed, the limitations that "
+    "genuinely constrain it, and what it implies clinically.\n"
     "If the source ends with a 'משבוע שעבר' section, those papers were covered "
     "LAST week — do not re-summarize them. Use them only to draw a brief "
     "connection when a paper THIS week extends or contradicts them; otherwise "
@@ -1810,7 +1825,12 @@ def start_podcast(nb_id: str, prompt: str, env: dict,
             "notebooklm", "generate", "audio", full_prompt,
             "--format", "deep-dive", "--length", "long",
             "--language", "he", "--json",
-        ], capture_output=True, text=True, env=env, timeout=120)
+            # Retry with exponential backoff when Google rate-limits us. Without
+            # this a rate-limited start returned None and the episode was
+            # SILENTLY LOST — we dropped 9 episodes over 3 weeks that way once
+            # the lower split threshold pushed us to ~19-21 generations a run.
+            "--retry", "3",
+        ], capture_output=True, text=True, env=env, timeout=600)
         data = json.loads(out.stdout.strip())
         return data.get("task_id") or None
     except Exception as e:
@@ -2019,6 +2039,13 @@ def send_notification(nb_infos: list[dict], env: dict):
 
     total_articles = sum(len(nb["articles"]) for nb in nb_infos)
     ready_podcasts = sum(1 for nb in nb_infos if nb.get("podcast_url"))
+    # Episodes that got a summary but no podcast — a real content gap (usually
+    # a rate-limited/failed generation). Surface it loudly instead of silently
+    # losing the articles.
+    missing = [nb for nb in nb_infos if not nb.get("podcast_url")]
+    if missing:
+        print(f"\n  ⚠ {len(missing)} episode(s) produced NO podcast: "
+              + ", ".join(nb["topic"]["id"] for nb in missing))
 
     body_lines = [
         f"\u05e0\u05de\u05e6\u05d0\u05d5 {total_articles} \u05de\u05d0\u05de\u05e8\u05d9\u05dd \u05d7\u05d3\u05e9\u05d9\u05dd \u05d1-{len(nb_infos)} \u05ea\u05d7\u05d5\u05de\u05d9\u05dd:"
@@ -2032,6 +2059,11 @@ def send_notification(nb_infos: list[dict], env: dict):
         body_lines.append(f"  {icon} {nice_title}: {len(nb['articles'])} \u05de\u05d0\u05de\u05e8\u05d9\u05dd")
     if ready_podcasts:
         body_lines.append(f"\n\u2705 {ready_podcasts}/{len(nb_infos)} \u05e4\u05d5\u05d3\u05e7\u05d0\u05e1\u05d8\u05d9\u05dd \u05de\u05d5\u05db\u05e0\u05d9\u05dd.")
+    if missing:
+        body_lines.append(
+            f"\u26a0\ufe0f {len(missing)} \u05e4\u05e8\u05e7\u05d9\u05dd \u05dc\u05d0 \u05e0\u05d5\u05e6\u05e8\u05d5 "
+            f"(\u05d4\u05de\u05d0\u05de\u05e8\u05d9\u05dd \u05e1\u05d5\u05db\u05de\u05d5 \u05d0\u05da \u05d0\u05d9\u05df \u05e4\u05d5\u05d3\u05e7\u05d0\u05e1\u05d8)."
+        )
 
     # ntfy supports max 3 action buttons
     actions = []
@@ -2720,9 +2752,28 @@ def main(mode: str = "all"):
             # (a heavy reviews day can queue a dozen-plus generations).
             time.sleep(25)
 
+    # Second-chance pass: any episode that still has no artifact was rate-limited
+    # or errored at start. Retry it once, after a cool-off, before we move on —
+    # otherwise its articles get a summary but never a podcast.
+    failed_start = [nb for nb in nb_infos if nb.get("nb_id") and not nb.get("artifact_id")]
+    if failed_start:
+        print(f"\n🔁 {len(failed_start)} generation(s) failed to start — "
+              f"cooling off 120s then retrying...")
+        time.sleep(120)
+        for nb in failed_start:
+            base_prompt = nb["topic"]["podcast_prompt"] + nb.get("xref_directive", "")
+            nb["artifact_id"] = start_podcast(
+                nb["nb_id"], base_prompt, env, topic_id=nb["topic"]["id"],
+            )
+            print(f"  {'OK' if nb['artifact_id'] else 'STILL FAILING'}: "
+                  f"{nb['topic']['label_en']}")
+            time.sleep(40)
+
     # ── Phase 5: Wait for all podcasts (parallel on Google's side) ────────────
-    # Long-format podcasts take longer to render — allow up to 75 minutes.
-    wait_for_all_podcasts(nb_infos, env, max_wait=4500)
+    # Long-format podcasts take longer to render. Raised 75 -> 100 min: with the
+    # lower split threshold a run can queue ~20 generations, and the last ones
+    # were timing out (their episodes were lost).
+    wait_for_all_podcasts(nb_infos, env, max_wait=6000)
 
     # ── Phase 6: Download all MP3s (upload comes AFTER QC, so the gate can hold
     #    flagged episodes as drafts) ─────────────────────────────
