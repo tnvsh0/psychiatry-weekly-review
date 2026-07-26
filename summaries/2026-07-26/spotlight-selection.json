@@ -1,0 +1,74 @@
+[
+  {
+    "pmid": "42480535",
+    "channel": "psychiatry",
+    "score": 4,
+    "source_topic_id": "neuroscience_part3",
+    "article": {
+      "pmid": "42480535",
+      "title": "Senescent cell heterogeneity in brain aging and neurodegenerative disease",
+      "journal": "Neuron",
+      "authors": "Graves SI et al.",
+      "pub_date": "2026 Jul 21",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42480535/",
+      "topic": "Neuroscience",
+      "abstract": "Senescent cells in the aging and diseased brain are increasingly recognized as highly heterogeneous catalysts of dysfunction, originating from diverse cell types and characterized by wide-ranging molecular signatures and functional outcomes. Additionally, technological advances in single-cell transcriptomics and mouse modeling have helped reframe senescence from a static fate to a dynamic trajectory that is heavily influenced by evolving environmental cues. In this review, we identify key hubs of heterogeneity in brain cell senescence. We discuss how differences in senescence induction, cell-cycle arrest mechanisms, cell-type biology, and microenvironments contribute to the diverse senescence programs observed in the central nervous system. We also synthesize insights from the recent wave of single-cell transcriptomic studies and discuss how advances in spatial omics technologies could transform our ability to study senescent cells within intact neural circuits. Finally, we argue that integrating multimodal molecular profiling with functional studies in mice will be essential for advancing mechanistic understanding and therapeutic targeting of senescent cells in brain aging and disease.",
+      "impact_factor": 17.2,
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "study_type_he": "מאמר סקירה",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42480802",
+    "channel": "psychiatry",
+    "score": 4,
+    "source_topic_id": "general_psychiatry_bio_part1",
+    "article": {
+      "pmid": "42480802",
+      "title": "Potential of Neurosteroids for Precision Medicine in Psychiatry",
+      "journal": "Biol Psychiatry",
+      "authors": "Dargan TL et al.",
+      "pub_date": "2026 Jul 21",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42480802/",
+      "topic": "Biological Psychiatry",
+      "abstract": "One of the most significant challenges in treating individuals suffering from psychiatric illnesses is the biological heterogeneity that exists throughout the patient population. This heterogeneity has hindered both timely diagnoses for those impacted as well as the development of new treatment options to combat these disorders. Ongoing efforts have been centered around stratifying individuals based on comprehensive phenotyping; however, biological heterogeneity remains a critical driver of psychiatric illness and poses a significant challenge in the field. Here, we review the current state of the field in biomarker development and the need for personalized medicine in psychiatry. Neurosteroid-based treatments have proven effective for the treatment of postpartum depression, but failed to gain approval for major depressive disorder, likely due to the inability to stratify patients amenable to this treatment approach. We discuss the potential of a biomarker approach to identify individuals with disruption in endogenous neurosteroid synthesis that may have transdiagnostic potential. Exciting emerging studies suggest that a biomarker indicating altered or a reduced capacity for endogenous neurosteroidogenesis would be beneficial for identifying individuals at risk for postpartum depression and could potentially predict treatment response to neurosteroid-based treatments. This review aims to provide a comprehensive report on the production of endogenous neurosteroids in the brain, the current clinical landscape for the use of neurosteroid-based therapies in psychiatry, and the potential utility of measuring neurosteroidogenesis capacity as a biomarker for the diagnosis and treatment of psychiatric illnesses.",
+      "impact_factor": 12.8,
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "study_type_he": "מאמר סקירה",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42480803",
+    "channel": "psychiatry",
+    "score": 4,
+    "source_topic_id": "general_psychiatry_bio_part3",
+    "article": {
+      "pmid": "42480803",
+      "title": "GLP-1 Receptor Agonists as a Candidate Treatment for Opioid Use Disorder: From rats to humans",
+      "journal": "Biol Psychiatry",
+      "authors": "Grigson PS et al.",
+      "pub_date": "2026 Jul 21",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42480803/",
+      "topic": "Biological Psychiatry",
+      "abstract": "Despite recent progress, and at least three medications approved for the treatment of opioid use disorder (OUD), the number of deaths due to opioid overdose remains unacceptably high. As such, there is need for new treatments. To this end, glucagon-like peptide-1 receptor agonists (GLP-1RAs), dual GLP-1RA+glucose-dependent insulinotropic polypeptide (GIP) receptor agonists (e.g., tirzepatide), and triple agonists (e.g., GLP-1RA +NeuropeptideY1/Y2 receptor agonists), show promise. Here, we review preclinical and clinical data. In the preclinical studies, acute administration of exendin-4 (Ex-4) and the longer acting liraglutide, semaglutide, tirzepatide, and other dual and triple agonists reduced opioid taking and/or opioid seeking when elicited by exposure to drug-related cues, the drug itself, or by stress. Chronic treatment with GLP-1RAs also reduced responding for opioids, but tolerance occurred with chronic administration of higher doses of GLP-1RAs. In the human studies, one small clinical trial found a 40% reduction in opioid craving following treatment with the GLP-1RA liraglutide. Three other clinical trials are ongoing, with two testing the efficacy of semaglutide, and one tirzepatide, as adjunctive treatments to buprenorphine or methadone. Pending completion of these clinical trials, recent studies used data from the electronic health record, the TriNetX database, and Medicare claims and found a 40% reduction in opioid overdose and in hospital admissions for OUD in patients treated with a GLP-1RA or a GLP-1RA/GIP agonist for type two diabetes and/or for obesity. Thus, while additional clinical trials are needed, these data hold promise for GLP-1RAs as a novel treatment for OUD in humans.",
+      "impact_factor": 12.8,
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "study_type_he": "מאמר סקירה",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  }
+]
