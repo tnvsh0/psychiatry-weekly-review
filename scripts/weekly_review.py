@@ -2285,6 +2285,26 @@ def run_backfill_sweep(env: dict) -> None:
         print(f"  WARNING: backfill sweep failed (non-fatal): {e}")
 
 
+def run_qc_trends(env: dict) -> None:
+    """Aggregate the accumulated QC reports into recurring patterns and concrete
+    prompt-improvement proposals (summaries/qc-trends.md + an ntfy link). Only
+    PROPOSES — a human decides whether to change the prompt. Non-fatal."""
+    if not (env.get("GEMINI_API_KEY") or env.get("GOOGLE_API_KEY")):
+        return
+    print("\n\U0001f4c8 Analysing QC trends...")
+    try:
+        subprocess.run(
+            [sys.executable, str(SCRIPTS_DIR / "qc_trends.py"),
+             "--weeks", "8", "--min-count", "3"],
+            env=env, check=False, timeout=900,
+        )
+        report = Path("summaries") / "qc-trends.md"
+        if report.exists():
+            subprocess.run(["git", "add", str(report)], check=False)
+    except Exception as e:
+        print(f"  WARNING: QC trends failed (non-fatal): {e}")
+
+
 def run_qc(env: dict) -> None:
     """Run scripts/qc_review.py — Gemini listens to each episode and scores it
     against the source abstracts, writing qc-report.md + qc-results.json (the
@@ -2860,6 +2880,7 @@ def main(mode: str = "all"):
     # that failed to generate in a previous week. No-op when nothing is missing.
     if mode == "spotlights":
         run_backfill_sweep(env)
+        run_qc_trends(env)
 
     # ── Final summary ─────────────────────────────────────────────────────────
     print(f"\n{sep}")

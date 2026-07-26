@@ -163,8 +163,12 @@ def backfill_batch(topic_ids: list[str], date_str: str, arts: list[dict],
     print(f"\nWaiting for {len(jobs)} generation(s)...")
     w.wait_for_all_podcasts(jobs, env, max_wait=5400)
 
-    # Phase 3 — download + create the missing releases.
+    # Phase 3 — download, QC, then create the missing releases. Backfilled
+    # episodes go through the SAME quality gate as normal ones: a failing
+    # episode is published as a draft (excluded from the feed) for review
+    # instead of going straight to Spotify unchecked.
     ok = 0
+    verdicts: dict[str, dict] = {}
     for j in jobs:
         tid = j["topic"]["id"]
         if not j.get("podcast_ready"):
@@ -174,14 +178,62 @@ def backfill_batch(topic_ids: list[str], date_str: str, arts: list[dict],
         if not path:
             print(f"  ✗ {tid}: download failed.")
             continue
+
+        verdict = _qc_episode(Path(path), tid, date_str)
+        hold = w._qc_should_hold(verdict)
+        if verdict:
+            verdicts[tid] = {k: verdict.get(k) for k in
+                             ("verdict", "accuracy", "coverage", "fluency")}
+            print(f"    QC: {verdict.get('verdict')} "
+                  f"(acc {verdict.get('accuracy')}, cov {verdict.get('coverage')}, "
+                  f"flu {verdict.get('fluency')})")
         url = w.upload_to_github_release(
             path, {"id": tid, "label_he": j["topic"]["label_he"],
                    "label_en": tid},
-            env, artifact_title=j.get("artifact_title"),
+            env, artifact_title=j.get("artifact_title"), draft=hold,
         )
-        print(f"  ✓ {tid}: {url}")
+        print(f"  {'⏸️ held (draft)' if hold else '✓ published'} {tid}: {url}")
         ok += 1
+
+    if verdicts:
+        _merge_qc_results(date_str, verdicts)
     return ok
+
+
+def _qc_episode(mp3: Path, topic_id: str, date_str: str) -> dict | None:
+    """Run the normal Gemini QC judge on one backfilled episode."""
+    src = REPO_ROOT / "summaries" / date_str / f"{topic_id}.md"
+    if not src.exists():
+        return None
+    try:
+        import qc_review
+    except Exception:
+        return None
+    client, types = qc_review._gemini_client()
+    if client is None:
+        return None
+    print(f"    QC: judging {topic_id}...")
+    return qc_review.judge_episode(
+        client, types, mp3, src.read_text(encoding="utf-8"),
+        os.environ.get("QC_MODEL", "gemini-2.5-flash"),
+    )
+
+
+def _merge_qc_results(date_str: str, verdicts: dict) -> None:
+    """Fold the backfilled episodes' verdicts into that date's qc-results.json
+    so the record of the week is complete."""
+    p = REPO_ROOT / "summaries" / date_str / "qc-results.json"
+    data = {}
+    if p.exists():
+        try:
+            data = json.loads(p.read_text(encoding="utf-8")) or {}
+        except Exception:
+            data = {}
+    data.update(verdicts)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    subprocess.run(["git", "add", str(p)], check=False)
+    print(f"    QC results merged into summaries/{date_str}/qc-results.json")
 
 
 def _recent_dates(n: int) -> list[str]:
