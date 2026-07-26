@@ -80,6 +80,16 @@ PODCAST_SPEC = (
     "  • Brief CONNECTING notes to child/adolescent psychiatry.\n"
     "  • A 'משבוע שעבר' (last-week continuity) mention.\n"
     "  • Two-host Hebrew conversation: transitions, rephrasing, reasoning aloud.\n"
+    "  • ANALOGIES and illustrative metaphors — these are wanted. Flag an "
+    "analogy ONLY if it misleads: if it implies a mechanism, cause or number "
+    "that is not real, or would leave the listener believing something the "
+    "evidence does not support. A merely creative comparison is NOT a defect.\n"
+    "  • BACKGROUND, CONTEXT and INTERPRETATION beyond the abstract — also "
+    "wanted, provided it is (a) mainstream textbook-level consensus and (b) "
+    "audibly marked as stepping outside the paper ('זה לא מהמאמר עצמו, אבל "
+    "ידוע ש...', 'אם נרחיב', 'הפרשנות שלי'). Do NOT flag such elaboration as a "
+    "discrepancy. DO flag it when it is unmarked AND presented as a finding of "
+    "this paper, or when it is not settled knowledge, or simply wrong.\n"
     "ONLY flag FACTUAL problems about the STUDIES THEMSELVES — a finding, "
     "number, effect size, method, sample, or conclusion stated in the audio "
     "that contradicts or is unsupported by the source abstract; or a source "
@@ -106,6 +116,12 @@ JUDGE_INSTRUCTIONS = (
     'discussed; [] if none),\n'
     '  "notes": array of short Hebrew strings (non-factual quality issues, e.g. '
     'cut-off sentences, gender flips; [] if none),\n'
+    '  "lost_content": {"any": true|false, "details": [<short Hebrew strings>]} '
+    '— set any=true ONLY when hosts talking over each other, a cut-off '
+    'sentence, or garbled audio actually made SUBSTANTIVE INFORMATION '
+    'unrecoverable (a finding, a number, a caveat the listener therefore '
+    'misses). Mere overlap or interruption that costs no information is NOT '
+    'lost content — put that in notes instead.\n'
     '  "verdict": one of "ok", "review", "problem".'
 )
 
@@ -266,6 +282,9 @@ def _write_results_json(date_str: str, results: list[dict]) -> None:
             "accuracy": r.get("accuracy"),
             "coverage": r.get("coverage"),
             "fluency": r.get("fluency"),
+            # Kept because the publish gate keys off them too, not just scores.
+            "discrepancies": r.get("discrepancies") or [],
+            "lost_content": r.get("lost_content") or {},
         }
         for r in results if r.get("topic_id")
     }
