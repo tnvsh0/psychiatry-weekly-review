@@ -121,48 +121,67 @@ def _base_prompt(topic_id: str, arts: list[dict]) -> str | None:
     return prompt
 
 
-def backfill_one(topic_id: str, date_str: str, arts: list[dict],
-                 manifest: dict, repo: str, env: dict) -> bool:
-    label_he = _label_he(topic_id, arts)
-    print(f"\n▶ {topic_id}  ({label_he})")
-
-    nb_id = (manifest.get(topic_id) or {}).get("nb_id") or _find_notebook(
-        label_he, date_str, env)
-    if not nb_id:
-        print("  ✗ notebook not found (deleted after 4 weeks?) — skipping.")
-        return False
-    prompt = _base_prompt(topic_id, arts)
-    if not prompt:
-        print("  ✗ could not rebuild the prompt — skipping.")
-        return False
-
+def backfill_batch(topic_ids: list[str], date_str: str, arts: list[dict],
+                   manifest: dict, repo: str, env: dict) -> int:
+    """Produce several missing episodes. Generations are STARTED for all of them
+    first and then awaited together — NotebookLM renders in parallel on Google's
+    side, so a batch costs about as much wall-clock as the slowest single
+    episode (waiting one-by-one would blow past the VM's run window)."""
     # weekly_review's download/upload helpers key off its module-level DATE_STR.
     w.DATE_STR = date_str
+    jobs: list[dict] = []
 
-    print(f"  notebook {nb_id} — starting generation...")
-    artifact_id = w.start_podcast(nb_id, prompt, env, topic_id=topic_id)
-    if not artifact_id:
-        print("  ✗ generation failed to start.")
-        return False
-    one = {"nb_id": nb_id, "artifact_id": artifact_id,
-           "topic": {"id": topic_id, "label_en": topic_id, "label_he": label_he},
-           "podcast_ready": False}
-    w.wait_for_all_podcasts([one], env, max_wait=2700)
-    if not one.get("podcast_ready"):
-        print("  ✗ generation did not complete in time.")
-        return False
+    # Phase 1 — start every generation.
+    for i, topic_id in enumerate(topic_ids):
+        label_he = _label_he(topic_id, arts)
+        print(f"\n▶ {topic_id}  ({label_he})")
+        nb_id = (manifest.get(topic_id) or {}).get("nb_id") or _find_notebook(
+            label_he, date_str, env)
+        if not nb_id:
+            print("  ✗ notebook not found (deleted after 4 weeks?) — skipping.")
+            continue
+        prompt = _base_prompt(topic_id, arts)
+        if not prompt:
+            print("  ✗ could not rebuild the prompt — skipping.")
+            continue
+        artifact_id = w.start_podcast(nb_id, prompt, env, topic_id=topic_id)
+        if not artifact_id:
+            print("  ✗ generation failed to start.")
+            continue
+        print(f"  started (notebook {nb_id}, artifact {artifact_id})")
+        jobs.append({
+            "nb_id": nb_id, "artifact_id": artifact_id, "podcast_ready": False,
+            "topic": {"id": topic_id, "label_en": topic_id, "label_he": label_he},
+        })
+        if i < len(topic_ids) - 1:
+            time.sleep(30)   # spacing so we don't trip the rate limit
 
-    path = w.download_podcast(nb_id, artifact_id, topic_id, env)
-    if not path:
-        print("  ✗ download failed.")
-        return False
+    if not jobs:
+        return 0
 
-    url = w.upload_to_github_release(
-        path, {"id": topic_id, "label_he": label_he, "label_en": topic_id},
-        env, artifact_title=one.get("artifact_title"),
-    )
-    print(f"  ✓ published: {url}")
-    return True
+    # Phase 2 — wait for them all together.
+    print(f"\nWaiting for {len(jobs)} generation(s)...")
+    w.wait_for_all_podcasts(jobs, env, max_wait=5400)
+
+    # Phase 3 — download + create the missing releases.
+    ok = 0
+    for j in jobs:
+        tid = j["topic"]["id"]
+        if not j.get("podcast_ready"):
+            print(f"  ✗ {tid}: did not finish in time.")
+            continue
+        path = w.download_podcast(j["nb_id"], j["artifact_id"], tid, env)
+        if not path:
+            print(f"  ✗ {tid}: download failed.")
+            continue
+        url = w.upload_to_github_release(
+            path, {"id": tid, "label_he": j["topic"]["label_he"],
+                   "label_en": tid},
+            env, artifact_title=j.get("artifact_title"),
+        )
+        print(f"  ✓ {tid}: {url}")
+        ok += 1
+    return ok
 
 
 def main() -> int:
@@ -196,12 +215,7 @@ def main() -> int:
     if args.limit:
         missing = missing[:args.limit]
 
-    ok = 0
-    for i, t in enumerate(missing):
-        if backfill_one(t, args.date, arts, _manifest(args.date), repo, env):
-            ok += 1
-        if i < len(missing) - 1:
-            time.sleep(40)   # spacing so we don't re-trip the rate limit
+    ok = backfill_batch(missing, args.date, arts, _manifest(args.date), repo, env)
 
     print(f"\n=== backfilled {ok}/{len(missing)} episode(s) for {args.date} ===")
     if ok:
