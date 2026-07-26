@@ -262,7 +262,7 @@ PSYCHIATRY_KEYWORDS: list[str] = [
 # immediately see the disclaimer.
 AI_DISCLOSURE = (
     "⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ "
-    "רפואי, חובה לבדוק כל פרט מול המאמר המקורי."
+    "רפואי, חובה לבדוק כל פרט מול המקור."
 )
 
 CHANNELS: list[dict] = [
