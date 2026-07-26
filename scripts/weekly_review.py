@@ -736,6 +736,31 @@ TONE_GUIDANCE = (
     "LAST week — do not re-summarize them. Use them only to draw a brief "
     "connection when a paper THIS week extends or contradicts them; otherwise "
     "ignore the section.\n"
+    "\n"
+    "========================================================================\n"
+    "GOING BEYOND THE SOURCE — allowed, but only like this:\n"
+    "========================================================================\n"
+    "Explaining, connecting and illustrating is what makes this worth "
+    "listening to. You MAY add background, context and analogies. Two rules:\n"
+    "  1. TRUE. Anything you add beyond the source must be mainstream, "
+    "textbook-level consensus in the field. If you are not certain it is "
+    "settled knowledge, do not say it. Never invent a mechanism, a number, a "
+    "study detail, or a finding.\n"
+    "  2. MARKED. Signal briefly when you step outside the paper — a few words "
+    "is enough ('זה לא מהמאמר עצמו, אבל ידוע ש...', 'אם נרחיב לרגע...', "
+    "'הפרשנות שלי היא...'). Do not add a long caveat; just make it audible "
+    "that this is context or interpretation, not a finding of this paper.\n"
+    "ANALOGIES are welcome and encouraged — they make hard ideas land. But an "
+    "analogy must ILLUSTRATE, never smuggle in a claim: it may not introduce a "
+    "mechanism, a cause, or a number that isn't real, and it must not leave a "
+    "listener believing something the evidence doesn't support. If an analogy "
+    "would distort the finding, drop it and explain plainly instead.\n"
+    "NUMBERS AND STATISTICS: report them as the source states them. Do NOT "
+    "convert a statistic into a different quantity — e.g. an AUC of 0.70 is a "
+    "measure of discrimination, NOT 'a 70% chance of classifying correctly'; "
+    "a hazard ratio is not a probability; relative risk is not absolute risk. "
+    "If you are unsure what a statistic means, say what it is and move on.\n"
+    "\n"
     "Keep the tone professional and measured. Avoid superlatives "
     "('groundbreaking', 'revolutionary'); always name limitations and effect "
     "sizes. The gap between 'effective' and 'highly effective' matters.\n"
@@ -2331,6 +2356,10 @@ def run_qc(env: dict) -> None:
 # burden is tiny (~0-2 held/week). A human then publishes or regenerates a held
 # episode via scripts/publish_episode.py / scripts/regenerate_episode.py.
 QC_HOLD_ACCURACY_AT_OR_BELOW = 2
+# A single hard factual error can matter clinically even when the rest of the
+# episode is fine (e.g. reading an AUC of 0.70 as "a 70% chance of classifying
+# correctly"), so enough high-severity discrepancies also trip the gate.
+QC_HOLD_HIGH_SEVERITY_AT_OR_ABOVE = 2
 
 
 def load_qc_results() -> dict[str, dict]:
@@ -2346,12 +2375,24 @@ def load_qc_results() -> dict[str, dict]:
 
 
 def _qc_should_hold(qc: dict | None) -> bool:
+    """True when an episode must NOT auto-publish: the judge called it a
+    problem, accuracy is low, several hard factual errors slipped through, or
+    overlapping/cut-off speech actually cost the listener real content."""
     if not qc:
         return False
     if qc.get("verdict") == "problem":
         return True
     acc = qc.get("accuracy")
-    return isinstance(acc, int) and acc <= QC_HOLD_ACCURACY_AT_OR_BELOW
+    if isinstance(acc, int) and acc <= QC_HOLD_ACCURACY_AT_OR_BELOW:
+        return True
+    high = sum(1 for d in (qc.get("discrepancies") or [])
+               if isinstance(d, dict) and d.get("severity") == "high")
+    if high >= QC_HOLD_HIGH_SEVERITY_AT_OR_ABOVE:
+        return True
+    # Overlap/cut-offs that made substantive information unrecoverable. Unlike a
+    # systematic misreading, this is a random generation artefact — exactly the
+    # case where regenerating the episode genuinely helps.
+    return bool((qc.get("lost_content") or {}).get("any"))
 
 
 def save_run_manifest(nb_infos: list[dict]) -> None:
@@ -2383,8 +2424,14 @@ def save_run_manifest(nb_infos: list[dict]) -> None:
 # re-QC; only those that STILL fail after MAX_QC_RETRIES are held for the user.
 # This is a bounded retry, NOT prompt-optimization (which would chase noise).
 MAX_QC_RETRIES        = 1   # auto-regenerate a failing episode this many times
-MAX_AUTO_RETRY_EPISODES = 5  # if MORE than this fail at once, skip auto-retry
+MAX_AUTO_RETRY_EPISODES = 3  # if MORE than this fail at once, skip auto-retry
                              # (likely systemic — hold all + let the human look)
+# CAPACITY BUDGET — regenerations are extra generations, so they must be counted
+# against the same per-run limit as the episodes themselves. A reviews day
+# produces ~14-16 episodes (SPLIT_THRESHOLD/TARGET), and a QC failure rate of
+# roughly 10-20% means a few more. Capping auto-retries at 3 keeps the worst
+# case near ~19 generations and inside the VM's run window; beyond that the
+# episodes are held for a human instead of silently piling more load on.
 
 
 def _regenerate_episode_audio(nb: dict, env: dict) -> bool:
