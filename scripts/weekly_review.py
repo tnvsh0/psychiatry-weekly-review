@@ -684,7 +684,13 @@ TONE_GUIDANCE = (
     "========================================================================\n"
     "'הפודקאסט הבא נוצר באופן אוטומטי באמצעות בינה מלאכותית. התוכן עלול להכיל "
     "אי-דיוקים, פרשנויות שגויות או המצאות. אין להסתמך עליו לקבלת החלטות "
-    "קליניות. חובה לבדוק כל פרט באופן עצמאי מול המקור המקורי.'\n"
+    "קליניות. חובה לבדוק כל פרט באופן עצמאי מול המאמר המקורי.'\n"
+    "Say it EXACTLY as written — do not add words. In particular say 'מול המאמר "
+    "המקורי', never 'מול המקור המקורי' (redundant and grating).\n"
+    "\n"
+    "Immediately after the disclaimer, state the period this episode covers, "
+    "naturally — the source's 'תקופה:' line gives the date range (e.g. 'הפרק "
+    "סוקר מאמרים שפורסמו בין ה-19 ל-26 ביולי'). Say it once, conversationally.\n"
     "\n"
     "Then open with a short framing (1-2 min) anchored in a SPECIFIC paper or "
     "question from THIS WEEK's papers — a tension between two findings, or a "
@@ -2409,8 +2415,14 @@ def auto_retry_flagged(nb_infos: list[dict], env: dict) -> None:
 # (descending) and divided round-robin among the parts so each part gets a
 # balanced mix of high-IF papers rather than Part 1 hoarding the best.
 
-SPLIT_THRESHOLD = 9    # split topics with more than this many articles
-SPLIT_TARGET    = 7    # aim for ~this many articles per part
+SPLIT_THRESHOLD = 11   # split topics with more than this many articles
+SPLIT_TARGET    = 9    # aim for ~this many articles per part
+                       # Tuned 2026-07-26 (13→9→11): 9/7 split too aggressively —
+                       # runs hit ~19-21 generations, which tripped NotebookLM's
+                       # rate limit and silently lost episodes, and left some
+                       # parts with only 2-4 papers. 11/9 keeps episodes from
+                       # getting dense while cutting the per-run generation
+                       # count back to a safe ~14-16.
                        # Rationale: NotebookLM produces a roughly FIXED-length
                        # episode regardless of article count. The built-in
                        # `--length long` is already the maximum (options are
