@@ -82,5 +82,23 @@
     "accuracy": 4,
     "coverage": 5,
     "fluency": 5
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5
+  },
+  "neuroscience_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5
+  },
+  "psychotherapy_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5
   }
 }

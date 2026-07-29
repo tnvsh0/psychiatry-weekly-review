@@ -88,5 +88,23 @@
     "accuracy": 5,
     "coverage": 5,
     "fluency": 5
+  },
+  "child_adolescent_misc_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5
+  },
+  "child_adolescent_misc_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5
+  },
+  "cognition_part2": {
+    "verdict": "review",
+    "accuracy": 3,
+    "coverage": 5,
+    "fluency": 5
   }
 }
