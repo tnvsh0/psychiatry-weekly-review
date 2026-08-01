@@ -1,5 +1,5 @@
 requests>=2.31.0
-notebooklm-py
+notebooklm-py>=0.7.3
 
 # RSS feed generation
 feedgen>=1.0.0

@@ -18,9 +18,15 @@ export PATH=/opt/venv/bin:$PATH
 # Auth was created by 'User' inside the VM via Chrome Remote Desktop.
 # Run the review as User so notebooklm finds the right home directory.
 export HOME=/home/User
+# NOTEBOOKLM_HOME must be the notebooklm ROOT (not the profile directory):
+# notebooklm-py >= 0.7 keeps sessions under <home>/profiles/<name>/ and resolves
+# the profile itself. Pointing it at profiles/default made 0.7.x report
+# "Authentication expired" against a perfectly good session — which is exactly
+# how the 2026-08-01 outage looked. The book-podcasts project sets it the same
+# way; both projects share this one login.
+export NOTEBOOKLM_HOME=/home/User/.notebooklm
 AUTH_FILE=/home/User/.notebooklm/profiles/default/storage_state.json
 [ -f "$AUTH_FILE" ] || AUTH_FILE=/home/User/.notebooklm/storage_state.json
-export NOTEBOOKLM_HOME="$(dirname "$AUTH_FILE")"
 cd /opt/psychiatry-weekly-review
 # Run git pull as User so any new files stay User-owned (script writes to
 # summaries/ and podcasts/ as User; root-owned files would break next run).
