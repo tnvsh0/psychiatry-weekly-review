@@ -86,18 +86,50 @@ def _generate_and_download(nb_id: str, full_prompt: str, out_path: Path,
     return False
 
 
-def _quick_qc(date_str: str, topic_id: str, mp3: Path) -> None:
-    """Best-effort single-episode QC — prints the new scores, no files written."""
+def _current_prompt(date_str: str, topic_id: str) -> str | None:
+    """Rebuild this episode's full prompt from the CURRENT topic definitions."""
+    try:
+        import weekly_review as w
+    except Exception:
+        return None
+    base_id = topic_id.split("_part")[0]
+    topic = next((t for t in w.TOPICS if t["id"] == base_id), None)
+    if topic is None:
+        return None
+    prompt = topic["podcast_prompt"]
+    if "_part" in topic_id:
+        arts_p = REPO_ROOT / "summaries" / date_str / "articles.json"
+        n_parts = 2
+        if arts_p.exists():
+            try:
+                arts = json.loads(arts_p.read_text(encoding="utf-8"))
+                n_parts = len({a["topic_id"] for a in arts
+                               if a.get("topic_id", "").startswith(base_id + "_part")}) or 2
+            except Exception:
+                pass
+        idx = topic_id.rsplit("_part", 1)[1]
+        prompt += (
+            f"\n\n[NOTE: This is part {idx} of {n_parts} for this topic. The "
+            f"source material contains only the papers assigned to this part. "
+            f"Cover them as a coherent stand-alone episode without referring to "
+            f"'part 1' or 'part 2' explicitly.]"
+        )
+    return prompt + w._intro_directive_for(topic_id) + w.TONE_GUIDANCE
+
+
+def _quick_qc(date_str: str, topic_id: str, mp3: Path) -> dict | None:
+    """Best-effort single-episode QC — prints the new scores and returns the
+    verdict so the caller can decide whether it is safe to publish."""
     src = REPO_ROOT / "summaries" / date_str / f"{topic_id}.md"
     if not src.exists():
-        return
+        return None
     try:
         import qc_review
     except Exception:
-        return
+        return None
     client, types = qc_review._gemini_client()
     if client is None:
-        return
+        return None
     print("  Re-running QC on the regenerated episode...")
     v = qc_review.judge_episode(client, types, mp3,
                                 src.read_text(encoding="utf-8"),
@@ -106,6 +138,7 @@ def _quick_qc(date_str: str, topic_id: str, mp3: Path) -> None:
         print(f"  → NEW scores: verdict={v.get('verdict')} "
               f"accuracy={v.get('accuracy')} coverage={v.get('coverage')} "
               f"fluency={v.get('fluency')}")
+    return v
 
 
 def main() -> int:
@@ -120,10 +153,16 @@ def main() -> int:
     env = os.environ.copy()
     entry = _manifest_entry(args.date, args.topic)
     nb_id = entry.get("nb_id")
-    full_prompt = entry.get("full_prompt", "")
     tag = entry.get("release_tag") or f"weekly-{args.date}-{args.topic}"
-    if not nb_id or not full_prompt:
-        print("ERROR: manifest entry missing nb_id/full_prompt."); return 1
+    if not nb_id:
+        print("ERROR: manifest entry missing nb_id."); return 1
+
+    # Prefer a prompt rebuilt from the CURRENT topic definitions, so a
+    # regenerated episode benefits from every prompt fix made since the original
+    # run. Fall back to the prompt recorded in the manifest.
+    full_prompt = _current_prompt(args.date, args.topic) or entry.get("full_prompt", "")
+    if not full_prompt:
+        print("ERROR: could not build a prompt for this episode."); return 1
 
     mp3 = REPO_ROOT / "podcasts" / args.date / f"{args.topic}.mp3"
     print(f"Regenerating {args.topic} ({args.date}) — notebook {nb_id}")
@@ -136,10 +175,19 @@ def main() -> int:
     subprocess.run(["gh", "release", "upload", tag, str(mp3), "--clobber",
                     "--repo", repo], capture_output=True, text=True, timeout=300)
 
-    _quick_qc(args.date, args.topic, mp3)
+    verdict = _quick_qc(args.date, args.topic, mp3)
 
     if args.publish:
-        print("  Publishing + rebuilding feeds...")
+        # Publish only if the FRESH take actually passes the same gate — pushing
+        # a still-broken episode live would defeat the whole point of holding it.
+        import weekly_review as w
+        if verdict and w._qc_should_hold(verdict):
+            print("\n⏸️  The regenerated take still fails QC "
+                  f"(verdict={verdict.get('verdict')}, "
+                  f"accuracy={verdict.get('accuracy')}) — leaving it held. "
+                  "Run again, or publish manually with publish_episode.py.")
+            return 0
+        print("  QC clean — publishing + rebuilding feeds...")
         subprocess.run([sys.executable, str(SCRIPTS_DIR / "publish_episode.py"),
                         "--date", args.date, "--topic", args.topic],
                        env=env, check=False, timeout=300)
