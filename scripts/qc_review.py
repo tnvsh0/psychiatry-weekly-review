@@ -36,6 +36,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import os
 import sys
 import time
@@ -103,7 +104,16 @@ JUDGE_INSTRUCTIONS = (
     '  "coverage": integer 1-5 (5 = all source papers discussed),\n'
     '  "fluency": integer 1-5 (5 = complete sentences, no cut-offs/"jumps", '
     'consistent host genders, real two-host dialogue),\n'
-    '  "discrepancies": array of objects — every factual problem, each as\n'
+    '  "discrepancies": array of objects — ONLY genuine factual problems.\n'
+    '     This is NOT an audit log of everything you checked. Include an entry '
+    'ONLY when the audio and the source actually CONFLICT, or the audio states '
+    'something the source does not support. NEVER include an entry that:\n'
+    '       - confirms the audio was right (if you would end it with "זה תואם "\n'
+    '         "את הנאמר" or similar, LEAVE IT OUT entirely);\n'
+    '       - quotes the same text on both sides (e.g. "the journal is X, not "\n'
+    '         "X" where both names are identical);\n'
+    '       - merely restates what the paper is about.\n'
+    '     A clean episode returns an EMPTY array. Each entry is\n'
     '     {"said": "<in HEBREW, what the episode actually claimed — quote or '
     'close paraphrase, with the timestamp if you can>",\n'
     '      "source": "<in HEBREW, what the source abstract actually says on this '
@@ -124,6 +134,56 @@ JUDGE_INSTRUCTIONS = (
     'lost content — put that in notes instead.\n'
     '  "verdict": one of "ok", "review", "problem".'
 )
+
+
+# Phrases that mark an entry as a CONFIRMATION rather than a discrepancy. The
+# judge sometimes logs everything it checked, which buries the real problems and
+# inflates the high-severity count the publish gate keys off.
+_CONFIRMATION_MARKERS = (
+    "תואם את הנאמר", "זה תואם", "תואם לנאמר", "זהה לנאמר",
+    "matches what was said", "consistent with the audio",
+)
+_CONTRADICTION_MARKERS = (
+    "לא מופיע", "אינו", "אינם", "שגוי", "במקום", "עם זאת", "אך ", "אלא",
+    "not supported", "does not", "incorrect",
+)
+
+
+def _norm(s: str) -> str:
+    return " ".join(str(s or "").split()).strip(" .,:;\"'()").lower()
+
+
+def _clean_discrepancies(items) -> list:
+    """Drop entries that aren't actually discrepancies.
+
+    Removes (a) rows whose two sides are effectively identical — the judge's
+    "the journal is X, not X" artefact — and (b) rows whose source text only
+    CONFIRMS the audio. Keeps anything ambiguous: this must never hide a real
+    problem, only the noise."""
+    out = []
+    for d in items or []:
+        if not isinstance(d, dict):
+            continue
+        said, src = _norm(d.get("said")), _norm(d.get("source"))
+        if not said and not src:
+            continue
+        if said and src and said == src:
+            continue                      # identical both sides
+        # "the journal is <X>, not <X>" — the SAME name on both sides of the
+        # contrast, so nothing is actually being corrected. Compare the tail of
+        # the first half against the second half, since the first half usually
+        # carries a lead-in ("כתב העת הוא ...").
+        m = re.match(r"^(.+?),?\s*(?:לא|not)\s+(.+)$", src)
+        if m:
+            before, after = _norm(m.group(1)), _norm(m.group(2))
+            if len(after) >= 6 and before.endswith(after):
+                continue
+        if (any(k in src for k in (_norm(x) for x in _CONFIRMATION_MARKERS))
+                and not any(k in src for k in
+                            (_norm(x) for x in _CONTRADICTION_MARKERS))):
+            continue                      # pure confirmation
+        out.append(d)
+    return out
 
 
 def _gemini_client():
@@ -185,7 +245,18 @@ def judge_episode(client, types, mp3: Path, source_md: str, model: str) -> dict 
         start, end = text.find("{"), text.rfind("}")
         if start == -1 or end == -1:
             return None
-        return json.loads(text[start:end + 1])
+        verdict = json.loads(text[start:end + 1])
+        if isinstance(verdict, dict):
+            # Strip confirmations / self-cancelling rows the judge sometimes
+            # logs, so the report shows only real problems and the publish gate
+            # counts only real high-severity errors.
+            raw = verdict.get("discrepancies") or []
+            verdict["discrepancies"] = _clean_discrepancies(raw)
+            dropped = len(raw) - len(verdict["discrepancies"])
+            if dropped:
+                print(f"    (filtered {dropped} non-discrepanc"
+                      f"{'y' if dropped == 1 else 'ies'} from the judge)")
+        return verdict
     except Exception as e:
         print(f"    Judge failed for {mp3.name}: {e}")
         return None
