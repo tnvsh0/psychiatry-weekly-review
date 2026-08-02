@@ -26,6 +26,22 @@ export HOME=/home/User
 # way; both projects share this one login.
 export NOTEBOOKLM_HOME=/home/User/.notebooklm
 AUTH_FILE=/home/User/.notebooklm/profiles/default/storage_state.json
+
+# Self-heal a mislocated session. If anything ever runs the CLI with
+# NOTEBOOKLM_HOME already pointing at the profile directory, 0.7.x appends
+# profiles/<name> a second time and the session lands at
+# .../profiles/default/profiles/default/storage_state.json — where nothing
+# looks for it. That silently broke the 2026-08-02 run ("storage_state.json
+# not found") even though a perfectly good session existed. Put it back.
+if [ ! -f "$AUTH_FILE" ]; then
+    STRAY=$(find /home/User/.notebooklm -name storage_state.json -type f \
+            -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-)
+    if [ -n "$STRAY" ]; then
+        echo "NOTE: session found at $STRAY — restoring to $AUTH_FILE"
+        mkdir -p "$(dirname "$AUTH_FILE")"
+        cp "$STRAY" "$AUTH_FILE"
+    fi
+fi
 [ -f "$AUTH_FILE" ] || AUTH_FILE=/home/User/.notebooklm/storage_state.json
 cd /opt/psychiatry-weekly-review
 # Run git pull as User so any new files stay User-owned (script writes to
