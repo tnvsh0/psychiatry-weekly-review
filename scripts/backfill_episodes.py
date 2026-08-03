@@ -182,8 +182,20 @@ def backfill_batch(topic_ids: list[str], date_str: str, arts: list[dict],
         verdict = _qc_episode(Path(path), tid, date_str)
         hold = w._qc_should_hold(verdict)
         if verdict:
-            verdicts[tid] = {k: verdict.get(k) for k in
-                             ("verdict", "accuracy", "coverage", "fluency")}
+            # Persist the same fields qc_review writes — including the ones the
+            # publish gate keys off. Storing only the scores made a held episode
+            # unexplainable after the fact: the record showed no discrepancies
+            # even though high-severity ones were what held it.
+            verdicts[tid] = {
+                "verdict":       verdict.get("verdict"),
+                "accuracy":      verdict.get("accuracy"),
+                "coverage":      verdict.get("coverage"),
+                "fluency":       verdict.get("fluency"),
+                "discrepancies": verdict.get("discrepancies") or [],
+                "lost_content":  verdict.get("lost_content") or {},
+                "missed_papers": verdict.get("missed_papers") or [],
+                "notes":         verdict.get("notes") or [],
+            }
             print(f"    QC: {verdict.get('verdict')} "
                   f"(acc {verdict.get('accuracy')}, cov {verdict.get('coverage')}, "
                   f"flu {verdict.get('fluency')})")
