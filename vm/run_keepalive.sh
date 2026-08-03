@@ -13,9 +13,15 @@ echo "--- Keepalive: $(date) ---"
 # notebooklm as User (matching HOME for token paths).
 export PATH=/opt/venv/bin:$PATH
 export HOME=/home/User
+# NOTEBOOKLM_HOME must be the notebooklm ROOT, never the profile directory:
+# notebooklm-py >= 0.7 appends profiles/<name> itself. Setting it to
+# dirname(AUTH_FILE) — i.e. .../profiles/default — made this script refresh the
+# session into .../profiles/default/profiles/default/storage_state.json every
+# 6 hours, while every other job kept reading the (now stale) real path. That
+# is what repeatedly looked like "the session expired" and cost several runs.
+export NOTEBOOKLM_HOME=/home/User/.notebooklm
 AUTH_FILE=/home/User/.notebooklm/profiles/default/storage_state.json
 [ -f "$AUTH_FILE" ] || AUTH_FILE=/home/User/.notebooklm/storage_state.json
-export NOTEBOOKLM_HOME="$(dirname "$AUTH_FILE")"
 cd /opt/psychiatry-weekly-review
 
 
