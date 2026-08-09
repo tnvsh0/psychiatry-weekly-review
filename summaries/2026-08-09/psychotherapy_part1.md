@@ -1,0 +1,105 @@
+# 📚 פסיכותרפיה והתערבויות — חלק 1/2
+### סקירת ספרות שבועית — 2026-08-09
+
+**תקופה:** 02/08/2026 – 09/08/2026 | **מאמרים:** 9 (⭐ IF≥15: 1 | 🔷 IF 5-14: 3 | 📄 אחר: 5)
+
+> **מפתח:** ⭐ כתב עת מדרגה ראשונה (IF ≥ 15) · 🔷 כתב עת מוביל (IF 5–14) · 📄 כתב עת מוכר
+
+---
+
+### Increasing access to CBT for psychosis patients: a randomized controlled trial evaluating a brief, targeted CBT-informed intervention for distressing voices delivered by Assistant Psychologists (the GiVE3 study)
+**כתב עת:** ⭐ Psychotherapy and Psychosomatics (Psychother Psychosom) *(IF: 15.0)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Hayward M et al. | **תאריך:** 2026 Aug 7
+
+Background Cognitive Behaviour Therapy for psychosis (CBTp) is recommended for treating psychosis. However, access to CBTp is extremely poor for patients internationally due to its intensive nature and delivery by highly trained therapists. This study evaluated the clinical and cost effectiveness of the GiVE intervention (Guided self-help CBT for distressing voices) delivered by briefly trained therapists (Assistant Psychologists). Methods This study was a pragmatic, two-arm, parallel group, superiority randomised controlled trial, comparing the GiVE intervention (delivered by Assistant Psychologists) in addition to treatment-as-usual (TAU) to TAU alone, recruiting patients with psychosis across three National Health Service sites in the UK, using 1:1 allocation and blinded post-treatment and follow-up assessments. Clinical and health economic outcomes were assessed at baseline, 16 weeks, and 28 weeks. The primary outcome was the Psychotic Symptom Rating Scale - Auditory Hallucinations Distress Scale (PSYRATS-AH Distress). Results In total, 135 participants were randomised: 68 to GiVE plus TAU, 67 to TAU alone. Participant's mean age was 43.8 years (SD=12.1; range 18-69), 44 (33%) were women, 88 (65%) men, and 2 (1%) non-binary. For the intention-to-treat analysis, adjusted between-group differences in mean PSYRATS-AH Distress were -0·73 (95% CI -2·34 to 0·88; p=0·376; Cohen's d=-0·35) at 16-weeks and -0·61 (95% CI -2·23 to 1·01; p=0·460; Cohen's d=-0·30) at 28-weeks in favour of GiVE plus TAU but were not statistically significant. Conclusion Our study found that the GiVE intervention was not clinically effective in treating distressing voice hearing experiences when delivered by briefly trained Assistant Psychologists to psychosis patients.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42566386/)
+
+---
+
+### Comparative efficacy of task-sharing psychosocial interventions for preventing common mental disorders in low- and middle-income countries: A systematic review and network meta-analysis with 10,747 participants
+**כתב עת:** 🔷 Clinical Psychology Review (Clin Psychol Rev) *(IF: 12.0)* | **סוג מחקר:** מאמר סקירה | **מחברים:** Purgato M et al. | **תאריך:** 2026 Jul 24
+
+Despite important research efforts devoted to testing the effectiveness of psychological interventions for the treatment of common mental disorders in low- and middle- income countries (LMICs), a gap remains in the field of prevention. We searched multiple databases up to May 7, 2026 for randomized controlled trials (RCTs) testing task-sharing psychological interventions for preventing common mental disorders in adults living in LMICs. Prevention interventions were classified into indicated, selective and universal. Primary outcomes were the diagnosis and symptom decrease of depression, PTSD, and anxiety at post-intervention. We estimated risk ratios (RRs) and standardized mean differences (SMDs) using random effects pairways and network meta-analyses (NMA). Protocol registration: CRD42023402399. We included 81 RCTs with 10,747 participants. 41 RCTs tested indicated, 34 selective and 7 universal prevention interventions. For preventing depression, wellbeing promotion, parental psychoeducation, yoga/mindfulness, and multi-component interventions were more effective than enhanced treatment as usual (ETAU/TAU) (RR 0.25 to 0.66). In head-to-head comparisons, wellbeing promotion and psychoeducation ranked highest (Surface Under the Cumulative Ranking, SUCRA>90%). In reducing depressive symptoms, parental psychoeducation, social support, wellbeing promotion, yoga-mindfulness, cognitive behavioral therapy, multicomponent interventions were more effective than ETAU/TAU (SMDs -0.94 to -0.36). For PTSD prevention, yoga-mindfulness, parental psychoeducation, CBT, and multicomponent interventions reduced symptoms. For anxiety diagnosis and symptoms, wellbeing promotion, social support, yoga-mindfulness, multicomponent interventions, and active waiting list were the most effective interventions. Extensive evidence supports the effectiveness of task-sharing psychosocial interventions in preventing mental disorders in LMICs, with stronger evidence for indicated and selective preve…
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42561576/)
+
+---
+
+### Acquisition, generalization and renewal of instrumental pain-related avoidance behavior in high-versus low-anxious individuals
+**כתב עת:** 🔷 Behaviour Research and Therapy (Behav Res Ther) *(IF: 5.0)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Traxler J et al. | **תאריך:** 2026 Sep
+
+Excessive avoidance is a key contributor to chronic pain-related disability. In the acute stage, pain-related avoidance prevents further harm, but when it persists beyond healing time it becomes maladaptive. Exposure therapy is the preferred treatment, yet avoidance often returns. Changing contexts (e.g., from therapy to home) may contribute to avoidance returning, referred to as renewal. This study aimed to experimentally investigate the moderating effects of trait anxiety on renewal of fear and avoidance, as well as on fear and avoidance during acquisition, generalization and response prevention with extinction. Eighty-eight pain-free adults, pre-selected based on high vs. low trait anxiety performed a conditioning paradigm: certain visual stimuli (conditioned stimuli, CS+) were paired with pain (unconditioned stimulus, US), while others were not (CS-). Participants then learned to avoid the US via button presses. Generalization to stimuli perceptually similar to the CSs was subsequently tested. During response prevention with extinction, CSs were presented in a new context, the CS+ was no longer followed by the US, and participants were not allowed to avoid. Renewal was tested in both the acquisition and extinction contexts, with avoidance available. Our study replicated the renewal of avoidance. Moreover, compared to low-anxious individuals, high-anxious individuals showed increased fear generalization, but not reduced differential learning, increased avoidance generalization, reduced extinction, or more renewal. High-anxious individuals did avoid more on the CS+ during the renewal test, but this effect was not modulated by context. These results support that individuals with high trait anxiety are more prone to developing anxiety-related disorders.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42546510/)
+
+---
+
+### Indiscriminate trauma preventions may discriminate: A randomised controlled trial of group psychological first aid
+**כתב עת:** 🔷 Behaviour Research and Therapy (Behav Res Ther) *(IF: 5.0)* | **סוג מחקר:** RCT (מחקר אקראי מבוקר) | **מחברים:** Devilly GJ et al. | **תאריך:** 2026 Sep
+
+Psychological First Aid (PFA) has been widely promoted as a universal intervention following traumatic incidents. However, early interventions once considered preventative were later found harmful, underscoring the importance of testing before widespread use. This randomised controlled trial examined the efficacy of PFA compared to natural recovery in reducing psychological distress using a validated stress-video paradigm. Based on recent evidence, it was hypothesised that PFA would alleviate short-term anxiety but show no long-term benefits. Eighty-four participants were randomised to either PFA (n = 47) or control (n = 37) following video exposure. Psychological distress was assessed using self-report measures over two weeks, with 74 participants completing follow-up (PFA n = 39, Control n = 35). The video reliably induced immediate distress. However, post-intervention analyses showed greater stress reduction in the control group compared with PFA, with a medium effect size. At two-week follow-up, no differences emerged between groups on any distress measures. Notably, participants experiencing higher initial distress displayed significantly greater trauma symptoms two weeks later-but only if they had received PFA. These findings challenge the classification of PFA as best practice, instead suggesting its similarity to previously discredited trauma interventions such as debriefing. Rather than being universally beneficial, group PFA may interfere with natural recovery in highly distressed individuals. Caution is warranted in its continued implementation, and post-trauma care should prioritise stepped, individualised approaches for those who develop clinically significant difficulties.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42561812/)
+
+---
+
+### Comparing Video-Based and Face-to-Face Psychotherapy: Systematic Review and Multilevel Meta-Analysis Across Mental Disorders
+**כתב עת:** 📄 J Med Internet Res | **סוג מחקר:** מטה-אנליזה | **מחברים:** Meyer-Keirath C et al. | **תאריך:** 2026 Aug 5
+
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article xml:lang="en" article-type="review-article" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">J Med Internet Res</journal-id><journal-id journal-id-type="iso-abbrev">J Med Internet Res</journal-id><journal-id journal-id-type="pmc-domain-id">224</journal-id><journal-id journal-id-type="pmc-domain">jmir</journal-id><journal-id journal-id-type="nlm-id">100959882</journal-id><journal-id journal-id-type="publisher-id">jmir</journal-id><journal-title-group><journal-title>Journal of Medical Internet Research</journal-title></journal-title-group><issn pub-type="ppub">1439-4456</issn><issn pub-type="epub">1438-8871</issn><publisher><publisher-name>JMIR Publications Inc.</publisher-name></publisher></journal-meta><article-meta><article-id pub-id-type="pmcid">PMC13440640</article-id><article-id pub-id-type="pmcid-ver">PMC13440640.1</article-id><article-id pub-id-type="pmcaid">13440640</article-id><article-id pub-id-type="pmcaiid">13440640</article-id><article-id pub-id-type="pmid">42555822</article-id><article-id pub-id-type="doi">10.2196/89177</article-id><article-id pub-id-type="publisher-id">89177</article-id><article-version article-version-type="pmc-version">1</article-version><article-categories><subj-group subj-group-type="primary-section"><subject>Digital Health Reviews</subject></subj-group><subj-group subj-group-type="heading"><subject>Review</subject></subj-group><subj-group subj-group-type="secondary-section"><subject>Mobile Health in Psychiatry</subject></subj-group><subj-group subj-group-type="secondary-section"><subject>Telepsychiatry</subject></subj-group><subj-group subj-group-type="secondary-section"><…
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42555822/)
+
+---
+
+### Non-Pharmacologic Interventions for Hemodynamic Stability During Dental Implant Surgery: A Randomized Controlled Trial
+**כתב עת:** 📄 Clin Implant Dent Relat Res | **סוג מחקר:** RCT (מחקר אקראי מבוקר) | **מחברים:** Luo F et al. | **תאריך:** 2026 Aug
+
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article id="cid70177" xml:lang="en" article-type="research-article" dtd-version="1.4"><!--The publisher of this article does not allow downloading of the full text in XML form.--><front><journal-meta><journal-id journal-id-type="nlm-ta">Clin Implant Dent Relat Res</journal-id><journal-id journal-id-type="iso-abbrev">Clin Implant Dent Relat Res</journal-id><journal-id journal-id-type="pmc-domain-id">379</journal-id><journal-id journal-id-type="pmc-domain">blackwellopen</journal-id><journal-id journal-id-type="nlm-id">100888977</journal-id><journal-id journal-id-type="publisher-id">CID</journal-id><journal-title-group><journal-title>Clinical Implant Dentistry and Related Research</journal-title></journal-title-group><issn pub-type="ppub">1523-0899</issn><issn pub-type="epub">1708-8208</issn><custom-meta-group><custom-meta><meta-name>pmc-is-collection-domain</meta-name><meta-value>yes</meta-value></custom-meta><custom-meta><meta-name>pmc-collection-title</meta-name><meta-value>Wiley Open Access Collection</meta-value></custom-meta></custom-meta-group></journal-meta><article-meta><article-id pub-id-type="pmcid">PMC13445641</article-id><article-id pub-id-type="pmcid-ver">PMC13445641.1</article-id><article-id pub-id-type="pmcaid">13445641</article-id><article-id pub-id-type="pmcaiid">13445641</article-id><article-id pub-id-type="pmid">42559816</article-id><article-id pub-id-type="doi">10.1111/cid.70177</article-id><article-id pub-id-type="publisher-id">CID70177</article-id><article-id pub-id-type="other">4991499</article-id><article-version article-version-type="pmc-version">1</article-version><article-categories><subj-group subj-group-type="overline"><subject>Original Article</subject></subj-group><subj-group subj-group-type="heading"><subject>Original Article</subject></subj-group></article-categor…
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42559816/)
+
+---
+
+### Digital Cognitive Behavioral Therapy Reduces Heavy Drinking Among a Non-Treatment Sample of People With Alcohol Use Disorder: A Feasibility Trial With CBT4CBT
+**כתב עת:** 📄 Alcohol Clin Exp Res (Hoboken) | **סוג מחקר:** RCT (מחקר אקראי מבוקר) | **מחברים:** Parlier-Ahmad AB et al. | **תאריך:** 2026 Aug
+
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article id="acer70383" xml:lang="en" article-type="research-article" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">Alcohol Clin Exp Res (Hoboken)</journal-id><journal-id journal-id-type="iso-abbrev">Alcohol Clin Exp Res (Hoboken)</journal-id><journal-id journal-id-type="pmc-domain-id">379</journal-id><journal-id journal-id-type="pmc-domain">blackwellopen</journal-id><journal-id journal-id-type="nlm-id">9918609780906676</journal-id><journal-id journal-id-type="publisher-id">ACER</journal-id><journal-title-group><journal-title>Alcohol, Clinical &amp; Experimental Research</journal-title></journal-title-group><issn pub-type="epub">2993-7175</issn><custom-meta-group><custom-meta><meta-name>pmc-is-collection-domain</meta-name><meta-value>yes</meta-value></custom-meta><custom-meta><meta-name>pmc-collection-title</meta-name><meta-value>Wiley Open Access Collection</meta-value></custom-meta></custom-meta-group></journal-meta><article-meta><article-id pub-id-type="pmcid">PMC13445542</article-id><article-id pub-id-type="pmcid-ver">PMC13445542.1</article-id><article-id pub-id-type="pmcaid">13445542</article-id><article-id pub-id-type="pmcaiid">13445542</article-id><article-id pub-id-type="pmid">42559797</article-id><article-id pub-id-type="doi">10.1111/acer.70383</article-id><article-id pub-id-type="publisher-id">ACER70383</article-id><article-id pub-id-type="other">3963410</article-id><article-version article-version-type="pmc-version">1</article-version><article-categories><subj-group subj-group-type="overline"><subject>Research Article</subject></subj-group><subj-group subj-group-type="heading"><subject>RESEARCH ARTICLE<…
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42559797/)
+
+---
+
+### Effects of Remotely Delivered and Web-Based Interventions on Depression Severity During the COVID-19 Pandemic: 3-Arm Randomized Controlled Trial
+**כתב עת:** 📄 JMIR Ment Health | **סוג מחקר:** RCT (מחקר אקראי מבוקר) | **מחברים:** Schuman-Olivier Z et al. | **תאריך:** 2026 Aug 4
+
+<?xml version="1.0"  ?><!DOCTYPE pmc-articleset PUBLIC "-//NLM//DTD ARTICLE SET 2.0//EN" "https://dtd.nlm.nih.gov/ncbi/pmc/articleset/nlm-articleset-2.0.dtd"><pmc-articleset><article xml:lang="en" article-type="research-article" dtd-version="1.4"><processing-meta base-tagset="archiving" mathml-version="3.0" table-model="xhtml" tagset-family="jats"><restricted-by>pmc</restricted-by></processing-meta><front><journal-meta><journal-id journal-id-type="nlm-ta">JMIR Ment Health</journal-id><journal-id journal-id-type="iso-abbrev">JMIR Ment Health</journal-id><journal-id journal-id-type="pmc-domain-id">2804</journal-id><journal-id journal-id-type="pmc-domain">jmirmenthealth</journal-id><journal-id journal-id-type="nlm-id">101658926</journal-id><journal-id journal-id-type="publisher-id">mental</journal-id><journal-title-group><journal-title>JMIR Mental Health</journal-title></journal-title-group><issn pub-type="epub">2368-7959</issn><publisher><publisher-name>JMIR Publications Inc.</publisher-name></publisher></journal-meta><article-meta><article-id pub-id-type="pmcid">PMC13436849</article-id><article-id pub-id-type="pmcid-ver">PMC13436849.1</article-id><article-id pub-id-type="pmcaid">13436849</article-id><article-id pub-id-type="pmcaiid">13436849</article-id><article-id pub-id-type="pmid">42551008</article-id><article-id pub-id-type="doi">10.2196/88388</article-id><article-id pub-id-type="publisher-id">88388</article-id><article-version article-version-type="pmc-version">1</article-version><article-categories><subj-group subj-group-type="primary-section"><subject>Innovations in Mental Health Systems</subject></subj-group><subj-group subj-group-type="secondary-section"><subject>Web-based and Mobile Health Interventions</subject></subj-group><subj-group subj-group-type="secondary-section"><subject>Digital Mental Health Interventions, e-Mental Health and Cyberpsychology</subject></subj-group><subj-group subj-group-type="secondary-section"><subject>Telehealth and Telemonitori…
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42551008/)
+
+---
+
+### Adaptive, Stepped-Care for Cancer-Related PTSD Symptoms in HCT Survivors: Results From a SMART Trial
+**כתב עת:** 📄 Psychooncology | **סוג מחקר:** RCT (מחקר אקראי מבוקר) | **מחברים:** Smith SK et al. | **תאריך:** 2026 Aug
+
+OBJECTIVE: Cancer-related posttraumatic stress disorder (PTSD) is prevalent among hematopoietic cell transplantation (HCT) survivors, yet access to evidence-based care is limited. This study evaluated adaptive, stepped-care treatment sequences for PTSD symptoms using a Sequential Multiple Assignment Randomized Trial (SMART), comparing digital and therapist-delivered interventions.
+
+METHODS: HCT survivors (N = 477), 1-5 years post-transplant, with probable or subthreshold PTSD, were randomized to the Cancer Distress Coach (CaDC) app or Usual Care. At Week 4, non-responders (i.e., < 5-point PCL-5 reduction) were re-randomized to CaDC + Coaching or therapist-delivered cognitive behavioral therapy for PTSD (CBT-PTSD). PTSD symptoms (primary outcome), depression, and anxiety were assessed at baseline, Week 4, Month 3 (primary endpoint), and Month 6.
+
+RESULTS: Both initial treatment groups demonstrated symptom reductions at Week 4 with no significant between-group differences; approximately 60% met early response criteria. By Month 3, outcomes reflected treatment escalation rather than direct comparison of initial interventions. Regimen-level analyses demonstrated differences across adaptive sequences for PTSD at Months 3 and 6, and for depression and anxiety at Month 3 (global p-values ≤ 0.018). Regimens escalating to CBT-PTSD were associated with greater and more sustained reductions than those escalating to CaDC + Coaching. The sequence initiating with CaDC and escalating to CBT-PTSD produced the largest effects.
+
+CONCLUSIONS: Although a self-guided digital intervention did not outperform Usual Care initially, adaptive stepped-care strategies that triage early responders and escalate non-responders to therapist-delivered CBT-PTSD were associated with the greatest reductions in symptoms. Digital tools may function as entry points within stepped-care models to allocate higher-intensity psychotherapy.
+
+TRIALS REGISTRATION: ClinicalTrials.gov, NCT04058795, registered 8/16/…
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42565481/)
+
+---
+
+---
+
+## 📝 הערות
+- מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
+- הסיכומים מבוססים על תקצירים (Abstracts) בלבד
+
+*נוצר אוטומטית ב-09/08/2026 06:00 UTC*

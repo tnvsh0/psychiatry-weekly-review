@@ -1,0 +1,73 @@
+[
+  {
+    "pmid": "42555011",
+    "channel": "psychiatry",
+    "score": 4,
+    "source_topic_id": "general_psychiatry_clinical_part2",
+    "article": {
+      "pmid": "42555011",
+      "title": "Optimizing Study Design for Clinically Useful Peripheral Molecular Biomarker Discovery in Psychiatry: A Review",
+      "journal": "JAMA Psychiatry",
+      "authors": "Yap CX et al.",
+      "pub_date": "2026 Aug 5",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42555011/",
+      "topic": "General Psychiatry — Clinical",
+      "abstract": "IMPORTANCE: Psychiatric diagnosis, prognosis, and management currently rely on subjective assessments. There is hope that peripheral (eg, blood) biomarkers or combinations thereof could transform clinical care by bringing objectivity and patient stratification while being accessible and scalable. The time is ripe to find molecular biomarkers: omics technologies can now profile hundreds to millions of molecules across thousands of individuals, while funders recognize the clinical need and have responded with ambition. However, this enthusiasm will likely be finite, and there is no guarantee that a biomarker will be found.\n\nOBSERVATIONS: It is essential to design and perform studies that are most likely to deliver robust peripheral biomarkers with a clear path to translation. This narrative review provides recommendations to optimize peripheral psychiatric biomarker study design. The review first introduces conceptual grounding illustrating how biomarker study design must triangulate clinical utility, technological fit, and biological plausibility. Biomarker studies should optimize for signal-to-noise ratio via careful phenotype selection and minimization of biological and technical noise. However, feasibility issues-in collecting sufficient data on enough representative participants for an adequately powered and clinically translatable analysis-constrain study design.\n\nCONCLUSIONS AND RELEVANCE: Study design is the single most influential and controllable factor for future psychiatric biomarker discovery. This is because many years elapse between study design and data analysis (particularly for biobanked samples held for future use) and because no technological or analytical advances can answer questions that the dataset was not designed for, or overcome unmeasured confounding. Moreover, the direction of biomarker research is constrained by what is possible to design. Many clinical questions and contexts need biomarkers, but realistically, some are better primed for biomarker discovery than others. In this generation of peripheral psychiatric biomarker studies, designs most likely to demonstrate proof-of-principle should be prioritized to ensure the long-term sustainability of the field.",
+      "impact_factor": 25.8,
+      "pubtype": [
+        "Journal Article"
+      ],
+      "study_type_he": "מאמר מחקרי",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42538589",
+    "channel": "psychiatry",
+    "score": 4,
+    "source_topic_id": "general_psychiatry_clinical_part2",
+    "article": {
+      "pmid": "42538589",
+      "title": "Schizophrenia Beyond Genome-Wide Association Studies: It's About Time",
+      "journal": "Am J Psychiatry",
+      "authors": "Pergola G, Weinberger DR",
+      "pub_date": "2026 Aug 1",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42538589/",
+      "topic": "General Psychiatry — Clinical",
+      "abstract": "The discovery of potentially many hundreds of risk genes for schizophrenia does not resolve the mystery of the illness at the level of an individual. The diversity of implicated gene functions has encouraged speculation that there are convergent biological pathways that mediate risk at the systems level, perhaps represented in gene coexpression patterns. The authors emphasize that gene coexpression varies across development, with some molecular elements related to schizophrenia risk losing importance or gaining momentum over time. The systems biology of risk and environmental exposures associated with risk are both time-dependent. The authors propose that the dynamic gene-environment interplay subtended by shifting coexpression patterns may explain variable expressivity of genetic risk during development. In particular, gene-environment correlations provide a mechanism for the individual-hence for their genes-to affect the environment and thus individual experience, promoting chains of life events. The authors envision the paired study of molecular and behavioral patterns over time as a way to identify novel treatments and preventive strategies to change the course of schizophrenia.",
+      "impact_factor": 18.1,
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "study_type_he": "מאמר סקירה",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42552417",
+    "channel": "psychiatry",
+    "score": 4,
+    "source_topic_id": "general_psychiatry_bio_part1",
+    "article": {
+      "pmid": "42552417",
+      "title": "Common and disorder-specific aberrant activation during reward and loss processing in major depressive disorder and addiction: a meta-analysis of fMRI studies",
+      "journal": "Mol Psychiatry",
+      "authors": "Yang X et al.",
+      "pub_date": "2026 Aug 4",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42552417/",
+      "topic": "Biological Psychiatry",
+      "abstract": "Accumulating evidence has demonstrated that dysfunction in the brain reward circuit plays a pivotal role in the pathogenesis of both major depressive disorder (MDD) and addictive disorders (substance use and behavioral addictions). However, it remains unclear whether the neural dysfunctions during reward processing are shared or distinct between these disorders. To address this, we employed the Seed-based d Mapping (SDM) toolbox to explore shared and distinct task-based fMRI findings in MDD and addictive disorders during the processing of reward (anticipation and outcome) and loss (outcome). The electronic databases PubMed, EMBASE, Scopus, Web of Science, and PsycINFO were searched from their inception until September 20, 2025. Studies were included if they used fMRI to compare brain responses during reward/loss tasks between patients (with MDD or addictive disorders) and healthy controls, and reported whole-brain coordinates (in Talairach or MNI space). The analysis included 76 articles, including 45 articles with 1212 addiction patients, 31 articles with 1211 MDD patients, and 2126 healthy controls aggregated from the 76 articles. Conjunction analysis revealed no significant common hypo- or hyper-activated brain regions between patients with addictive disorders and those with MDD (addiction & MDD) relative to healthy controls across all experimental conditions. Differential analysis showed addiction patients had greater left striatum activation (vs. MDD) during reward anticipation, and greater right putamen and left striatum activation (vs. MDD) during reward outcome. No significant differences were found under the loss outcome. Our findings indicate that during reward processing, the striatum is a common functionally abnormal brain region in both MDD and addictive disorders, but the activation directions of the two disorders in this region show opposite trends. The striatum can serve as a transdiagnostic common abnormal marker for MDD and addictive disorders. Our results provide potential targets for future research on neuromodulatory, pharmacological, and clinical interventions in patients with MDD alone, addictive disorders alone, and comorbid patients of the two disorders.",
+      "impact_factor": 13.4,
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ],
+      "study_type_he": "סקירה שיטתית",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  }
+]

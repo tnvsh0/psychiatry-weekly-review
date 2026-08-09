@@ -1,67 +1,71 @@
 # 📈 מגמות בקרת איכות — דפוסים חוזרים והצעות לשיפור
 
-*מבוסס על 7 ריצות (2026-07-08 – 2026-07-29), 58 פרקים.*
+*מבוסס על 8 ריצות (2026-07-12 – 2026-08-05), 75 פרקים.*
 
 ## ציונים ממוצעים
 
 | מדד | ממוצע |
 |---|:---:|
-| דיוק | 4.36 / 5 |
-| כיסוי | 4.95 / 5 |
-| שטף | 4.84 / 5 |
+| דיוק | 4.40 / 5 |
+| כיסוי | 4.93 / 5 |
+| שטף | 4.88 / 5 |
 
-סיכומים: ✅ 39 · 🟡 18 · 🔴 1
+סיכומים: ✅ 53 · 🟡 20 · 🔴 2
 
 ---
 
 ## דפוסים חוזרים
 
-### 1. המצאות והגזמות בתיאור ממצאים  (15 מופעים)
+### 1. המצאת נתונים או מידע לא מבוסס  (14 מופעים)
 
 **🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל נוטה להשלים מידע חסר או לפרש ממצאים באופן מרחיב מדי, לעיתים קרובות כאשר התקציר המקורי קצר או אינו מפרט את כל המנגנונים וההשלכות.
+*אבחנה:* המודל ממציא פרטים ספציפיים, נתונים מספריים, או אף מאמרים שלמים שאינם קיימים במקורות שסופקו, או מציג אותם כעובדות מבוססות למרות שאינן כאלה.
 
 *דוגמאות:*
+- נאמר: אני מסתכלת על מאמר מחקרי, ספציפית זה מחקר חתך רוחב שפורסם בכתב העת Archives of Clinical Neuropsychology. | מקור: לא מופיע במקור.
 - נאמר: כאשר האם סובלת ממצוקה נפשית, זה לא נשאר רק ברובד הפסיכולוגי. זה משפיע על היכולת שלה לשקף לתינוק את הרגשות שלו, ואפילו... על הורמוני סטרס שעוברים דרך חלב אם. | מקור: לא מופיע במקור
 - נאמר: המאמר מזהה עלייה ברורה ברישום של תרופות פסיכוטרופיות. (04:42) | מקור: המאמר בוחן את 'Risk of Psychotropic Medication Use' (סיכון לשימוש בתרופות פסיכוטרופיות) ולא 'עלייה ברורה ברישום'.
-- נאמר: המודל הציג AUC... של 0.70 עבור הפרעות מצב רוח ו-0.61 עבור פסיכוזה. כלומר, יש למודל סיכוי של כ-70% לסווג נכונה מטופל ככזה שיפתח הפרעת מצב רוח. (08:41) | מקור: AUC אינו שווה ישירות ל'סיכוי של כ-70% לסווג נכונה'.
 
 *הצעת ניסוח להוספה לפרומפט:*
 
 ```text
-When summarizing findings, strictly adhere to the information explicitly present in the provided abstract. Do not infer, elaborate, or add details not directly stated in the source text. If the abstract is brief, reflect that brevity in the summary. Avoid using metaphorical language or making claims about mechanisms or implications that are not explicitly described in the source.
+Ensure all factual statements, especially numerical data, study details, and specific findings, are directly verifiable from the provided source material. If a detail is not explicitly present in the source, do not include it. Do not infer or invent information.
 ```
 
-### 2. אי-דיוקים בנתונים מספריים  (5 מופעים)
+### 2. פרשנות שגויה של נתונים סטטיסטיים  (3 מופעים)
 
 **🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל מציג לעיתים נתונים מספריים שגויים או מעוותים, ככל הנראה עקב שגיאות בזיהוי ועיבוד המספרים מהמקור.
+*אבחנה:* המודל מפרש באופן שגוי מדדים סטטיסטיים נפוצים (כמו AUC, מובהקות סטטיסטית) או מציג מסקנות שאינן נתמכות במלואן על ידי הנתונים הסטטיסטיים המקוריים.
 
 *דוגמאות:*
-- נאמר: ובגזרה הרחבה יותר של כל סוגי החומרים (SUD), מדובר על 17,008 אנשים, שזה 1.2% (06:26) | מקור: 2008 (1·2%) had at least one substance use disorder-related hospitalisation (FINDINGS)
-- נאמר: הנתון הראשון שם הוא פשוט מטלטל ש-87.4% מהם דיווחו על חשיפה לפחות לאירוע ילדות שלילי אחד. (0:00:48) | מקור: Overall, 87.4% of participants reported exposure to at least 1 of the 12 ACEs (Group 2) and 16.6% had experienced 4 or more ACEs (Group 5).
-- נאמר: ו-16.6% חוו ארבעה אירועים או יותר. (0:00:58) | מקור: Overall, 87.4% of participants reported exposure to at least 1 of the 12 ACEs (Group 2) and 16.6% had experienced 4 or more ACEs (Group 5).
+- נאמר: המודל הציג AUC... של 0.70 עבור הפרעות מצב רוח ו-0.61 עבור פסיכוזה. כלומר, יש למודל סיכוי של כ-70% לסווג נכונה מטופל ככזה שיפתח הפרעת מצב רוח. (08:41) | מקור: AUC אינו שווה ישירות ל'סיכוי של כ-70% לסווג נכונה'.
+- נאמר: האפקט במחקרים הלא מבוקרים היה בינוני בלבד. וכשהחוקרים הסתכלו על המחקרים המבוקרים יותר מתוך המדגם, האפקט הזה פשוט נעלם. הוא לא היה מובהק סטטיסטית. | מקור: In controlled studies, DBT demonstrated a significant effect for SDV but not for CSU or SI.
+- נאמר: האפקט במחשבות אובדניות נעלם במחקרים המבוקרים. | מקור: In controlled studies, DBT demonstrated a significant effect for SDV but not for CSU or SI.
 
 *הצעת ניסוח להוספה לפרומפט:*
 
 ```text
-When citing numerical data (e.g., percentages, counts, effect sizes, p-values), ensure absolute accuracy. Double-check all numbers against the source text to prevent transcription errors or misinterpretations.
+When discussing statistical measures (e.g., AUC, p-values, effect sizes), explain them accurately and avoid oversimplification or misinterpretation of their meaning and implications. Do not equate AUC directly with 'chance of correct classification'.
 ```
 
-### 3. שגיאות בהגיית שמות לועזיים ומונחים מקצועיים  (3 מופעים)
+### 3. הוספת פרשנות או מידע לא מבוסס  (3 מופעים)
 
-**⛔ מגבלה — לא ניתן לתקן בפרומפט**
+**🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל מתקשה להגות באופן עקבי ומדויק שמות חוקרים, שמות תרופות ומונחים מקצועיים לועזיים, מה שמוביל לשגיאות הגייה או כתיב.
+*אבחנה:* המודל מוסיף פרשנויות, הסברים תיאורטיים, מטאפורות או מושגים פסיכולוגיים שאינם מוזכרים במפורש במקור, גם אם הם נכונים באופן כללי או סבירים בהקשר הרחב.
 
 *דוגמאות:*
-- נאמר: הם ניסו תרופה בשם RU466. זו תרופה שבעצם חוסמת לחלוטין את קולטני ה-GR. | מקור: RU486
-- הערה: הגייה לא עקבית של שמות חוקרים (לדוגמה, 'חוארז' במקום 'ג'וארז').
-- הערה: הגייה לא עקבית של מונחים מקצועיים (לדוגמה, 'אפנירס' במקום 'fNIRS').
+- נאמר: הסקירה מסבירה בפירוט כיצד הדיכאון עצמו פוגע במיומנויות ההומור של המטופל. צריך הרי לזכור שדיכאון אינו רק איזה תחושת עצבות, נכון? מדובר במצב שבו ישנה פגיעה במסלולי התגמול במוח, ירידה בפעילות הדופמינרגית וגם פגיעה בתפקודים ניהוליים כמו גמישות קוגניטיבית. | מקור: המאמר מציין 'impaired humor skills' כסיכון, אך אינו מפרט את המנגנונים הנוירוביולוגיים והקוגניטיביים הספציפיים.
+- הערה: הדוברים מציגים את 'הטיית האוטומציה' כהתמודדות עם תופעה פסיכולוגית מוכרת, אך המונח וההסבר אינם מופיעים בתקציר המאמר.
+- הערה: הדוברים מסכמים את הצורך בתכנון קפדני של 'מסילות' לטכנולוגיה, אך ניסוח זה הוא מטאפורי ואינו מופיע במפורש בתקציר המאמר.
 
-*מה כן יעזור:* בעיה זו נובעת ממגבלות מובנות של מודל ה-TTS ושל יכולות זיהוי ישויות בשפה זרה, ואינה ניתנת לתיקון מלא באמצעות שינוי פרומפט בלבד. שיפור יצריך אימון מודל ה-TTS על הגייה ספציפית או הוספת פונטיקה מפורשת.
+*הצעת ניסוח להוספה לפרומפט:*
+
+```text
+Limit explanations and interpretations strictly to what is explicitly stated or directly implied by the source material. Avoid introducing external psychological concepts, metaphors, or detailed mechanistic explanations not present in the provided text.
+```
 
 ---
 
