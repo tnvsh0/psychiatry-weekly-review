@@ -1,0 +1,57 @@
+{
+  "spotlight_42538589": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "spotlight_42552417": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "השיחה שלנו היום סוקרת מאמר שפורסם בין החמישה ל-12 באוגוסט 2026.",
+        "source": "תאריך: 2026 Aug 4",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים פשוט הציבו לעצמם מטרה לברר האם השיבושים המוחיים האלה... הם בעצם מנגנון פתולוגי משותף... או... שמדובר במסלולים ביולוגיים נפרדים לחלוטין שרק במקרה כאילו מערבים את אותן רשתות עצביות כלליות.",
+        "source": "However, it remains unclear whether the neural dysfunctions during reward processing are shared or distinct between these disorders. To address this, we employed the Seed-based d Mapping (SDM) toolbox to explore shared and distinct task-based fMRI findings in MDD and addictive disorders during the processing of reward (anticipation and outcome) and loss (outcome).",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים מדוחים כי בשלב ההפסד לא נמצאו הבדלים מובהקים סטטיסטית בתבנית הפעילות המוחית בין הקבוצות. שום הבדל. לא בסטריאטום ולא בפוטמן.",
+        "source": "No significant differences were found under the loss outcome.",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "spotlight_42555011": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המאמר שפורסם על ידי קבוצת מחקר ברשות יאפ (YAPP)",
+        "source": "מחברים: Yap CX et al.",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}
