@@ -1,0 +1,49 @@
+[
+  {
+    "pmid": "42573989",
+    "channel": "child",
+    "score": 4,
+    "source_topic_id": "child_adolescent_highimpact",
+    "article": {
+      "pmid": "42573989",
+      "title": "Rapid MRI, Not Repeat CT, for Pediatric Head Trauma-A Call to Action",
+      "journal": "JAMA Pediatr",
+      "authors": "Letchuman V et al.",
+      "pub_date": "2026 Aug 10",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42573989/",
+      "topic": "Child & Adolescent Psychiatry — High Impact",
+      "abstract": "This Viewpoint proposes a surveillance framework for traumatic brain injury in pediatric patients with the recommendation for rapid magnetic resonance imaging (MRI) instead of repeat computed tomography (CT) after index CT establishes a diagnosis.",
+      "impact_factor": 27.6,
+      "pubtype": [
+        "Journal Article"
+      ],
+      "study_type_he": "מאמר מחקרי",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42586083",
+    "channel": "psychiatry",
+    "score": 4,
+    "source_topic_id": "general_psychiatry_clinical_part2",
+    "article": {
+      "pmid": "42586083",
+      "title": "AI scribe functions in psychiatric practice: clinical oversight, consent, and regulation",
+      "journal": "Lancet Psychiatry",
+      "authors": "Roth AS, Ayers NB",
+      "pub_date": "2026 Sep",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42586083/",
+      "topic": "General Psychiatry — Clinical",
+      "abstract": "Ambient artificial intelligence (AI) documentation tools, known as AI scribes, have entered psychiatric clinical practice, bundling at least three operations into a single workflow, without sufficient attention to the differences among them. In this Personal View, we argue that AI-generated clinical narrative (history of present illness), AI-generated clinical observation (mental status examination), and AI-generated diagnostic reasoning (assessment and plan) are functionally distinct operations that stand in qualitatively different relationships to their shared input, with distinct failure modes and oversight demands. We describe why psychiatric practice exposes these distinctions with particular clarity and examine their implications for liability, informed consent, and regulation. Psychiatry is uniquely positioned to surface distinctions among these operations because of the therapeutic and legal weight of word choice, the unnarrated structure of the mental status exam, and the formulation-driven nature of diagnostic reasoning. We offer provisional practice considerations for clinicians currently using these AI scribes and call for the field to build frameworks that reflect the different claims these AI scribes' outputs make.",
+      "impact_factor": 64.3,
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "study_type_he": "מאמר סקירה",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  }
+]
