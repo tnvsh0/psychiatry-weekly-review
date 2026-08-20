@@ -246,6 +246,22 @@ paying off once duration extraction itself works.
 episodes) and the only diff versus the committed feeds was `lastBuildDate` —
 duration tag count unchanged, nothing lost.
 
-**`.git` on the VM is ~830 MB** versus 13 MB locally for the same repo. No MP3
-was ever committed (checked: zero `.mp3` blobs in history, no blob > 3 MB), so
-this is unpacked-object bloat, not audio. `git gc --prune=now` is the remedy.
+**`.git` is ~820 MB and it IS audio — corrected 2026-08-20.** An earlier note
+here claimed no MP3 was ever committed; that was wrong (the local check's
+`cat-file` pipeline failed silently on Windows and returned an empty result,
+which I read as "none"). Episodes WERE committed back in May 2026, before
+`podcasts/` was gitignored:
+
+    podcasts/2026-05-25/psychotherapy.mp3       55 MB
+    podcasts/2026-05-10/child_development.mp3   48 MB
+    podcasts/2026-05-10/neuroscience.mp3        47 MB
+
+They are reachable from real commits, so `git gc` cannot drop them — it just
+packs them (817 MB pack). Every clone of the repo pays that cost. Removing them
+needs a history rewrite (`git filter-repo --path podcasts/ --invert-paths`)
+plus a force-push, which rewrites every commit SHA. Not done: it is destructive
+and the disk pressure was already solved by deleting the working-tree copies.
+Revisit only if clone size becomes a real problem.
+
+Lesson: verify a "nothing found" result actually ran — an empty pipeline output
+is not evidence of absence.
