@@ -19,3 +19,12 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+# ── Episode audio ────────────────────────────────────────────────────────────
+# Downloaded episodes are transient: the durable copies are the GitHub Release
+# assets (mirrored to Drive), and the pipeline deletes the local file at the end
+# of each run. They must never enter git — a single week is ~600 MB, and NOTHING
+# removes a blob from history once committed.
+podcasts/
+*.mp3
+*.m4a
