@@ -508,6 +508,23 @@ def _parse_tag(tag: str) -> tuple[str, str] | None:
     return date_str, topic_id
 
 
+_DURATIONS_CACHE: dict[str, dict] = {}
+
+
+def _stored_duration(date_str: str, topic_id: str, repo_root: Path) -> int | None:
+    """Duration recorded by the pipeline before it deleted the local MP3.
+    Returns None when there is no record (e.g. episodes from before this
+    existed) — the feed simply omits <itunes:duration> for those."""
+    if date_str not in _DURATIONS_CACHE:
+        p = repo_root / "summaries" / date_str / "durations.json"
+        try:
+            _DURATIONS_CACHE[date_str] = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            _DURATIONS_CACHE[date_str] = {}
+    v = _DURATIONS_CACHE[date_str].get(topic_id)
+    return int(v) if isinstance(v, (int, float)) else None
+
+
 def _audio_duration_seconds(local_mp3: Path) -> int | None:
     """Return duration in seconds, or None if mutagen is not available."""
     if not local_mp3.exists():
@@ -744,8 +761,14 @@ def build_feed(repo: str, channel: dict, releases: list[dict],
         except ValueError:
             continue
 
+        # Duration: read it from the local MP3 when it is still around, else
+        # from the durations.json the pipeline writes before deleting the file.
+        # Local audio is cleaned up after each run (the release is the durable
+        # copy), so for most episodes the stored value is the only source.
         local_mp3 = repo_root / "podcasts" / date_str / f"{topic_id}.mp3"
         duration = _audio_duration_seconds(local_mp3)
+        if duration is None:
+            duration = _stored_duration(date_str, topic_id, repo_root)
 
         # Display title comes from the release name itself — this is either
         # the NotebookLM-generated title (newer releases) or the old cluster

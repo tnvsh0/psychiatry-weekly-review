@@ -2395,6 +2395,49 @@ def _qc_should_hold(qc: dict | None) -> bool:
     return bool((qc.get("lost_content") or {}).get("any"))
 
 
+# ── Local audio housekeeping ──────────────────────────────────────────────────
+# Episodes were downloaded to podcasts/<date>/ and never cleaned up, so the VM
+# accumulated ~7 GB of MP3s that are already durably stored as GitHub Release
+# assets (and mirrored to Drive). We only ever need room for the episodes of the
+# run in flight. Before deleting we persist each episode's DURATION, because
+# generate_rss reads it from the local file to emit <itunes:duration>; losing
+# that would quietly degrade every feed entry.
+def durations_path(date_str: str) -> Path:
+    return Path("summaries") / date_str / "durations.json"
+
+
+def record_duration(topic_id: str, mp3_path: str, date_str: str) -> None:
+    """Persist an episode's length (seconds) so the feed keeps its duration
+    after the MP3 is removed. No-op if mutagen is unavailable."""
+    try:
+        from mutagen.mp3 import MP3
+        seconds = int(MP3(str(mp3_path)).info.length)
+    except Exception:
+        return
+    p = durations_path(date_str)
+    data = {}
+    if p.exists():
+        try:
+            data = json.loads(p.read_text(encoding="utf-8")) or {}
+        except Exception:
+            data = {}
+    data[topic_id] = seconds
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def release_local_audio(topic_id: str, mp3_path: str, date_str: str) -> None:
+    """Record the duration, then delete the local MP3 now that the release (and
+    the Drive backup) hold the durable copy."""
+    if not mp3_path:
+        return
+    record_duration(topic_id, mp3_path, date_str)
+    try:
+        Path(mp3_path).unlink()
+    except Exception as e:
+        print(f"    (could not remove {mp3_path}: {e})")
+
+
 def save_run_manifest(nb_infos: list[dict]) -> None:
     """Persist per-episode {nb_id, full_prompt, held, release_tag} so the
     regenerate / publish tools can act on a specific episode later (the
@@ -2906,6 +2949,10 @@ def main(mode: str = "all"):
             nb["podcast_path"], nb["topic"], env,
             artifact_title=nb.get("artifact_title"), draft=hold,
         )
+        # Capture the duration NOW, while the file is still here — the local
+        # MP3s are deleted at the end of the run (after the Drive backup and the
+        # feed build), and the feed needs this to emit <itunes:duration>.
+        record_duration(nb["topic"]["id"], nb["podcast_path"], DATE_STR)
         print(f"  -> {nb['podcast_url']}")
     if held:
         print(f"\n  ⏸️ {held} episode(s) HELD for your review (draft — not on "
@@ -2921,6 +2968,19 @@ def main(mode: str = "all"):
     backup_to_drive(env)
     update_rss_feed(env)
     send_notification(nb_infos, env)
+
+    # Now that the release, the Drive backup and the feed all exist, the local
+    # MP3s are redundant — drop them so the VM's disk doesn't grow without
+    # bound (it had reached ~7 GB of stale episodes before this).
+    freed = 0
+    for nb in nb_infos:
+        p = nb.get("podcast_path")
+        if p and nb.get("podcast_url") and Path(p).exists():
+            freed += Path(p).stat().st_size
+            release_local_audio(nb["topic"]["id"], p, DATE_STR)
+    if freed:
+        print(f"\n🧹 Freed {freed / (1024*1024):.0f} MB of local audio "
+              f"(durations saved to summaries/{DATE_STR}/durations.json).")
 
     # ── Phase 10: self-heal earlier weeks (spotlights day only) ───────────────
     # The spotlights run is light, so it has the headroom to produce episodes
