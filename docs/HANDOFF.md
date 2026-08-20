@@ -206,3 +206,46 @@ would chase noise).
   those steps skip themselves and podcasts still run.
 - Spotlight episodes and backfilled episodes both go through QC; the sweep runs
   after the main QC phase, so backfill does its own judging.
+
+---
+
+## 8. Added 2026-08-20 — disk leak, and what the audio files really are
+
+**The pipeline used to leak disk.** Episodes were downloaded to
+`podcasts/<date>/` and never removed, so the shared VM reached 96% full (~7 GB
+of ours). The durable copies already live in the GitHub Releases and the Drive
+backup — only the run in flight needs local audio. Fixed: `weekly_review` now
+deletes each MP3 at the end of the run (after the Drive backup and the feed
+build, both of which still need the files), and `scripts/prune_local_audio.py`
+reclaims a backlog (`--dry-run`, `--keep-days`). One-time prune freed 6.89 GB;
+disk went 96% → 58%. Found by the board-study session, which hit the same
+pattern in its own project.
+
+**The "MP3" files are not MP3s.** NotebookLM returns fragmented MPEG-4 audio:
+
+```
+$ file podcasts/<date>/<topic>.mp3
+ISO Media, MPEG v4 system, Dynamic Adaptive Streaming over HTTP
+```
+
+We name them `.mp3` and the RSS enclosure declares `type="audio/mpeg"`. Players
+(Spotify included) have accepted this for months, so it is not breaking
+playback — but it means `mutagen.mp3.MP3()` fails with "can't sync to MPEG
+frame", and the generic `mutagen.File()` reports `length = 0` because a
+fragmented MP4 carries no duration in its header. **Consequence:
+`<itunes:duration>` has essentially never been emitted** (3 tags across ~60
+episodes in feed-child). Getting real durations would need `ffprobe` (ffmpeg is
+not installed) or reading the length from NotebookLM's own metadata. This is an
+improvement, not a fault — recorded here so nobody re-diagnoses it.
+
+The duration-preservation machinery added with the cleanup (durations.json +
+a fallback in `generate_rss`) is correct and harmless, but it only starts
+paying off once duration extraction itself works.
+
+**Verified after pruning:** feeds rebuild cleanly (243 releases → 60/77/61/34
+episodes) and the only diff versus the committed feeds was `lastBuildDate` —
+duration tag count unchanged, nothing lost.
+
+**`.git` on the VM is ~830 MB** versus 13 MB locally for the same repo. No MP3
+was ever committed (checked: zero `.mp3` blobs in history, no blob > 3 MB), so
+this is unpacked-object bloat, not audio. `git gc --prune=now` is the remedy.
