@@ -2547,28 +2547,24 @@ def auto_retry_flagged(nb_infos: list[dict], env: dict) -> None:
 # (descending) and divided round-robin among the parts so each part gets a
 # balanced mix of high-IF papers rather than Part 1 hoarding the best.
 
-SPLIT_THRESHOLD = 11   # split topics with more than this many articles
-SPLIT_TARGET    = 9    # aim for ~this many articles per part
-                       # Tuned 2026-07-26 (13→9→11): 9/7 split too aggressively —
-                       # runs hit ~19-21 generations, which tripped NotebookLM's
-                       # rate limit and silently lost episodes, and left some
-                       # parts with only 2-4 papers. 11/9 keeps episodes from
-                       # getting dense while cutting the per-run generation
-                       # count back to a safe ~14-16.
-                       # Rationale: NotebookLM produces a roughly FIXED-length
-                       # episode regardless of article count. The built-in
-                       # `--length long` is already the maximum (options are
-                       # only short/default/long, upper bound ~25 min) — asking
-                       # the hosts to "be longer" does NOT extend it. So the
-                       # ONLY lever against dense/shallow episodes is fewer
-                       # articles per part. Lowered 13→9 (target 11→7) so each
-                       # paper in a ~25-min episode gets ~3-4 min instead of
-                       # being rushed. A crowded 20-article cluster now → 3
-                       # parts of ~7; a normal ≤9 article cluster stays whole.
-                       # NOTE: this produces MORE episodes per week — mitigated
-                       # by splitting the weekly run across two days (reviews /
-                       # spotlights) to stay under NotebookLM's rate limits.
-
+SPLIT_THRESHOLD = 8    # split topics with more than this many articles
+SPLIT_TARGET    = 6    # aim for ~this many articles per part
+                       # Tuned 2026-08-20 from MEASURED durations (the DASH
+                       # sidx parser finally made episode length observable).
+                       # Across 44 episodes the correlation between article
+                       # count and duration is only r=0.31 — NotebookLM emits a
+                       # roughly fixed 11-31 min (mean 18) whatever we feed it,
+                       # and two episodes with the SAME 6 articles came out 11.1
+                       # and 24.5 min. So total length is not ours to control;
+                       # the only real lever on minutes-per-article is how many
+                       # articles share an episode:
+                       #     6 articles -> ~2.8 min each
+                       #     9 articles -> ~2.0 min each
+                       # 13->9->11 were all guesses made before we could measure.
+                       # 8/6 targets ~3 min per paper. It pushes a run to ~22-23
+                       # episodes, which is where generations used to be silently
+                       # lost — that is now guarded by --retry 3, the
+                       # second-chance pass, and the missing-episode alert.
 
 def auto_split_topics(nb_infos: list[dict]) -> list[dict]:
     """Split any nb_info with too many articles into multiple parts."""
