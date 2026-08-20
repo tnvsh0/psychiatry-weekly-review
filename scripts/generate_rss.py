@@ -530,11 +530,9 @@ def _audio_duration_seconds(local_mp3: Path) -> int | None:
     if not local_mp3.exists():
         return None
     try:
-        from mutagen.mp3 import MP3
-    except ImportError:
-        return None
-    try:
-        return int(MP3(str(local_mp3)).info.length)
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from audio_duration import duration_seconds
+        return duration_seconds(local_mp3)
     except Exception:
         return None
 

@@ -2410,9 +2410,12 @@ def record_duration(topic_id: str, mp3_path: str, date_str: str) -> None:
     """Persist an episode's length (seconds) so the feed keeps its duration
     after the MP3 is removed. No-op if mutagen is unavailable."""
     try:
-        from mutagen.mp3 import MP3
-        seconds = int(MP3(str(mp3_path)).info.length)
+        sys.path.insert(0, str(SCRIPTS_DIR))
+        from audio_duration import duration_seconds
+        seconds = duration_seconds(mp3_path)
     except Exception:
+        return
+    if not seconds:
         return
     p = durations_path(date_str)
     data = {}
