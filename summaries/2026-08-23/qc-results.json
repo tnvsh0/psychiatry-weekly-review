@@ -1,0 +1,267 @@
+{
+  "child_adolescent_core": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המחקר הזה בעצם אומר שזה פחות רלוונטי [סוג ההתעללות]. המצטברות היא שהכי משנה.",
+        "source": "Multiplicity, duration, and frequency of CM emerged as the dominant predictors of PF impairment in both sexes, substantially outperforming subtype-specific indicators.",
+        "severity": "low"
+      },
+      {
+        "said": "המחקר הזה בעצם אומר שזה פחות רלוונטי [סוג ההתעללות]. המצטברות היא שהכי משנה.",
+        "source": "Multiplicity, duration, and frequency of CM emerged as the dominant predictors of PF impairment in both sexes, substantially outperforming subtype-specific indicators.",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "השלישי, שנכתב על ידי פומבון וליאו (03:00)",
+        "source": "המחברים הם Fombonne E, Liao L (מתוך המקור)",
+        "severity": "low"
+      },
+      {
+        "said": "אריק פומפון (03:03)",
+        "source": "המחבר הוא Fombonne E (מתוך המקור)",
+        "severity": "low"
+      },
+      {
+        "said": "הזכרת קודם את פומבון כשאמרתי את השם שלו ישר אמרת וואו (04:37)",
+        "source": "המחבר הוא Fombonne E (מתוך המקור)",
+        "severity": "low"
+      },
+      {
+        "said": "אריק פומבון הוא פשוט אחד מענקי האפידמיולוגיה של האוטיזם (04:50)",
+        "source": "המחבר הוא Fombonne E (מתוך המקור)",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part4": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part2": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המאמר של סורמני הוא מאמר מחקרי",
+        "source": "המאמר של סורמני הוא 'סקירת ספרות' (Review Article) ולא מאמר מחקרי (Research Article).",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים במאמר של קונג השתמשו ב-EEG בצפיפות גבוהה מאוד, מה שאפשר להם להקליט פעילות חשמלית מאלפי נוירונים בודדים בו-זמנית.",
+        "source": "המאמר מציין 'high-density EEG' ו-'time-resolved multivariate pattern analysis (MVPA)', אך לא מציין הקלטה מאלפי נוירונים בודדים. הוא מציין 'אלפי נוירונים בודדים' בהקשר של טכנולוגיית Neuropixels במאמר של דאמן, לא ב-EEG.",
+        "severity": "high"
+      },
+      {
+        "said": "החוקרים במאמר של קונג מצאו שחוזק גלי הגאמא של הנבדק במצב מנוחה ניבא מראש את ההבדלים האינדיבידואליים ביכולת לא לטעות.",
+        "source": "המאמר מציין 'Individual differences in the strength of these late-stage location-specific and location-invariant representations were predictable from intrinsic resting-state occipito-parietal gamma power', אך לא מציין שזה ניבא את היכולת לא לטעות (error trials).",
+        "severity": "high"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part1": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המאמר הראשון שנסקור פורסם בכתב העת Behavior Research and Therapy, עם אימפקט פקטור 5.0.",
+        "source": "כתב עת: 🔷 Behaviour Research and Therapy (Behav Res Ther) (IF: 5.0)",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר השני שנסקור פורסם בכתב העת BMJ Mental Health, עם אימפקט פקטור 105.7.",
+        "source": "כתב עת: ⭐ BMJ Ment Health (IF: 105.7)",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר השלישי שנסקור פורסם בכתב העת Psychotherapy and Psychosomatics, עם אימפקט פקטור 15.0.",
+        "source": "כתב עת: ⭐ Psychotherapy and Psychosomatics (Psychother Psychosom) (IF: 15.0)",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר הרביעי שנסקור פורסם בכתב העת Frontiers in Public Health.",
+        "source": "כתב עת: 📄 Front Public Health",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר החמישי שנסקור פורסם בכתב העת Frontiers in Psychiatry.",
+        "source": "כתב עת: 📄 Front Psychiatry",
+        "severity": "low"
+      },
+      {
+        "said": "הקבוצה המונחית המטפל ירדה ב-17 נקודות, וקבוצת הטיפול הרגיל ירדה רק ב-11.6 נקודות.",
+        "source": "Mean reductions were 17.0 (therapist-guided I-BA), 16.0 (self-guided I-BA) and 11.6 (TAU), bringing both I-BA groups below the clinical cut-off. Therapist-guided I-BA showed greater reductions than TAU (estimated mean difference -4.68; 95% CI -0.05 to -9.30; p=0.048, d =-0.47; 95% CI 0.00 to -0.93), while self-guided I-BA was not statistically superior (estimated mean difference -3.44; 95% CI -8.05 to 1.17, p=0.14, d =-0.37; 95% CI -0.86 to 0.12).",
+        "severity": "high"
+      },
+      {
+        "said": "היה פער של מינוס 4.68 נקודות, עם P של 0.048, שזה ממש על הקשקש.",
+        "source": "Therapist-guided I-BA showed greater reductions than TAU (estimated mean difference -4.68; 95% CI -0.05 to -9.30; p=0.048, d =-0.47; 95% CI 0.00 to -0.93)",
+        "severity": "low"
+      },
+      {
+        "said": "גודל אפקט בינוני, D שווה מינוס 0.47.",
+        "source": "d =-0.47; 95% CI 0.00 to -0.93",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}
