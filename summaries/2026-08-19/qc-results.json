@@ -1,0 +1,28 @@
+{
+  "spotlight_42573989": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  },
+  "spotlight_42586083": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  }
+}
