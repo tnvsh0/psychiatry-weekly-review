@@ -524,3 +524,20 @@ purpose**; the retry requires a manifest `nb_id`, which protects them.
 - **Books never deleted a local MP3**: 4.5 GB across 26 folders. GCS holds the
   durable copy and the manifest holds the duration, so the local file was never
   the only one. Reclaimed and automated; **disk 12 GB → 6.8 GB used**.
+
+---
+
+## 14. Decided 2026-08-24 — closed, do not re-raise
+
+**board-study on Day 1 of 144 since 2026-06-03 is NOT a bug to fix.** The owner
+works on that project from a separate session and has deliberately given up on
+the daily reminder. §12 flagged the sticky rule as sending once and then going
+quiet forever; that behaviour is accepted. Leave `daily_notify.py` alone.
+
+**`stahl-004`'s surviving discrepancy stays.** The regenerated episode describes
+nicotinic receptor desensitisation as taking milliseconds where the book says
+minutes — one high-severity finding, below the hold threshold, so it published.
+The owner chose to leave it rather than spend another generation on it.
+
+Both were the last open decisions from the 2026-08-24 session. Nothing else is
+awaiting an answer.
