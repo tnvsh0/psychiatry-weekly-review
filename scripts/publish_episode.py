@@ -26,6 +26,9 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(SCRIPTS_DIR))
+
+import weekly_review as w  # noqa: E402
 
 
 def _repo() -> str:
@@ -64,19 +67,7 @@ def _rebuild_and_push_feeds(repo: str) -> None:
     env.setdefault("GH_REPO", repo)
     subprocess.run([sys.executable, str(SCRIPTS_DIR / "generate_rss.py")],
                    env=env, check=False, timeout=180)
-    for feed in (REPO_ROOT / "docs").glob("feed*.xml"):
-        subprocess.run(["git", "add", str(feed)], check=False)
-    staged = subprocess.run(["git", "diff", "--cached", "--quiet"],
-                            capture_output=True)
-    if staged.returncode == 0:
-        print("  No feed change to commit.")
-        return
-    subprocess.run(["git", "commit", "-m", "feed: publish approved episode(s)"],
-                   capture_output=True, text=True, check=False)
-    push = subprocess.run(["git", "push", "origin", "main"],
-                          capture_output=True, text=True, check=False)
-    print("  Feeds pushed." if push.returncode == 0
-          else f"  WARNING: push failed: {push.stderr.strip()[:160]}")
+    w.commit_and_push_feeds("feed: publish approved episode(s)")
 
 
 def main() -> int:

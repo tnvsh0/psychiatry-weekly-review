@@ -2618,6 +2618,45 @@ def record_duration(topic_id: str, mp3_path: str, date_str: str) -> None:
     p.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def commit_and_push_feeds(message: str) -> bool:
+    """Stage docs/feed*.xml, commit, and push — rebasing once if origin moved.
+
+    THE one place this is implemented. It lived in three tools, each with its
+    own bugs: the sweep printed "Feeds pushed." with the result discarded, and
+    regenerate_episode only WARNED — so on 2026-08-24 a regenerated episode was
+    published as a release while its feed entry never left the VM. A run takes
+    an hour and main moves underneath it; a rejected push is routine, not
+    exceptional, and must never read as success."""
+    # Absolute: publish_episode used REPO_ROOT while the sweep used a relative
+    # path, so the two disagreed whenever cwd was not the repo root.
+    for feed in (SCRIPTS_DIR.parent / "docs").glob("feed*.xml"):
+        subprocess.run(["git", "add", str(feed)], check=False)
+    if subprocess.run(["git", "diff", "--cached", "--quiet"],
+                      capture_output=True).returncode == 0:
+        print("  Feeds unchanged — nothing to push.")
+        return True
+    subprocess.run(["git", "commit", "-m", message],
+                   capture_output=True, check=False)
+    for attempt in (1, 2):
+        push = subprocess.run(["git", "push", "origin", "main"],
+                              capture_output=True, text=True)
+        if push.returncode == 0:
+            print("  Feeds pushed.")
+            return True
+        if attempt == 1:
+            print("  push rejected — rebasing onto origin/main and retrying...")
+            rb = subprocess.run(["git", "pull", "--rebase", "origin", "main"],
+                                capture_output=True, text=True)
+            if rb.returncode != 0:
+                subprocess.run(["git", "rebase", "--abort"], capture_output=True)
+                print(f"  ERROR: rebase failed: {rb.stderr.strip()[:300]}")
+                break
+    print("  ⚠ ERROR: could not push the feeds. The episode is on GitHub "
+          "Releases but is NOT in the RSS yet — push docs/feed*.xml by hand.")
+    print(f"  git said: {push.stderr.strip()[:300]}")
+    return False
+
+
 def release_local_audio(topic_id: str, mp3_path: str, date_str: str) -> None:
     """Record the duration, then delete the local MP3 now that the release (and
     the Drive backup) hold the durable copy."""
