@@ -265,3 +265,44 @@ Revisit only if clone size becomes a real problem.
 
 Lesson: verify a "nothing found" result actually ran — an empty pipeline output
 is not evidence of absence.
+
+---
+
+## 9. Added 2026-08-24 — papers with a title but no content
+
+On 2026-08-23 an episode ran **30 minutes on three papers that had no
+abstract** — three sides of one autism-diagnosis correspondence, each a 24-char
+stub. NotebookLM filled half an hour from the titles alone. It was pulled and
+is now a draft.
+
+**Why the regular search can never recover such a paper.** The PubMed query is
+`reldate=8, datetype=edat` — an 8-day rolling window on the *entry* date. When
+a title-only record later gains its abstract, `edat` does **not** change: it is
+the date PubMed first added the record, not the date it was last updated. So
+the paper drops out of the window and never comes back. "It'll turn up in next
+week's search" is false, and that is the whole reason an explicit queue exists.
+
+**The queue.** `drop_contentless_articles()` writes every contentless paper to
+`summaries/deferred-articles.json` with its **base cluster** (`neuroscience`,
+not `neuroscience_part2` — part numbers are per-run and meaningless later).
+Every reviews run, `load_ready_deferred()` re-queries each PMID, re-enriches it
+through `fetch_article_text()` (**PMC full text first, abstract as fallback** —
+open-access full text can land before the abstract, and it is the better source
+anyway), and folds anything that now has content back into its own cluster's
+episode. `DEFERRED_MAX_AGE_DAYS = 28` gives four weekly attempts, then it stops.
+
+The **article** returns, not the episode — right granularity. Resurrecting the
+dead episode would rebuild a thin standalone; rejoining the cluster puts the
+paper in that week's proper episode alongside everything else.
+
+A PubMed hiccup (`_esummary` returns nothing) keeps the paper queued rather than
+dropping it — a transient failure must not look like a decision.
+
+`MIN_ARTICLES_FOR_EPISODE = 1`: only an episode where **nothing** has content is
+skipped. Few articles is not a defect — a single paper with a full text made a
+sound 12-minute episode on 2026-08-09.
+
+**Seeded by hand:** the 08-23 run predates this gate, so its 14 contentless
+papers (3 highimpact, 5 clinical, 3 bio, 2 neuroscience, 1 child_development)
+were written into the queue retroactively. All 14 re-checked clean on 08-24 and
+remain queued.
