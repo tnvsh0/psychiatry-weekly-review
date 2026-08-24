@@ -397,6 +397,18 @@ def _sweep(n: int, limit: int, dry_run: bool) -> int:
         topics = sorted({a["topic_id"] for a in arts})
         present = _existing_release_topics(repo, date_str)
         missing = [t for t in topics if t not in present]
+        # Never rebuild an episode the content gate would reject today. The
+        # 2026-08-23 highimpact episode ran half an hour on three abstract-less
+        # stubs and was deleted; without this the very next sweep would see a
+        # missing release and faithfully build it again. Those papers come back
+        # through the deferred queue when PubMed publishes their content.
+        skipped = [t for t in missing
+                   if not any(w.has_usable_content(a) for a in arts
+                              if a.get("topic_id") == t)]
+        if skipped:
+            print(f"  {date_str}: skipping {', '.join(skipped)} — no article "
+                  f"has usable content (queued for a later run instead).")
+            missing = [t for t in missing if t not in skipped]
         if not missing:
             print(f"  {date_str}: complete.")
             continue
