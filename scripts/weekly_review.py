@@ -2395,6 +2395,125 @@ def _qc_should_hold(qc: dict | None) -> bool:
     return bool((qc.get("lost_content") or {}).get("any"))
 
 
+
+# ── Content gate: never build an episode out of titles alone ─────────────────
+# PubMed indexes many records before their abstract lands — brand-new entries,
+# and correspondence such as letters and replies, often carry a title and
+# nothing else. Those records used to flow straight through: on 2026-08-23 a
+# published 30-minute episode was built from three such stubs (all variants of
+# one autism letter exchange), so the hosts had no findings to report and
+# discussed the topic in general terms instead. The episode was pulled.
+#
+# Rule: an article earns a place only if it brings real text, and an episode is
+# only worth generating if enough of its articles do.
+MIN_ABSTRACT_CHARS = 400   # shorter than this is a stub, not a paper
+MIN_ARTICLES_FOR_EPISODE = 2   # below this there is not enough for a discussion
+
+
+def has_usable_content(article: dict) -> bool:
+    """True when the article carries enough real text to discuss."""
+    text = (article.get("abstract") or "").strip()
+    if not text or "abstract not available" in text.lower():
+        return False
+    return len(text) >= MIN_ABSTRACT_CHARS
+
+
+def drop_contentless_articles(nb_infos: list[dict]) -> list[dict]:
+    """Remove articles with no usable abstract, then drop any episode left with
+    too little to say. Deferred articles are recorded so a later run can pick
+    them up once PubMed has published their abstract."""
+    deferred: list[dict] = []
+    kept_infos: list[dict] = []
+    for nb in nb_infos:
+        good, bad = [], []
+        for a in nb["articles"]:
+            (good if has_usable_content(a) else bad).append(a)
+        for a in bad:
+            deferred.append({
+                "pmid": str(a.get("pmid", "")), "title": a.get("title", ""),
+                "journal": a.get("journal", ""), "url": a.get("url", ""),
+                # base cluster id — a deferred paper should come back to its
+                # cluster, not to whichever numbered part it happened to land in
+                "topic_id": nb["topic"]["id"].split("_part")[0],
+                "first_seen": DATE_STR,
+            })
+        if bad:
+            print(f"  {nb['topic']['id']}: dropped {len(bad)} article(s) with no "
+                  f"abstract ({len(good)} left)")
+        if len(good) < MIN_ARTICLES_FOR_EPISODE:
+            print(f"  ⏭️  SKIPPING {nb['topic']['id']} — only {len(good)} article(s) "
+                  f"with real content; not enough for an episode.")
+            continue
+        nb["articles"] = good
+        kept_infos.append(nb)
+    if deferred:
+        save_deferred_articles(deferred)
+    return kept_infos
+
+
+def save_deferred_articles(new_items: list[dict]) -> None:
+    """Append to summaries/deferred-articles.json — the queue of papers seen
+    without an abstract. A later run re-checks them and includes any whose
+    abstract has since appeared."""
+    path = Path("summaries") / "deferred-articles.json"
+    existing = []
+    if path.exists():
+        try:
+            existing = json.loads(path.read_text(encoding="utf-8")) or []
+        except Exception:
+            existing = []
+    seen = {str(d.get("pmid")) for d in existing}
+    added = [d for d in new_items if d["pmid"] and d["pmid"] not in seen]
+    if not added:
+        return
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(existing + added, ensure_ascii=False, indent=2),
+                    encoding="utf-8")
+    print(f"  Deferred {len(added)} article(s) for a later run "
+          f"(waiting for their abstract).")
+
+
+def load_ready_deferred(exclude_pmids: set[str]) -> list[dict]:
+    """Re-check deferred articles: return those whose abstract has now been
+    published, and drop entries that have waited too long to be worth chasing."""
+    path = Path("summaries") / "deferred-articles.json"
+    if not path.exists():
+        return []
+    try:
+        items = json.loads(path.read_text(encoding="utf-8")) or []
+    except Exception:
+        return []
+    cutoff = (TODAY - timedelta(days=DEFERRED_MAX_AGE_DAYS)).strftime("%Y-%m-%d")
+    ready, still_waiting = [], []
+    for d in items:
+        pmid = str(d.get("pmid", ""))
+        if not pmid or pmid in exclude_pmids:
+            continue
+        if d.get("first_seen", "") < cutoff:
+            continue                      # gave up on this one
+        arts = _esummary([pmid], d.get("topic_id", ""))
+        if not arts:
+            continue
+        a = arts[0]
+        a["abstract"] = _fetch_abstract_xml(pmid)
+        if has_usable_content(a):
+            a["impact_factor"] = get_journal_if(a["journal"])
+            a["_deferred_from"] = d.get("first_seen")
+            a["topic_id"] = d.get("topic_id", "")
+            ready.append(a)
+        else:
+            still_waiting.append(d)
+    path.write_text(json.dumps(still_waiting, ensure_ascii=False, indent=2),
+                    encoding="utf-8")
+    if ready:
+        print(f"  ♻️  {len(ready)} previously-deferred article(s) now have an "
+              f"abstract and are back in this week's run.")
+    return ready
+
+
+DEFERRED_MAX_AGE_DAYS = 28   # stop chasing an abstract after four weeks
+
+
 # ── Local audio housekeeping ──────────────────────────────────────────────────
 # Episodes were downloaded to podcasts/<date>/ and never cleaned up, so the VM
 # accumulated ~7 GB of MP3s that are already durably stored as GitHub Release
@@ -2762,6 +2881,17 @@ def main(mode: str = "all"):
             all_articles.extend(articles)
             nb_infos.append(_mk_nb(topic, articles))
 
+        # Papers seen in an earlier run with a title but no abstract: if PubMed
+        # has published their abstract since, fold them back into their cluster
+        # now rather than losing them.
+        for a in load_ready_deferred(week_pmids):
+            for nb in nb_infos:
+                if nb["topic"]["id"].split("_part")[0] == a.get("topic_id", ""):
+                    nb["articles"].append(a)
+                    all_articles.append(a)
+                    week_pmids.add(str(a.get("pmid", "")))
+                    break
+
     # ── Spotlights (Wednesday): generate from the reviews-day SELECTION ────────
     # Spotlights are the papers the REVIEWS run already chose a few days earlier,
     # from the same week's articles — NOT a fresh search. Perfect sync: every
@@ -2793,6 +2923,22 @@ def main(mode: str = "all"):
     # Must run BEFORE spotlight selection so content-keyword scoring sees the
     # abstracts.
     fetch_article_text(all_articles)
+
+    # ── Content gate ──────────────────────────────────────────────────────────
+    # Drop articles PubMed has indexed without an abstract, and skip any episode
+    # that is left with too little real material. Without this the hosts have
+    # nothing to report and fill the time by discussing the topic in general —
+    # which is exactly how the 2026-08-23 episode had to be pulled.
+    print("\n🧪 Checking every article has real content...")
+    before = len(nb_infos)
+    nb_infos = drop_contentless_articles(nb_infos)
+    all_articles = [a for nb in nb_infos for a in nb["articles"]]
+    if len(nb_infos) < before:
+        print(f"  {before - len(nb_infos)} episode(s) skipped for lack of content.")
+    if not nb_infos:
+        print("No episode has enough real content this run — nothing to produce.")
+        send_notification([], env)
+        return
 
     # ── Spotlight SELECTION (reviews day) ─────────────────────────────────────
     # From THIS run's review articles, pick the top spotlight-worthy papers per
