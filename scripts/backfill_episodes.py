@@ -100,12 +100,46 @@ def _find_notebook(label_he: str, date_str: str, env: dict) -> str | None:
     return None
 
 
-def _base_prompt(topic_id: str, arts: list[dict]) -> str | None:
+def _existing_audio(nb_id: str, env: dict) -> dict | None:
+    """A completed audio artifact already sitting in the notebook, if any.
+
+    Generation and download are separate failures. On 2026-08-19 both spotlight
+    episodes rendered fine and only the download failed, so two finished
+    episodes sat in NotebookLM while every later sweep tried to regenerate them.
+    Reusing what is already there costs one API call and saves an hour of
+    rendering -- and keeps the episode the QC gate would otherwise never see."""
+    try:
+        out = subprocess.run(
+            ["notebooklm", "artifact", "list", "-n", nb_id,
+             "--type", "audio", "--json"],
+            capture_output=True, text=True, env=env, timeout=90,
+        )
+        arts = json.loads(out.stdout.strip() or "{}").get("artifacts", [])
+    except Exception:
+        return None
+    done = [a for a in arts if a.get("status_id") == 3 or a.get("status") == "completed"]
+    if not done:
+        return None
+    # newest first -- a retried episode leaves the older take behind
+    done.sort(key=lambda a: a.get("created_at") or "", reverse=True)
+    return done[0]
+
+
+def _base_prompt(topic_id: str, arts: list[dict],
+                 manifest: dict | None = None) -> str | None:
     """Rebuild the episode's base prompt from the CURRENT topic definitions, so
     backfilled episodes get all prompt improvements made since the failed run."""
     base_id = topic_id.split("_part")[0]
     topic = next((t for t in w.TOPICS if t["id"] == base_id), None)
     if topic is None:
+        # Spotlight topics are built per-run from that week's selection and are
+        # not in TOPICS, so there is nothing current to rebuild from. The run
+        # manifest stored the exact prompt that was used -- fall back to it
+        # rather than abandoning the episode.
+        stored = ((manifest or {}).get(topic_id) or {}).get("full_prompt")
+        if stored:
+            print("    (using the prompt stored in the run manifest)")
+            return stored
         return None
     prompt = topic["podcast_prompt"]
     if "_part" in topic_id:
@@ -140,7 +174,22 @@ def backfill_batch(topic_ids: list[str], date_str: str, arts: list[dict],
         if not nb_id:
             print("  ✗ notebook not found (deleted after 4 weeks?) — skipping.")
             continue
-        prompt = _base_prompt(topic_id, arts)
+
+        # Already rendered? Then the earlier run lost it downstream of
+        # generation and there is nothing to regenerate.
+        have = _existing_audio(nb_id, env)
+        if have:
+            print(f"  ♻️  audio already rendered {have.get('created_at', '')} "
+                  f"— reusing it instead of regenerating.")
+            jobs.append({
+                "nb_id": nb_id, "artifact_id": have["id"], "podcast_ready": True,
+                "artifact_title": have.get("title"),
+                "topic": {"id": topic_id, "label_en": topic_id,
+                          "label_he": label_he},
+            })
+            continue
+
+        prompt = _base_prompt(topic_id, arts, manifest)
         if not prompt:
             print("  ✗ could not rebuild the prompt — skipping.")
             continue
@@ -159,9 +208,12 @@ def backfill_batch(topic_ids: list[str], date_str: str, arts: list[dict],
     if not jobs:
         return 0
 
-    # Phase 2 — wait for them all together.
-    print(f"\nWaiting for {len(jobs)} generation(s)...")
-    w.wait_for_all_podcasts(jobs, env, max_wait=5400)
+    # Phase 2 — wait for them all together. Reused artifacts are already done,
+    # so a batch made entirely of those skips the wait completely.
+    pending = [j for j in jobs if not j.get("podcast_ready")]
+    if pending:
+        print(f"\nWaiting for {len(pending)} generation(s)...")
+        w.wait_for_all_podcasts(jobs, env, max_wait=5400)
 
     # Phase 3 — download, QC, then create the missing releases. Backfilled
     # episodes go through the SAME quality gate as normal ones: a failing
