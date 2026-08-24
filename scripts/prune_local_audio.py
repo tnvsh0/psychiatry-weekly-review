@@ -31,9 +31,15 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 
 def _duration(mp3: Path) -> int | None:
+    """These files are fragmented MPEG-4, not MP3, whatever the extension says,
+    so mutagen.mp3 fails on every one of them -- this tool reported "no readable
+    duration" for all 8 files on 2026-08-24 and would have deleted them without
+    recording anything. audio_duration reads the DASH sidx box, which is what
+    the pipeline itself uses."""
     try:
-        from mutagen.mp3 import MP3
-        return int(MP3(str(mp3)).info.length)
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        from audio_duration import duration_seconds
+        return duration_seconds(str(mp3)) or None
     except Exception:
         return None
 
@@ -111,7 +117,7 @@ def main() -> int:
     print(f"\n{verb} {total_bytes/1073741824:.2f} GB across {total_files} file(s).")
     if no_duration:
         print(f"note: {no_duration} file(s) had no readable duration "
-              f"(mutagen missing or corrupt) — their feed entries omit it.")
+              f"(unreadable or corrupt) — their feed entries omit it.")
     return 0
 
 
