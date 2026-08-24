@@ -87,15 +87,22 @@ def main() -> int:
         dur_path = REPO_ROOT / "summaries" / date_dir.name / "durations.json"
         durations = _load(dur_path)
         freed = 0
+        pruned = 0
         for mp3 in mp3s:
             topic_id = mp3.stem
             if topic_id not in durations:
                 d = _duration(mp3)
                 if d is None:
+                    # The header promises this tool only removes a file whose
+                    # duration it has just recorded; it used to delete anyway.
+                    # The local file is the last place the duration can be read
+                    # from, so keeping it is the only way to not lose it.
                     no_duration += 1
-                else:
-                    durations[topic_id] = d
+                    print(f"    keeping {mp3.name} — could not read its duration")
+                    continue
+                durations[topic_id] = d
             freed += mp3.stat().st_size
+            pruned += 1
             if not args.dry_run:
                 mp3.unlink()
         if durations and not args.dry_run:
@@ -107,17 +114,17 @@ def main() -> int:
                 date_dir.rmdir()
             except OSError:
                 pass
-        total_files += len(mp3s)
+        total_files += pruned
         total_bytes += freed
-        print(f"  {date_dir.name}: {len(mp3s)} file(s), {freed/1048576:.0f} MB"
+        print(f"  {date_dir.name}: {pruned} file(s), {freed/1048576:.0f} MB"
               f"{' (dry run)' if args.dry_run else ' freed'}"
               f"  durations recorded: {len(durations)}")
 
     verb = "would free" if args.dry_run else "freed"
     print(f"\n{verb} {total_bytes/1073741824:.2f} GB across {total_files} file(s).")
     if no_duration:
-        print(f"note: {no_duration} file(s) had no readable duration "
-              f"(unreadable or corrupt) — their feed entries omit it.")
+        print(f"note: {no_duration} file(s) were KEPT because their duration "
+              f"could not be read — investigate before deleting them by hand.")
     return 0
 
 
