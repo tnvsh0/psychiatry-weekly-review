@@ -2513,18 +2513,24 @@ def load_ready_deferred(exclude_pmids: set[str]) -> list[dict]:
     except Exception:
         return []
     cutoff = (TODAY - timedelta(days=DEFERRED_MAX_AGE_DAYS)).strftime("%Y-%m-%d")
-    ready, still_waiting = [], []
+    ready, still_waiting, gave_up = [], [], 0
     for d in items:
         pmid = str(d.get("pmid", ""))
         if not pmid or pmid in exclude_pmids:
             continue
         if d.get("first_seen", "") < cutoff:
+            gave_up += 1
             continue                      # gave up on this one
         arts = _esummary([pmid], d.get("topic_id", ""))
         if not arts:
-            continue
+            still_waiting.append(d)       # a transient PubMed hiccup must not
+            continue                      # silently drop the paper from the queue
         a = arts[0]
-        a["abstract"] = _fetch_abstract_xml(pmid)
+        # Re-check through the same enrichment the main run uses: PMC full text
+        # first, abstract as the fallback. A paper's open-access full text can
+        # land before its abstract does, and the full text is the better source
+        # anyway -- checking only the abstract would leave it queued forever.
+        fetch_article_text([a])
         if has_usable_content(a):
             a["impact_factor"] = get_journal_if(a["journal"])
             a["_deferred_from"] = d.get("first_seen")
@@ -2535,8 +2541,11 @@ def load_ready_deferred(exclude_pmids: set[str]) -> list[dict]:
     path.write_text(json.dumps(still_waiting, ensure_ascii=False, indent=2),
                     encoding="utf-8")
     if ready:
-        print(f"  ♻️  {len(ready)} previously-deferred article(s) now have an "
-              f"abstract and are back in this week's run.")
+        print(f"  ♻️  {len(ready)} previously-deferred article(s) now have "
+              f"content and are back in this week's run.")
+    if still_waiting or gave_up:
+        print(f"  ⏳ {len(still_waiting)} article(s) still waiting for content"
+              + (f"; {gave_up} dropped after {DEFERRED_MAX_AGE_DAYS} days" if gave_up else ""))
     return ready
 
 
