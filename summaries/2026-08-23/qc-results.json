@@ -263,5 +263,185 @@
       "any": false,
       "details": []
     }
+  },
+  "behavioral_sciences": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  },
+  "child_adolescent_misc_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  },
+  "child_adolescent_misc_part2": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המאמר הראשון שפורסם השבוע ב-Annals of the New York Academy of Sciences, שהוא מאמר סקירה, מחזיר אותנו לאחת המלכודות האבחנתיות הכי מוכרות בקליניקה.",
+        "source": "Differentiating Fetal Alcohol Spectrum Disorders From Attention-Deficit Hyperactivity Disorder and Reviewing Diagnostic Guidelines (Review article)",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר השני שפורסם השבוע ב-Journal of Medical Internet Research, שהוא בעצם מטה-אנליזת רשת, מספק איזה סוג של הצצה לאיך נראה הטיפול של המחר, למרות שזה כבר קורה היום.",
+        "source": "Multimodal Digital Therapeutics Enhanced by Task Design and AI for Attention-Deficit/Hyperactivity Disorder Core Symptoms and Executive Functions in Children and Adolescents: Systematic Review and Network Meta-Analysis of Randomized Controlled Trials (מטה-אנליזה)",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר השלישי פורסם בכתב העת Women's Health של לונדון. מדובר במאמר מחקרי, ספציפית מחקר חתך.",
+        "source": "The monthly spectrum: Premenstrual symptoms across ADHD and autism (Research article)",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר הרביעי שלנו הוא מאמר סקירה שפורסם בכתב העת Zhongguo Dang Dai Er Ke Za Zhi.",
+        "source": "Focusing on profound autism: validity of clinical taxonomy and management of treatment-resistant symptoms (מאמר סקירה)",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר פורסם ב-International Journal of Qualitative Studies on Health and Well-being, והוא מאמר מחקרי, אבל במתודולוגיה של מחקר איכותני.",
+        "source": "Walking together: exploring australian parent experiences of walking in nature with their preschool children with autism using a bioecological lens (מאמר מחקרי)",
+        "severity": "low"
+      },
+      {
+        "said": "המחקר כלל 199 נשים בגילאי 20 עד 40. עכשיו, תנאי הכניסה המרכזי, וזה מאוד חשוב מבחינה מתודולוגית, היה שהן אינן משתמשות באמצעי מניעה הורמונליים.",
+        "source": "Participants included 89 with ADHD, 39 with autism, and 71 controls. Premenstrual symptoms were assessed using the Premenstrual Symptoms Screening Tool (PSST), alongside measures of ADHD characteristics, autism traits, and sensory hypersensitivity. (The abstract states the total number of participants and their age range, and that they were without hormonal contraceptive use, but does not explicitly state that 'non-use of hormonal contraceptives' was the *main* inclusion criterion, only a condition of the analyzed data.)",
+        "severity": "low"
+      },
+      {
+        "said": "המחקר הקודם דיבר על נשים עם אוטיזם שלקחו חלק פעיל במחקר, מה שמצביע על כך שהן נמצאות בחלק העצמאי והמתפקד יותר של הספקטרום, נכון?",
+        "source": "לא מופיע במקור (The abstract for 'The monthly spectrum' does not specify the functional level of autistic women who participated, nor does it state they took an 'active part' in a way that implies higher functioning. It describes the study as cross-sectional data from 199 women.)",
+        "severity": "low"
+      },
+      {
+        "said": "הסקירה הזו מגדירה אוטיזם עמוק כמצב דורש השגחה צמודה של 24 שעות ביממה. אנחנו מדברים על אנשים עם מנת משכל מתחת ל-50, העדר שפה מדוברת, או אולי שפה מינימלית שלא מאפשרת אפילו תקשורת בסיסית של צרכים.",
+        "source": "לא מופיע במקור (The abstract for 'Focusing on profound autism' is an expert commentary/review article. It discusses the validity of clinical taxonomy and management of treatment-resistant symptoms in profound autism but does not provide a specific definition of 'profound autism' with IQ cutoffs or language criteria as stated in the audio.)",
+        "severity": "high"
+      },
+      {
+        "said": "הסקירה מראה שניצול התסמינים של הקבוצה הזו, הקצה העמוק, דורש מסגרות טיפוליות ייעודיות ופרוטוקולים פרמקולוגיים שונים לגמרי. יעדי הטיפול שם אינם מתמקדים בשילוב תעסוקתי, אלא יותר בהישרדות, במניעת פגיעה, בתקשורת תומכת וחליפית, בשיפור איכות החיים הבסיסית, אלה יעדים אחרים לגמרי.",
+        "source": "Focusing on profound autism: validity of clinical taxonomy and management of treatment-resistant symptoms (The abstract discusses management of treatment-resistant symptoms but does not detail specific pharmacological protocols, occupational integration, or survival-focused goals as explicitly as the audio. It's a general review of taxonomy and management.)",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  },
+  "cognition_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  },
+  "cognition_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  },
+  "psychotherapy_part4": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המאמר הוא בעצם מאמר סקירה שיטתית. הם אספו נתונים מתוך לא פחות מ-32 מחקרים שונים. מתוכם 11 היו מחקרים אקראיים מבוקרים, מה שאנחנו קוראים RCTs, ועוד 21 מחקרים לא אקראיים.",
+        "source": "Thirty-two studies (11 RCTs, 21 non-randomized) met inclusion criteria",
+        "severity": "low"
+      },
+      {
+        "said": "המחקר הזה ממש ממחיש שהכשל הוא ביולוגי קוגניטיבי. זה יושב בשלב הקידוד העצבי הראשוני.",
+        "source": "These results underscore the potential role of deficits in fear discrimination during the consolidation of social learning experiences, which is particularly relevant for the development of SAD.",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר השלישי שלנו שפורסם בכתב העת JMIR Mhealth Uhealth והוא, שים לב, הוא בדיוק מטה-אנליזה שעוסקת בהתערבויות דיגיטליות אבל בהדרכה עצמית ספציפית לצוותי רפואה.",
+        "source": "This systematic review aimed to investigate the effects of self-guided digital mindfulness interventions on the mental health and well-being of HCWs.",
+        "severity": "low"
+      },
+      {
+        "said": "צוות המחקר סינן מעל 37,000 תקצירים של מאמרים רק כדי להגיע למחקרים הרלוונטיים באמת. ובסוף הם התכנסו ל-9 מחקרי RCT איכותיים שכללו יחד 3,088 עובדי מערכת הבריאות.",
+        "source": "Database searching yielded 37,851 abstracts and 145 studies that examined the effectiveness of digital health interventions for workers in the initial 2023 screen. In the present study, we limited the included studies to those that met the following criteria: randomized controlled trials (RCTs) using self-guided digital mindfulness interventions... The updated search in 2025 yielded 6328 additional records, of which 11 studies were examined. ... A total of 9 RCTs with 3088 participants were included in the final analysis.",
+        "severity": "low"
+      },
+      {
+        "said": "משך ההתערבות הממוצע היה, אם אני זוכרת נכון, קצת יותר משישה שבועות. 6.17 שבועות בממוצע.",
+        "source": "with an average duration of 6.17 weeks (range: 1…",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר הרביעי והאחרון שלנו פורסם בכתב העת Contemporary Clinical Trials. חשוב לי לציין מראש שזה לא מאמר שמציג תוצאות מוגמרות, אלא זה מאמר מחקרי שהוא למעשה מציג פרוטוקול של ניסוי קליני, מה שנקרא trial registration, שנמצא ממש כרגע בתהליך.",
+        "source": "RESULTS: The project is ongoing and results will be reported in future manuscripts. TRIAL REGISTRATION: ClinicalTrials.govNCT05974631, date of registration July 25, 2023, https://clinicaltrials.gov/study/NCT05974631.",
+        "severity": "low"
+      },
+      {
+        "said": "הפרוטוקול הזה הוא מנסה לפתור את אחת הדילמות הכי, באמת הכי קשות בפסיכיאטריה של יוצאי צבא. הרי אנחנו יודעים ש-PTSD הוא גורם סיכון מרכזי וברור לאובדנות אצל חיילים משוחררים.",
+        "source": "Posttraumatic stress disorder (PTSD) is a significant risk factor for suicide among veterans, but there is a critical knowledge gap about how to treat PTSD in the context of elevated acute suicide risk.",
+        "severity": "low"
+      },
+      {
+        "said": "הגישה הזו גורסת שכשיש סיכון אובדני אקוטי פעיל, פשוט אסור לגעת בטראומה. צריך לעצור. החשש הוא שחשיפה ממושכת לזיכרונות הקשים, הטיפול שנקרא PE או Prolonged Exposure, חשיפה ממושכת, החשש הוא שזה פשוט יעלה את רמת המצוקה לרמה כזו שהמטופל פשוט לא יוכל לשאת את זה.",
+        "source": "Prior research suggests that a treatment that combines Dialectical Behavior Therapy (DBT) with the DBT Prolonged Exposure protocol (DBT PE) reduces PTSD and self-directed violence (SDV) among high-risk individuals while also being feasible, acceptable, and safe to deliver. However, a large-scale randomized controlled trial is needed. This study will compare the effectiveness of DBT + DBT PE to the current gold standard of care in the Veterans Health Administration (VHA), Prolonged Exposure therapy augmented with suicide risk management (PE + SRM), while also examining barriers and facilitators to implementing these treatments in VHA.",
+        "severity": "low"
+      },
+      {
+        "said": "הפרוטוקול הסטנדרטי שהיה נהוג עד היום, הוא שאגב גם קבוצת הביקורת בניסוי הזה שתיארת, הוא כלל 20 שבועות של חשיפה ממושכת בשילוב עם פרוטוקול נפרד לניהול סיכון אובדני, מה שנקרא PE פלוס SRM.",
+        "source": "This study will compare the effectiveness of DBT + DBT PE to the current gold standard of care in the Veterans Health Administration (VHA), Prolonged Exposure therapy augmented with suicide risk management (PE + SRM)...",
+        "severity": "low"
+      },
+      {
+        "said": "הם מתכננים לערוך רנדומיזציה, חלוקה אקראית, ל-125 יוצאי צבא עם PTSD, שיש להם גם היסטוריה של פגיעה עצמית, מחשבות אובדניות פעילות וקשיים קשים בוויסות רגשי.",
+        "source": "This multi-site hybrid type 1 effectiveness-implementation trial will randomize 125 veterans with PTSD, recent and repeated SDV, suicidal ideation, and emotion dysregulation to DBT + DBT PE (12 months) or PE + SRM (up to 20 weeks).",
+        "severity": "low"
+      },
+      {
+        "said": "הפרוטוקול הזה משלב DBT, שזה טיפול דיאלקטי התנהגותי שנועד לוויסות רגשי, יחד עם חשיפה ממושכת שמותאמת ל-DBT שנקראת DBT PE.",
+        "source": "Prior research suggests that a treatment that combines Dialectical Behavior Therapy (DBT) with the DBT Prolonged Exposure protocol (DBT PE) reduces PTSD and self-directed violence (SDV) among high-risk individuals while also being feasible, acceptable, and safe to deliver.",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
   }
 }
