@@ -354,3 +354,50 @@ reporting a clean run. If a deployed fix does not seem to take effect, check
 2026-08-23: 22/22 episodes exist (20 published, 2 held by QC).
 2026-08-19: both spotlights recovered from their existing audio, QC 5/5/5.
 All feeds live and verified against GitHub Pages.
+
+---
+
+## 11. Added 2026-08-24 (evening) — decisions taken, and the stash that nearly cost two episodes
+
+**Decided by the owner and done:**
+- `neuroscience_part2` (08-23) regenerated. It had told listeners EEG records
+  "thousands of individual neurons" — that was Neuropixels, from a *different*
+  paper in the same episode — and overstated what resting-state gamma predicted.
+- The empty `child_adolescent_highimpact` (08-23) release **deleted**. Its three
+  papers stay in `deferred-articles.json` and return when PubMed publishes them.
+- **The books project got the two fixes this project already had** (books PR #1):
+  `--retry 3` on generation (it had none — the exact bug that cost this project
+  9 episodes), and a notification that names what never got made. "ספרים: 3
+  פרקים חדשים" reads like success when 4 were planned; that is how a missing
+  book went unseen.
+
+**Backfill now applies the content gate.** Deleting the empty episode makes its
+release *missing*, and producing missing releases is the sweep's entire job — it
+would have rebuilt it. The sweep now skips any topic where no article has usable
+content.
+
+### ⚠️ The 817 MB stash — check before you clear one
+
+`.git` on the VM was 818 MB while GitHub's was 5 MB. `git gc` could not shrink
+it, and no branch or tag reached the blobs. The holder was **`refs/stash`** — an
+untracked-files stash from 2026-05-26 (`git stash list` showed nothing, because
+expiring the reflog had already emptied the stash log while `refs/stash` still
+pointed at the commit).
+
+It held 40 files, and **clearing it blind would have destroyed real content**:
+- `summaries/2026-05-02/` — articles.json + 5 episode summaries, **missing from
+  the repo entirely**.
+- `podcasts/2026-05-02/child_adolescent.mp3` and `2026-05-03/…` — two episodes
+  with **no GitHub release at all**. Those two dates had zero releases; the audio
+  existed nowhere else.
+
+All rescued first: the summaries are committed, both episodes are **draft**
+releases (preserved, deliberately out of the feed — publishing 4-month-old
+episodes made under the old prompt is the owner's call). Then the stash was
+dropped: **818 MB → 5.2 MB**.
+
+### Queued, not done
+1. **Books QC sends no ntfy.** It writes `reports/<date>/qc-report.md` and
+   `qc-results.json`, and the owner never sees them.
+2. **board-study × notebooklm-py 0.7.3** — `note get` output format still never
+   re-verified after the shared-venv upgrade; `parse_note.py` may break silently.
