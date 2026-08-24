@@ -2222,7 +2222,7 @@ def backup_to_drive(env: dict) -> None:
     print("\n\U0001f4be Backing up to Google Drive...")
     try:
         subprocess.run(
-            [sys.executable, str(SCRIPTS_DIR / "backup_to_drive.py"),
+            [sys.executable, "-u", str(SCRIPTS_DIR / "backup_to_drive.py"),
              "--date", DATE_STR],
             env=env, check=False, timeout=600,
         )
@@ -2245,7 +2245,7 @@ def update_rss_feed(env: dict) -> None:
     print("\n\U0001f4e1 Updating podcast RSS feeds...")
     try:
         result = subprocess.run(
-            [sys.executable, str(SCRIPTS_DIR / "generate_rss.py")],
+            [sys.executable, "-u", str(SCRIPTS_DIR / "generate_rss.py")],
             env=env, capture_output=True, text=True, timeout=120,
         )
         if result.returncode != 0:
@@ -2292,7 +2292,7 @@ def generate_digests(env: dict) -> None:
     print("\n\U0001f4dd Generating weekly digests (take-home + clinical questions)...")
     try:
         subprocess.run(
-            [sys.executable, str(SCRIPTS_DIR / "generate_digests.py"),
+            [sys.executable, "-u", str(SCRIPTS_DIR / "generate_digests.py"),
              "--date", DATE_STR],
             env=env, check=False, timeout=600,
         )
@@ -2308,7 +2308,7 @@ def run_backfill_sweep(env: dict) -> None:
     print("\n\U0001fa79 Backfill sweep for previously-missing episodes...")
     try:
         subprocess.run(
-            [sys.executable, str(SCRIPTS_DIR / "backfill_episodes.py"),
+            [sys.executable, "-u", str(SCRIPTS_DIR / "backfill_episodes.py"),
              # 6 run dates ≈ the 4-week window in which notebooks still exist
              # (reviews + spotlights runs alternate, so 6 dates ≈ 3 weeks).
              "--recent", "6", "--limit", "10"],
@@ -2327,7 +2327,7 @@ def run_qc_trends(env: dict) -> None:
     print("\n\U0001f4c8 Analysing QC trends...")
     try:
         subprocess.run(
-            [sys.executable, str(SCRIPTS_DIR / "qc_trends.py"),
+            [sys.executable, "-u", str(SCRIPTS_DIR / "qc_trends.py"),
              "--weeks", "8", "--min-count", "3"],
             env=env, check=False, timeout=900,
         )
@@ -2349,7 +2349,7 @@ def run_qc(env: dict) -> None:
     print("\n\U0001f50e Running podcast QC review...")
     try:
         subprocess.run(
-            [sys.executable, str(SCRIPTS_DIR / "qc_review.py"),
+            [sys.executable, "-u", str(SCRIPTS_DIR / "qc_review.py"),
              "--date", DATE_STR],
             env=env, check=False, timeout=3000,
         )
