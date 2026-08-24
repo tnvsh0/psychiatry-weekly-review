@@ -101,42 +101,10 @@ def _find_notebook(label_he: str, date_str: str, env: dict) -> str | None:
 
 
 def _push_feeds(message: str) -> bool:
-    """Commit the rebuilt feeds and push them, reporting what actually happened.
-
-    A release that never reaches the feed is not published as far as the
-    listener is concerned. Both callers used to print 'Feeds pushed.'
-    unconditionally with the push output captured and discarded, so when the
-    push was rejected on 2026-08-24 -- origin had moved ahead while the sweep
-    was running -- six recovered episodes stayed out of the feeds and the log
-    said everything was fine."""
-    for feed in (REPO_ROOT / "docs").glob("feed*.xml"):
-        subprocess.run(["git", "add", str(feed)], check=False)
-    if subprocess.run(["git", "diff", "--cached", "--quiet"],
-                      capture_output=True).returncode == 0:
-        print("Feeds unchanged — nothing to push.")
-        return True
-    subprocess.run(["git", "commit", "-m", message],
-                   capture_output=True, check=False)
-    for attempt in (1, 2):
-        push = subprocess.run(["git", "push", "origin", "main"],
-                              capture_output=True, text=True)
-        if push.returncode == 0:
-            print("Feeds pushed.")
-            return True
-        if attempt == 1:
-            # Almost always a non-fast-forward: a run can take an hour, and
-            # main moves in the meantime. Replay our feed commit on top.
-            print("  push rejected — rebasing onto origin/main and retrying...")
-            rb = subprocess.run(["git", "pull", "--rebase", "origin", "main"],
-                                capture_output=True, text=True)
-            if rb.returncode != 0:
-                subprocess.run(["git", "rebase", "--abort"], capture_output=True)
-                print(f"  ERROR: rebase failed: {rb.stderr.strip()[:300]}")
-                break
-    print("  ⚠ ERROR: could not push the feeds. The episodes are on GitHub "
-          "Releases but are NOT in the RSS yet — push docs/feed*.xml by hand.")
-    print(f"  git said: {push.stderr.strip()[:300]}")
-    return False
+    """Delegates to weekly_review.commit_and_push_feeds -- the single
+    implementation. This used to be its own copy, which is exactly how
+    regenerate_episode kept a version that only warned on a rejected push."""
+    return w.commit_and_push_feeds(message)
 
 
 def _existing_audio(nb_id: str, env: dict) -> dict | None:
