@@ -2406,15 +2406,31 @@ def _qc_should_hold(qc: dict | None) -> bool:
 #
 # Rule: an article earns a place only if it brings real text, and an episode is
 # only worth generating if enough of its articles do.
-MIN_ABSTRACT_CHARS = 400   # shorter than this is a stub, not a paper
-MIN_ARTICLES_FOR_EPISODE = 2   # below this there is not enough for a discussion
+MIN_ABSTRACT_CHARS = 250   # below this no real abstract exists; a stub is ~24
+MIN_ARTICLES_FOR_EPISODE = 1   # one paper WITH content is a fine (short) episode
 
 
 def has_usable_content(article: dict) -> bool:
-    """True when the article carries enough real text to discuss."""
+    """True when the article brings real text to discuss.
+
+    The test is about CONTENT, not length: a record whose text is missing or is
+    PubMed's "(Abstract not available)" placeholder has nothing to say, and the
+    hosts will fill the airtime by speculating. The character floor only rules
+    out obvious stubs — real abstracts run 1,500+ characters and a PMC full
+    text runs to 15,000, while the records that caused the 2026-08-23 pull
+    carried 24.
+
+    `abstract` holds the PMC full text when one was available (see
+    fetch_article_text), so this check already covers the move toward
+    full-paper sources rather than abstracts.
+    """
     text = (article.get("abstract") or "").strip()
-    if not text or "abstract not available" in text.lower():
+    if not text:
         return False
+    if "abstract not available" in text.lower():
+        return False
+    if article.get("has_full_text"):
+        return True          # a fetched full text is content by definition
     return len(text) >= MIN_ABSTRACT_CHARS
 
 
@@ -2441,8 +2457,13 @@ def drop_contentless_articles(nb_infos: list[dict]) -> list[dict]:
             print(f"  {nb['topic']['id']}: dropped {len(bad)} article(s) with no "
                   f"abstract ({len(good)} left)")
         if len(good) < MIN_ARTICLES_FOR_EPISODE:
-            print(f"  ⏭️  SKIPPING {nb['topic']['id']} — only {len(good)} article(s) "
-                  f"with real content; not enough for an episode.")
+            # Only an episode with NOTHING to discuss is dropped. Few articles
+            # is not a defect: a single paper with a full text made a good
+            # 12-minute episode on 2026-08-09, and NotebookLM shortens the
+            # episode to fit the material on its own. Skipping those would
+            # throw away coverage we already paid to find.
+            print(f"  ⏭️  SKIPPING {nb['topic']['id']} — no article has usable "
+                  f"content; nothing to build an episode from.")
             continue
         nb["articles"] = good
         kept_infos.append(nb)
