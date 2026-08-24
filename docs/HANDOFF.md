@@ -401,3 +401,47 @@ dropped: **818 MB → 5.2 MB**.
    `qc-results.json`, and the owner never sees them.
 2. **board-study × notebooklm-py 0.7.3** — `note get` output format still never
    re-verified after the shared-venv upgrade; `parse_note.py` may break silently.
+
+---
+
+## 12. Added 2026-08-24 (late) — the two queued items, closed
+
+### board-study × notebooklm-py 0.7.3 — **not exposed**
+The daily job is `daily_notify.py` (cron `0 6 * * *`), and it imports json, os,
+sys, datetime, pathlib, requests, re and subprocess — **no notebooklm**. The
+shared-venv upgrade could not have broken it. The only thing that reads
+`note get` output is `scripts/parse_note.py`, a manual helper with no caller in
+the repo. Item closed.
+
+**But board-study has been on Day 1 of 144 since 2026-06-03.**
+`schedule/progress.json`: `completed_days: []`, `last_studied: null`,
+`last_notified_day: 1`. The "sticky" rule only re-sends while the day is
+*unnotified* — once Day 1 was announced it has printed "already notified —
+skipping" every morning since and sent **nothing**. A sticky reminder that
+reminds once is not sticky. Behaviour is as written; whether that is the wanted
+behaviour is the owner's call.
+
+### Books QC visibility + real catch-up (books PRs #2, #3)
+- The QC judge had been scoring every episode and writing `reports/<date>/`
+  since it was added, and **none of it ever reached the owner** — the
+  notification reported only how many were held. It now lists each episode's
+  accuracy/coverage/fluency, marks held and regenerated ones, and links the
+  report.
+- **There was no catch-up, only an accident that usually works.** A failed
+  episode does not advance `next_episode`, so the next run retries it — true at
+  one episode per run, false for `freud` at six: `next_episode = max(next, n+1)`
+  means a failure at 5 followed by successes 6-11 sets it to 12 and **5 is never
+  looked at again**. Selection now starts from the first incomplete episode.
+  Verified: no book has a gap today; every `completed` list is contiguous.
+- `ERROR download:` printed an empty stderr — same bug as this project had.
+  Fixed the same way.
+
+### What actually happened on the two silent book days
+| day | what | outcome |
+|---|---|---|
+| Mon 2026-08-17 | **the VM never booted** — `journalctl --list-boots` jumps 08-16 → 08-18; no log from any project | scheduler is ENABLED and has fired every Monday since, incl. 08-24. One-off. |
+| Tue 2026-08-18 | ran, session verified, **all 4 downloads failed** with empty stderr | same failure mode as the 08-19 spotlights the next day |
+
+**Nothing was lost.** Every book's `completed` is contiguous 1..N; those
+episodes were produced on later run days. The cost was two days of schedule
+slip and a run's worth of wasted rendering.
