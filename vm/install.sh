@@ -73,6 +73,10 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 #   • Sunday 06:00 UTC    — REVIEWS (weekly clusters)
 #   • Wednesday 06:00 UTC — SPOTLIGHTS (single-paper deep-dives)
 0 6 * * 0 root /opt/run_review.sh reviews
+# Monday catch-up: the Sunday run stops at MAX_GENERATIONS_PER_RUN, so whatever
+# it deferred (and anything it lost) is produced here from the notebooks it
+# already made. Runs at 09:00 so the books job at 05:00 is well clear.
+0 9 * * 1 root /opt/run_review.sh backfill
 0 6 * * 3 root /opt/run_review.sh spotlights
 CRON
 chmod 644 /etc/cron.d/weekly-review

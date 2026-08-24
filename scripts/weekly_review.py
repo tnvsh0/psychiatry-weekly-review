@@ -2609,6 +2609,11 @@ def save_run_manifest(nb_infos: list[dict]) -> None:
 # input usually gives a cleaner take. We auto-regenerate flagged episodes and
 # re-QC; only those that STILL fail after MAX_QC_RETRIES are held for the user.
 # This is a bounded retry, NOT prompt-optimization (which would chase noise).
+# Ceiling on audio generations in one run — the evidence is in Phase 4. What
+# does not fit is produced by the next day's backfill sweep, so lowering the
+# split threshold buys depth per paper without risking silent losses.
+MAX_GENERATIONS_PER_RUN = 16
+
 MAX_QC_RETRIES        = 1   # auto-regenerate a failing episode this many times
 MAX_AUTO_RETRY_EPISODES = 3  # if MORE than this fail at once, skip auto-retry
                              # (likely systemic — hold all + let the human look)
@@ -2879,6 +2884,14 @@ def main(mode: str = "all"):
             "podcast_url":   None,
         }
 
+    # Catch-up day: search for nothing new — just finish what the reviews run
+    # had to defer when it hit the daily generation ceiling, plus anything an
+    # earlier run lost. Their notebooks and summaries already exist.
+    if mode == "backfill":
+        run_backfill_sweep(env)
+        print(f"\n{sep}\nCatch-up run complete.\n{sep}\n")
+        return
+
     do_reviews = mode in ("reviews", "all")
     print("\U0001f504 Loading recent PMIDs for deduplication...")
 
@@ -3039,9 +3052,26 @@ def main(mode: str = "all"):
     print("\nWaiting 2 min for sources to be indexed...")
     time.sleep(120)
 
-    # ── Phase 4: Start all podcast generations ────────────────────────────────
-    print(f"\n\U0001f3d9\ufe0f  Starting {len(nb_infos)} podcast generation(s)...")
-    for nb in nb_infos:
+    # ── Phase 4: Start podcast generations, up to this run's ceiling ──────────
+    # NotebookLM tolerates roughly 17-18 generations a day for this account.
+    # Measured: runs of 15, 16 and 17 episodes lost nothing, while a run of 22
+    # lost 6 (27%) even with --retry and the second-chance pass. Those guards
+    # handle a transient refusal, not a daily ceiling — so rather than push past
+    # it we generate what fits and leave the rest to the next day's backfill
+    # sweep, which builds them from the notebooks this run already created.
+    # A deferred episode already has its summary committed and a run-manifest
+    # entry, so nothing is recomputed and no article is lost.
+    _generatable = [nb for nb in nb_infos if nb["nb_id"]]
+    to_generate = _generatable[:MAX_GENERATIONS_PER_RUN]
+    deferred_gen = _generatable[MAX_GENERATIONS_PER_RUN:]
+    print("")
+    print(f"🏙️  Starting {len(to_generate)} podcast generation(s)"
+          + (f" (+{len(deferred_gen)} for the next run)" if deferred_gen else "")
+          + "...")
+    if deferred_gen:
+        print("  Deferred to the next run's backfill sweep: "
+              + ", ".join(nb["topic"]["id"] for nb in deferred_gen))
+    for nb in to_generate:
         if nb["nb_id"]:
             # Append any spotlight↔cluster cross-reference directive.
             base_prompt = nb["topic"]["podcast_prompt"] + nb.get("xref_directive", "")
@@ -3174,12 +3204,13 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--mode",
-        choices=["reviews", "spotlights", "all"],
+        choices=["reviews", "spotlights", "backfill", "all"],
         default="all",
         help=(
             "reviews = weekly clusters only (run on the reviews day); "
             "spotlights = single-paper deep-dives only (run on the spotlights "
-            "day); all = both in one run (manual / legacy default)."
+            "day); backfill = finish what an earlier run deferred or lost "
+            "(the day-after catch-up); all = both in one run (manual)."
         ),
     )
     args = parser.parse_args()
