@@ -306,3 +306,51 @@ sound 12-minute episode on 2026-08-09.
 papers (3 highimpact, 5 clinical, 3 bio, 2 neuroscience, 1 child_development)
 were written into the queue retroactively. All 14 re-checked clean on 08-24 and
 remain queued.
+
+---
+
+## 10. Added 2026-08-24 — four ways an episode goes missing
+
+One question ("what happens to a paper that had no abstract?") uncovered a
+chain. All four were **silent**: the run exited 0 and the log looked clean.
+
+**1. Generation had no ceiling.** Runs of 15, 16 and 17 episodes lost nothing;
+a run of 22 lost **6 (27%)**, with `--retry 3` and the second-chance pass
+already in place. That is a daily ceiling, not a rate that spacing fixes.
+`MAX_GENERATIONS_PER_RUN = 16`; the remainder is **deferred**, not dropped, and
+finished by `--mode backfill` (Monday 09:00 UTC, cron on the VM). A deferred
+episode keeps its notebook, its pushed summary and its manifest row.
+
+**2. The ntfy warning was buried.** It did fire on 08-23 — last line, under 22
+topic lines, normal priority. It now opens the message, is in the title with
+its count, tagged `warning`, priority 4.
+
+**3. The sweep could never recover a spotlight.** `_base_prompt()` looks the
+topic up in `TOPICS`, but spotlight topics are built per-run from that week's
+selection and are not there → `None` → skip, silently, every week. It now falls
+back to the `full_prompt` the run manifest recorded. **Two 08-19 spotlights had
+been failing this way since 08-19.**
+
+**4. Generation and download are different failures.** Those same two episodes
+had **rendered fine**; only the download failed, printing `Download failed:`
+with an empty stderr. Two finished episodes sat in NotebookLM for five days
+while every sweep tried to regenerate them. The sweep now checks for a
+completed audio artifact first and downloads it — no rendering, no rate-limit
+cost. `download_podcast` now names which of the three ways it failed.
+
+**And: a rejected feed push was reported as success.** `Feeds pushed.` printed
+unconditionally with the output discarded. The sweep's push was rejected as
+non-fast-forward (main moved while it ran), so six recovered episodes stayed
+out of the RSS. Both feed pushes now rebase onto `origin/main`, retry once, and
+say so when they still fail.
+
+⚠️ **The VM's clone can diverge from `origin/main`.** Its unpushed feed commit
+made every later `git pull --ff-only` in `run_review.sh` abort with *"Not
+possible to fast-forward"* — so the VM silently ran **stale code** while
+reporting a clean run. If a deployed fix does not seem to take effect, check
+`git status -sb` on the VM *before* anything else.
+
+### Result
+2026-08-23: 22/22 episodes exist (20 published, 2 held by QC).
+2026-08-19: both spotlights recovered from their existing audio, QC 5/5/5.
+All feeds live and verified against GitHub Pages.
