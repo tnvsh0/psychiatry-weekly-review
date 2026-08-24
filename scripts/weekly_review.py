@@ -2284,14 +2284,32 @@ def update_rss_feed(env: dict) -> None:
             ["git", "commit", "-m", f"feed: update for {DATE_STR}"],
             capture_output=True, text=True, check=False,
         )
+        # This is the push that actually puts the week on Spotify. A run takes
+        # an hour or more, so main can easily move underneath it and reject the
+        # push as non-fast-forward -- which on 2026-08-24 left six recovered
+        # episodes out of the feeds. Rebase and try once more before giving up.
         push = subprocess.run(
             ["git", "push", "origin", "main"],
             capture_output=True, text=True, check=False,
         )
+        if push.returncode != 0:
+            print("  push rejected — rebasing onto origin/main and retrying...")
+            rb = subprocess.run(["git", "pull", "--rebase", "origin", "main"],
+                                capture_output=True, text=True, check=False)
+            if rb.returncode == 0:
+                push = subprocess.run(
+                    ["git", "push", "origin", "main"],
+                    capture_output=True, text=True, check=False,
+                )
+            else:
+                subprocess.run(["git", "rebase", "--abort"], capture_output=True)
+                print(f"  ERROR: rebase failed: {rb.stderr.strip()[:200]}")
         if push.returncode == 0:
             print("  RSS feeds published.")
         else:
-            print(f"  WARNING: git push failed: {push.stderr.strip()[:200]}")
+            print(f"  ⚠ ERROR: could not push the feeds — this week's episodes "
+                  f"are on GitHub Releases but NOT in the RSS. "
+                  f"git said: {push.stderr.strip()[:200]}")
     except Exception as e:
         print(f"  WARNING: RSS feed update failed (non-fatal): {e}")
 

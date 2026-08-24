@@ -100,6 +100,45 @@ def _find_notebook(label_he: str, date_str: str, env: dict) -> str | None:
     return None
 
 
+def _push_feeds(message: str) -> bool:
+    """Commit the rebuilt feeds and push them, reporting what actually happened.
+
+    A release that never reaches the feed is not published as far as the
+    listener is concerned. Both callers used to print 'Feeds pushed.'
+    unconditionally with the push output captured and discarded, so when the
+    push was rejected on 2026-08-24 -- origin had moved ahead while the sweep
+    was running -- six recovered episodes stayed out of the feeds and the log
+    said everything was fine."""
+    for feed in (REPO_ROOT / "docs").glob("feed*.xml"):
+        subprocess.run(["git", "add", str(feed)], check=False)
+    if subprocess.run(["git", "diff", "--cached", "--quiet"],
+                      capture_output=True).returncode == 0:
+        print("Feeds unchanged — nothing to push.")
+        return True
+    subprocess.run(["git", "commit", "-m", message],
+                   capture_output=True, check=False)
+    for attempt in (1, 2):
+        push = subprocess.run(["git", "push", "origin", "main"],
+                              capture_output=True, text=True)
+        if push.returncode == 0:
+            print("Feeds pushed.")
+            return True
+        if attempt == 1:
+            # Almost always a non-fast-forward: a run can take an hour, and
+            # main moves in the meantime. Replay our feed commit on top.
+            print("  push rejected — rebasing onto origin/main and retrying...")
+            rb = subprocess.run(["git", "pull", "--rebase", "origin", "main"],
+                                capture_output=True, text=True)
+            if rb.returncode != 0:
+                subprocess.run(["git", "rebase", "--abort"], capture_output=True)
+                print(f"  ERROR: rebase failed: {rb.stderr.strip()[:300]}")
+                break
+    print("  ⚠ ERROR: could not push the feeds. The episodes are on GitHub "
+          "Releases but are NOT in the RSS yet — push docs/feed*.xml by hand.")
+    print(f"  git said: {push.stderr.strip()[:300]}")
+    return False
+
+
 def _existing_audio(nb_id: str, env: dict) -> dict | None:
     """A completed audio artifact already sitting in the notebook, if any.
 
@@ -359,16 +398,7 @@ def _sweep(n: int, limit: int, dry_run: bool) -> int:
         print(f"\nBackfilled {total} episode(s); rebuilding feeds...")
         subprocess.run([sys.executable, str(SCRIPTS_DIR / "generate_rss.py")],
                        env=env, check=False, timeout=180)
-        for feed in (REPO_ROOT / "docs").glob("feed*.xml"):
-            subprocess.run(["git", "add", str(feed)], check=False)
-        if subprocess.run(["git", "diff", "--cached", "--quiet"],
-                          capture_output=True).returncode != 0:
-            subprocess.run(["git", "commit", "-m",
-                            "feed: backfill missing episodes"],
-                           capture_output=True, check=False)
-            subprocess.run(["git", "push", "origin", "main"],
-                           capture_output=True, check=False)
-            print("Feeds pushed.")
+        _push_feeds("feed: backfill missing episodes")
     elif not dry_run:
         print("Nothing to backfill.")
     return 0
@@ -420,16 +450,7 @@ def main() -> int:
         print("Rebuilding RSS feeds...")
         subprocess.run([sys.executable, str(SCRIPTS_DIR / "generate_rss.py")],
                        env=env, check=False, timeout=180)
-        for feed in (REPO_ROOT / "docs").glob("feed*.xml"):
-            subprocess.run(["git", "add", str(feed)], check=False)
-        if subprocess.run(["git", "diff", "--cached", "--quiet"],
-                          capture_output=True).returncode != 0:
-            subprocess.run(["git", "commit", "-m",
-                            f"feed: backfill missing episodes for {args.date}"],
-                           capture_output=True, check=False)
-            subprocess.run(["git", "push", "origin", "main"],
-                           capture_output=True, check=False)
-            print("Feeds pushed.")
+        _push_feeds(f"feed: backfill missing episodes for {args.date}")
     return 0
 
 
