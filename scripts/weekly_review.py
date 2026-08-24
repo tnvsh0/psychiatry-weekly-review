@@ -1951,7 +1951,21 @@ def download_podcast(nb_id: str, artifact_id: str, topic_id: str, env: dict) -> 
         else:
             print(f"  Downloaded {topic_id}: {size_mb:.1f} MB")
         return str(path)
-    print(f"  ERROR: Download failed: {result.stderr[:200]}")
+    # Say WHICH of the three ways it failed. On 2026-08-19 both spotlights
+    # printed a bare "Download failed:" with empty stderr, so there was no way
+    # to tell a CLI error from a missing or empty file, and the real state --
+    # two finished episodes still sitting in NotebookLM -- went unnoticed for
+    # five days.
+    if result.returncode != 0:
+        why = (f"exit {result.returncode}; "
+               f"stderr={result.stderr.strip()[:200] or '(empty)'}; "
+               f"stdout={result.stdout.strip()[-200:] or '(empty)'}")
+    elif not path.exists():
+        why = f"CLI reported success but wrote no file at {path}"
+    else:
+        why = f"CLI reported success but the file is empty ({path})"
+    print(f"  ERROR: Download failed for {topic_id} "
+          f"(artifact {artifact_id}): {why}")
     return None
 
 
