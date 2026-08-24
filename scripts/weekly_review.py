@@ -2079,9 +2079,20 @@ def send_notification(nb_infos: list[dict], env: dict):
         print(f"\n  ⚠ {len(missing)} episode(s) produced NO podcast: "
               + ", ".join(nb["topic"]["id"] for nb in missing))
 
-    body_lines = [
+    warn_missing = (
+        f"\u26a0\ufe0f {len(missing)} \u05e4\u05e8\u05e7\u05d9\u05dd \u05dc\u05d0 \u05e0\u05d5\u05e6\u05e8\u05d5 "
+        f"(\u05d4\u05de\u05d0\u05de\u05e8\u05d9\u05dd \u05e1\u05d5\u05db\u05de\u05d5 \u05d0\u05da \u05d0\u05d9\u05df \u05e4\u05d5\u05d3\u05e7\u05d0\u05e1\u05d8)."
+    ) if missing else ""
+
+    body_lines = []
+    # A failed generation is the one line worth reading first. Buried under 20+
+    # topic lines it goes unnoticed -- which is exactly what happened on
+    # 2026-08-23, when six missing episodes were reported and not seen.
+    if missing:
+        body_lines.append(warn_missing + "\n")
+    body_lines.append(
         f"\u05e0\u05de\u05e6\u05d0\u05d5 {total_articles} \u05de\u05d0\u05de\u05e8\u05d9\u05dd \u05d7\u05d3\u05e9\u05d9\u05dd \u05d1-{len(nb_infos)} \u05ea\u05d7\u05d5\u05de\u05d9\u05dd:"
-    ]
+    )
     for nb in nb_infos:
         icon = "\U0001f399\ufe0f" if nb.get("podcast_url") else ("\U0001f4d3" if nb.get("nb_url") else "\U0001f4cb")
         # Prefer the NotebookLM artifact title (engaging, content-specific);
@@ -2091,11 +2102,6 @@ def send_notification(nb_infos: list[dict], env: dict):
         body_lines.append(f"  {icon} {nice_title}: {len(nb['articles'])} \u05de\u05d0\u05de\u05e8\u05d9\u05dd")
     if ready_podcasts:
         body_lines.append(f"\n\u2705 {ready_podcasts}/{len(nb_infos)} \u05e4\u05d5\u05d3\u05e7\u05d0\u05e1\u05d8\u05d9\u05dd \u05de\u05d5\u05db\u05e0\u05d9\u05dd.")
-    if missing:
-        body_lines.append(
-            f"\u26a0\ufe0f {len(missing)} \u05e4\u05e8\u05e7\u05d9\u05dd \u05dc\u05d0 \u05e0\u05d5\u05e6\u05e8\u05d5 "
-            f"(\u05d4\u05de\u05d0\u05de\u05e8\u05d9\u05dd \u05e1\u05d5\u05db\u05de\u05d5 \u05d0\u05da \u05d0\u05d9\u05df \u05e4\u05d5\u05d3\u05e7\u05d0\u05e1\u05d8)."
-        )
 
     # ntfy supports max 3 action buttons
     actions = []
@@ -2127,10 +2133,12 @@ def send_notification(nb_infos: list[dict], env: dict):
 
     payload = {
         "topic":    ntfy_topic,
-        "title":    f"\U0001f4da \u05e1\u05e7\u05d9\u05e8\u05ea \u05e1\u05e4\u05e8\u05d5\u05ea \u05e9\u05d1\u05d5\u05e2\u05d9\u05ea \u2014 {DATE_STR}",
+        "title":    (("\u26a0\ufe0f " if missing else "")
+                     + f"\U0001f4da \u05e1\u05e7\u05d9\u05e8\u05ea \u05e1\u05e4\u05e8\u05d5\u05ea \u05e9\u05d1\u05d5\u05e2\u05d9\u05ea \u2014 {DATE_STR}"
+                     + (f" ({len(missing)} \u05d7\u05e1\u05e8\u05d9\u05dd)" if missing else "")),
         "message":  "\n".join(body_lines),
-        "tags":     ["books", "white_check_mark"],
-        "priority": 3,
+        "tags":     ["books", "warning" if missing else "white_check_mark"],
+        "priority": 4 if missing else 3,
         "actions":  actions[:3],
     }
 
