@@ -260,6 +260,7 @@ def backfill_batch(topic_ids: list[str], date_str: str, arts: list[dict],
     # instead of going straight to Spotify unchecked.
     ok = 0
     verdicts: dict[str, dict] = {}
+    uploaded: list[tuple[str, str]] = []
     for j in jobs:
         tid = j["topic"]["id"]
         if not j.get("podcast_ready"):
@@ -296,7 +297,25 @@ def backfill_batch(topic_ids: list[str], date_str: str, arts: list[dict],
             env, artifact_title=j.get("artifact_title"), draft=hold,
         )
         print(f"  {'⏸️ held (draft)' if hold else '✓ published'} {tid}: {url}")
+        uploaded.append((tid, path))
         ok += 1
+
+    # Phase 4 — the same housekeeping a normal run does. The sweep used to skip
+    # it entirely (`--mode backfill` returns before that stage), so every
+    # backfilled MP3 stayed on the VM forever: 448 MB had accumulated by
+    # 2026-08-24. Back the day up to Drive, then record each duration and drop
+    # the local file -- the release is the durable copy.
+    if uploaded:
+        try:
+            subprocess.run(
+                [sys.executable, "-u", str(SCRIPTS_DIR / "backup_to_drive.py"),
+                 "--date", date_str],
+                env=env, check=False, timeout=900,
+            )
+        except Exception as e:
+            print(f"  WARNING: Drive backup failed (non-fatal): {e}")
+        for tid, path in uploaded:
+            w.release_local_audio(tid, path, date_str)
 
     if verdicts:
         _merge_qc_results(date_str, verdicts)
