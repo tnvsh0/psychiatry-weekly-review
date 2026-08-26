@@ -1,0 +1,23 @@
+[
+  {
+    "pmid": "42624816",
+    "title": "From prediction to decision: prediction-based decision rules and target trial emulation in ADHD",
+    "journal": "Lancet Psychiatry",
+    "authors": "Garcia-Argibay M et al.",
+    "pub_date": "2026 Aug 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42624816/",
+    "impact_factor": 64.3,
+    "abstract": "More than 100 prediction models have been developed to support the diagnosis, prognosis, or treatment of ADHD, yet none has reached routine clinical practice. In this Personal View, we argue that an important reason for this implementation gap is the absence of clearly defined prediction-based decision rules-formalised mappings from a model's output to specific clinical actions. Most published models report discrimination metrics such as the area under the receiver-operating-characteristic curve, but do not specify what a clinician should do differently for a patient classified as at high risk versus low risk. Without this link to action, even an accurate model remains clinically inert. We describe how prediction-based decision rules, combined with target trial emulation of their clinical utility in large observational datasets, offer a feasible path forward. We illustrate the approach with two worked ADHD examples (treatment intensity guided by predicted persistence and medication selection guided by predicted treatment response) and propose four priorities to shift the field from model development towards decision-oriented evaluation and implementation.",
+    "has_full_text": false,
+    "pmc_id": null,
+    "topic_id": "spotlight_42624816",
+    "topic_he": "מאמר סקירה: Garcia-Argibay M — From prediction to decision: prediction-based deci…",
+    "topic_en": "Spotlight: Garcia-Argibay M — From prediction to decision: prediction-based deci…",
+    "pubtype": [
+      "Journal Article",
+      "Review"
+    ],
+    "study_type_he": "מאמר סקירה",
+    "spotlight_channel": "psychiatry"
+  }
+]
