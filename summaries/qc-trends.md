@@ -1,84 +1,88 @@
 # 📈 מגמות בקרת איכות — דפוסים חוזרים והצעות לשיפור
 
-*מבוסס על 8 ריצות (2026-07-22 – 2026-08-16), 72 פרקים.*
+*מבוסס על 8 ריצות (2026-07-29 – 2026-08-26), 72 פרקים.*
 
 ## ציונים ממוצעים
 
 | מדד | ממוצע |
 |---|:---:|
-| דיוק | 4.51 / 5 |
+| דיוק | 4.65 / 5 |
 | כיסוי | 4.99 / 5 |
 | שטף | 5.00 / 5 |
 
-סיכומים: ✅ 59 · 🟡 11 · 🔴 2
+סיכומים: ✅ 60 · 🟡 10 · 🔴 2
 
 ---
 
 ## דפוסים חוזרים
 
-### 1. המצאת מידע ואי-דיוקים עובדתיים  (19 מופעים)
+### 1. הזיות עובדתיות ואי-דיוקים מהותיים  (18 מופעים)
 
 **🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל נוטה לייצר מידע שאינו נתמך במקורות שסופקו, בין אם על ידי המצאת מאמרים שלמים, פרטים ספציפיים, או סילוף ממצאים קיימים, ככל הנראה בניסיון למלא פערים או להרחיב את הדיון.
+*אבחנה:* המודל מייצר מידע שגוי לחלוטין, כולל פרטי מחקרים שלמים או נתונים מספריים ספציפיים, שאינם קיימים במקורות שסופקו או סותרים אותם ישירות.
 
 *דוגמאות:*
-- נאמר: המאמר הראשון שנסקר עסק בתוכנית התערבות אוניברסלית של מיינדפולנס בבתי ספר יסודיים... המחקר מצא שמיינדפולנס לא רק שלא עזר, אלא החמיר את תסמיני הדיכאון בילדי יסודי. | מקור: לא מופיע במקור.
-- נאמר: במדד של דיווחי הילדים עצמם לחרדה, הם הראו הפחתה משמעותית יותר של 4.5 נקודות... | מקור: SCARED-C mean score in the intervention group was 4.5... points higher
-- נאמר: אני מסתכלת על מאמר מחקרי... שפורסם בכתב העת Archives of Clinical Neuropsychology. | מקור: לא מופיע במקור. כתב העת Archives of Clinical Neuropsychology אינו כלול ברשימת המאמרים שסופקה.
+- המאמר הראשון שנסקר עסק בתוכנית התערבות אוניברסלית של מיינדפולנס בבתי ספר יסודיים... המחקר מצא שמיינדפולנס לא רק שלא עזר, אלא החמיר את תסמיני הדיכאון בילדי יסודי. | מקור: לא מופיע במקור.
+- אני מסתכלת על מאמר מחקרי... פורסם בכתב העת Archives of Clinical Neuropsychology. | מקור: לא מופיע במקור.
+- החוקרים מצאו ש-58% מאלו שאובחנו עם הפרעת קשב סבלו גם מהפרעה פסיכיאטרית נלווית. | מקור: לא מופיע במקור.
 
 *הצעת ניסוח להוספה לפרומפט:*
 
 ```text
-Strictly adhere to the provided source material. Do not invent information, studies, or findings. If a detail is not explicitly present in the source, do not include it. Do not misrepresent the direction or significance of findings. If a statistical measure is mentioned, explain it accurately based on its definition, not as a simplified percentage of correctness unless explicitly stated as such in the source.
+Ensure all factual statements, especially numerical data, study designs, and specific findings, are directly and explicitly supported by the provided source text. Do not infer, extrapolate, or invent details. If a detail is not in the source, do not mention it as a finding from that source. If the source text is missing, state that the discussion is based on the title and clinical reasoning only.
 ```
 
-### 2. הצגת מידע חלקי או חוסר הדגשת ניואנסים  (12 מופעים)
+### 2. שיבוש שמות כתבי עת ומחברים  (10 מופעים)
 
 **🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל נוטה להשמיט פרטים חשובים, להציג ממצאים באופן פשטני מדי, או לא להדגיש מגבלות וניואנסים קריטיים של המחקרים, מה שעלול להוביל להבנה שגויה או לא מלאה של המידע המדעי.
+*אבחנה:* המודל מתקשה לדייק בשמות כתבי עת ובשמות מחברים, לעיתים משבש אותם או מתרגם אותם באופן שגוי לעברית.
 
 *דוגמאות:*
-- נאמר: המאמר של צוות המחקר של גאסטון... מדובר פה על מטה-אנליזה ענקית שהיגדה 12 סקירות שיטתיות... | מקור: המאמר הוא 'An overview of systematic reviews and a global evidence map' ולא מטה-אנליזה ענקית. הוא אכן אגד 12 סקירות שיטתיות, אך רק אחת מהן הייתה מטה-אנליזה.
-- נאמר: המאמר של צוות המחקר של גאסטון... הנתונים מצביעים על קשר חזק וקבוע. | מקור: המאמר מציין כי 'Confidence in findings was generally critically low, and risk of bias was high, resulting in low certainty, overall', מה שלא מודגש באודיו.
-- נאמר: המאמר הרביעי הוא פיילוט לטיפול מואץ בגריה מגנטית מוחית מול פלצבו. וזה מיועד לסימפטומים השליליים של סכיזופרניה, אלו שלא מגיבים לתרופות. | מקור: המאמר אינו מציין שהטיפול מיועד ספציפית לאלו 'שלא מגיבים לתרופות', אלא ל'מבוגרים עם סימפטומים שליליים משמעותיים קלינית'.
+- המאמר השלישי, שנכתב על ידי פומבון וליאו | מקור: המחברים הם Fombonne E, Liao L
+- המאמר של צוות המחקר של גאסטון מכתב העת Sleep Medicine Reviews | מקור: המאמר הוא 'An overview of systematic reviews and a global evidence map' ולא מטה-אנליזה ענקית.
+- המאמר הרביעי מציג משהו שהוא הכי פיזי ואגרסיבי שיש. זה התפרסם בסנטה מנטל הלת'. | מקור: כתב העת הוא 'Sante Ment Que', לא 'סנטה מנטל הלת''.
 
 *הצעת ניסוח להוספה לפרומפט:*
 
 ```text
-When discussing study findings, ensure to include relevant caveats, limitations, and nuances as presented in the source material. Clearly state the type of study (e.g., systematic review, meta-analysis, pilot, RCT) and its implications for the strength of the evidence. Avoid overstating the certainty or generalizability of findings if the source indicates otherwise.
+When referring to journal names or author names, always use the exact spelling and capitalization as provided in the source material. Do not translate or transliterate journal names unless explicitly instructed. For author teams, use 'צוות המחקר של [שם המחבר הראשון]' only if the source explicitly refers to a team, otherwise list the first author's last name.
 ```
 
-### 3. שיבוש שמות חוקרים וכתבי עת  (7 מופעים)
+### 3. פרשנות כעובדה/הצגת מידע חיצוני כמידע מהמאמר  (6 מופעים)
 
 **🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל משבש באופן עקבי שמות של חוקרים וכתבי עת, ככל הנראה עקב קשיי תעתיק או זיהוי מדויק של ישויות אלו מהטקסט המקורי.
+*אבחנה:* המודל מציג פרשנויות אישיות או מידע כללי שאינו מופיע במקורות כעובדות מתוך המאמר, או שאינו מסמן בבירור מתי הוא חורג מתוכן המאמר.
 
 *דוגמאות:*
-- נאמר: יש לנו סקירה מעניינת של החוקר סטווארט שפורסמה בכתב העת Journal of School Health. | מקור: המאמר הוא של Stoddard SA et al., לא Stuart. כתב העת הוא The Journal of School Health, לא Journal of School Health.
-- נאמר: המאמר שפורסם על ידי קבוצת מחקר ברשות יאפ (YAPP) | מקור: מחברים: Yap CX et al.
-- נאמר: המאמר הרביעי מציג משהו שהוא הכי פיזי ואגרסיבי שיש. זה התפרסם בסנטה מנטל הלת'. | מקור: כתב העת הוא 'Sante Ment Que', לא 'סנטה מנטל הלת''.
+- המאמר הזה בוחן שימוש בבינה מלאכותית לזיהוי מוקדם של אוטיזם... הנימוק 'בינה מלאכותית פשוט לא מוגבלת למה שהעין האנושית מסוגלת לעבד' הוא פרשנות של המגיש ולא ציטוט ישיר מהמאמר.
+- המאמר מציין שנשים חוות 'נטל לא פרופורציונלי של הפרעות אפקטיביות וקשורות לסטרס', אך אינו מציין שהן שכיחות 'פי 2' אצל נשים. זהו מידע כללי שלא מיוחס למאמר במפורש, אך גם לא מסומן כמידע חיצוני.
+- ההבחנה בין מידע מהמאמר לבין פרשנות או הרחבה סומנה בבירור, כנדרש במפרט. | הערה: ההתייחסות למאמרים שאינם מהסקירה השבועית (כמו מחקר המיינדפולנס) אינה מסומנת בבירור כמידע חיצוני למאמרים שסופקו, מה שעלול להטעות את המאזין לחשוב שמדובר באחד ממאמרי השבוע.
 
 *הצעת ניסוח להוספה לפרומפט:*
 
 ```text
-Ensure accurate pronunciation and spelling of researchers' names and journal titles. Double-check against the provided source text for exact wording. If a journal title is abbreviated in the source, use the full name if available or clearly state it as an abbreviation.
+Clearly distinguish between information directly stated in the article and your own clinical interpretation, analogies, or general knowledge. When introducing information not directly from the provided abstract/article, explicitly state that it is an external comment, analogy, or broader context, for example, by saying 'בהקשר רחב יותר', 'כדאי לזכור ש', or 'זוהי פרשנות שלנו'.
 ```
 
-### 4. הגיית שמות כתבי עת לא מדויקת  (4 מופעים)
+### 4. אי-דיוקים בסוג המחקר/הסקירה  (3 מופעים)
 
-**⛔ מגבלה — לא ניתן לתקן בפרומפט**
+**🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל מתקשה להגות שמות כתבי עת באופן מדויק, ככל הנראה בשל מגבלות מובנות של מנוע ה-TTS או חוסר ידע פונטי ספציפי לשמות אלו.
+*אבחנה:* המודל מתבלבל בין סוגי מאמרים (לדוגמה, סקירת ספרות מול מאמר מחקרי מקורי, או סקירת סקירות מול מטה-אנליזה), ומציג את סוג המחקר באופן שגוי.
 
 *דוגמאות:*
-- הערה: הגיית שמות כתבי העת BMJ Paediatr Open, Med Sci (Basel), Int J Lang Commun Disord, Rev Lat Am Enfermagem, Ann Fam Med אינה מדויקת, אך הוכרה כחלק מהמפרט המותר.
-- נאמר: המאמר הזה מתמקד בהתערבויות לקידום תקשורת בילדים אוטיסטים עם יכולת ורבלית מינימלית. זה נושא חשוב מאוד. | מקור: כתב העת הוא Med Sci (Basel), לא Medical Sciences.
-- נאמר: המאמר הזה בוחן כיצד מידע על הילד והמשפחה נלקח בחשבון בתהליכי קבלת החלטות קליניות. | מקור: כתב העת הוא International Journal of Language and Communication Disorders, לא International Journal of Language and Communication Disorders.
+- המאמר של סורמני הוא מאמר מחקרי | מקור: המאמר של סורמני הוא 'סקירת ספרות' (Review Article) ולא מאמר מחקרי (Research Article).
+- המאמר של צוות המחקר של גאסטון מכתב העת Sleep Medicine Reviews... מדובר פה על מטה-אנליזה ענקית שהיגדה 12 סקירות שיטתיות | מקור: המאמר הוא 'An overview of systematic reviews and a global evidence map' ולא מטה-אנליזה ענקית.
+- המאמר עוסק במושג שנקרא אינטרון ריטנשן (Intron retention)... | מקור: The abstract itself is a 'Review Article', not a research article as stated in the audio.
 
-*מה כן יעזור:* זוהי מגבלה של מנוע ה-Text-to-Speech ואינה ניתנת לתיקון באמצעות שינוי הפרומפט. יש לשקול שיפור במנוע ה-TTS או מתן רשימת הגייה מפורשת לשמות אלו.
+*הצעת ניסוח להוספה לפרומפט:*
+
+```text
+Always accurately state the study type (e.g., 'מאמר מחקרי', 'סקירת ספרות', 'מטה-אנליזה', 'מחקר פיילוט') as indicated in the source. If the source specifies 'Review Article', do not refer to it as a 'Research Article'.
+```
 
 ---
 
