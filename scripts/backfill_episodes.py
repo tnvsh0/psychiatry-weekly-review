@@ -101,42 +101,10 @@ def _find_notebook(label_he: str, date_str: str, env: dict) -> str | None:
 
 
 def _push_feeds(message: str) -> bool:
-    """Commit the rebuilt feeds and push them, reporting what actually happened.
-
-    A release that never reaches the feed is not published as far as the
-    listener is concerned. Both callers used to print 'Feeds pushed.'
-    unconditionally with the push output captured and discarded, so when the
-    push was rejected on 2026-08-24 -- origin had moved ahead while the sweep
-    was running -- six recovered episodes stayed out of the feeds and the log
-    said everything was fine."""
-    for feed in (REPO_ROOT / "docs").glob("feed*.xml"):
-        subprocess.run(["git", "add", str(feed)], check=False)
-    if subprocess.run(["git", "diff", "--cached", "--quiet"],
-                      capture_output=True).returncode == 0:
-        print("Feeds unchanged — nothing to push.")
-        return True
-    subprocess.run(["git", "commit", "-m", message],
-                   capture_output=True, check=False)
-    for attempt in (1, 2):
-        push = subprocess.run(["git", "push", "origin", "main"],
-                              capture_output=True, text=True)
-        if push.returncode == 0:
-            print("Feeds pushed.")
-            return True
-        if attempt == 1:
-            # Almost always a non-fast-forward: a run can take an hour, and
-            # main moves in the meantime. Replay our feed commit on top.
-            print("  push rejected — rebasing onto origin/main and retrying...")
-            rb = subprocess.run(["git", "pull", "--rebase", "origin", "main"],
-                                capture_output=True, text=True)
-            if rb.returncode != 0:
-                subprocess.run(["git", "rebase", "--abort"], capture_output=True)
-                print(f"  ERROR: rebase failed: {rb.stderr.strip()[:300]}")
-                break
-    print("  ⚠ ERROR: could not push the feeds. The episodes are on GitHub "
-          "Releases but are NOT in the RSS yet — push docs/feed*.xml by hand.")
-    print(f"  git said: {push.stderr.strip()[:300]}")
-    return False
+    """Delegates to weekly_review.commit_and_push_feeds -- the single
+    implementation. This used to be its own copy, which is exactly how
+    regenerate_episode kept a version that only warned on a rejected push."""
+    return w.commit_and_push_feeds(message)
 
 
 def _existing_audio(nb_id: str, env: dict) -> dict | None:
@@ -425,6 +393,10 @@ def _sweep(n: int, limit: int, dry_run: bool) -> int:
             if budget <= 0:
                 print("  (episode budget for this sweep is used up)")
                 break
+    # Same sweep, second kind of stranded episode: produced, judged bad, and
+    # left as a draft that nothing would ever revisit.
+    total += retry_held_drafts(repo, dates, env, dry_run=dry_run)
+
     if total:
         print(f"\nBackfilled {total} episode(s); rebuilding feeds...")
         subprocess.run([sys.executable, str(SCRIPTS_DIR / "generate_rss.py")],
@@ -434,6 +406,93 @@ def _sweep(n: int, limit: int, dry_run: bool) -> int:
         print("Nothing to backfill.")
     return 0
 
+
+
+
+# A QC-held episode is uploaded as a DRAFT release, which the feed builder
+# skips. Nothing ever looked at it again: _existing_release_topics counts a
+# draft as "present", so the sweep walked straight past it. Five episodes had
+# been sitting as drafts since July -- out of the feed, unmentioned -- when
+# this was found on 2026-08-24. "Held" must not mean "held forever".
+MAX_HELD_RETRIES = 2          # later runs that may re-attempt a held episode
+HELD_RETRIES_PER_SWEEP = 2    # ...and never more than this per sweep
+
+
+def _draft_release_topics(repo: str, date_str: str) -> list[str]:
+    """topic_ids for this date whose release exists but is still a draft."""
+    out = subprocess.run(
+        ["gh", "api", f"repos/{repo}/releases?per_page=100", "--paginate",
+         "--jq", ".[]|select(.draft)|.tag_name"],
+        capture_output=True, text=True, timeout=120,
+    )
+    marker = f"weekly-{date_str}-"
+    return sorted({ln.split(marker, 1)[1].strip()
+                   for ln in out.stdout.splitlines() if marker in ln})
+
+
+def _held_retry_count(date_str: str, topic_id: str) -> int:
+    return int((_manifest(date_str).get(topic_id) or {}).get("held_retries", 0))
+
+
+def _bump_held_retry(date_str: str, topic_id: str) -> None:
+    p = REPO_ROOT / "summaries" / date_str / "run-manifest.json"
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return
+    entry = data.get(topic_id)
+    if entry is None:
+        return
+    entry["held_retries"] = int(entry.get("held_retries", 0)) + 1
+    p.write_text(json.dumps(data, ensure_ascii=False, indent=2),
+                 encoding="utf-8")
+
+
+def retry_held_drafts(repo: str, dates: list[str], env: dict,
+                      dry_run: bool = False) -> int:
+    """Give held (draft) episodes another automatic attempt.
+
+    Delegates to regenerate_episode.py --publish, which rebuilds the prompt
+    from the CURRENT topic definitions, replaces the release asset, re-runs
+    QC and publishes ONLY if the fresh take passes. A still-bad episode stays
+    a draft, so this buys more attempts, not leniency."""
+    budget = HELD_RETRIES_PER_SWEEP
+    done = 0
+    stuck: list[str] = []
+    for date_str in dates:
+        for topic_id in _draft_release_topics(repo, date_str):
+            # Not every draft is a QC hold. Some are drafts on purpose — the
+            # 2026-05-02 and 2026-05-03 episodes were rescued from a git stash
+            # and deliberately kept out of the feed. Those predate
+            # run-manifest.json, so requiring an nb_id both protects them and
+            # skips anything whose notebook is gone and cannot be redone.
+            if not (_manifest(date_str).get(topic_id) or {}).get("nb_id"):
+                continue
+            tries = _held_retry_count(date_str, topic_id)
+            if tries >= MAX_HELD_RETRIES:
+                stuck.append(f"{date_str}/{topic_id}")
+                continue
+            if budget <= 0:
+                continue
+            print(f"\n\u21bb held retry {tries + 1}/{MAX_HELD_RETRIES}: "
+                  f"{date_str} {topic_id}")
+            budget -= 1
+            if dry_run:
+                continue
+            r = subprocess.run(
+                [sys.executable, "-u",
+                 str(SCRIPTS_DIR / "regenerate_episode.py"),
+                 "--date", date_str, "--topic", topic_id, "--publish"],
+                env=env, check=False, timeout=5400,
+            )
+            _bump_held_retry(date_str, topic_id)
+            if r.returncode == 0:
+                done += 1
+    if stuck:
+        print(f"\n\U0001f6d1 {len(stuck)} episode(s) used all "
+              f"{MAX_HELD_RETRIES} automatic retries and need a human: "
+              + ", ".join(stuck))
+    return done
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Backfill never-produced episodes.")

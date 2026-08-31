@@ -354,3 +354,190 @@ reporting a clean run. If a deployed fix does not seem to take effect, check
 2026-08-23: 22/22 episodes exist (20 published, 2 held by QC).
 2026-08-19: both spotlights recovered from their existing audio, QC 5/5/5.
 All feeds live and verified against GitHub Pages.
+
+---
+
+## 11. Added 2026-08-24 (evening) — decisions taken, and the stash that nearly cost two episodes
+
+**Decided by the owner and done:**
+- `neuroscience_part2` (08-23) regenerated. It had told listeners EEG records
+  "thousands of individual neurons" — that was Neuropixels, from a *different*
+  paper in the same episode — and overstated what resting-state gamma predicted.
+- The empty `child_adolescent_highimpact` (08-23) release **deleted**. Its three
+  papers stay in `deferred-articles.json` and return when PubMed publishes them.
+- **The books project got the two fixes this project already had** (books PR #1):
+  `--retry 3` on generation (it had none — the exact bug that cost this project
+  9 episodes), and a notification that names what never got made. "ספרים: 3
+  פרקים חדשים" reads like success when 4 were planned; that is how a missing
+  book went unseen.
+
+**Backfill now applies the content gate.** Deleting the empty episode makes its
+release *missing*, and producing missing releases is the sweep's entire job — it
+would have rebuilt it. The sweep now skips any topic where no article has usable
+content.
+
+### ⚠️ The 817 MB stash — check before you clear one
+
+`.git` on the VM was 818 MB while GitHub's was 5 MB. `git gc` could not shrink
+it, and no branch or tag reached the blobs. The holder was **`refs/stash`** — an
+untracked-files stash from 2026-05-26 (`git stash list` showed nothing, because
+expiring the reflog had already emptied the stash log while `refs/stash` still
+pointed at the commit).
+
+It held 40 files, and **clearing it blind would have destroyed real content**:
+- `summaries/2026-05-02/` — articles.json + 5 episode summaries, **missing from
+  the repo entirely**.
+- `podcasts/2026-05-02/child_adolescent.mp3` and `2026-05-03/…` — two episodes
+  with **no GitHub release at all**. Those two dates had zero releases; the audio
+  existed nowhere else.
+
+All rescued first: the summaries are committed, both episodes are **draft**
+releases (preserved, deliberately out of the feed — publishing 4-month-old
+episodes made under the old prompt is the owner's call). Then the stash was
+dropped: **818 MB → 5.2 MB**.
+
+### Queued, not done
+1. **Books QC sends no ntfy.** It writes `reports/<date>/qc-report.md` and
+   `qc-results.json`, and the owner never sees them.
+2. **board-study × notebooklm-py 0.7.3** — `note get` output format still never
+   re-verified after the shared-venv upgrade; `parse_note.py` may break silently.
+
+---
+
+## 12. Added 2026-08-24 (late) — the two queued items, closed
+
+### board-study × notebooklm-py 0.7.3 — **not exposed**
+The daily job is `daily_notify.py` (cron `0 6 * * *`), and it imports json, os,
+sys, datetime, pathlib, requests, re and subprocess — **no notebooklm**. The
+shared-venv upgrade could not have broken it. The only thing that reads
+`note get` output is `scripts/parse_note.py`, a manual helper with no caller in
+the repo. Item closed.
+
+**But board-study has been on Day 1 of 144 since 2026-06-03.**
+`schedule/progress.json`: `completed_days: []`, `last_studied: null`,
+`last_notified_day: 1`. The "sticky" rule only re-sends while the day is
+*unnotified* — once Day 1 was announced it has printed "already notified —
+skipping" every morning since and sent **nothing**. A sticky reminder that
+reminds once is not sticky. Behaviour is as written; whether that is the wanted
+behaviour is the owner's call.
+
+### Books QC visibility + real catch-up (books PRs #2, #3)
+- The QC judge had been scoring every episode and writing `reports/<date>/`
+  since it was added, and **none of it ever reached the owner** — the
+  notification reported only how many were held. It now lists each episode's
+  accuracy/coverage/fluency, marks held and regenerated ones, and links the
+  report.
+- **There was no catch-up, only an accident that usually works.** A failed
+  episode does not advance `next_episode`, so the next run retries it — true at
+  one episode per run, false for `freud` at six: `next_episode = max(next, n+1)`
+  means a failure at 5 followed by successes 6-11 sets it to 12 and **5 is never
+  looked at again**. Selection now starts from the first incomplete episode.
+  Verified: no book has a gap today; every `completed` list is contiguous.
+- `ERROR download:` printed an empty stderr — same bug as this project had.
+  Fixed the same way.
+
+### What actually happened on the two silent book days
+| day | what | outcome |
+|---|---|---|
+| Mon 2026-08-17 | **the VM never booted** — `journalctl --list-boots` jumps 08-16 → 08-18; no log from any project | scheduler is ENABLED and has fired every Monday since, incl. 08-24. One-off. |
+| Tue 2026-08-18 | ran, session verified, **all 4 downloads failed** with empty stderr | same failure mode as the 08-19 spotlights the next day |
+
+**Nothing was lost.** Every book's `completed` is contiguous 1..N; those
+episodes were produced on later run days. The cost was two days of schedule
+slip and a run's worth of wasted rendering.
+
+---
+
+## 13. Added 2026-08-24 (night) — QC across 222 episodes, and what it changed
+
+Read every QC report both projects had ever written: 120 weekly-review
+episodes over 12 run dates, 102 book episodes over 24 days.
+
+### What the data said — including two of my own hypotheses it killed
+- **"NotebookLM fabricates when the material is thin."** Wrong, and backwards:
+  the episodes that invented a paper had a median 63,149 chars of source text
+  against 14,872 for clean ones.
+- **"Full text is riskier than abstracts."** Looks true raw (0.31 vs 0.05
+  high-severity per episode) and is a size confound. Per 10k chars: **0.076 vs
+  0.069 — the same.** Moving toward full texts costs nothing in accuracy.
+- **Density is the real driver**, and it is steep:
+
+  | articles/episode | high-severity per episode |
+  |---|---|
+  | 1 | **0.00** (n=17) |
+  | 2-3 | **0.00** (n=5) |
+  | 4-5 | 0.07 (n=29) |
+  | 6-7 | 0.16 (n=45) |
+  | **8+** | **0.50** (n=24) |
+
+  All 16 single-paper spotlights: zero. The apparent "child channel problem"
+  dissolves on inspection — every `child_adolescent_misc` finding came from the
+  runs where it was **not** split (10 articles on 08-02, 9 on 08-16).
+  `SPLIT_THRESHOLD=8 / SPLIT_TARGET=6` is doing its job: 2026-08-23 was the most
+  accurate run ever recorded (mean 4.73, against 4.00 in mid-July). **Not
+  lowering it further** — the owner is happy with the episodes and the data
+  agrees.
+
+### Prompt: five failures, four of which had no rule (PR #65)
+Inventing a paper outright (11 of 21 high-severity findings); carrying a fact
+between papers in one episode; collapsing a mixed result; dropping a trial arm;
+supplying a number the source states qualitatively. Each rule in `TONE_GUIDANCE`
+now names its real failure — an abstract instruction the model already
+nominally follows is what let these through.
+
+### The books QC gate had never held anything (books PR #4)
+102 episodes, 29 high-severity discrepancies, **zero holds**. `should_hold`
+fired only on a `problem` verdict or accuracy ≤ 2; no verdict was `problem` and
+no accuracy went below 3. 22 episodes were marked `review` and all 22 published.
+Five carried two or more hard errors — **lithium toxicity "above 0.2 or 0.4"
+(the book says 1.2 mEq/L)**, risperidone and aripiprazole called off-label for
+irritability in ASD (both FDA-approved), a TAT of 20 cards (it is 10), and
+invented 4×/7× risk multipliers. All five were regenerated at the owner's
+instruction; every one came back with **zero** high-severity findings except
+`stahl-004`, which went 4 → 1 (nicotinic desensitisation described as
+milliseconds; it is minutes) and published under the threshold.
+
+### "Held" meant "held forever" — in BOTH projects (PR #66, books PR #6)
+A held episode got its in-run retries and was then never looked at again. The
+weekly-review sweep counted a **draft as "present"** and walked past it: five
+episodes had been sitting as drafts since July, out of the feed and unmentioned.
+Both projects now give a held episode bounded further attempts on later runs,
+still gated, and name it at raised priority only once the automation is spent.
+A recovered episode is now cleared from the held list — it wasn't, which would
+have retried it forever and kept it out of the feed after it came out right.
+
+⚠️ Not every draft is a QC hold. The 2026-05-02/03 rescues are drafts **on
+purpose**; the retry requires a manifest `nb_id`, which protects them.
+
+### Silent failures found by using the fixes, not by reading them
+- **The judge was truncated and the episode published unjudged.** `dulcan-007`
+  (40 pages) produced a verdict past `max_output_tokens=8192`; `json.loads`
+  raised, and a failed judge is indistinguishable from a disabled one, so the
+  fail-open path published it. Re-judged with more room: **17 discrepancies, and
+  the gate would have held it.** Regenerated → 5/5/5, zero. (books PRs #9, #10 —
+  the latter adds `--judge-only`, since re-rendering a good 60 MB episode just
+  to obtain a verdict is waste.)
+- **My own rebase fallback failed in production**: no git identity on the VM
+  clone, leaving a detached HEAD mid-replay — worse than the divergence it was
+  meant to repair (books PRs #7, #8).
+- **Two regen runs in one day erased each other's reports** (books PR #11).
+- **Books never deleted a local MP3**: 4.5 GB across 26 folders. GCS holds the
+  durable copy and the manifest holds the duration, so the local file was never
+  the only one. Reclaimed and automated; **disk 12 GB → 6.8 GB used**.
+
+---
+
+## 14. Decided 2026-08-24 — closed, do not re-raise
+
+**board-study on Day 1 of 144 since 2026-06-03 is NOT a bug to fix.** The owner
+works on that project from a separate session and has deliberately given up on
+the daily reminder. §12 flagged the sticky rule as sending once and then going
+quiet forever; that behaviour is accepted. Leave `daily_notify.py` alone.
+
+**`stahl-004`'s surviving discrepancy stays.** The regenerated episode describes
+nicotinic receptor desensitisation as taking milliseconds where the book says
+minutes — one high-severity finding, below the hold threshold, so it published.
+The owner chose to leave it rather than spend another generation on it.
+
+Both were the last open decisions from the 2026-08-24 session. Nothing else is
+awaiting an answer.

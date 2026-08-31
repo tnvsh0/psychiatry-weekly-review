@@ -761,6 +761,32 @@ TONE_GUIDANCE = (
     "a hazard ratio is not a probability; relative risk is not absolute risk. "
     "If you are unsure what a statistic means, say what it is and move on.\n"
     "\n"
+    "========================================================================\n"
+    "FIDELITY — the five mistakes that actually happen. Do not make them:\n"
+    "========================================================================\n"
+    "1. ONLY the papers in the source exist. Never introduce a study, a "
+    "journal name, or a statistic that is not in the source — not as an "
+    "example, not as supporting evidence, not in passing. To reference "
+    "other work, say 'ידוע ש...' with no citation. A whole fictitious "
+    "paper, its journal and its AUC values were once presented as this "
+    "week's research.\n"
+    "2. KEEP THE PAPERS APART. A method, a number, a sample or a finding "
+    "from one paper must never be attached to another. When two papers "
+    "here use different techniques, do not let the more striking one "
+    "bleed into the other — EEG was once described as recording thousands "
+    "of single neurons, which came from a different paper that used "
+    "Neuropixels.\n"
+    "3. MIXED RESULTS, EXACTLY. When a study is significant for one "
+    "outcome and not another — or in controlled but not uncontrolled "
+    "analyses — say which is which. Never collapse it to 'it worked' or "
+    "to 'the effect disappeared'.\n"
+    "4. EVERY ARM. If a trial compared three things, name all three and "
+    "their results. Giving only the best and the worst invents a contrast "
+    "the study never made.\n"
+    "5. NO NUMBER WHERE THE SOURCE GIVES NONE. If the source is "
+    "qualitative ('minimise noise', 'a large share'), stay qualitative. "
+    "Do not supply a percentage to make it concrete.\n"
+    "\n"
     "Keep the tone professional and measured. Avoid superlatives "
     "('groundbreaking', 'revolutionary'); always name limitations and effect "
     "sizes. The gap between 'effective' and 'highly effective' matters.\n"
@@ -2616,6 +2642,45 @@ def record_duration(topic_id: str, mp3_path: str, date_str: str) -> None:
     data[topic_id] = seconds
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def commit_and_push_feeds(message: str) -> bool:
+    """Stage docs/feed*.xml, commit, and push — rebasing once if origin moved.
+
+    THE one place this is implemented. It lived in three tools, each with its
+    own bugs: the sweep printed "Feeds pushed." with the result discarded, and
+    regenerate_episode only WARNED — so on 2026-08-24 a regenerated episode was
+    published as a release while its feed entry never left the VM. A run takes
+    an hour and main moves underneath it; a rejected push is routine, not
+    exceptional, and must never read as success."""
+    # Absolute: publish_episode used REPO_ROOT while the sweep used a relative
+    # path, so the two disagreed whenever cwd was not the repo root.
+    for feed in (SCRIPTS_DIR.parent / "docs").glob("feed*.xml"):
+        subprocess.run(["git", "add", str(feed)], check=False)
+    if subprocess.run(["git", "diff", "--cached", "--quiet"],
+                      capture_output=True).returncode == 0:
+        print("  Feeds unchanged — nothing to push.")
+        return True
+    subprocess.run(["git", "commit", "-m", message],
+                   capture_output=True, check=False)
+    for attempt in (1, 2):
+        push = subprocess.run(["git", "push", "origin", "main"],
+                              capture_output=True, text=True)
+        if push.returncode == 0:
+            print("  Feeds pushed.")
+            return True
+        if attempt == 1:
+            print("  push rejected — rebasing onto origin/main and retrying...")
+            rb = subprocess.run(["git", "pull", "--rebase", "origin", "main"],
+                                capture_output=True, text=True)
+            if rb.returncode != 0:
+                subprocess.run(["git", "rebase", "--abort"], capture_output=True)
+                print(f"  ERROR: rebase failed: {rb.stderr.strip()[:300]}")
+                break
+    print("  ⚠ ERROR: could not push the feeds. The episode is on GitHub "
+          "Releases but is NOT in the RSS yet — push docs/feed*.xml by hand.")
+    print(f"  git said: {push.stderr.strip()[:300]}")
+    return False
 
 
 def release_local_audio(topic_id: str, mp3_path: str, date_str: str) -> None:
