@@ -1,0 +1,432 @@
+{
+  "child_adolescent_core": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 8,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part3": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המדד העיקרי שהם בחרו במחקר הזה אינו ירידה בסימפטומים בסולם דירוג פסיכיאטרי צר. במקום זה, הם בחרו למדוד את הזמן בימים עד להיארעות המשבר (רילאפס) לאורך שנתיים של מעקב.",
+        "source": "The primary outcome was time (days) to first relapse following initial recovery from the index crisis censored at the end of the 2-year follow-up period.",
+        "severity": "low"
+      },
+      {
+        "said": "המדדים המשניים רחבים אפילו יותר. אלו מדדים משניים יש שם? הם בודקים סולמות איכות חיים כמו EuroQol, את רמת תחושת הבדידות החברתית ואת האופן שבו המטופל עצמו תופס את תהליך ההחלמה שלו.",
+        "source": "Participant-reported secondary outcomes were EuroQol Visual Analogue Scale, Social Provisions Scale, Lubben Social Network Scale, Questionnaire about the Process of Recovery, and the Client Satisfaction Questionnaire, measured at five timepoints over 2 years, and clinical measures were extracted from elec…",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים איתרו במאגר הזה 3,733 מטופלים שקיבלו ECT. מתוכם הם מצאו תת קבוצה קטנה, 39 מטופלים, שהם מהווים בדיוק אחוז אחד מתוך הכלל, שפשוט חצו את רף ה-100 טיפולים המצטברים.",
+        "source": "We identified 3,733 patients who received ECT and classified them according to cumulative ECT exposure. Among 3,733 patients who received ECT, 39 (1.0%) received 100 or more treatments.",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים מצאו, וזה די צפוי, שאצל אותם מטופלים משך הטיפול הכולל נפרש על פני מספר שנים, אבל יותר מכך, בהשוואה לקבוצות שקיבלו פחות טיפולים, קבוצת ה-100 פלוס אופיינה במספר גבוה משמעותית של אשפוזים פסיכיאטריים ובסך ימי אשפוז מצטברים ארוך בהרבה.",
+        "source": "These patients had treatment durations of several years and substantially greater numbers of psychiatric hospitalizations and cumulative hospitalization days.",
+        "severity": "low"
+      },
+      {
+        "said": "רק 13% מהם טופלו אי פעם בתרופה הזו.",
+        "source": "Clozapine use increased across cumulative ECT exposure categories, although it was recorded in only 13% of patients receiving 100 or more treatments.",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר הזה פורסם בכתב העת International Journal of Environmental Research and Public Health, והוא מחקר איכותני (Qualitative study).",
+        "source": "כתב עת: 📄 Int J Environ Res Public Health | סוג מחקר: מאמר מחקרי",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part4": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part1": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המחקר של מקראדי (McCrady) פורסם בכתב העת Journal of Consulting and Clinical Psychology, והוא סוג של RCT. המאמר לא סופק במלואו ולכן נתמקד בכותרת ובפרמטרים הבסיסיים.",
+        "source": "המאמר של McCrady BS et al. פורסם ב-Journal of Consulting and Clinical Psychology, והוא אכן RCT. אולם, המקור שסופק הוא רק ה-XML header של המאמר, ולא הכותרת המלאה או פרמטרים בסיסיים. הכותרת המלאה היא: 'Fifteen-month drinking reductions in a randomized clinical trial of cognitive-behavioral and mindfulness-based treatments and a matched nontreatment-seeking community sample'.",
+        "severity": "low"
+      },
+      {
+        "said": "המחקר של ליאנג (Liang) פורסם בכתב העת Clinical Psychology and Psychotherapy, והוא מטה-אנליזה. גם כאן, הכותרת עצמה מספרת את הסיפור המרכזי.",
+        "source": "המאמר של Liang M et al. פורסם ב-Clin Psychol Psychother, והוא אכן מטה-אנליזה. אולם, המקור שסופק הוא רק ה-XML header של המאמר, ולא הכותרת המלאה. הכותרת המלאה היא: 'Imagery Interventions and Cognitive-Behavioural Therapy for Psychological Complaints Related to Bullying: A Systematic Review and Meta-Analysis'.",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part3": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המאמר הראשון שלנו לוקח את הדילמה המתודולוגית הזו ובוחן אותה בתוך אחת האוכלוסיות הכי מורכבות שיש לנו: מטופלים שמתמודדים בו זמנית גם עם סכיזופרניה וגם עם פוסט טראומה.",
+        "source": "Participants were adults with PTSD and schizophrenia-spectrum diagnoses, a subsample of the STAR trial.",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים מדווחים כי בבדיקת ההבדלים בין שתי הקבוצות לאחר תשעה חודשים, ככה במבט כולל על מדדי ה-PTSD הרגעיים, הם פשוט לא מצאו הבדלים מובהקים סטטיסטית. אפס הבדל.",
+        "source": "No between-group differences were found in ESM measures of momentary PTSD symptoms at 9-months.",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים לא ראו רק הפחתה בתדירות שבה זה קורה, אלא ירידה בשונות, ב-variance, של הזיכרונות החודרניים לאורך זמן בקבוצת ההתערבות.",
+        "source": "Significant timepoint×therapy interactions indicated greater decrease over time in hyperarousal, negative cognitions, and avoidance, and in variability of intrusive memories, in TF-CBTp+TAU compared to TAU.",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים סרקו את כל הספרות ויתרו בהתחלה 66 מחקרים תצפיתיים. אבל מתוכם 24 מחקרים היתרו מבחינת הדיווח הסטטיסטי שלהם והם אלו שנכנסו למטא-אנליזה עצמה.",
+        "source": "A total of 66 studies met the inclusion criteria and were included in the review. ... Meta-analysis of 24 studies showed that higher resilience was associated with lower odds of alcohol-related outcomes...",
+        "severity": "low"
+      },
+      {
+        "said": "כמעט חצי, 42.6% מהמחקרים שנכללו, התמקדו באוכלוסיות של תלמידי תיכון או סטודנטים בקולג'.",
+        "source": "Approximately two-fifths (42.6%) were conducted in high school or college student populations...",
+        "severity": "low"
+      },
+      {
+        "said": "המספרים לא כאלה גבוהים. תראה, מניתוח הנתונים המשולבים של ה-24 מחקרים, הם כן מצאו שחוסן גבוה יותר מקושר סטטיסטית לסיכוי נמוך יותר לבעיות אלכוהול. יחס הסיכויים, ה-odds ratio המשוקלל, עמד על 0.91, עם רווח בר סמך בין 0.87 ל-0.95.",
+        "source": "Meta-analysis of 24 studies showed that higher resilience was associated with lower odds of alcohol-related outcomes (pooled OR = 0.91, 95% CI = 0.87-0.95)...",
+        "severity": "low"
+      },
+      {
+        "said": "כשצוללים לנתונים הסטטיסטיים רואים מדד I בריבוע של 99.9%.",
+        "source": "although the observed heterogeneity was substantial (I 2 = 99.9%, p < 0.001).",
+        "severity": "low"
+      },
+      {
+        "said": "התוצאות של המטא-אנליזה השבוע מאשרות את הנחת היסוד הזו שחוסן מגן עלינו, אבל מנוסחות את זה בצורה מאוד זהירה.",
+        "source": "Meta-analysis of 24 studies showed that higher resilience was associated with lower odds of alcohol-related outcomes (pooled OR = 0.91, 95% CI = 0.87-0.95), although the observed heterogeneity was substantial (I 2 = 99.9%, p < 0.001). Consistent with this, the narrative synthesis indicated that associations between resilience and alcohol outcomes varied by life stage, high-risk or clinically vulnerable populations, cultural context, and resilience dimensions, with emotion-regulation and coping-related components showing more consistent protective associations than competence- or achievement-oriente…",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר הראשון מבין השניים פורסם ב-European Journal of Psychotraumatology. זו בעצם מטא-אנליזה של קבוצת המחקר של קליין וין.",
+        "source": "Lin C et al.",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר האחרון שלנו להיום שפורסם בכתב העת Frontiers in Neurology. מאמר מרתק בעיניי, מאמר מית קבוצת המחקר של יי.",
+        "source": "Ye R et al.",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part4": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_misc_part1": {
+    "verdict": "review",
+    "accuracy": 3,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "קבוצת המחקר של דוליאן",
+        "source": "Deighan O et al.",
+        "severity": "low"
+      },
+      {
+        "said": "הרופאים לא ידעו עבור אלו קבוצות גיל התוכנית בכלל רלוונטית, או אלו תרופות פסיכוטרופיות ספציפיות נכללות בסל הזה. והכי חמור בעיניי, הם לא ידעו את עובדת הברזל המנהלתית שרק פסיכיאטר מומחה, קרי קונסולטנט, רשאי להפעיל את המרשם הראשון תחת ה-LTI.",
+        "source": "Majority of Psychiatrists, 35 of 57 (61%,) were not aware of the age criteria, medications reimbursable or that initiation of medication under the LTI scheme is restricted to Consultant Psychiatrists.",
+        "severity": "low"
+      },
+      {
+        "said": "המחקר שפורסם שם השבוע בכתב עת Irish Medical Journal",
+        "source": "Ir Med J",
+        "severity": "low"
+      },
+      {
+        "said": "המחקר שפורסם בכתב העת בולטין מדיקו דל הוספיטל אינפנטיל דה מחיקו",
+        "source": "Bol Med Hosp Infant Mex",
+        "severity": "low"
+      },
+      {
+        "said": "קבוצת המחקר של אלבורס גאיו ניסתה לתקף את הגרסה המקסיקנית של שאלון האוטיזם Behavior Checklist, ה-ABC",
+        "source": "Albores-Gallo L et al. | The Autism Behavior Checklist (ABC) evaluates symptoms in individuals with Autism Spectrum Disorders (ASD) within a school setting. The purpose of this study was to evaluate the validity of the ABC Mexican version.",
+        "severity": "low"
+      },
+      {
+        "said": "ה-ADI-R נחשב לאחד מהכלים המקודלים כסטנדרט הזהב במחקר של אוטיזם",
+        "source": "לא מופיע במקור",
+        "severity": "low"
+      },
+      {
+        "said": "הם ביצעו מבחן מבחן חוזר, test-retest, על קבוצת ביקורת של 19 הורים לילדים עם התפתחות תקינה אחרי 10 ימים.",
+        "source": "The sample for the ABC test-retest analysis consisted of 19 parents with unaffected typically developing children between 2 and 17 years old.",
+        "severity": "low"
+      },
+      {
+        "said": "הסגוליות, הספציפיסיטי, 37% בלבד. 37. ומקדם קאפה הטוב ביותר מול סטנדרט הזהב, מול ה-ADI-R, עמד על 0.285.",
+        "source": "Criterion validity with a cutoff of 30 resulted in a sensitivity of 87% and a specificity of 37%. The best Kappa coefficient was 0.285 between the ABC and the ADI-R.",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר שפורסם בכתב העת Frontiers in Public Health",
+        "source": "Front Public Health",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר שפורסם בכתב העת Frontiers in Immunology",
+        "source": "Front Immunol",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר פורסם ב-International Journal of Molecular Sciences",
+        "source": "Int J Mol Sci",
+        "severity": "low"
+      },
+      {
+        "said": "קבוצת החוקרים של די יוריו",
+        "source": "Di Iorio MR et al.",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  },
+  "child_adolescent_misc_part2": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "החוקר בשם שהן",
+        "source": "Sahin B",
+        "severity": "low"
+      },
+      {
+        "said": "במיוחד אצל מתבגרות על הרצף האוטיסטי",
+        "source": "המאמר מציין 'ילדים ומתבגרים עם הפרעות נוירו-התפתחותיות (NDDs), כולל הפרעת הספקטרום האוטיסטי (ASD) והפרעת קשב וריכוז (ADHD)' בהקשר של חוסר התאמה בין דרישות ליכולת, אך לא מציין במיוחד מתבגרות אוטיסטיות בהקשר של מיסוך והסוואה כפי שהוצג באודיו.",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר פורסם בכתב העת Nature Communications על ידי קבוצת מחקר בראשות החוקר צ'וי",
+        "source": "Cui D et al.",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר פורסם בכתב העת Sensors על ידי קבוצת חוקרים בראשות אלזיין",
+        "source": "AlZain MA et al.",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר פורסם בכתב העת International Journal of Molecular Sciences על ידי צוות חוקרים בראשות אוסרדקר",
+        "source": "Osredkar J et al.",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר שפורסם בכתב העת Scientific Reports... מחקר חתך... מית קבוצת מחקר בראשות אל-פררגי",
+        "source": "El-Farargy SH et al.",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": [
+      "הייתה חזרה רבה על מונחים והסברים, מה שהאריך את הפודקאסט אך לא פגע בתוכן.",
+      "השימוש באנלוגיות היה יצירתי ומעשיר, ותאם את מטרת הפודקאסט."
+    ]
+  },
+  "cognition_part1": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המאמר הזה פורסם בכתב העת Cognitive Psychology, זה מאמר מחקרי ספציפית ניסוי מבוקר אקראי, RCT",
+        "source": "סוג מחקר: מאמר מחקרי",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים גילו שהקישוריות התפקודית בין ה-ERC ל-PRC עבור זיכרון אפיזודי ירדה עם הגיל",
+        "source": "Functional connectivity between ERC and PRC for episodic memory decreased with age.",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים גילו שזמני התגובה, ה-RT, וזמני ההקלדה של תגובות האמת, הושפעו באופן עמוק מההקשר החברתי של המשחק. למעשה ההשפעה יחסית על ההתארכות זמני התגובה של האמת בתוך הקונטקסט השקרי של המשחק הייתה גדולה יותר מאשר ההשפעה על השקרים עצמם בהשוואה למשימות ביקורת שלא כללו בכלל הקשר של הונאה.",
+        "source": "response times (RT) and typing durations (analyzed across experiments) of truth-responses were relatively more affected by the social lying context than lie-responses, as shown by a comparison to a control task.",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  }
+}
