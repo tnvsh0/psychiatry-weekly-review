@@ -541,3 +541,58 @@ The owner chose to leave it rather than spend another generation on it.
 
 Both were the last open decisions from the 2026-08-24 session. Nothing else is
 awaiting an answer.
+
+---
+
+## 15. Added 2026-09-01 — the Gemini spend cap, and judging after the fact
+
+**This session was suspended 2026-08-25 → 09-01.** Runs continued without it.
+A future session should assume the same can happen to it: `git log origin/main`
+is the only reliable answer to "what has happened", never a session's memory.
+
+### The outage
+The Gemini project hit its **monthly spending cap** around 2026-08-27
+(`429 RESOURCE_EXHAUSTED`, "exceeded its monthly spending cap"). It was still
+capped through the 08-31 reviews run, where **all 18 judge calls failed and 18
+episodes published with no quality check at all** — plus the weekly digests.
+The pipeline fails open by design and that is the right trade, but nothing
+existed to go back and check afterwards. The cap reset with the new month.
+
+### `scripts/qc_published.py` (new, PR #70)
+Judges episodes that published unjudged, without regenerating anything: the
+audio is already on the release, so it downloads what was published, runs the
+ordinary judge, applies the ordinary gate, and converts a failure back to a
+**draft**. Re-runnable; `--force` re-judges, `--judge-only` scores without
+unpublishing. Use it after any QC outage.
+
+**Result for 2026-08-31: 20 verdicts, mean accuracy 4.65, ZERO high-severity
+discrepancies, nothing pulled back.** That was the first full reviews run under
+the §13 FIDELITY rules; the historical corpus ran 0.175 high-severity per
+episode and 0.50 for 8+ article episodes. One run is not proof, but it is the
+first clean sheet in the record.
+
+### Two silences closed (PR #69, books PR #15)
+- `start_podcast` returned None printing **nothing** whenever the CLI answered
+  with a well-formed error payload — it only looked for `task_id`. Four book
+  episodes died at 05:00 on 09-01 to
+  `{"error": true, "code": "RATE_LIMITED", "message": "Audio generation rate
+  limited by Google."}` and the log showed silence. Three hours went into
+  proving the session, sources and artifacts were fine to recover a sentence
+  the CLI had already given us. **The very next run printed it**, which is how
+  the two `behavioral_sciences` parts below were explained instantly.
+- The missing-episode alarm counted a **deliberate deferral** as a lost
+  episode: on 08-31 it warned about 6 that `MAX_GENERATIONS_PER_RUN` had held
+  back by design. A false alarm introduced by my own cap, which would have
+  fired every week. Deferred episodes are marked and reported separately.
+
+### Left for the schedule
+`behavioral_sciences_part1` and `_part2` (2026-08-31) hit the NotebookLM rate
+limit during the catch-up; the other four backfilled cleanly. Wednesday's sweep
+picks them up. Books lost its four 09-01 episodes to the same limit and its
+own catch-up retakes them — verified: no gaps in `state/progress.json`.
+
+### Small open thing
+The judge occasionally returns an out-of-range score: `child_adolescent_core`
+came back with `coverage: 8` on a 1-5 scale. Harmless today (the gate reads
+accuracy and high-severity counts) but it means nothing validates the judge's
+own output.
