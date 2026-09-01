@@ -1,114 +1,34 @@
 [
   {
-    "pmid": "42606844",
-    "title": "Further Considerations on Autism Diagnosis-Reply",
-    "journal": "JAMA Pediatr",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42606844/",
-    "topic_id": "child_adolescent_highimpact",
-    "first_seen": "2026-08-23"
-  },
-  {
-    "pmid": "42606849",
-    "title": "Further Considerations on Autism Diagnosis",
-    "journal": "JAMA Pediatr",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42606849/",
-    "topic_id": "child_adolescent_highimpact",
-    "first_seen": "2026-08-23"
-  },
-  {
-    "pmid": "42606847",
-    "title": "Further Considerations on Autism Diagnosis",
-    "journal": "JAMA Pediatr",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42606847/",
-    "topic_id": "child_adolescent_highimpact",
-    "first_seen": "2026-08-23"
-  },
-  {
-    "pmid": "42624815",
-    "title": "Beyond mental health law reform: Argentina and the clinical challenges of implementation",
+    "pmid": "42636851",
+    "title": "Relapse or rebound: the case for personalisation in antipsychotic discontinuation",
     "journal": "Lancet Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42624815/",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42636851/",
     "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-08-23"
+    "first_seen": "2026-08-31"
   },
   {
-    "pmid": "42617624",
-    "title": "The patient declined",
-    "journal": "Lancet Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42617624/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-08-23"
-  },
-  {
-    "pmid": "42616533",
-    "title": "Does Interacting With Artificial Intelligence Cause Delusions?",
+    "pmid": "42646922",
+    "title": "Adapting Family-Based Psychosis Care to the Digital Home",
     "journal": "JAMA Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42616533/",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42646922/",
     "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-08-23"
+    "first_seen": "2026-08-31"
   },
   {
-    "pmid": "42624817",
-    "title": "Mental health law and policy in Argentina: from rights expansion to rollback",
-    "journal": "Lancet Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42624817/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-08-23"
-  },
-  {
-    "pmid": "42616554",
-    "title": "Suicide Risk Models Are Ready-Our Health Systems Are Not",
-    "journal": "JAMA Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42616554/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-08-23"
-  },
-  {
-    "pmid": "42613415",
-    "title": "Microbiota-dependent enterocyte oxytocin signaling in autism: mechanisms and translational implications",
-    "journal": "Mol Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42613415/",
-    "topic_id": "general_psychiatry_bio",
-    "first_seen": "2026-08-23"
-  },
-  {
-    "pmid": "42618142",
-    "title": "The Timing of Plasticity: Beyond Synapses in Psychedelic Therapeutics",
-    "journal": "Biol Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42618142/",
-    "topic_id": "general_psychiatry_bio",
-    "first_seen": "2026-08-23"
-  },
-  {
-    "pmid": "42618144",
-    "title": "Genetics of Psychological Resilience: Is It More Than the Flip Side of Risk?",
-    "journal": "Biol Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42618144/",
-    "topic_id": "general_psychiatry_bio",
-    "first_seen": "2026-08-23"
-  },
-  {
-    "pmid": "42610684",
-    "title": "Retraumatization in dementia: A life-course trauma-dementia-abuse cycle linking early adversity and elder abuse",
-    "journal": "J Gerontol B Psychol Sci Soc Sci",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42610684/",
-    "topic_id": "child_development",
-    "first_seen": "2026-08-23"
-  },
-  {
-    "pmid": "42610456",
-    "title": "Rethinking multiple sclerosis therapy beyond clinical phenotypes",
+    "pmid": "42640456",
+    "title": "The stalled moment: Parkinson's disease and the timed self",
     "journal": "Brain",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42610456/",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42640456/",
     "topic_id": "neuroscience",
-    "first_seen": "2026-08-23"
+    "first_seen": "2026-08-31"
   },
   {
-    "pmid": "42609029",
-    "title": "Jean Bancaud (1921-93): clinician, thinker and pioneer of epileptology at Sainte-Anne Hospital",
+    "pmid": "42634592",
+    "title": "When does relapse risk become acceptable in MOG antibody-associated disease?",
     "journal": "Brain",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42609029/",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42634592/",
     "topic_id": "neuroscience",
-    "first_seen": "2026-08-23"
+    "first_seen": "2026-08-31"
   }
 ]
