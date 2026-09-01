@@ -1890,7 +1890,18 @@ def start_podcast(nb_id: str, prompt: str, env: dict,
             "--retry", "3",
         ], capture_output=True, text=True, env=env, timeout=600)
         data = json.loads(out.stdout.strip())
-        return data.get("task_id") or None
+        task_id = data.get("task_id")
+        if task_id:
+            return task_id
+        # The CLI explains itself and we used to throw it away: a well-formed
+        # error payload has no task_id, so this returned None having printed
+        # NOTHING. On 2026-09-01 four book episodes failed with
+        # {"error": true, "code": "RATE_LIMITED", "message": "Audio generation
+        # rate limited by Google."} and the log showed only silence.
+        print(f"  ERROR start_podcast{f' [{topic_id}]' if topic_id else ''}: "
+              f"{data.get('code') or 'no task_id'} — "
+              f"{data.get('message') or out.stdout.strip()[:200]}")
+        return None
     except Exception as e:
         print(f"  ERROR start_podcast: {e}")
         return None
@@ -2114,10 +2125,16 @@ def send_notification(nb_infos: list[dict], env: dict):
     # Episodes that got a summary but no podcast — a real content gap (usually
     # a rate-limited/failed generation). Surface it loudly instead of silently
     # losing the articles.
-    missing = [nb for nb in nb_infos if not nb.get("podcast_url")]
+    missing = [nb for nb in nb_infos
+               if not nb.get("podcast_url") and not nb.get("deferred")]
+    deferred = [nb for nb in nb_infos if nb.get("deferred")]
     if missing:
         print(f"\n  ⚠ {len(missing)} episode(s) produced NO podcast: "
               + ", ".join(nb["topic"]["id"] for nb in missing))
+    if deferred:
+        print(f"\n  ⏭️  {len(deferred)} episode(s) deferred to the catch-up run "
+              "(by design, not a failure): "
+              + ", ".join(nb["topic"]["id"] for nb in deferred))
 
     warn_missing = (
         f"\u26a0\ufe0f {len(missing)} \u05e4\u05e8\u05e7\u05d9\u05dd \u05dc\u05d0 \u05e0\u05d5\u05e6\u05e8\u05d5 "
@@ -3185,6 +3202,12 @@ def main(mode: str = "all"):
     if deferred_gen:
         print("  Deferred to the next run's backfill sweep: "
               + ", ".join(nb["topic"]["id"] for nb in deferred_gen))
+        # Mark them, or the missing-episode alarm counts a deliberate deferral
+        # as a lost episode. On 2026-08-31 it warned about 6 "produced NO
+        # podcast" that the cap had simply held back by design — an alarm that
+        # fires every week for a working feature is an alarm you stop reading.
+        for nb in deferred_gen:
+            nb["deferred"] = True
     for nb in to_generate:
         if nb["nb_id"]:
             # Append any spotlight↔cluster cross-reference directive.
