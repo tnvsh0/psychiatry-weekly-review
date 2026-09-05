@@ -652,3 +652,58 @@ demands: when a paper set triggers them the episode balloons, otherwise nothing
 changes. **Suggestive, not proven** — n is small and this generator is wildly
 non-deterministic (two episodes from the *same* 6 articles once ran 11.1 and
 24.5 min). Do not "fix" the prompt on this evidence; measure another run first.
+
+---
+
+## 17. Added 2026-09-01 — CORRECTION: Google raised the length ceiling
+
+§16 suggested the §13 prompt rules had widened episode length. **That was
+wrong.** The owner proposed instead that NotebookLM's maximum had changed, and
+the data says he is right.
+
+### The step, in two independent projects
+Duration inferred from release/asset size at the measured constant bitrate
+(1.84 MB/min), which gives every episode a data point back to April.
+
+| corpus | before | from 2026-08-19 |
+|---|---|---|
+| weekly-review | **18.3 min** mean (245 eps, Apr–Aug 16) | **30.1 min** (49 eps) |
+| book-podcasts | **~19 min** mean, max never above 29.1 (Jul 16–Aug 15) | **~38 min** mean, max 67.1 |
+
+Every run date from April to 08-16 sits at 13–21 min. Every run date from 08-19
+sits at 28–31. The books project shows the same step in the same week with a
+different codebase, different source material and a prompt that never changed —
+and the step **precedes** the FIDELITY block (merged 08-24 23:43). It is not
+ours.
+
+### What this changes about the split threshold
+Length is a roughly fixed per-episode budget that the model fills, and the
+budget grew. Article count barely moves it, before or after:
+
+| articles | min/article BEFORE | min/article AFTER |
+|---|---|---|
+| 1 | 17.8 | 26.1 |
+| 5 | 3.5 | **6.1** |
+| 6 | 3.0 | **5.4** |
+| 8 | 2.2 | 3.7 |
+
+correlation(articles, minutes): +0.03 before, +0.17 after — weak both times.
+
+**The consequence the owner drew:** at any given article count each paper now
+gets nearly double the airtime. That surplus can be spent on depth (the status
+quo) **or on fewer episodes at the depth that was previously acceptable**.
+`SPLIT_THRESHOLD=8 / SPLIT_TARGET=6` was chosen when 6 articles bought 3.0 min
+each; that same 3.0 would now come from roughly 10–11 articles — half the
+episodes.
+
+⚠️ **Unmeasured:** there is no post-change data above 8 articles per episode,
+because the threshold prevents it. Whether the ~30 min budget holds flat at
+10–12 articles (it held flat to 13 before) or grows with the material is the
+one thing that decides this, and it needs one measured run to answer.
+
+### Method note
+`state/published.json` in the books project records `duration: null` for all
+118 episodes — its `audio_duration()` uses mutagen, which cannot read these
+fragmented-MP4 files (the same bug fixed in `prune_local_audio.py`). Size over
+a known constant bitrate is the workaround, and it is what made the
+longitudinal comparison possible at all.
