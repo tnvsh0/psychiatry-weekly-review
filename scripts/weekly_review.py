@@ -2823,24 +2823,46 @@ def auto_retry_flagged(nb_infos: list[dict], env: dict) -> None:
 # (descending) and divided round-robin among the parts so each part gets a
 # balanced mix of high-IF papers rather than Part 1 hoarding the best.
 
-SPLIT_THRESHOLD = 8    # split topics with more than this many articles
-SPLIT_TARGET    = 6    # aim for ~this many articles per part
-                       # Tuned 2026-08-20 from MEASURED durations (the DASH
-                       # sidx parser finally made episode length observable).
-                       # Across 44 episodes the correlation between article
-                       # count and duration is only r=0.31 — NotebookLM emits a
-                       # roughly fixed 11-31 min (mean 18) whatever we feed it,
-                       # and two episodes with the SAME 6 articles came out 11.1
-                       # and 24.5 min. So total length is not ours to control;
-                       # the only real lever on minutes-per-article is how many
-                       # articles share an episode:
-                       #     6 articles -> ~2.8 min each
-                       #     9 articles -> ~2.0 min each
-                       # 13->9->11 were all guesses made before we could measure.
-                       # 8/6 targets ~3 min per paper. It pushes a run to ~22-23
-                       # episodes, which is where generations used to be silently
-                       # lost — that is now guarded by --retry 3, the
-                       # second-chance pass, and the missing-episode alert.
+SPLIT_THRESHOLD = 12   # split topics with more than this many articles
+SPLIT_TARGET    = 10   # aim for ~this many articles per part
+                       # Raised 2026-09-01, and this one is a MEASUREMENT, not
+                       # a setting we are confident in. Read this before
+                       # changing it again.
+                       #
+                       # Google raised NotebookLM's length ceiling in the week
+                       # of 2026-08-17 (see HANDOFF section 17). Every run date
+                       # from April to 08-16 averaged 18.3 min across 245
+                       # episodes; every date from 08-19 averages 30.1. The
+                       # books project shows the same step in the same week
+                       # with a different codebase and an unchanged prompt, so
+                       # it is Google's, not ours.
+                       #
+                       # Length is a roughly fixed per-episode budget the model
+                       # fills, and the budget grew. Minutes per article, at the
+                       # SAME article count:
+                       #     5 articles:  3.5 min each  ->  6.1 after
+                       #     6 articles:  3.0 min each  ->  5.4 after
+                       # 8/6 was chosen when 6 articles bought 3.0 min each and
+                       # that was acceptable. The same 3.0 should now come from
+                       # 10-11 articles -- half the episodes for the same depth,
+                       # which is what the owner asked for.
+                       #
+                       # WHAT THIS RUN MEASURES: there is no post-change data
+                       # above 8 articles per episode, because the old threshold
+                       # prevented it. 12/10 turns a real week's 24 episodes into
+                       # 14 (simulated on 08-16, 08-23 and 08-31), averaging 8.6
+                       # articles and topping out at 12 -- exactly the unmeasured
+                       # zone. It also stays under MAX_GENERATIONS_PER_RUN=16, so
+                       # nothing is deferred and the week is a clean sample.
+                       #
+                       # AFTER THE NEXT RUN, decide from summaries/<date>/
+                       # durations.json:
+                       #   budget GROWS with articles -> keep 12/10 (or go up)
+                       #   budget stays flat at ~30min -> 9-10 articles gives the
+                       #     old 3 min/paper; settle there, still fewer episodes
+                       #     than 8/6.
+                       # Do not judge it on one episode: two episodes from the
+                       # SAME 6 articles once came out 11.1 and 24.5 min.
 
 def auto_split_topics(nb_infos: list[dict]) -> list[dict]:
     """Split any nb_info with too many articles into multiple parts."""
