@@ -197,9 +197,11 @@ would chase noise).
 
 ## 7. Facts worth not re-learning
 
-- NotebookLM episode length is capped: `--length` accepts only
-  short/default/long, already at `long` (~25 min). Asking the hosts to "be
-  longer" does nothing — the only lever on density is fewer articles per part.
+- `--length` accepts only short/default/long, and we are on `long`. Asking the
+  hosts in the prompt to "be longer" does nothing. **The "~25 min" this line
+  used to claim was wrong** — see §16: measured over 52 episodes, `long` means
+  **mean 29.5 min, up to 53**. And article count barely moves it, so "fewer
+  articles per part" is a depth dial, not a length dial.
 - Gemini 2.5 counts "thinking" tokens toward `max_output_tokens`; budget for
   both or replies get cut off mid-JSON.
 - One Gemini key (`gemini-api-key`) powers digests, QC and trends. Without it
@@ -596,3 +598,57 @@ The judge occasionally returns an out-of-range score: `child_adolescent_core`
 came back with `coverage: 8` on a 1-5 scale. Harmless today (the gate reads
 accuracy and high-severity counts) but it means nothing validates the judge's
 own output.
+
+---
+
+## 16. Added 2026-09-01 — episode length, measured properly
+
+The owner noticed episodes running ~45 minutes. He was right, and checking it
+overturned the assumption the split threshold was built on.
+
+### Trust the duration numbers, but not all of them
+`durations.json` cross-checked against each release's asset size: the encode is
+constant-bitrate at a **median 1.84 MB/min**, so MB-per-minute is a validity
+test on the parser. 6 of 58 episodes fall outside ±40% of that and are
+**parser errors, not episodes** — including an impossible 111.5 min at
+0.24 MB/min (2026-05-31 psychotherapy) and an 11.0 min at 3.27 MB/min. Use the
+size cross-check before believing any single duration.
+
+### On the 52 trustworthy episodes
+**mean 29.5 min, median 29.9, max 53.0.**
+
+### Article count barely affects length — correlation −0.22
+| articles | mean length | per article |
+|---|---|---|
+| 1 | 26.1 min | 26.1 |
+| 4 | 28.7 | 7.2 |
+| 5 | 30.5 | 6.1 |
+| 6 | 31.6 | 5.3 |
+| 8 | 29.9 | 3.7 |
+
+A one-paper episode runs 26 minutes; an eight-paper episode runs 30. **Seven
+extra papers buy four minutes.**
+
+**So SPLIT_THRESHOLD is not a length control and never was.** Splitting does not
+shorten an episode, it multiplies it: 10 articles as one episode is ~30 min;
+as two parts it is ~60 min of audio and two generations, covering the same
+papers. What splitting buys is airtime per paper (3.7 → 6.1 min). Set it on
+depth and generation budget, never on length.
+
+If shorter episodes are ever wanted, the lever is `--length` (`default` instead
+of `long`), which we have never measured.
+
+### What actually changed on 2026-08-31: the variance, not the mean
+Like for like (5-6 article episodes), before and after the §13 FIDELITY block:
+
+| run | n | mean | sd | min | max |
+|---|---|---|---|---|---|
+| 08-23 (before) | 20 | 29.9 | **5.3** | 17.9 | 36.1 |
+| 08-31 (after) | 22 | 31.1 | **10.3** | 18.0 | **53.0** |
+
+The mean moved 1.2 min; the standard deviation doubled and the ceiling went
+36 → 53 with the floor unchanged. Consistent with five extra conditional
+demands: when a paper set triggers them the episode balloons, otherwise nothing
+changes. **Suggestive, not proven** — n is small and this generator is wildly
+non-deterministic (two episodes from the *same* 6 articles once ran 11.1 and
+24.5 min). Do not "fix" the prompt on this evidence; measure another run first.
