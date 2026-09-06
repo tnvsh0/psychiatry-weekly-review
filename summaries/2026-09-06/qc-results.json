@@ -1,0 +1,154 @@
+{
+  "behavioral_sciences": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_core": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "cognition": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part1": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המחקר חילק את המשתתפים לשלוש זרועות שונות. קבוצה אחת קיבלה טיפול בתרופה אנטי-פסיכוטית מהדור השני. קבוצה שנייה קיבלה פלצבו... והקבוצה השלישית הייתה קבוצת ביקורת של אנשים בריאים ללא שום אבחנה פסיכיאטרית.",
+        "source": "In a triple-blind, randomized, placebo-controlled MRI study, 62 antipsychotic-naïve people with first-episode psychosis (FEP) received a second-generation antipsychotic or placebo over 6 months (n = 35 at 12 months) alongside a healthy control group (n = 27 at baseline, n = 21 at 12 months).",
+        "severity": "high"
+      },
+      {
+        "said": "החוקרים עקבו אחריהם באמצעות סריקות MRI כדי למדוד את העובי של קליפת המוח... במשך שישה חודשי טיפול אינטנסיביים. הם דגמו אותם בנקודת הבסיס, לאחר שלושה חודשים ולאחר 12 חודשים.",
+        "source": "T1-weighted scans were collected at baseline, 3 months, and 12 months.",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים מצאו שמוטיבים ב-DNA שהם אתרי הקישור של TBR1... סבלו ממה שנקרא היפר-מתילציה. הם היו ממוטלים בעודף חריג.",
+        "source": "Transcription factor binding site analyses of these differentially methylated regions revealed a significant enrichment of Tbr1 motifs within hyper-methylated deep-layer neuron-specific regions at birth.",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים מצאו שמוטיבים ב-DNA שהם אתרי הקישור של TBR1... סבלו ממה שנקרא היפר-מתילציה. הם היו ממוטלים בעודף חריג. וכאן אנחנו מגיעים לפרדוקס מרתק שהמאמר מתאר, מה שמכנים נתק או באנגלית uncoupling.",
+        "source": "Notably, transcriptional targets of Tbr1 were down-regulated at birth despite up-regulation of Tbr1 transcription, suggesting PIC-MIA uncouples Tbr1 expression from its regulatory function in deep-layer neurons.",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים גם זיהו מטרות תרופתיות פוטנציאליות מתוך הגנים האלו, נכון? בדיוק. מתוך הרשת הגנטית המסועפת הזו שהם מצאו, הם בודדו 32 גנים ספציפיים שמעורבים במסלולים ביולוגיים ידועים... והנתון החשוב ביותר שמגיע מהמחקר הוא ש-13 מתוך הגנים הללו, שזה קצת יותר מ-40%, מוגדרים כ-druggable.",
+        "source": "Thirty-two pleiotropic genes were prioritized, showing enrichment in metabolic, developmental, synaptic, immune, and H3K27me3-related pathways. Thirteen genes (40.63%) were druggable, including five with approved drug interactions.",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המאמר הזה פורסם ב-Depression and Anxiety, גם הוא מאמר מחקרי, על מאפיינים מעורבים בדיכאון, נכון?",
+        "source": "Mixed Features in Recurrent Major Depressive Disorder: Prevalence, Risk Factors, and Clinical Consequences",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר הזה הוא כל כך חשוב ורחב יריעה שהחלטנו להקדיש לו פרק זרקור מלא משלו בערוץ הזרקור שלנו בעוד כמה ימים.",
+        "source": "לא מופיע במקור",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "קבוצת מחקר בראשות יוסי קרוז",
+        "source": "מחברים: Kosik-Rose E et al. (החוקר הראשי הוא Kosik-Rose)",
+        "severity": "low"
+      },
+      {
+        "said": "החוקרים עקבו אחריהם [הספייקים הפשוטים והמורכבים] בזמן הלמידה של הקופים. התוצאות הראו שככל שהקוף מבין את הקשר בין התמונה לפעולה, הספייקים הפשוטים הופכים לסלקטיביים יותר ויותר מזה, הם מתחילים להופיע מוקדם יותר עוד לפני שהתגובה המוטורית מתבצעת. ההקדמה הזו בזמן היא פשוט קריטית להבנת המנגנון. זה אומר שהתאים האלה לא מגיבים לסיטואציה בדיעבד, אלא לומדים לנבא את מה שהולך לקרות. הצרבלום מתגלה פה כמכונת חיזוי. הקוף רואה גירוי מוכר והצרבלום משגר אות מנבא שמכין את המערכת מראש.",
+        "source": "As learning progresses, the simple spike activity of individual neurons becomes more selective for stimulus-response associations, with selectivity for left or right association developing closer to the appearance of visual stimuli. Initially, most neurons respond to both associations, irrespective of the identity of the stimulus and the associated movement, but as learning advances, more neurons distinguish between specific stimulus-hand associations. Using a linear decoder, we found that in early learning stages, the visual stimulus can be decoded only when the choice can also be decoded. As learning progresses, the visual stimulus is decoded earlier than the choice. A simple model can replicate the observed Purkinje cell signals in both the early and late learning stages. (התקציר מתאר את ההתפתחות של הספייקים הפשוטים כהופכים סלקטיביים יותר ומקודדים את הבחירה מוקדם יותר, אך לא מציין במפורש שהם מופיעים 'עוד לפני שהתגובה המוטורית מתבצעת' או שהצרבלום 'מכין את המערכת מראש' כ'מכונת חיזוי' באופן כללי, אלא מתאר את הניבוי של הבחירה והגירוי).",
+        "severity": "low"
+      },
+      {
+        "said": "התוצאות הראו שהפעילות שלהם [הספייקים המורכבים] דווקא יורדת ככל שהלמידה מתקדמת ומתייצבת. וזה בניגוד מוחלט לתיאוריה הקלאסית. במשך שנים, החשיבה הייתה שהספייק המורכב הוא אך ורק אות שגיאה. כאילו המערכת אומרת שיש טעות וצריך לעדכן את המודל המוטורי. והנה, החוקרים פה מראים שזה ממש לא כל הסיפור. הספייקים המורכבים לא רק צועקים כשיש שגיאה, אלא מקודדים בעצמם אסוציאציות סנסורו-מוטוריות מסדר גבוה. הם מהווים חלק מהלמידה של הקשר. וכשהלמידה מתייצבת והניבוי עובד, פשוט יש פחות צורך בהם ולכן הפעילות שלהם פוחתת.",
+        "source": "Moreover, complex spikes, which respond after the appearance of the stimuli, decrease their activity as the monkeys learn the task, suggesting that climbing-fiber activity encodes higher-order sensorimotor associations beyond mere error signaling. (התקציר מציין ירידה בפעילות הספייקים המורכבים ככל שהלמידה מתקדמת, ומציע שהם מקודדים אסוציאציות סנסורו-מוטוריות מסדר גבוה מעבר לאות שגיאה, אך אינו מפרט שהם 'לא רק צועקים כשיש שגיאה' או שהם 'מהווים חלק מהלמידה של הקשר' באופן אקטיבי, אלא מציע שהם 'מקודדים' אסוציאציות).",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}
