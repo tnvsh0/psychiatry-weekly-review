@@ -1,87 +1,121 @@
 # 📈 מגמות בקרת איכות — דפוסים חוזרים והצעות לשיפור
 
-*מבוסס על 8 ריצות (2026-07-29 – 2026-08-26), 72 פרקים.*
+*מבוסס על 8 ריצות (2026-08-05 – 2026-09-02), 70 פרקים.*
 
 ## ציונים ממוצעים
 
 | מדד | ממוצע |
 |---|:---:|
-| דיוק | 4.65 / 5 |
-| כיסוי | 4.99 / 5 |
+| דיוק | 4.71 / 5 |
+| כיסוי | 5.06 / 5 |
 | שטף | 5.00 / 5 |
 
-סיכומים: ✅ 60 · 🟡 10 · 🔴 2
+סיכומים: ✅ 61 · 🟡 8 · 🔴 1
 
 ---
 
 ## דפוסים חוזרים
 
-### 1. הזיות עובדתיות ואי-דיוקים מהותיים  (18 מופעים)
+### 1. אי דיוקים עובדתיים והמצאות  (11 מופעים)
 
 **🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל מייצר מידע שגוי לחלוטין, כולל פרטי מחקרים שלמים או נתונים מספריים ספציפיים, שאינם קיימים במקורות שסופקו או סותרים אותם ישירות.
+*אבחנה:* המודל ממציא או מגזים בפרטים, מפרש לא נכון ממצאים, או מערבב מידע ממקורות שונים או מוסיף מידע שאינו קיים במקורות שסופקו.
 
 *דוגמאות:*
-- המאמר הראשון שנסקר עסק בתוכנית התערבות אוניברסלית של מיינדפולנס בבתי ספר יסודיים... המחקר מצא שמיינדפולנס לא רק שלא עזר, אלא החמיר את תסמיני הדיכאון בילדי יסודי. | מקור: לא מופיע במקור.
-- אני מסתכלת על מאמר מחקרי... פורסם בכתב העת Archives of Clinical Neuropsychology. | מקור: לא מופיע במקור.
-- החוקרים מצאו ש-58% מאלו שאובחנו עם הפרעת קשב סבלו גם מהפרעה פסיכיאטרית נלווית. | מקור: לא מופיע במקור.
+- החוקרים במאמר של קונג השתמשו ב-EEG בצפיפות גבוהה מאוד, מה שאפשר להם להקליט פעילות חשמלית מאלפי נוירונים בודדים בו-זמנית.
+- המאמר הראשון שנסקר עסק בתוכנית התערבות אוניברסלית של מיינדפולנס בבתי ספר יסודיים... המחקר מצא שמיינדפולנס לא רק שלא עזר, אלא החמיר את תסמיני הדיכאון בילדי יסודי.
+- הנתונים בסקירה מראים שחלק עצום מהשונות, לפעמים מעל 80% מהנתונים שמקבלים מדגימת דם של מטופל פסיכיאטרי, זה בכלל לא קשור למחלה.
 
 *הצעת ניסוח להוספה לפרומפט:*
 
 ```text
-Ensure all factual statements, especially numerical data, study designs, and specific findings, are directly and explicitly supported by the provided source text. Do not infer, extrapolate, or invent details. If a detail is not in the source, do not mention it as a finding from that source. If the source text is missing, state that the discussion is based on the title and clinical reasoning only.
+Strictly adhere to the provided source material for all factual claims, including specific numbers, study designs, and outcomes. Do not invent or exaggerate details, or infer information not explicitly present in the abstracts or provided text. If a detail is not in the source, do not mention it as a finding from that specific paper.
 ```
 
-### 2. שיבוש שמות כתבי עת ומחברים  (10 מופעים)
+### 2. שמות שגויים או לא מדויקים (מחברים, כתבי עת)  (11 מופעים)
 
 **🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל מתקשה לדייק בשמות כתבי עת ובשמות מחברים, לעיתים משבש אותם או מתרגם אותם באופן שגוי לעברית.
+*אבחנה:* המודל מתבלבל בשמות מחברים, מאיית אותם לא נכון, או משתמש בשמות לא רשמיים/מקוצרים של כתבי עת במקום השם המלא כפי שמופיע במקור.
 
 *דוגמאות:*
-- המאמר השלישי, שנכתב על ידי פומבון וליאו | מקור: המחברים הם Fombonne E, Liao L
-- המאמר של צוות המחקר של גאסטון מכתב העת Sleep Medicine Reviews | מקור: המאמר הוא 'An overview of systematic reviews and a global evidence map' ולא מטה-אנליזה ענקית.
-- המאמר הרביעי מציג משהו שהוא הכי פיזי ואגרסיבי שיש. זה התפרסם בסנטה מנטל הלת'. | מקור: כתב העת הוא 'Sante Ment Que', לא 'סנטה מנטל הלת''.
+- המאמר הראשון מבין השניים פורסם ב-European Journal of Psychotraumatology. זו בעצם מטא-אנליזה של קבוצת המחקר של קליין וין.
+- יש לנו סקירה מעניינת של החוקר סטווארט שפורסמה בכתב העת Journal of School Health.
+- המאמר הרביעי מציג משהו שהוא הכי פיזי ואגרסיבי שיש. זה התפרסם בסנטה מנטל הלת'.
 
 *הצעת ניסוח להוספה לפרומפט:*
 
 ```text
-When referring to journal names or author names, always use the exact spelling and capitalization as provided in the source material. Do not translate or transliterate journal names unless explicitly instructed. For author teams, use 'צוות המחקר של [שם המחבר הראשון]' only if the source explicitly refers to a team, otherwise list the first author's last name.
+When referring to authors, use the exact last name(s) as provided in the source. When referring to journal names, use the full, official name as provided in the source, not an abbreviated or colloquial version.
 ```
 
-### 3. פרשנות כעובדה/הצגת מידע חיצוני כמידע מהמאמר  (6 מופעים)
+### 3. הכללות ופישוט יתר  (10 מופעים)
 
 **🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל מציג פרשנויות אישיות או מידע כללי שאינו מופיע במקורות כעובדות מתוך המאמר, או שאינו מסמן בבירור מתי הוא חורג מתוכן המאמר.
+*אבחנה:* המודל נוטה לפשט יתר על המידה את סוג המחקר, את מטרותיו או את ממצאיו, לעיתים קרובות על ידי התעלמות מניואנסים חשובים או תנאים ספציפיים המוזכרים במקור.
 
 *דוגמאות:*
-- המאמר הזה בוחן שימוש בבינה מלאכותית לזיהוי מוקדם של אוטיזם... הנימוק 'בינה מלאכותית פשוט לא מוגבלת למה שהעין האנושית מסוגלת לעבד' הוא פרשנות של המגיש ולא ציטוט ישיר מהמאמר.
-- המאמר מציין שנשים חוות 'נטל לא פרופורציונלי של הפרעות אפקטיביות וקשורות לסטרס', אך אינו מציין שהן שכיחות 'פי 2' אצל נשים. זהו מידע כללי שלא מיוחס למאמר במפורש, אך גם לא מסומן כמידע חיצוני.
-- ההבחנה בין מידע מהמאמר לבין פרשנות או הרחבה סומנה בבירור, כנדרש במפרט. | הערה: ההתייחסות למאמרים שאינם מהסקירה השבועית (כמו מחקר המיינדפולנס) אינה מסומנת בבירור כמידע חיצוני למאמרים שסופקו, מה שעלול להטעות את המאזין לחשוב שמדובר באחד ממאמרי השבוע.
+- המחקר הזה בעצם אומר שזה פחות רלוונטי [סוג ההתעללות]. המצטברות היא שהכי משנה.
+- המאמר של סורמני הוא מאמר מחקרי
+- המאמר עוסק במושג שנקרא אינטרון ריטנשן (Intron retention), בעברית שימור אינטרונים, גם באנשים בריאים וגם ב-ALS.
 
 *הצעת ניסוח להוספה לפרומפט:*
 
 ```text
-Clearly distinguish between information directly stated in the article and your own clinical interpretation, analogies, or general knowledge. When introducing information not directly from the provided abstract/article, explicitly state that it is an external comment, analogy, or broader context, for example, by saying 'בהקשר רחב יותר', 'כדאי לזכור ש', or 'זוהי פרשנות שלנו'.
+Ensure that the description of the study type, objectives, and findings accurately reflects the nuances and specific conditions mentioned in the source material. Avoid oversimplification or broad generalizations that omit important context.
 ```
 
-### 4. אי-דיוקים בסוג המחקר/הסקירה  (3 מופעים)
+### 4. חוסר דיוק בנתונים מספריים  (8 מופעים)
 
 **🔧 ניתן לתקן בפרומפט**
 
-*אבחנה:* המודל מתבלבל בין סוגי מאמרים (לדוגמה, סקירת ספרות מול מאמר מחקרי מקורי, או סקירת סקירות מול מטה-אנליזה), ומציג את סוג המחקר באופן שגוי.
+*אבחנה:* המודל מציג נתונים מספריים (כמו ציונים, אחוזים, מספרים מוחלטים) בצורה לא מדויקת, לעיתים קרובות על ידי עיגול, שינוי כיוון או אי התאמה למקור.
 
 *דוגמאות:*
-- המאמר של סורמני הוא מאמר מחקרי | מקור: המאמר של סורמני הוא 'סקירת ספרות' (Review Article) ולא מאמר מחקרי (Research Article).
-- המאמר של צוות המחקר של גאסטון מכתב העת Sleep Medicine Reviews... מדובר פה על מטה-אנליזה ענקית שהיגדה 12 סקירות שיטתיות | מקור: המאמר הוא 'An overview of systematic reviews and a global evidence map' ולא מטה-אנליזה ענקית.
-- המאמר עוסק במושג שנקרא אינטרון ריטנשן (Intron retention)... | מקור: The abstract itself is a 'Review Article', not a research article as stated in the audio.
+- הקבוצה המונחית המטפל ירדה ב-17 נקודות, וקבוצת הטיפול הרגיל ירדה רק ב-11.6 נקודות.
+- החוקרים סרקו את כל הספרות ויתרו בהתחלה 66 מחקרים תצפיתיים. אבל מתוכם 24 מחקרים היתרו מבחינת הדיווח הסטטיסטי שלהם והם אלו שנכנסו למטא-אנליזה עצמה.
+- 90,000 פולסים בתוך חמישה ימים, עם ניווט של fMRI.
 
 *הצעת ניסוח להוספה לפרומפט:*
 
 ```text
-Always accurately state the study type (e.g., 'מאמר מחקרי', 'סקירת ספרות', 'מטה-אנליזה', 'מחקר פיילוט') as indicated in the source. If the source specifies 'Review Article', do not refer to it as a 'Research Article'.
+When quoting or referring to numerical data (e.g., scores, percentages, counts, effect sizes, p-values), ensure absolute precision and fidelity to the numbers provided in the source material. Do not round, approximate, or alter these values.
+```
+
+### 5. התעלמות ממידע חשוב או הסתייגויות  (6 מופעים)
+
+**🔧 ניתן לתקן בפרומפט**
+
+*אבחנה:* המודל מתעלם מהסתייגויות חשובות, מגבלות מחקר, או רמות ביטחון נמוכות בממצאים, ובכך מציג את התוצאות כחד משמעיות יותר ממה שהן באמת.
+
+*דוגמאות:*
+- התוצאות של המטא-אנליזה השבוע מאשרות את הנחת היסוד הזו שחוסן מגן עלינו, אבל מנוסחות את זה בצורה מאוד זהירה.
+- המחברים מודים שרמת הביטחון שלהם בנתונים על פי מדדים סטטיסטיים מחמירים היא נמוכה מאוד. הם ממש משתמשים בביטוי אנגלי critically low. ויש שם גם בעיה של ייצוג גיאוגרפי.
+- המאמר של צוות המחקר של גאסטון מכתב העת Sleep Medicine Reviews... הנתונים מצביעים על קשר חזק וקבוע. חוויות ילדות שליליות מתורגמות לשינה פגועה בבגרות, החל מאינסומניה דרך יקיצות מרובות ועד ציוטים.
+
+*הצעת ניסוח להוספה לפרומפט:*
+
+```text
+Always include any significant caveats, limitations, or statements about the certainty of findings (e.g., 'critically low confidence', 'high risk of bias') that are present in the source material, especially when discussing the strength or generalizability of results.
+```
+
+### 6. התייחסות למידע מחוץ למקורות שסופקו  (3 מופעים)
+
+**🔧 ניתן לתקן בפרומפט**
+
+*אבחנה:* המודל מתייחס למאמרים או למידע שאינם חלק מהמקורות שסופקו, או שאינם נתמכים על ידי תקציר זמין, מבלי לסמן זאת בבירור כמידע חיצוני או כהשערה.
+
+*דוגמאות:*
+- הערה: ההתייחסות למאמרים שאינם מהסקירה השבועית (כמו מחקר המיינדפולנס) אינה מסומנת בבירור כמידע חיצוני למאמרים שסופקו, מה שעלול להטעות את המאזין לחשוב שמדובר באחד ממאמרי השבוע.
+- הערה: הדיון על מאמר Sormani MP et al. (Brain) היה קצר מאוד מכיוון שהתקציר לא היה זמין, אך ההתייחסות לנושא הייתה קיימת.
+- הערה: הדיון על מאמר 'Coupling neuroprosthetics with neuromodulation' התבסס על הכותרת וההיגיון הקליני, מכיוון שלא סופק תקציר למאמר זה במקור. זה תואם את הציפייה במפרט במקרה של חוסר תקציר.
+
+*הצעת ניסוח להוספה לפרומפט:*
+
+```text
+If discussing a paper or information not explicitly provided in the current week's source material, clearly state that this information comes from an external source or general knowledge, and is not part of the reviewed papers.
 ```
 
 ---
