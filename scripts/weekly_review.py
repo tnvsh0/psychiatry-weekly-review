@@ -2661,6 +2661,55 @@ def record_duration(topic_id: str, mp3_path: str, date_str: str) -> None:
     p.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def warn_missed_runs(env: dict, look_back_days: int = 15) -> None:
+    """Shout if a scheduled run left no trace at all.
+
+    On 2026-09-06 the Cloud Scheduler start job reported DONE, the VM never
+    booted, and the Sunday run simply did not happen: no log, no summaries, no
+    alert, nothing. Every other guard in this pipeline runs INSIDE a run, so a
+    run that never starts is invisible to all of them. Nothing can catch that
+    at the time from in here -- the next run that does boot is the first
+    opportunity, so take it.
+
+    Reviews go out on Sunday and spotlights on Wednesday; a missing
+    summaries/<date>/ for one of those dates means that run produced nothing.
+    Reported, never fatal."""
+    import datetime as _dt
+    today = TODAY if isinstance(TODAY, _dt.date) else _dt.date.today()
+    missed = []
+    for back in range(1, look_back_days + 1):
+        d = today - _dt.timedelta(days=back)
+        if d.weekday() not in (6, 2):          # Sunday = 6, Wednesday = 2
+            continue
+        if not (Path("summaries") / d.strftime("%Y-%m-%d")).exists():
+            kind = "reviews" if d.weekday() == 6 else "spotlights"
+            missed.append(f"{d.strftime('%Y-%m-%d')} ({kind})")
+    if not missed:
+        return
+    print("")
+    print(f"\u26a0\ufe0f  {len(missed)} scheduled run(s) in the last "
+          f"{look_back_days} days produced NOTHING: " + ", ".join(missed))
+    print("   A start job can report DONE without the machine ever coming up.")
+    topic = (env.get("NTFY_TOPIC") or "").strip()
+    if not topic:
+        return
+    body = ("\u05d4\u05e8\u05d9\u05e6\u05d5\u05ea \u05d4\u05d1\u05d0\u05d5\u05ea "
+            "\u05dc\u05d0 \u05d4\u05e9\u05d0\u05d9\u05e8\u05d5 \u05e9\u05d5\u05dd "
+            "\u05e2\u05e7\u05d1:\n  " + "\n  ".join(missed) +
+            "\n\n\u05d4-VM \u05db\u05e0\u05e8\u05d0\u05d4 \u05dc\u05d0 \u05e2\u05dc\u05d4.")
+    try:
+        requests.post("https://ntfy.sh", json={
+            "topic": topic,
+            "title": ("\u26a0\ufe0f \u05e8\u05d9\u05e6\u05d4 "
+                      "\u05e9\u05dc\u05d0 \u05e7\u05e8\u05ea\u05d4"),
+            "message": body,
+            "priority": 4,
+            "tags": ["warning"],
+        }, timeout=15)
+    except Exception as e:
+        print(f"   (could not send the alert: {e})")
+
+
 def commit_and_push_feeds(message: str) -> bool:
     """Stage docs/feed*.xml, commit, and push — rebasing once if origin moved.
 
@@ -2947,6 +2996,7 @@ def main(mode: str = "all"):
     print(f"{sep}\n")
 
     env = os.environ.copy()
+    warn_missed_runs(env)
 
     # Where the NotebookLM session lives. notebooklm-py >=0.7 keeps it under
     # ~/.notebooklm/profiles/<profile>/, while 0.3.x used the flat
