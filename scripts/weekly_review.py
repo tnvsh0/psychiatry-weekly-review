@@ -2823,46 +2823,46 @@ def auto_retry_flagged(nb_infos: list[dict], env: dict) -> None:
 # (descending) and divided round-robin among the parts so each part gets a
 # balanced mix of high-IF papers rather than Part 1 hoarding the best.
 
-SPLIT_THRESHOLD = 12   # split topics with more than this many articles
-SPLIT_TARGET    = 10   # aim for ~this many articles per part
-                       # Raised 2026-09-01, and this one is a MEASUREMENT, not
-                       # a setting we are confident in. Read this before
-                       # changing it again.
+SPLIT_THRESHOLD = 9    # split topics with more than this many articles
+SPLIT_TARGET    = 7    # aim for ~this many articles per part
+                       # Set 2026-09-06 from a measured experiment, not a guess.
                        #
                        # Google raised NotebookLM's length ceiling in the week
-                       # of 2026-08-17 (see HANDOFF section 17). Every run date
-                       # from April to 08-16 averaged 18.3 min across 245
-                       # episodes; every date from 08-19 averages 30.1. The
-                       # books project shows the same step in the same week
-                       # with a different codebase and an unchanged prompt, so
-                       # it is Google's, not ours.
+                       # of 2026-08-17 (HANDOFF section 17), so 12/10 was tried
+                       # on the theory that a bigger budget would let more
+                       # articles share an episode at the same depth. It does
+                       # not. Measured on the 2026-09-06 run: length is a
+                       # roughly fixed budget the model fills regardless of how
+                       # much material it is given --
+                       #     12 articles -> 29.0 min     3 articles -> 24.2 min
+                       # nine extra articles bought five minutes. Total source
+                       # text does not drive it either: episodes over 50k chars
+                       # ran 28.5 min, under 10k ran 29.3 (r = -0.12).
                        #
-                       # Length is a roughly fixed per-episode budget the model
-                       # fills, and the budget grew. Minutes per article, at the
-                       # SAME article count:
-                       #     5 articles:  3.5 min each  ->  6.1 after
-                       #     6 articles:  3.0 min each  ->  5.4 after
-                       # 8/6 was chosen when 6 articles bought 3.0 min each and
-                       # that was acceptable. The same 3.0 should now come from
-                       # 10-11 articles -- half the episodes for the same depth,
-                       # which is what the owner asked for.
+                       # So minutes-per-article is set almost entirely by how
+                       # many articles share an episode, and QC says where the
+                       # useful range ends (62 episodes with both a duration and
+                       # a verdict):
+                       #     min/article   accuracy   high-severity per episode
+                       #        2-3          4.75            0.00
+                       #        3-4.5        4.89            0.00
+                       #        4.5-6        5.00            0.00   <-- best
+                       #        6+           4.53            0.16
+                       # Coverage is 5.00 at every level -- the papers get
+                       # covered either way. But past ~6 min per article the
+                       # model fills the surplus with elaboration that drifts
+                       # off-source, and accuracy FALLS. More time is not more
+                       # quality; it is more room to invent.
                        #
-                       # WHAT THIS RUN MEASURES: there is no post-change data
-                       # above 8 articles per episode, because the old threshold
-                       # prevented it. 12/10 turns a real week's 24 episodes into
-                       # 14 (simulated on 08-16, 08-23 and 08-31), averaging 8.6
-                       # articles and topping out at 12 -- exactly the unmeasured
-                       # zone. It also stays under MAX_GENERATIONS_PER_RUN=16, so
-                       # nothing is deferred and the week is a clean sample.
+                       # 9/7 lands at ~5.3 min/article -- inside that band -- and
+                       # gives 19 episodes a week (child 6, psychiatry 7,
+                       # therapy 6) against 21 at 8/6 and 13 at 12/10.
                        #
-                       # AFTER THE NEXT RUN, decide from summaries/<date>/
-                       # durations.json:
-                       #   budget GROWS with articles -> keep 12/10 (or go up)
-                       #   budget stays flat at ~30min -> 9-10 articles gives the
-                       #     old 3 min/paper; settle there, still fewer episodes
-                       #     than 8/6.
-                       # Do not judge it on one episode: two episodes from the
-                       # SAME 6 articles once came out 11.1 and 24.5 min.
+                       # If the episode COUNT is the problem, this is the wrong
+                       # dial: it is set by the ~105 articles a week the search
+                       # returns. Tightening inclusion reduces episodes without
+                       # costing depth; raising the threshold only trades depth
+                       # for count.
 
 def auto_split_topics(nb_infos: list[dict]) -> list[dict]:
     """Split any nb_info with too many articles into multiple parts."""
