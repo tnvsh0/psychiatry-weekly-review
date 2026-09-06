@@ -205,6 +205,29 @@ def _gemini_client():
         return None, None
 
 
+def _salvage(text: str, max_attempts: int = 60) -> dict | None:
+    """Recover a verdict from JSON that was cut off mid-array.
+
+    Walks back to the last complete object and closes whatever is still open.
+    Refuses anything without a score, so a genuine judge failure still reports
+    as one rather than becoming a fabricated pass. `verdict` is absent from a
+    salvaged dict; _qc_should_hold falls through to the accuracy and
+    high-severity checks, which is exactly what should happen."""
+    ends = [i for i, ch in enumerate(text) if ch == "}"]
+    for idx in reversed(ends[-max_attempts:]):
+        head = text[:idx + 1]
+        repaired = (head
+                    + "]" * max(0, head.count("[") - head.count("]"))
+                    + "}" * max(0, head.count("{") - head.count("}")))
+        try:
+            out = json.loads(repaired)
+        except Exception:
+            continue
+        if isinstance(out, dict) and out.get("accuracy") is not None:
+            return out
+    return None
+
+
 def judge_episode(client, types, mp3: Path, source_md: str, model: str) -> dict | None:
     """Upload the MP3, ask Gemini to listen + score against the source. Returns
     the parsed verdict dict, or None on failure."""
@@ -242,10 +265,26 @@ def judge_episode(client, types, mp3: Path, source_md: str, model: str) -> dict 
             ),
         )
         text = (resp.text or "").strip()
-        start, end = text.find("{"), text.rfind("}")
-        if start == -1 or end == -1:
+        start = text.find("{")
+        if start == -1:
             return None
-        verdict = json.loads(text[start:end + 1])
+        try:
+            verdict = json.loads(text[start:text.rfind("}") + 1])
+        except json.JSONDecodeError as e:
+            # A verdict cut off mid-array is indistinguishable from a judge
+            # that never ran, and the pipeline fails open on that -- so the
+            # episode publishes unchecked, which is the one thing the gate
+            # exists to prevent. child_adolescent_misc hit this on 2026-09-06.
+            # The scores come first in the schema, so a truncated verdict still
+            # carries accuracy, coverage, fluency and most of the findings.
+            print(f"    Judge verdict for {mp3.name} was truncated: {e}")
+            verdict = _salvage(text[start:])
+            if verdict is None:
+                return None
+            print(f"      salvaged it ({len(verdict.get('discrepancies') or [])} "
+                  f"discrepancy(ies) recovered) — scoring on what arrived")
+            verdict.setdefault("notes", []).append(
+                "הדוח נקטע; נשפט על סמך החלק שהתקבל")
         if isinstance(verdict, dict):
             # Strip confirmations / self-cancelling rows the judge sometimes
             # logs, so the report shows only real problems and the publish gate
