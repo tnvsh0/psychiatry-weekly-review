@@ -150,5 +150,18 @@
       "any": false,
       "details": []
     }
+  },
+  "child_development": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
   }
 }
