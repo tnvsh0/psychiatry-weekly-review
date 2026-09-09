@@ -1,0 +1,35 @@
+{
+  "spotlight_42675563": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "spotlight_42680906": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "spotlight_42686884": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}
