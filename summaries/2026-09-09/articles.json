@@ -1,0 +1,63 @@
+[
+  {
+    "pmid": "42680906",
+    "title": "Whole-exome sequencing in individuals with obsessive-compulsive disorder and chronic tic disorders identifies 36 large-effect risk genes",
+    "journal": "Nat Neurosci",
+    "authors": "Wang B et al.",
+    "pub_date": "2026 Sep 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42680906/",
+    "impact_factor": 25.0,
+    "abstract": "Obsessive-compulsive disorder (OCD) and chronic tic disorders (CTDs) are highly heritable. Rare mutations confer large risks for OCD and CTDs but only four high-confidence (hc) genes have been identified. Here we analyzed whole-exome sequencing data from 3,964 individuals with OCD, CTDs or both, including 2,418 trios. We found an excess in cases of de novo and rare protein-damaging mutations and identified 36 hc genes (false discovery rate < 0.1), including four previously identified hc genes (CELSR3, CHD8, SCUBE1 and WWC1) and four genes that overlap with OCD genome-wide association study loci (BRWD1, CELSR3, QRICH1 and SYNE1). Risk genes are shared among OCD, CTDs and other neurodevelopmental conditions. Transcriptomic and network analyses highlight mechanistic convergence and increased risk gene expression in postnatal cerebellum, prenatal and postnatal cortex and striatum. Dozens of large-effect OCD and CTD genes offer insights into pathogenesis and a path forward for illuminating pathophysiology and identifying novel treatment targets.",
+    "has_full_text": false,
+    "pmc_id": null,
+    "topic_id": "spotlight_42680906",
+    "topic_he": "מאמר מחקרי: Wang B — Whole-exome sequencing in individuals with obsessi…",
+    "topic_en": "Spotlight: Wang B — Whole-exome sequencing in individuals with obsessi…",
+    "pubtype": [
+      "Journal Article"
+    ],
+    "study_type_he": "מאמר מחקרי",
+    "spotlight_channel": "psychiatry"
+  },
+  {
+    "pmid": "42686884",
+    "title": "Mitochondrial calcium influx-driven bioenergetics selectively enable drug addiction",
+    "journal": "Nat Neurosci",
+    "authors": "Gao J et al.",
+    "pub_date": "2026 Sep 2",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42686884/",
+    "impact_factor": 25.0,
+    "abstract": "Addictive substances hijack the brain's reward system, driving pathological dopamine surges that underlie compulsive behavior and addiction. However, directly targeting dopamine signaling for treatment risks disrupting natural reward processes. Here we identify a bioenergetic mechanism that selectively promotes addiction-related dopamine release and behaviors. Opioids and methamphetamine, but not natural rewards, induce mitochondrial calcium (Ca 2+ ) influx via the mitochondrial calcium uniporter (MCU) in dopaminergic terminals of the nucleus accumbens. Optogenetic stimulation reveals that this mitochondrial Ca 2+  influx occurs exclusively during high-intensity dopaminergic neuronal activation. This Ca 2+  influx drives rapid ATP production, compensating for energy deficits caused by neuronal hyperactivity and enabling sustained dopamine release. Genetic deletion or pharmacological inhibition of MCU in dopaminergic neurons selectively reduces drug-induced dopamine release and prevents addictive behaviors while sparing natural reward processing. These findings uncover a distinct mitochondrial bioenergetic mechanism underlying drug reward and propose MCU as a therapeutic target for addiction treatment.",
+    "has_full_text": false,
+    "pmc_id": null,
+    "topic_id": "spotlight_42686884",
+    "topic_he": "מאמר מחקרי: Gao J — Mitochondrial calcium influx-driven bioenergetics …",
+    "topic_en": "Spotlight: Gao J — Mitochondrial calcium influx-driven bioenergetics …",
+    "pubtype": [
+      "Journal Article"
+    ],
+    "study_type_he": "מאמר מחקרי",
+    "spotlight_channel": "psychiatry"
+  },
+  {
+    "pmid": "42675563",
+    "title": "New Horizons in the Development of Treatments for Substance Use Disorders",
+    "journal": "Am J Psychiatry",
+    "authors": "Mariani JJ, Levin FR",
+    "pub_date": "2026 Sep 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42675563/",
+    "impact_factor": 18.1,
+    "abstract": "Substance use disorders (SUDs) are a major public health problem in the United States and cause substantial morbidity and mortality. There are meaningful gaps in the available SUD treatment options, and the development of new therapies is urgently needed. While medications with U.S. Food and Drug Administration approval are available for alcohol, nicotine, and opioid use disorders, there are no approved pharmacotherapies for cannabis, cocaine, or methamphetamine use disorders. Behavioral treatments for SUDs have significant limitations in effectiveness and accessibility, and there is a need for the development of both new behavioral treatment options and new models of treatment delivery. The next generation of treatments for SUDs will likely come from a diverse set of interventions, including new drug classes, new technologies, and new methods of delivery.",
+    "has_full_text": false,
+    "pmc_id": null,
+    "topic_id": "spotlight_42675563",
+    "topic_he": "מאמר סקירה: Mariani JJ — New Horizons in the Development of Treatments for …",
+    "topic_en": "Spotlight: Mariani JJ — New Horizons in the Development of Treatments for …",
+    "pubtype": [
+      "Journal Article",
+      "Review"
+    ],
+    "study_type_he": "מאמר סקירה",
+    "spotlight_channel": "psychiatry"
+  }
+]
