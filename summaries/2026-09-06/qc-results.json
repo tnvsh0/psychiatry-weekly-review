@@ -163,5 +163,110 @@
     },
     "missed_papers": [],
     "notes": []
+  },
+  "neuroscience_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  },
+  "psychotherapy_part1": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "היה להם מדגם של 40 או 30 מבוגרים",
+        "source": "Forty-three adults",
+        "severity": "low"
+      },
+      {
+        "said": "החשיפות אכן יצרו טעות בניבוי איום. המטופלים הופתעו לטובה והרגישו שזה מעודד למידה. המנוע עובד.",
+        "source": "Exposures successfully generated threat-prediction error and unexpected exposure outcomes were experienced as more surprising and likely to stimulate learning.",
+        "severity": "low"
+      },
+      {
+        "said": "אבל טעות הניבוי הזו פשוט לא ניבאה הפחתה בתסמינים לקראת הפגישה הבאה. וזה לא נגמר שם. זה גם לא ניבא שיפור כוללי במעקב של שלושה חודשים. פשוט שום קשר.",
+        "source": "However, larger threat-prediction error during exposure did not predict lower symptoms at the next session, nor overall symptom improvement.",
+        "severity": "low"
+      },
+      {
+        "said": "הם בחנו את הקשר בין שינוי במחשבות חוזרות ושליליות, מה שנקרא RNT, ושינוי ברמות פעילות, לבין שיפור בדיכאון.",
+        "source": "This study examined whether trajectories of change in daytime and bedtime general repetitive negative thinking (RNT), daytime and bedtime sleep-related RNT, and low activity levels (improved behavioural activation) were related to the degree to which depressive symptoms improve among individuals receiving CBT-I.",
+        "severity": "low"
+      },
+      {
+        "said": "הם בחנו קבלת החלטות בכאב כרוני דרך דילמה שנקראת חקירה מול ניצול, Explore Exploit Dilemma.",
+        "source": "Daily decision-making involves navigating the explore-exploit dilemma (EED), balancing novel information gathering against maintaining current strategies.",
+        "severity": "low"
+      },
+      {
+        "said": "השאלה פה היא האם הוספת טיפול פסיכולוגי מורכב לכאב גב תחתון באמת עוזרת יותר מטיפול רגיל.",
+        "source": "We aimed to determine whether, for patients with severely disabling chronic low back pain (cLBP), initiating care with cognitive functional therapy combined with psychologist support (CFT+) improved disability and pain, and was cost-effective compared with an interdisciplinary pain management program (IPMP) at 12 months.",
+        "severity": "low"
+      },
+      {
+        "said": "התוצאה המבוקשת הייתה שיפור של 8 נקודות במדד הנכות של אוסווסטרי, ה-ODI.",
+        "source": "The primary outcome was change in disability (Oswestry Disability Index, ODI) at 12 months, with a minimal clinically important difference of 8 points.",
+        "severity": "low"
+      },
+      {
+        "said": "התוצאות מראות הפחתה של 0.9 ימי מיגרנה בחודש בקבוצת הטיפול לעומת 0 פה בביקורת.",
+        "source": "During weeks 9-12, the estimated reduction in MMDs was 0.9 days (95% CI, -1.4 to -0.5) in the intervention group and 0.0 days (95% CI, -0.5 to 0.4) in the control group (between-group difference, 0.9 days; 95% CI, 0.3 to 1.5; P = 0.002).",
+        "severity": "low"
+      },
+      {
+        "said": "הם השוו תוכנית מבוססת CBT, ארבעה מפגשים של 90 דקות, לבין תוכנית אוריינות מדיה מקבילה.",
+        "source": "Students were individually randomized within 90 classes to PROTECTtraining, a CBT-based program; or PROTECTinfo, a structurally parallel media literacy program. Both consisted of four 90-minute sessions delivered weekly during school hours by trained local prevention professionals under live supervision and adherence protocols.",
+        "severity": "low"
+      },
+      {
+        "said": "הם בדקו התעללות בילדות ואת פער המינים בדיכאון.",
+        "source": "We examined sex-specific associations between childhood maltreatment and depression and estimated the proportion of depression cases attributable to maltreatment subtypes.",
+        "severity": "low"
+      },
+      {
+        "said": "התעללות תסבירה בין 21.2% ל-26.2% ממקרי הדיכאון לאורך חיים, ו-33.4% ממקרי הדיכאון הנוכחי באוכלוסייה.",
+        "source": "Overall, childhood maltreatment accounted for 21.2-26.2% of lifetime and 33.4% of current depression.",
+        "severity": "low"
+      },
+      {
+        "said": "התעללות מסבירה כ-20% מהקשר הכוללי בין מין לדיכאון.",
+        "source": "Childhood maltreatment contributed 19.2-22.4% to the association between sex and depression.",
+        "severity": "low"
+      },
+      {
+        "said": "המאמר התשיעי בכתב העת Medicine Baltimore, מחקר RCT של צוות טנג את אל, בחנות טיפול קבלה ומחויבות, ACT, לשיפור חוסן פסיכולוגי בקרב מטפלים עיקריים בחולי סטומה.",
+        "source": "The application and effectiveness of acceptance and commitment therapy on psychological resilience in the primary caregivers of ostomy patients: A randomized controlled trial",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
+  },
+  "psychotherapy_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    },
+    "missed_papers": [],
+    "notes": []
   }
 }
