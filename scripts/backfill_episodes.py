@@ -299,9 +299,11 @@ def _qc_episode(mp3: Path, topic_id: str, date_str: str) -> dict | None:
         import qc_review
     except Exception:
         return None
+    # No `if client is None: return None` here any more: the judge runs
+    # through agy, which needs no Gemini client, and returning None reads as
+    # "QC passed" downstream — so that guard silently published backfilled
+    # episodes unchecked the moment the API key went away.
     client, types = qc_review._gemini_client()
-    if client is None:
-        return None
     print(f"    QC: judging {topic_id}...")
     return qc_review.judge_episode(
         client, types, mp3, src.read_text(encoding="utf-8"),

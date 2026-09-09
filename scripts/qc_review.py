@@ -55,8 +55,29 @@ JUDGE_SYSTEM = (
     "AUDIO of that episode. Listen to the audio and judge how faithful and how "
     "well-made the episode is. Be strict about factual accuracy about the "
     "STUDIES; but the episode is BY DESIGN more than a read-out of the abstracts "
-    "(see PODCAST SPEC) — do not penalise intended structure. Judge ONLY against "
-    "the provided source for scientific facts; do not use outside knowledge. "
+    "(see PODCAST SPEC) — do not penalise intended structure.\n"
+    "\n"
+    "THE SOURCE IS THE GROUND TRUTH FOR WHAT THE SOURCE SAYS. Your own "
+    "psychiatric knowledge is not evidence about it, in EITHER direction. If "
+    "the abstracts support a claim, that claim is NOT a discrepancy — even "
+    "where it contradicts what you believe to be correct. This week's papers "
+    "are newer than you are, and reporting a new or surprising finding "
+    "faithfully is the whole point of the episode. If you catch yourself "
+    "reasoning 'this is wrong because I know X', stop: unless the source says "
+    "X, that is not a finding.\n"
+    "\n"
+    "The episode is ALLOWED to bring in general psychiatric knowledge to "
+    "explain and connect, and to point out where a paper updates or "
+    "contradicts accepted practice. Check two things:\n"
+    "  1. IT MUST BE MARKED. Outside material has to be audibly flagged as "
+    "general knowledge ('ידוע ש...') rather than dressed up as one of this "
+    "week's papers. Marked outside material is NOT a discrepancy — do not "
+    "report it. Outside material attributed to a source paper IS one.\n"
+    "  2. NUMBERS, DOSES AND STUDY NAMES ARE LOCKED TO THE SOURCE. Any "
+    "statistic, dose, effect size, sample size, percentage, journal, author or "
+    "study name that is not in the abstracts is ALWAYS a discrepancy and "
+    "ALWAYS 'high' — marked or not. A fabricated paper, its journal and its "
+    "AUC values were once presented as this week's research.\n"
     "Reply with ONLY a JSON object."
 )
 
@@ -186,6 +207,18 @@ def _clean_discrepancies(items) -> list:
     return out
 
 
+def _filtered(verdict: dict | None) -> dict | None:
+    """Strip the noise rows before anyone counts high-severity findings."""
+    if isinstance(verdict, dict):
+        raw = verdict.get("discrepancies") or []
+        verdict["discrepancies"] = _clean_discrepancies(raw)
+        dropped = len(raw) - len(verdict["discrepancies"])
+        if dropped:
+            print(f"    (filtered {dropped} non-discrepanc"
+                  f"{'y' if dropped == 1 else 'ies'} from the judge)")
+    return verdict
+
+
 def _gemini_client():
     key = (os.environ.get("GEMINI_API_KEY")
            or os.environ.get("GOOGLE_API_KEY") or "").strip()
@@ -229,8 +262,29 @@ def _salvage(text: str, max_attempts: int = 60) -> dict | None:
 
 
 def judge_episode(client, types, mp3: Path, source_md: str, model: str) -> dict | None:
-    """Upload the MP3, ask Gemini to listen + score against the source. Returns
-    the parsed verdict dict, or None on failure."""
+    """Upload the MP3, ask the judge to listen + score against the source.
+    Returns the parsed verdict dict, or None on failure.
+
+    Routes through `agy` (the account's own subscription, no API cost) unless
+    QC_USE_API=1 forces the old paid path. agy needs no Gemini client, so this
+    keeps working after the API key is gone -- which is the point."""
+    if os.environ.get("QC_USE_API", "").strip() not in ("1", "true", "yes"):
+        from agy_judge import judge_with_agy
+        verdict, how = judge_with_agy(
+            f"{JUDGE_SYSTEM}\n\n{PODCAST_SPEC}\n\n{JUDGE_INSTRUCTIONS}\n\n"
+            f"=== SOURCE ABSTRACTS ===\n{source_md[:18000]}\n\n"
+            "The attachment is the episode AUDIO. Listen to it in full, then "
+            "reply with ONLY the JSON verdict object.",
+            [mp3])
+        if verdict is None:
+            # Never fall through to the paid API here: the owner removed the
+            # key deliberately, and a quiet fallback would put the bill back
+            # without anyone noticing. The caller holds the episode instead.
+            print(f"    agy judge could not run for {mp3.name}: {how}")
+            return None
+        print(f"    agy judge: {how}")
+        return _filtered(verdict)
+
     myfile = None
     try:
         myfile = client.files.upload(file=str(mp3))
@@ -335,9 +389,20 @@ def main() -> int:
                     help="QC only the first N episodes (0 = all)")
     args = ap.parse_args()
 
+    # The judge runs through agy, which needs no Gemini client. Bailing out on
+    # a missing client would mean "no API key -> QC returns success without
+    # running -> every episode publishes unjudged", which is the one outcome
+    # this whole file exists to prevent. Only give up when NEITHER judge is
+    # reachable.
+    from agy_judge import agy_available
     client, types = _gemini_client()
-    if client is None:
+    use_api = os.environ.get("QC_USE_API", "").strip() in ("1", "true", "yes")
+    if client is None and use_api:
         return 0
+    if client is None and not agy_available():
+        print("QC skipped: no agy and no Gemini client — episodes will be "
+              "held rather than published unchecked.")
+        return 1
 
     pod_dir = REPO_ROOT / "podcasts" / args.date
     sum_dir = REPO_ROOT / "summaries" / args.date
