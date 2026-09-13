@@ -1,0 +1,100 @@
+[
+  {
+    "pmid": "42716057",
+    "channel": "child",
+    "score": 6,
+    "source_topic_id": "child_adolescent_highimpact",
+    "article": {
+      "pmid": "42716057",
+      "title": "The efficacy of modified psychodynamic psychotherapy for patients with schizophrenia-spectrum disorders in Germany: a prospective, single-centre, assessor-blinded, parallel-group, randomised controlled trial",
+      "journal": "Lancet Psychiatry",
+      "authors": "Montag C et al.",
+      "pub_date": "2026 Oct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42716057/",
+      "topic": "Child & Adolescent Psychiatry — High Impact",
+      "abstract": "BACKGROUND: People with schizophrenia-spectrum disorders have difficulties in interpersonal functioning that remain insufficiently addressed by standard care. Despite long-standing clinical use, psychodynamic psychotherapy has little empirical support compared with other psychosocial treatments for people with schizophrenia-spectrum disorders. We evaluated the efficacy of Modified Psychodynamic Psychotherapy for Schizophrenia (MPP-S), a manualised treatment tailored to the interpersonal vulnerability characteristic of this population, plus treatment as usual (TAU), compared with TAU alone.\n\nMETHODS: This prospective, single-centre, assessor-blinded, parallel-group, randomised controlled trial was conducted at the Psychiatric University Hospital of the Charité at St Hedwig Hospital in Berlin, Germany. Participants were outpatients aged 18-64 years who were diagnosed with schizophrenia or schizoaffective disorder and exclusion criteria included organic brain disorder, somatic illness affecting cerebral function, and current or past alcohol or illicit drug misuse requiring addiction-specific treatment. Participants were randomly assigned 1:1 in blocks of ten to MPP-S (minimum 30 sessions) plus TAU or TAU alone. Outcome assessors were masked, but participants and therapists were not. The primary outcome was psychosocial functioning, measured using the Mini International Classification of Functioning, Disability and Health Rating for Limitations of Activities and Participation in Psychological Disorders (Mini-ICF-APP) and evaluated at baseline and prespecified post-treatment (24 months) and follow-up (36 months) assessments. Analyses followed the intention-to-treat principle. Linear mixed models were used to analyse incomplete longitudinal data under a missing-at-random assumption. People with lived experience were not formally involved in the design, conduct, or reporting of this study. This trial was preregistered at ClinicalTrials.gov (NCT02576613) and is complete.\n\nFINDINGS: From Oct 12, 2015, to Dec 7, 2021, 130 participants (57 [44%] female and 73 [56%] male) were randomly assigned to either MPP-S plus TAU (n=65) or TAU alone (n=64). One participant withdrew consent to data analysis. Regarding the primary outcome of psychosocial functioning, linear mixed models showed significant group-by-time interactions favouring the intervention: estimated marginal means indicated adjusted between-group differences in Mini-ICF-APP scores of -3·45 (95% CI -5·51 to -1·40; p=0·0011) at 24 months and -4·07 (-6·19 to -1·94; p=0·0002) at 36 months. The frequency of adverse events was similar between groups. There were three serious adverse events: two participants died by suicide (one in the MPP-S plus TAU group who did not start psychotherapy and one in the TAU alone group) and one participant in the MPP-S plus TAU group was admitted to a forensic hospital.\n\nINTERPRETATION: MPP-S added to TAU could improve psychosocial functioning compared with TAU alone. Our findings suggest efficacy and possible long-term benefits of psychodynamic psychotherapy for schizophrenia-spectrum disorders and indicate its potential role alongside other psychotherapeutic and psychosocial treatments.\n\nFUNDING: Berlin Institute of Health, Deutsche Gesellschaft für Psychoanalyse, Psychotherapie, Psychosomatik und Tiefenpsychologie, International Psychoanalytic University Berlin, and Köhler-Stiftung.",
+      "impact_factor": 64.3,
+      "pubtype": [
+        "Journal Article",
+        "Randomized Controlled Trial"
+      ],
+      "study_type_he": "RCT (מחקר אקראי מבוקר)",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42716056",
+    "channel": "child",
+    "score": 5,
+    "source_topic_id": "child_adolescent_highimpact",
+    "article": {
+      "pmid": "42716056",
+      "title": "Comparative effectiveness of mood stabiliser monotherapy versus second-generation antipsychotic monotherapy versus combination therapy for continuation and maintenance treatment after a first episode of psychotic mania in North America, Chile, and Spain: a target trial emulation using data from the BD-CAUSAL Collaboration",
+      "journal": "Lancet Psychiatry",
+      "authors": "Szmulewicz AG et al.",
+      "pub_date": "2026 Oct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42716056/",
+      "topic": "Child & Adolescent Psychiatry — High Impact",
+      "abstract": "BACKGROUND: The early stage of bipolar I disorder is considered a crucial period for improving long-term outcomes, yet evidence guiding treatment selection after a first manic episode is scarce. Using data from the BD-CAUSAL Collaboration, we aimed to emulate a pragmatic target trial among individuals aged 16 years or older presenting with a first manic episode with psychotic features.\n\nMETHODS: For the target trial, individuals were eligible if they were aged 16 years or older, treated at a first-episode psychosis clinic with a diagnosis of bipolar I disorder between Jan 1, 2006, and Dec 31, 2021, with a manic episode (with or without mixed features) with psychotic symptoms based on DSM-5 criteria; not currently hospitalised; had no previous use of mood stabilisers or second-generation antipsychotics in the past 3 months; and had no history of severe side-effects. Treatment strategies compared were initiating mood stabiliser monotherapy, second-generation antipsychotic monotherapy, or combination therapy. Individuals are followed up for up to 2 years. We emulated the target trial using the BD-CAUSAL Collaboration database that includes participants from North America, Chile, and Spain, and is a subset of a large consortium of observational cohorts. Information on mood stabilisers and antipsychotic prescription was identified via data linkages with outpatient and hospitalisation databases. We assessed eligibility for each person-visit between Jan, 1, 2006, and Dec, 31, 2021, and assigned individuals to the treatment strategy that was compatible with their data. The main outcome was hospitalisation or an emergency department visit due to any psychiatry reason over 2 years. Intention-to-treat and per-protocol effects were estimated using pooled logistic regression adjusted for baseline and time-varying confounders. People with lived experience were not involved in the study design, analysis, or interpretation of findings.\n\nFINDINGS: Among 371 eligible individuals with bipolar I disorder (465 eligible treatment initiations), 141 (38%) were female, 230 (62%) were male, 216 (58%) were White, 155 (42%) were not White, and the median age was 22 years (IQR 19-25). Of 371 patients, 155 (42%) were hospitalised due to psychiatric reasons over a median of 19·8 months (IQR 16·1-24·0). The 2-year hospitalisation or emergency department visit risk was 42·3% (95% CI 32·5 to 61·1) for mood stabiliser monotherapy, 49·5% (42·4 to 60·6) for second-generation antipsychotic monotherapy, and 42·2% (33·3 to 52·5) for combination therapy. Compared with second-generation antipsychotic monotherapy, the risk was lower with mood stabiliser monotherapy (risk difference -7·3% [95% CI -15·8 to -1·4]; risk ratio 0·82 [0·63 to 0·97]) and combination therapy (-7·4% [-16·0 to -2·1]; 0·82 [0·63 to 0·91]). Risks were similar between mood stabiliser monotherapy and combination therapy.\n\nINTERPRETATION: Mood stabiliser-based strategies, alone or in combination, had a lower relapse risk than second-generation antipsychotic monotherapy in the continuation and maintenance treatment after a first episode of mania with psychotic symptoms. These findings would support prioritising mood stabilisers in early treatment and highlight the need for randomised trials for confirmation.\n\nFUNDING: ASISA and National Institute of Mental Health.",
+      "impact_factor": 64.3,
+      "pubtype": [
+        "Journal Article",
+        "Comparative Study",
+        "Pragmatic Clinical Trial"
+      ],
+      "study_type_he": "מחקר קליני",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42716058",
+    "channel": "psychiatry",
+    "score": 6,
+    "source_topic_id": "general_psychiatry_clinical_part2",
+    "article": {
+      "pmid": "42716058",
+      "title": "Improving access to antipsychotic medications for schizophrenia in Ethiopia, Nigeria, Rwanda, and South Africa: an evidence-based global consensus",
+      "journal": "Lancet Psychiatry",
+      "authors": "Smith KA et al.",
+      "pub_date": "2026 Oct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42716058/",
+      "topic": "General Psychiatry — Clinical",
+      "abstract": "There are disparities in access to antipsychotics for schizophrenia across different country settings. Improving access to a wider and more equitable range of medications in low-income and middle-income countries is a priority. A multidisciplinary team of international experts, including individuals with lived experience, appraised the most relevant and recent information on antipsychotics in schizophrenia and contextualised it to four African countries (Ethiopia, Nigeria, Rwanda, and South Africa) using a validated consensus methodology. We recommended a list of drugs to prioritise to guide clinical implementation and research, and market shaping. We identified key evidence gaps: little of the existing evidence comes from the countries of interest, trials generally involve highly selected populations, and the complexity of real-world settings is not reflected. However, this methodology highlights a route forward to prioritise the best available evidence on pharmacological treatments for schizophrenia at a global scale, which could also be applied to treatments for other mental health conditions.",
+      "impact_factor": 64.3,
+      "pubtype": [
+        "Journal Article",
+        "Consensus Statement",
+        "Review"
+      ],
+      "study_type_he": "מאמר סקירה",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42716055",
+    "channel": "psychiatry",
+    "score": 4,
+    "source_topic_id": "general_psychiatry_clinical_part1",
+    "article": {
+      "pmid": "42716055",
+      "title": "Association between CYP2D6 and CYP2C19 genotypes and venlafaxine treatment failure: a retrospective study on two cohorts from Norway and the UK",
+      "journal": "Lancet Psychiatry",
+      "authors": "Park Y et al.",
+      "pub_date": "2026 Oct",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42716055/",
+      "topic": "General Psychiatry — Clinical",
+      "abstract": "BACKGROUND: Venlafaxine shows superior efficacy over SSRIs in treating major depression. Metabolism of venlafaxine is mediated by CYP2D6 with a secondary role of CYP2C19. The activity of both enzymes is determined by pharmacogenetic variability, which might affect therapeutic response to venlafaxine. We aimed to investigate associations between CYP2D6 and CYP2C19 genotypes and venlafaxine treatment failure.\n\nMETHODS: This retrospective, observational study included two independent, naturalistic cohorts of individuals treated with venlafaxine from the Center for Psychopharmacology (Oslo, Norway) and the UK Biobank. Participants were excluded if they were comedicated with strong CYP2D6 or CYP2C19 inhibitors (ie, bupropion, fluoxetine, paroxetine, fluvoxamine, or levomepromazine) or CYP inducers (ie, carbamazepine, phenobarbital, or phenytoin) at their last venlafaxine therapeutic drug monitoring measurement. Participants were stratified into genotype-predicted poor metabolisers (PMs), intermediate metabolisers (IMs), normal metabolisers (NMs), and ultra-rapid metabolisers (UMs). The primary outcome was treatment failure defined as switching away from venlafaxine to another antidepressant within 1 year after last exposure. People with lived experience did not contribute to the design and writing of this study.\n\nFINDINGS: Between Jan 1, 2005, and Dec 15, 2025, 5443 participants genotyped for CYP2D6 and CYP2C19 (3315 [60·9%] women, 2128 [39·1%] men; mean age 48·9 years [SD 18·6]) were identified from the Center for Psychopharmacology. 3624 participants (2401 [66·3%] women, 1223 [33·7%] men; mean age 56·5 years [SD 9·8]) with prescription data were identified from the UK Biobank between 2006 and 2010. In the Norwegian cohort, odds of switching were 2·05 times higher in CYP2D6 PMs (95% CI 1·53-2·71, p<0·0001), 1·25 times higher in IMs (1·05-1·50, p=0·014), and 1·78 times higher in UMs (1·06-2·83, p=0·021) compared with NMs. Increased odds of switching in CYP2D6 PMs were also shown in the UK Biobank cohort (odds ratio 1·58 [95% CI 1·14-2·19], p=0·0060). CYP2C19 PM status amplified risk of failure in the Norwegian cohort with 6·11 times higher odds of switching in dual PMs versus NMs (95% CI 1·81-18·77, p=0·0019).\n\nINTERPRETATION: CYP2D6 PM status was consistently associated with increased risk of venlafaxine treatment failure in two large, real-life cohorts, suggesting that pre-emptive genotyping could facilitate personalised venlafaxine therapy.\n\nFUNDING: European Research Council, Swedish Research Council, Novo Nordisk Foundation, Robert Bosch Foundation, National Research Foundation of Korea, and the South-Eastern Norway Regional Health Authority.",
+      "impact_factor": 64.3,
+      "pubtype": [
+        "Journal Article",
+        "Observational Study"
+      ],
+      "study_type_he": "מחקר תצפיתי",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  }
+]
