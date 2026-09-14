@@ -2422,11 +2422,22 @@ def run_qc_trends(env: dict) -> None:
 def run_qc(env: dict) -> None:
     """Run scripts/qc_review.py — Gemini listens to each episode and scores it
     against the source abstracts, writing qc-report.md + qc-results.json (the
-    latter drives the publish GATE). Non-fatal. Needs GEMINI_API_KEY; the script
-    skips itself if it is missing. Committing is done later by the caller (one
-    combined commit of the report + results + run-manifest)."""
-    if not (env.get("GEMINI_API_KEY") or env.get("GOOGLE_API_KEY")):
-        return  # QC off — silent
+    latter drives the publish GATE). Non-fatal. Committing is done later by the
+    caller (one combined commit of the report + results + run-manifest).
+
+    The judge runs through agy now, so a missing GEMINI_API_KEY is no longer a
+    reason to skip. It nearly became one silently: the key was deleted on
+    2026-09-14 and only the stale copy still sitting in Secret Manager kept
+    this guard passing. Delete that secret too and QC would have switched
+    itself off — "return # QC off — silent" — with every episode publishing
+    unjudged and nothing in the log to say so."""
+    from agy_judge import agy_available
+    if not (agy_available() or env.get("GEMINI_API_KEY")
+            or env.get("GOOGLE_API_KEY")):
+        print("\n⚠️  QC CANNOT RUN: no agy and no Gemini key. "
+              "Episodes will be held as drafts rather than published "
+              "unchecked.")
+        return
     print("\n\U0001f50e Running podcast QC review...")
     try:
         subprocess.run(
@@ -2461,6 +2472,20 @@ def load_qc_results() -> dict[str, dict]:
         return json.loads(path.read_text(encoding="utf-8")) or {}
     except Exception:
         return {}
+
+
+def _qc_ran(qc: dict | None) -> bool:
+    """Did a judge actually score this episode?
+
+    `_qc_should_hold(None)` is False, which reads as "nothing wrong found" —
+    and for a judge that never ran, that is a lie the publish gate cannot
+    afford. On 2026-09-13 the agy judge failed on three episodes
+    (general_psychiatry_bio_part1, general_psychiatry_clinical_part1,
+    neuroscience_part3); each produced no verdict, each sailed through the
+    gate, and all three reached the feed unchecked. The books project already
+    holds in this case; this is the same rule for the review and spotlight
+    channels."""
+    return isinstance(qc, dict) and isinstance(qc.get("accuracy"), int)
 
 
 def _qc_should_hold(qc: dict | None) -> bool:
@@ -2839,7 +2864,12 @@ def auto_retry_flagged(nb_infos: list[dict], env: dict) -> None:
     """After the first QC pass, regenerate episodes the gate would hold, then
     re-QC — up to MAX_QC_RETRIES rounds. Mutates the MP3s + rewrites the QC
     report/results so the final gate decision reflects the regenerated audio."""
-    if not (env.get("GEMINI_API_KEY") or env.get("GOOGLE_API_KEY")):
+    # Guarding on the key meant deleting it silently switched auto-retry off:
+    # flagged episodes would stop being regenerated and pile up as drafts, with
+    # nothing in the log to explain why.
+    from agy_judge import agy_available
+    if not (agy_available() or env.get("GEMINI_API_KEY")
+            or env.get("GOOGLE_API_KEY")):
         return
     for attempt in range(1, MAX_QC_RETRIES + 1):
         qc = load_qc_results()
@@ -3352,7 +3382,13 @@ def main(mode: str = "all"):
     for nb in nb_infos:
         if not nb.get("podcast_path"):
             continue
-        hold = _qc_should_hold(qc_results.get(nb["topic"]["id"]))
+        # An unjudged episode is held, not published. A draft release is
+        # excluded from the RSS feed, so a hold is recoverable by hand;
+        # something nobody checked sitting in the feed is not. This covers the
+        # spotlight channels too — they are built as topics and arrive in the
+        # same nb_infos list.
+        verdict = qc_results.get(nb["topic"]["id"])
+        hold = _qc_should_hold(verdict) or not _qc_ran(verdict)
         nb["held"] = hold
         held += 1 if hold else 0
         print(f"  {'⏸️ HOLD' if hold else 'Publishing'} {nb['topic']['label_en']}...")
