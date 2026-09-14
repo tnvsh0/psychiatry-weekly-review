@@ -21,8 +21,14 @@ Usage (on VM):
     export GH_TOKEN=$(gcloud secrets versions access latest \
         --secret=github-token --project=psych-research-agent)
     export GH_REPO=tnvsh0/psychiatry-weekly-review
-    sudo -u User -E env PATH=/opt/venv/bin:$PATH GH_TOKEN=$GH_TOKEN \
-        GH_REPO=$GH_REPO /opt/venv/bin/python scripts/rescue_spotlights.py
+    sudo -u User -E env PATH=/opt/venv/bin:$PATH \
+        /opt/venv/bin/python scripts/rescue_spotlights.py
+
+`-E` already carries GH_TOKEN and GH_REPO across, so do NOT repeat them as
+`GH_TOKEN=$GH_TOKEN` arguments: that puts the token in a command line, where
+sudo writes it to the system journal and `ps` shows it to every user on the
+box. The same habit in run_books.sh printed a live token to /var/log on every
+run for months.
 """
 
 import json
