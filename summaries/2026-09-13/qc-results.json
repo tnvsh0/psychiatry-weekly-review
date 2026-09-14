@@ -1,81 +1,29 @@
 {
-  "child_adolescent_misc": {
+  "general_psychiatry_bio_part1": {
     "verdict": "problem",
-    "accuracy": 3,
+    "accuracy": 2,
     "coverage": 5,
     "fluency": 5,
     "discrepancies": [
       {
-        "said": "הפרק הציג בהרחבה מאמר מחקרי מכתב העת Archives of Clinical Neuropsychology שניתח נתוני ארכיון של 752 סטודנטים מבוגרים עם ADHD, כדי לבדוק האם חרדה ודיכאון מייצרים פגיעה נוירוקוגניטיבית אדיטיבית, ומצא שהתשובה היא לא (08:48).",
-        "source": "לא מופיע במקור",
+        "said": "אקסון 1d זוהה בלב ובאבי העורקים אבל לא במוח",
+        "source": "המאמר מציין כי אקסון 1d זוהה במוח ובאבי העורקים אך לא בלב (detected in brain and aorta but not heart).",
+        "severity": "high"
+      },
+      {
+        "said": "ההשפעה נוגדת הפחד הייתה תלויה באיתות של בטא-ארסטין 2",
+        "source": "המאמר מציין כי ההשפעה הייתה בלתי תלויה (independent) באיתות זה.",
+        "severity": "high"
+      },
+      {
+        "said": "המשתתפים קיבלו דקסאמפטמין במינון של 5 מ\"ג לק\"ג",
+        "source": "המינון שניתן במחקר היה 0.5 מ\"ג לק\"ג.",
         "severity": "high"
       }
     ],
     "lost_content": {
       "any": false,
       "details": []
-    },
-    "missed_papers": [],
-    "notes": []
-  },
-  "cognition_part1": {
-    "verdict": "problem",
-    "accuracy": 3,
-    "coverage": 5,
-    "fluency": 5,
-    "discrepancies": [
-      {
-        "said": "למשל 20 יורו עכשיו מול 19 יורו בעוד 91 ימים",
-        "source": "larger long-term benefits (e.g., €29 in 91 days) (הסכום במקור הוא 29 יורו, ולא 19)",
-        "severity": "high"
-      },
-      {
-        "said": "הם נתנו להם לבחור בין תגמול בעוד 30 ימים לתגמול בעוד 91 ימים... האופציה הקצרה יותר של ה-30 ימים",
-        "source": "matched the sooner of two delayed choice options (לא מצוין במקור המספר 30 ימים)",
-        "severity": "high"
-      },
-      {
-        "said": "נגיד שהתגמול הוא בעוד 91 ימים, והם צריכים לדמיין אירוע בעוד 180 ימים",
-        "source": "double the delay of the larger option (במקור מתואר ככפול מהזמן, המספר 180 לא מופיע)",
-        "severity": "high"
-      },
-      {
-        "said": "עשרה אחוז מהמבוגרים דאגו להפריד אותו",
-        "source": "In contrast, all adults (N = 66) did so (כלומר 100% מהמבוגרים הפרידו, ולא 10%)",
-        "severity": "high"
-      }
-    ],
-    "lost_content": {
-      "any": false,
-      "details": []
-    },
-    "missed_papers": [],
-    "notes": []
-  },
-  "cognition_part2": {
-    "verdict": "review",
-    "accuracy": 4,
-    "coverage": 5,
-    "fluency": 4,
-    "discrepancies": [
-      {
-        "said": "במחקר של פציולי, נאמר כי \"בחלק מהשלבים נאמר להם: 'אם תזהו נכון קווים מקטגוריה א', תקבלו פי שניים כסף'.\"",
-        "source": "the monetary reward given per correct answer varied across categories (התגמול השתנה בין קטגוריות, המקור לא מציין יחס של 'פי שניים').",
-        "severity": "high"
-      },
-      {
-        "said": "לגבי המאמר של הריס (Harris), נאמר שיש בו \"2211 משתתפים סך הכל\".",
-        "source": "We tested whether communicators really do downplay the likelihood of more severe events in four studies (total N = 2210).",
-        "severity": "high"
-      }
-    ],
-    "lost_content": {
-      "any": false,
-      "details": []
-    },
-    "missed_papers": [],
-    "notes": [
-      "היפוכי מגדר מרובים במהלך הדו-שיח (הדוברים משתמשים בפניות זכר ונקבה באופן לא עקבי, למשל 'את יודעת', 'תראי', 'אני סקרנית' לצד 'תן לי', 'אחי')."
-    ]
+    }
   }
 }
