@@ -85,6 +85,27 @@ def _extract_verdict(text: str) -> dict | None:
         return None
 
 
+# agy reads an attachment natively most of the time, but it is an agent: now
+# and then it decides the file is something to PROCESS rather than something it
+# already has, and reaches for a shell. On 2026-09-13/14 it tried
+#   cat "…/030 - 26 Youth Suicide.pdf" | pdftotext - -
+# on four episodes out of roughly twenty-five. Headless mode auto-denies the
+# `command` permission, so the reply came back empty and those episodes went
+# unjudged. Allowing pdftotext would only move the problem to the next tool it
+# thinks of, so the fix is to tell it plainly that the files are already here.
+_NO_TOOLS = (
+    "The files above are ATTACHED and already available to you directly: read "
+    "the PDF and listen to the audio as attachments. Do NOT run any command, "
+    "shell pipeline or tool to open, convert, extract or transcribe them — no "
+    "cat, no pdftotext, no ffmpeg. Any such call is denied and you will "
+    "produce nothing.\n\n"
+)
+
+# One retry, because the failure is a sampling accident rather than a broken
+# setup: the same call usually attaches cleanly on the next attempt.
+_ATTEMPTS = 2
+
+
 def judge_with_agy(prompt: str, attachments: list[Path],
                    model: str | None = None) -> tuple[dict | None, str]:
     """One judge call. Returns (verdict, diagnostic) -- verdict is None on
@@ -100,9 +121,20 @@ def judge_with_agy(prompt: str, attachments: list[Path],
 
     # See (1): absolute, resolved, no symlinks left to guess at.
     refs = " ".join(f"@{Path(a).resolve()}" for a in attachments)
+    last = "no attempt made"
+    for attempt in range(1, _ATTEMPTS + 1):
+        verdict, last = _one_call(exe, refs, prompt, model)
+        if verdict is not None:
+            return verdict, (last if attempt == 1
+                             else f"{last} (on attempt {attempt})")
+    return None, last
+
+
+def _one_call(exe: str, refs: str, prompt: str,
+              model: str | None) -> tuple[dict | None, str]:
     try:
         proc = subprocess.run(
-            [exe, "-p", f"{refs} {prompt}",           # see (2): inline prompt
+            [exe, "-p", f"{refs} {_NO_TOOLS}{prompt}",  # see (2): inline prompt
              "--model", model or DEFAULT_AGY_MODEL,
              "--print-timeout", AGY_TIMEOUT,
              "--output-format", "json"],
@@ -121,11 +153,10 @@ def judge_with_agy(prompt: str, attachments: list[Path],
     reply = (env.get("response") or "").strip()
     if not reply:
         if denied:
-            # See (1) and (3). This is the failure that looks like nothing.
             acts = ", ".join(a.get("action", "?") for a in denied)
-            return None, (f"agy produced no output; it was denied [{acts}]. "
-                          f"Allow read_file for the attachment directory, and "
-                          f"check the paths are absolute.")
+            return None, (f"agy produced no output; it was denied [{acts}] — "
+                          f"it tried to process an attachment with a tool "
+                          f"instead of reading it directly.")
         return None, f"agy returned an empty response (status={env.get('status')})"
 
     verdict = _extract_verdict(reply)

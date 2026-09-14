@@ -1,0 +1,23 @@
+[Unit]
+# Runs whatever pipelines this VM owes for today, every time it boots.
+#
+# The VM is off except when Cloud Scheduler starts it for a run, so a boot IS
+# the trigger. Tying the work to the boot instead of to a clock time is what
+# makes a late start survivable: when a 04:50 start fails on zone capacity and
+# a retry succeeds at 05:30, the 05:00 cron slot is long gone, but this still
+# fires and the episodes still get made.
+Description=Run the scheduled podcast pipelines this VM owes for today
+After=network-online.target google-guest-agent.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/dispatch_runs.sh
+# A full books run is a few hours: generation waits on Google's servers, then
+# every episode is judged. systemd must not kill it partway.
+TimeoutStartSec=0
+StandardOutput=append:/var/log/dispatch-runs.log
+StandardError=append:/var/log/dispatch-runs.log
+
+[Install]
+WantedBy=multi-user.target
