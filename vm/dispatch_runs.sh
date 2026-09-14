@@ -76,6 +76,56 @@ run_job() {
     esac
 }
 
+# ── Wait for the instance's service-account credentials ─────────────────────
+# Moving the trigger onto the boot bought a race the old 05:00 cron never had.
+# On 2026-09-14 this started six seconds after boot, and gcloud answered
+# "You do not currently have an active account selected" — the metadata server
+# had not begun serving the instance's token yet, so two secrets came back
+# empty. Nothing failed loudly; the run simply continued without them.
+for _ in $(seq 1 60); do
+    gcloud auth print-access-token >/dev/null 2>&1 && break
+    sleep 5
+done
+if ! gcloud auth print-access-token >/dev/null 2>&1; then
+    echo "dispatch: WARNING — no gcloud credentials after 5 minutes; secrets" \
+         "will come back empty and the run will misbehave"
+    notify "בעיה ב-VM" "gcloud לא קיבל הרשאות אחרי 5 דקות — ריצה עלולה להיכשל" high
+fi
+
+# ── Warn before the GitHub token expires ────────────────────────────────────
+# A token with an expiry date is the only thing that bounds the damage when one
+# leaks quietly -- and one did: a live token sat in this VM's journal for
+# months before anyone noticed (2026-09-14). The cost of that safety is a
+# credential that stops working one morning, which is exactly the kind of
+# silent breakage everything else here exists to prevent. So: warn two weeks
+# out, and the expiry costs nothing.
+#
+# GitHub reports the date in a response header on any authenticated call.
+# The token goes to curl through a 0600 config file, never on the command
+# line, because `ps` shows argv to every user on the box.
+check_token_expiry() {
+    local tok cfg exp days
+    tok=$(gcloud secrets versions access latest --secret=github-token \
+              --project=psych-research-agent 2>/dev/null) || return 0
+    [ -n "$tok" ] || return 0
+    cfg=$(mktemp) || return 0
+    chmod 600 "$cfg"
+    printf 'header = "Authorization: Bearer %s"\n' "$tok" > "$cfg"
+    exp=$(curl -sS -m 30 -I --config "$cfg" https://api.github.com/ 2>/dev/null \
+          | tr -d '\r' \
+          | awk -F': ' 'tolower($1)=="github-authentication-token-expiration"{print $2; exit}')
+    rm -f "$cfg"
+    [ -n "$exp" ] || return 0          # no expiry set, or an OAuth token
+    days=$(( ( $(date -u -d "$exp" +%s 2>/dev/null || echo 0) - $(date -u +%s) ) / 86400 ))
+    echo "dispatch: GitHub token expires in ${days} day(s) (${exp})"
+    if [ "$days" -le 14 ]; then
+        notify "טוקן GitHub עומד לפוג" \
+               "$(printf 'הטוקן יפוג בעוד %s ימים (%s).\n\nבלעדיו הריצות ייכשלו: אין משיכת קוד ואין דחיפת מצב. צור טוקן חדש והחלף ב-Secret Manager.' "$days" "$exp")" \
+               high
+    fi
+}
+check_token_expiry
+
 TODAY=$(date -u +%F)
 DOW=$(date -u +%u)
 

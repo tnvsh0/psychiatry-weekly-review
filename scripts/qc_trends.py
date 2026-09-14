@@ -145,17 +145,25 @@ def _instructions(min_count: int) -> str:
 
 
 def analyse(data: dict, min_count: int, model: str) -> dict | None:
+    # agy first (the account's own subscription, no API cost); the paid API
+    # only if agy is not installed. This is text in, text out — it never
+    # needed the paid path, and stopped working for no better reason than
+    # that when the Gemini key was deleted on 2026-09-14.
+    from agy_judge import agy_available
+    use_agy = agy_available()
     key = (os.environ.get("GEMINI_API_KEY")
            or os.environ.get("GOOGLE_API_KEY") or "").strip()
-    if not key:
-        print("QC trends skipped: GEMINI_API_KEY not set.")
+    if not (use_agy or key):
+        print("QC trends skipped: no agy and no GEMINI_API_KEY.")
         return None
-    try:
-        from google import genai
-        from google.genai import types
-    except ImportError:
-        print("QC trends skipped: `google-genai` not installed.")
-        return None
+    genai = types = None
+    if not use_agy:
+        try:
+            from google import genai
+            from google.genai import types
+        except ImportError:
+            print("QC trends skipped: `google-genai` not installed.")
+            return None
 
     lines = []
     for r in data["reports"]:
@@ -176,17 +184,26 @@ def analyse(data: dict, min_count: int, model: str) -> dict | None:
         f"=== QC FINDINGS ACROSS {len(data['dates'])} RUNS ===\n{findings[:60000]}"
     )
     try:
-        client = genai.Client(api_key=key)
-        resp = client.models.generate_content(
-            model=model, contents=user,
-            config=types.GenerateContentConfig(
-                system_instruction=TRENDS_SYSTEM,
-                response_mime_type="application/json",
-                thinking_config=types.ThinkingConfig(thinking_budget=4096),
-                max_output_tokens=12000, temperature=0.3,
-            ),
-        )
-        text = (resp.text or "").strip()
+        if use_agy:
+            from agy_judge import ask_agy
+            text = (ask_agy(TRENDS_SYSTEM,
+                            f"{user}\n\nReply with ONLY the JSON object.")
+                    or "").strip()
+            if not text:
+                print("QC trends: agy produced nothing.")
+                return None
+        else:
+            client = genai.Client(api_key=key)
+            resp = client.models.generate_content(
+                model=model, contents=user,
+                config=types.GenerateContentConfig(
+                    system_instruction=TRENDS_SYSTEM,
+                    response_mime_type="application/json",
+                    thinking_config=types.ThinkingConfig(thinking_budget=4096),
+                    max_output_tokens=12000, temperature=0.3,
+                ),
+            )
+            text = (resp.text or "").strip()
         a, b = text.find("{"), text.rfind("}")
         return json.loads(text[a:b + 1]) if a >= 0 else None
     except Exception as e:

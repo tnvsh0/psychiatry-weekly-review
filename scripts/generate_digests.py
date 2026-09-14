@@ -59,11 +59,23 @@ AI_DISCLOSURE = (
 
 # ── Gemini client (lazy, graceful) ────────────────────────────────────────────
 def _gemini(system: str, user: str, model: str, max_tokens: int = 4096) -> str | None:
-    """Single Gemini completion. Returns text, or None if unavailable/failed."""
+    """Single LLM completion. Returns text, or None if unavailable/failed.
+
+    Prefers agy (the account's own subscription, no API cost) and falls back
+    to the paid API only if agy is not installed. The digests went silently
+    missing when the Gemini key was deleted on 2026-09-14 — they are text in,
+    text out, so nothing about them needed the paid API in the first place."""
+    from agy_judge import agy_available, ask_agy
+    if agy_available():
+        out = ask_agy(system, user)
+        if out:
+            return out
+        print("  agy produced nothing for this digest — falling back.")
+
     key = (os.environ.get("GEMINI_API_KEY")
            or os.environ.get("GOOGLE_API_KEY") or "").strip()
     if not key:
-        print("  Digests skipped: GEMINI_API_KEY not set.")
+        print("  Digests skipped: no agy and no GEMINI_API_KEY.")
         return None
     try:
         from google import genai
