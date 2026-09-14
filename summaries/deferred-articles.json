@@ -30,5 +30,157 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42634592/",
     "topic_id": "neuroscience",
     "first_seen": "2026-08-31"
+  },
+  {
+    "pmid": "42675562",
+    "title": "New Data Relevant to Treating Substance Use Disorders, Bipolar Disorder, and Pediatric Anxiety Disorders",
+    "journal": "Am J Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42675562/",
+    "topic_id": "child_adolescent_highimpact",
+    "first_seen": "2026-09-06"
+  },
+  {
+    "pmid": "42686319",
+    "title": "Grandparents' Age Sheds Light on Autism Spectrum Disorder Risk Mechanisms in Their Grandchildren",
+    "journal": "Biol Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42686319/",
+    "topic_id": "general_psychiatry_bio",
+    "first_seen": "2026-09-06"
+  },
+  {
+    "pmid": "42686318",
+    "title": "The Quest for MicroRNAs as Biomarkers of Attention-Deficit/Hyperactivity Disorder",
+    "journal": "Biol Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42686318/",
+    "topic_id": "general_psychiatry_bio",
+    "first_seen": "2026-09-06"
+  },
+  {
+    "pmid": "42686320",
+    "title": "Opposing Control of Dopamine Neuron Excitability by Orexin (Hypocretin) Receptors 1 and 2",
+    "journal": "Biol Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42686320/",
+    "topic_id": "general_psychiatry_bio",
+    "first_seen": "2026-09-06"
+  },
+  {
+    "pmid": "42677898",
+    "title": "White matter lesions disrupt cholinergic transmission to impact cognition in Parkinson's disease",
+    "journal": "Brain",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42677898/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-09-06"
+  },
+  {
+    "pmid": "42684323",
+    "title": "Retraction: Procrastination, Deadlines, and Performance: Self-Control by Precommitment",
+    "journal": "Psychol Sci",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42684323/",
+    "topic_id": "behavioral_sciences",
+    "first_seen": "2026-09-06"
+  },
+  {
+    "pmid": "42709461",
+    "title": "Suicide Rates by Gender Among 10- to 14-Year-Olds",
+    "journal": "JAMA Pediatr",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42709461/",
+    "topic_id": "child_adolescent_highimpact",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42710517",
+    "title": "Open Dialogue after ODDESSI: an odyssey of enthusiasm, expectancy, and evidence",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42710517/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42716052",
+    "title": "CYP2D6, CYP2C19, and venlafaxine: from plasma concentration to clinical decision",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42716052/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42711748",
+    "title": "Mental Health Misinformation as a Public Health Problem: The Case for Psychiatric Public Scholarship",
+    "journal": "Am J Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42711748/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42716053",
+    "title": "Psychodynamic psychotherapy in schizophrenia: where do we stand?",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42716053/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42716054",
+    "title": "Oye Gureje: shaping robust mental health services across Africa",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42716054/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42714923",
+    "title": "Rebalancing Global Suicide Prevention",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42714923/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42711751",
+    "title": "The Pharmacotherapeutic Alliance: An Evidence-Based Intervention for Enhancing Psychiatric Outcomes",
+    "journal": "Am J Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42711751/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42716452",
+    "title": "NMDA receptor hypofunction and working memory: effects beyond memory maintenance",
+    "journal": "Biol Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42716452/",
+    "topic_id": "general_psychiatry_bio",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42717233",
+    "title": "Endocannabinoid control of the pain-stress axis",
+    "journal": "Neuropsychopharmacology",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42717233/",
+    "topic_id": "general_psychiatry_bio",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42697956",
+    "title": "Neural geometry guides learning",
+    "journal": "Nat Neurosci",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42697956/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42704708",
+    "title": "Untangling prognosis in multiple sclerosis",
+    "journal": "Brain",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42704708/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42706445",
+    "title": "Ethical considerations for implantable human brain-computer interfaces",
+    "journal": "Nat Neurosci",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42706445/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-09-13"
   }
 ]
