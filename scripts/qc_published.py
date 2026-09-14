@@ -81,8 +81,17 @@ def main() -> int:
 
     repo = _repo()
     env = os.environ.copy()
-    if not (env.get("GEMINI_API_KEY") or env.get("GOOGLE_API_KEY")):
-        print("ERROR: no GEMINI_API_KEY — the judge cannot run."); return 1
+    # The judge runs through agy, which needs no API key. This was the fifth
+    # place gated on GEMINI_API_KEY, and the one that mattered most: it is the
+    # tool for cleaning up after the judge has already failed, so a guard that
+    # blocks it when the key is gone locks the door on the way out. Found on
+    # 2026-09-14, trying to use it on the three episodes that reached the feed
+    # unjudged.
+    from agy_judge import agy_available
+    if not (agy_available() or env.get("GEMINI_API_KEY")
+            or env.get("GOOGLE_API_KEY")):
+        print("ERROR: neither agy nor a Gemini key — the judge cannot run.")
+        return 1
 
     tags = _published_tags(repo, args.date)
     if not tags:
