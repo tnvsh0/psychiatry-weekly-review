@@ -2367,8 +2367,10 @@ def generate_digests(env: dict) -> None:
     """Run scripts/generate_digests.py — per-channel take-home files + a weekly
     clinical-questions file. Non-fatal. Writes into summaries/<date>/ so the
     subsequent commit_summaries_to_github() picks the files up. Skips itself
-    (inside the script) when GEMINI_API_KEY is unset."""
-    if not (env.get("GEMINI_API_KEY") or env.get("GOOGLE_API_KEY")):
+    (inside the script) when neither agy nor a key is available."""
+    from agy_judge import agy_available
+    if not (agy_available() or env.get("GEMINI_API_KEY")
+            or env.get("GOOGLE_API_KEY")):
         return  # feature off — silent, like the Drive backup
     print("\n\U0001f4dd Generating weekly digests (take-home + clinical questions)...")
     try:
@@ -2403,7 +2405,9 @@ def run_qc_trends(env: dict) -> None:
     """Aggregate the accumulated QC reports into recurring patterns and concrete
     prompt-improvement proposals (summaries/qc-trends.md + an ntfy link). Only
     PROPOSES — a human decides whether to change the prompt. Non-fatal."""
-    if not (env.get("GEMINI_API_KEY") or env.get("GOOGLE_API_KEY")):
+    from agy_judge import agy_available
+    if not (agy_available() or env.get("GEMINI_API_KEY")
+            or env.get("GOOGLE_API_KEY")):
         return
     print("\n\U0001f4c8 Analysing QC trends...")
     try:

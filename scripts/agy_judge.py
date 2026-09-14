@@ -115,6 +115,36 @@ _NO_TOOLS = (
 _ATTEMPTS = 2
 
 
+def ask_agy(system: str, user: str, model: str | None = None,
+            attempts: int = 2) -> str | None:
+    """A plain text completion through agy. Returns the reply, or None.
+
+    Much simpler than the judge: no attachment means no file to find, no
+    read permission, and none of the failure modes in the notes above. Used
+    for the digests and the QC-trends proposal, which are text in, text out —
+    both of which stopped working when the Gemini API key was deleted on
+    2026-09-14, for no better reason than that nothing had moved them across.
+    """
+    exe = _agy_exe()
+    if not exe:
+        return None
+    for _ in range(max(1, attempts)):
+        try:
+            proc = subprocess.run(
+                [exe, "-p", f"{system}\n\n{user}",
+                 "--model", model or DEFAULT_AGY_MODEL,
+                 "--print-timeout", AGY_TIMEOUT,
+                 "--output-format", "json"],
+                capture_output=True, text=True, encoding="utf-8",
+                errors="replace", timeout=_SUBPROCESS_TIMEOUT_S)
+            reply = (json.loads(proc.stdout or "{}").get("response") or "").strip()
+            if reply:
+                return reply
+        except (subprocess.TimeoutExpired, json.JSONDecodeError):
+            continue
+    return None
+
+
 def judge_with_agy(prompt: str, attachments: list[Path],
                    model: str | None = None) -> tuple[dict | None, str]:
     """One judge call. Returns (verdict, diagnostic) -- verdict is None on
