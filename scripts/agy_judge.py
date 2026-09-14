@@ -58,10 +58,19 @@ def _agy_exe() -> str | None:
         return exe
     # The installer puts it here and appends PATH to ~/.bashrc, which a cron
     # job never sources.
+    #
+    # exists() is wrapped because it can RAISE, not just return False: with
+    # `sudo -u User -E` the process runs as User while HOME stays /root, so
+    # Path.home() resolves to /root/.local/bin/agy and stat() gives
+    # PermissionError. That crashed the whole retroactive QC run on
+    # 2026-09-14 before it judged a single episode.
     for cand in (Path.home() / ".local/bin/agy",
                  Path("/home/User/.local/bin/agy")):
-        if cand.exists():
-            return str(cand)
+        try:
+            if cand.exists():
+                return str(cand)
+        except OSError:
+            continue
     return None
 
 
