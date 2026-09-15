@@ -110,9 +110,20 @@ _NO_TOOLS = (
     "produce nothing.\n\n"
 )
 
-# One retry, because the failure is a sampling accident rather than a broken
-# setup: the same call usually attaches cleanly on the next attempt.
-_ATTEMPTS = 2
+# Retries, because every way this fails is intermittent rather than a broken
+# setup, and the same call usually comes back clean on the next attempt.
+#
+# Two distinct failures need them. agy sometimes reaches for a shell to
+# "process" an attachment and gets denied; and sometimes it simply answers
+# without loading the media at all. The second is visible in its own
+# conversation store: a run that ingested the audio records five steps and a
+# ~56 MB database, one that skipped it records two steps and ~200 KB. No error
+# is raised either way — it just answers, confidently, on the text alone.
+#
+# Three attempts because on 2026-09-15 it happened on two of eight calls; at
+# that rate two attempts still leave a few per cent that reach the gate with no
+# verdict, and each of those costs a held episode.
+_ATTEMPTS = 3
 
 
 def ask_agy(system: str, user: str, model: str | None = None,
