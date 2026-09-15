@@ -162,15 +162,15 @@ def judge_with_agy(prompt: str, attachments: list[Path],
     refs = " ".join(f"@{Path(a).resolve()}" for a in attachments)
     last = "no attempt made"
     for attempt in range(1, _ATTEMPTS + 1):
-        verdict, last = _one_call(exe, refs, prompt, model)
+        verdict, last = _one_call(exe, refs, prompt, model, attachments)
         if verdict is not None:
             return verdict, (last if attempt == 1
                              else f"{last} (on attempt {attempt})")
     return None, last
 
 
-def _one_call(exe: str, refs: str, prompt: str,
-              model: str | None) -> tuple[dict | None, str]:
+def _one_call(exe: str, refs: str, prompt: str, model: str | None,
+              attachment_paths: list[Path]) -> tuple[dict | None, str]:
     try:
         proc = subprocess.run(
             [exe, "-p", f"{refs} {_NO_TOOLS}{prompt}",  # see (2): inline prompt
@@ -204,4 +204,44 @@ def _one_call(exe: str, refs: str, prompt: str,
 
     took = env.get("duration_seconds") or 0
     usage = env.get("usage") or {}
-    return verdict, (f"ok in {took:.0f}s, {usage.get('input_tokens', 0)} input tokens")
+    seen = usage.get("input_tokens") or 0
+
+    # DID IT ACTUALLY LISTEN? agy sometimes answers confidently having ingested
+    # only the text: on 2026-09-15 dulcan-030 was scored 5/5/5 with no
+    # discrepancies in 49 seconds on 14,744 input tokens, and published on the
+    # strength of it. Its audio is 53 MB. A verdict reached without hearing the
+    # episode is worse than no verdict at all, because nothing downstream can
+    # tell the difference.
+    #
+    # Audio costs Gemini ~32 tokens/second and these episodes run ~1.84 MB per
+    # minute, so the count gives the audio away. The threshold is deliberately
+    # slack -- a third of what the audio alone should cost -- so it fires only
+    # on clear non-ingestion, never on a merely short episode.
+    expected = _expected_audio_tokens(attachment_paths)
+    if expected and seen < expected * 0.3:
+        return None, (f"agy answered on {seen} input tokens, far below the "
+                      f"~{expected} the audio alone should cost — it did not "
+                      f"listen to the episode. Verdict discarded.")
+
+    return verdict, f"ok in {took:.0f}s, {seen} input tokens"
+
+
+_AUDIO_SUFFIXES = (".mp3", ".m4a", ".wav", ".aac", ".ogg", ".flac")
+# Measured across both projects: NotebookLM audio runs a near-constant
+# 1.84 MB/minute, which makes file size a usable proxy for duration.
+_MB_PER_MINUTE = 1.84
+_TOKENS_PER_AUDIO_SECOND = 32
+
+
+def _expected_audio_tokens(paths: list[Path]) -> int:
+    """Roughly what the attached audio alone should cost in input tokens."""
+    total = 0
+    for p in paths:
+        try:
+            if Path(p).suffix.lower() not in _AUDIO_SUFFIXES:
+                continue
+            minutes = Path(p).stat().st_size / (_MB_PER_MINUTE * 1024 * 1024)
+            total += int(minutes * 60 * _TOKENS_PER_AUDIO_SECOND)
+        except OSError:
+            continue
+    return total
