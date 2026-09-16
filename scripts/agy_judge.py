@@ -220,21 +220,82 @@ def _one_call(exe: str, refs: str, prompt: str, model: str | None,
     # DID IT ACTUALLY LISTEN? agy sometimes answers confidently having ingested
     # only the text: on 2026-09-15 dulcan-030 was scored 5/5/5 with no
     # discrepancies in 49 seconds on 14,744 input tokens, and published on the
-    # strength of it. Its audio is 53 MB. A verdict reached without hearing the
-    # episode is worse than no verdict at all, because nothing downstream can
-    # tell the difference.
-    #
-    # Audio costs Gemini ~32 tokens/second and these episodes run ~1.84 MB per
-    # minute, so the count gives the audio away. The threshold is deliberately
-    # slack -- a third of what the audio alone should cost -- so it fires only
-    # on clear non-ingestion, never on a merely short episode.
-    expected = _expected_audio_tokens(attachment_paths)
-    if expected and seen < expected * 0.3:
-        return None, (f"agy answered on {seen} input tokens, far below the "
-                      f"~{expected} the audio alone should cost — it did not "
-                      f"listen to the episode. Verdict discarded.")
+    # strength of it. A verdict reached without hearing the episode is worse
+    # than no verdict at all, because nothing downstream can tell the
+    # difference.
+    audio_bytes = _audio_bytes(attachment_paths)
+    if audio_bytes:
+        # Primary evidence: agy's own conversation store. The media is written
+        # into it, so a run that heard the episode leaves a database about the
+        # size of the audio, and one that did not leaves a few hundred KB.
+        # Measured on 2026-09-16:
+        #     audio heard     20 MB, 32 MB, 37 MB, 92 MB (for 20-91 MB audio)
+        #     audio skipped   192 KB, 372 KB
+        # A two-orders-of-magnitude gap, independent of episode length and
+        # prompt size — which is exactly what the token count below is not.
+        conv = _conversation_bytes(env.get("conversation_id"))
+        if conv is not None:
+            if conv < audio_bytes * 0.25:
+                return None, (f"agy's conversation holds {conv:,} bytes against "
+                              f"{audio_bytes:,} bytes of audio — the media never "
+                              f"went in. Verdict discarded.")
+        else:
+            # Fallback when the store cannot be found: the token count, NET of
+            # what the text costs by itself. The first version of this check
+            # compared the raw total with a third of the audio estimate and
+            # forgot the text: the prompt and a chapter PDF cost ~14.7K tokens
+            # with no audio at all, so a 45.9 MB regeneration of dulcan-030
+            # sailed through at 14,711 tokens against a 14,370 bar and was
+            # published unheard on 2026-09-16.
+            text = _text_tokens_estimate(prompt, attachment_paths)
+            expected = _expected_audio_tokens(attachment_paths)
+            if seen < text + expected * 0.3:
+                return None, (f"agy answered on {seen:,} input tokens; the text "
+                              f"alone is ~{text:,} and the audio should add "
+                              f"~{expected:,} — it did not listen. Verdict "
+                              f"discarded.")
 
     return verdict, f"ok in {took:.0f}s, {seen} input tokens"
+
+
+def _audio_bytes(paths: list[Path]) -> int:
+    total = 0
+    for p in paths:
+        try:
+            if Path(p).suffix.lower() in _AUDIO_SUFFIXES:
+                total += Path(p).stat().st_size
+        except OSError:
+            continue
+    return total
+
+
+def _conversation_bytes(conversation_id: str | None) -> int | None:
+    """Size of agy's store for this conversation, or None if it is not found."""
+    if not conversation_id:
+        return None
+    for home in (Path.home(), Path("/home/User")):
+        db = home / ".gemini/antigravity-cli/conversations" / f"{conversation_id}.db"
+        try:
+            if db.exists():
+                return db.stat().st_size
+        except OSError:
+            continue
+    return None
+
+
+def _text_tokens_estimate(prompt: str, paths: list[Path]) -> int:
+    """Deliberately generous guess at what the non-audio input costs, so the
+    fallback errs toward discarding a doubtful verdict. ~3 characters per token
+    for the Hebrew/English prompt; ~18 bytes per token for a chapter PDF, which
+    is what put the book project's text-only calls at ~14.7K."""
+    total = len(prompt) // 3
+    for p in paths:
+        try:
+            if Path(p).suffix.lower() not in _AUDIO_SUFFIXES:
+                total += Path(p).stat().st_size // 18
+        except OSError:
+            continue
+    return total
 
 
 _AUDIO_SUFFIXES = (".mp3", ".m4a", ".wav", ".aac", ".ogg", ".flac")
