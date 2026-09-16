@@ -1,0 +1,58 @@
+{
+  "spotlight_42716055": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "spotlight_42716056": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "צוות המחקר בראשות זמולביץ' (הוגה כ-Zmoolevich במקום Shmoolevich)",
+        "source": "Szmulewicz AG",
+        "severity": "low"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "spotlight_42716057": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "spotlight_42716058": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "המאמר לא מפרט את השמות של התרופות ברשימה, אלא מדבר על עצם הקיום שלה ועל המשמעות שלה (נאמר סביב דקה 05:19).",
+        "source": "We recommended a list of drugs to prioritise (התקציר מציין במפורש שהחוקרים המליצו על רשימת תרופות. הרשימה כמובן מופיעה במאמר המלא, והטענה שהמאמר לא מפרט את השמות היא המצאה של ה-AI שנועדה לחפות על כך שהשמות אינם מופיעים בתקציר).",
+        "severity": "high"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}
