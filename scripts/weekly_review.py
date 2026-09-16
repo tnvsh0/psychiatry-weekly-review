@@ -2462,8 +2462,15 @@ def run_qc(env: dict) -> None:
 QC_HOLD_ACCURACY_AT_OR_BELOW = 2
 # A single hard factual error can matter clinically even when the rest of the
 # episode is fine (e.g. reading an AUC of 0.70 as "a 70% chance of classifying
-# correctly"), so enough high-severity discrepancies also trip the gate.
-QC_HOLD_HIGH_SEVERITY_AT_OR_ABOVE = 2
+# correctly"), so a high-severity discrepancy trips the gate on its own.
+#
+# This was 2 until 2026-09-16, and the gap it left was exactly one error wide.
+# dulcan-030 in the book project came back with one "high": it told residents
+# that fluoxetine alone OR CBT alone improved adolescent depression, when the
+# source says fluoxetine and the combination did and CBT alone did not. One
+# error, clinically wrong, published. "high" is defined in the judge prompt as
+# something that would mislead a listener acting on it, so one is enough.
+QC_HOLD_HIGH_SEVERITY_AT_OR_ABOVE = 1
 
 
 def load_qc_results() -> dict[str, dict]:
