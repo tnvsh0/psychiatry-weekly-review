@@ -33,6 +33,7 @@ import os
 import re
 import shutil
 import subprocess
+import time
 from pathlib import Path
 
 # Pro-class is not a preference here, it is the only tier that works; see (4).
@@ -199,63 +200,69 @@ def _one_call(exe: str, refs: str, prompt: str, model: str | None,
         return None, (f"agy did not return JSON (rc={proc.returncode}): "
                       f"{(proc.stdout or proc.stderr or '')[:200]}")
 
-    denied = env.get("denied_actions") or []
-    reply = (env.get("response") or "").strip()
-    if not reply:
-        if denied:
-            acts = ", ".join(a.get("action", "?") for a in denied)
-            return None, (f"agy produced no output; it was denied [{acts}] — "
-                          f"it tried to process an attachment with a tool "
-                          f"instead of reading it directly.")
-        return None, f"agy returned an empty response (status={env.get('status')})"
+    # Whatever happens below, the copies agy keeps of this call go away before
+    # we return. See _discard_conversation for why that matters.
+    cid = env.get("conversation_id")
+    try:
+        denied = env.get("denied_actions") or []
+        reply = (env.get("response") or "").strip()
+        if not reply:
+            if denied:
+                acts = ", ".join(a.get("action", "?") for a in denied)
+                return None, (f"agy produced no output; it was denied [{acts}] — "
+                              f"it tried to process an attachment with a tool "
+                              f"instead of reading it directly.")
+            return None, f"agy returned an empty response (status={env.get('status')})"
 
-    verdict = _extract_verdict(reply)
-    if verdict is None or verdict.get("accuracy") is None:
-        return None, f"could not parse a verdict from: {reply[:200]}"
+        verdict = _extract_verdict(reply)
+        if verdict is None or verdict.get("accuracy") is None:
+            return None, f"could not parse a verdict from: {reply[:200]}"
 
-    took = env.get("duration_seconds") or 0
-    usage = env.get("usage") or {}
-    seen = usage.get("input_tokens") or 0
+        took = env.get("duration_seconds") or 0
+        usage = env.get("usage") or {}
+        seen = usage.get("input_tokens") or 0
 
-    # DID IT ACTUALLY LISTEN? agy sometimes answers confidently having ingested
-    # only the text: on 2026-09-15 dulcan-030 was scored 5/5/5 with no
-    # discrepancies in 49 seconds on 14,744 input tokens, and published on the
-    # strength of it. A verdict reached without hearing the episode is worse
-    # than no verdict at all, because nothing downstream can tell the
-    # difference.
-    audio_bytes = _audio_bytes(attachment_paths)
-    if audio_bytes:
-        # Primary evidence: agy's own conversation store. The media is written
-        # into it, so a run that heard the episode leaves a database about the
-        # size of the audio, and one that did not leaves a few hundred KB.
-        # Measured on 2026-09-16:
-        #     audio heard     20 MB, 32 MB, 37 MB, 92 MB (for 20-91 MB audio)
-        #     audio skipped   192 KB, 372 KB
-        # A two-orders-of-magnitude gap, independent of episode length and
-        # prompt size — which is exactly what the token count below is not.
-        conv = _conversation_bytes(env.get("conversation_id"))
-        if conv is not None:
-            if conv < audio_bytes * 0.25:
-                return None, (f"agy's conversation holds {conv:,} bytes against "
-                              f"{audio_bytes:,} bytes of audio — the media never "
-                              f"went in. Verdict discarded.")
-        else:
-            # Fallback when the store cannot be found: the token count, NET of
-            # what the text costs by itself. The first version of this check
-            # compared the raw total with a third of the audio estimate and
-            # forgot the text: the prompt and a chapter PDF cost ~14.7K tokens
-            # with no audio at all, so a 45.9 MB regeneration of dulcan-030
-            # sailed through at 14,711 tokens against a 14,370 bar and was
-            # published unheard on 2026-09-16.
-            text = _text_tokens_estimate(prompt, attachment_paths)
-            expected = _expected_audio_tokens(attachment_paths)
-            if seen < text + expected * 0.3:
-                return None, (f"agy answered on {seen:,} input tokens; the text "
-                              f"alone is ~{text:,} and the audio should add "
-                              f"~{expected:,} — it did not listen. Verdict "
-                              f"discarded.")
+        # DID IT ACTUALLY LISTEN? agy sometimes answers confidently having
+        # ingested only the text: on 2026-09-15 dulcan-030 was scored 5/5/5 with
+        # no discrepancies in 49 seconds on 14,744 input tokens, and published on
+        # the strength of it. A verdict reached without hearing the episode is
+        # worse than no verdict at all, because nothing downstream can tell the
+        # difference.
+        audio_bytes = _audio_bytes(attachment_paths)
+        if audio_bytes:
+            # Primary evidence: agy's own conversation store. The media is
+            # written into it, so a run that heard the episode leaves a database
+            # about the size of the audio, and one that did not leaves a few
+            # hundred KB. Measured on 2026-09-16:
+            #     audio heard     20 MB, 32 MB, 37 MB, 92 MB (for 20-91 MB audio)
+            #     audio skipped   192 KB, 372 KB
+            # A two-orders-of-magnitude gap, independent of episode length and
+            # prompt size — which is exactly what the token count below is not.
+            conv = _conversation_bytes(cid)
+            if conv is not None:
+                if conv < audio_bytes * 0.25:
+                    return None, (f"agy's conversation holds {conv:,} bytes "
+                                  f"against {audio_bytes:,} bytes of audio — the "
+                                  f"media never went in. Verdict discarded.")
+            else:
+                # Fallback when the store cannot be found: the token count, NET
+                # of what the text costs by itself. The first version of this
+                # check compared the raw total with a third of the audio estimate
+                # and forgot the text: the prompt and a chapter PDF cost ~14.7K
+                # tokens with no audio at all, so a 45.9 MB regeneration of
+                # dulcan-030 sailed through at 14,711 tokens against a 14,370 bar
+                # and was published unheard on 2026-09-16.
+                text = _text_tokens_estimate(prompt, attachment_paths)
+                expected = _expected_audio_tokens(attachment_paths)
+                if seen < text + expected * 0.3:
+                    return None, (f"agy answered on {seen:,} input tokens; the "
+                                  f"text alone is ~{text:,} and the audio should "
+                                  f"add ~{expected:,} — it did not listen. "
+                                  f"Verdict discarded.")
 
-    return verdict, f"ok in {took:.0f}s, {seen} input tokens"
+        return verdict, f"ok in {took:.0f}s, {seen} input tokens"
+    finally:
+        _discard_conversation(cid)
 
 
 def _audio_bytes(paths: list[Path]) -> int:
@@ -281,6 +288,63 @@ def _conversation_bytes(conversation_id: str | None) -> int | None:
         except OSError:
             continue
     return None
+
+
+# How long a conversation agy left behind is allowed to sit before the next
+# judge call sweeps it up. Long enough to still be there when a run is being
+# investigated the next morning, short enough that a few days of episodes
+# cannot fill the disk.
+_STALE_CONVERSATION_DAYS = 2
+
+
+def _discard_conversation(conversation_id: str | None) -> None:
+    """Delete agy's copy of one judge call, and any stale ones left behind.
+
+    agy keeps the whole call on disk — the episode's audio and the chapter PDF —
+    under conversations/<id>.db and brain/<id>/. At 20-90 MB per episode that
+    reached 8.6 GB by 2026-09-17 and filled the VM's 20 GB disk, which broke the
+    next judge call (agy returned an empty response), Chrome Remote Desktop, and
+    anything else that needed a temporary file. The verdict itself is already in
+    the repository, so once the listen check above has read the size, the copy
+    has served its purpose.
+    """
+    for home in (Path.home(), Path("/home/User")):
+        root = home / ".gemini/antigravity-cli"
+        convs, brains = root / "conversations", root / "brain"
+        try:
+            if not convs.is_dir():
+                continue
+        except OSError:
+            continue
+        if conversation_id:
+            _rm(convs / f"{conversation_id}.db")
+            _rm(brains / conversation_id)
+        # A crash, a timeout or an older build leaves stores nothing will ever
+        # delete, so sweep those too rather than trusting every path to clean up
+        # after itself.
+        cutoff = time.time() - _STALE_CONVERSATION_DAYS * 86400
+        for parent in (convs, brains):
+            try:
+                entries = list(parent.iterdir())
+            except OSError:
+                continue
+            for entry in entries:
+                try:
+                    if entry.stat().st_mtime < cutoff:
+                        _rm(entry)
+                except OSError:
+                    continue
+        return
+
+
+def _rm(path: Path) -> None:
+    try:
+        if path.is_dir():
+            shutil.rmtree(path, ignore_errors=True)
+        else:
+            path.unlink(missing_ok=True)
+    except OSError:
+        pass
 
 
 def _text_tokens_estimate(prompt: str, paths: list[Path]) -> int:
