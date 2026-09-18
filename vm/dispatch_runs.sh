@@ -126,6 +126,25 @@ check_token_expiry() {
 }
 check_token_expiry
 
+# ── Warn before the disk fills ──────────────────────────────────────────────
+# On 2026-09-17 the 20 GB disk reached 100% (8.6 GB of it agy's copies of old
+# judge calls) and nothing said so. What people saw instead was unrelated
+# symptoms: the judge returned an empty reply, Chrome Remote Desktop would not
+# start, and so the expired NotebookLM session could not be renewed. A full disk
+# should be reported as a full disk, while there is still room to act.
+check_disk() {
+    local used
+    used=$(df --output=pcent / 2>/dev/null | tail -1 | tr -dc '0-9')
+    [ -n "$used" ] || return 0
+    echo "dispatch: disk ${used}% used"
+    if [ "$used" -ge 85 ]; then
+        notify "הדיסק של ה-VM כמעט מלא" \
+               "$(printf 'הדיסק מלא ב-%s%%.\n\nדיסק מלא שובר את השופט, את Remote Desktop ואת ההתחברות ל-NotebookLM. צריך לפנות מקום לפני הריצה הבאה.' "$used")" \
+               high
+    fi
+}
+check_disk
+
 TODAY=$(date -u +%F)
 DOW=$(date -u +%u)
 
