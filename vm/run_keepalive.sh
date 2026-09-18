@@ -13,6 +13,12 @@ echo "--- Keepalive: $(date) ---"
 # notebooklm as User (matching HOME for token paths).
 export PATH=/opt/venv/bin:$PATH
 export HOME=/home/User
+# Root runs gcloud here with HOME=/home/User, so the first call of the day
+# creates ~/.config/gcloud/logs/<date>/ owned by root, and every later gcloud
+# call made as User that day fails trying to write its log there. That is how
+# dulcan-030's upload died on 2026-09-17 ("Could not setup log file ...
+# Permission denied"). Nothing reads those logs; don't write them.
+export CLOUDSDK_CORE_DISABLE_FILE_LOGGING=1
 # NOTEBOOKLM_HOME must be the notebooklm ROOT, never the profile directory:
 # notebooklm-py >= 0.7 appends profiles/<name> itself. Setting it to
 # dirname(AUTH_FILE) — i.e. .../profiles/default — made this script refresh the
