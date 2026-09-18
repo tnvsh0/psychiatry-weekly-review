@@ -2847,11 +2847,66 @@ MAX_AUTO_RETRY_EPISODES = 3  # if MORE than this fail at once, skip auto-retry
 # episodes are held for a human instead of silently piling more load on.
 
 
+# ── Corrections carried into a regeneration ──────────────────────────────────
+# A retry used to send NotebookLM exactly the prompt that produced the flagged
+# take, so it was a fresh roll of the same dice while the judge had already said
+# what was wrong. In the books project on 2026-09-17 three episodes failed the
+# gate three times each, repeating the same kinds of error. Now the next take is
+# told. Only findings that can hold an episode are carried ("low" is nuance and
+# would crowd out the error that matters), and the list is capped.
+_CORRECTION_SEVERITIES = ("high", "medium")
+_MAX_CORRECTIONS = 8
+_CORRECTION_CHARS = 350
+
+
+def _gate_errors(qc: dict | None) -> list[dict]:
+    return [{"said": str(d["said"]).strip(),
+             "source": str(d.get("source") or "").strip()}
+            for d in (qc or {}).get("discrepancies") or []
+            if d.get("severity") in _CORRECTION_SEVERITIES and d.get("said")]
+
+
+def _merge_errors(old: list[dict], new: list[dict]) -> list[dict]:
+    merged = {e["said"]: e for e in (old or [])}
+    for e in new or []:
+        merged.pop(e["said"], None)
+        merged[e["said"]] = e
+    return list(merged.values())[-_MAX_CORRECTIONS:]
+
+
+def _corrections_block(errors: list[dict]) -> str:
+    if not errors:
+        return ""
+
+    def clip(s: str) -> str:
+        return s if len(s) <= _CORRECTION_CHARS else s[:_CORRECTION_CHARS] + "…"
+
+    out = [
+        "\n\n"
+        "========================================================================\n"
+        "CORRECTIONS — AN EARLIER TAKE OF THIS EPISODE GOT THESE WRONG:\n"
+        "========================================================================\n"
+        "A reviewer checked an earlier version of this episode against the "
+        "sources and found the errors below. Do not repeat any of them. For each "
+        "one: if the sources cover the point, say what they actually say; if they "
+        "do not, leave the point out, or say it clearly as general knowledge and "
+        "without any number. Never attribute to a study something it does not "
+        "say. Do not mention that there was an earlier version or a correction — "
+        "just get it right this time.\n"
+    ]
+    for i, e in enumerate(errors, 1):
+        out.append(f"\n{i}. The earlier take said: «{clip(e['said'])}»\n")
+        if e.get("source"):
+            out.append(f"   What the source actually says: «{clip(e['source'])}»\n")
+    return "".join(out)
+
+
 def _regenerate_episode_audio(nb: dict, env: dict) -> bool:
     """Generate a fresh audio for one episode's existing notebook, wait, and
-    download (overwriting its MP3). Returns True on success. Reuses the same
-    prompt the original used."""
-    base_prompt = nb["topic"]["podcast_prompt"] + nb.get("xref_directive", "")
+    download (overwriting its MP3). Returns True on success. Uses the original
+    prompt plus whatever earlier takes got wrong (nb["prior_errors"])."""
+    base_prompt = (nb["topic"]["podcast_prompt"] + nb.get("xref_directive", "")
+                   + _corrections_block(nb.get("prior_errors") or []))
     artifact_id = start_podcast(
         nb["nb_id"], base_prompt, env, topic_id=nb["topic"]["id"],
     )
@@ -2899,7 +2954,11 @@ def auto_retry_flagged(nb_infos: list[dict], env: dict) -> None:
               f"regenerating {len(flagged)} flagged episode(s)...")
         regenerated = 0
         for nb in flagged:
-            print(f"  ↻ {nb['topic']['label_en']}...")
+            nb["prior_errors"] = _merge_errors(
+                nb.get("prior_errors") or [],
+                _gate_errors(qc.get(nb["topic"]["id"])))
+            print(f"  ↻ {nb['topic']['label_en']}... "
+                  f"(carrying {len(nb['prior_errors'])} correction(s))")
             if _regenerate_episode_audio(nb, env):
                 regenerated += 1
             time.sleep(25)   # rate-limit spacing between generations
