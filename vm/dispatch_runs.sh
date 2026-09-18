@@ -126,24 +126,53 @@ check_token_expiry() {
 }
 check_token_expiry
 
-# ── Warn before the disk fills ──────────────────────────────────────────────
+# ── Keep the disk from filling ──────────────────────────────────────────────
 # On 2026-09-17 the 20 GB disk reached 100% (8.6 GB of it agy's copies of old
 # judge calls) and nothing said so. What people saw instead was unrelated
 # symptoms: the judge returned an empty reply, Chrome Remote Desktop would not
-# start, and so the expired NotebookLM session could not be renewed. A full disk
-# should be reported as a full disk, while there is still room to act.
-check_disk() {
-    local used
-    used=$(df --output=pcent / 2>/dev/null | tail -1 | tr -dc '0-9')
-    [ -n "$used" ] || return 0
-    echo "dispatch: disk ${used}% used"
-    if [ "$used" -ge 85 ]; then
+# start, and so the expired NotebookLM session could not be renewed.
+#
+# So before every job: past 75%, delete what is safe to delete. Everything on
+# this list is either a cache or a copy of something kept elsewhere:
+#   - agy's stores of old judge calls (the verdicts are in the repos),
+#   - pip / apt caches and the journal beyond 100 MB,
+#   - episode audio older than 14 days (every episode was uploaded to GCS or a
+#     GitHub release when it was published, held ones included; qc_published.py
+#     downloads it again if it is ever needed),
+#   - logs older than 30 days.
+# Only if that is still not enough does anyone get a message: by then something
+# unknown is growing, and a person has to look.
+disk_used() { df --output=pcent / 2>/dev/null | tail -1 | tr -dc '0-9'; }
+
+free_disk() {
+    local before after agy=/home/User/.gemini/antigravity-cli
+    before=$(disk_used)
+    [ -n "$before" ] || return 0
+    echo "dispatch: disk ${before}% used"
+    [ "$before" -ge 75 ] || return 0
+
+    echo "dispatch: over 75% — clearing caches and old copies"
+    find "$agy/conversations" -maxdepth 1 -type f -mtime +1 -delete 2>/dev/null
+    find "$agy/brain" -mindepth 1 -maxdepth 1 -mtime +1 -exec rm -rf {} + 2>/dev/null
+    rm -rf /home/User/.cache/pip /root/.cache/pip
+    apt-get clean 2>/dev/null
+    journalctl --vacuum-size=100M >/dev/null 2>&1
+    for d in /opt/psychiatry-book-podcasts/podcasts /opt/psychiatry-weekly-review/podcasts; do
+        find "$d" -type f -name '*.mp3' -mtime +14 -delete 2>/dev/null
+        find "$d" -mindepth 1 -type d -empty -delete 2>/dev/null
+    done
+    find /var/log -maxdepth 1 -type f \( -name '*.log' -o -name '*.gz' \) \
+         -mtime +30 -delete 2>/dev/null
+
+    after=$(disk_used)
+    echo "dispatch: disk ${before}% -> ${after}%"
+    if [ -n "$after" ] && [ "$after" -ge 85 ]; then
         notify "הדיסק של ה-VM כמעט מלא" \
-               "$(printf 'הדיסק מלא ב-%s%%.\n\nדיסק מלא שובר את השופט, את Remote Desktop ואת ההתחברות ל-NotebookLM. צריך לפנות מקום לפני הריצה הבאה.' "$used")" \
+               "$(printf 'הדיסק מלא ב-%s%% גם אחרי ניקוי אוטומטי (היה %s%%).\n\nמשהו אחר תופס מקום. דיסק מלא שובר את השופט, את Remote Desktop ואת ההתחברות ל-NotebookLM.' "$after" "$before")" \
                high
     fi
 }
-check_disk
+free_disk
 
 TODAY=$(date -u +%F)
 DOW=$(date -u +%u)
