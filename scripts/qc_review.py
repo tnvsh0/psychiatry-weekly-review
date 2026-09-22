@@ -456,9 +456,21 @@ def main() -> int:
 
 def _write_results_json(date_str: str, results: list[dict]) -> None:
     """Machine-readable verdicts (topic_id → scores/verdict) so the pipeline can
-    GATE publishing on them (hold flagged episodes as drafts)."""
+    GATE publishing on them (hold flagged episodes as drafts).
+
+    MERGED into whatever is already there, never replacing it. This used to
+    overwrite: a partial run — Monday's backfill of episodes the rate limiter
+    blocked on Sunday, or qc_published.py judging a handful after the fact —
+    wrote only the episodes it had judged and silently erased the rest. On
+    2026-09-20 eleven verdicts were lost that way, so the record of why those
+    episodes were held disappeared the next morning.
+    """
     out = REPO_ROOT / "summaries" / date_str / "qc-results.json"
-    slim = {
+    try:
+        slim = json.loads(out.read_text(encoding="utf-8")) or {}
+    except (OSError, ValueError):
+        slim = {}
+    slim |= {
         r["topic_id"]: {
             "verdict": r.get("verdict"),
             "accuracy": r.get("accuracy"),
