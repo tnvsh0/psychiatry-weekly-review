@@ -136,6 +136,13 @@ def ask_agy(system: str, user: str, model: str | None = None,
     for the digests and the QC-trends proposal, which are text in, text out —
     both of which stopped working when the Gemini API key was deleted on
     2026-09-14, for no better reason than that nothing had moved them across.
+
+    The prompt goes in on STDIN, not as `-p`. On 2026-09-20 the clinical-
+    questions digest, which quotes 121 articles, died with
+    `OSError: [Errno 7] Argument list too long` before agy was even started:
+    Linux caps a single argv entry at 128 KB. agy reads a piped prompt the same
+    way it reads `-p`, with no such limit. (The judge still uses `-p`: its
+    prompt is ~25 KB and its `@path` handling is the fragile part — see (1).)
     """
     exe = _agy_exe()
     if not exe:
@@ -143,10 +150,11 @@ def ask_agy(system: str, user: str, model: str | None = None,
     for _ in range(max(1, attempts)):
         try:
             proc = subprocess.run(
-                [exe, "-p", f"{system}\n\n{user}",
+                [exe,
                  "--model", model or DEFAULT_AGY_MODEL,
                  "--print-timeout", AGY_TIMEOUT,
                  "--output-format", "json"],
+                input=f"{system}\n\n{user}",
                 capture_output=True, text=True, encoding="utf-8",
                 errors="replace", timeout=_SUBPROCESS_TIMEOUT_S)
             reply = (json.loads(proc.stdout or "{}").get("response") or "").strip()

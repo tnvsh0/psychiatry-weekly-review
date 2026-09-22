@@ -2443,11 +2443,23 @@ def run_qc(env: dict) -> None:
               "unchecked.")
         return
     print("\n\U0001f50e Running podcast QC review...")
+    # The timeout has to follow the number of episodes. It was a flat 50
+    # minutes, set when a judge call took seconds through the API. Through agy
+    # a call takes 3-5 minutes, so on 2026-09-20 the run judged 11 of 13
+    # episodes, was killed mid-verdict, and the two it never reached were held
+    # unjudged — together with everything the rate limiter had delayed, 19 of 20
+    # episodes spent the week as drafts. Eight minutes per episode covers a
+    # retry; the cap keeps a wedged judge from eating the whole morning, and the
+    # VM's scheduled stop is hours later either way.
+    episodes = len(list((SCRIPTS_DIR.parent / "podcasts" / DATE_STR)
+                        .glob("*.mp3"))) or 1
+    timeout_s = min(3 * 3600, max(3000, episodes * 8 * 60))
+    print(f"  ({episodes} episode(s), up to {timeout_s // 60} min)")
     try:
         subprocess.run(
             [sys.executable, "-u", str(SCRIPTS_DIR / "qc_review.py"),
              "--date", DATE_STR],
-            env=env, check=False, timeout=3000,
+            env=env, check=False, timeout=timeout_s,
         )
     except Exception as e:
         print(f"  WARNING: QC review failed (non-fatal): {e}")
