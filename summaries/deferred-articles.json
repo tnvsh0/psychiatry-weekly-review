@@ -182,5 +182,69 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42706445/",
     "topic_id": "neuroscience",
     "first_seen": "2026-09-13"
+  },
+  {
+    "pmid": "42734955",
+    "title": "Legal and Clinical Liability of Comanaging Pediatric Mental Health With Unregulated AI Chatbots-Reply",
+    "journal": "JAMA Pediatr",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42734955/",
+    "topic_id": "child_adolescent_highimpact",
+    "first_seen": "2026-09-20"
+  },
+  {
+    "pmid": "42734907",
+    "title": "Legal and Clinical Liability of Comanaging Pediatric Mental Health With Unregulated AI Chatbots",
+    "journal": "JAMA Pediatr",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42734907/",
+    "topic_id": "child_adolescent_highimpact",
+    "first_seen": "2026-09-20"
+  },
+  {
+    "pmid": "42748951",
+    "title": "Challenges and implications of enabling community-led mental health initiatives",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42748951/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-20"
+  },
+  {
+    "pmid": "42747812",
+    "title": "The Case for More Aggressive Masking in Psychedelic Trials",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42747812/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-20"
+  },
+  {
+    "pmid": "42747809",
+    "title": "Genetic Risk as Statistical Topology Rather Than Biological Essence",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42747809/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-20"
+  },
+  {
+    "pmid": "42747827",
+    "title": "Cannabis Commercialization as a Modifiable Public Health Exposure",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42747827/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-20"
+  },
+  {
+    "pmid": "42747822",
+    "title": "Genetic Risk as Statistical Topology Rather Than Biological Essence-Reply",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42747822/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-20"
+  },
+  {
+    "pmid": "42749380",
+    "title": "GLP-1 Receptor Agonists: Informing Mechanistic Models and Innovative Targets in the Treatment and Prevention of Mental and Substance Use Disorders",
+    "journal": "Biol Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42749380/",
+    "topic_id": "general_psychiatry_bio",
+    "first_seen": "2026-09-20"
   }
 ]

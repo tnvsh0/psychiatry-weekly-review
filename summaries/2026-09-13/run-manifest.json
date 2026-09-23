@@ -117,7 +117,8 @@
     "full_prompt": "",
     "held": false,
     "release_tag": "weekly-2026-09-13-cognition_part2",
-    "label_he": "קוגניציה ומדעי הקוגניציה — חלק 2/2"
+    "label_he": "קוגניציה ומדעי הקוגניציה — חלק 2/2",
+    "held_retries": 1
   },
   "child_adolescent_misc": {
     "nb_id": "d7424232-f1ba-448b-9465-f83dd9c14cf9",
@@ -125,6 +126,6 @@
     "held": false,
     "release_tag": "weekly-2026-09-13-child_adolescent_misc",
     "label_he": "ילדים ומתבגרים — מגוון",
-    "held_retries": 1
+    "held_retries": 2
   }
 }
