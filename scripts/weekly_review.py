@@ -1542,6 +1542,44 @@ def _fetch_abstract_xml(pmid: str) -> str:
         return "(Abstract not available)"
 
 
+# Parts of a PMC article that are not the article: reference lists, tables,
+# figures and supplements. Only <abstract> and <body> are read, so the metadata
+# front matter — which is where the raw XML wasted its whole character budget —
+# never gets in; <abstract> itself lives inside article-meta, so that element
+# must NOT be dropped.
+_PMC_DROP_TAGS = {"ref-list", "table-wrap", "table", "fig", "graphic", "media",
+                  "supplementary-material", "funding-statement", "back"}
+
+
+def _pmc_text_from_xml(raw: str) -> str:
+    """The readable text of a PMC article, out of the JATS XML.
+
+    `efetch db=pmc rettype=full retmode=text` returns XML whatever retmode
+    says, and this stored it verbatim: every "full text" article from
+    2026-09-06 onwards (67 of 339 articles) reached NotebookLM as raw JATS —
+    journal ids, licence blocks, author affiliations — with the actual science
+    pushed past the 15,000-character cut. The hosts then had nothing to report
+    and filled the time by inventing conclusions, and the judge, reading the
+    same file, called the abstract truncated. Both were right.
+    """
+    import xml.etree.ElementTree as ET
+    try:
+        root = ET.fromstring(raw)
+    except ET.ParseError:
+        return ""
+    for parent in root.iter():
+        for child in list(parent):
+            if child.tag in _PMC_DROP_TAGS:
+                parent.remove(child)
+    chunks: list[str] = []
+    for tag in ("abstract", "body"):
+        for el in root.iter(tag):
+            text = " ".join(" ".join(el.itertext()).split())
+            if text:
+                chunks.append(text)
+    return re.sub(r"\n{3,}", "\n\n", "\n\n".join(chunks)).strip()
+
+
 def fetch_article_text(articles: list[dict]) -> list[dict]:
     """Fetch full text (PMC open access) or abstract for each article.
     Adds 'abstract', 'has_full_text', and 'pmc_id' keys. Modifies in-place."""
@@ -1563,14 +1601,19 @@ def fetch_article_text(articles: list[dict]) -> list[dict]:
                     "rettype": "full", "retmode": "text",
                 }, timeout=30)
                 if r.status_code == 200 and len(r.text) > 1000:
-                    article["abstract"]      = r.text.strip()[:15000]
-                    article["has_full_text"] = True
-                    article["pmc_id"]        = pmc_id
-                    pmc_count += 1
-                    if (i + 1) % 10 == 0:
-                        print(f"  {i+1}/{len(articles)} done  (full-text: {pmc_count})")
-                    time.sleep(0.5)
-                    continue
+                    # Extract the prose; a PMC record whose body is withheld
+                    # ("restricted-by pmc") yields little, and then the plain
+                    # abstract below is the better source.
+                    text = _pmc_text_from_xml(r.text)
+                    if len(text) >= 1500:
+                        article["abstract"]      = text[:15000]
+                        article["has_full_text"] = True
+                        article["pmc_id"]        = pmc_id
+                        pmc_count += 1
+                        if (i + 1) % 10 == 0:
+                            print(f"  {i+1}/{len(articles)} done  (full-text: {pmc_count})")
+                        time.sleep(0.5)
+                        continue
             except Exception:
                 pass
 
