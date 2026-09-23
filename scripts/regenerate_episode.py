@@ -127,9 +127,10 @@ def _quick_qc(date_str: str, topic_id: str, mp3: Path) -> dict | None:
         import qc_review
     except Exception:
         return None
+    # No client guard: judge_episode routes through agy, which needs no key.
+    # Returning None here because the (deleted) Gemini key is missing would look
+    # exactly like "the judge found nothing wrong" to the caller.
     client, types = qc_review._gemini_client()
-    if client is None:
-        return None
     print("  Re-running QC on the regenerated episode...")
     v = qc_review.judge_episode(client, types, mp3,
                                 src.read_text(encoding="utf-8"),
@@ -181,7 +182,19 @@ def main() -> int:
         # Publish only if the FRESH take actually passes the same gate — pushing
         # a still-broken episode live would defeat the whole point of holding it.
         import weekly_review as w
-        if verdict and w._qc_should_hold(verdict):
+        # NO VERDICT IS NOT A PASS. This read `if verdict and should_hold(...)`,
+        # so a judge that could not run fell straight through to publishing. On
+        # 2026-09-23 the held-retry of spotlight_42742590 hit exactly that: the
+        # listen check discarded the verdict because agy never ingested the
+        # audio, the log printed "QC clean", and an episode nobody had checked
+        # went live on Spotify. Holding it costs one retry; publishing it
+        # unchecked costs the only guarantee this gate provides.
+        if not verdict:
+            print("\n⏸️  No verdict — the judge could not run, or its verdict "
+                  "was discarded because it never heard the audio. The episode "
+                  "stays held; run this again when the judge is working.")
+            return 0
+        if w._qc_should_hold(verdict):
             print("\n⏸️  The regenerated take still fails QC "
                   f"(verdict={verdict.get('verdict')}, "
                   f"accuracy={verdict.get('accuracy')}) — leaving it held. "
