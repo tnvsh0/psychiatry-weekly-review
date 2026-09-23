@@ -1,23 +1,13 @@
 {
   "behavioral_sciences": {
     "verdict": "problem",
-    "accuracy": 3,
+    "accuracy": 4,
     "coverage": 5,
     "fluency": 5,
     "discrepancies": [
       {
-        "said": "דיווחו עד כמה הם בטוחים בה מ-1 עד 10",
-        "source": "participants reported both their level of confidence (לא מופיע במקור סולם מ-1 עד 10)",
-        "severity": "high"
-      },
-      {
-        "said": "בניסוי משתתפים צפו במסך שבו נקודות זזות והיו צריכים להחליט מה כיוון התנועה",
-        "source": "perceptual decision-making experiments (לא מופיע במקור פירוט מתודולוגי על מסך עם נקודות זזות וכיוון תנועה)",
-        "severity": "low"
-      },
-      {
-        "said": "נקודת הפתיחה של הדלי מוטית מראש כלפי מטה, והסף הופך לגבוה יותר",
-        "source": "evidenced by biased postdecision starting points (לא מופיעה במקור טענה על סף/threshold שהופך לגבוה יותר)",
+        "said": "נאמר כי \"ובבלוקים שבהם הקונפליקטים היו שכיחים, ההתאמה הספציפית מצעד לצעד הפכה גדולה יותר\" (03:59)",
+        "source": "במקור נכתב בדיוק ההפך: ההתאמה ההתנהגותית הייתה קטנה יותר (smaller) בבלוקים עם שיעור גבוה של קונפליקטים (this behavioral adjustment was smaller in blocks with a high versus low proportion of metacognitive conflict trials).",
         "severity": "high"
       }
     ],
@@ -28,34 +18,20 @@
   },
   "child_adolescent_misc_part1": {
     "verdict": "problem",
-    "accuracy": 2,
+    "accuracy": 4,
     "coverage": 5,
-    "fluency": 4,
+    "fluency": 5,
     "discrepancies": [
       {
-        "said": "משתתפים שעמדו בקריטריונים לאבחנת ADHD לפי ה-DSM 5, הראו סיכוי גבוה משמעותית לפתח הפרעות שימוש בחומרים.",
-        "source": "המשתתפים עמדו בקריטריונים של DSM-IV עבור ADHD, ולא DSM-V (ה-DSM-5 הוזכר במקור כמדד שאליו הושוו הפרעות השימוש בחומרים).",
-        "severity": "high"
-      },
-      {
-        "said": "המחקר מדגיש את הצורך לבצע סינון מסודר לתכונות אוטיסטיות בכל קבלה למחלקה כזו.",
-        "source": "לא מופיע במקור (התקציר קטוע ומכיל רק את כותרת המחקר, ללא מסקנות או המלצות קליניות).",
-        "severity": "high"
-      },
-      {
-        "said": "ההטרוגניות מתבטאת קודם כל במינונים שונים דרמטית. בנוסף חומצות אומגה 3 מורכבות משני רכיבים עיקריים, EPA ו-DHA... השורה התחתונה שהחוקרים מציגים... המסקנה היא זהירה ומפוכחת מאוד. התוסף עשוי לשמש כהתערבות תומכת... אבל בשום אופן לא מדובר בתרופת קסם לתסמיני הליבה של האוטיזם.",
-        "source": "לא מופיע במקור (התקציר קטוע ומכיל רק את כותרת המחקר, ללא פירוט הממצאים, ניתוח ההטרוגניות או מסקנות החוקרים).",
+        "said": "נאמר כי נמצא גודל אפקט (Hedges' g) של מינוס 0.87 עבור עצבנות ורגישות (08:47).",
+        "source": "במקור מדווח כי גודל האפקט עבור עצבנות (Irritability) הוא 0.287- (g = -0.287).",
         "severity": "high"
       }
     ],
     "lost_content": {
       "any": false,
       "details": []
-    },
-    "missed_papers": [],
-    "notes": [
-      "בלבול מגדר: ב-11:25 המנחה (אישה) פונה למנחה (גבר) בלשון נקבה ואומרת 'לאיזה כיוון את לוקחת את זה?'."
-    ]
+    }
   },
   "child_adolescent_misc_part2": {
     "verdict": "problem",
@@ -224,22 +200,11 @@
     }
   },
   "general_psychiatry_bio_part1": {
-    "verdict": "problem",
-    "accuracy": 3,
+    "verdict": "ok",
+    "accuracy": 5,
     "coverage": 5,
     "fluency": 5,
-    "discrepancies": [
-      {
-        "said": "\"הם שילבו שם נתונים של כ-175 אלף נבדקים עם סכיזופרניה, למעלה מ-2.6 מיליון נבדקים עם דיכאון מג'ורי\"",
-        "source": "המספרים 175,799 ו-2,622,273 המופיעים בתקציר מתייחסים לסך המשתתפים הכולל (N) בכל אחת מהאנליזות, הכולל גם את קבוצות הביקורת. מספרי החולים בפועל היו 74,776 לסכיזופרניה ו-550,355 לדיכאון מג'ורי.",
-        "severity": "high"
-      },
-      {
-        "said": "שקיים קשר גנטי ל\"זמן תגובה איטי יותר\" בסכיזופרניה.",
-        "source": "התקציר מדווח על קורלציה גנטית שלילית (negative genetic correlations) עם זמן תגובה. פשט הטקסט משמעו זמן תגובה קצר (מהיר) יותר, ולא איטי יותר.",
-        "severity": "high"
-      }
-    ],
+    "discrepancies": [],
     "lost_content": {
       "any": false,
       "details": []
@@ -302,49 +267,22 @@
     }
   },
   "general_psychiatry_clinical_part3": {
-    "verdict": "problem",
-    "accuracy": 3,
+    "verdict": "ok",
+    "accuracy": 5,
     "coverage": 5,
     "fluency": 5,
-    "discrepancies": [
-      {
-        "said": "ההתקדמות, ה-advances שעליהם הם מדברים [...] מאפשר למצוא קשרים גנטיים או תגובות נדירות לתרופות שבמדגם של אלף איש פשוט יעלמו ברעש הסטטיסטי.",
-        "source": "לא מופיע במקור",
-        "severity": "high"
-      },
-      {
-        "said": "אז מה הכיוונים העתידיים לפי צוות המחקר? הם אומרים שאי אפשר רק לאסוף עוד ועוד נתונים. אנחנו חייבים לפתח מודלים חישוביים שיודעים למדל את אי הוודאות הזו. להפוך את הביג דאטה לכלי שנותן לרופא הקשר, אבל משאיר מקום לשיפוט הקליני הרך.",
-        "source": "לא מופיע במקור",
-        "severity": "high"
-      },
-      {
-        "said": "הם בעצם קובעים שהחוויה חייבת להנחות את שאלות המחקר. המומחים מניסיון עוזרים לנו להגדיר מה הם בכלל מדדי התוצאה, ה-primary outcomes שחשובים למטופלים.",
-        "source": "לא מופיע במקור",
-        "severity": "high"
-      }
-    ],
+    "discrepancies": [],
     "lost_content": {
       "any": false,
       "details": []
     }
   },
   "neuroscience_part1": {
-    "verdict": "problem",
-    "accuracy": 3,
+    "verdict": "ok",
+    "accuracy": 5,
     "coverage": 5,
     "fluency": 5,
-    "discrepancies": [
-      {
-        "said": "הם רשמו פעילות ב-V1 שזה אזור הראייה הראשוני, וב-LATM שזה אזור מסדר גבוה יותר",
-        "source": "המאמר מתייחס לאזור ראייה מסדר גבוה הנקרא LM (lateromedial).",
-        "severity": "high"
-      },
-      {
-        "said": "זיהו עלייה ספציפית ב-microRNA בשם MIR 10a 25p בטחול של נקבות מבוגרות",
-        "source": "המאמר מציין את ה-microRNA בשם miR-10a-5p.",
-        "severity": "high"
-      }
-    ],
+    "discrepancies": [],
     "lost_content": {
       "any": false,
       "details": []
