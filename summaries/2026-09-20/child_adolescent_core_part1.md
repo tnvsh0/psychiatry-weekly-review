@@ -85,4 +85,4 @@ Intensive youth care (out-of-home care and repeated outpatient care) is often pr
 - מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
 - הסיכומים מבוססים על תקצירים (Abstracts) בלבד
 
-*נוצר אוטומטית ב-20/09/2026 05:50 UTC*
+*נוצר אוטומטית ב-20/09/2026 00:00 UTC*

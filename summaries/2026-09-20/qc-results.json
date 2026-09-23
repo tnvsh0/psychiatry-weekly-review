@@ -138,17 +138,11 @@
     "notes": []
   },
   "child_adolescent_core_part1": {
-    "verdict": "problem",
-    "accuracy": 4,
+    "verdict": "ok",
+    "accuracy": 5,
     "coverage": 5,
-    "fluency": 5,
-    "discrepancies": [
-      {
-        "said": "תחושת בדידות העלתה את הסיכון עם OR של 1.73 (12:11)",
-        "source": "loneliness at T1 (OR = 1.75, 95% CI [1.15-2.64])",
-        "severity": "high"
-      }
-    ],
+    "fluency": 3,
+    "discrepancies": [],
     "lost_content": {
       "any": false,
       "details": []
@@ -166,17 +160,11 @@
     }
   },
   "child_adolescent_highimpact": {
-    "verdict": "review",
-    "accuracy": 4,
+    "verdict": "ok",
+    "accuracy": 5,
     "coverage": 5,
     "fluency": 5,
-    "discrepancies": [
-      {
-        "said": "הם לקחו 472 מתבגרים בגילאי 13 עד 17 בשנת 2015. (06:44)",
-        "source": "הסקר נערך בין פברואר לדצמבר 2025.",
-        "severity": "high"
-      }
-    ],
+    "discrepancies": [],
     "lost_content": {
       "any": false,
       "details": []
