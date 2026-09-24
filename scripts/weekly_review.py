@@ -1789,6 +1789,27 @@ def save_articles_json(nb_infos: list[dict]) -> None:
 
 
 # ── Step 3b: Create per-topic Markdown summary ─────────────────────────────────
+# How much of each paper goes into the episode's source file.
+#
+# This was 2,000 characters, a number from when every paper was an abstract.
+# Since PMC full texts arrived it has been cutting them mid-paper: on
+# 2026-09-20 the doll-therapy trial in psychotherapy_part2 was cut before its
+# results, the hosts invented conclusions, and the judge — reading the same
+# truncated file — called them unsupported. Nobody was wrong except the cut.
+#
+# The ceiling is not NotebookLM, which takes far larger sources. It is the
+# JUDGE: its prompt goes to agy as a single argv entry, and Linux caps that at
+# 128 KB. The judge prompt itself is ~25 KB, so the source window is 60 KB
+# (JUDGE_SOURCE_CHARS in qc_review.py) and a typical seven-paper episode gets
+# 8 KB per paper. A judge that cannot see the second half of the file reports
+# everything in it as unsupported, so these two numbers must move together.
+#
+# To go further, agy would have to take the judge prompt on stdin, the way
+# ask_agy now does — worth testing, because then only the model's attention
+# limits this.
+MAX_ARTICLE_CHARS = 8000
+
+
 def create_topic_summary(
     topic: dict,
     articles: list[dict],
@@ -1824,11 +1845,8 @@ def create_topic_summary(
 
     for a in articles:
         abstract = a.get("abstract", "")
-        # Generous limit (2000 chars) so NotebookLM gets the full structured
-        # abstract (BACKGROUND / METHODS / RESULTS / CONCLUSIONS) per paper \u2014
-        # this is what drives podcast depth.
-        if len(abstract) > 2000:
-            abstract = abstract[:2000] + "\u2026"
+        if len(abstract) > MAX_ARTICLE_CHARS:
+            abstract = abstract[:MAX_ARTICLE_CHARS] + "\u2026"
         if_val = a.get("impact_factor", 0)
         # Show the full journal name so NotebookLM reads it aloud properly,
         # with the abbreviation in parentheses for reference.
