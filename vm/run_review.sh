@@ -24,6 +24,14 @@ export HOME=/home/User
 # dulcan-030's upload died on 2026-09-17 ("Could not setup log file ...
 # Permission denied"). Nothing reads those logs; don't write them.
 export CLOUDSDK_CORE_DISABLE_FILE_LOGGING=1
+
+# A zero-byte resumable-upload tracker makes gcloud fail that ONE object for
+# ever: it reads the file, json.loads('') raises, and the upload dies with
+# JSONDecodeError. dulcan-030 failed this way on 2026-09-17, 09-18, 09-22 and
+# 09-24 — four regenerations thrown away — while every other episode uploaded
+# fine. Nothing here needs a half-finished tracker, so clear the empty ones.
+find /home/User/.config/gcloud/surface_data/storage/tracker_files \
+     -type f -empty -delete 2>/dev/null || true
 # NOTEBOOKLM_HOME must be the notebooklm ROOT (not the profile directory):
 # notebooklm-py >= 0.7 keeps sessions under <home>/profiles/<name>/ and resolves
 # the profile itself. Pointing it at profiles/default made 0.7.x report
