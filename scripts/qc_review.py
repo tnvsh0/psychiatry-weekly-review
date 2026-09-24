@@ -268,6 +268,19 @@ def _salvage(text: str, max_attempts: int = 60) -> dict | None:
     return None
 
 
+# How much of the episode's source file the judge is shown.
+#
+# The judge must see EVERYTHING the episode was built from: whatever falls
+# outside this window it reports as "not in the source", which is how a
+# truncated file turns clean teaching into high-severity findings. It is
+# therefore tied to MAX_ARTICLE_CHARS in weekly_review.py — raise one and the
+# other has to follow.
+#
+# 60 KB is what fits: the judge prompt reaches agy as a single argv entry,
+# Linux caps that at 128 KB, and the instructions themselves are ~25 KB.
+JUDGE_SOURCE_CHARS = 60000
+
+
 def judge_episode(client, types, mp3: Path, source_md: str, model: str) -> dict | None:
     """Upload the MP3, ask the judge to listen + score against the source.
     Returns the parsed verdict dict, or None on failure.
@@ -279,7 +292,7 @@ def judge_episode(client, types, mp3: Path, source_md: str, model: str) -> dict 
         from agy_judge import judge_with_agy
         verdict, how = judge_with_agy(
             f"{JUDGE_SYSTEM}\n\n{PODCAST_SPEC}\n\n{JUDGE_INSTRUCTIONS}\n\n"
-            f"=== SOURCE ABSTRACTS ===\n{source_md[:18000]}\n\n"
+            f"=== SOURCE ABSTRACTS ===\n{source_md[:JUDGE_SOURCE_CHARS]}\n\n"
             "The attachment is the episode AUDIO. Listen to it in full, then "
             "reply with ONLY the JSON verdict object.",
             [mp3])
@@ -308,7 +321,7 @@ def judge_episode(client, types, mp3: Path, source_md: str, model: str) -> dict 
 
         prompt = (
             f"{PODCAST_SPEC}\n\n{JUDGE_INSTRUCTIONS}\n\n"
-            f"=== SOURCE ABSTRACTS ===\n{source_md[:18000]}"
+            f"=== SOURCE ABSTRACTS ===\n{source_md[:JUDGE_SOURCE_CHARS]}"
         )
         resp = client.models.generate_content(
             model=model,
