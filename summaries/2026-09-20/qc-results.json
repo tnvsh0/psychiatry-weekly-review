@@ -222,13 +222,13 @@
     "fluency": 5,
     "discrepancies": [
       {
-        "said": "יש התווית נגד מוחלטת למטופלים עם הפרעות אכילה פעילות",
-        "source": "These medications should generally be avoided in individuals with active EDs",
+        "said": "ההתערבות כללה דברים כמו חינוך פסיכודינמי, מעקב תרופתי, טאי צ'י וכישורי חיים. (סביב דקה 08:16)",
+        "source": "המאמר מציין שההתערבות כללה פסיכואדיוקציה (psychoeducation) - הדרכה פסיכו-חינוכית, ולא חינוך פסיכודינמי.",
         "severity": "high"
       },
       {
-        "said": "ההתערבות כללה דברים כמו חינוך פסיכודינמי",
-        "source": "psychoeducation",
+        "said": "יש התוויית נגד מוחלטת למטופלים עם הפרעות אכילה פעילות. (סביב דקה 03:49)",
+        "source": "המאמר ממליץ באופן כללי להימנע ממתן התרופות (generally be avoided), אך אינו מגדיר זאת כהתוויית נגד מוחלטת (absolute contraindication).",
         "severity": "high"
       }
     ],
@@ -315,22 +315,11 @@
     }
   },
   "psychotherapy_part1": {
-    "verdict": "review",
-    "accuracy": 3,
+    "verdict": "ok",
+    "accuracy": 5,
     "coverage": 5,
     "fluency": 5,
-    "discrepancies": [
-      {
-        "said": "התוכנית נקראת GSMRT (סביב 04:34)",
-        "source": "במקור מופיע שם התוכנית כ-GC-MRT.",
-        "severity": "high"
-      },
-      {
-        "said": "קיבלו טיפול בחשיפה ממושכת PE וייעוץ צמיחתי לפוסט טראומה (סביב 10:37)",
-        "source": "במקור מצוין ייעוץ תמיכתי (supportive counselling) ולא ייעוץ צמיחתי.",
-        "severity": "high"
-      }
-    ],
+    "discrepancies": [],
     "lost_content": {
       "any": false,
       "details": []
