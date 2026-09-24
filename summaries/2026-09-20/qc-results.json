@@ -1,16 +1,10 @@
 {
   "behavioral_sciences": {
-    "verdict": "problem",
-    "accuracy": 4,
+    "verdict": "ok",
+    "accuracy": 5,
     "coverage": 5,
-    "fluency": 5,
-    "discrepancies": [
-      {
-        "said": "נאמר כי \"ובבלוקים שבהם הקונפליקטים היו שכיחים, ההתאמה הספציפית מצעד לצעד הפכה גדולה יותר\" (03:59)",
-        "source": "במקור נכתב בדיוק ההפך: ההתאמה ההתנהגותית הייתה קטנה יותר (smaller) בבלוקים עם שיעור גבוה של קונפליקטים (this behavioral adjustment was smaller in blocks with a high versus low proportion of metacognitive conflict trials).",
-        "severity": "high"
-      }
-    ],
+    "fluency": 4,
+    "discrepancies": [],
     "lost_content": {
       "any": false,
       "details": []
