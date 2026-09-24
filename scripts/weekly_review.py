@@ -3465,6 +3465,10 @@ def main(mode: str = "all"):
         # fires every week for a working feature is an alarm you stop reading.
         for nb in deferred_gen:
             nb["deferred"] = True
+    # Pause between generation starts so Google's rate limiter does not see a
+    # burst. A heavy reviews day queues ~20; on 2026-09-20, at 25 seconds
+    # apart, it refused seven of them.
+    stagger = 45 if len(to_generate) > 12 else 25
     for nb in to_generate:
         if nb["nb_id"]:
             # Append any spotlight↔cluster cross-reference directive.
@@ -3481,18 +3485,24 @@ def main(mode: str = "all"):
             nb["artifact_id"] = artifact_id
             status = f"artifact {artifact_id}" if artifact_id else "FAILED to start"
             print(f"  {'OK' if artifact_id else 'FAIL'}: {nb['topic']['label_en']} -> {status}")
-            # Pause between generation starts to avoid NotebookLM rate-limiting
-            # (a heavy reviews day can queue a dozen-plus generations).
-            time.sleep(25)
+            time.sleep(stagger)
 
-    # Second-chance pass: any episode that still has no artifact was rate-limited
-    # or errored at start. Retry it once, after a cool-off, before we move on —
-    # otherwise its articles get a summary but never a podcast.
-    failed_start = [nb for nb in nb_infos if nb.get("nb_id") and not nb.get("artifact_id")]
-    if failed_start:
-        print(f"\n🔁 {len(failed_start)} generation(s) failed to start — "
-              f"cooling off 120s then retrying...")
-        time.sleep(120)
+    # Second-chance passes: an episode with no artifact was rate-limited or
+    # errored at start, and without a retry its articles get a summary but never
+    # a podcast. One 120-second cool-off was not enough — on 2026-09-20 the same
+    # seven episodes were refused twice, two minutes apart, and only Monday's
+    # backfill recovered them, a day late. Google's limiter needs longer than
+    # that, so back off properly: 5, then 15, then 30 minutes. Fifty minutes of
+    # waiting in the worst case, inside a run window that ends hours later.
+    for cool_off in (300, 900, 1800):
+        failed_start = [nb for nb in nb_infos
+                        if nb.get("nb_id") and not nb.get("artifact_id")
+                        and not nb.get("deferred")]
+        if not failed_start:
+            break
+        print(f"\n🔁 {len(failed_start)} generation(s) did not start — "
+              f"cooling off {cool_off // 60} min, then retrying...")
+        time.sleep(cool_off)
         for nb in failed_start:
             base_prompt = nb["topic"]["podcast_prompt"] + nb.get("xref_directive", "")
             nb["artifact_id"] = start_podcast(
@@ -3500,7 +3510,7 @@ def main(mode: str = "all"):
             )
             print(f"  {'OK' if nb['artifact_id'] else 'STILL FAILING'}: "
                   f"{nb['topic']['label_en']}")
-            time.sleep(40)
+            time.sleep(45)
 
     # ── Phase 5: Wait for all podcasts (parallel on Google's side) ────────────
     # Long-format podcasts take longer to render. Raised 75 -> 100 min: with the
