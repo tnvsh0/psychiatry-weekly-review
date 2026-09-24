@@ -217,13 +217,18 @@
   },
   "general_psychiatry_clinical_part1": {
     "verdict": "problem",
-    "accuracy": 4,
+    "accuracy": 3,
     "coverage": 5,
     "fluency": 5,
     "discrepancies": [
       {
-        "said": "יצא בעצם מסמך המלצות, והתובנה הכי מרכזית היא הסכנה הגדולה שבלתת לגיטימציה לדפוסי אכילה מצמצמים... רופא שנותן את התרופה להשמנה לא יכול סתם להסתכל על ה-BMI או הסוכר, הוא חייב לעשות סקירה פסיכיאטרית.",
-        "source": "לא מופיע במקור (התקציר קטוע ואינו מכיל את התוצאות והמסקנות של המחקר)",
+        "said": "יש התווית נגד מוחלטת למטופלים עם הפרעות אכילה פעילות",
+        "source": "These medications should generally be avoided in individuals with active EDs",
+        "severity": "high"
+      },
+      {
+        "said": "ההתערבות כללה דברים כמו חינוך פסיכודינמי",
+        "source": "psychoeducation",
         "severity": "high"
       }
     ],
@@ -233,19 +238,19 @@
     }
   },
   "general_psychiatry_clinical_part2": {
-    "verdict": "problem",
-    "accuracy": 4,
+    "verdict": "ok",
+    "accuracy": 5,
     "coverage": 5,
-    "fluency": 5,
+    "fluency": 4,
     "discrepancies": [
       {
-        "said": "ואפילו שים לב, הפרעות חרדה אצל 14.9% מהמשתתפים. רגע, חרדה נכנסת תחת נוירו-מגוון? כן, וזה לא נגמר. גם דיסקלקוליה הייתה שם אצל 12.7%.",
-        "source": "associated with neurodivergence and neurodiversity, most commonly autism (n = 92 [68.7%]) ... anxiety disorder (n = 20 [14.9%]), and dyscalculia (n = 17 [12.7%]). במקור, האחוזים (14.9% ו-12.7%) מתייחסים לשיעור מתוך 134 המחקרים, ולא לאחוז מתוך 151,134 המשתתפים כפי שנאמר.",
-        "severity": "high"
+        "said": "צוות המחקר של מרי (Mary)",
+        "source": "שם החוקר הוא Murray",
+        "severity": "low"
       },
       {
-        "said": "הגיית המילה Psychiatry / Psychiatrica בשמות כתבי העת נשמעת כ-'סקיאטרי' / 'סקיאטריקה' (למשל: וורלד סקיאטרי, ג'אמה סקיאטרי, אקטה סקיאטריקה).",
-        "source": "Psychiatry / Psychiatrica",
+        "said": "צוות מחקר בראשות בלטו (Blato/Belato)",
+        "source": "שם החוקר הוא Bellato",
         "severity": "low"
       }
     ],
