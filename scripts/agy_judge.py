@@ -33,7 +33,9 @@ import os
 import re
 import shutil
 import subprocess
+import tempfile
 import time
+import urllib.request
 from pathlib import Path
 
 # Pro-class is not a preference here, it is the only tier that works; see (4).
@@ -157,12 +159,75 @@ def ask_agy(system: str, user: str, model: str | None = None,
                 input=f"{system}\n\n{user}",
                 capture_output=True, text=True, encoding="utf-8",
                 errors="replace", timeout=_SUBPROCESS_TIMEOUT_S)
+            quota = _quota_exhausted(proc.stdout, proc.stderr)
+            if quota:
+                print(f"  {quota}")
+                return None
             reply = (json.loads(proc.stdout or "{}").get("response") or "").strip()
             if reply:
                 return reply
         except (subprocess.TimeoutExpired, json.JSONDecodeError):
             continue
     return None
+
+
+_QUOTA_MARKERS = ("RESOURCE_EXHAUSTED", "Individual quota reached",
+                  "quota reached", "429")
+
+
+def _quota_exhausted(stdout: str | None, stderr: str | None) -> str | None:
+    """The subscription's daily allowance, or None if that is not the problem.
+
+    agy answers a quota refusal with `status: ERROR` and an empty response, which
+    is indistinguishable from its other failures unless the error text is read.
+    On 2026-09-25 and 09-26 that cost nine episodes: every judge call failed,
+    every episode was held (correctly), and the logs said only "empty response",
+    so nothing explained that the account had simply run out until someone ran
+    agy by hand. The allowance had gone on a large re-judging campaign two days
+    earlier.
+
+    Retrying is pointless here — the reset is hours or days away — so the caller
+    stops immediately, and the message carries the reset time agy reports.
+    """
+    blob = f"{stdout or ''}\n{stderr or ''}"
+    if not any(m in blob for m in _QUOTA_MARKERS):
+        return None
+    when = re.search(r"Resets in ([0-9hms]+)", blob)
+    msg = ("agy's subscription quota is exhausted"
+           + (f" — resets in {when.group(1)}" if when else "")
+           + ". No verdict is possible until then, so episodes will be held. "
+             "Judge them afterwards with qc_drafts.py / --judge-only.")
+    _notify_quota_once(when.group(1) if when else "?")
+    return msg
+
+
+def _notify_quota_once(resets_in: str) -> None:
+    """One ntfy message per exhaustion, not one per episode.
+
+    Without this the only signal is a held episode, which looks exactly like a
+    bad episode. The owner needs to know the difference: one is the gate working,
+    the other is the gate blind.
+    """
+    topic = (os.environ.get("NTFY_TOPIC") or "").strip()
+    if not topic:
+        return
+    marker = Path(tempfile.gettempdir()) / f"agy-quota-{resets_in}.sent"
+    try:
+        if marker.exists():
+            return
+        marker.write_text("sent", encoding="utf-8")
+    except OSError:
+        pass
+    body = (f"מכסת agy נגמרה ומתאפסת בעוד {resets_in}.\n\n"
+            f"עד אז אין שופט, וכל פרק ייעצר ולא יתפרסם. "
+            f"אחרי האיפוס אפשר לשפוט את מה שנעצר ולפרסם את מה שעובר.")
+    req = urllib.request.Request(
+        f"https://ntfy.sh/{topic}", data=body.encode("utf-8"),
+        headers={"Title": "agy: quota exhausted", "Priority": "high"})
+    try:
+        urllib.request.urlopen(req, timeout=15).read()
+    except Exception:
+        pass
 
 
 def judge_with_agy(prompt: str, attachments: list[Path],
@@ -186,6 +251,11 @@ def judge_with_agy(prompt: str, attachments: list[Path],
         if verdict is not None:
             return verdict, (last if attempt == 1
                              else f"{last} (on attempt {attempt})")
+        # Retries help with the intermittent failures; they cannot conjure
+        # quota. Stop, so a whole run's worth of episodes does not spend three
+        # attempts each discovering the same thing.
+        if last.startswith("agy's subscription quota"):
+            return None, last
     return None, last
 
 
@@ -201,6 +271,10 @@ def _one_call(exe: str, refs: str, prompt: str, model: str | None,
             errors="replace", timeout=_SUBPROCESS_TIMEOUT_S)
     except subprocess.TimeoutExpired:
         return None, f"agy did not return within {_SUBPROCESS_TIMEOUT_S}s"
+
+    quota = _quota_exhausted(proc.stdout, proc.stderr)
+    if quota:
+        return None, quota
 
     try:
         env = json.loads(proc.stdout or "{}")
