@@ -197,8 +197,49 @@ def _quota_exhausted(stdout: str | None, stderr: str | None) -> str | None:
            + (f" — resets in {when.group(1)}" if when else "")
            + ". No verdict is possible until then, so episodes will be held. "
              "Judge them afterwards with qc_drafts.py / --judge-only.")
+    _remember_quota(when.group(1) if when else "")
     _notify_quota_once(when.group(1) if when else "?")
     return msg
+
+
+# Where the reset time is remembered, so other parts of the pipeline can ask
+# "is the judge blind right now?" without spending a call to find out. In the
+# cache directory rather than /tmp: the VM reboots for every scheduled run, and
+# a marker that disappears on reboot would be forgotten exactly when it matters.
+_QUOTA_MARKER = Path("/home/User/.cache/agy-quota-until")
+
+
+def _parse_reset(resets_in: str) -> float:
+    """'82h6m1s' -> seconds."""
+    total = 0.0
+    for value, unit in re.findall(r"(\d+)([hms])", resets_in or ""):
+        total += int(value) * {"h": 3600, "m": 60, "s": 1}[unit]
+    return total
+
+
+def quota_blocked_for() -> float:
+    """Seconds until agy's quota resets, or 0 when it is not known to be out.
+
+    Callers use it to skip work that cannot possibly succeed — regenerating a
+    held episode while no judge exists produces a second unjudged episode and
+    nothing else.
+    """
+    try:
+        until = float(_QUOTA_MARKER.read_text(encoding="utf-8").strip())
+    except (OSError, ValueError):
+        return 0.0
+    return max(0.0, until - time.time())
+
+
+def _remember_quota(resets_in: str) -> None:
+    secs = _parse_reset(resets_in)
+    if not secs:
+        return
+    try:
+        _QUOTA_MARKER.parent.mkdir(parents=True, exist_ok=True)
+        _QUOTA_MARKER.write_text(str(time.time() + secs), encoding="utf-8")
+    except OSError:
+        pass
 
 
 def _notify_quota_once(resets_in: str) -> None:

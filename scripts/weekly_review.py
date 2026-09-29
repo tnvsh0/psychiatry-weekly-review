@@ -825,20 +825,37 @@ TONE_GUIDANCE = (
 
 # ── Step 1: PubMed Search ──────────────────────────────────────────────────────
 def _esearch(query: str, retmax: int = 8) -> list[str]:
-    """Run one esearch query. Returns list of PMIDs. Sleeps 0.4s after."""
-    try:
-        r = requests.get(PUBMED_BASE + "esearch.fcgi", params={
-            "db": "pubmed", "term": query,
-            "reldate": 8, "datetype": "edat",
-            "retmax": retmax, "retmode": "json", "sort": "relevance",
-        }, timeout=30)
-        r.raise_for_status()
-        return r.json().get("esearchresult", {}).get("idlist", [])
-    except Exception as e:
-        print(f"    Warning: esearch error: {e}")
-        return []
-    finally:
-        time.sleep(0.4)
+    """Run one esearch query. Returns list of PMIDs. Sleeps 0.4s after.
+
+    NCBI answers 500 when it is overloaded or when it decides we are asking too
+    often, and it did so for EVERY query on 2026-09-27: the run found no
+    articles at all, gave up, and the week produced nothing. A 500 from eutils
+    is almost always transient, so each query gets three tries with a widening
+    pause before it counts as empty.
+    """
+    last = None
+    for attempt, pause in enumerate((2, 6, 15), start=1):
+        try:
+            r = requests.get(PUBMED_BASE + "esearch.fcgi", params={
+                "db": "pubmed", "term": query,
+                "reldate": 8, "datetype": "edat",
+                "retmax": retmax, "retmode": "json", "sort": "relevance",
+            }, timeout=30)
+            r.raise_for_status()
+            time.sleep(0.4)
+            return r.json().get("esearchresult", {}).get("idlist", [])
+        except Exception as e:
+            last = e
+            status = getattr(getattr(e, "response", None), "status_code", None)
+            # A malformed query fails the same way every time; only wait out the
+            # failures that are worth waiting out.
+            if status is not None and status < 500 and status != 429:
+                break
+            if attempt < 3:
+                time.sleep(pause)
+    print(f"    Warning: esearch error: {last}")
+    time.sleep(0.4)
+    return []
 
 
 # ── Non-research PubTypes — articles to DROP from the feed ───────────────────
@@ -3309,17 +3326,30 @@ def main(mode: str = "all"):
     # review episodes; the review channel covers everything in scope.
     if do_reviews:
         past_pmids = load_recent_pmids(weeks_back=4, kinds="reviews")
-        week_pmids = set(past_pmids)
-        print("\U0001f50d Searching PubMed for review clusters...")
-        for topic in TOPICS:
-            articles = search_topic(topic, exclude_pmids=week_pmids)
-            if not articles:
-                print(f"  WARNING: No articles for {topic['label_en']}, skipping.")
-                continue
-            for a in articles:
-                week_pmids.add(str(a.get("pmid", "")))
-            all_articles.extend(articles)
-            nb_infos.append(_mk_nb(topic, articles))
+        # PubMed can be down for the whole search and come back minutes later.
+        # On 2026-09-27 every query returned 500, the run found nothing, exited,
+        # and the week produced no episodes at all — while eutils was serving
+        # again within the hour. Searching once is not worth a lost week.
+        for round_no, wait in enumerate((600, 900, 0), start=1):
+            week_pmids = set(past_pmids)
+            all_articles.clear()
+            nb_infos.clear()
+            print("\U0001f50d Searching PubMed for review clusters"
+                  + (f" (attempt {round_no})" if round_no > 1 else "") + "...")
+            for topic in TOPICS:
+                articles = search_topic(topic, exclude_pmids=week_pmids)
+                if not articles:
+                    print(f"  WARNING: No articles for {topic['label_en']}, skipping.")
+                    continue
+                for a in articles:
+                    week_pmids.add(str(a.get("pmid", "")))
+                all_articles.extend(articles)
+                nb_infos.append(_mk_nb(topic, articles))
+            if nb_infos or not wait:
+                break
+            print(f"  PubMed returned nothing for any cluster — waiting "
+                  f"{wait // 60} min and searching again.")
+            time.sleep(wait)
 
         # Papers seen in an earlier run with a title but no abstract: if PubMed
         # has published their abstract since, fold them back into their cluster
