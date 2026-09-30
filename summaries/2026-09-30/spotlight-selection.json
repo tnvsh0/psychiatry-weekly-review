@@ -1,0 +1,73 @@
+[
+  {
+    "pmid": "42804186",
+    "channel": "child",
+    "score": 4,
+    "source_topic_id": "child_adolescent_highimpact",
+    "article": {
+      "pmid": "42804186",
+      "title": "Screen Use and Child and Adolescent Development and Mental Health Outcomes: A Quantitative Umbrella Review",
+      "journal": "JAMA Pediatr",
+      "authors": "Al-Jbouri E et al.",
+      "pub_date": "2026 Sep 28",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42804186/",
+      "topic": "Child & Adolescent Psychiatry — High Impact",
+      "abstract": "IMPORTANCE: Given the ubiquity of screens in children's lives and public concerns about potential effects on development and mental health, a consolidated, up-to-date synthesis of empirical evidence linking screen exposure with development and mental health outcomes is needed to inform stakeholders and policymakers.\n\nOBJECTIVE: To synthesize and quantify meta-analytic associations between screen-based media exposure and developmental outcomes among individuals aged 18 years or younger using an umbrella review methodology.\n\nDATA SOURCES: Embase, MEDLINE, and PsycINFO databases were systematically searched from inception to November 25, 2025.\n\nSTUDY SELECTION: Meta-analyses of population-based samples of children aged 18 years or younger that were published in English were included.\n\nDATA EXTRACTION AND SYNTHESIS: Data from 23 meta-analyses were extracted and synthesized. This umbrella review adhered to the guidelines of the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) reporting guideline. Relevant data from each eligible meta-analysis were extracted by 2 independent reviewers at the meta-analytic level and the primary study level, with effect sizes converted to Pearson r for reanalysis.\n\nMAIN OUTCOMES AND MEASURES: The primary outcomes were academic functioning, cognitive skills, socioemotional development, and mental health.\n\nRESULTS: Data from 23 meta-analyses, representing 2 817 252 children from 64 countries, were extracted and synthesized. Screen-based media exposure was associated with lower academic achievement (r = -0.15; 95% CI, -0.23 to -0.07) and language skills (r = -0.14; 95% CI, -0.18 to -0.10) and with higher internalizing behavior (general screen use: r = 0.10; 95% CI, 0.07-0.13; social media use: r = 0.09; 95% CI, 0.06-0.12) and externalizing behavior (r = 0.11; 95% CI, 0.08-0.14), emotional problems (r = 0.30; 95% CI, 0.08-0.50), and peer problems (r = 0.28; 95% CI, 0.04-0.49). Screen-based media exposure was not associated with executive functioning (r = 0.01; 95% CI, -0.09 to 0.11), prosociality (r = -0.22; 95% CI, -0.43 to 0.01), or mathematics (r = -0.10; 95% CI, -0.23 to 0.03), science (r = -0.03; 95% CI, -0.15 to 0.11), or reading (r = -0.02; 95% CI, -0.12 to 0.09) scores. Screen type, subtype of behavior problems, publication year, and age moderated some of these associations.\n\nCONCLUSIONS AND RELEVANCE: This umbrella review identified associations between screen use and several domains of children's developmental health outcomes in population-based studies. These findings can inform the development and refinement of evidence-informed guidelines and policies on children's screen-based media use issued by medical and governmental organizations.",
+      "impact_factor": 27.6,
+      "pubtype": [
+        "Journal Article"
+      ],
+      "study_type_he": "מאמר מחקרי",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42791269",
+    "channel": "psychiatry",
+    "score": 6,
+    "source_topic_id": "general_psychiatry_bio_part2",
+    "article": {
+      "pmid": "42791269",
+      "title": "Long-Read sequencing in psychiatric omics: a systematic review of current evidence",
+      "journal": "Mol Psychiatry",
+      "authors": "Real Karia BT et al.",
+      "pub_date": "2026 Sep 25",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42791269/",
+      "topic": "Biological Psychiatry",
+      "abstract": "BACKGROUND: The comprehensive elucidation of genomic relevance for mental disorder was, until recently, constrained by the limitations of microarrays or short-read sequencing (SRS). Long-read sequencing (LRS) provides access to complex classes of genetic variation and genomic architecture that are largely obscured in SRS approaches, making it a powerful tool for uncovering missing heritability and mechanistic insights in mental disorders.\n\nOBJECTIVE: We synthesize current evidence on the application of LRS technologies across genomic, transcriptomic, and methylomic studies of mental disorders. The systematic review was conducted in accordance with PRISMA guidelines.\n\nRESULTS AND DISCUSSION: The literature search yielded 2,166 articles, and 14 were included in the review after applying inclusion and exclusion criteria. From a genomic perspective, LRS consistently outperformed SRS, increasing structural variant (SV) and de novo mutation (DNM) detection, particularly resolving medium-sized SVs and large inversions in repetitive regions. Transcriptomic studies established LRS as essential for achieving full-length transcript resolution, uncovering substantial novel isoform diversity and widespread alternative splicing events in the human neocortex. Crucially, LRS demonstrated that psychiatric risk is often conferred by dysregulated alternative splicing leading to isoform-specific imbalances, rather than altered total gene expression. At the epigenomic level, LRS enabled the haplotype-specific mapping of Allele-Specific Methylation within genome-wide significant loci, linking genetic risk to epigenetic dysregulation. Overall, LRS represents a significant technological advancement, providing the high-resolution molecular detail necessary to begin characterizing the complex relationships between genetic variation, splicing dynamics, and epigenetic modifications, thereby helping to contextualize psychiatric risk associations for future translational research.",
+      "impact_factor": 13.4,
+      "pubtype": [
+        "Journal Article",
+        "Systematic Review"
+      ],
+      "study_type_he": "סקירה שיטתית",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42810346",
+    "channel": "psychiatry",
+    "score": 4,
+    "source_topic_id": "neuroscience_part1",
+    "article": {
+      "pmid": "42810346",
+      "title": "Time-resolved spectral parameterization: Recommendations and guidelines",
+      "journal": "Neuron",
+      "authors": "Cellier D et al.",
+      "pub_date": "2026 Sep 29",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42810346/",
+      "topic": "Neuroscience",
+      "abstract": "Non-oscillatory, aperiodic activity, is an emerging signal of interest whose physiological and functional origins are just beginning to be probed for their potential link to systems-level physiology and cognition. But there are several pernicious, practical, and statistical hazards to be aware of when deploying spectral parameterization tools for disentangling oscillations and aperiodic activity over short, noisy time windows. In this primer, we provide a set of recommendations and guidelines for time-resolved and event-related spectral parameterization to help researchers meet these challenges. Specifically, we provide recommendations on how to optimize and assess model fits, how to report analysis decisions to maximize reproducibility, and what to do when spectral parameterization fails to identify the presence of oscillations. These recommendations will help guide the study of the distinct dynamics of periodic and aperiodic neural activity in cognition, behavior, and disease at fine timescales.",
+      "impact_factor": 17.2,
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "study_type_he": "מאמר סקירה",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  }
+]
