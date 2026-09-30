@@ -33,7 +33,6 @@ import os
 import re
 import shutil
 import subprocess
-import tempfile
 import time
 import urllib.request
 from pathlib import Path
@@ -248,15 +247,26 @@ def _notify_quota_once(resets_in: str) -> None:
     Without this the only signal is a held episode, which looks exactly like a
     bad episode. The owner needs to know the difference: one is the gate working,
     the other is the gate blind.
+
+    "Once" is kept by a timestamp, not by the message text. The first version
+    keyed the marker on agy's countdown ("81h59m12s"), which is different on
+    every single call — so a run of 21 episodes sent 21 identical alerts on
+    2026-09-30. The marker now holds the reset time itself: while that is still
+    in the future, the owner has already been told.
     """
     topic = (os.environ.get("NTFY_TOPIC") or "").strip()
     if not topic:
         return
-    marker = Path(tempfile.gettempdir()) / f"agy-quota-{resets_in}.sent"
+    marker = _QUOTA_MARKER.with_name("agy-quota-notified")
     try:
-        if marker.exists():
+        if float(marker.read_text(encoding="utf-8").strip()) > time.time():
             return
-        marker.write_text("sent", encoding="utf-8")
+    except (OSError, ValueError):
+        pass
+    try:
+        marker.parent.mkdir(parents=True, exist_ok=True)
+        marker.write_text(str(time.time() + (_parse_reset(resets_in) or 3600)),
+                          encoding="utf-8")
     except OSError:
         pass
     body = (f"מכסת agy נגמרה ומתאפסת בעוד {resets_in}.\n\n"
