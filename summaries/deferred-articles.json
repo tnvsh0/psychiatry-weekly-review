@@ -1,37 +1,5 @@
 [
   {
-    "pmid": "42636851",
-    "title": "Relapse or rebound: the case for personalisation in antipsychotic discontinuation",
-    "journal": "Lancet Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42636851/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-08-31"
-  },
-  {
-    "pmid": "42646922",
-    "title": "Adapting Family-Based Psychosis Care to the Digital Home",
-    "journal": "JAMA Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42646922/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-08-31"
-  },
-  {
-    "pmid": "42640456",
-    "title": "The stalled moment: Parkinson's disease and the timed self",
-    "journal": "Brain",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42640456/",
-    "topic_id": "neuroscience",
-    "first_seen": "2026-08-31"
-  },
-  {
-    "pmid": "42634592",
-    "title": "When does relapse risk become acceptable in MOG antibody-associated disease?",
-    "journal": "Brain",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42634592/",
-    "topic_id": "neuroscience",
-    "first_seen": "2026-08-31"
-  },
-  {
     "pmid": "42675562",
     "title": "New Data Relevant to Treating Substance Use Disorders, Bipolar Disorder, and Pediatric Anxiety Disorders",
     "journal": "Am J Psychiatry",
@@ -246,5 +214,125 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42749380/",
     "topic_id": "general_psychiatry_bio",
     "first_seen": "2026-09-20"
+  },
+  {
+    "pmid": "42804202",
+    "title": "Innovative Opportunities to Reduce Risky Firearm Behaviors-A Novel Construct and Promising Interventions",
+    "journal": "JAMA Pediatr",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42804202/",
+    "topic_id": "child_adolescent_highimpact",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42776552",
+    "title": "Deaf and Hard-of-Hearing Competency in Psychiatric Practice",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42776552/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42776513",
+    "title": "Placental Growth Factor Trajectories During Pregnancy and Child ADHD",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42776513/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42773525",
+    "title": "Defining Near-Term Treatment Goals for Benzodiazepine Use in Clinical Practice",
+    "journal": "Am J Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42773525/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42776555",
+    "title": "The Next Generation of Psychiatric Research-A Special Collection by Early Career Investigators",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42776555/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42776545",
+    "title": "Reducing Ultraprocessed Foods From the Diets of Patients With Depression: A Pilot Crossover Trial",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42776545/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42776542",
+    "title": "Structural Brain Volumes and Delay Discounting",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42776542/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42773526",
+    "title": "Home-Based Neuromodulation for Depression: Rethinking Access and Oversight",
+    "journal": "Am J Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42773526/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42802939",
+    "title": "From network observation to network intervention in Alzheimer's disease",
+    "journal": "Brain",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42802939/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42809478",
+    "title": "Abstracts ICPM World Congress 2026",
+    "journal": "Psychother Psychosom",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42809478/",
+    "topic_id": "psychotherapy",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42776055",
+    "title": "Tribute: Thank you, Jean-Michel!",
+    "journal": "Int J Psychoanal",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42776055/",
+    "topic_id": "psychotherapy",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42776051",
+    "title": "Marilia Aisenstein, my friend",
+    "journal": "Int J Psychoanal",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42776051/",
+    "topic_id": "psychotherapy",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42776045",
+    "title": "Response to Michel Sanchez Cardenas",
+    "journal": "Int J Psychoanal",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42776045/",
+    "topic_id": "psychotherapy",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42776052",
+    "title": "\"Sometimes I think and sometimes I am\": On the article by Giuseppe Civitarese \"Upgrade to PI.4, or rethinking projective identification from the vertex of the analytic field\" (Civitarese, 2025)",
+    "journal": "Int J Psychoanal",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42776052/",
+    "topic_id": "psychotherapy",
+    "first_seen": "2026-09-30"
+  },
+  {
+    "pmid": "42803523",
+    "title": "Relating metabolic constraints with human-level cognitive architecture",
+    "journal": "Behav Brain Sci",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42803523/",
+    "topic_id": "behavioral_sciences",
+    "first_seen": "2026-09-30"
   }
 ]

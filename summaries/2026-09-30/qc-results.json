@@ -1,0 +1,297 @@
+{
+  "child_adolescent_core_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_core_part2": {
+    "verdict": "problem",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "\"היו שם 778 משתתפים בגילי 6 עד 25\"",
+        "source": "במקור מצוין 798 משתתפים (798 participants)",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "\"הם סקרו 8 מחקרי RCT שכללו בסך הכל 1044 משפחות\"",
+        "source": "במקור מצוין 1,094 משפחות (1,094 families)",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "הם כולם הגיעו למיון בגלל פציעה",
+        "source": "התקציר מציין שהמשתתפים פנו לטיפול בחדר מיון (במרכז טראומה), אך לא נאמר שכולם הגיעו ספציפית בגלל פציעה.",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "הם בדקו את המשתנים המתווכים. איזה משתנים? סוג המסך, והגיל.",
+        "source": "התקציר מתייחס למשתנים אלו כמשתנים ממתנים (moderated) ולא כמתווכים.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development": {
+    "verdict": "problem",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "חיוביות הדדית נקשרה לדירוגי קשב גבוהים יותר של הילד על ידי המורים בגן (03:51)",
+        "source": "הטקסט מציין קשר שלילי: 'negatively associated with teacher-rated attention'",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "התייחסות למילה 'blunted' כאל חלק משם המדד: 'המדד שנקרא blunted monetary RewP' (11:39)",
+        "source": "המדד נקרא RewP, והמילה 'blunted' מתארת את התוצאה (תגובתיות מופחתת), לא את שם המדד.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part1": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "מחקר אחד סרק מטופלים שעתיים אחרי העירוי. מחקר אחר סרק אחרי 24 שעות.",
+        "source": "לא מופיע במקור (התקציר מציין רק 'methodological heterogeneity in timing' ללא נקיבת שעות ספציפיות)",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "קבוצת המחקר של לאו (Lau) ושותפיו",
+        "source": "שם המחבר הוא Liu (ליו)",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part2": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "הם גם מצאו קשר סיבתי ל-OCD ו-PTSD. פי 2 ויותר סיכון.",
+        "source": "Mendelian randomization supported potential effects of CM on increased risk for... obsessive-compulsive disorder (OR = 1.76), and post-traumatic stress disorder (OR = 1.24).",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "צוות בראשות Godet",
+        "source": "Gaudette EV et al.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "תראי, את קולעת בדיוק למסקנה של החוקרים. התרבות שם שמה דגש כל כך חזק על הרמוניה ועל הצלחה, שאנשים שסובלים פשוט מסתירים את זה בתוך המשפחה. (סביבות 11:24)",
+        "source": "התקציר מציין כי גורמים סוציו-תרבותיים וסטיגמה סביב בריאות הנפש מקשים על הטיפול, אך אינו מזכיר את המילים 'הרמוניה', 'הצלחה' או 'הסתרה בתוך המשפחה' כמסקנת החוקרים.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part3": {
+    "verdict": "problem",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "יחס סיכויים, ה-OR המתוקנן במלואו של הנתון הזה הוא 9.2. המשמעות של זה היא שצעיר עם היסטוריה של פגיעה כזו, נמצא בסיכון גבוה פי תשעה וחצי בערך למות מהתאבדות",
+        "source": "fully adjusted OR, 9.2",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "זה גם הפחית ביטוי של מולקולות MHC מינוס 2 במיקרוגליה במוח",
+        "source": "המאמר מציין ירידה בביטוי של MHC-II (כלומר קלאס 2, ולא 'מינוס 2')",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "משהו שנקרא DCAL",
+        "source": "DCTAL (dynamic compressive tibial axial loading)",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "עיקרון שנקרא נורמליזציה מחלקת, או device of normalization",
+        "source": "divisive normalization",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part1": {
+    "verdict": "problem",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "ברגע שאת מכניסה אדם למסגרת של 8 שבועות שנותנת לו תיקוף... את כבר מורידה חלק עצום מהעומס הזה",
+        "source": "The CBSM and ACT interventions each consisted of eight in-person sessions, conducted twice a week (כלומר משך ההתערבות הוא 4 שבועות, ולא 8 שבועות)",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part3": {
+    "verdict": "problem",
+    "accuracy": 3,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "גודל האפקט היה SMD של 0.11 מיליוואט.",
+        "source": "SMD = 0.11",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "עם b שווה למינוס 6.61",
+        "source": "b = 6.61",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}

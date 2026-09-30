@@ -132,13 +132,15 @@
     "full_prompt": "",
     "held": false,
     "release_tag": "weekly-2026-09-20-child_adolescent_misc_part1",
-    "label_he": "ילדים ומתבגרים — מגוון — חלק 1/2"
+    "label_he": "ילדים ומתבגרים — מגוון — חלק 1/2",
+    "held_retries": 2
   },
   "child_adolescent_misc_part2": {
     "nb_id": "0c5a2784-eaf2-4e8c-9afe-efdee2e98d30",
     "full_prompt": "",
     "held": false,
     "release_tag": "weekly-2026-09-20-child_adolescent_misc_part2",
-    "label_he": "ילדים ומתבגרים — מגוון — חלק 2/2"
+    "label_he": "ילדים ומתבגרים — מגוון — חלק 2/2",
+    "held_retries": 1
   }
 }
