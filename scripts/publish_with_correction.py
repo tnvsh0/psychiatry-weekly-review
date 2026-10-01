@@ -131,7 +131,11 @@ def _prepend(correction: Path, episode: Path, out: Path) -> bool:
         capture_output=True, text=True, timeout=3600,
     )
     if r.returncode != 0 or not out.exists() or out.stat().st_size == 0:
-        print(f"  ffmpeg failed: {r.stderr.strip()[-300:]}")
+        # The last lines, not the last characters: ffmpeg's banner and stream
+        # dump are long, and a 300-character tail cut the actual error in half
+        # ("ffmpeg failed:  kb/s (default)") when this first went wrong.
+        tail = [ln for ln in (r.stderr or "").splitlines() if ln.strip()][-4:]
+        print("  ffmpeg failed: " + " | ".join(tail))
         return False
     return True
 
@@ -173,7 +177,14 @@ def _one(date_str: str, topic_id: str, env: dict, dry_run: bool) -> str:
         spoken = work / "correction.mp3"
         if not _tts(text, spoken):
             return "no Hebrew voice available (install edge-tts or gTTS)"
-        merged = work / f"{topic_id}.mp3"
+        # The merged file keeps the episode's name, because that name becomes
+        # the release asset and the feed's enclosure — but it cannot sit beside
+        # the download, which has the same name: ffmpeg refuses with "Output …
+        # same as Input #1 - exiting", which is how all seven corrections failed
+        # on 2026-10-01. Give the output its own directory.
+        out_dir = work / "out"
+        out_dir.mkdir(exist_ok=True)
+        merged = out_dir / f"{topic_id}.mp3"
         if not _prepend(spoken, episode, merged):
             return "could not prepend the correction"
         size_mb = merged.stat().st_size / 1048576
