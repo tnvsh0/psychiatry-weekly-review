@@ -21,7 +21,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Thu, 01 Oct 2026 18:35:36 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 18:35:58 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -8495,6 +8495,62 @@
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
 
 — General Psychiatry — Clinical —</itunes:summary>
+    </item>
+    <item>
+      <title>[ביולוגי/פרמקולוגיה] החותם הביולוגי של טראומת ילדות במוח — 2026-09-30</title>
+      <description>פרק זה כולל סקירה של 5 מאמרים:
+
+• Long-Read sequencing in psychiatric omics: a systematic review of current evidence (Mol Psychiatry · סקירה שיטתית)
+  https://pubmed.ncbi.nlm.nih.gov/42791269/
+
+• Exploring the shared genetic architecture and causal relationship between childhood maltreatment and psychiatric disorders (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42768143/
+
+• The physiology of mental representations: from single neurons to circuits (Biol Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42777932/
+
+• In Vivo Characterization of Fatty Acid Amide Hydrolase in Posttraumatic Stress Disorder: A [(11)C]CURB Positron Emission Tomography Study (Biol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42772587/
+
+• Measuring in-vivo tau pathology in the basal forebrain with PET imaging (Neuropsychopharmacology · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42773180/
+
+קלאסטר: פסיכיאטריה ביולוגית
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-09-30
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
+
+— Biological Psychiatry —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-09-30-general_psychiatry_bio_part2/general_psychiatry_bio_part2.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-09-30-general_psychiatry_bio_part2/general_psychiatry_bio_part2.mp3" length="15455277" type="audio/mpeg"/>
+      <pubDate>Wed, 30 Sep 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:duration>965</itunes:duration>
+      <itunes:summary>פרק זה כולל סקירה של 5 מאמרים:
+
+• Long-Read sequencing in psychiatric omics: a systematic review of current evidence (Mol Psychiatry · סקירה שיטתית)
+  https://pubmed.ncbi.nlm.nih.gov/42791269/
+
+• Exploring the shared genetic architecture and causal relationship between childhood maltreatment and psychiatric disorders (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42768143/
+
+• The physiology of mental representations: from single neurons to circuits (Biol Psychiatry · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42777932/
+
+• In Vivo Characterization of Fatty Acid Amide Hydrolase in Posttraumatic Stress Disorder: A [(11)C]CURB Positron Emission Tomography Study (Biol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42772587/
+
+• Measuring in-vivo tau pathology in the basal forebrain with PET imaging (Neuropsychopharmacology · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42773180/
+
+קלאסטר: פסיכיאטריה ביולוגית
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-09-30
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
+
+— Biological Psychiatry —</itunes:summary>
     </item>
   </channel>
 </rss>
