@@ -13,3 +13,10 @@ google-auth>=2.20.0
 # Gemini is multimodal: it also LISTENS to episode audio for QC, so no separate
 # speech-to-text package is needed. Only used when GEMINI_API_KEY is set.
 google-genai>=1.0.0
+
+# The spoken correction prepended to a published-with-corrections episode
+# (scripts/publish_with_correction.py). edge-tts has the better Hebrew voices;
+# gTTS is the fallback. Neither costs anything. ffmpeg, which joins the
+# correction to the episode, comes from apt — see vm/install.sh.
+edge-tts>=7.0.0
+gTTS>=2.5.0
