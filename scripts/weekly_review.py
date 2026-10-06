@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Weekly Psychiatry Literature Review — Multi-Topic Edition
 ──────────────────────────────────────────────────────────
@@ -2485,6 +2485,49 @@ def generate_digests(env: dict) -> None:
         print(f"  WARNING: Digest generation failed (non-fatal): {e}")
 
 
+def judge_waiting_drafts(env: dict, days: int = 14) -> None:
+    """Judge the drafts no judge could reach, and publish what passes.
+
+    agy's quota is WEEKLY — about 24 judge calls, resetting on Wednesday
+    morning — so a Sunday run late in the window can find it already spent, and
+    its episodes all wait as drafts. On 2026-10-04 that was all fourteen. Nothing
+    came back for them: the only path was someone running qc_drafts.py by hand.
+
+    The spotlights run is the first job after the reset, so it now does that
+    itself: newest run first, every draft without a verdict is judged, the ones
+    that pass are published, and the ones held only for a "detail" error go out
+    with the correction spoken at the start. It stops as soon as the quota runs
+    out again; whatever is left is picked up the following Wednesday.
+    """
+    from agy_judge import quota_blocked_for
+    repo = os.environ.get("GH_REPO") or ""
+    if not repo:
+        return
+    out = subprocess.run(
+        ["gh", "api", f"repos/{repo}/releases?per_page=100", "--paginate",
+         "--jq", ".[]|select(.draft)|.tag_name"],
+        capture_output=True, text=True, timeout=120,
+    )
+    cutoff = (TODAY - timedelta(days=days)).strftime("%Y-%m-%d")
+    dates = sorted({m.group(1) for ln in out.stdout.splitlines()
+                    if (m := re.match(r"weekly-(\d{4}-\d{2}-\d{2})-", ln.strip()))
+                    and m.group(1) >= cutoff}, reverse=True)
+    if not dates:
+        return
+    print(f"\n⚖️  Drafts waiting for a verdict from: {', '.join(dates)}")
+    for d in dates:
+        if quota_blocked_for():
+            print("  agy's quota is out — the rest waits for the next reset.")
+            return
+        for script in ("qc_drafts.py", "publish_with_correction.py"):
+            args = ["--date", d] + (["--held"] if script.startswith("publish") else [])
+            try:
+                subprocess.run([sys.executable, "-u", str(SCRIPTS_DIR / script)] + args,
+                               env=env, check=False, timeout=4 * 3600)
+            except Exception as e:
+                print(f"  WARNING: {script} for {d} failed (non-fatal): {e}")
+
+
 def run_backfill_sweep(env: dict) -> None:
     """Self-heal: after the (small) spotlights run, produce any episode from a
     recent week whose generation had failed, so no week is left with articles
@@ -3381,6 +3424,7 @@ def main(mode: str = "all"):
             print("No spotlight selection to produce this week.")
             # Still worth using the day's capacity to heal earlier failures.
             run_backfill_sweep(env)
+            judge_waiting_drafts(env)
             return
         print("ERROR: No articles found in any topic!")
         send_notification([], env)
@@ -3641,6 +3685,7 @@ def main(mode: str = "all"):
     # that failed to generate in a previous week. No-op when nothing is missing.
     if mode == "spotlights":
         run_backfill_sweep(env)
+        judge_waiting_drafts(env)
         run_qc_trends(env)
 
     # ── Final summary ─────────────────────────────────────────────────────────
