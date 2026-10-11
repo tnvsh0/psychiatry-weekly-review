@@ -1,0 +1,72 @@
+# 📚 פסיכיאטריה כללית — קלינית — חלק 2/3
+### סקירת ספרות שבועית — 2026-10-11
+
+**תקופה:** 04/10/2026 – 11/10/2026 | **מאמרים:** 3 (⭐ IF≥15: 0 | 🔷 IF 5-14: 0 | 📄 אחר: 3)
+
+> **מפתח:** ⭐ כתב עת מדרגה ראשונה (IF ≥ 15) · 🔷 כתב עת מוביל (IF 5–14) · 📄 כתב עת מוכר
+
+---
+
+### Applying a Behavioral Fit Analysis with Sexual Minority Youth at Risk for Suicide
+**כתב עת:** 📄 Evid Based Pract Child Adolesc Ment Health *(IF: 3.0)* | **סוג מחקר:** מאמר סקירה | **מחברים:** Zullo L et al. | **תאריך:** 2026
+
+BACKGROUND: Suicide is the second leading cause of death among youth ages 15-24. Sexual minority (SM) youth are at higher risk for suicidal thoughts, behavior, and non-suicidal self- injury than their heterosexual peers. Part of understanding this disparity includes accounting for the role of social drivers of health. The increased risk of suicide and self-harm for SM youth is driven by experiences of minority stress and discrimination that is embedded in society. Recognizing the impact of these factors is essential to inform the delivery of evidence-based interventions for SM youth who are receiving care for suicide prevention.
+
+OBJECTIVE: To describe the process for developing a behavioral fit analysis when working with SM youth who are at risk for suicide, with an emphasis on the role of social drivers of health that may overlap with SM identity as it contributes to suicide risk.
+
+METHOD: A brief review of the literature is provided on the topics of minority stress and existing screening and assessment approaches for suicidal youth. The benefits of a behavioral fit analysis are described and how this supplements existing evidence-based tools. A fictional case example is included to illustrate the direct application of this organizational framework.
+
+RESULTS: A case example of a fictional SM youth is provided with an accompanying fit analysis and treatment plan. Implications for generalization to clinical practice are described, complemented with resources and suggestions for clinicians.
+
+CONCLUSIONS: The use of a behavioral fit analysis balances a nomothetic and idiographic approach to a case conceptualization for SM youth at risk for suicide and incorporates the impact of social drivers of health on the use of evidence-based treatments.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42847877/)
+
+---
+
+### Functioning Management & Recovery - Resource Group, a psychoeducational intervention to improve empowerment of people with severe mental illness: a 12-month multicenter randomized control study
+**כתב עת:** 📄 Riv Psichiatr | **סוג מחקר:** RCT (מחקר אקראי מבוקר) | **מחברים:** Veltro F et al. | **תאריך:** 2026 Sep-Oct
+
+AIM: Functioning Management and Recovery with the Resource Group (FM&R-GR) is a standardized Psychoeducational Intervention elaborated to improve functioning and empowerment of people with Severe Mental Illness (SMI) living in the community. The aim of this study is to prove its efficacy by the primary and secondary outcomes.
+
+METHODS: 60 patients with SMI were recruited in 5 day-centers (North and South Italy) randomly assigned into 2 groups (Experimental vs Control); patients underwent a multicenter follow-up study with a two time-point evaluation (t0, pre-treatment and t1, 12 months). A highly structured FM&R-GR was used in the Experimental Group (EG), whereas a less structured manual was used in the Control Group (CG). At each time point, Social Functioning, Empowerment and Distress, were assessed as primary outcome; furthermore, Psychopathological Status, Cognitive Functioning, and Cognitive Flexibility were assessed as secondary outcome.
+
+RESULTS: Fifty-nine individuals out of 60 (98.3%) started the study randomly allocated in the EG vs CG. In the EG, 19 people (32.2%) were affected by schizophrenia, 9 (15.2%) by bipolar I disorder with psychotic symptoms and 2 (3.4%) by personality disorders according to DSM-5-TR started the study; in the CG there were respectively 20 (33.9%), 6 (10.2%) and 3 (5.1%). Forty-eight patients, 27 in the EG (56.3%) and 21 in the CG (43.75) completed the study. The total scores of NEL, Distress (p<0.001), and PSPS (p<0.05) showed a statistically significant improvement. The improvement of the other variables in the EG (BPRS, BANS and MFPT) was not statistically significant.
+
+CONCLUSIONS: After 1 year follow-up these results showed improvement in all variables of primary and secondary outcomes, with great statistically significant difference between the two groups for the empowerment, functioning and distress. Furthermore, the pre-post difference in the Experimental Group was statistically significant for all variables with the exception of cognitive flexibility, while in the CG only for the RBANS. Overall, a remarkable impact of this psychoeducational structured intervention was observed on the primary outcome variables.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42847035/)
+
+---
+
+### Association between plain-water consumption and suicide attempts among U.S. adolescents: Evidence from the 2017-2021 Youth Risk Behavior Survey
+**כתב עת:** 📄 PLoS One | **סוג מחקר:** מאמר מחקרי | **מחברים:** Canizares C et al. | **תאריך:** 2026
+
+Background Adolescent suicide attempts remain difficult to predict, in part because research has concentrated on a narrow set of risk factors. We examined whether self-reported plain-water consumption is associated with past-year suicide attempt among U.S. adolescents, whether that association is graded across levels of intake, and whether a zero-intake response adds information beyond established risk factors. Methods We analyzed the 2017, 2019 and 2021 cycles of the U.S. national Youth Risk Behavior Survey (n = 36,779). Missing data, including the plain-water item, were multiply imputed (40 datasets) and pooled by Rubin’s rules, accounting for the survey design. The association was estimated unadjusted, then adjusted for demographics, each of six risk domains, and all domains together. Least absolute shrinkage and selection operator (LASSO) models, tuned under two metrics and two penalty rules, provided variable selection and held-out performance; odds ratios come from unpenalized models. Results Reporting no plain water was uncommon (3.6%) and associated with past-year suicide attempt (survey-weighted odds ratio 2.14, 95% CI 1.70–2.71), in each cycle. The association was confined to the zero category: the adjusted odds ratio for none was 2.55 (1.91–3.39) against 3 times/day, whereas among those reporting any plain water there was no gradient (1.01, 0.97–1.06). It remained associated after adjustment for each domain separately (1.45–2.01) but attenuated to 1.34 (0.97–1.85) under simultaneous adjustment. LASSO retained it in every model at the discrimination optimum and, under the one-standard-error rule, in five of six domains but not the full model. Adding it changed held-out discrimination by at most 0.0011. Conclusions Reporting no plain-water consumption in the past seven days was consistently associated with higher odds of a past-year suicide attempt among U.S. adolescents. However, the association was confined to the zero-water category, attenuated after simultaneous adjustment for all risk domains, and did not improve prediction. These findings suggest that the zero-water response may function as a behavioral marker of broader risk rather than as an independent risk factor.
+
+Introduction Adolescent suicide attempts are a critical public health concern in the United States. Data from the Youth Risk Behavior Surveillance System (YRBSS) reveal that approximately 9% of adolescents attempted suicide in the past year. This statistic is alarming, given the well-established link between suicide attempts and death by suicide, underscoring the urgent need to better understand the factors associated with these behaviors. Research on risk factors for death by suicide and suicide attempts dates back to 1965 and has increased exponentially throughout the years [ 1 ]. However, despite the amount of research, the ability to accurately predict suicide attempts is limited, barely better than chance, and it is still a challenge [ 1 – 3 ]. A major limitation in the study of suicide attempt risk factors is the ongoing focus on a narrow set of predictors across both empirical and theoretical studies, often replicated across various populations. Empirical research consistently links suicide attempts with prior suicide attempts, schizophrenia, depression, borderline personality disorder, previous psychiatric hospitalizations, and nonsuicidal self-injury [ 1 ]. Popular theoretical models echo this emphasis, with explanations predominantly centered on individual-level factors. For example, the Interpersonal Theory of Suicide (IPTS) [ 4 ], the Three-Step Theory of Suicide [ 5 ], and the Integrated Motivational-Volitional Model [ 6 ] all highlight internal processes like cognition and emotion as key in understanding suicide attempts. According to IPTS, individuals are at the greatest risk when they simultaneously experience thwarted belongingness and perceived burdensomeness [ 4 ]. The Three-Step Theory of Suicide posits that pain, hopelessness, connectedness, and capacity for suicide together contribute to the emergence of both the desire for suicide and eventual suicide attempts [ 5 ]. Similarly, the Integrated Motivational-Volitional Model suggests that defeat, entrapment, acquired capability, and access to lethal means interact to create a high-risk environment for suicide [ 6 ]. More recently, researchers have begun to examine broader socio-environmental and ecological influences on suicide. For instance, studies have investigated the impact of urbanicity, with some reporting significant associations between suicide and factors such as proximity to urban centers, subway access, and residential density [ 7 , 8 ], while others have found no significant relationship [ 9 ]. Although relatively few studies on environmental factors of suicide have focused on youth populations, a systematic review by Ching and colleagues [ 10 ] identified air pollution, drought, and rising temperatures as key environmental stressors linked to increased suicide risk among adolescents. In addition to these physical environmental factors, recent work has highlighted how everyday behaviors such as dietary patterns may shape suicide risk. Studies have found that frequent fast-food consumption, low intake of fruits and vegetables, and higher consumption of caffeinated and sugary beverages are associated with greater likelihood of suicidal ideation, planning, and attempts among adolescents, even after adjusting for known confounders such as age, sex, race, and depressive symptoms [ 11 – 13 ]. Despite growing interest in how diet and environmental exposures shape mental health, one everyday behavior has received comparatively little attention in adolescent suicide research, plain-water consumption. From a developmental science perspective, environmental conditions and everyday exposures are integral to the ecological systems in which youth develop and should be integrated into models of wellbeing [ 14 ]. Evidence at the individual level makes plain-water consumption a plausible candidate for investigation. Experimentally induced mild dehydration degrades mood and increases fatigue, tension, and difficulty concentrating in healthy young adults [ 15 , 16 ]. In a large adult sample, drinking more plain water was associated with lower odds of depression and anxiety [ 17 ]. Among 112,250 Korean adolescents, drinking less than one glass per day was associated with higher odds of depression, suicidal ideation, suicide planning and suicide attempt [ 18 ]. Low plain-water consumption also travels with other markers of adversity: among US high school students it clusters with poor academic grades, physical inactivity, and poor dietary behaviors [ 19 ], and tap water avoidance is closely tied to household food insecurity and to racial and economic disadvantage [ 20 ]. We accordingly treat not drinking plain water as a behavioral indicator rather than a physiological exposure, one that may mark disengagement from routine self-care, symptom burden, or constrained material circumstances, without presuming which of these predominates. A more distant possibility, raised here only as a hypothesis for future work, is that water carries some biological signal, ecological studies link naturally occurring lithium in community water supplies to lower suicide rates in adults [ 21 , 22 ]. Those studies measure lithium concentrations in water systems rather than individual drinking behavior, and they cannot speak to the behavior examined here. What has not been examined is how plain-water consumption behaves when it is placed in direct competition with the risk factors that dominate adolescent suicide research. Prior individual-level studies adjust for a modest set of covariates, which leaves open whether the association is distinct from, or simply absorbed by, the established predictors of adolescent suicide attempts. The present study addresses this gap by testing whether self-reported plain-water consumption is ret…
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42832502/)
+
+---
+
+
+---
+
+## 📅 משבוע שעבר — לקונטקסט בלבד
+
+> המאמרים הבאים נדונו בפרק הקודם של נושא זה. **אל תכסה אותם כתוכן חדש.** אם מאמר מהשבוע הנוכחי ממשיך, סותר או מרחיב מאמר מכאן — ציין את הקשר בקצרה. אחרת — אין צורך להתייחס אליהם.
+
+- **JAMA Psychiatry** — Blanco C et al. — *Mental Health and Substance Use Disorder Expenditures in the US*
+- **Am J Psychiatry** — Cruz N et al. — *National Trends in Benzodiazepine Dispensing*
+- **Am J Psychiatry** — Arion D et al. — *Shared Transcriptional Features of Layer 3 Pyramidal Neurons Projecting to the Monkey Dorsolateral Prefrontal Cortex*
+- **Bipolar Disord** — Bell E et al. — *Irritability in the Mix: An Exploratory Study of the Role of Irritability in Characterising Mood Disorders*
+- **Front Public Health** — Friesen S et al. — *Holding collaboration together: a community response using a violence threat and suicide prevention protocol*
+
+---
+
+## 📝 הערות
+- מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
+- הסיכומים מבוססים על תקצירים (Abstracts) בלבד
+
+*נוצר אוטומטית ב-11/10/2026 06:01 UTC*

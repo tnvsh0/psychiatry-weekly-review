@@ -1,0 +1,73 @@
+[
+  {
+    "pmid": "42838066",
+    "channel": "child",
+    "score": 6,
+    "source_topic_id": "child_adolescent_highimpact",
+    "article": {
+      "pmid": "42838066",
+      "title": "Mental health and urinary incontinence in childhood",
+      "journal": "Lancet Child Adolesc Health",
+      "authors": "Joinson C et al.",
+      "pub_date": "2026 Oct 6",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42838066/",
+      "topic": "Child & Adolescent Psychiatry — High Impact",
+      "abstract": "Intermittent and uncontrolled loss of urine is common among children but requires medical attention when it persists beyond age 5 years. Mostly functional in origin, urinary incontinence is caused by a complex inter-relationship of biopsychosocial factors, and evidence shows that mental health problems and adverse childhood experiences (ACEs) are common in children and adolescents with urinary incontinence. Mental health problems and ACEs (including abuse, neglect, and household dysfunction) could be both causes and consequences of paediatric urinary incontinence, but research is needed to understand causal pathways. Treatment guidelines increasingly recognise the need to integrate assessment of psychosocial factors and mental health support into clinical care pathways for children affected by urinary incontinence. Parental and societal beliefs, cultural norms, availability of sanitation facilities, economic constraints, and policy-level gaps affect the management of paediatric urinary incontinence. Early assessment and treatment are needed to prevent urinary incontinence from becoming chronic and negatively impacting on children's quality of life, wellbeing, and education.",
+      "impact_factor": 45.7,
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "study_type_he": "מאמר סקירה",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42833240",
+    "channel": "psychiatry",
+    "score": 6,
+    "source_topic_id": "general_psychiatry_clinical_part1",
+    "article": {
+      "pmid": "42833240",
+      "title": "From discovery to proof: a Translation Evidence Map for precision psychiatry",
+      "journal": "Lancet Psychiatry",
+      "authors": "Baune BT",
+      "pub_date": "2026 Oct 5",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42833240/",
+      "topic": "General Psychiatry — Clinical",
+      "abstract": "Precision psychiatry aims to improve individual-patient decisions by measuring clinically meaningful heterogeneity, not by privileging any one data type, biomarker, or analytical method. This Personal View proposes a Translation Evidence Map that stages claims, from Level 0 (defined use case or discovery-positioning statement) to Level 6 (post-deployment monitoring), linked to measurement reliability, generalisable inference, decision value, safe delivery, and proportionality to risk, clinical need, and inaction. The Map does not replace Grading of Recommendations Assessment, Development and Evaluation (GRADE), biomarker qualification, prediction-model, regulatory, or roadmap frameworks; it identifies the highest defensible claim across components of unequal maturity and the next evidence step for compound precision claims. The Personal View discusses examples spanning inflammatory and circuit-based depression stratification, psychosis relapse monitoring, and suicidality monitoring, illustrating how the Map makes claim maturity, stopping points, stakeholder roles, and trade-offs important to patients explicit.",
+      "impact_factor": 64.3,
+      "pubtype": [
+        "Journal Article",
+        "Review"
+      ],
+      "study_type_he": "מאמר סקירה",
+      "has_full_text": false,
+      "pmc_id": null
+    }
+  },
+  {
+    "pmid": "42842276",
+    "channel": "psychiatry",
+    "score": 4,
+    "source_topic_id": "general_psychiatry_clinical_part3",
+    "article": {
+      "pmid": "42842276",
+      "title": "Characterizing Artificial Intelligence Psychosis in a Large Medical Setting",
+      "journal": "JAMA Psychiatry",
+      "authors": "Bergson Z et al.",
+      "pub_date": "2026 Oct 7",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42842276/",
+      "topic": "General Psychiatry — Clinical",
+      "abstract": "This cohort study estimates the prevalence of AI psychosis, characterizes affected patients, and defines the role of conversational AI in documented psychotic episodes.\n\nConversational artificial intelligence (AI) chatbots are increasingly linked to emerging or worsening psychotic symptoms, a phenomenon termed AI psychosis . Existing evidence, however, is limited primarily to case reports, viewpoints, and simulated experiments, with one published analysis of its occurrence in Denmark. While these works offer critical starting points, additional empirical data are needed to elucidate the factors characteristic of those who develop AI psychosis. Thus, we conducted a retrospective electronic health record (EHR) review at a large academic medical center to estimate prevalence, characterize affected patients, and describe the role of conversational AI in psychotic symptoms. Methods This cohort study followed the STROBE reporting guideline and was approved by the Vanderbilt University Medical Center (VUMC) IRB with a waiver of informed consent for secondary analysis of already collected data. Using Epic Clarity, we extracted progress notes dated December 1, 2022, to April 15, 2026, from patients who received behavioral health care and whose records contained AI-related keywords (eFigure 1 in Supplement 1 ). Only patients with a documented psychotic-disorder diagnosis were retained. Two raters (Z.B., S.G.V.) manually screened notes, discarded incidental matches, and classified each patient’s AI interaction into 1 of 3 categories: neutral (eg, using ChatGPT to search for recipes), AI psychosis (psychosis-worsening chatbot use), or AI-related psychotic content (AI incorporated into a delusion without documented chatbot use; included to capture the range of AI-related phenomenology in the EHR while preserving the AI psychosis category for patients with clear use of a conversational AI product). Within the AI psychosis group, Z.B. and M.C.A. assigned interactions to 1 of 4 a priori theoretical categories describing how chatbot use interacts with psychosis : catalyst (precipitates new symptoms in previously healthy individuals), amplifier (worsens preexisting symptoms by validating distorted ideas), coauthor (develops harmful narratives through iterative dialogue), or object (AI becomes the focus of delusional beliefs). Finally, across all patients, medical record review was conducted (Z.B., J.M.S., and M.C.A.) to determine whether the documented AI interaction was part of the patient’s first psychotic episode (index episode), defined as the AI interaction being documented by their treatment team during their first psychiatric presentation for psychotic symptoms. Kruskal-Wallis, χ 2 , and Fisher exact tests were used to compare variables across groups. A 2-sided P < .05 was considered significant. Results Among 578 058 records (215 712 unique patients), 187 encounters from 73 unique patients (25 [34.2%] female and 48 [65.8%] male; median [range] age, 32 [17-81] years) met criteria after algorithmic and manual screening. Twenty-eight patients (0.013% of those receiving mental health care) were classified into the AI psychosis category; 17 were classified as neutral; and 28 were classified into the AI-related psychotic content category. Percent agreement among raters was 86.1%, with J.M.S. serving as tiebreaker. The AI psychosis cohort was primarily male (19 [67.9%]) and White (21 [75.0%]). Unspecified psychosis was the most common diagnosis (8 [28.6%]) ( Table ). ChatGPT was the documented AI product in 15 cases (53.6%), and 24 interactions (85.7%) were documented after the May 2024 release of GPT-4o. Patients with AI psychosis did not significantly differ from those with neutral interactions or AI-related psychotic content on any clinical history variables, such as history of psychiatric hospitalization, psychotropic prescription, or suicide attempts ( Table ). Seventeen patients in the AI psychosis group (60.7%) were experiencing a first psychotic episode, which was significantly more than the neutral (3 [17.6%]; P = .006) or AI-related content (8 [28.5%]; P = .03) groups ( Figure ). Patients with AI psychosis were significantly younger than the AI-related psychotic content group (median [range] age, 27.5 [17.0-66.0] vs 36.5 [18.0-70.0] years; W = 3.931; P = .02) and more likely to have unspecified psychosis than the neutral group (8 [28.6%] vs 0; Holm-adjusted P = .03). Among AI psychosis cases, amplifier was the most common AI psychosis type (18 [64.3%]), followed by object (6 [21.4%]) and catalyst (3 [10.7%]) ( Table ). Percent agreement was 83.3% (J.M.S. as tiebreaker). Discussion In this systematic analysis of AI psychosis, documented in the EHR of a large US medical setting, psychosis-worsening interactions with conversational AI were most common among patients experiencing their first episode of psychosis. Exploratory analysis of theoretical typologies has suggested conversational AI may amplify emerging or pre-existing symptoms. Our findings suggest that the early phase of psychotic illness may confer particular vulnerability to symptom-worsening AI interactions. Our AI psychosis prevalence estimate of 0.013%, which is conditional on a patient receiving a psychosis diagnosis in the EHR, converges with evidence provided by OpenAI, which acknowledged “0.07% of users active in a given week and 0.01% of messages indicate possible signs of mental health emergencies related to psychosis or mania.” The high number of cases after the release of GPT-4o coincides with documented sycophancy in that model, though our design cannot establish causation. Recent simulation studies have identified GPT-4o as performing particularly poorly during extended conversations, and the more recent OpenAI model GPT-5.2 Instant as being more likely to challenge delusional premises. Limitations include ascertainment bias, single-site design, and a rating system that is not clinically validated. Prospective studies incorporating chat logs are needed to clarify mechanisms. Routine assessment of AI use during psychiatric encounters appears warranted.",
+      "impact_factor": 25.8,
+      "pubtype": [
+        "Journal Article"
+      ],
+      "study_type_he": "מאמר מחקרי",
+      "has_full_text": true,
+      "pmc_id": "13647186"
+    }
+  }
+]
