@@ -1,0 +1,101 @@
+{
+  "child_development_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}
