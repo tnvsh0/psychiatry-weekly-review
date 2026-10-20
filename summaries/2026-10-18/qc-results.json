@@ -1,0 +1,242 @@
+{
+  "behavioral_sciences": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_core": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "cognition_part1": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "בדיון במאמר של בלייש ולה-בר (17:15–17:18, 18:04–18:07) נאמר כי שלב יצירת הרעיונות (idea generation) של טכניקות ויסות רגשי \"מקדים ומכוון את כל מנגנוני הבחירה שבאים אחריו\".",
+        "source": "בתקציר המקור נכתב כי שלב היצירה במודל המוצע (Emotion Regulation Generation of Techniques) מגיע אחרי מנגנוני הבחירה ומזין אותם (\"delineating a generation stage that follows and informs selection mechanisms\").",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "cognition_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "ב-02:51 נאמר כי 142 הדגימות החיוביות לאורפינים זוהו 'מתוך עשרות אלפי דגימות'.",
+        "source": "במקור נבדקו סך הכול 14,261 דגימות ביולוגיות (n=142/14,261, שהם 1.0%).",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "ב-03:06 האנלוג המוביל נהגה כ'אן-פרופיוניל קורפין' (N-propionyl corphine).",
+        "source": "במקור שם התרכובת הוא N-propionitrile chlorphine.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part4": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בסקירת המאמר על התמדה בטיפול בסטימולנטים במבוגרים עם ADHD (02:01–02:06) נאמר כי מטרת החוקרים הייתה להשוות את ההתמדה בטיפול לאורך תקופה של 16 חודשים (\"שישה עשר חודשים\").",
+        "source": "המחקר השווה התמדה בטיפול לאורך 12 חודשים (12-month treatment persistence), והמטופלים צונזרו לאחר 12 חודשים או במגע הקליני האחרון.",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בדיון על מאמר ה-PS1 במיקרוגליה (02:44) נאמר כעובדה מוכחת שהכימוקינים CCL7 ו-CCL8 נודדים לנוירונים, נקשרים לקולטן CCR5 ומעכבים אותו.",
+        "source": "בתקציר (Frost et al.) מצוין כי הקשר בין CCL7 לעיכוב הקולטן הנוירונלי CCR5 התבסס על חיזוי חישובי בלבד (In silico prediction of binding partners showed that microglial CCL7 may act via inhibition of neuronal CCR5).",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "בדיון על מאמר ה-LSD (08:48) נאמר שהמחקר בוצע על שבעה מתנדבים בריאים 'בסמיות כפולה' (double-blind).",
+        "source": "בתקציר (McCulloch et al.) נכתב כי שבעת המתנדבים היו סמויים למינון ה-LSD שקיבלו (blinded to LSD dose received), ללא ציון של סמיות כפולה.",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "בדיון על תופעת ההיסטרזיס ב-LSD (09:50–10:15) הוסבר שהמנגנון הוא הפנמה של הקולטן לתוך התא והפעלת שרשראות חלבוני G ללא סימון שמדובר בידע חיצוני, וכן נאמר שבהשוואה לפסילוסיבין יש בפסילוסיבין התאמה טובה הרבה יותר בין רמת החומר בדם לחוויה הסובייקטיבית.",
+        "source": "בתקציר (McCulloch et al.) נכתב רק כי ההיסטרזיס מרמז על מנגנונים פרמקודינמיים לא טיפוסיים (ללא פירוט על הפנמת קולטנים או חלבוני G), וההשוואה לקבוצת הפסילוסיבין (25 נבדקים) התייחסה לממצאי זרימת הדם המוחית (CBF) והקישוריות הגלובלית והקשר ביניהם, ולא להיסטרזיס מול רמות בדם.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part1": {
+    "verdict": "problem",
+    "accuracy": 3,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בפרק נסקר בהרחבה (01:24–02:43) מחקר שלכאורה פורסם בכתב העת British Journal of Psychiatry על ידי חוקרים מאוניברסיטת מינסוטה, שבו נעשה שימוש בפרוטוקול גירוי מגנטי מוחי (High-frequency rTMS) להכחדה אקטיבית של פחד, ונמצא כי הגירוי לא פעל במנוחה אלא רק כאשר הנבדקים היו פעילים בטיפול בחשיפה.",
+        "source": "לא מופיע במקור",
+        "severity": "high",
+        "scope": "core"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}

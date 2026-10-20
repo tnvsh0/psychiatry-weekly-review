@@ -1,6 +1,6 @@
 {
-  "child_adolescent_core": 1257,
-  "child_adolescent_highimpact": 725,
+  "child_adolescent_core": 834,
+  "child_adolescent_highimpact": 685,
   "general_psychiatry_clinical_part1": 751,
   "general_psychiatry_clinical_part2": 1002,
   "general_psychiatry_clinical_part3": 1254,
@@ -14,5 +14,9 @@
   "neuroscience_part3": 758,
   "psychotherapy_part1": 698,
   "psychotherapy_part2": 1336,
-  "psychotherapy_part3": 702
+  "psychotherapy_part3": 702,
+  "behavioral_sciences": 1339,
+  "child_adolescent_misc": 968,
+  "cognition_part1": 1201,
+  "cognition_part2": 929
 }
