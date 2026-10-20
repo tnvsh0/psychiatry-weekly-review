@@ -93,11 +93,6 @@ def main() -> int:
     if args.dry_run:
         print("\n(dry run — nothing downloaded, judged or published)")
         return 0
-    if not todo:
-        print("Nothing to do: every draft already has a verdict "
-              "(use --force to judge them again).")
-        return 0
-
     pod_dir = REPO_ROOT / "podcasts" / args.date
     pod_dir.mkdir(parents=True, exist_ok=True)
     print(f"\nDownloading {len(todo)} held episode(s)...")
@@ -123,22 +118,28 @@ def main() -> int:
         ready.append(tag)
         print(f"  ↓ {topic}: {dest.stat().st_size / 1048576:.1f} MB")
 
-    if not ready:
+    if todo and not ready:
         print("Nothing downloaded — stopping."); return 1
 
     # qc_review judges every MP3 in the folder, which is what we want: anything
     # already sitting there is an episode of this run too.
-    n = len(list(pod_dir.glob("*.mp3")))
-    print(f"\nJudging {n} episode(s) (up to {n * _PER_EPISODE_S // 60} min)...")
-    subprocess.run(
-        [sys.executable, "-u", str(SCRIPTS_DIR / "qc_review.py"),
-         "--date", args.date],
-        env=env, check=False, timeout=max(3600, n * _PER_EPISODE_S),
-    )
+    if ready:
+        n = len(list(pod_dir.glob("*.mp3")))
+        print(f"\nJudging {n} episode(s) (up to {n * _PER_EPISODE_S // 60} min)...")
+        subprocess.run(
+            [sys.executable, "-u", str(SCRIPTS_DIR / "qc_review.py"),
+             "--date", args.date],
+            env=env, check=False, timeout=max(3600, n * _PER_EPISODE_S),
+        )
 
+    # Decide for EVERY draft, not only the ones judged in this call. A draft
+    # can already carry a passing verdict — qc_review judges every MP3 in the
+    # folder, so another tool's run can score a draft without publishing it —
+    # and it used to be skipped as "already judged" and left a draft for good.
+    # On 2026-10-20 two episodes sat out of the feed with 5/5/5 verdicts.
     verdicts = _existing_verdicts(args.date)
     published, still_held, unjudged = [], [], []
-    for tag in ready:
+    for tag in tags:
         topic = tag.split(marker, 1)[1]
         v = verdicts.get(topic)
         if not v or v.get("accuracy") is None:
