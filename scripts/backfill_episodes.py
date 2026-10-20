@@ -240,7 +240,12 @@ def backfill_batch(topic_ids: list[str], date_str: str, arts: list[dict],
             continue
 
         verdict = _qc_episode(Path(path), tid, date_str)
-        hold = w._qc_should_hold(verdict)
+        # NO VERDICT IS NOT A PASS. `_qc_should_hold(None)` is False, so this
+        # used to publish every backfilled episode the judge could not reach:
+        # between 2026-10-07 and 10-19, with the judge's model gone from agy,
+        # ten episodes went to the public feed unjudged through this line while
+        # the main run correctly held its own. Same rule as the main gate.
+        hold = verdict is None or w._qc_should_hold(verdict)
         if verdict:
             # Persist the same fields qc_review writes — including the ones the
             # publish gate keys off. Storing only the scores made a held episode

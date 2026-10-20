@@ -38,7 +38,14 @@ import urllib.request
 from pathlib import Path
 
 # Pro-class is not a preference here, it is the only tier that works; see (4).
-DEFAULT_AGY_MODEL = os.environ.get("AGY_JUDGE_MODEL", "gemini-3.1-pro-high")
+#
+# Was "gemini-3.1-pro-high" until agy updated itself and dropped that model:
+# from about 2026-10-13 every judge call failed with "invalid model selection",
+# which agy reports as an empty response with status=ERROR — the same line as
+# every other failure — so for a week nothing said the judge was gone. agy
+# 1.4.3 offers Gemini 4 Argon as its Pro-class model. If the model disappears
+# again, _model_missing() below now names it, and the owner gets one alert.
+DEFAULT_AGY_MODEL = os.environ.get("AGY_JUDGE_MODEL", "gemini-4-argon-high")
 
 # A judge call runs 5-10 minutes: it listens to a 25-45 minute episode and
 # reads a chapter. agy's own default is 5 minutes, which cuts off mid-verdict.
@@ -281,6 +288,56 @@ def _notify_quota_once(resets_in: str) -> None:
         pass
 
 
+def _model_missing(stdout: str | None, stderr: str | None,
+                   model: str) -> str | None:
+    """The judge's model has been removed from agy, or None.
+
+    agy updates itself, and an update can drop a model: on 2026-10-13 or so
+    gemini-3.1-pro-high vanished, and every judge call since answered
+    "invalid model selection … not recognized as a known model". Without this
+    the log said only "empty response (status=ERROR)" for a week, while ten
+    backfilled episodes slipped out unjudged and thirty-nine waited as drafts.
+    """
+    blob = f"{stdout or ''}\n{stderr or ''}"
+    if "invalid model selection" not in blob and "not recognized as a known model" not in blob:
+        return None
+    offered = re.findall(r"^\s{2,}(\S.*)$", blob, flags=re.M)[:8]
+    msg = (f"agy no longer offers the judge's model '{model}'"
+           + (f" — it offers: {', '.join(offered)}" if offered else "")
+           + ". Set AGY_JUDGE_MODEL (or DEFAULT_AGY_MODEL) to a Pro-class "
+             "model; Flash cannot follow the judge prompt.")
+    _alert_once("agy-model-missing",
+                "agy: judge model gone",
+                f"המודל של השופט ({model}) כבר לא קיים ב-agy אחרי עדכון. "
+                f"עד שיוחלף אין שופט וכל פרק נעצר.")
+    return msg
+
+
+def _alert_once(key: str, title: str, body: str, hours: float = 24) -> None:
+    """One ntfy alert per `key` per `hours` — never one per episode."""
+    topic = (os.environ.get("NTFY_TOPIC") or "").strip()
+    if not topic:
+        return
+    marker = _QUOTA_MARKER.with_name(f"alert-{key}")
+    try:
+        if float(marker.read_text(encoding="utf-8").strip()) > time.time():
+            return
+    except (OSError, ValueError):
+        pass
+    try:
+        marker.parent.mkdir(parents=True, exist_ok=True)
+        marker.write_text(str(time.time() + hours * 3600), encoding="utf-8")
+    except OSError:
+        pass
+    req = urllib.request.Request(
+        f"https://ntfy.sh/{topic}", data=body.encode("utf-8"),
+        headers={"Title": title, "Priority": "high"})
+    try:
+        urllib.request.urlopen(req, timeout=15).read()
+    except Exception:
+        pass
+
+
 def judge_with_agy(prompt: str, attachments: list[Path],
                    model: str | None = None) -> tuple[dict | None, str]:
     """One judge call. Returns (verdict, diagnostic) -- verdict is None on
@@ -303,9 +360,9 @@ def judge_with_agy(prompt: str, attachments: list[Path],
             return verdict, (last if attempt == 1
                              else f"{last} (on attempt {attempt})")
         # Retries help with the intermittent failures; they cannot conjure
-        # quota. Stop, so a whole run's worth of episodes does not spend three
-        # attempts each discovering the same thing.
-        if last.startswith("agy's subscription quota"):
+        # quota or a model that no longer exists. Stop, so a whole run's worth
+        # of episodes does not spend three attempts each rediscovering it.
+        if last.startswith(("agy's subscription quota", "agy no longer offers")):
             return None, last
     return None, last
 
@@ -326,6 +383,9 @@ def _one_call(exe: str, refs: str, prompt: str, model: str | None,
     quota = _quota_exhausted(proc.stdout, proc.stderr)
     if quota:
         return None, quota
+    missing = _model_missing(proc.stdout, proc.stderr, model or DEFAULT_AGY_MODEL)
+    if missing:
+        return None, missing
 
     try:
         env = json.loads(proc.stdout or "{}")
