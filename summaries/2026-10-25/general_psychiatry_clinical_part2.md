@@ -1,0 +1,76 @@
+# 📚 פסיכיאטריה כללית — קלינית — חלק 2/3
+### סקירת ספרות שבועית — 2026-10-25
+
+**תקופה:** 18/10/2026 – 25/10/2026 | **מאמרים:** 4 (⭐ IF≥15: 0 | 🔷 IF 5-14: 0 | 📄 אחר: 4)
+
+> **מפתח:** ⭐ כתב עת מדרגה ראשונה (IF ≥ 15) · 🔷 כתב עת מוביל (IF 5–14) · 📄 כתב עת מוכר
+
+---
+
+### Bipolar Disorder and the Risk of Cardiovascular Diseases: A Systematic Review and Meta-Analysis of Observational Studies
+**כתב עת:** 📄 Acta Psychiatrica Scandinavica (Acta Psychiatr Scand) | **סוג מחקר:** מאמר סקירה | **מחברים:** Motta FDS et al. | **תאריך:** 2026 Oct 20
+
+INTRODUCTION: Bipolar disorder (BD) is a chronic psychiatric illness characterized by recurrent manic and depressive episodes, affecting 2% of the global population. It is associated with premature mortality, including cardiovascular disease (CVD)-related mortality. Although clinically important, the absolute burden and incidence of cardiovascular outcomes in BD remain incompletely characterized. This systematic review and meta-analysis synthesized observational evidence on CVD prevalence and incidence in adults with BD.
+
+METHODS: Following PRISMA guidelines and prospectively registered in PROSPERO (CRD42023484712), we searched PubMed, Web of Science, Embase, Scopus, and PsycInfo, screening 11,909 records. Thirty-two observational studies in adults with BD were included after Newcastle-Ottawa Scale assessment. Data were extracted on overall CVD, coronary artery disease, cerebrovascular disease, peripheral arterial disease, comorbidities, and psychotropic exposure. Pooled prevalence and incidence rate ratios were calculated using random-effects models when data were comparable.
+
+RESULTS: The pooled CVD prevalence in BD was 7.70% (95% CI: 5.07-11.52), with coronary artery disease at 6.89% (95% CI: 4.05-11.47), cerebrovascular disease at 4.45% (95% CI: 2.13-9.05), and peripheral arterial disease at 3.30% (95% CI: 1.66-6.45). However, prevalence estimates showed extreme heterogeneity and should be interpreted as broad indicators of absolute burden rather than precise estimates for a single BD population. In controlled incidence studies, BD was associated with increased CVD incidence (IRR 1.66, 95% CI: 1.32-2.08), with elevated coronary and cerebrovascular estimates. Clinical variable analyses involving medication use, lifestyle factors, and cardiometabolic comorbidities were not feasible because reporting was insufficient and noncomparable.
+
+CONCLUSION: Adults with BD show substantial cardiovascular burden and increased incidence. However, extreme heterogeneity, limited incidence data, observational designs, and insufficient moderator reporting limit the precision and generalizability of pooled estimates. These findings support integrated cardiovascular screening in BD populations and future prospective studies.
+
+TRAIL REGISTRATION: PROSPERO CRD42023484712.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42902526/)
+
+---
+
+### Digital Therapeutic Interventions for Suicide Prevention: A Systematic Review and Meta-Analysis of Their Effectiveness in Reducing Suicidal Ideation and Suicide Attempts
+**כתב עת:** 📄 Psicothema | **סוג מחקר:** מטה-אנליזה | **מחברים:** Sarrionandia A et al. | **תאריך:** 2026 Nov
+
+BACKGROUND: Although digital interventions show potential for reducing suicidal ideation and behavior, the evidence base is mixed and characterized by methodological variability. This study synthesizes randomized clinical trials that have evaluated their effectiveness.
+
+METHOD: We conducted a systematic review and meta-analysis in accordance with PRISMA guidelines. Seventeen studies ( N  = 5.089) met the inclusion criteria. Effect sizes were estimated using random-effects models, and we conducted analyses for type of control group (traditional vs. active), moderators (age, delivery setting, and intervention format), and follow-up. Heterogeneity and publication bias were also examined.
+
+RESULTS: Digital interventions significantly reduced suicidal ideation ( g  = -0.61), with effects maintained at follow up ( g  = -0.77). Significant effects were observed with respect to both traditional and active controls. There was a moderate reduction in relative risk of suicide attempts, although it was not statistically significant. Moderator analysis indicated a greater effect for clinical populations, self-guided interventions, and younger participants. There was no robust evidence of publication bias.
+
+CONCLUSIONS: Digital interventions may represent a promising complementary approach for reducing suicidal ideation and potentially lowering suicide risk. However, the findings should be interpreted cautiously given the heterogeneity of the studies and the limited evidence regarding suicide attempts.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42911823/)
+
+---
+
+### Suicide mortality among survivors of first primary thyroid cancer: a population-based competing risk analysis
+**כתב עת:** 📄 Support Care Cancer | **סוג מחקר:** מאמר מחקרי | **מחברים:** Chen E et al. | **תאריך:** 2026 Oct 21
+
+INTRODUCTION: Thyroid cancer is associated with favorable survival, yet suicide risk during long-term survivorship remains incompletely characterized, particularly in the presence of competing mortality.
+
+METHODS: We identified 178,014 patients with first primary thyroid cancer from the SEER 17 database between 2000 and 2022. Suicide mortality was quantified using standardized mortality ratios. Risk factors were evaluated using cause-specific Cox models and Fine-Gray competing risk regression, with non-suicide deaths treated as competing events.
+
+RESULTS: During 1,566,507 person-years of follow-up, 165 suicides occurred, corresponding to 10.53 deaths per 100,000 person-years. Overall suicide mortality was comparable to that of the general population. In cause-specific Cox models, older age, no surgery, and chemotherapy appeared associated with suicide risk. These associations did not reach statistical significance in the Fine-Gray model. Male sex, single status, and separated/divorced status remained independently associated with higher suicide incidence, whereas the highest area-level median household income category was associated with lower suicide incidence.
+
+CONCLUSION: Sociodemographic factors were associated with suicide incidence in the Fine-Gray model, supporting attention to psychosocial vulnerability alongside disease-related needs. These findings support incorporating social vulnerability assessment, psychosocial screening, and referral pathways into supportive care for patients with thyroid cancer.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42905156/)
+
+---
+
+### Identifying capacity building priorities for implementation science in suicide prevention: a concept mapping study in Australia
+**כתב עת:** 📄 Transl Behav Med | **סוג מחקר:** מאמר מחקרי | **מחברים:** Krishnamoorthy S et al. | **תאריך:** 2026 Jan 7
+
+Abstract Background Capacity building in the science and practice of implementation is critical for driving and evaluating meaningful change. However, capacity needs of stakeholders to effectively apply implementation science in suicide prevention remain unclear. Purpose To address this gap in Australia, we conducted a concept mapping (CM) study to identify and prioritize stakeholder capacity-building needs in this area. Methods Diverse stakeholders: practitioners, lived experience advocates, researchers, public servants, and clinicians working within the suicide prevention sector in Australia participated in the study. Using CM, participants individually brainstormed statements representing capacity-building needs for implementation science for suicide prevention. These statements were then organized in clusters and rated on importance and feasibility. Data were collected, analyzed, and visually represented using the groupwisdom™ platform. Results In total, 52 stakeholders participated in at least one stage of the study (i.e. brainstorming, sorting and/or rating). Brainstorming generated 59 statements, which were synthesized into 53 distinctive statements and supplemented with 13 statements from the literature. A multidimensional scaling and hierarchical cluster analysis generated many cluster solutions, out of which an eight-cluster solution was chosen as the most meaningful. Knowledge dissemination and lived experience integration clusters were rated highest on importance and feasibility. Conclusions This study provides a snapshot of implementation capacity-building needs and priorities within the suicide prevention sector in Australia. The identified priorities can help inform future sector capacity-building initiatives for implementation.
+
+Teaser What does it take to build implementation capacity in suicide prevention? Our study shows that training alone may not be enough; highlighting the need for coordinated, system-level initiatives to meet diverse stakeholder needs and drive meaningful impact.
+
+Implications Practice: Programs to strengthen capacity for implementation in suicide prevention must be conceptualized and delivered across multiple system levels. Such programs must move beyond individual training and extend their reach beyond academic and research audiences. Policy: Concerted efforts toward incorporating diverse perspectives of stakeholders in the sector are needed to foster partnerships, collaboration, and enable policy environments that strengthen sector-wide evidence translation. Research: The study highlights gaps in stakeholder-specific capacity needs and tailored implementation strategies to effectively deliver these targeted initiatives. Introduction Suicide is a complex, multifaceted issue, making its prevention particularly challenging [ 1 ]. Recently, there is an emphasis on a public health approach to prevention, recognizing that risk factors are rooted in broader social determinants [ 2 ]. However, despite growing investment, there remains limited translational evidence to guide policy and practice [ 3 ]. Significant methodological challenges hinder understanding of what works, for whom, and in which contexts [ 4 ]. Implementation science is “the study of methods to promote the systematic uptake of evidence-based interventions into practice and policy to improve health” [ 5 ] (p. 1). The field has two key focus areas: implementation research and implementation practice. Implementation research seeks to understand and evaluate approaches used to translate evidence to the real world [ 6 ]. Implementation practice seeks to apply and adapt these approaches in different contexts and settings to achieve positive outcomes [ 6 ]. Despite its growth and integration across multiple disciplines, implementation science continues to face limitations in its broader applicability [ 7 ]. The use of implementation research and practice in suicide prevention remains inconsistent and under-prioritized [ 8 , 9 ]. Contributing factors for this challenge arise from both suicide prevention and implementation science. These include methodological challenges, limited translational examples, inadequate stakeholder collaboration [ 3 , 10 , 11 ]; disciplinary silos [ 12 ]; limited guidance on co-production and stakeholder engagement [ 13 , 14 ]; and rigid adherence to evidence-related paradigms [ 7 ]. Beyond a paradigmatic shift, strengthening implementation science in suicide prevention may require building capacity across the spectrum, from general awareness to advanced application and training of implementation science [ 7 , 15 , 16 ]. Capacity building for implementation science has been described as activities (e.g. training, identification of alternative resources, building internal assets) that build durable resources and enable the recipient setting or community to continue the delivery of an evidence-based intervention [ 17 ]. Six strategies for capacity building have been identified: training, tools, technical assistance, assessment and feedback, peer networking, and incentives. Capacity for implementation research and practice is specialized and multidimensional, requiring not only knowledge of implementation theory and methods but also competencies in stakeholder engagement [ 18 ]. Identified competencies span setting-specific knowledge, research methodology, management, communication, and collaboration [ 6 , 18 , 19 ]. Although stakeholder needs for capacity building have been explored through interviews, surveys, and concept mapping (CM) [ 19–21 ], gaps remain in understanding practical skill development and the “art and craft” of implementation [ 22 ]. Although recognition of implementation science in suicide prevention is increasing [ 23 ], its inconsistent application [ 8 ] suggests a significant capacity gap within the sector. This issue has attracted growing attention from policymakers and sector leaders, alongside broader efforts to strengthen the translation, implementation, and sustainability of suicide prevention initiatives. Our previous work has highlighted the limited and variable use of implementation science approaches in suicide prevention and identified a need to build implementation capacity among stakeholders [ 8 ]. Our international Delphi study with stakeholders across the sector further identified capacity building as a key strategy for advancing the use of implementation science in suicide prevention, highlighting the need to better understand stakeholders’ ability to apply these approaches and address the evidence–practice gap [ 24 ]. Despite growing interest in this area, there remains limited research examining implementation science capacity-building needs specific to suicide prevention. This study therefore builds on this emerging body of work by identifying and examining stakeholder capacity-building needs and priorities in Australia to support the effective use of implementation science in suicide prevention. Methods The study adopted a CM approach, a systematic participatory approach that integrates qualitative data collection with quantitative analytical techniques [ 25 ]. Unlike surveys and interviews, CM moves beyond the identification and examination of perspectives by enabling participants to generate, organize, and prioritize ideas [ 26 ]. Moreover, rather than encouraging convergence towards consensus, as is the aim of Delphi methods, CM accommodates diverse perspectives and provides a structured means of understanding both common priorities and differing perspectives across stakeholder groups [ 27 ]. This is particularly important in suicide prevention, a multidisciplinary field characterized by a diverse range of stakeholders whose differing roles, experiences, and priorities may influence perceptions of implementation science capacity-building needs. Data collection comprises two primary activities: (i) brainstorming responses that characterize the issue of interest, which are based on a focus…
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/42900181/)
+
+---
+
+---
+
+## 📝 הערות
+- מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
+- הסיכומים מבוססים על תקצירים (Abstracts) בלבד
+
+*נוצר אוטומטית ב-25/10/2026 05:50 UTC*
