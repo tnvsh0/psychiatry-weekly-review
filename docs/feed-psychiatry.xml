@@ -21,7 +21,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Wed, 28 Oct 2026 07:29:09 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Oct 2026 07:29:40 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -9517,6 +9517,56 @@
 — Biological Psychiatry —</itunes:summary>
     </item>
     <item>
+      <title>[קליני] שיחה קלינית מנצחת בינה מלאכותית בפסיכיאטריה — 2026-10-25</title>
+      <description>פרק זה כולל סקירה של 4 מאמרים:
+
+• Multimodal Machine Learning-Based Prediction of Relapse in Major Depressive Disorder (JAMA Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42905697/
+
+• [Training teams in suicide risk assessment: the role of advanced practice nurses] (Rev Infirm · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42896949/
+
+• Media-based surveillance of suicide in Türkiye: a mixed-methods analysis of epidemiological patterns, homicide-suicide events, and contextual factors (Front Public Health · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42910174/
+
+• The effectiveness of meaning-based interventions in reducing suicide-related vulnerability: A systematic review (Palliat Support Care · סקירה שיטתית)
+  https://pubmed.ncbi.nlm.nih.gov/42895137/
+
+קלאסטר: פסיכיאטריה כללית — קלינית
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-10-25
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
+
+— General Psychiatry — Clinical —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-10-25-general_psychiatry_clinical_part1/general_psychiatry_clinical_part1.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-10-25-general_psychiatry_clinical_part1/general_psychiatry_clinical_part1.mp3" length="12314925" type="audio/mpeg"/>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:duration>769</itunes:duration>
+      <itunes:summary>פרק זה כולל סקירה של 4 מאמרים:
+
+• Multimodal Machine Learning-Based Prediction of Relapse in Major Depressive Disorder (JAMA Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42905697/
+
+• [Training teams in suicide risk assessment: the role of advanced practice nurses] (Rev Infirm · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/42896949/
+
+• Media-based surveillance of suicide in Türkiye: a mixed-methods analysis of epidemiological patterns, homicide-suicide events, and contextual factors (Front Public Health · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42910174/
+
+• The effectiveness of meaning-based interventions in reducing suicide-related vulnerability: A systematic review (Palliat Support Care · סקירה שיטתית)
+  https://pubmed.ncbi.nlm.nih.gov/42895137/
+
+קלאסטר: פסיכיאטריה כללית — קלינית
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-10-25
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
+
+— General Psychiatry — Clinical —</itunes:summary>
+    </item>
+    <item>
       <title>[קליני] סכיזופרניה עמידה, התמכרויות וסימני אזהרה לאובדנות — 2026-10-25</title>
       <description>פרק זה כולל סקירה של 3 מאמרים:
 
@@ -9741,54 +9791,66 @@
 — Neuroscience —</itunes:summary>
     </item>
     <item>
-      <title>[קליני] שיחה קלינית מנצחת בינה מלאכותית בפסיכיאטריה — 2026-10-25</title>
-      <description>פרק זה כולל סקירה של 4 מאמרים:
+      <title>[ביולוגי/פרמקולוגיה] האם סערת הדופמין בסכיזופרניה היא אשליה — 2026-10-25</title>
+      <description>פרק זה כולל סקירה של 6 מאמרים:
 
-• Multimodal Machine Learning-Based Prediction of Relapse in Major Depressive Disorder (JAMA Psychiatry · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42905697/
+• Shared cortical morphometry and molecular signatures across depression and physical diseases (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42897264/
 
-• [Training teams in suicide risk assessment: the role of advanced practice nurses] (Rev Infirm · מאמר סקירה)
-  https://pubmed.ncbi.nlm.nih.gov/42896949/
+• The non-inflammatory effect of neuronal NLRP3 on spatial memory after traumatic brain injury (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42919835/
 
-• Media-based surveillance of suicide in Türkiye: a mixed-methods analysis of epidemiological patterns, homicide-suicide events, and contextual factors (Front Public Health · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42910174/
+• Thalamocortical dysconnectivity shapes cortical hierarchy disruption across illness durations in schizophrenia (Biol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42906847/
 
-• The effectiveness of meaning-based interventions in reducing suicide-related vulnerability: A systematic review (Palliat Support Care · סקירה שיטתית)
-  https://pubmed.ncbi.nlm.nih.gov/42895137/
+• Simultaneous measurement of Midbrain and Striatal Dopamine in Schizophrenia using an agonist radiotracer (Biol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42906845/
 
-קלאסטר: פסיכיאטריה כללית — קלינית
+• Antidopaminergic Medications and Clinical Outcomes in Huntington Disease: Evidence From the PROOF-HD Placebo-Controlled Trial (Neurology · RCT (מחקר אקראי מבוקר))
+  https://pubmed.ncbi.nlm.nih.gov/42912861/
+
+• Risperidone for children with attention-deficit/hyperactivity disorder and severe behavioral dysregulation: a randomized placebo-controlled assessor-blinded trial (BMC Psychiatry · RCT (מחקר אקראי מבוקר))
+  https://pubmed.ncbi.nlm.nih.gov/42897516/
+
+קלאסטר: פסיכיאטריה ביולוגית
 סדרה: פסיכיאטריה ומדעי המוח
 תאריך הסקירה: 2026-10-25
 
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
 
-— General Psychiatry — Clinical —</description>
-      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-10-25-general_psychiatry_clinical_part1/general_psychiatry_clinical_part1.mp3</guid>
-      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-10-25-general_psychiatry_clinical_part1/general_psychiatry_clinical_part1.mp3" length="12314925" type="audio/mpeg"/>
+— Biological Psychiatry —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-10-25-general_psychiatry_bio_part2/general_psychiatry_bio_part2.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-10-25-general_psychiatry_bio_part2/general_psychiatry_bio_part2.mp3" length="15810477" type="audio/mpeg"/>
       <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
       <itunes:author>Tovia Wen</itunes:author>
-      <itunes:duration>769</itunes:duration>
-      <itunes:summary>פרק זה כולל סקירה של 4 מאמרים:
+      <itunes:duration>988</itunes:duration>
+      <itunes:summary>פרק זה כולל סקירה של 6 מאמרים:
 
-• Multimodal Machine Learning-Based Prediction of Relapse in Major Depressive Disorder (JAMA Psychiatry · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42905697/
+• Shared cortical morphometry and molecular signatures across depression and physical diseases (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42897264/
 
-• [Training teams in suicide risk assessment: the role of advanced practice nurses] (Rev Infirm · מאמר סקירה)
-  https://pubmed.ncbi.nlm.nih.gov/42896949/
+• The non-inflammatory effect of neuronal NLRP3 on spatial memory after traumatic brain injury (Mol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42919835/
 
-• Media-based surveillance of suicide in Türkiye: a mixed-methods analysis of epidemiological patterns, homicide-suicide events, and contextual factors (Front Public Health · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42910174/
+• Thalamocortical dysconnectivity shapes cortical hierarchy disruption across illness durations in schizophrenia (Biol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42906847/
 
-• The effectiveness of meaning-based interventions in reducing suicide-related vulnerability: A systematic review (Palliat Support Care · סקירה שיטתית)
-  https://pubmed.ncbi.nlm.nih.gov/42895137/
+• Simultaneous measurement of Midbrain and Striatal Dopamine in Schizophrenia using an agonist radiotracer (Biol Psychiatry · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42906845/
 
-קלאסטר: פסיכיאטריה כללית — קלינית
+• Antidopaminergic Medications and Clinical Outcomes in Huntington Disease: Evidence From the PROOF-HD Placebo-Controlled Trial (Neurology · RCT (מחקר אקראי מבוקר))
+  https://pubmed.ncbi.nlm.nih.gov/42912861/
+
+• Risperidone for children with attention-deficit/hyperactivity disorder and severe behavioral dysregulation: a randomized placebo-controlled assessor-blinded trial (BMC Psychiatry · RCT (מחקר אקראי מבוקר))
+  https://pubmed.ncbi.nlm.nih.gov/42897516/
+
+קלאסטר: פסיכיאטריה ביולוגית
 סדרה: פסיכיאטריה ומדעי המוח
 תאריך הסקירה: 2026-10-25
 
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
 
-— General Psychiatry — Clinical —</itunes:summary>
+— Biological Psychiatry —</itunes:summary>
     </item>
   </channel>
 </rss>
