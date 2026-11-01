@@ -177,8 +177,7 @@ def ask_agy(system: str, user: str, model: str | None = None,
     return None
 
 
-_QUOTA_MARKERS = ("RESOURCE_EXHAUSTED", "Individual quota reached",
-                  "quota reached", "429")
+_QUOTA_MARKERS = ("RESOURCE_EXHAUSTED", "Individual quota reached")
 
 
 def _quota_exhausted(stdout: str | None, stderr: str | None) -> str | None:
@@ -195,6 +194,17 @@ def _quota_exhausted(stdout: str | None, stderr: str | None) -> str | None:
     Retrying is pointless here — the reset is hours or days away — so the caller
     stops immediately, and the message carries the reset time agy reports.
     """
+    # A reply that succeeded is never a refusal, whatever its text says. This
+    # used to search the whole output for markers that included a bare "429",
+    # so any answer containing those digits -- a sample size, a token count, a
+    # PMID, and PubMed's IDs reached 429xxxxx in autumn 2026 -- was thrown away
+    # as "quota exhausted", with an alert saying it resets in "?". It cost
+    # judge verdicts and most of the weekly digests.
+    try:
+        if json.loads(stdout or "{}").get("status") == "SUCCESS":
+            return None
+    except (json.JSONDecodeError, AttributeError):
+        pass
     blob = f"{stdout or ''}\n{stderr or ''}"
     if not any(m in blob for m in _QUOTA_MARKERS):
         return None
