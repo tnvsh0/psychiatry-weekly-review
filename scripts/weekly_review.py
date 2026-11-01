@@ -2518,7 +2518,7 @@ def judge_waiting_drafts(env: dict, days: int = 14) -> None:
     for d in dates:
         if quota_blocked_for():
             print("  agy's quota is out — the rest waits for the next reset.")
-            return
+            break
         for script in ("qc_drafts.py", "publish_with_correction.py"):
             args = ["--date", d] + (["--held"] if script.startswith("publish") else [])
             try:
@@ -2526,6 +2526,24 @@ def judge_waiting_drafts(env: dict, days: int = 14) -> None:
                                env=env, check=False, timeout=4 * 3600)
             except Exception as e:
                 print(f"  WARNING: {script} for {d} failed (non-fatal): {e}")
+    _commit_summaries("Record verdicts and corrections from judging waiting drafts")
+
+
+def _commit_summaries(message: str) -> None:
+    """Commit what the judging tools wrote under summaries/.
+
+    Those tools only write files. The main run commits after its own QC, but
+    judge_waiting_drafts runs later and nothing committed its results: from
+    2026-10-14 to 10-28 the verdicts and spoken corrections sat uncommitted on
+    the VM, so the repository showed published episodes with no record of why.
+    """
+    subprocess.run(["git", "add", "summaries"], check=False)
+    if subprocess.run(["git", "diff", "--cached", "--quiet"], check=False).returncode == 0:
+        return
+    subprocess.run(["git", "commit", "-q", "-m", message], check=False)
+    if subprocess.run(["git", "push", "-q", "origin", "main"], check=False).returncode != 0:
+        subprocess.run(["git", "pull", "-q", "--rebase", "origin", "main"], check=False)
+        subprocess.run(["git", "push", "-q", "origin", "main"], check=False)
 
 
 def run_backfill_sweep(env: dict) -> None:
