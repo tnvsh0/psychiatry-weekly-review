@@ -1,0 +1,238 @@
+{
+  "behavioral_sciences": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_core": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בנוגע לקבוצת הביקורת (מתיחות) נאמר (07:49): 'גם הם קיבלו את השעונים החכמים האלה'",
+        "source": "בתקציר מצוין כי משתתפי קבוצת ההתערבות (MSTEP) קיבלו צמידי ניטור פעילות (activity trackers), בעוד שקבוצת הביקורת קיבלה תרגילי מתיחות ושיחות וידאו שבועיות דומות (ללא אזכור של קבלת שעונים חכמים בקבוצת הביקורת)",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_misc_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part2": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בדיון על מחקר הדופמין בסכיזופרניה (Slifstein et al., סביב 02:34) נאמר שהחוקרים נתנו לנבדקים מינון אמפטמין של 5 מיליגרם לקילוגרם (\"חמישה מיליגרם לקילוגרם\").",
+        "source": "במקור מצוין כי ניתן מינון פומי של 0.5 מ\"ג לק\"ג d-amphetamine (\"0.5 mg/kg d-amphetamine\"), כלומר פי 10 פחות מהנאמר בפרק.",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "במחקר מטורקיה (Front Public Health) נאמר פעמיים (06:04 ו-07:13) כי מתוך 688 המקרים נשלפו 199 מקרים לניתוח איכותני של הנרטיב העיתונאי.",
+        "source": "הניתוח האיכותני של המסמכים והנרטיבים ההקשריים בוצע על 179 מקרי התאבדות (ולא 199).",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "בפרק (04:55) נאמר שהמאמר ב-Brain על פגות והתפתחות הצרבלום הוא של קבוצת המחקר של 'סניידרס' (Snyders).",
+        "source": "שם המחבר הראשון במקור הוא Sanidas G (סנידאס).",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "בפרק (07:43) נאמר שהמאמר ב-Nature Neuroscience על האנזים SIK3 הוא של קבוצת המחקר של 'יו' (Yu).",
+        "source": "שם המחבר הראשון במקור הוא Lu R (לו).",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "בפרק (08:06, 08:26) המנחה קורא לתת-היחידה של קולטן ה-NMDA בשם 'GN1' (בהמשך ב-08:58 המנחה השנייה הוגה נכון 'גלו-אן-1').",
+        "source": "במקור תת-היחידה נקראת GluN1.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part3": {
+    "verdict": "problem",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בדיון על המאמר מ-The Journal of Neuroscience נטען כי החוקרים זיהו שב-45% מזמן החשיפה לאיום נוצר סנכרון של התנהגות קפיאה (freezing) בין העכברים בקבוצה (01:55–02:04).",
+        "source": "לא מופיע במקור",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "בדיון על המאמר מ-Nature Neuroscience (של Ter-Ovanesyan ושות') נאמר על הסמן NRXN3 כי 'הוא נמצא רק על בועיות שמקורן בנוירונים או בתאי גליה' (07:57–08:00).",
+        "source": "התקציר מציין כי אמנם הגישה הכללית נועדה לבודד בועיות מנוירונים ומתאי גליה, אך החלבון NRXN3 אומת ספציפית כחלבון ייחודי לנוירונים (neuron-specific protein).",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part2": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במחקר הקורטיזול בחולי PTSD נאמר כי הקורטיזול נמדד לפני מטלת הכתיבה ו-5 דקות אחריה לאורך חמש הפגישות הטיפוליות (09:52).",
+        "source": "הקורטיזול נאסף לפני מטלת הכתיבה ו-15 דקות אחריה בכל אחת מחמש הפגישות (cortisol was collected before and 15 min after the writing task at each of five sessions).",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}
