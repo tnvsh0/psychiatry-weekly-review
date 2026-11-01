@@ -1,0 +1,258 @@
+{
+  "behavioral_sciences": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_core": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development": {
+    "verdict": "problem",
+    "accuracy": 3,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "בדיון במאמר של Lievrouw et al. (09:58–10:52) נטען כי המחקר פתר את 'שאלת הביצה והתרנגולת' וכי הנתונים היו חד-משמעיים בכך שהתנהגות ADHD היא זו שמנבאת חוסר ביטחון בהתקשרות (עם בטאות של 0.550- עד 0.367), בעוד שלא נמצאו הוכחות לכיווניות ההפוכה (התקשרות לא בטוחה מוקדמת לא ניבאה הופעה של ADHD).",
+        "source": "המקור מציין כי הקשרים בטווח β = -0.550 עד 0.367 במודל RI-CLPM הם קשרים יציבים בין-אישיים (between-child associations) בין התנהגות ADHD לביטחון/חוסר ביטחון בהתקשרות, ואילו ההשפעות המוצלבות לאורך זמן (cross-lagged effects, המשקפות תהליכים פרוספקטיביים תוך-אישיים וכיווניות) היו ברובן לא מובהקות וסיפקו מעט מאוד עדויות לקשרים דו-כיווניים בילדות האמצעית.",
+        "severity": "high",
+        "scope": "core"
+      },
+      {
+        "said": "בדקה 04:15 יוחסה הסקירה השיטתית בכתב העת Infant Mental Health Journal לצוות בראשות 'אורטגה' (Ortega).",
+        "source": "מחברי המאמר במקור הם Retiz O et al. (השם Ortega אינו מופיע במקור).",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "cognition": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בסקירת המאמר על גירוי העצב המשולש (TNS) ב-ADHD נאמר כי המחקר נערך על ידי 'קבוצת המחקר ארידיאן' (05:53).",
+        "source": "שם המחבר הראשון הוא Eraydin (Eraydin IE et al.).",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "בדיון על מאמר ה-GBD של Bai et al. נאמר (12:57): 'החוקרים מנתחים את זה לעומק, והמסקנה היא שזה שילוב קטלני של השניים: יש שיפור דרמטי בניטור ואבחון... אבל אי אפשר להתעלם מהחשיפה המהירה לאידיאל גוף מערבי ברשתות החברתיות, במיוחד באסיה'.",
+        "source": "לא מופיע במקור (התקציר אינו מייחס את העלייה באסיה לחשיפה לאידיאל גוף מערבי או לרשתות חברתיות, והפרשנות הוצגה כמסקנת החוקרים במאמר במקום להיות מסומנת כידע כללי או פרשנות מחוץ למאמר).",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בדיון על המטה-אנליזה בנושא ליתיום למניעת הישנות הפרעות מצב רוח לאחר לידה (11:28–11:32), נאמר כי שמונת המחקרים כללו יחד 544 נשים.",
+        "source": "בתקציר המקור (Sharma V et al., J Clin Psychiatry) מצוין כי שמונת המחקרים כללו 554 נשים (Eight studies, 554 women).",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part3": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בדיון על מחקר ה-MORE בהפרעת שימוש באופיואידים (09:17), המנחה אומר כי הטיפול הצליח \"להאריך הימנעות בארבעה חודשים שלמים\" (זמן קצר לאחר שהמנחה השנייה ציינה נכון ב-09:03 שמדובר במעקב של ארבעה חודשים).",
+        "source": "המעקב בוצע כ-4 חודשים לאחר הטיפול (approximately 4 months posttreatment), ובנקודת זמן זו נמצאה הארכה מובהקת של משך ההימנעות מסמים בקבוצת ה-MORE לעומת קבוצת הביקורת (Cohen w = 0.19), אך התקציר אינו מציין שמשך ההימנעות התארך ב-4 חודשים.",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "בדיון על מחקר תת-אזורי ההיפוקמפוס בצעירים בסיכון להפרעה דו-קוטבית (12:31), נאמר כי \"לפי החוקרים, ההגדלה שראינו בחלק מהאזורים בקו הבסיס הייתה כנראה איזה פיצוי לא בריא של המוח. כשהתרופה נכנסה לפעולה והורידה את הסטרס, האזור הזה של זנב ההיפוקמפוס יכול היה לחזור לממדים נורמליים ויעילים יותר\".",
+        "source": "החוקרים מציינים שההגדלה בקו הבסיס (שנמצאה באזורים CA3-4 ו-GC-ML-DG, ולא בזנב ההיפוקמפוס) עשויה לשקף דווקא שינויים הסתגלותיים (adaptive changes), בעוד שהירידה בנפח זנב ההיפוקמפוס השמאלי לאחר 4 שבועות טיפול באסיטלופרם משקפת פלסטיות עצבית הקשורה לשיפור בתסמינים רגשיים.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part3": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "בדיון על מאמר הסקירה של Mosconi (04:57–05:28) נאמר כי הסקירה מדגישה שהמפתח בטיפול באסטרוגן הוא העיתוי לפי 'השערת החלון הקריטי' — שהטיפול ההורמונלי מסייע רק אם הוא ניתן בזמן גיל המעבר עצמו, וכי התערבות מאוחרת יותר לא רק שעשויה שלא להועיל אלא יכולה להיות בעייתית (מיוחס ישירות למאמר ללא סימון כידע חיצוני).",
+        "source": "התקציר מציין רק שהסקירה בוחנת ראיות הקושרות את עיתוי גיל המעבר (menopausal timing) לפגיעות נוירוביולוגית ולאלצהיימר, דנה בטיפול באסטרוגן (discusses estrogen therapy), ורואה בגיל המעבר חלון ביולוגי סביר לריבוד סיכונים ולמניעה; 'השערת החלון הקריטי' למתן טיפול הורמונלי והסיכון במתן מאוחר אינם מופיעים בתקציר.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במחקר של Leissner et al. ב-Behaviour Research and Therapy נאמר (02:16) שבשלב ההתניה החוקרים השמיעו למשתתפים צליל אחד שניבא את הגבלת הנשימה וצליל אחר שסימן שהנשימה תישאר רגילה.",
+        "source": "התקציר מציין שנעשה שימוש בגירוי/אות מותנה (one cue CS+ / another CS-), אך לא מציין שהגירוי היה צליל שמיעתי.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part3": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במחקר על דיקור חשמלי ו-CBT-I בחולות סרטן גינקולוגי נאמר כי 42.3% מקבוצת הביקורת השיגו מדד אינסומניה נמוך (13:28)",
+        "source": "לפי התקציר, שיעור המטופלות שהשיגו AIS ≤ 6 בקבוצת הביקורת (דיקור דמה + CBT-I) היה 42.1% (71.1% לעומת 42.1%, p = 0.010)",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "במחקר על מודלי השפה בטיפול פסיכודינמי נאמר כי כל אחד מארבעת הסוכנים קיבל תפקיד כגון זיהוי רגשות או זיהוי דפוסי יחסים (02:56)",
+        "source": "התקציר מציין כי המערכת הורכבה מארבעה סוכני LLM מתמחים שכל אחד מהם מייצג ממד טיפולי שונה (ובתוצאות מפורטים ארבעה סוגי התערבויות: יצירת משמעות, תמיכתית, הכוונתית וחקרנית), ללא פירוט על סוכנים לזיהוי רגשות או דפוסי יחסים",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part2": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בדקות 07:09–07:34 נאמר כי יוביקוויטינציה של TBK1 מסמנת אותו לפירוק כדי לדכא את פעילותו, וכי OTUB2 מעכב את היוביקוויטינציה הזו וכך משאיר את TBK1 פעיל שלא לצורך ומקדם מוות תאי מתווך RIPK1.",
+        "source": "בתקציר נאמר ההפך לגבי השפעת עיכוב היוביקוויטינציה על פעילות TBK1: החלבון OTUB2 מעכב יוביקוויטינציה מסוג K63 של TBK1 ובכך מדכא את פעילות הקינאז של TBK1 (suppressing TBK1 kinase activity), מה שמוביל לקידום מוות תאי המתווך על ידי שפעול-יתר של RIPK1.",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}
