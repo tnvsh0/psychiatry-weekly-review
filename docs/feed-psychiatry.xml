@@ -21,7 +21,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Wed, 04 Nov 2026 06:45:12 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 07:08:58 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -10189,62 +10189,6 @@
 — Neuroscience —</itunes:summary>
     </item>
     <item>
-      <title>[מדעי המוח] מעקפים עצביים באלצהיימר וגידולים שחותכים בלמים — 2026-11-01</title>
-      <description>פרק זה כולל סקירה של 5 מאמרים:
-
-• Chronic progressive demyelination induces a microglial state with lysosomal dysfunction (Nat Neurosci · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42934349/
-
-• Trait-linked brainstem circuit resilience balances tau pathology-induced cellular vulnerability in Alzheimer's disease (Neuron · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42945962/
-
-• Glioma regulates GABAergic signaling to drive hyperactivity and tumor progression (Neuron · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42945963/
-
-• The TBK1-OTUB2-IRF3 signalling complex promotes neuroinflammation and neurodegeneration (Brain · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42953977/
-
-• Perception of tones versus tone streams under random multi-tone masking and its representation in auditory cortex (J Neurosci · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42957315/
-
-קלאסטר: מדעי המוח
-סדרה: פסיכיאטריה ומדעי המוח
-תאריך הסקירה: 2026-11-01
-
-⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
-
-— Neuroscience —</description>
-      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-11-01-neuroscience_part2/neuroscience_part2.mp3</guid>
-      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-11-01-neuroscience_part2/neuroscience_part2.mp3" length="17429037" type="audio/mpeg"/>
-      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
-      <itunes:author>Tovia Wen</itunes:author>
-      <itunes:duration>1089</itunes:duration>
-      <itunes:summary>פרק זה כולל סקירה של 5 מאמרים:
-
-• Chronic progressive demyelination induces a microglial state with lysosomal dysfunction (Nat Neurosci · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42934349/
-
-• Trait-linked brainstem circuit resilience balances tau pathology-induced cellular vulnerability in Alzheimer's disease (Neuron · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42945962/
-
-• Glioma regulates GABAergic signaling to drive hyperactivity and tumor progression (Neuron · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42945963/
-
-• The TBK1-OTUB2-IRF3 signalling complex promotes neuroinflammation and neurodegeneration (Brain · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42953977/
-
-• Perception of tones versus tone streams under random multi-tone masking and its representation in auditory cortex (J Neurosci · מאמר מחקרי)
-  https://pubmed.ncbi.nlm.nih.gov/42957315/
-
-קלאסטר: מדעי המוח
-סדרה: פסיכיאטריה ומדעי המוח
-תאריך הסקירה: 2026-11-01
-
-⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
-
-— Neuroscience —</itunes:summary>
-    </item>
-    <item>
       <title>[קליני] חתימת הטראומה בדם מול המציאות הקלינית — 2026-11-01</title>
       <description>פרק זה כולל סקירה של 5 מאמרים:
 
@@ -10299,6 +10243,62 @@
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
 
 — General Psychiatry — Clinical —</itunes:summary>
+    </item>
+    <item>
+      <title>[מדעי המוח] מעקפים עצביים באלצהיימר וגידולים שחותכים בלמים — 2026-11-01</title>
+      <description>פרק זה כולל סקירה של 5 מאמרים:
+
+• Chronic progressive demyelination induces a microglial state with lysosomal dysfunction (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42934349/
+
+• Trait-linked brainstem circuit resilience balances tau pathology-induced cellular vulnerability in Alzheimer's disease (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42945962/
+
+• Glioma regulates GABAergic signaling to drive hyperactivity and tumor progression (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42945963/
+
+• The TBK1-OTUB2-IRF3 signalling complex promotes neuroinflammation and neurodegeneration (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42953977/
+
+• Perception of tones versus tone streams under random multi-tone masking and its representation in auditory cortex (J Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42957315/
+
+קלאסטר: מדעי המוח
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-11-01
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
+
+— Neuroscience —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-11-01-neuroscience_part2/neuroscience_part2.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-11-01-neuroscience_part2/neuroscience_part2.mp3" length="17429037" type="audio/mpeg"/>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:duration>1089</itunes:duration>
+      <itunes:summary>פרק זה כולל סקירה של 5 מאמרים:
+
+• Chronic progressive demyelination induces a microglial state with lysosomal dysfunction (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42934349/
+
+• Trait-linked brainstem circuit resilience balances tau pathology-induced cellular vulnerability in Alzheimer's disease (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42945962/
+
+• Glioma regulates GABAergic signaling to drive hyperactivity and tumor progression (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42945963/
+
+• The TBK1-OTUB2-IRF3 signalling complex promotes neuroinflammation and neurodegeneration (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42953977/
+
+• Perception of tones versus tone streams under random multi-tone masking and its representation in auditory cortex (J Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/42957315/
+
+קלאסטר: מדעי המוח
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-11-01
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
+
+— Neuroscience —</itunes:summary>
     </item>
   </channel>
 </rss>
