@@ -116,13 +116,15 @@
     "full_prompt": "",
     "held": false,
     "release_tag": "weekly-2026-11-01-child_adolescent_misc_part1",
-    "label_he": "ילדים ומתבגרים — מגוון — חלק 1/2"
+    "label_he": "ילדים ומתבגרים — מגוון — חלק 1/2",
+    "held_retries": 2
   },
   "child_adolescent_misc_part2": {
     "nb_id": "2e3c29ec-a017-4f31-98cb-056fbb689a39",
     "full_prompt": "",
     "held": false,
     "release_tag": "weekly-2026-11-01-child_adolescent_misc_part2",
-    "label_he": "ילדים ומתבגרים — מגוון — חלק 2/2"
+    "label_he": "ילדים ומתבגרים — מגוון — חלק 2/2",
+    "held_retries": 2
   }
 }

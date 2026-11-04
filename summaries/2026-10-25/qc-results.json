@@ -84,15 +84,21 @@
     }
   },
   "general_psychiatry_bio_part2": {
-    "verdict": "review",
+    "verdict": "problem",
     "accuracy": 4,
     "coverage": 5,
-    "fluency": 5,
+    "fluency": 4,
     "discrepancies": [
       {
-        "said": "בדיון על מחקר הדופמין בסכיזופרניה (Slifstein et al., סביב 02:34) נאמר שהחוקרים נתנו לנבדקים מינון אמפטמין של 5 מיליגרם לקילוגרם (\"חמישה מיליגרם לקילוגרם\").",
-        "source": "במקור מצוין כי ניתן מינון פומי של 0.5 מ\"ג לק\"ג d-amphetamine (\"0.5 mg/kg d-amphetamine\"), כלומר פי 10 פחות מהנאמר בפרק.",
+        "said": "בגוף הפרק (בדקה 03:18 בקובץ המלא, או 02:34 בשיחה עצמה) נאמר לגבי מחקרם של Slifstein et al.: 'הם נתנו להם את אותו מינון של אמפטמין, 5 מיליגרם לקילוגרם' (בתחילת הקובץ, בדקות 00:00–00:46, צורפה הבהרת תיקון קולית המציינת כי המינון הנכון הוא 0.5 מ\"ג לק\"ג).",
+        "source": "במקור מצוין כי ניתן מינון פומי של 0.5 מ\"ג לק\"ג די-אמפטמין (0.5 mg/kg d-amphetamine) — פי 10 פחות מהנאמר בגוף הפרק.",
         "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "בהודעת התיקון שצורפה בתחילת הפרק (00:08) שם המחבר נהגה 'סלייסטיין את אל' (Slistein et al.).",
+        "source": "שם המחבר במקור הוא Slifstein M et al. (עם האות f).",
+        "severity": "low",
         "scope": "detail"
       }
     ],
@@ -108,8 +114,8 @@
     "fluency": 4,
     "discrepancies": [
       {
-        "said": "במחקר מטורקיה (Front Public Health) נאמר פעמיים (06:04 ו-07:13) כי מתוך 688 המקרים נשלפו 199 מקרים לניתוח איכותני של הנרטיב העיתונאי.",
-        "source": "הניתוח האיכותני של המסמכים והנרטיבים ההקשריים בוצע על 179 מקרי התאבדות (ולא 199).",
+        "said": "במחקר מטורקיה (Frontiers in Public Health) נאמר פעמיים בגוף הפרק (06:38 ו-07:47, או 06:04 ו-07:13 לפני הודעת התיקון שצורפה בפתיחה) כי מתוך 688 המקרים נשלפו 199 מקרים לניתוח איכותני של הנרטיב העיתונאי.",
+        "source": "לפי התקציר המקורי, הניתוח האיכותני של המסמכים והנרטיבים ההקשריים בוצע על 179 מקרי התאבדות (Qualitative document analysis was performed on contextual narratives from 179 suicide cases), ולא 199.",
         "severity": "high",
         "scope": "detail"
       }
@@ -178,15 +184,9 @@
     "fluency": 5,
     "discrepancies": [
       {
-        "said": "בדיון על המאמר מ-The Journal of Neuroscience נטען כי החוקרים זיהו שב-45% מזמן החשיפה לאיום נוצר סנכרון של התנהגות קפיאה (freezing) בין העכברים בקבוצה (01:55–02:04).",
+        "said": "בדיון על המאמר מ-The Journal of Neuroscience נטען כי החוקרים זיהו שב-45% מזמן החשיפה לאיום נוצר סנכרון של התנהגות קפיאה (freezing) בין העכברים בקבוצה (1:55–2:04; 2:22–2:31 לאחר פתיח התיקון).",
         "source": "לא מופיע במקור",
         "severity": "high",
-        "scope": "detail"
-      },
-      {
-        "said": "בדיון על המאמר מ-Nature Neuroscience (של Ter-Ovanesyan ושות') נאמר על הסמן NRXN3 כי 'הוא נמצא רק על בועיות שמקורן בנוירונים או בתאי גליה' (07:57–08:00).",
-        "source": "התקציר מציין כי אמנם הגישה הכללית נועדה לבודד בועיות מנוירונים ומתאי גליה, אך החלבון NRXN3 אומת ספציפית כחלבון ייחודי לנוירונים (neuron-specific protein).",
-        "severity": "low",
         "scope": "detail"
       }
     ],
@@ -210,11 +210,11 @@
     "verdict": "review",
     "accuracy": 4,
     "coverage": 5,
-    "fluency": 5,
+    "fluency": 4,
     "discrepancies": [
       {
-        "said": "במחקר הקורטיזול בחולי PTSD נאמר כי הקורטיזול נמדד לפני מטלת הכתיבה ו-5 דקות אחריה לאורך חמש הפגישות הטיפוליות (09:52).",
-        "source": "הקורטיזול נאסף לפני מטלת הכתיבה ו-15 דקות אחריה בכל אחת מחמש הפגישות (cortisol was collected before and 15 min after the writing task at each of five sessions).",
+        "said": "בגוף הפרק (בדקה 09:27, או 08:52 ללא התיקון המקדים) נאמר במחקר הקורטיזול בחולי PTSD כי הקורטיזול נמדד לפני מטלת הכתיבה וחמש דקות אחריה לאורך חמש הפגישות הטיפוליות.",
+        "source": "הקורטיזול נאסף לפני מטלת הכתיבה ו-15 דקות אחריה בכל אחת מחמש הפגישות.",
         "severity": "high",
         "scope": "detail"
       }
@@ -230,6 +230,65 @@
     "coverage": 5,
     "fluency": 5,
     "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_misc_part2": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "בתיאור המקרה מ-Lakartidningen נאמר כי נקודת המפנה הגיעה לקראת גיל 14 (לקראת המעבר לתיכון), אז הערכה קוגניטיבית מעודכנת הראתה מוגבלות שכלית קלה (13:44–13:53).",
+        "source": "לפי התקציר, בגיל 10 הרמה הקוגניטיבית תאמה לתפקוד שכלי גבולי (borderline intellectual functioning), ותוצאה דומה נמצאה גם בגיל 14; רק כאשר תוכנן המעבר לחטיבה העליונה/תיכון (upper secondary school) ההערכה הקוגניטיבית הדגימה מוגבלות שכלית קלה (mild intellectual disability).",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "cognition": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "problem",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בסקירת המאמר של Sarrionandia et al. על התערבויות דיגיטליות למניעת אובדנות נאמר שהוא התפרסם בכתב העת Psychotherapy ('סיקותרפי') (13:26).",
+        "source": "המאמר פורסם בכתב העת Psicothema.",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "בסקירת המטה-אנליזה של Motta et al. על הפרעה דו-קוטבית ומחלות לב וכלי דם, המנחה מציינת פעמיים כי השכיחות המשולבת (pooled prevalence) של כלל מחלות הלב וכלי הדם עמדה על 7.5%, וכי שכיחות מחלה צרברווסקולרית עמדה על 4.5% (09:38, 09:46, 10:15) — בעוד שהמנחה השני מציין בהמשך 7.70% (10:50).",
+        "source": "השכיחות המשולבת של מחלות לב וכלי דם (CVD) בהפרעה דו-קוטבית הייתה 7.70% (95% CI: 5.07-11.52), ושכיחות מחלה צרברווסקולרית הייתה 4.45% (95% CI: 2.13-9.05).",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "שם המחבר הראשי במאמר על תמותה מאובדנות בקרב שורדי סרטן בלוטת התריס (Chen E et al.) נהגה כ'חן' במקום 'צ'ן' (02:53).",
+        "source": "שם המחבר במקור הוא Chen E et al.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
     "lost_content": {
       "any": false,
       "details": []
