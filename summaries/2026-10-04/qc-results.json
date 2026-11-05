@@ -9,5 +9,222 @@
       "any": false,
       "details": []
     }
+  },
+  "child_adolescent_misc_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_misc_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במחקר ב-BMJ Open (02:47) נאמר שלאחר בידוד החלק היחסי המיוחס לאוכלוסייה (PAF), החוקרים הצמידו לו עלויות של טיפול רפואי ואובדן ימי עבודה.",
+        "source": "העלויות הכלכליות במחקר זה חושבו על ידי החלת מדדי ה-PAF על שנות חיים מותאמות לנכות (DALYs) ותמחורן לפי ערך שנת חיים סטטיסטית (נכונות חברתית לשלם, הכוללת גם עלויות בלתי מוחשיות), ולא לפי גישת ההון האנושי ואובדן פריון/ימי עבודה ששימשה בהערכות קודמות מ-2017.",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "במחקר הפרוטאומיקה מעוקבת CARDIA (04:22) המנחה הוגה את שם החלבון השני כ-ANIX (איי-אן-איי-אקס).",
+        "source": "שם החלבון המופיע במקור הוא AINX (חלבון סיבי ביניים ספציפי לנוירונים).",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "cognition_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במאמר על הסטריאוטיפים (04:09) נאמר כי החוקרים 'עשו שם שתי סימולציות ממוחשבות ובחנו שני סטים של נתונים מהספרות'.",
+        "source": "התקציר מציין שני מחקרים ושני מאגרי נתונים קיימים, ובנוסף הדגמה באמצעות סימולציות ('across two studies and two existing data sets... and illustrate it with simulations').",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "במאמר על שיפוט משותף בצמדים (07:00) נאמר כי הבחירה מתבססת על 'הדיוק ההיסטורי של כל משתתף במטלות קודמות יחד עם הביטחון הנוכחי שלו'.",
+        "source": "התקציר מציין שהמנבאים למשקל שניתן להערכת המשתתף היו הדיוק ההיסטורי והדיוק היחסי בצעד הניסוי הנוכחי ('relative accuracy on the current trial, as well as historical accuracy'), ולא רמת הביטחון העצמי.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "cognition_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בסקירת המטה-אנליזה על TMS-EEG בדיכאון (11:20–11:32) נאמר שלוש פעמים כי החוקרים התמקדו ברכיב שנקרא N200 ושה-N200 היה מוגבר משמעותית בחולי דיכאון עם גודל אפקט של 0.36; בהמשך (11:46–12:05) המגישים עוברים לכנות את הרכיב N100 ומייחסים ספציפית אליו את גדלי האפקט של ההפוגה הקלינית (0.91) ושל הניבוי בנקודת ההתחלה (1.35).",
+        "source": "הרכיב N200 לא מופיע במקור כלל; הרכיב שנבדק במאמר הוא N100 (לצד P180). בנוסף, במקור גדלי האפקט g=0.36 (הגברה בדיכאון), g=0.91 (קשר להפוגה קלינית) ו-g=1.35 (ניבוי תגובה לטיפול בנקודת ההתחלה) מתייחסים לכלל רכיבי הקוטביות השלילית (negative-polarity components), בעוד שלרכיב ה-N100 עצמו דווחו גדלי אפקט של g=0.35 להגברה בדיכאון, g=0.67 לקשר לחומרת הסימפטומים, g=-0.21 להפחתה בעקבות טיפול ו-g=0.85 לקשר להפוגה קלינית.",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "בדיון על המגה-אנליזה ב-OCD (13:12–13:18) נאמר שבמשימות של עיכוב תגובה, מבוגרים עם OCD הראו הפעלה חזקה יותר בקליפת המוח הסומטוסנסורית (somatosensory).",
+        "source": "במקור נכתב כי מבוגרים עם OCD הראו הפעלה חזקה יותר בקליפת המוח הסומטומוטורית (stronger somatomotor cortex activation).",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "בדקה 07:52 נהגה שם המחברת הראשית של המאמר מ-Psychiatry Research כ'מרטינז סרדוני' (וכן בדקות 03:11 ו-04:17 נהגה ראשי התיבות של המדד הסטטיסטי כ-'DoSMSD').",
+        "source": "שם המחברת במקור הוא Martinez-Sadurni L, וקיצור המדד הסטטיסטי במאמר של Furukawa et al. הוא DoSMD (difference of standardised mean difference).",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במאמר על הוצאות בריאות הנפש בארה\"ב (04:10) נאמר לאחר הזכרת החישוב לאדם בודד מטופל כי \"ההוצאה הממוצעת לאדם לכל האוכלוסייה היא 2,473 דולר בשנה\".",
+        "source": "הסכום של 2,473 דולר בשנה הוא ההוצאה הממוצעת לאדם בקרב אלו עם הפרעה נפשית מטופלת (among those with any treated mental health disorder), בעוד שההוצאה הממוצעת לאדם בכלל האוכלוסייה (per person overall) עמדה על 523 דולר בשנה.",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "במאמר על הפרופיל הטרנסקריפטומי של נוירונים פירמידליים בשכבה 3 (18:38) נאמר שהחתימה הגנטית של 91 הגנים לא הייתה קיימת \"בתאים שיצאו מאזורים דומים אבל המסלול שלהם הוביל לדוגמה לקליפת הראייה הראשונית\".",
+        "source": "לפי התקציר, הפרופיל זוהה בנתוני ריצוף מאזורים קורטיקליים ששולחים שלוחות ל-DLPFC, אך לא מתוך קליפת הראייה הראשונית עצמה (V1), שהיא אזור שאינו שולח שלוחות ל-DLPFC (not from primary visual cortex (V1), which lacks these projections) — כלומר V1 הוא אזור המקור שנדגם ולא אזור היעד של השלוחות.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "לאחר שצוין כי בדיכאון אטיפי נמצאו 58 אפטמרים מובהקים, המנחה התייחס אליהם כאל 'אותם 58 חלבונים' (03:58).",
+        "source": "58 האפטמרים המובהקים שנמצאו בקשר לתסמינים אטיפיים מייצגים 57 חלבונים ייחודיים (58 significant aptamers corresponding to 57 unique proteins).",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part2": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במאמר השלישי (14:22) נאמר שהמחקר נערך על ידי קבוצת המחקר של 'קאונסלמן' (Counselman).",
+        "source": "שם המחבר הראשון במקור הוא Counsman LH (קאונסמן, ללא האות l).",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "בסקירת מאמרם של Counsman ושות' (15:18–15:26) נאמר שהחוקרים השתמשו באלגוריתמים של למידת מכונה 'כדי לעקוב אחרי ההתנהגות'.",
+        "source": "במקור נכתב כי שיטות למידת המכונה שימשו לכימות היקף מחיקת הנוירונים והספציפיות לתתי-האזורים ב-PAG (quantified deletion extent and subregion specificity using machine-learning methods), בעוד שההתנהגות נמדדה באמצעות אתוגרמות (ethograms).",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "בתיאור ניסוי 2 (US inflation) במאמרם של Counsman ושות' (17:13–17:20) נאמר כי החוקרים הצמידו רמז לשוק חלש, 'ואז מאוחר יותר ובלי שום רמז מקדים הם נתנו לחיה שוק חזק במיוחד'.",
+        "source": "במקור החולדות עברו תחילה התניה של שני רמזים (אור וצליל) לשוק חשמלי קל, ובשלב ה-US inflation מחצית מהחולדות קיבלו צימודים של רמז האור עם שוק חזק (light-intense shock pairings) — ולא שוק ללא רמז מקדים — בעוד שהשאר קיבלו צימודים נוספים של אור ושוק קל.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
   }
 }

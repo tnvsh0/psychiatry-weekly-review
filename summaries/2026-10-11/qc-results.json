@@ -132,5 +132,109 @@
       "any": false,
       "details": []
     }
+  },
+  "child_adolescent_core_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_core_part2": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 3,
+    "discrepancies": [
+      {
+        "said": "בדיון על ניסוי ה-RCT מסין (08:54) נאמר שהאפליקציה לתכנון בטיחות נקראת 'Life SOS', ובסיכום הפרק (13:29) היא כונתה 'LifeCare'.",
+        "source": "במקור (Liu YH et al.) האפליקציה נקראת LIFES.",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "בהצגת המאמר הראשון על אוטיזם וויסות רגשי (01:32) נאמר שהמאמר פורסם ב-'Journal of Child Psychiatry and Psychiatry'.",
+        "source": "שם כתב העת במקור (Wood JJ et al.) הוא Journal of Child Psychology and Psychiatry.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בסקירה ב-The Lancet Child & Adolescent Health נאמר (04:40): 'ובנוסף, המחברים מציינים שחשיפה מוקדמת לטראומה מעכבת לעיתים קרובות את ההבשלה של המסלולים העצביים בקליפת המוח הקדם-מצחית.'",
+        "source": "לא מופיע במקור — התקציר אינו מזכיר את קליפת המוח הקדם-מצחית או מנגנונים נוירוביולוגיים ספציפיים, ואף מציין כי דרוש מחקר נוסף כדי להבין את נתיבי הסיבתיות (research is needed to understand causal pathways).",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בניסויי in vivo, גם במודל חולדות עם אפילפסיה מסוג PTZ, וגם ברקמות אדם אפילפטיות, הפפטיד הזה הפחית משמעותית את תדירות וחומרת הפרכוסים (10:12)",
+        "source": "התקציר מציין ניסויים ברקמות מוח של עכברים (mouse brain lysates) ומודל פרכוסים אקוטי מושרה PTZ, ללא אזכור של חולדות.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
   }
 }
