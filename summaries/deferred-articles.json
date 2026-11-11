@@ -1,69 +1,5 @@
 [
   {
-    "pmid": "42804202",
-    "title": "Innovative Opportunities to Reduce Risky Firearm Behaviors-A Novel Construct and Promising Interventions",
-    "journal": "JAMA Pediatr",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42804202/",
-    "topic_id": "child_adolescent_highimpact",
-    "first_seen": "2026-10-04"
-  },
-  {
-    "pmid": "42814416",
-    "title": "Updating Treatment Goals for Schizophrenia",
-    "journal": "JAMA Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42814416/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-10-04"
-  },
-  {
-    "pmid": "42814425",
-    "title": "Prior Evidence on Auditory Hallucinations Overlooked-Reply",
-    "journal": "JAMA Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42814425/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-10-04"
-  },
-  {
-    "pmid": "42814418",
-    "title": "Prior Evidence on Auditory Hallucinations Overlooked",
-    "journal": "JAMA Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42814418/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-10-04"
-  },
-  {
-    "pmid": "42815994",
-    "title": "Genetics of Obsessive-Compulsive and Related Disorders: Are We There Yet?",
-    "journal": "Biol Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42815994/",
-    "topic_id": "general_psychiatry_bio",
-    "first_seen": "2026-10-04"
-  },
-  {
-    "pmid": "42823471",
-    "title": "Embeddedness under psilocybin",
-    "journal": "Nat Neurosci",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42823471/",
-    "topic_id": "neuroscience",
-    "first_seen": "2026-10-04"
-  },
-  {
-    "pmid": "42823473",
-    "title": "Brain stimulation boosts CSF flow",
-    "journal": "Nat Neurosci",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42823473/",
-    "topic_id": "neuroscience",
-    "first_seen": "2026-10-04"
-  },
-  {
-    "pmid": "42809478",
-    "title": "Abstracts ICPM World Congress 2026",
-    "journal": "Psychother Psychosom",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42809478/",
-    "topic_id": "psychotherapy",
-    "first_seen": "2026-10-04"
-  },
-  {
     "pmid": "42842273",
     "title": "Voice-First Mental Health Care for Older Adults in Africa",
     "journal": "JAMA Psychiatry",
@@ -304,14 +240,6 @@
     "first_seen": "2026-11-01"
   },
   {
-    "pmid": "42951300",
-    "title": "Identifying expanded adverse childhood experiences and examining their relationship with health outcomes: a systematic review protocol",
-    "journal": "BMJ Open",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42951300/",
-    "topic_id": "child_development",
-    "first_seen": "2026-11-01"
-  },
-  {
     "pmid": "42956063",
     "title": "Reply: Cerebral hypoperfusion, not amyloid, initiates the brain-first subtype in Lewy body dementia",
     "journal": "Brain",
@@ -334,5 +262,109 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42956064/",
     "topic_id": "neuroscience",
     "first_seen": "2026-11-01"
+  },
+  {
+    "pmid": "42982896",
+    "title": "Retraction Note: Population-adjusted numbers, demographics and mental health among children and adolescents referred to the Norwegian National Center for Gender Incongruence over two decades",
+    "journal": "Eur Child Adolesc Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42982896/",
+    "topic_id": "child_adolescent_core",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42994444",
+    "title": "The invisible toll on Gaza's health-care workers",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42994444/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42981066",
+    "title": "Further Clarification of Outcome Reporting in Clinical Trial-Reply",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42981066/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42981085",
+    "title": "The Clinical Utility of AI-Based Prediction and Stratification Models",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42981085/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42981076",
+    "title": "Further Clarification of Outcome Reporting in Clinical Trial",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42981076/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42981089",
+    "title": "Office-Based Methadone Treatment-Has the Moment Arrived?",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42981089/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42972094",
+    "title": "Correcting automatic decisions",
+    "journal": "Nat Neurosci",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42972094/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42972096",
+    "title": "Misfolded tau propagates via templated seeding",
+    "journal": "Nat Neurosci",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42972096/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42995002",
+    "title": "Thalamic stereoEEG in epilepsy: from cortical dogma to network-based hypotheses",
+    "journal": "Brain",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42995002/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42972095",
+    "title": "It's time to split",
+    "journal": "Nat Neurosci",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42972095/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42973074",
+    "title": "Reply: Clarifying incremental accuracy and thresholds for a plasma tau-to-amyloid ratio",
+    "journal": "Brain",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42973074/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42972093",
+    "title": "A brain of many microglia origins",
+    "journal": "Nat Neurosci",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42972093/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "42973061",
+    "title": "Clarifying incremental accuracy and thresholds for a plasma tau-to-amyloid ratio",
+    "journal": "Brain",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42973061/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-08"
   }
 ]
