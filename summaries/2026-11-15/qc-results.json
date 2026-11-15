@@ -1,0 +1,219 @@
+{
+  "child_adolescent_core": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "cognition_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "cognition_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במבוגרים, קלומיפרמין עמדה על מינוס 0.71 מול פלסבו, ורק כדי לתת פרופורציה, פלואוקסטין הציגה יעילות של מינוס 0.34 בלבד (03:40–03:49).",
+        "source": "במבוגרים, היעילות של פלואוקסטין מול פלסבו הייתה SMD של ‎-0.37 (95% CI -0.6 עד -0.08), בעוד שהנתון ‎-0.34 (95% CI -0.65 עד -0.04) מייצג את פער היעילות של קלומיפרמין בהשוואה לפלואוקסטין.",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "problem",
+    "accuracy": 2,
+    "coverage": 5,
+    "fluency": 2,
+    "discrepancies": [
+      {
+        "said": "בדקות 01:14–07:37 מוצג בהרחבה מחקר בשם 'Traumatic Memory Processing in Active Psychosis' מאת יוחנן וייסברג וד\"ר מאיה לוי-שוורץ שכביכול פורסם ב-Lancet Psychiatry, ונטען כי הטיפול בטראומה בזמן פסיכוזה פעילה הביא לירידה משמעותית במחשבות השווא, בקולות ובסימפטומים הפסיכוטיים באופן כללי ולעלייה משמעותית בתפקוד היומיומי.",
+        "source": "לא מופיע במקור (מחקר, חוקרים וממצאים בדויים לחלוטין; בנוסף, הטענה שטיפול בטראומה מפחית תסמינים פסיכוטיים סותרת את מחקר ה-RE.PROCESS של Burger et al. במקור, שבו נמצא כי לטיפולי הטראומה לא הייתה השפעה על הפסיכוזה עצמה).",
+        "severity": "high",
+        "scope": "core"
+      },
+      {
+        "said": "בדקות 02:36–02:55 נטען כי במחקר מתפרסמים נתונים שלפיהם כ-80% מהמטופלים שחווים פסיכוזה ראשונה יחוו אפיזודה נוספת תוך חמש שנים, וכן שישנה עלייה של בין פי שניים לפי שלושה בסיכון לאובדנות אצל מטופלים פסיכוטיים.",
+        "source": "לא מופיע במקור",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "בדקה 10:35 המנחה מכנה את גישת הטיפול 'TVV' ובדקה 10:55 המנחה מכנה את קבוצת הטיפול 'קבוצת ה-TVI'.",
+        "source": "במקור קיצור שם ההתערבות הוא TwV (Talking with Voices).",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "במחקר ה-GWAS ב-Nature Neuroscience נאמר (01:50) כי נותח מידע גנטי של 1,235,665 (מיליון מאתיים שלושים וחמישה אלף שש מאות שישים וחמישה) נבדקים ממוצא אירופאי.",
+        "source": "במקור מספר הנבדקים הוא 1,235,695 (שש מאות תשעים וחמישה): 'Here we leveraged data from 1,235,695 European-ancestry individuals across three biobanks'.",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "במחקר ה-RCT המוצלב ב-Brain על אדרנומדולין (ADM) נאמר (10:38) כי השטח מתחת לעקומה (AUC) של עוצמת הכאב היה 1,100 תחת ADM לעומת 420 עם פלצבו.",
+        "source": "במקור חציון ה-AUC תחת ADM היה 1,110 (ולא 1,100): 'Baseline-corrected headache-intensity AUC was higher after ADM than placebo (median 1,110 [IQR 315-2205] versus 420 [-160 to 565]; P = 0.006)'.",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part3": {
+    "verdict": "review",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [],
+    "lost_content": {
+      "any": true,
+      "details": [
+        "בשל קטיעת המשפט ב-05:05 אבדו מהאודיו מספר המחקרים שנכללו במטה-אנליזה על OCD (13 מחקרי RCT) ושם כתב העת (BMC Psychology), ונשאר רק סוף המשפט ('מחקרים אקראיים מבוקרים')."
+      ]
+    }
+  }
+}
