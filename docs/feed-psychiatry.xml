@@ -21,7 +21,7 @@
       <link>https://github.com/tnvsh0/psychiatry-weekly-review</link>
     </image>
     <language>he</language>
-    <lastBuildDate>Wed, 18 Nov 2026 06:47:11 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 06:48:05 +0000</lastBuildDate>
     <itunes:author>Tovia Wen</itunes:author>
     <itunes:category text="Health &amp; Fitness">
       <itunes:category text="Medicine"/>
@@ -11507,6 +11507,74 @@
 ⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
 
 — General Psychiatry — Clinical —</itunes:summary>
+    </item>
+    <item>
+      <title>[מדעי המוח] המוח כמנהל אקטיבי של כאב ומחלות — 2026-11-15</title>
+      <description>פרק זה כולל סקירה של 7 מאמרים:
+
+• Gene discovery and pleiotropic architecture of multidimensional pain in a genome-wide association study of &gt;1.2 million individuals (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43020908/
+
+• Human stem cell neuroscience (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43014280/
+
+• Toward functional oversight of neural organoid research: A report from the 2025 Asilomar Conference (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43014283/
+
+• Hypersensitivity to adrenomedullin in post-traumatic headache: a randomized crossover study (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43021468/
+
+• Mosaic CDKL5 deficiency drives progressive inhibitory circuit remodelling (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43021437/
+
+• The Neural Correlates of Sickness (J Neurosci · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/43015099/
+
+• Arousal state fluctuations destabilize speech intelligibility in older adults (J Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43025995/
+
+קלאסטר: מדעי המוח
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-11-15
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
+
+— Neuroscience —</description>
+      <guid isPermaLink="false">https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-11-15-neuroscience_part1/neuroscience_part1.mp3</guid>
+      <enclosure url="https://github.com/tnvsh0/psychiatry-weekly-review/releases/download/weekly-2026-11-15-neuroscience_part1/neuroscience_part1.mp3" length="14802093" type="audio/mpeg"/>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
+      <itunes:author>Tovia Wen</itunes:author>
+      <itunes:duration>925</itunes:duration>
+      <itunes:summary>פרק זה כולל סקירה של 7 מאמרים:
+
+• Gene discovery and pleiotropic architecture of multidimensional pain in a genome-wide association study of &gt;1.2 million individuals (Nat Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43020908/
+
+• Human stem cell neuroscience (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43014280/
+
+• Toward functional oversight of neural organoid research: A report from the 2025 Asilomar Conference (Neuron · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43014283/
+
+• Hypersensitivity to adrenomedullin in post-traumatic headache: a randomized crossover study (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43021468/
+
+• Mosaic CDKL5 deficiency drives progressive inhibitory circuit remodelling (Brain · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43021437/
+
+• The Neural Correlates of Sickness (J Neurosci · מאמר סקירה)
+  https://pubmed.ncbi.nlm.nih.gov/43015099/
+
+• Arousal state fluctuations destabilize speech intelligibility in older adults (J Neurosci · מאמר מחקרי)
+  https://pubmed.ncbi.nlm.nih.gov/43025995/
+
+קלאסטר: מדעי המוח
+סדרה: פסיכיאטריה ומדעי המוח
+תאריך הסקירה: 2026-11-15
+
+⚠️ התוכן נוצר באופן אוטומטי באמצעות בינה מלאכותית — אינו מהווה ייעוץ רפואי, חובה לבדוק כל פרט מול המקור.
+
+— Neuroscience —</itunes:summary>
     </item>
   </channel>
 </rss>
