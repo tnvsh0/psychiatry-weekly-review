@@ -1,0 +1,237 @@
+{
+  "behavioral_sciences": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_core_part1": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 4,
+    "discrepancies": [
+      {
+        "said": "בסקירת המאמר על שימוש בפורנוגרפיה בגיל ההתבגרות (17:48), נאמר כי בקרב בנות בלבד נמצא קשר בין צריכת פורנוגרפיה לבין 'משיכה שאינה הומוסקסואלית בלבד'.",
+        "source": "בתקציר המקור נכתב הפוך – הקשר בקרב בנות נמצא עבור משיכה שאינה הטרוסקסואלית בלבד (non-exclusively heterosexual attraction).",
+        "severity": "high",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_core_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "בסקירת המאמר של Wang et al. נאמר בתחילה כי המחקר בדק מגמות בטיפול בדיכאון 'בקרב ילדים ומבוגרים בארצות הברית' (01:58), אם כי בהמשך הדיון הובהר שהמדגם כלל מתבגרים ונוער (02:14, 03:09).",
+        "source": "המחקר כלל ילדים ומתבגרים בלבד בגילאי 6–17 שנים (children and adolescents aged 6-17 years).",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_adolescent_highimpact": {
+    "verdict": "review",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במחקר של Taxiarchi ושות' נאמר כי לאורך 22 השנים יחסי הסיכון (Hazard Ratios) לאשפוזים עקב פגיעה עצמית, אלכוהול או סמים נעו סביב 0.00 עד 1.01 (07:17–07:27).",
+        "source": "התקציר מציין כי בין השנים 2001 ל-2019 היחס בין יחסי הסיכון (ratio of hazard ratios) לכל שנה קלנדרית עמד על 1.00 (עבור שימוש לרעה באלכוהול; 95% CI 0.99-1.01) ועד 1.01 (עבור פגיעה עצמית ושימוש בסמים), ולא 0.00.",
+        "severity": "high",
+        "scope": "detail"
+      },
+      {
+        "said": "במחקר ה-CBD של Efron ושות' נאמר כי בשתי הקבוצות הילדים התחילו את המחקר עם ציון של כ-32 במדד הרגזנות ABC-I (11:04, 11:32).",
+        "source": "ציון הבסיס הממוצע במדד ABC-I היה 32.2 בקבוצת ה-CBD ו-30.0 בקבוצת הפלצבו.",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "במחקר של Han ושות' תורגם יחס השכיחות של 1.15 בגל t+2 כסיכוי גבוה ב-15% 'להיעדר של אותם סימפטומים מופנמים' ו'להיות חופשיים לגמרי מהסימפטומים הקליניים האלו' (20:10–20:30).",
+        "source": "התוצא בגל t+2 הוגדר כסימפטומים מופנמים שאינם מוגברים (nonelevated, שהוגדרו כ-3 תסמינים או פחות מתוך 4), ולא כהיעדר מוחלט של כלל התסמינים.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "child_development": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "cognition_part1": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במחקר על חיפוש מידע במשחק מאסטרמיינד (07:03–07:23) נאמר כי 'ערכיות רגשית שלילית, כלומר מצב רוח שלילי, פגעה בביצועים בעיקר בתנאי הספציפי שתומרץ למהירות' וכי 'דומיננטיות רגשית שלילית, שזו בעצם התחושה של חוסר שליטה בסיטואציה, פגעה בחיפוש המידע רק בתנאי המעורב'.",
+        "source": "התקציר מציין קשר מתאמי שלילי בין המדדים לבין הביצועים (State emotional dominance was negatively associated with performance in the mixed condition... State emotional valence was negatively associated with performance under the speed incentive), כלומר ערכיות רגשית גבוהה (חיובית יותר) ודומיננטיות רגשית גבוהה נקשרו לביצועים נמוכים יותר, ולא שערכיות שלילית או תחושת חוסר שליטה הן שפגעו בביצועים.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_bio": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "general_psychiatry_clinical_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part1": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "neuroscience_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part1": {
+    "verdict": "ok",
+    "accuracy": 4,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [
+      {
+        "said": "במחקר המיגרנה (08:38–08:48) נאמר שהקבוצה שקיבלה הוראות חיוביות רגילות הראתה ירידה מובהקת בתסמינים (מדד HIT-6) וש'ההבדל בין הקבוצות היה מובהק סטטיסטית' בהקשר זה.",
+        "source": "בתקציר נכתב כי אמנם בקבוצת ההוראות החיוביות הרגילות חלה ירידה מובהקת במדד HIT-6 (p = 0.006) ובקבוצת ההוראות החיוביות מאוד לא חלה ירידה (p = 0.177), אך לא נמצא הבדל מובהק בין הקבוצות במדד ה-HIT ('No difference was found between the groups'). ההבדל המובהק סטטיסטית בין הקבוצות (p = 0.029) נמצא במגמת הציפיות לאורך נקודות הזמן.",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "במחקר הגיוס של נשים לאחר לידה (11:54–11:55) נאמר כי גייסו את הנשים 'למעקב של 12 חודשים'.",
+        "source": "בתקציר מצוין כי 12 החודשים היו משך תקופת הגיוס למחקר ('Strategies used to recruit over a 12-month period... recruited within the planned 12-month timeframe'), ולא משך תקופת המעקב אחר המשתתפות.",
+        "severity": "low",
+        "scope": "detail"
+      },
+      {
+        "said": "במחקר הגיוס של נשים לאחר לידה (12:05–12:11) נאמר כי 53.5% מהנשים הגיעו 'משני העשירונים הסוציו-אקונומיים הנמוכים ביותר'.",
+        "source": "בתקציר כתוב כי 53.5% מהנשים הגיעו משני החמישונים המקופחים ביותר במדד החסך ('the two most deprived IMD quintiles'), כלומר חמישונים ולא עשירונים.",
+        "severity": "low",
+        "scope": "detail"
+      }
+    ],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part2": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  },
+  "psychotherapy_part3": {
+    "verdict": "ok",
+    "accuracy": 5,
+    "coverage": 5,
+    "fluency": 5,
+    "discrepancies": [],
+    "lost_content": {
+      "any": false,
+      "details": []
+    }
+  }
+}
