@@ -1,0 +1,61 @@
+# 📚 מדעי המוח — חלק 3/3
+### סקירת ספרות שבועית — 2026-11-22
+
+**תקופה:** 15/11/2026 – 22/11/2026 | **מאמרים:** 5 (⭐ IF≥15: 2 | 🔷 IF 5-14: 3 | 📄 אחר: 0)
+
+> **מפתח:** ⭐ כתב עת מדרגה ראשונה (IF ≥ 15) · 🔷 כתב עת מוביל (IF 5–14) · 📄 כתב עת מוכר
+
+---
+
+### Distinct prelimbic microcircuits control sensory and affective dimensions of neuropathic pain
+**כתב עת:** ⭐ Nature Neuroscience (Nat Neurosci) *(IF: 25.0)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Gan Z et al. | **תאריך:** 2026 Nov 16
+
+The microcircuit mechanisms underlying deactivation and altered output of the medial prefrontal cortex (mPFC), a common feature of several chronic pain conditions, are poorly understood. Here, using unbiased in vivo longitudinal multiphoton imaging in the mouse prelimbic cortex (PrL), we show that nerve injury induces sensitization of all classes of GABAergic interneurons and a phenotypic switch from unimodal to polymodal responses. Through circuit interrogation, we identified functions for caudal geminal eminence-derived Prox1 +  interneurons and revealed that distinct classes of inhibitory and excitatory neurons in the PrL have different functions in promoting neuropathic pain. In addition, we show that the sensory and affective dimensions of neuropathic pain engaged two distinct microcircuits, PV + -Rbp4 +  neurons and Prox1 + -Cux2 + /Ntsr1 +  neurons, respectively, to control distinct projection outputs. These findings provide a mechanistic basis for how mPFC guides actions to avoid or overcome pain and how prefrontal deactivation exacerbates neuropathic pain.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/43040038/)
+
+---
+
+### Spectral envelopes of facial movements predict intention, cortical representations, and neural prosthetic control
+**כתב עת:** ⭐ Neuron *(IF: 17.2)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Hakim R et al. | **תאריך:** 2026 Nov 16
+
+Animals use coordinated facial movements to sample the environment, ingest nutrients, and communicate. Rodents produce rhythmic facial movements during spontaneous behavior and cognitive tasks. Measuring these movements precisely and linking them to neural activity remains challenging. We introduce face-rhythm, an unsupervised pipeline that combines markerless point-tracking, spectral analysis, and non-negative tensor decomposition to reduce facial video to a small set of interpretable components. Applied to videos of mice performing Pavlovian conditioning, a brain-machine interface task, and free behavior, face-rhythm recovers whisking, sniffing, licking, and subtler motifs. The resulting components are consistent across animals, decode task variables and internal states, and explain cortical activity with a low-rank representation. Facial motor cortex neurons are predicted well by a phase-invariant spectral transformation of movements above roughly 0.5 Hz, whereas slower movements retain a phase-variant representation. Face-rhythm compares favorably with deep-learning tracking and embedding methods while yielding an interpretable description of facial behavior.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/43063940/)
+
+---
+
+### D4Z4 methylation and genetic modifiers influence severity in a facioscapulohumeral muscular dystrophy kindred
+**כתב עת:** 🔷 Brain *(IF: 14.5)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Butterfield RJ et al. | **תאריך:** 2026 Nov 17
+
+One of the earliest systematic descriptions of facioscapulohumeral muscular dystrophy (FSHD) involved a six-generation kindred tracing back to a single ancestor born in 1775 in Lancashire, England, who later emigrated to Utah in the 1850s. First published in 1950, members of this kindred (K1462) have been followed clinically for decades, with DNA samples archived since the 1980s. Despite sharing the same 5-repeat unit (5RU) D4Z4 contraction on a permissive 4qA haplotype, affected individuals show marked variability in age at onset, clinical severity and disease progression, including within sibships. With long-term follow-up and a shared founder mutation, K1462 is a unique resource for identifying modifiers of disease expression in FSHD. We reintroduce K1462, with enrolment extending into the ninth generation, and perform genomic analysis using modern approaches. Inheritance of the 5RU founder allele was confirmed in 139 individuals, and nanopore Cas9-targeted sequencing determined CpG methylation across the contracted D4Z4 array at base-pair resolution. The 5RU allele showed complete penetrance; however, clinical severity and progression varied widely among affected individuals. Longitudinal analysis of blood-derived genomic DNA demonstrated high stability of D4Z4 CpG methylation within individuals, including samples collected up to 38 years apart, indicating long-term maintenance of the epigenetic state. In contrast, D4Z4 methylation levels differed substantially between individuals and showed a strong inverse correlation with clinical severity. Differences in D4Z4 methylation were observed both within and between families, with a modest but consistent parent-of-origin effect. Whole-genome sequencing analysis found no evidence that rare variants in known FSHD2 genes explained this variability. To assess the contribution of common genetic variation, we performed a pedigree-based genome-wide association analysis of D4Z4 methylation levels, identifying a single genome-wide significant locus on chromosome 15. Variants spanning the promoter and 5' region of HDGFL3, which encodes a PWWP domain chromatin-interacting protein, were associated with increased D4Z4 methylation after accounting for parental transmission, supporting a role for common-variant modulation of methylation in FSHD. These results support a model in which D4Z4 methylation is established through transmission-associated epigenetic resetting, stably maintained within individuals, and quantitatively modified by inherited genetic variation. Together, these findings demonstrate that D4Z4 methylation is a stable, individual-level epigenetic feature that varies across a multigenerational pedigree in a manner that correlates with clinical severity, confirming D4Z4 methylation as a quantitative biomarker and genetically modifiable contributor to disease severity in FSHD.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/43039018/)
+
+---
+
+### Chronic and subacute phenylalanine effects on brain metabolism in adults with phenylketonuria
+**כתב עת:** 🔷 Brain *(IF: 14.5)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Muri R et al. | **תאריך:** 2026 Nov 17
+
+Phenylketonuria (PKU) leads to chronic cerebral exposure to elevated phenylalanine (Phe) despite lifelong dietary treatment, yet the neurometabolic consequences in adulthood remain incompletely understood. We investigated whether adults with early-treated PKU exhibit persistent alterations in brain metabolism and whether these metabolites respond dynamically to subacute Phe fluctuations. Adults with early-treated PKU (n=30) and healthy controls (n=59) underwent proton magnetic resonance spectroscopy (1H-MRS), structural and functional brain MRI to evaluate white matter lesion load (T2-weighted images) and cerebral blood flow (arterial spin labeling), as well as cognitive assessments. Patients additionally participated in a randomized, placebo-controlled crossover intervention with four weeks of oral Phe loading to evaluate subacute metabolic responsiveness. Absolute metabolite concentrations were quantified in predominantly white matter tissue, and associations between blood and brain Phe, white matter lesion load, cerebral blood flow, and cognitive performance were examined. At baseline, patients exhibited higher brain Phe and N-acetylaspartate (NAA) levels, alongside reduced myo-inositol, N-acetylaspartylglutamate (NAAG), and total creatine/phosphocreatine compared with controls. Patients with white matter lesions did not differ in blood and brain metabolites from those without. Four weeks of oral Phe loading increased brain Phe and produced a reversible decrease in myo-inositol, whereas NAA, NAAG, and creatine compounds remained unchanged. Blood and brain Phe concentrations were strongly correlated (r=0.83, p<0.001), and their ratio was subject-dependent. No significant associations were observed between metabolite concentrations and regional cerebral blood flow or cognitive performance after correction for multiple comparisons. Adults with early-treated PKU exhibit persistent neurometabolic alterations involving neuronal-glial metabolism, energy buffering, and astrocytic osmolyte regulation. The findings support a trait-state framework, with stable alterations in NAA, NAAG, and creatine compounds reflecting long-standing metabolic changes, superimposed on a dynamically Phe-sensitive astrocytic response indexed by myo-inositol. The absence of strong associations with cerebral perfusion or cognition suggests that these alterations represent upstream biological processes not captured by macroscopic imaging or behavioral measures.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/43040885/)
+
+---
+
+### Selective and spatially biased activity remodeling following adult-onset sensory loss
+**כתב עת:** 🔷 The Journal of Neuroscience (J Neurosci) *(IF: 6.7)* | **סוג מחקר:** מאמר מחקרי | **מחברים:** Song Y et al. | **תאריך:** 2026 Nov 16
+
+Cross-modal brain plasticity after sensory loss allows an organism to utilize the remaining senses to guide behavior. Two distinct mechanisms support such adaptation: cross-modal recruitment and compensatory plasticity. Cross-modal recruitment refers to the deprived sensory areas gaining responsiveness to the spared senses, while compensatory plasticity indicates enhanced functionality of the spared sensory areas. Widespread synaptic and circuit-level plasticity has been reported to support such cross-modal plasticity. Here we combined whole-brain clearing, light-sheet imaging, and activity labeling using a cFosTRAP2 mouse line to examine the spatial distribution of highly active cells across brain areas following acute sensory manipulations in adult mice of both sexes. Adult-onset vision loss led to an initial decrease in the density of activity-labeled cells in visual areas, including the primary visual cortex (V1), and a parallel increase in the spared primary auditory (A1) and somatosensory barrel (S1BF) cortices. V1 and some higher-order visual areas (HVAs), but not the visual thalamus, exhibited a partial rebound in activity after a week of vision loss. The activity rebound in visual cortices and the enhanced activity observed in A1 were spatially biased. Passively exposing adult-onset blind mice to sound did not further alter activity levels, except for a decrease in the claustrum. Conversely, adult-onset deafening significantly reduced the activity-labeled cell density in auditory and auditory-related areas without clear signs of compensatory plasticity in the spared areas. Our results indicate that adult cross-modal plasticity is largely observed in sensory cortices with rather specific within-area spatial bias, suggesting selective functional adaptations. Significance Statement  This study examined the spatial profile of how the adult brain adapts when one sense is lost. In mice, vision loss caused brain activity to drop in visual areas followed by partial recovery over time, suggesting gradual recruitment of these areas by non-visual information. In parallel, the brain areas for hearing and touch became more active, a sign of compensation. Activity changes were not widespread but limited mainly to sensory areas with some local spatial bias. In contrast, the same duration of hearing loss produced much less evidence of compensation in the spared sensory areas. These findings suggest that the adult brain can reorganize after sensory loss, but this adaptation is selective and region-specific, implying targeted functional compensation.
+
+🔗 [קישור למאמר ב-PubMed](https://pubmed.ncbi.nlm.nih.gov/43039699/)
+
+---
+
+---
+
+## 📝 הערות
+- מאמרים נמצאו אוטומטית דרך PubMed E-utilities API
+- הסיכומים מבוססים על תקצירים (Abstracts) בלבד
+
+*נוצר אוטומטית ב-22/11/2026 05:51 UTC*
