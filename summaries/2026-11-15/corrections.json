@@ -1,0 +1,6 @@
+{
+  "neuroscience_part1": {
+    "text": "לפני שמתחילים, תיקון לפרק הזה. נמצאו 2 אי-דיוקים. בפרק נאמר: במחקר ה-GWAS ב-Nature Neuroscience נאמר (01:50) כי נותח מידע גנטי של 1,235,665 (מיליון מאתיים שלושים וחמישה אלף שש מאות שישים וחמישה) נבדקים ממוצא אירופאי. לפי המקור: במקור מספר הנבדקים הוא 1,235,695 (שש מאות תשעים וחמישה): 'Here we leveraged data from 1,235,695 European-ancestry individuals across three biobanks'. בפרק נאמר: במחקר ה-RCT המוצלב ב-Brain על אדרנומדולין (ADM) נאמר (10:38) כי השטח מתחת לעקומה (AUC) של עוצמת הכאב היה 1,100 תחת ADM לעומת 420 עם פלצבו. לפי המקור: במקור חציון ה-AUC תחת ADM היה 1,110 (ולא 1,100): 'Baseline-corrected headache-intensity AUC was higher after ADM than placebo (median 1,110 [IQR 315-2205] versus 420 [-160 to 565]; P = 0.006)'. שאר הפרק לא השתנה.",
+    "added": "2026-11-18"
+  }
+}

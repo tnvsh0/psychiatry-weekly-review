@@ -1,117 +1,5 @@
 [
   {
-    "pmid": "42842273",
-    "title": "Voice-First Mental Health Care for Older Adults in Africa",
-    "journal": "JAMA Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42842273/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-10-11"
-  },
-  {
-    "pmid": "42843396",
-    "title": "Towards a convergent biomarker and treatment for obsessive-compulsive disorder",
-    "journal": "Lancet Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42843396/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-10-11"
-  },
-  {
-    "pmid": "42827175",
-    "title": "Glioblastoma treatment gels",
-    "journal": "Nat Neurosci",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42827175/",
-    "topic_id": "neuroscience",
-    "first_seen": "2026-10-11"
-  },
-  {
-    "pmid": "42830208",
-    "title": "Brain publishes clinical trials",
-    "journal": "Brain",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42830208/",
-    "topic_id": "neuroscience",
-    "first_seen": "2026-10-11"
-  },
-  {
-    "pmid": "42862594",
-    "title": "Support Seeking and Mental Health Risk by Sexual Identity Among US Adolescents",
-    "journal": "JAMA Pediatr",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42862594/",
-    "topic_id": "child_adolescent_highimpact",
-    "first_seen": "2026-10-18"
-  },
-  {
-    "pmid": "42874599",
-    "title": "Compulsory psychiatric care: distinct groups, unequal outcomes",
-    "journal": "Lancet Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42874599/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-10-18"
-  },
-  {
-    "pmid": "42873517",
-    "title": "Patient-Reported Changes in Alcohol Use Following Glucagon-Like Peptide-1 Receptor Agonist Initiation",
-    "journal": "JAMA Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42873517/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-10-18"
-  },
-  {
-    "pmid": "42874601",
-    "title": "Preventing predictable harm in severe mental illness",
-    "journal": "Lancet Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42874601/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-10-18"
-  },
-  {
-    "pmid": "42874600",
-    "title": "Action needed to address HbA(1C) and weight increases in people initiating antipsychotic medicines",
-    "journal": "Lancet Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42874600/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-10-18"
-  },
-  {
-    "pmid": "42873530",
-    "title": "The Need to Clarify Regulation of Mental Health Artificial Intelligence",
-    "journal": "JAMA Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42873530/",
-    "topic_id": "general_psychiatry_clinical",
-    "first_seen": "2026-10-18"
-  },
-  {
-    "pmid": "42875143",
-    "title": "Interpreting Lower Synaptic Vesicle Glycoprotein 2A Availability in Bipolar Disorder",
-    "journal": "Biol Psychiatry",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42875143/",
-    "topic_id": "general_psychiatry_bio",
-    "first_seen": "2026-10-18"
-  },
-  {
-    "pmid": "42875513",
-    "title": "Ring attractor networks go full circle",
-    "journal": "Nat Neurosci",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42875513/",
-    "topic_id": "neuroscience",
-    "first_seen": "2026-10-18"
-  },
-  {
-    "pmid": "42864447",
-    "title": "Alus harbor genetic variants that shape the human cortex",
-    "journal": "Nat Neurosci",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42864447/",
-    "topic_id": "neuroscience",
-    "first_seen": "2026-10-18"
-  },
-  {
-    "pmid": "42888026",
-    "title": "Is the entorhinal signal a tau origin or a treatment-relevant vulnerability map?",
-    "journal": "Brain",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/42888026/",
-    "topic_id": "neuroscience",
-    "first_seen": "2026-10-18"
-  },
-  {
     "pmid": "42915011",
     "title": "Mental health, ADHD, and autism: two reports, one call to act",
     "journal": "Lancet Child Adolesc Health",
@@ -366,5 +254,205 @@
     "url": "https://pubmed.ncbi.nlm.nih.gov/42973061/",
     "topic_id": "neuroscience",
     "first_seen": "2026-11-08"
+  },
+  {
+    "pmid": "43018715",
+    "title": "Child and adolescent psychiatry in a polarized world - the societal and professional policy role of European child and adolescent psychiatry",
+    "journal": "Eur Child Adolesc Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43018715/",
+    "topic_id": "child_adolescent_core",
+    "first_seen": "2026-11-15"
+  },
+  {
+    "pmid": "43013283",
+    "title": "Youth-Caregiver Discordance in Psychiatric Diagnosis and Clinical Problems in the ABCD Study",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43013283/",
+    "topic_id": "child_adolescent_highimpact",
+    "first_seen": "2026-11-15"
+  },
+  {
+    "pmid": "43008762",
+    "title": "Talking with Voices: moving towards implementation?",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43008762/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-15"
+  },
+  {
+    "pmid": "43013295",
+    "title": "AI and the Irreplaceable in Clinical Psychiatry-In Defense of Essential Standards of Practice",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43013295/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-15"
+  },
+  {
+    "pmid": "43014333",
+    "title": "Psychotherapy for autistic adults lacks guidance on the conduct of therapy itself",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43014333/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-15"
+  },
+  {
+    "pmid": "43009221",
+    "title": "The Energetic Cost of Adaptation: Mitochondrial Responses to Early-Life Adversity",
+    "journal": "Biol Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43009221/",
+    "topic_id": "general_psychiatry_bio",
+    "first_seen": "2026-11-15"
+  },
+  {
+    "pmid": "43009223",
+    "title": "Remarkable Advances, Sobering Truths",
+    "journal": "Biol Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43009223/",
+    "topic_id": "general_psychiatry_bio",
+    "first_seen": "2026-11-15"
+  },
+  {
+    "pmid": "43009222",
+    "title": "Beyond the Absence of Distress: Episodic Memory Development and the Missing Half of Child Mental Health",
+    "journal": "Biol Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43009222/",
+    "topic_id": "general_psychiatry_bio",
+    "first_seen": "2026-11-15"
+  },
+  {
+    "pmid": "43021447",
+    "title": "The forgotten fornix in retrosplenial amnesia",
+    "journal": "Brain",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43021447/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-15"
+  },
+  {
+    "pmid": "43021427",
+    "title": "Reading between the blinks: how much can prepulse inhibition tell us about fibromyalgia?",
+    "journal": "Brain",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43021427/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-15"
+  },
+  {
+    "pmid": "43051193",
+    "title": "Rising demand for youth mental health care: between diagnoses and needs",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43051193/",
+    "topic_id": "child_adolescent_highimpact",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43037968",
+    "title": "Cannabidiol for Disruptive Behavior-The Verdict Is In",
+    "journal": "JAMA Pediatr",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43037968/",
+    "topic_id": "child_adolescent_highimpact",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43051201",
+    "title": "Naomi Fineberg: prioritising internet safety",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43051201/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43050216",
+    "title": "The Validation Bottleneck for Psychiatric Biomarkers",
+    "journal": "JAMA Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43050216/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43051192",
+    "title": "The Lancet Psychiatry Commission on global action on problematic usage of the internet",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43051192/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43046293",
+    "title": "A Conceptual Roadmap for the Future Diagnostic and Scientific Manual: Vision, Progress to Date, and What Comes Next",
+    "journal": "Am J Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43046293/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43051195",
+    "title": "Problematic internet use: a global mental health imperative",
+    "journal": "Lancet Psychiatry",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43051195/",
+    "topic_id": "general_psychiatry_clinical",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43038308",
+    "title": "Adverse Childhood Experiences in the Digital Era: An Urgent Call for Precision Assessment",
+    "journal": "Psychother Psychosom",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43038308/",
+    "topic_id": "child_development",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43038307",
+    "title": "The Need for Flexible, Co-Developed Adverse Childhood Experiences Assessment: Response to Chang and Su: \"Adverse Childhood Experiences in the Digital Era: An Urgent Call for Precision Assessment\"",
+    "journal": "Psychother Psychosom",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43038307/",
+    "topic_id": "child_development",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43051994",
+    "title": "Computational Insights into Afferent Integration Underlying Mechanical Allodynia",
+    "journal": "J Neurosci",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43051994/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43043867",
+    "title": "Context matters: serum neurofilament light chain, a diagnostic aid in amyotrophic lateral sclerosis",
+    "journal": "Brain",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43043867/",
+    "topic_id": "neuroscience",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43063028",
+    "title": "The case of Ms. J",
+    "journal": "Int J Psychoanal",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43063028/",
+    "topic_id": "psychotherapy",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43063035",
+    "title": "Discussion: The case of Ms. J",
+    "journal": "Int J Psychoanal",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43063035/",
+    "topic_id": "psychotherapy",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43063032",
+    "title": "Discussion: The Case of Ms J",
+    "journal": "Int J Psychoanal",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43063032/",
+    "topic_id": "psychotherapy",
+    "first_seen": "2026-11-22"
+  },
+  {
+    "pmid": "43063027",
+    "title": "Discussion of the case of Ms. J",
+    "journal": "Int J Psychoanal",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/43063027/",
+    "topic_id": "psychotherapy",
+    "first_seen": "2026-11-22"
   }
 ]

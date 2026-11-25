@@ -1,7 +1,7 @@
 {
-  "child_adolescent_core_part1": 1283,
+  "child_adolescent_core_part1": 815,
   "child_adolescent_core_part2": 938,
-  "child_adolescent_highimpact": 1363,
+  "child_adolescent_highimpact": 953,
   "general_psychiatry_clinical_part1": 711,
   "general_psychiatry_clinical_part2": 752,
   "general_psychiatry_clinical_part3": 790,
@@ -14,5 +14,10 @@
   "psychotherapy_part2": 824,
   "psychotherapy_part3": 1146,
   "behavioral_sciences": 933,
-  "cognition_part1": 1166
+  "cognition_part1": 1166,
+  "child_adolescent_misc_part1": 922,
+  "child_adolescent_misc_part2": 879,
+  "cognition_part2": 906,
+  "child_adolescent_core_part1 (2)": 982,
+  "child_adolescent_highimpact (2)": 759
 }
